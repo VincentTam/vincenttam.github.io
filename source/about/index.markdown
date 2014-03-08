@@ -42,7 +42,7 @@ repository for some of my slides.
 3. [i_dont_use_word](http://vincenttam.github.io/i_dont_use_word/):
 Another repository for hosting a slide created easily **without** M$
 Office.
-4. [recursive_samples](http://vincenttam.github.io/recursive_samples):
+4. [recursion_samples](http://vincenttam.github.io/recursion_samples):
 A testing repository which contains program code in the `master`
 branch and a GitHub project page built with Jekyll Bootstrap in the
 `gh-pages` branch.
