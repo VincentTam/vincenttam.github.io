@@ -19,9 +19,9 @@ Then I blindly followed the "advice" of `git status` and typed
 $ git add .
 ```
 
-It seemed that I had made a mistake.  Actually, **without adding those
-modified and untracked files on the stage for commit**, the following
-two commands will do.
+<del>It seemed that I had made a mistake.</del>  Actually, **without
+adding those modified and untracked files on the stage for commit**,
+the following two commands will do.
 
 ```
 $ rake generate
@@ -31,7 +31,23 @@ $ rake deploy
 The final step is to view your blog again after going out for a cup
 water or some snacks.
 
-How about the `git status`?  Simply *forget about it*!
+How about the `git status`?  <del>Simply *forget about it*!</del>
+
+---
+
+If you have *more than one* local repository of your Octopress or
+Jekyll site, you may upload your contents to the Internet as long as
+the corresponding branch in the local repository is newer than the one
+in the remote repository.  To keep the Octopress or Jekyll code
+updated, one needs to use Git to check if the `source` branch contains
+the latest changes.  Otherwise, after writing a new post, it is
+possible that one *can't* upload the new post to the Octopress or
+Jekyll site using `rake deploy`.
+
+Thus, eight days ago, I made Git commit
+[8c7be99f49](https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99f49e0aee10ae74a7ee360e02bab5649c2).
+
+(Last edited on 2014/03/15)
 
 [^config_octopress]: [Configuring Octopress](http://octopress.org/docs/configuring/)
 
