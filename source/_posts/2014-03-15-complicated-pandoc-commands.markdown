@@ -11,12 +11,12 @@ create a page here so that I can make quickly get the right command
 for my work.  This saves the time for checking and testing the right
 command.
 
-# Pandoc markdown
+## Pandoc markdown
 
 Official demo:
 <http://johnmacfarlane.net/pandoc/demos.html>
 
-## Beamer
+### Beamer
 
     !pandoc -t beamer -s -S --biblio mybib.bib --csl ~/Dropbox/Git/styles/apa.csl % -V theme:Berlin -o %<.pdf
 
