@@ -16,18 +16,14 @@ screenshot is from my terminal.
 
 Then I blindly followed the "advice" of `git status` and typed
 
-```
-$ git add .
-```
+    $ git add .
 
 <del>It seemed that I had made a mistake.</del>  Actually, **without
 adding those modified and untracked files on the stage for commit**,
 the following two commands will do.
 
-```
-$ rake generate
-$ rake deploy
-```
+    $ rake generate
+    $ rake deploy
 
 The final step is to view your blog again after going out for a cup
 water or some snacks.

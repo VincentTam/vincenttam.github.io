@@ -32,3 +32,5 @@ I personally appreciate the beauty of Professor Donald Knuff's Computer Modern t
 
 [^1]: <http://tex.stackexchange.com/questions/110133/visual-comparison-between-latex-and-word-output-hyphenation-typesetting-ligat>
 [^2]: <http://nitens.org/taraborelli/latex>
+
+<!-- vim:set sw=2:wrap: -->
