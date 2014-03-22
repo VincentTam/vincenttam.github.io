@@ -3,7 +3,7 @@ layout: post
 title: "A Vim Lover Page"
 date: 2014-03-02 14:39:20 +0800
 comments: true
-categories: 
+categories: vim
 ---
 I've found [a useful page](http://wiki.hotoo.me/Vim.html) introducing
 a Vim lover.  It consists of plenty of links to many useful resources.

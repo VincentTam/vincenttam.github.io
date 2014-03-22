@@ -3,7 +3,7 @@ layout: post
 title: "Complicated Pandoc Commands"
 date: 2014-03-15 12:55:46 +0800
 comments: true
-categories: 
+categories: pandoc
 ---
 
 I don't need to memorize these commands.  Instead, what I need is to

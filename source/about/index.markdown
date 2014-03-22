@@ -6,19 +6,58 @@ comments: true
 sharing: true
 footer: true
 ---
-## Brief Introduction
 
-To be concise, I use point form.
+## Introduction
 
-1. **Not** an IT student or staff.
-2. A free software supporter.
-3. A GNU/Linux user.
-4. Love text editing in Vim.
-5. Enjoy writing in Markdown.
+1. A [GNU/Linux][GNU/Linux] user.
+2. Have used [LibreOffice][LibreOffice] for homework
+3. Some differences in the appearance of documents across M$ and \*nix
+4. Use $\rm \LaTeX$ & HTML for consistency
+5. Use [Vim][Vim] for efficient editing of source code
+6. Acquired knowledge in these areas
+7. Forgotten some of them since I'm *not* a student in IT
+8. Realised the need for writing down the code
+9. Hand-written notes are *not* neat and *can't* be easily found and
+searched after years.
+10. Make notes for future reference on [my blog][octopress_blog].
+11. Found out that writing in [Markdown][Markdown] is **much easier**.
+
+I have NO money to hire any IT support person, so I have to support
+myself.
+
+[GNU/Linux]: https://www.gnu.org/gnu/linux-and-gnu.en.html
+[LibreOffice]: https://www.libreoffice.org/
+[Vim]: http://www.vim.org/
+[octopress_blog]: http://vincenttam.github.io
+[Markdown]: http://daringfireball.net/projects/markdown/
+
+## My Old Blogs
+
+Before blogging using Octopress, I tried WordPress and Blogger.
+
+1. [My old Blogger blog](http://blogue-un.blogspot.hk/)
+2. [My old WordPress blog](http://blogueun.wordpress.com/)
+
+Since I love Vim and Markdown **very much**, I tried using
+[UltraBlog.vim][UB] to post essays on WordPress.  However, when it
+came to posting code lists, especially the HTML ones, I experienced
+lots of problems.  Moreover, it's *inconvenient* to create posts
+containing embedded documents and custom scripts.
+
+[GitHub][GitHub] pages provide a greater degree of freedom, but
+require knowledge in [Git][Git].  This is not so hard.  With Git
+skills, you can post HTML files.  For general users who want to write
+words, but *not* CSS, a blogging template for GitHub pages is needed.
+Finally, I use [Octopress][Octopress].
+
+[UB]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
+[GitHub]: https://github.com
+[Git]: http://git-scm.com/
+[Octopress]: http://octopress.org/
 
 ## My Videos
 
-I have made only two, and they're on Youtube.
+I have made only two, and they're on YouTube.
 
 1. [Efficient LaTeX Editing with Vim](http://youtu.be/y67t-05nFD0)
 2. [Easy Citing in APA Style with Vim-LaTeX](http://youtu.be/ly8BlePO4ws)
@@ -48,5 +87,14 @@ branch and a GitHub project page built with Jekyll Bootstrap in the
 `gh-pages` branch.
 
 [^not_it_student]: I reused the words from [my WordPress blog](http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/).
+
+## My Math Notes
+As the server on which I put my notes is going to close down, I put it
+here.
+
+- Variation of parameters: [PDF][ODE], [source][ODE_src]
+
+[ODE]: /downloads/var_of_param.pdf
+[ODE_src]: ode_src.html
 
 <!-- vim:set tw=70 wrap spell: -->

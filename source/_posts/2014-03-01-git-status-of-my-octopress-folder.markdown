@@ -3,8 +3,9 @@ layout: post
 title: "Git status of my Octopress folder"
 date: 2014-03-01 17:32:29 +0800
 comments: true
-categories: 
+categories: octopress
 ---
+
 I'd like to include my GitHub repositories here.  To do so, it's a
 piece of cake to slightly modify `_config.yml`.[^config_octopress]
 
