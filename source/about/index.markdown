@@ -12,7 +12,7 @@ footer: true
 1. A [GNU/Linux][GNU/Linux] user.
 2. Have used [LibreOffice][LibreOffice] for homework
 3. Some differences in the appearance of documents across M$ and \*nix
-4. Use $\rm \LaTeX$ & HTML for consistency
+4. Use $\rm \LaTeX$ & HTML for consistency[^markdown]
 5. Use [Vim][Vim] for efficient editing of source code
 6. Acquired knowledge in these areas
 7. Forgotten some of them since I'm *not* a student in IT
@@ -20,7 +20,6 @@ footer: true
 9. Hand-written notes are *not* neat and *can't* be easily found and
 searched after years.
 10. Make notes for future reference on [my blog][octopress_blog].
-11. Found out that writing in [Markdown][Markdown] is **much easier**.
 
 I have NO money to hire any IT support person, so I have to support
 myself.
@@ -30,6 +29,8 @@ myself.
 [Vim]: http://www.vim.org/
 [octopress_blog]: http://vincenttam.github.io
 [Markdown]: http://daringfireball.net/projects/markdown/
+
+[^markdown]: Finally, I've found out that writing in [Markdown][Markdown] is **much easier**.
 
 ## My Old Blogs
 
@@ -95,6 +96,8 @@ here.
 - Variation of parameters: [PDF][ODE], [source][ODE_src]
 
 [ODE]: /downloads/var_of_param.pdf
-[ODE_src]: ode_src.html
+[ODE_src]: /about/ode_src.html
+
+----
 
 <!-- vim:set tw=70 wrap spell: -->
