@@ -94,9 +94,12 @@ As the server on which I put my notes is going to close down, I put it
 here.
 
 - Variation of parameters: [PDF][ODE], [source][ODE_src]
+- My thoughts on ${_nC_r}$: [PDF][ncr], [source][ncr_src]
 
 [ODE]: /downloads/var_of_param.pdf
 [ODE_src]: /about/ode_src.html
+[ncr]: /downloads/diagram.pdf
+[ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
 
 ----
 
