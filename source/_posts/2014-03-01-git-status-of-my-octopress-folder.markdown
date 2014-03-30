@@ -46,6 +46,8 @@ Thus, eight days ago, I made Git commit
 
 (Last edited on 2014/03/15)
 
+----
+
 [^config_octopress]: [Configuring Octopress](http://octopress.org/docs/configuring/)
 
 <!-- vim:set tw=70 wrap spell: -->

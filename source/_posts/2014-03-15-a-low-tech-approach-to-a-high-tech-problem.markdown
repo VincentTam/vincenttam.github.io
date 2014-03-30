@@ -27,6 +27,8 @@ draft an essay using a pen and paper.
 P.S. I has typed this article in Vim *without* doing any ruff work on
 paper.
 
+----
+
 [^1]: [My about page](http://vincenttam.github.io/about/)
 [^2]: [Why, oh WHY, do those #?@! nutheads use vi?](http://www.viemu.com/a-why-vi-vim.html) Misconception #5
 

@@ -1,10 +1,9 @@
 ---
 layout: page
 title: "About Me"
-date: 2014-03-01 17:17
-comments: true
-sharing: true
-footer: true
+comments: false
+sharing: false
+footer: false
 ---
 
 ## Introduction
@@ -65,13 +64,15 @@ I have made only two, and they're on YouTube.
 
 ## My Project Pages
 
+<del>
 Using Octopress to create **both** a blog and a GitHub project page
 under the **same** host (http://username.github.io) is **too
 difficult** since they share the **same** `source` folder.
+</del>
 
-Therefore, as *not* being an IT student[^not_it_student], I will get
-pretty project page template set up with several clicks on GitHub's
-online platform.  For details, you may refer to
+*Not* being an IT student[^not_it_student], I will get pretty project
+page template set up with several clicks on GitHub's online platform.
+For details, you may refer to
 [*Instantly Beautiful Project Pages*](https://github.com/blog/1081-instantly-beautiful-project-pages)
 written by Boxer.
 

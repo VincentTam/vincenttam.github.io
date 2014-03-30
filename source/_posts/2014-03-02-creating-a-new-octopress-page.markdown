@@ -25,6 +25,8 @@ because I didn't know the Google search words. This afternoon, I found
 that googling "octopress page navigation" help. I managed to find a
 blog post on that.[^octopress_about]
 
+----
+
 [^doc]: [Blogging Basics](http://octopress.org/docs/blogging/)
 [^octopress_about]: [為 Octopress 添加新的頁面](http://icodeit.org/2013/01/add-new-page-to-octopress/)
 

@@ -1,10 +1,9 @@
 ---
 layout: page
 title: "categories"
-date: 2014-03-22 01:53
-comments: true
-sharing: true
-footer: true
+comments: false
+sharing: false
+footer: false
 ---
 
 <ul>
