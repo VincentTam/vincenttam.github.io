@@ -3,7 +3,7 @@ layout: post
 title: "$\\rm \\LaTeX$ Template for Essays"
 date: 2014-03-16 00:28:20 +0800
 comments: true
-categories: latex
+categories: [$\rm \LaTeX$, template]
 ---
 
 ## Introduction
@@ -28,7 +28,13 @@ The APA-style reference list was automatically generated using the biblatex pack
 
 ## Comparison of $\rm \LaTeX$ and other technologies
 
-I personally appreciate the beauty of Professor Donald Knuff's Computer Modern typefaces, and thus the font Computer Modern Roman has been chosen through the whole PDF file. In terms the number of trailing hyphenations in each line, and other relating in-word spacing statistics, $\rm \LaTeX$ is better than an array of internationally-acclaimed proprietary softwares, such as Microsoft Word and Abode InDesign[^1]. In addition, the typesetting of Microsoft is incorrect, whereas $\rm \LaTeX$ gives the correct kerning and ligatures of characters, apart from rendering "ancient and rare ligatures"[^2]. The staff in the Department of Engineering at the University of Cambridge has made a more comprehensive and detailed comparison of WYSIWYG (What-You-See-Is-What-You-Get) editors and $\rm \LaTeX$ on <http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html>.
+I personally appreciate the beauty of Professor Donald Knuff's Computer Modern typefaces, and thus the font Computer Modern Roman has been chosen through the whole PDF file.  In terms the number of trailing hyphenations in each line, and other relating in-word spacing statistics, $\rm \LaTeX$ is better than an array of internationally-acclaimed proprietary softwares, such as Microsoft Word and Abode InDesign[^1].  In addition, the typesetting of Microsoft is incorrect, whereas $\rm \LaTeX$ gives the correct kerning and ligatures of characters, apart from rendering "ancient and rare ligatures"[^2].  The staff in the Department of Engineering at the University of Cambridge has made a more comprehensive and detailed comparison of WYSIWYG (What-You-See-Is-What-You-Get) editors and $\rm \LaTeX$ on <http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html>.
+
+---
+
+I've found [$\rm \LaTeX$-Online-Compiler](http://latex.informatik.uni-halle.de/latex-online/latex.php), which is useful for testing $\rm \LaTeX$ code.
+
+(Last edited on APR 26TH, 2014)
 
 ----
 

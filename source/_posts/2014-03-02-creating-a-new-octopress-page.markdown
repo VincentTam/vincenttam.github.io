@@ -3,7 +3,7 @@ layout: post
 title: "Creating a New Octopress Page"
 date: 2014-03-02 01:30:51 +0800
 comments: true
-categories: octopress
+categories: Octopress
 ---
 
 I haven't learn something about Octopress for 2 weeks. I hope that I

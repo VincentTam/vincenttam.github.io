@@ -3,7 +3,7 @@ layout: post
 title: "Jump to $\\rm \\LaTeX$ Syntax Error"
 date: 2014-03-22 17:23:19 +0800
 comments: true
-categories: vim
+categories: [Vim, $\rm \LaTeX$]
 ---
 
 **This post is written in response to a question of

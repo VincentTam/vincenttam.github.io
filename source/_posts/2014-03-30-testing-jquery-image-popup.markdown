@@ -3,7 +3,7 @@ layout: post
 title: "Testing jQuery Image Popup"
 date: 2014-03-30 01:50:50 +0800
 comments: true
-categories: octopress
+categories: Octopress
 ---
 
 What's below is a small picture.  The words inside the screenshot

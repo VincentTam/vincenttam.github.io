@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Git status of my Octopress folder"
+title: "Git Status of My Octopress Folder"
 date: 2014-03-01 17:32:29 +0800
 comments: true
-categories: octopress
+categories: Octopress
 ---
 
 I'd like to include my GitHub repositories here.  To do so, it's a
@@ -44,7 +44,7 @@ Jekyll site using `rake deploy`.
 Thus, eight days ago, I made Git commit
 [8c7be99f49](https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99f49e0aee10ae74a7ee360e02bab5649c2).
 
-(Last edited on 2014/03/15)
+(Last edited on MAR 15TH, 2014)
 
 ----
 

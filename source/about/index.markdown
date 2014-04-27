@@ -9,24 +9,24 @@ footer: false
 ## Introduction
 
 1. A [GNU/Linux][GNU/Linux] user.
-2. Have used [LibreOffice][LibreOffice] for homework
-3. Some differences in the appearance of documents across M$ and \*nix
-4. Use $\rm \LaTeX$ & HTML for consistency[^markdown]
-5. Use [Vim][Vim] for efficient editing of source code
-6. Acquired knowledge in these areas
-7. Forgotten some of them since I'm *not* a student in IT
-8. Realised the need for writing down the code
+2. Have used [LibreOffice][LibreOffice] for homework.
+3. Some differences in the appearance of documents across M$ and
+\*nix.
+4. Use $\rm \LaTeX$ & HTML for consistency[^markdown].
+5. Use [Vim][Vim] for efficient editing of source code.
+6. Acquired knowledge in these areas.
+7. Forgotten some of them since I'm *not* a student in IT.
+8. Realised the need for writing down the code.
 9. Hand-written notes are *not* neat and *can't* be easily found and
 searched after years.
-10. Make notes for future reference on [my blog][octopress_blog].
+10. Make notes for future reference here.
 
-I have NO money to hire any IT support person, so I have to support
+I have *no* money to hire any IT support person, so I have to support
 myself.
 
 [GNU/Linux]: https://www.gnu.org/gnu/linux-and-gnu.en.html
 [LibreOffice]: https://www.libreoffice.org/
 [Vim]: http://www.vim.org/
-[octopress_blog]: http://vincenttam.github.io
 [Markdown]: http://daringfireball.net/projects/markdown/
 
 [^markdown]: Finally, I've found out that writing in [Markdown][Markdown] is **much easier**.
@@ -44,14 +44,14 @@ came to posting code lists, especially the HTML ones, I experienced
 lots of problems.  Moreover, it's *inconvenient* to create posts
 containing embedded documents and custom scripts.
 
-[GitHub][GitHub] pages provide a greater degree of freedom, but
+[GitHub pages][GitHub_pages] provide a greater degree of freedom, but
 require knowledge in [Git][Git].  This is not so hard.  With Git
 skills, you can post HTML files.  For general users who want to write
 words, but *not* CSS, a blogging template for GitHub pages is needed.
 Finally, I use [Octopress][Octopress].
 
 [UB]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
-[GitHub]: https://github.com
+[GitHub_pages]: https://pages.github.com/
 [Git]: http://git-scm.com/
 [Octopress]: http://octopress.org/
 
