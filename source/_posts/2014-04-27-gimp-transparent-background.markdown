@@ -14,16 +14,20 @@ categories: [GIMP, CSS]
 
 Downloaded from [*History of the Apple Logo*][apple_logo].[^1]
 
-Thanks to [Ruiz's GIMP tutorial][gimp_tutorial] on [Mbrsolution][mbrsolution], I can remove the white background of the picture on the left.
+Thanks to [Ruiz's GIMP tutorial][gimp_tutorial] on
+[Mbrsolution][mbrsolution], I can remove the white background of the
+picture on the left.
 
 ##### Using GIMP
 
-It's a brief summary of the referenced tutorial.  To save time, I won't post screenshots here.  You may refer to those in the tutorial.
+It's a brief summary of the referenced tutorial.  To save time, I
+won't post screenshots here.  You may refer to those in the tutorial.
 
 {% img right /images/apple-logo-3.png 171 150.6 %}
 
 1. Use the **Fuzzy Tool** and click on the background.
-2. Click **Layer → Transparency** to check if an alpha channel has been added.  If not, then add one.
+2. Click **Layer → Transparency** to check if an alpha channel has
+been added.  If not, then add one.
 3. Produce a transparent background by **Edit → Clear**.
 4. Save it as a PNG file.
     - See the detailed instructions in the tutorial.
@@ -31,16 +35,21 @@ It's a brief summary of the referenced tutorial.  To save time, I won't post scr
 
 ### Centering an image in HTML
 
-I've found Mrchief's answer to Web_Designer's question on Stack Overflow useful.[^3]
+I've found Mrchief's answer to Web_Designer's question on Stack
+Overflow useful.[^3]
 
 ### Inserting shadows for images
 
-Inspired by [ParaImage's tutorial on Hong Kong Silicon][hksilicon], I've written a small and simple HTML file to practice the concepts learnt from Stack Overflow and HK Silicon.  
+Inspired by [ParaImage's tutorial on Hong Kong Silicon][hksilicon],
+I've written a small and simple HTML file to practice the concepts
+learnt from Stack Overflow and HK Silicon.  
 (Click "download" for viewing the HTML code in a web browser.)
 
 {% include_code A small HTML file for displaying pictures lang:html transparent.html %} 
 
-Using Firefox, I can dynamically change the width and displacement of the shadow of an image by choosing "Inspect Element" and hitting arrow keys.
+Using Firefox, I can dynamically change the width and displacement of
+the shadow of an image by choosing "Inspect Element" and hitting arrow
+keys.
 
 {% imgpopup /images/inspect_element.png 50% Dynamically change box shadow using Firefox %}
 
@@ -58,3 +67,5 @@ Using Firefox, I can dynamically change the width and displacement of the shadow
 [mbrsolution]: http://mbrsolution.com/
 [apple_logo]: http://fineprintnyc.com/blog/history-of-the-apple-logo
 [hksilicon]: http://www.hksilicon.com/kb/articles/4690/CSS3-box-shadow
+
+<!-- vim:se tw=70: -->

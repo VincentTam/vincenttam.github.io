@@ -6,11 +6,21 @@ comments: true
 categories: Octopress
 ---
 
-Yesterday, the category list of this blog was still like the one in [Vigo's *Development Tips*](http://vigodome.com/blog/categories/).[^1]  However, I think that [Watson's Category List Plugin](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/) is more user-friendly because users can view the categories by scrolling, instead of clicking and waiting for another page to load. 
+Yesterday, the category list of this blog was still like the one in
+[Vigo's *Development Tips*][old_cat_list].[^1]  However, I think that
+[Watson's Category List Plugin][new_cat_list] is more user-friendly
+because users can view the categories by scrolling, instead of
+clicking and waiting for another page to load. 
 
-I tried copying everything, and put them in the right places, but initially I failed.  I quickly realized that I *wrongly* named the plugin file as `category_list.rb`, and `rake preview` still didn't produce the desired list.  Then I moved the HTML file that calls the plugin, namely the `category_list.html`, from `/source/_includes/asides` to `/source/_includes/custom/asides`, and changed `_config.yml` a little bit.
+I tried copying everything, and put them in the right places, but
+initially I failed.  I quickly realized that I *wrongly* named the
+plugin file as `category_list.rb`, and `rake preview` still didn't
+produce the desired list.  Then I moved the HTML file that calls the
+plugin, namely the `category_list.html`, from
+`/source/_includes/asides` to `/source/_includes/custom/asides`, and
+changed `_config.yml` a little bit.
 
-{% codeblock _config.yml (lines 53, 57–59) lang:yml https://github.com/VincentTam/vincenttam.github.io/blob/source/_config.yml %}
+{% codeblock _config.yml (lines 53, 57–59) lang:yml https://github.com/VincentTam/vincenttam.github.io/blob/source/_config.yml soruce code %}
 default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
 
 blog_index_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
@@ -18,8 +28,17 @@ post_asides: [custom/asides/about.html, custom/asides/category_list.html, asides
 page_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
 {% endcodeblock %}
 
-Finally, I copied the contents from my *working* example (i.e. `/source/_includes/custom/asides/about.html`) *first*.  As expected, I could see that the "About Me (Brief)" section was duplicated.  I changed the code bit by bit, and I managed to include a list of categories.
+Finally, I copied the contents from my *working* example (i.e.
+`/source/_includes/custom/asides/about.html`) *first*.  As expected, I
+could see that the "About Me (Brief)" section was duplicated.  I
+changed the code bit by bit, and I managed to include a list of
+categories.
 
 ---
 
 [^1]: [The source code of my category list page on Github in the past](https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d9739c4ebe705afbc30e6fac7f8374a0c61e/source/blog/categories/index.markdown)
+
+[old_cat_list](http://vigodome.com/blog/categories/)
+[new_cat_list](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/)
+
+<!-- vim:se tw=70: -->
