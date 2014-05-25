@@ -20,6 +20,9 @@ have *no* knowledge in Ruby and Python programming, so I *don't* think
 that I can find out what's wrong like him.  Fortunately, I *didn't*
 encounter his error.
 
+However, I encountered some errors when I was setting up Octopress on
+Windows 7.
+
 ---
 
 [^1]: [在 Windows 使用 Octopress](http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/)
