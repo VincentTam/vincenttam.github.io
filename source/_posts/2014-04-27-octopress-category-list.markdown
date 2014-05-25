@@ -38,7 +38,7 @@ categories.
 
 [^1]: [The source code of my category list page on Github in the past](https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d9739c4ebe705afbc30e6fac7f8374a0c61e/source/blog/categories/index.markdown)
 
-[old_cat_list](http://vigodome.com/blog/categories/)
-[new_cat_list](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/)
+[old_cat_list]: http://vigodome.com/blog/categories/
+[new_cat_list]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/
 
 <!-- vim:se tw=70: -->
