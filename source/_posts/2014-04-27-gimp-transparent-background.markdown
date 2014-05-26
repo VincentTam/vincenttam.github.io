@@ -6,9 +6,9 @@ comments: true
 categories: [GIMP, CSS]
 ---
 
-### Getting an image with transparent background
+## Getting an image with transparent background
 
-##### An apple with white background
+### An apple with white background
 
 {% img left /images/apple-logo-2.jpg 285 251 %}
 
@@ -18,7 +18,7 @@ Thanks to [Ruiz's GIMP tutorial][gimp_tutorial] on
 [Mbrsolution][mbrsolution], I can remove the white background of the
 picture on the left.
 
-##### Using GIMP
+### Using GIMP
 
 It's a brief summary of the referenced tutorial.  To save time, I
 won't post screenshots here.  You may refer to those in the tutorial.
@@ -33,12 +33,12 @@ been added.  If not, then add one.
     - See the detailed instructions in the tutorial.
     - JPEG images can't have transparent background.[^2]
 
-### Centering an image in HTML
+## Centering an image in HTML
 
 I've found Mrchief's answer to Web_Designer's question on Stack
 Overflow useful.[^3]
 
-### Inserting shadows for images
+## Inserting shadows for images
 
 Inspired by [ParaImage's tutorial on Hong Kong Silicon][hksilicon],
 I've written a small and simple HTML file to practice the concepts
