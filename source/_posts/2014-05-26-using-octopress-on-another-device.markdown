@@ -73,6 +73,9 @@ Just downloading and installing the two packages will do.  However, I
 regret clicking the buttons too quick.  After I'd *already* installed
 Ruby 1.9.3 *without* changing the installer's default options, I
 thought that the checkbox "**Tcl/Tk support**" should also be checked.
+
+{% img center /images/ruby193.png Ruby 1.9.3 Installation Screen %}
+
 I feared that I would eventually get some extremely unusual errors if
 I continued *without* Tcl/Tk support.  Therefore, I decided to get the
 support by whatever way.  By trial, double-clicking the *same*
