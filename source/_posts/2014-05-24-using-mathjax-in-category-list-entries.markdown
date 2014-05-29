@@ -7,16 +7,16 @@ categories: Octopress
 ---
 
 About three weeks ago, I successfully changed the category "LaTeX" to
-"$\rm \LaTeX$".  By trial, I discovered that `$\rm \LaTeX$` should be
-input for "categories" at the head of the markdown source file of each
-Octopress post/page.  Then, previewing the rendered contents at port
-4000 at locolhost, I could see the category "$\rm \LaTeX$" rendered by
-Mathjax at the bottom of each post/page.  Moreover, in the category
-list in the sidebar at the right-hand side, the item "$\rm \LaTeX$"
-was also correctly displayed.  However, as I clicked it, I was brought
-to a page which titled something similar to "Error 404".  Then, I
-realized that I need to modify the category list plugin[^1] so as to
-fix this error.  I jotted the trailing part of wrong URL down:
+"$\rm \LaTeX$".[^1]  By trial, I discovered that `$\rm \LaTeX$` should
+be input for "categories" at the head of the markdown source file of
+each Octopress post/page.  Then, previewing the rendered contents at
+port 4000 at locolhost, I could see the category "$\rm \LaTeX$"
+rendered by Mathjax at the bottom of each post/page.  Moreover, in the
+category list in the sidebar at the right-hand side, the item "$\rm
+\LaTeX$" was also correctly displayed.  However, as I clicked it, I
+was brought to a page which titled something similar to "Error 404".
+Then, I realized that I need to modify the category list plugin[^2] so
+as to fix this error.  I jotted the trailing part of wrong URL down:
 "-rm-latex-".
 
 Fortunately, the hyperlink for the category "$\rm \LaTeX$" at the
@@ -55,6 +55,7 @@ end
 
 ---
 
-[^1]: [Watson's Category List Plugin](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/)
+[^1]: [My Git commit history](https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537#diff-1)
+[^2]: [Watson's Category List Plugin](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/)
 
 <!-- vim:se tw=70: -->
