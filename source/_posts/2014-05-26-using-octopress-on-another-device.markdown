@@ -118,10 +118,11 @@ the `source` branch and the `master` branch, which is contained in
 
 I copied the four commands from [Robert Anderson's post][pull2branch].
 
-    $ cd octopress
-    $ git pull origin source  # update the local source branch
-    $ cd _deploy
-    $ git pull origin master  # update the local master branch
+<pre class="cli"><code>$ cd octopress
+$ git pull origin source  # update the local source branch
+$ cd _deploy
+$ git pull origin master  # update the local master branch
+</code></pre>
 
 ---
 

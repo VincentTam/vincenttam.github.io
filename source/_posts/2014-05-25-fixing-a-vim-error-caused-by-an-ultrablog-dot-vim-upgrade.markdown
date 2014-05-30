@@ -14,39 +14,40 @@ Vim.
 Right after I issued the command `vi` on the terminal, I got the
 following error message.
 
-    owner@owner-Inspiron-560s:~$ vi
-    Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
-    line  253:
-    Traceback (most recent call last):
-    File "<string>", line 7, in <module>
-    File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/commands.py", line 8, in <module>
+<pre class="cli"><samp>owner@owner-Inspiron-560s:~$ vi
+Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
+line  253:
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 7, in &lt;module&gt;
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/commands.py", line 8, in &lt;module&gt;
     from db import *
-    File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/db.py", line 181, in <module>
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/db.py", line 181, in &lt;module&gt;
     u.ub_echoerr(msg)
-    File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/util.py", line 623, in ub_echoerr
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/util.py", line 623, in ub_echoerr
     vim.command(cmd)
-    vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
-    Press ENTER or type command to continue
+vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
+Press ENTER or type command to continue
+</samp></pre>
 
 Before entering the standard startup screen, I received another
 complaint from the editor.
 
-    Error detected while processing BufEnter Auto commands for "*":
-    Traceback (most recent call last):
-    File "<string>", line 1, in <module>
-    NameError: name '__ub_on_buffer_enter' is not defined
-    Press ENTER or type command to continue
+<pre class="cli"><samp>Error detected while processing BufEnter Auto commands for "*":
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name '__ub_on_buffer_enter' is not defined
+Press ENTER or type command to continue</samp>
+</pre>
 
 I tried opening a file, and was blamed by the program again!
 
-    "foo.txt" 123L, 456C
-    Error detected while processing BufEnter Auto commands for "*":
-    Traceback (most recent call last):
-    File "<string>", line 1, in <module>
-    NameError: name '__ub_on_buffer_enter' is not defined
-    Press ENTER or type command to continue
-
-    (bg:red font:bold) (fg:green)
+<pre class="cli"><samp><span class="vimErr">"foo.txt" 123L, 456C
+Error detected while processing BufEnter Auto commands for "*":
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 1, in &lt;module&gt;
+NameError: name '__ub_on_buffer_enter' is not defined</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+</samp></pre>
 
 I split my window into half by the editor command `:new` and captured
 the content of another error message.  I found that it's the same as
@@ -55,15 +56,16 @@ the second message.
 I moved the cursor across windows, and got similar message, but
 repeated a few times.
 
-    Error detected while processing BufEnter Auto commands for "*":
-    Traceback (most recent call last):
-    Press ENTER or type command to continue
-    Error detected while processing BufEnter Auto commands for "*":
-    File "<string>", line 1, in <module>
-    Press ENTER or type command to continue
-    Error detected while processing BufEnter Auto commands for "*":
-    NameError: name '__ub_on_buffer_enter' is not defined
-    Press ENTER or type command to continue
+<pre class="cli"><samp><span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
+Traceback (most recent call last):</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+<span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
+  File "&lt;string&gt;", line 1, in &lt;module&gt;</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+<span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
+NameError: name '__ub_on_buffer_enter' is not defined</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+</samp></pre>
 
 I was annoyed by the error, and decided to fix it.  From the alphabets
 "ub" in `__ub_on_buffer_enter` in the error messages, I believed that
