@@ -80,7 +80,7 @@ identical source/stylesheets/screen.css
 Configuration from C:/github/vincenttam.github.io/_config.yml
 Building site: source -&gt; public
 Liquid Exception: No such file or directory - python
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/mentos.py in 2013-01-06-octopress.markdown
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/mentos.py in 2014-03-16-latex-template-for-essays.markdown
 C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
 C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
 C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:307:in `popen4'
