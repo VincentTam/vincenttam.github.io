@@ -12,7 +12,7 @@ This is a $\rm \LaTeX$ template for writing an article.
 
 ## Sample output
 
-<iframe src="/downloads/latex_sample.pdf" frameborder="0" width="100%" height="960px"></iframe>
+[Click here.][sample_output]
 
 ## Sample code
 
@@ -40,5 +40,7 @@ I've found [$\rm \LaTeX$-Online-Compiler](http://latex.informatik.uni-halle.de/l
 
 [^1]: <http://tex.stackexchange.com/questions/110133/visual-comparison-between-latex-and-word-output-hyphenation-typesetting-ligat>
 [^2]: <http://nitens.org/taraborelli/latex>
+
+[sample_output]: /downloads/latex_sample.pdf
 
 <!-- vim:set sw=2:wrap: -->
