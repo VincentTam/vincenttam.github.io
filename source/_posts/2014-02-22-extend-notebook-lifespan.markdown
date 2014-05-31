@@ -7,6 +7,7 @@ categories: hardware
 ---
 
 I've found some useful pages about maintaining one's notebook computer.
+
 * <http://www.makeuseof.com/tag/5-laptop-maintenance-tips-to-extend-its-life-expectency/>
 * <http://blogs.computerworld.com/20269/maximizing_the_lifespan_of_a_laptop_computer_battery>
 
