@@ -16,14 +16,15 @@ screenshot is from my terminal.
 
 Then I blindly followed the "advice" of `git status` and typed
 
-    $ git add .
+<pre class="cli ubuntu_gnome_terminal"><code>$ git add .</code></pre>
 
 <del>It seemed that I had made a mistake.</del>  Actually, **without
 adding those modified and untracked files on the stage for commit**,
 the following two commands will do.
 
-    $ rake generate
-    $ rake deploy
+<pre class="cli ubuntu_gnome_terminal"><code>$ rake generate
+$ rake deploy
+</code></pre>
 
 The final step is to view your blog again after going out for a cup
 water or some snacks.

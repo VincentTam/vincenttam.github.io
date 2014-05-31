@@ -14,7 +14,7 @@ Vim.
 Right after I issued the command `vi` on the terminal, I got the
 following error message.
 
-<pre class="cli"><samp>owner@owner-Inspiron-560s:~$ vi
+<pre class="cli ubuntu_gnome_terminal"><samp>$ vi
 Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
 line  253:
 Traceback (most recent call last):
@@ -32,7 +32,7 @@ Press ENTER or type command to continue
 Before entering the standard startup screen, I received another
 complaint from the editor.
 
-<pre class="cli"><samp>Error detected while processing BufEnter Auto commands for "*":
+<pre class="cli ubuntu_gnome_terminal"><samp>Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):
   File "&lt;string&gt;", line 1, in &lt;module&gt;
 NameError: name '__ub_on_buffer_enter' is not defined
@@ -41,7 +41,7 @@ Press ENTER or type command to continue</samp>
 
 I tried opening a file, and was blamed by the program again!
 
-<pre class="cli"><samp><span class="vimErr">"foo.txt" 123L, 456C
+<pre class="cli ubuntu_gnome_terminal"><samp><span class="vimErr">"foo.txt" 123L, 456C
 Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):
   File "&lt;string&gt;", line 1, in &lt;module&gt;
@@ -56,7 +56,7 @@ the second message.
 I moved the cursor across windows, and got similar message, but
 repeated a few times.
 
-<pre class="cli"><samp><span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
+<pre class="cli ubuntu_gnome_terminal"><samp><span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):</span>
 <span class="vimErrCont">Press ENTER or type command to continue</span>
 <span class="vimErr">Error detected while processing BufEnter Auto commands for "*":

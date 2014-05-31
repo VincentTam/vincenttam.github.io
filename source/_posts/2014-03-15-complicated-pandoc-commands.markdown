@@ -18,6 +18,8 @@ Official demo:
 
 ### Beamer
 
-    !pandoc -t beamer -s -S --biblio mybib.bib --csl ~/Dropbox/Git/styles/apa.csl % -V theme:Berlin -o %<.pdf
+A Vim editor command for APA style reference list:
+
+    !pandoc -t beamer -s -S --biblio mybib.bib --csl /path/to/apa.csl % -V theme:Berlin -o %<.pdf
 
 <!-- vim:set tw=70 wrap: -->

@@ -14,7 +14,7 @@ Windows 7.
 I mainly followed [the tutorial on Simple Tutorial Blog][tut1].  If my
 blog consists merely of simple passages, the tutorial should have
 worked for me.  Unluckily, if any page/post contains a code block,
-then [Pygment][pygment], which depends on Python, is used.  Jan
+then [Pygment][pygment], which depends on Python, is used.  Tony Jan
 described how he solved the problem of RubyPython in details.[^1]  I
 have *no* knowledge in Ruby and Python programming, so I *don't* think
 that I can find out what's wrong like him.  Fortunately, I *didn't*
@@ -62,7 +62,7 @@ months.
 At first, I'm *not* sure if I have to run `git` from the Windows
 Command Prompt for setting Octopress up on Windows.  Therefore, I
 tried seeking ways to run Git from the Windows Command Prompt, and
-found [a question][stack_overflow_11720945] on Stack Overflow which
+found [a question][stackoverflow_11720945] on Stack Overflow which
 was exactly my question, and the right solution is to add `C:\Program
 Files\Git\cmd` to the `PATH` variable via GUI ("Start" → "Computer" →
 "Properties" → "Advanced" → "Environment Variables").
@@ -74,7 +74,7 @@ regret clicking the buttons too quick.  After I'd *already* installed
 Ruby 1.9.3 *without* changing the installer's default options, I
 thought that the checkbox "**Tcl/Tk support**" should also be checked.
 
-{% img center /images/ruby193.png Ruby 1.9.3 Installation Screen %}
+[{% img center /images/ruby193.png Ruby 1.9.3 Installation Screen %}][ruby193_install_wizard]
 
 I feared that I would eventually get some extremely unusual errors if
 I continued *without* Tcl/Tk support.  Therefore, I decided to get the
@@ -118,7 +118,7 @@ the `source` branch and the `master` branch, which is contained in
 
 I copied the four commands from [Robert Anderson's post][pull2branch].
 
-<pre class="cli"><code>$ cd octopress
+<pre class="cli ubuntu_gnome_terminal"><code>$ cd octopress
 $ git pull origin source  # update the local source branch
 $ cd _deploy
 $ git pull origin master  # update the local master branch
@@ -137,7 +137,8 @@ $ git pull origin master  # update the local master branch
 [msysgit_install_wizard]: http://static.thegeekstuff.com/wp-content/uploads/2012/01/git-06-adjust-path.png
 [gitbash_icon]: /images/gitbash1.png
 [fugitive]: https://github.com/tpope/vim-fugitive
-[stack_overflow_11720945]: http://stackoverflow.com/questions/11720945/unable-to-run-git-from-command-line
+[stackoverflow_11720945]: http://stackoverflow.com/questions/11720945/unable-to-run-git-from-command-line
+[ruby193_install_wizard]: /images/ruby193.png
 [octopress_new_comp]: http://scottcheng.com/blog/2012/11/setting-up-existing-octopress-blog-on-a-new-computer/
 [push_rejected]: /images/push_rejected.png
 [pull2branch]: http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/
