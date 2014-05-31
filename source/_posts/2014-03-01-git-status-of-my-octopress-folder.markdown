@@ -16,13 +16,13 @@ screenshot is from my terminal.
 
 Then I blindly followed the "advice" of `git status` and typed
 
-<pre class="cli ubuntu_gnome_terminal"><code>$ git add .</code></pre>
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git add .</code></pre>
 
 <del>It seemed that I had made a mistake.</del>  Actually, **without
 adding those modified and untracked files on the stage for commit**,
 the following two commands will do.
 
-<pre class="cli ubuntu_gnome_terminal"><code>$ rake generate
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake generate
 $ rake deploy
 </code></pre>
 

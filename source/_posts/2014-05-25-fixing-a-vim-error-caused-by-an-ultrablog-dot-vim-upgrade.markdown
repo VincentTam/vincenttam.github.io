@@ -14,7 +14,7 @@ Vim.
 Right after I issued the command `vi` on the terminal, I got the
 following error message.
 
-<pre class="cli ubuntu_gnome_terminal"><samp>$ vi
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ vi
 Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
 line  253:
 Traceback (most recent call last):
@@ -27,27 +27,27 @@ Traceback (most recent call last):
     vim.command(cmd)
 vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
 Press ENTER or type command to continue
-</samp></pre>
+</code></pre>
 
 Before entering the standard startup screen, I received another
 complaint from the editor.
 
-<pre class="cli ubuntu_gnome_terminal"><samp>Error detected while processing BufEnter Auto commands for "*":
+<pre class="cli"><code class="ubuntu_gnome_terminal">Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):
   File "&lt;string&gt;", line 1, in &lt;module&gt;
 NameError: name '__ub_on_buffer_enter' is not defined
-Press ENTER or type command to continue</samp>
-</pre>
+Press ENTER or type command to continue
+</code></pre>
 
 I tried opening a file, and was blamed by the program again!
 
-<pre class="cli ubuntu_gnome_terminal"><samp><span class="vimErr">"foo.txt" 123L, 456C
+<pre class="cli"><code class="ubuntu_gnome_terminal"><span class="vimErr">"foo.txt" 123L, 456C
 Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):
   File "&lt;string&gt;", line 1, in &lt;module&gt;
 NameError: name '__ub_on_buffer_enter' is not defined</span>
 <span class="vimErrCont">Press ENTER or type command to continue</span>
-</samp></pre>
+</code></pre>
 
 I split my window into half by the editor command `:new` and captured
 the content of another error message.  I found that it's the same as
@@ -56,7 +56,7 @@ the second message.
 I moved the cursor across windows, and got similar message, but
 repeated a few times.
 
-<pre class="cli ubuntu_gnome_terminal"><samp><span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
+<pre class="cli"><code class="ubuntu_gnome_terminal"><span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
 Traceback (most recent call last):</span>
 <span class="vimErrCont">Press ENTER or type command to continue</span>
 <span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
@@ -65,7 +65,7 @@ Traceback (most recent call last):</span>
 <span class="vimErr">Error detected while processing BufEnter Auto commands for "*":
 NameError: name '__ub_on_buffer_enter' is not defined</span>
 <span class="vimErrCont">Press ENTER or type command to continue</span>
-</samp></pre>
+</code></pre>
 
 I was annoyed by the error, and decided to fix it.  From the alphabets
 "ub" in `__ub_on_buffer_enter` in the error messages, I believed that

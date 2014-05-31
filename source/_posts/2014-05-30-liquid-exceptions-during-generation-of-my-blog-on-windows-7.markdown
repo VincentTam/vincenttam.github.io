@@ -31,7 +31,7 @@ site from the `source` branch cloned from the remote repository on
 [GitHub][github] on this Sunday, and the first Liquid exception
 occurred.  I remembered `rake` said something like this.[^1]
 
-<pre class="cli ubuntu_gnome_terminal"><samp>C:\github\vincenttam.github.io&gt;rake generate
+<pre class="cli"><code class="ubuntu_gnome_terminal">C:\github\vincenttam.github.io&gt;rake generate
 ## Generating Site with Jekyll
 unchanged sass/print.scss
 identical source/stylesheets/screen.css 
@@ -59,7 +59,7 @@ C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/bin/jekyll:264:in `&lt;top (re
 C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `load'
 C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `&lt;main&gt;'
 Build Failed
-</samp></pre>
+</code></pre>
 
 I extracted part of the above message and googled "Liquid Exception:
 Pygments can't parse unknown language" for web pages that reported on
@@ -73,7 +73,7 @@ that I had forgotten to add Python into the `PATH`.  Following Sam
 Lin's answer, I got the *exact* problem as described in the code block
 in the Stack Overflow question.
 
-<pre class="cli ubuntu_gnome_terminal"><samp>C:\github\vincenttam.github.io&gt;rake generate
+<pre class="cli"><code class="ubuntu_gnome_terminal">C:\github\vincenttam.github.io&gt;rake generate
 ## Generating Site with Jekyll
 unchanged sass/print.scss
 identical source/stylesheets/screen.css 
@@ -107,7 +107,7 @@ C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/bin/jekyll:264:in `&lt;top (re
 C:/Ruby193/bin/jekyll:23:in `load'
 C:/Ruby193/bin/jekyll:23:in `&lt;main&gt;'
 Build Failed
-</samp></pre>
+</code></pre>
 
 This time, it's *impossible* for me to find the solution in the above
 referenced Stack Overflow question.  I tried searching "liquid
@@ -149,7 +149,7 @@ about Liquid exception on Stack Overflow[^2] and finally fixed this
 glitch by [installing ImageMagick on Windows 7][imagemagick_win7] and
 including it in my `PATH` variable.
 
-<pre class="cli ubuntu_gnome_terminal"><code>$ sudo apt-get install imagemagick</code></pre>
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install imagemagick</code></pre>
 
 ---
 
