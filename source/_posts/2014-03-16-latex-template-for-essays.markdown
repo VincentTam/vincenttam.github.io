@@ -18,7 +18,7 @@ This is a $\rm \LaTeX$ template for writing an article.
 
 {% include_code The essay latex_sample.tex %}
 
-{% include_code The bibliography lang:text biblio.bib %}
+{% include_code The bibliography lang:tex biblio.bib %}
 
 ## Explanation of code in "latex_sample.tex"
 

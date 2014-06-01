@@ -20,7 +20,7 @@ plugin, namely the `category_list.html`, from
 `/source/_includes/asides` to `/source/_includes/custom/asides`, and
 changed `_config.yml` a little bit.
 
-{% codeblock _config.yml (lines 53, 57–59) lang:yml https://github.com/VincentTam/vincenttam.github.io/blob/source/_config.yml soruce code %}
+{% codeblock _config.yml (lines 53, 57–59) lang:yaml https://github.com/VincentTam/vincenttam.github.io/blob/source/_config.yml soruce code %}
 default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
 
 blog_index_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]

@@ -59,7 +59,7 @@ To get things work, I played some *dirty and little* tricks on
 codeblock are *not* working[^no_start_num], I just manually include
 part of the code.
 
-{% codeblock My adaptations of the plugin lang:js http://goo.gl/53fIEZ %}
+{% codeblock My adaptations of the plugin lang:js+erb http://goo.gl/53fIEZ %}
 $(document).ready(function() {
   $("#image-dialog-<%= id %>").hide();
   $("#image-dialog-<%= id %>").dialog({

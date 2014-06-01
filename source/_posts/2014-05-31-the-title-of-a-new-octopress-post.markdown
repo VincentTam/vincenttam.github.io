@@ -45,7 +45,7 @@ ERROR: YOUR SITE COULD NOT BE BUILT:
 I opened `source/_posts/2014-05-31-testing-double-quotes.markdown` to
 view its contents.
 
-```
+```yaml Sample source file of the new post (source/_posts/2014-05-31-testing-double-quotes.markdown)
 ---
 layout: post
 title: "testing "double" quotes"
