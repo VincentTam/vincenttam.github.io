@@ -32,6 +32,45 @@ if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   `chcp 65001`
 end
 
+desc 'Ping pingomatic'
+task :pingomatic do
+    begin
+	require 'xmlrpc/client'
+	puts '* Pinging ping-o-matic'
+	XMLRPC::Client.new('rpc.pingomatic.com', '/').call('weblogUpdates.extendedPing', 'Blog 1' , 'http://vincenttam.github.io', 'http://vincenttam.github.io/atom.xml')
+    rescue LoadError
+	puts '! Could not ping ping-o-matic, because XMLRPC::Client could not be found.'
+    end
+end
+
+desc 'Notify Google of the new sitemap'
+task :sitemapgoogle do
+    begin
+	require 'net/http'
+	require 'uri'
+	puts '* Pinging Google about our sitemap'
+	Net::HTTP.get('www.google.com', '/webmasters/tools/ping?sitemap=' + URI.escape('http://vincenttam.github.io/sitemap.xml'))
+    rescue LoadError
+	puts '! Could not ping Google about our sitemap, because Net::HTTP or URI could not be found.'
+    end
+end
+
+desc 'Notify Bing of the new sitemap'
+task :sitemapbing do
+    begin
+	require 'net/http'
+	require 'uri'
+	puts '* Pinging Bing about our sitemap'
+	Net::HTTP.get('www.bing.com', '/webmaster/ping.aspx?siteMap=' + URI.escape('http://vincenttam.github.io/sitemap.xml'))
+    rescue LoadError
+	puts '! Could not ping Bing about our sitemap, because Net::HTTP or URI could not be found.'
+    end
+end
+
+desc "Notify various services about new content"
+task :notify => [:pingomatic, :sitemapgoogle, :sitemapbing] do
+end
+
 desc "Initial setup for Octopress: copies the default theme into the path of Jekyll's generator. Rake install defaults to rake install[classic] to install a different theme run rake install[some_theme_name]"
 task :install, :theme do |t, args|
   if File.directory?(source_dir) || File.directory?("sass")
