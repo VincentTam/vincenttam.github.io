@@ -12,7 +12,7 @@ piece of cake to slightly modify `_config.yml`.[^config_octopress]
 Once, I curiously typed `git status` in `~/octopress`.  The following
 screenshot is from my terminal.
 
-{% img /images/git_status.png 'git status' 'git status' %}
+{% img /images/posts/GitStatusOfMyOctopressFolder/GitStatus.png 'git status' 'git status' %}
 
 Then I blindly followed the "advice" of `git status` and typed
 

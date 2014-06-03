@@ -10,7 +10,7 @@ categories: [GIMP, CSS]
 
 ### An apple with white background
 
-{% img left /images/apple-logo-2.jpg 285 251 %}
+{% img left /images/posts/GIMPTransparentBg/apple-logo-2.jpg 285 251 %}
 
 Downloaded from [*History of the Apple Logo*][apple_logo].[^1]
 
@@ -23,7 +23,7 @@ picture on the left.
 It's a brief summary of the referenced tutorial.  To save time, I
 won't post screenshots here.  You may refer to those in the tutorial.
 
-{% img right /images/apple-logo-3.png 171 150.6 %}
+{% img right /images/posts/GIMPTransparentBg/apple-logo-3.png 171 150.6 %}
 
 1. Use the **Fuzzy Tool** and click on the background.
 2. Click **Layer → Transparency** to check if an alpha channel has
@@ -51,7 +51,7 @@ Using Firefox, I can dynamically change the width and displacement of
 the shadow of an image by choosing "Inspect Element" and hitting arrow
 keys.
 
-{% imgpopup /images/inspect_element.png 50% Dynamically change box shadow using Firefox %}
+{% imgpopup /images/posts/GIMPTransparentBg/inspect_element.png 50% Dynamically change box shadow using Firefox %}
 
 - Click the values of a CSS property.
 - Move the cursor to a number, then hit ↑/↓ to adjust the values.

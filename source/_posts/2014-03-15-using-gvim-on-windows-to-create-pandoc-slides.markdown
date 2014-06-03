@@ -16,7 +16,7 @@ last time.
 With the *same* command, I managed to get back my $\rm \LaTeX$ Beamer
 slides.  As a Vim lover, I'd like to try to do things *within* the
 editor.  Therefore, I changed to the project directory and start gVim
-through the command prompt. Then I used `q:` to find the corresponding
-`pandoc` command, and re-ran it.  Job done!
+through the command prompt.  Then I used `q:` to find the
+corresponding `pandoc` command, and re-ran it.  Job done!
 
 <!-- vim:set tw=70:wrap: -->

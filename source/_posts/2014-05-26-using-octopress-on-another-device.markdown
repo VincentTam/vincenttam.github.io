@@ -37,11 +37,11 @@ said that three packages are needed:
 Apart from just installing Git on Windows, you may also choose
 "**Run Git from the Windows Command Prompt**".
 
-[{% img center /images/git-06-adjust-path.png Msysgit Installation Wizard %}][msysgit_install_wizard]  
+{% img center /images/posts/OctopressOnOtherDev/git-06-adjust-path.png Msysgit Installation Wizard %}  
 Source: [The Geek Stuff][msysgit_install_wizard]
 
 - If you "**use Git Bash only**", then you can only run `git` from
-    [{% img /images/gitbash1.png Git Bash icon %}][gitbash_icon],
+    {% img /images/posts/OctopressOnOtherDev/gitbash1.png Git Bash icon %},
     instead of the Windows Command Prompt.
 
 - As described by the text under the second option, there's only one
@@ -74,7 +74,7 @@ regret clicking the buttons too quick.  After I'd *already* installed
 Ruby 1.9.3 *without* changing the installer's default options, I
 thought that the checkbox "**Tcl/Tk support**" should also be checked.
 
-[{% img center /images/ruby193.png Ruby 1.9.3 Installation Screen %}][ruby193_install_wizard]
+{% img center /images/posts/OctopressOnOtherDev/ruby193.png Ruby 1.9.3 Installation Screen %}
 
 I feared that I would eventually get some extremely unusual errors if
 I continued *without* Tcl/Tk support.  Therefore, I decided to get the
@@ -93,7 +93,7 @@ it using your *new* computer, Scott Cheng has provided detailed
 instructions [in his post][octopress_new_comp].  Unluckily, I failed
 to understand point 5 in his post, and got some errors.
 
-[{% img center /images/push_rejected.png 800 470 Git push rejected %}][push_rejected]
+{% img center /images/posts/OctopressOnOtherDev/push_rejected.png 800 470 Git push rejected %}
 
 Now, I still *don't* understand why the `master` branch needs to be
 deleted after I cloned the repository from GitHub, and I can't
@@ -135,12 +135,9 @@ $ git pull origin master  # update the local master branch
 [ruby193]: http://rubyinstaller.org/downloads/
 [rdk]: http://rubyinstaller.org/downloads/
 [msysgit_install_wizard]: http://static.thegeekstuff.com/wp-content/uploads/2012/01/git-06-adjust-path.png
-[gitbash_icon]: /images/gitbash1.png
 [fugitive]: https://github.com/tpope/vim-fugitive
 [stackoverflow_11720945]: http://stackoverflow.com/questions/11720945/unable-to-run-git-from-command-line
-[ruby193_install_wizard]: /images/ruby193.png
 [octopress_new_comp]: http://scottcheng.com/blog/2012/11/setting-up-existing-octopress-blog-on-a-new-computer/
-[push_rejected]: /images/push_rejected.png
 [pull2branch]: http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/
 
 <!-- vim:se tw=70: -->
