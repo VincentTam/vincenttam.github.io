@@ -31,7 +31,7 @@ site from the `source` branch cloned from the remote repository on
 [GitHub][github] on this Sunday, and the first Liquid exception
 occurred.  I remembered `rake` said something like this.[^1]
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">C:\github\vincenttam.github.io&gt;rake generate
+<pre class="cli"><code>C:\github\vincenttam.github.io&gt;rake generate
 ## Generating Site with Jekyll
 unchanged sass/print.scss
 identical source/stylesheets/screen.css 
@@ -73,7 +73,7 @@ that I had forgotten to add Python into the `PATH`.  Following Sam
 Lin's answer, I got the *exact* problem as described in the code block
 in the Stack Overflow question.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">C:\github\vincenttam.github.io&gt;rake generate
+<pre class="cli"><code>C:\github\vincenttam.github.io&gt;rake generate
 ## Generating Site with Jekyll
 unchanged sass/print.scss
 identical source/stylesheets/screen.css 
