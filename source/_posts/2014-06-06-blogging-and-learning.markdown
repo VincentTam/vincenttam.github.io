@@ -13,9 +13,7 @@ squeeze some time to write what I've learnt.
 
 [PrevPost]: /blog/2014/06/05/mathjax-in-octopress-via-https/ "MathJax in Octopress via HTTPS"
 
-[Buccola]:
-http://brianbuccola.github.io/blog/2012-11-27-testing-first-post.html
-"Testing: First Post"
+[Buccola]: http://brianbuccola.github.io/blog/2012-11-27-testing-first-post.html "Testing: First Post"
 
 [Might]: http://matt.might.net/articles/how-to-blog-as-an-academic/
 "6 blog tips for busy academics"
