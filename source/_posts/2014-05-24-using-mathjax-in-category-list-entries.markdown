@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Using Mathjax in Category List Entries"
+title: "Using MathJax in Category List Entries"
 date: 2014-05-24 12:50:58 +0800
 comments: true
 categories: Octopress
@@ -11,7 +11,7 @@ About three weeks ago, I successfully changed the category "LaTeX" to
 be input for "categories" at the head of the markdown source file of
 each Octopress post/page.  Then, previewing the rendered contents at
 port 4000 at locolhost, I could see the category "$\rm \LaTeX$"
-rendered by Mathjax at the bottom of each post/page.  Moreover, in the
+rendered by MathJax at the bottom of each post/page.  Moreover, in the
 category list in the sidebar at the right-hand side, the item "$\rm
 \LaTeX$" was also correctly displayed.  However, as I clicked it, I
 was brought to a page which titled something similar to "Error 404".
@@ -45,7 +45,7 @@ part URL: `-rm-latex-`.
 That is, I added the following lines before writing the new item to
 the variable `html`.
 
-```ruby Display Mathjax rendered $\rm \LaTeX$ code in category lists item https://github.com/VincentTam/vincenttam.github.io/blob/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537/plugins/category_list_tag.rb source code
+```ruby Display MathJax rendered $\rm \LaTeX$ code in category lists item https://github.com/VincentTam/vincenttam.github.io/blob/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537/plugins/category_list_tag.rb source code
 category_string = category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
 if category_string == "-rm-latex-"
     latex_category_string = "$-slash-rm-slash-latex$"
