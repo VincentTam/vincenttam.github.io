@@ -20,7 +20,8 @@ of the reasons for using [Lynx] when I'm asked for that next time.
 	images and flash animations.
 2. Present usage
     - "You really love text and hate images" :)
-    - "**For marketing to search engines**"  
+    - "**For marketing to search engines**"
+
 	"*See what SEOs see*": they use browsers similar to Lynx.
 
 <small>Remarks: Due to my laziness, reasons for search engines to use
