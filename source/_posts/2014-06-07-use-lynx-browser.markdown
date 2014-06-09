@@ -12,20 +12,24 @@ This morning, I saw [a post on Search Engine People Blog][CitedPost],
 and decided to make a summary of it, so that I *don't* have to think
 of the reasons for using [Lynx] when I'm asked for that next time.
 
-1. Past usage
-    - Lack of GUI web browsers like [Firefox] and [Internet Explorer]
-    - Text browsers were capable of loading contents quickly, if
-	there's *no* connection problem.
-    - The Internet wasn't fast enought for extensive transmission of
-	images and flash animations.
-2. Present usage
-    - "You really love text and hate images" :)
-    - "**For marketing to search engines**"
+### Past usage
 
-	"*See what SEOs see*": they use browsers similar to Lynx.
+- Lack of GUI web browsers like [Firefox] and [Internet Explorer]
+- Text browsers were capable of loading contents quickly, if there's
+    *no* connection problem.
+- The Internet wasn't fast enought for extensive transmission of
+    images and flash animations.
+
+### Present usage
+
+- "You really love text and hate images" :)
+- "**For marketing to search engines**"
+    - "*See what SEOs see*": they use browsers similar to Lynx.
 
 <small>Remarks: Due to my laziness, reasons for search engines to use
 text browsers, instead of "a modern browser", are omitted.</small>
+
+<!-- more -->
 
 ## How?
 

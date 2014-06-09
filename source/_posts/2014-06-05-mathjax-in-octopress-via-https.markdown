@@ -28,6 +28,8 @@ be displayed
 
 **How can those blocked contents be displayed automatically?**
 
+<!-- more -->
+
 ## My initial attempt to view the contents
 
 Half a month ago, I upgraded Firefox to 29.  Before the upgrade,

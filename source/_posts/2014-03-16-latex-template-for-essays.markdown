@@ -14,6 +14,8 @@ This is a $\rm \LaTeX$ template for writing an article.
 
 [Click here.][sample_output]
 
+<!-- more -->
+
 ## Sample code
 
 {% include_code The essay latex_sample.tex %}

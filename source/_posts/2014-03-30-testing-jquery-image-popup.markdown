@@ -19,6 +19,8 @@ the site using `rake`, I got two errors. The first one was about CSS,
 while the second one was about one of the two required Ruby gems.
 (Namely, [mini_magick][mini_magick] and [Erubis][Erubis].)
 
+<!-- more -->
+
 For the first error, I got something like `Undefined mixin
 'centered'`, and so I googled `octopress "Undefined mixin
 'centered'"`.  Using this query string, no match was returned.

@@ -19,6 +19,8 @@ Then, I realized that I need to modify the category list plugin[^2] so
 as to fix this error.  I jotted the trailing part of wrong URL down:
 "-rm-latex-".
 
+<!-- more -->
+
 Fortunately, the hyperlink for the category "$\rm \LaTeX$" at the
 bottom of each post was correct: `$-slash-rm-slash-latex$`.  This was
 an important guide to what was going to be done to the category list

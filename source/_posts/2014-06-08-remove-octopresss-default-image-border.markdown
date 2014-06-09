@@ -15,7 +15,9 @@ a *secure* and *encrypted* connection, I saw
 attempted to include those tiny pictures into some paragraphs.
 However, the resulting appearance of those paragraphs *wasn't*
 appealing—the white border surrounding the tiny icon *didn't* look
-great.  It would be better if it could be removed.
+great.  It would be *better* if it could be removed.
+
+<!-- more -->
 
 ## Failed attemps
 

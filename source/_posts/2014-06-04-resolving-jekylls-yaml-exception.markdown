@@ -16,6 +16,8 @@ categories: Octopress
 
 {% img center /images/posts/YAMLException/yaml_exception.png %}
 
+<!-- more -->
+
 ## Solution
 
 + Searched "yaml exception in reading invalid byte sequence in utf-8"

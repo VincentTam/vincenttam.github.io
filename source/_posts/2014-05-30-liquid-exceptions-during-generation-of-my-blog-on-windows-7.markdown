@@ -61,6 +61,8 @@ C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `&lt;main&gt;'
 Build Failed
 </code></pre>
 
+<!-- more -->
+
 I extracted part of the above message and googled "Liquid Exception:
 Pygments can't parse unknown language" for web pages that reported on
 similar issues.  It's quite abnormal since `tex` is one of

@@ -49,6 +49,8 @@ solution.  The feasible way is in the last line.  I think many new
 GNU/Linux users who have read this answer won't think of encrypting
 swap.
 
+<!-- more -->
+
 ### Don't use `shred` on USB devices!
 
 In the blog post cited in footnote 2, Richardson used the utility on a

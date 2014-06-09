@@ -29,6 +29,8 @@ vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBl
 Press ENTER or type command to continue
 </code></pre>
 
+<!-- more -->
+
 Before entering the standard startup screen, I received another
 complaint from the editor.
 

@@ -14,6 +14,8 @@ generating a new post is like this.[^1]
 
 How about including some symbols inside `title`?
 
+<!-- more -->
+
 ## Single quotation marks
 
 As you can see from the documentation, simply enclosing it with a pair

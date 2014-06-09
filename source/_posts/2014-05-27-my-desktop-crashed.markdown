@@ -19,6 +19,8 @@ switched on the computer again, and chose "Memtest86+" in the GRUB
 menu.  Within several minutes, the words in the blue screen blurred
 due to some blinking dots.
 
+<!-- more -->
+
 ## Recalled past experience
 
 Half a year ago, I also encountered similar error in the RAM.  I paid

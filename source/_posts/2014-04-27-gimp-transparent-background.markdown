@@ -33,6 +33,8 @@ been added.  If not, then add one.
     - See the detailed instructions in the tutorial.
     - JPEG images can't have transparent background.[^2]
 
+<!-- more -->
+
 ## Centering an image in HTML
 
 I've found Mrchief's answer to Web_Designer's question on Stack
