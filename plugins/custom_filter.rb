@@ -15,14 +15,8 @@ module CustomLiquidFilters
     input
   end
 
-  RegexMapCatFeed = {
-    /imgpopup/ => "img center",
-    /\d+%/ => "800",
-  }
-
   def remove_bigfig_catfeed(input)
-    RegexMapCatFeed.each_pair {|k,v| input.gsub!(k, v)}
-    input
+    input.gsub(/imgpopup/, "img center").gsub(/\d+%/, "800")
   end
 end
 
