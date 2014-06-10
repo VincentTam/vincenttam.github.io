@@ -53,7 +53,7 @@ Using Firefox, I can dynamically change the width and displacement of
 the shadow of an image by choosing "Inspect Element" and hitting arrow
 keys.
 
-{% imgpopup /images/posts/GIMPTransparentBg/inspect_element.png 50% Dynamically change box shadow using Firefox %}
+{% imgpopup /images/posts/GIMPTransparentBg/inspect_element.png 80% Dynamically change box shadow using Firefox %}
 
 - Click the values of a CSS property.
 - Move the cursor to a number, then hit ↑/↓ to adjust the values.

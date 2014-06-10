@@ -55,7 +55,7 @@ Blog.
 
 This is a screenshot taken in Linux text mode.
 
-{% imgpopup /images/posts/Lynx/Screenshot.png 50% Lynx browser in Linux text mode %}
+{% imgpopup /images/posts/Lynx/Screenshot.png 80% Lynx browser in Linux text mode %}
 
 ## Some useful keys
 
