@@ -86,12 +86,13 @@ end
 {% endcodeblock %}
 
 I recorded the output into a file and then browsed through it.  I
-found the `{{% imgpopup ... %}}` inside the file.  I also viewed the
-source code of `cdata_escape` so that I knew what the function did:
-HTML encode the only argument.  I compared the output before and after
-`cdata_escape`, and *couldn't* see any difference.  Then it's clear
-that using an HTML tag for a regular expression match *wasn't*
-feasible—change it back to Octopress's image tag instead.
+found the `{% raw %}{% imgpopup ... %}{% endraw %}` inside the file.
+I also viewed the source code of `cdata_escape` so that I knew what
+the function did: HTML encode the only argument.  I compared the
+output before and after `cdata_escape`, and *couldn't* see any
+difference.  Then it's clear that using an HTML tag for a regular
+expression match *wasn't* feasible—change it back to Octopress's image
+tag instead.
 
 ## Ruby code learnt
 

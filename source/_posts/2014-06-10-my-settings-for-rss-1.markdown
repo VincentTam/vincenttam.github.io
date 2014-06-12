@@ -209,8 +209,9 @@ bit.
 {% endraw %}
 {% endcodeblock %}
 
-<del><small>Due to my limited knowledge in Jekyll, I *can't* find a way to</del>
-escape the Liquid command inside an Octopress codeblock.</small>
+<del><small>Due to my limited knowledge in Jekyll, I *can't* find a
+way to escape the Liquid command inside an Octopress
+codeblock.</small></del>
 
 Unfortunately, I got strange output from `rake`.
 
