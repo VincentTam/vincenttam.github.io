@@ -18,7 +18,7 @@ Among the sites found with Google, I can only understand the instructions from [
 
 I typed in the command word-by-word like this.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">sudo add-apt-repository ppa:ubuntu:audio-dev/ppa</code></pre>
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo add-apt-repository ppa:ubuntu:audio-dev/ppa</code></pre>
 
 Then I got an error.  I read [Ubuntu Audio Development Team's PPA][ubuntu-audio-dev] on Launchpad to remind myself the command for adding PPAs.  I saw that I *didn't* include `/ppa` at the end, so I added it back and ran the command again.  However, it *failed* again.
 

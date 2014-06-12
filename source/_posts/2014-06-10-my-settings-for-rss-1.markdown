@@ -204,12 +204,12 @@ bit.
 {% raw %}
 <entry>
   <!-- other elements -->
-    <content type="html"><![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]></content>
+  <content type="html"><![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]></content>
 </entry>
 {% endraw %}
 {% endcodeblock %}
 
-<small>Due to my limited knowledge in Jekyll, I *can't* find a way to
+<del><small>Due to my limited knowledge in Jekyll, I *can't* find a way to</del>
 escape the Liquid command inside an Octopress codeblock.</small>
 
 Unfortunately, I got strange output from `rake`.
