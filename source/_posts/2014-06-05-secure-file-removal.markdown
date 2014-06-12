@@ -6,7 +6,8 @@ comments: true
 categories: 
 ---
 
-## GNU's `shred` utility
+GNU's `shred` utility
+---
 
 ### The command for files and folders
 
@@ -85,7 +86,8 @@ security to IT experts.  As a result, {"stop running `shred` on USB
 and SSD drives."}
 {% endpullquote %}
 
-## Encrypt swap
+Encrypt swap
+---
 
 If you've chosen "Encrypt `/home` folder" during Ubuntu 11.04+'s
 installation, you *don't* need this.  For users of older versions of

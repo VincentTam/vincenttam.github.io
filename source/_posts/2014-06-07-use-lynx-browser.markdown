@@ -6,7 +6,8 @@ comments: true
 categories: 
 ---
 
-## Why?
+Why?
+---
 
 This morning, I saw [a post on Search Engine People Blog][CitedPost],
 and decided to make a summary of it, so that I *don't* have to think
@@ -31,7 +32,8 @@ text browsers, instead of "a modern browser", are omitted.</small>
 
 <!-- more -->
 
-## How?
+How?
+---
 
 For GNU/Linux, type the command for installing Lynx.  For
 
@@ -51,13 +53,15 @@ For GNU/Linux, type the command for installing Lynx.  For
 Refer to the section *Lynx Links* in the post on Search Engine People
 Blog.
 
-## What can I see?
+What can I see?
+---
 
 This is a screenshot taken in Linux text mode.
 
 {% imgpopup /images/posts/Lynx/Screenshot.png 80% Lynx browser in Linux text mode %}
 
-## Some useful keys
+Some useful keys
+---
 
 ### Help
 
@@ -78,7 +82,8 @@ This is a screenshot taken in Linux text mode.
 - Use `n` for repeating search forwardly
 - Use `N` for repeating search backwardly
 
-## How to save the pages?
+How to save the pages?
+---
 
 - Source code
     - Inside Lynx

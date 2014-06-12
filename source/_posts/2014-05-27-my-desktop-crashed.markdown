@@ -6,7 +6,8 @@ comments: true
 categories: hardware
 ---
 
-## Beginning
+Beginning
+---
 
 Last Saturday night, I used my Ubuntu Desktop to watch some videos.
 While it was playing, the recently upgraded Firefox suddenly hanged.
@@ -21,7 +22,8 @@ due to some blinking dots.
 
 <!-- more -->
 
-## Recalled past experience
+Recalled past experience
+---
 
 Half a year ago, I also encountered similar error in the RAM.  I paid
 HKD$80 for a technician in a computer repair shop to check the
@@ -35,12 +37,14 @@ use less space in my computer.
 
 Thus, I planned to uninstall unnecessary packages the next day.
 
-## Development
+Development
+---
 
 This Sunday, I turned on my computer.  Quick as a flash, the power
 button's blue light changed to yellow, and the machine beeped.
 
-## Resolution
+Resolution
+---
 
 I searched "dell desktop beep", and Google showed some related
 searches.  I clicked on "dell desktop beep codes", and found
@@ -73,7 +77,8 @@ soon.
 Ironically, in the afternoon, the technician took less than 30 minutes
 to remove the old RAM and install the new one.
 
-## Lessons learnt
+Lessons learnt
+---
 
 - Stay calm when there's a problem.
 - GNU/Linux has utilities for finding out what's going on inside my

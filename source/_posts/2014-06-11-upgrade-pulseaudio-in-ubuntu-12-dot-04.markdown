@@ -6,13 +6,15 @@ comments: true
 categories: 
 ---
 
-## Reason for the upgrade
+Reason for the upgrade
+---
 
 This Sunday, I opened [VLC] to watch video, and ran into a "potential PulseAudio version problem".
 
 ![VLC error dialog showing a PulseAudio version problem][VLCErrDialog]
 
-## My clumsy way to fix the issue
+My clumsy way to fix the issue
+---
 
 Among the sites found with Google, I can only understand the instructions from [a question on Ask Ubuntu][AskUbuntu258892].
 

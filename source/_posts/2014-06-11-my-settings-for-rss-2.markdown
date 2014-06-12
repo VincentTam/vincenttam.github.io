@@ -6,7 +6,8 @@ comments: true
 categories: [Octopress, Ruby]
 ---
 
-## Background
+Background
+---
 
 Using the following plugin, I finished removing the repeating figures
 in my Atom Feed.[^1]
@@ -32,7 +33,8 @@ end
 Liquid::Template.register_filter CustomLiquidFilters
 {% endcodeblock %}
 
-## Problem
+Problem
+---
 
 **How about category Atom Feeds?**
 
@@ -57,7 +59,8 @@ appeared *twice*.
 
 <!-- more -->
 
-## Exploring the default Jekyll code
+Exploring the default Jekyll code
+---
 
 I tried deleting my custom filter `remove_bigfig`, so that I could
 test whether [Walter's instructions for removing line numbers][ewal]
@@ -94,7 +97,8 @@ difference.  Then it's clear that using an HTML tag for a regular
 expression match *wasn't* feasible—change it back to Octopress's image
 tag instead.
 
-## Ruby code learnt
+Ruby code learnt
+---
 
 - `body.gsub!(/(?=\b).+(?=\b)/) {|m| subs[m]}` from
     [here][StackOverflow17766216]
@@ -104,7 +108,8 @@ tag instead.
 - `map` and `collect` methods in Array class are the *same*.
 - `each` and `each_pair` methods in Hash class are *different*.
 
-## An illusory success
+An illusory success
+---
 
 I wrote a function, and pushed it onto GitHub.[^2]  Viewing the site,
 I could see that I successfully change the popup images into ordinary
@@ -112,7 +117,8 @@ ones in the category Atom Feed.  However, these changes were *also*
 applied to my blog posts.[^3]  I thought that the error was due to the
 use of `gsub!`, instead of `gsub`.
 
-## New version of my custom filter
+New version of my custom filter
+---
 
 I've been tired of studying code and reading documentations.
 Therefore, I just adopted an ugly approach—input `.gsub(...)` for

@@ -6,16 +6,19 @@ comments: true
 categories: [Octopress, Ruby]
 ---
 
-## Objective
+Objective
+---
 
 To set up a user-friendly RSS feeds layout.
 
-## Background
+Background
+---
 
 I installed [Clapper's image popup plugin][imgpopup] two months
 ago.[^1]
 
-## Problem
+Problem
+---
 
 As can be seen from Clapper's RSS feed page, each popup image appears
 *three* times.
@@ -42,7 +45,8 @@ The HTML code provides some information about this problem.
 </div>
 {% endcodeblock %}
 
-## Failed approach: change the CSS
+Failed approach: change the CSS
+---
 
 I googled "xml css", and learned the syntax for customizing the styles
 of an XML document from [a site in Taiwan][XMLCSS].  Unluckily, this
@@ -52,7 +56,8 @@ At the top of the source code of `source/atom.xml`, I found two
 `<link>` tags, so I tried inserting an external CSS stylesheet, but it
 also failed.
 
-## Solution
+Solution
+---
 
 I searched "octopress rss css", and found [a page that I've
 visited][ewal] when I inserted some Ruby code into my `Rakefile` to
@@ -137,7 +142,7 @@ I've changed my way of thinking: instead of changing the styles, I
 decided to manipulate the contents.  Once the HTML tags for the
 redundant images had been removed, the Atom Feed should be better.
 Re-reading the HTML code in my RSS page, I realized that three tags
-could be stripped down: `<div class="cpation">`, `<div
+could be stripped down: `<div class="caption">`, `<div
 id="image-dialog-*">` and `<div class="illustration print">`.
 
 From Walter's plugin, I knew that this involves writing Ruby code.
@@ -149,7 +154,7 @@ arrow `=>` in variable `map` fascinates me.  At first, I thought that
 there's a "map" object in Ruby, and searched "ruby regex gsub map",
 but I couldn't see a webpage that I, having *no* experience in writing
 Ruby code, could understand.  It took me some time to figure out that
-variable `map` is actually a *hash*.
+variable `map` is actually a *Hash*.
 
 I copied `public/atom.xml` to my home folder and used a Ruby script to
 test my method first.  To avoid seeing broken things while previewing

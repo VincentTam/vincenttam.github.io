@@ -6,7 +6,8 @@ comments: true
 categories: Octopress
 ---
 
-## Background
+Background
+---
 
 The crash of my computer in the last weekend motivated me to think
 about [using Octopress on Windows 7][octopress_win7].  It is an irony
@@ -14,7 +15,8 @@ that the computer had been fixed *before* I could finally build the
 site with `rake generate` and start writing posts for this blog on
 Windows 7.
 
-## Problems
+Problems
+---
 
 Provided that a blogger have some experience in using computers, the
 setup should be easy for his/her who wish to start a *new* Octopress

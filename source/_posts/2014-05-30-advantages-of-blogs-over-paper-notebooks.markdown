@@ -28,7 +28,8 @@ categories:
 	to turn over the pages and skim through them to find the
 	useful parts.
 
-## Privacy of the shared contents
+Privacy of the shared contents
+---
 
 Once something is uploaded to the Internet, it is likely that **the
 uploaded contents can *never* be deleted** because
@@ -42,7 +43,8 @@ uploaded contents can *never* be deleted** because
 In short, there's *no absoulute privacy* for contents uploaded to the
 Internet.  They're expected to (be exposed to the) *public*.[^1]
 
-## Usages of blogs
+Usages of blogs
+---
 
 They can be used to write something that
 

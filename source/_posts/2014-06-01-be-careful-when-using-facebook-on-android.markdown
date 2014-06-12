@@ -3,6 +3,7 @@ layout: post
 title: "Be Careful When Using Facebook on Android"
 date: 2014-06-01 22:34:40 +0800
 comments: true
+external-url: http://creativepsyco.github.io/blog/2014/02/02/webview-vulnerability-in-facebook-android-sdk-embedded-oauth/
 categories: 
 ---
 

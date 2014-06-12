@@ -6,7 +6,8 @@ comments: true
 categories: Octopress
 ---
 
-## Problem
+Problem
+---
 
 Some contents in [Octopress][] blogs *couldn't* be viewed via
 HTTPS[^1], for example, [a Japanese blog][JPBlog].
@@ -30,7 +31,8 @@ be displayed
 
 <!-- more -->
 
-## My initial attempt to view the contents
+My initial attempt to view the contents
+---
 
 Half a month ago, I upgraded Firefox to 29.  Before the upgrade,
 receiving the link of this blog, the browser would use the HTTP
@@ -63,7 +65,8 @@ Failed Google searches:
 - octopress "https" blocked content
 - firefox blocked octopress mathjax
 
-## Learning from Firefox's messages
+Learning from Firefox's messages
+---
 
 On the left of the address bar, I clicked the shield icon, and **learn
 more**.
@@ -109,7 +112,8 @@ to a page on MDN that I had already visited.  I clicked the link for
 fixing the website at the bottom *again*, learnt *nothing* new about
 the problem.
 
-## Source code changes to fix things
+Source code changes to fix things
+---
 
 ### Fixing Google Fonts first
 
@@ -195,7 +199,8 @@ the contents, especially the active ones, are safe to be shown.
 
 {% img /images/posts/OctopressHTTPS/GrayPadlockMsg.png The gray padlock for this blog %}
 
-## Lessons learnt
+Lessons learnt
+---
 
 1. Make use of official documentation
 

@@ -16,12 +16,14 @@ How about including some symbols inside `title`?
 
 <!-- more -->
 
-## Single quotation marks
+Single quotation marks
+---
 
 As you can see from the documentation, simply enclosing it with a pair
 of double quotes will do.
 
-## Double quotation marks
+Double quotation marks
+---
 
 The following shell command works.
 
@@ -64,7 +66,8 @@ At line 3 of the faulty markdown file, escaping the `"` inside the
 
 <pre><code>title: "testing <span class="hl_code">\"</span>double<span class="hl_code">\"</span> quotes"</code></pre>
 
-## Exclamation marks
+Exclamation marks
+---
 
 When I started writing the post
 [*My Desktop Crashed!*][my_desktop_crashed], I attempted typing the
@@ -76,7 +79,8 @@ bash: !"]: event not found
 
 The solution is again simple: changing `"` to `'`.
 
-## Exclamation marks *and* quotes
+Exclamation marks *and* quotes
+---
 
 Before writing
 [*Don't use Internet Explorer!*][dont_use_internet_explorer], I

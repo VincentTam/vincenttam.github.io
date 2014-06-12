@@ -6,7 +6,8 @@ comments: true
 categories: [Octopress, CSS]
 ---
 
-## Background
+Background
+---
 
 Two days ago, when I was writing
 [a post about viewing Octopress blogs over HTTPS][PrevPost], which is
@@ -19,7 +20,8 @@ great.  It would be *better* if it could be removed.
 
 <!-- more -->
 
-## Failed attemps
+Failed attemps
+---
 
 I did try to find the solution using Google, but it *wasn't*  useful
 this time.  I re-read the source code of
@@ -28,7 +30,8 @@ this time.  I re-read the source code of
 [Larry Nung's GitHub page][LarryNung], but I still had *not* yet come
 up with a solution.
 
-## Solution
+Solution
+---
 
 With the help of a modern browser like Firefox, I inspected the CSS
 rules and properties of an image. Clicking the checkbox for some CSS

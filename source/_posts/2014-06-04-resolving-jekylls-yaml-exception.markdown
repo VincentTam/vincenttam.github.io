@@ -6,7 +6,8 @@ comments: true
 categories: Octopress
 ---
 
-## Problem
+Problem
+---
 
 1. Created a new Octopress post with `rake` in Windows 7's Git Bash.
 2. Wrote the post using gVim.
@@ -18,7 +19,8 @@ categories: Octopress
 
 <!-- more -->
 
-## Solution
+Solution
+---
 
 + Searched "yaml exception in reading invalid byte sequence in utf-8"
   on Google.  Sites found:

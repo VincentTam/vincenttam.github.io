@@ -6,7 +6,8 @@ comments: true
 categories: [GIMP, CSS]
 ---
 
-## Getting an image with transparent background
+Getting an image with transparent background
+---
 
 ### An apple with white background
 
@@ -35,12 +36,14 @@ been added.  If not, then add one.
 
 <!-- more -->
 
-## Centering an image in HTML
+Centering an image in HTML
+---
 
 I've found Mrchief's answer to Web_Designer's question on Stack
 Overflow useful.[^3]
 
-## Inserting shadows for images
+Inserting shadows for images
+---
 
 Inspired by [ParaImage's tutorial on Hong Kong Silicon][hksilicon],
 I've written a small and simple HTML file to practice the concepts

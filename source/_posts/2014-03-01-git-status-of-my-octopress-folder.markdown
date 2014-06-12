@@ -33,6 +33,8 @@ How about the `git status`?  <del>Simply *forget about it*!</del>
 
 ---
 
+(Last edited on MAR 15TH, 2014)
+
 If you have *more than one* local repository of your Octopress or
 Jekyll site, you may upload your contents to the Internet as long as
 the corresponding branch in the local repository is newer than the one
@@ -44,8 +46,6 @@ Jekyll site using `rake deploy`.
 
 Thus, eight days ago, I made Git commit
 [8c7be99f49](https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99f49e0aee10ae74a7ee360e02bab5649c2).
-
-(Last edited on MAR 15TH, 2014)
 
 ----
 
