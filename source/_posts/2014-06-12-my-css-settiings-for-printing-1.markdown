@@ -23,6 +23,7 @@ Problems on the printed page
 2. Screenshots were too large and part of them flowed out of the page.
 
 <!-- more -->
+
 Solution
 ---
 
