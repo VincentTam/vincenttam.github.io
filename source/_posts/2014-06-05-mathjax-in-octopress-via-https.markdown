@@ -72,8 +72,7 @@ On the left of the address bar, I clicked the shield icon, and **learn
 more**.
 
 ![Firefox 29 blocked insecure contents][ff_shield]  
-Source:
-<https://support.cdn.mozilla.net/media/uploads/gallery/images/2014-03-25-07-10-44-1aa0ef.png>
+<small>Source: [Mozilla support][MozSuppImgSrc]</small>
 
 Then, I was taken to [a page in Mozilla Support][MozSupp].  At the
 bottom of the section *What is mixed content?*, there's a note that
@@ -238,6 +237,7 @@ Lessons learnt
 [HTTPSEverywhere]: https://www.eff.org/https-everywhere "HTTPS Everywhere"
 [CarpeDiem]: http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ "Writing Math Equations on Octopress"
 [ff_shield]: /images/posts/OctopressHTTPS/ff_shield.png "Firefox 29's message about insecure mixed contents"
+[MozSuppImgSrc]: https://support.cdn.mozilla.net/media/uploads/gallery/images/2014-03-25-07-10-44-1aa0ef.png "Image source"
 [MozSupp]: http://mzl.la/13jCUSU "How does content that isn't secure affect my safety?"
 [MozEnggBlog]: https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/ "Mixed Content Blocking Enabled in Firefox 23!"
 [MixedActiveContent]: https://developer.mozilla.org/docs/Security/MixedContent#Mixed_active_content
