@@ -3,13 +3,14 @@ layout: post
 title: "Local Huge File Sharing"
 date: 2014-06-14 13:38:56 +0800
 comments: true
-categories: 
+categories: Git
 ---
 
 Objective
 ---
 
-To share files of several gigabytes (GBs) *locally* between two computers.
+To share files of several gigabytes (GBs) *locally* between two
+computers.
 
 Usual ways
 ---
@@ -32,11 +33,15 @@ Reasons:
 - Unlimited sharing of data
 - Fast data transfer: the bandwidth *isn't* limited by ISPs.
 
-Following [the instructions from *AN0NYM0U5*][2win7], one should be able to set up a "connection" between two Windows 7 computers.  I just highlight some important configurations to be done in Windows 7's Network and Sharing Center.
+Following [the instructions from *AN0NYM0U5*][2win7], one should be
+able to set up a "connection" between two Windows 7 computers.  I just
+highlight some important configurations to be done in Windows 7's
+Network and Sharing Center.
 
 1. Connect the 2 machines through a LAN cable.
 2. Ensure that the file access rights are properly set.
-3. Set the properties of the "**Local Area Connection**" → "**...IPv4**".
+3. Set the properties of the "**Local Area Connection**" →
+"**...IPv4**".
 4. Set the values according to the table below.
 
     |                 | First computer | Second computer |
@@ -47,9 +52,12 @@ Following [the instructions from *AN0NYM0U5*][2win7], one should be able to set 
 
 Observations:
 
-1. The IP addresses for both computers should start with "192.168.", which stands for private network, and they should be *different*.
-2. The computers in the connection should share the *same* subnet masks.
-3. The default gateway for each computer should be the IP address of the other computer.
+1. The IP addresses for both computers should start with "192.168.",
+which stands for private network, and they should be *different*.
+2. The computers in the connection should share the *same* subnet
+masks.
+3. The default gateway for each computer should be the IP address of
+the other computer.
 
 #### Sample screenshot
 
@@ -63,16 +71,20 @@ Remarks: The above steps is for Windows 7 *only*.[^2]
 ### Connection between Windows and Linux
 
 1. Do the above network configurations on Windows 7.
-    - I will treat my Linux desktop as my first computer, and my Windows 7 laptop as my second one.
+    - I will treat my Linux desktop as my first computer, and my
+	Windows 7 laptop as my second one.
 2. Install openssh-server on Linux.[^3]
+
     <pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install openssh-server</code></pre>
+
 3. Do some of the following settings on Linux.
 
 Remarks: These steps should be done *efficiently*.
 
 #### Using GUI on Ubuntu
 
-It's quite easy to set up the connection with Ubuntu's Network Manager.
+It's quite easy to set up the connection with Ubuntu's Network
+Manager.
 
 ![Ubuntu IP settings][UbuntuSetIPScrShot]
 
@@ -80,14 +92,20 @@ The route settings (the button with "(R)") can be left out.
 
 #### Using the terminal
 
-It's possible that the layout of GUI tools changes from time to time, but unlikely for commands.  Moreover, a Linux computer does *not* necessarily has a desktop.  Therefore, the commands are worth learning.
+It's possible that the layout of GUI tools changes from time to time,
+but unlikely for commands.  Moreover, a Linux computer does *not*
+necessarily has a desktop.  Therefore, the commands are worth
+learning.
 
 <ol>
     <li>
-    <p>Change IP addresses in both machines.  (<a title="Linux Change IP Address" href="http://www.cyberciti.biz/faq/linux-change-ip-address/">Instructions on nixCraft</a>)</p>
+    <p>Change IP addresses in both machines.
+    (<a title="Linux Change IP Address" href="http://www.cyberciti.biz/faq/linux-change-ip-address/">Instructions on nixCraft</a>)</p>
     <p>Command</p>
     <pre class="cli"><code class="ubuntu_gnome_terminal">$ ifconfig eth0 192.168.1.1 [netmask 255.255.255.0 up]</code></pre>
-    <p>If the net mask is omitted, it will be automatically set.  It <em>can't</em> be arbitrarily set.  If <code>eth0</code> is already <code>up</code>, then the last word can be omitted.</p>
+    <p>If the net mask is omitted, it will be automatically set.  It
+    <em>can't</em> be arbitrarily set.  If <code>eth0</code> is
+    already <code>up</code>, then the last word can be omitted.</p>
     <p>Output</p>
     <pre class="cli"><code class="ubuntu_gnome_terminal"># ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr b8:ac:6f:db:d1:0c
@@ -118,50 +136,71 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 Note:
 
 - The changed network settings can *disappear* if one does it slowly.
-- If the default gateway *isn't* set, one can still connect the two computers.  However, I observed that such a connection *isn't* so stable.
-- The connection established through Ubuntu's Network Manager *doesn't* have such problem.
+- If the default gateway *isn't* set, one can still connect the two
+    computers.  However, I observed that such a connection *isn't* so
+    stable.
+- The connection established through Ubuntu's Network Manager
+    *doesn't* have such problem.
 
-If a local area connection has been set up successfully, one should see an active network in Windows 7's Network and Sharing Center.
+If a local area connection has been set up successfully, one should
+see an active network in Windows 7's Network and Sharing Center.
 
 {% imgpopup /images/posts/LAN/Network6.png 100% Windows 7's network information %}
 
 ### Remote login via SSH
 
-Before actually using SSH, one can using the following commands to check if the remote server is up.  For more details, such as the number of packets sent to the remote machine, check it elsewhere like the command's manpage or the Internet.
+Before actually using SSH, one can using the following commands to
+check if the remote server is up.  For more details, such as the
+number of packets sent to the remote machine, check it elsewhere like
+the command's manpage or the Internet.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ ping [host] # send some packets to `host'
 $ nmap [host] # detect which ports are open
 </code></pre>
 
-At first, I tried `ssh 192.168.1.1`, and was prompted to input my password.  Unfortunately, I *overlooked the user name*.  Even though I repeatedly input the *correct* password, my Ubuntu computer *denied* my "remote" access via SSH.
+At first, I tried `ssh 192.168.1.1`, and was prompted to input my
+password.  Unfortunately, I *overlooked the user name*.  Even though I
+repeatedly input the *correct* password, my Ubuntu computer *denied*
+my "remote" access via SSH.
 
 ![Wrong username][WrongSSH]
 
-I recalled that *nix terminal are *case sensitive*, unlike Window's Command Prompt.  Therefore, specifying the appropriate user name and password at the remote host, the SSH connection should be set up.
+I recalled that *nix terminal are *case sensitive*, unlike Window's
+Command Prompt.  Therefore, specifying the appropriate user name and
+password at the remote host, the SSH connection should be set up.
 
 ![Successful SSH connection][TrueSSH]
 
 ### File sharing via SCP
 
-To save time and effort, I just include two links for interested readers.
+To save time and effort, I just include two links for interested
+readers.
 
-1. A brief summary of the usage of `scp` on Indiana University Knowledge Base ([URL][scp1])
+1. A brief summary of the usage of `scp` on Indiana University
+Knowledge Base ([URL][scp1])
     - `~` can be used after `user@host:` to indicate the home folder.
 2. More examples of SCP commands. ([URL][scp2])
 
 ### Using Git
 
-According to [the official manual][GitMan], SSH paths are supported by the SCM.  For example, to copy a Git repository called `myproj` from a Linux machine, I can use the following command.
+According to [the official manual][GitMan], SSH paths are supported by
+the SCM.  For example, to copy a Git repository called `myproj` from a
+Linux machine, I can use the following command.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ git clone ssh://owner@192.168.1.1/~/myproj</code></pre>
 
-One can perform a Git fetch more quickly after adding the SSH path of the Git repository on the "remote" machine into the list of remote repositories.
+One can perform a Git fetch more quickly after adding the SSH path of
+the Git repository on the "remote" machine into the list of remote
+repositories.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
 $ git fetch ubuntu_desktop [branch]
 </code></pre>
 
-However, `git push` to remote machines will fail if the remote repository being "pushed" is non-bare.  Either setting up a bare repository at the "remote" *nix computer or pushing the branch will solve the problem.[^4]
+However, `git push` to remote machines will fail if the remote
+repository being "pushed" is non-bare.  Either setting up a bare
+repository at the "remote" *nix computer or pushing the branch will
+solve the problem.[^4]
 
 ---
 

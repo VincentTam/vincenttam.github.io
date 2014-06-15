@@ -3,7 +3,7 @@ layout: post
 title: "Git Status of My Octopress Folder"
 date: 2014-03-01 17:32:29 +0800
 comments: true
-categories: Octopress
+categories: [Octopress, Git]
 ---
 
 I'd like to include my GitHub repositories here.  To do so, it's a
@@ -20,7 +20,8 @@ Then I blindly followed the "advice" of `git status` and typed
 
 <del>It seemed that I had made a mistake.</del>  Actually, **without
 adding those modified and untracked files on the stage for commit**,
-the following two commands will do.
+the following two commands will <del>do</del> update the contents on
+the GitHub pages.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ rake generate
 $ rake deploy
