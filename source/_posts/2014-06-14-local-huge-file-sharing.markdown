@@ -97,50 +97,57 @@ but unlikely for commands.  Moreover, a Linux computer does *not*
 necessarily has a desktop.  Therefore, the commands are worth
 learning.
 
-<ol>
-    <li>
-    <p>Change IP addresses in both machines.
-    (<a title="Linux Change IP Address" href="http://www.cyberciti.biz/faq/linux-change-ip-address/">Instructions on nixCraft</a>)</p>
-    <p>Command</p>
-    <pre class="cli"><code class="ubuntu_gnome_terminal">$ ifconfig eth0 192.168.1.1 [netmask 255.255.255.0 up]</code></pre>
-    <p>If the net mask is omitted, it will be automatically set.  It
-    <em>can't</em> be arbitrarily set.  If <code>eth0</code> is
-    already <code>up</code>, then the last word can be omitted.</p>
-    <p>Output</p>
-    <pre class="cli"><code class="ubuntu_gnome_terminal"># ifconfig eth0
+* * *
+(Last edited on JUN 16, 2014)
+
+1.  Change IP addresses in both machines.
+([Instructions on nixCraft][nixCraft1])
+2.  Set the default gateway.
+([Instructions on nixCraft][nixCraft2])
+
+
+To sum up, issue the command for "2" right after "1".
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo ifconfig eth0 192.168.1.1 ; sudo route add default gw 192.168.1.3 eth0</code></pre>
+
+Output
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr b8:ac:6f:db:d1:0c
           <span class="ubuntu_hl_code">inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0</span>
           inet6 addr: fe80::baac:6fff:fedb:d10c/64 Scope:Link
-         UP BROADCAST RUNNING MULTICAST  MTU:8000  Metric:1
+          UP BROADCAST RUNNING MULTICAST  MTU:8000  Metric:1
           RX packets:36250 errors:0 dropped:17 overruns:0 frame:0
           TX packets:27619 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000
           RX bytes:29592391 (29.5 MB)  TX bytes:4441266 (4.4 MB)
-          Interrupt:42 Base address:0xe000</code></pre>
-    </li>
-    <li>
-    <p>Set the default gateway.  (<a title="Linux Setup Default Gateway with Route Command" href="http://www.cyberciti.biz/faq/linux-setup-default-gateway-with-route-command/">Instructions on nixCraft</a>)</p>
-    <p>Command</p>
-    <pre class="cli"><code class="ubuntu_gnome_terminal"># route add default gw 192.168.1.3 eth0</code></pre>
-    <p>Output</p>
-    <pre class="cli"><code class="ubuntu_gnome_terminal">$ route -n
+          Interrupt:42 Base address:0xe000
+
+$ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.1.3     0.0.0.0         UG    0      0        0 eth0
 169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eth0
 192.168.1.0     0.0.0.0         255.255.255.0   U     1      0        0 eth0
 </code></pre>
-    </li>
-</ol>
 
-Note:
 
-- The changed network settings can *disappear* if one does it slowly.
+If the net mask is omitted, it will be automatically set.  It *can't*
+be arbitrarily set.  If `eth0` is already up, then the word `up` can
+be omitted in the command.
+
+Notes:
+
+- The changed network settings can *disappear* if one <del>does it
+    slowly</del> *doesn't* uncheck the "Automatically Connect" option
+    in Ubuntu's Network Manager.
 - If the default gateway *isn't* set, one can still connect the two
-    computers.  However, I observed that such a connection *isn't* so
-    stable.
+    computers.  <del>However, I observed that such a connection
+    *isn't* so stable.</del>
 - The connection established through Ubuntu's Network Manager
     *doesn't* have such problem.
+
+* * *
 
 If a local area connection has been set up successfully, one should
 see an active network in Windows 7's Network and Sharing Center.
@@ -165,7 +172,7 @@ my "remote" access via SSH.
 
 ![Wrong username][WrongSSH]
 
-I recalled that *nix terminal are *case sensitive*, unlike Window's
+I recalled that \*nix terminal are *case sensitive*, unlike Window's
 Command Prompt.  Therefore, specifying the appropriate user name and
 password at the remote host, the SSH connection should be set up.
 
@@ -217,6 +224,8 @@ solve the problem.[^4]
 [wikiHow]: http://www.wikihow.com/Make-Your-Own-Ethernet-Cable-and-Set-up-a-Network-Between-Two-Laptops-Using-Ethernet-Cable#Warnings "How to Make Your Own Ethernet Cable and Set up a Network Between Two Laptops Using Ethernet Cable"
 [UbuntuSetIPScrShot]: /images/posts/LAN/NetMgrSettings.png "Ubuntu 12.04 LTS IP Settings—Screenshot"
 [Ask Ubuntu]: http://askubuntu.com/a/107218 "A Quick Way To Transfer files From Ubuntu To Windows"
+[nixCraft1]: http://www.cyberciti.biz/faq/linux-change-ip-address/ "Linux Change IP Address"
+[nixCraft2]: http://www.cyberciti.biz/faq/linux-setup-default-gateway-with-route-command/ "Linux Setup Default Gateway with Route Command"
 [WrongSSH]: /images/posts/LAN/GitBashSSH.png "Wrong user name"
 [TrueSSH]: /images/posts/LAN/ViaSSH.png "Successful SSH connection"
 [scp1]: https://kb.iu.edu/d/agye "SCP in Unix"
