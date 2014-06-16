@@ -222,7 +222,7 @@ solve the problem.[^4]
 [scp1]: https://kb.iu.edu/d/agye "SCP in Unix"
 [scp2]: http://www.tecmint.com/scp-commands-examples/ "10 SCP Commands to Transfer Files/Folders in Linux"
 [GitMan]: http://git-scm.com/docs/git-clone#_git_urls "Git URLs"
-[StackOverflow2816369]: http://stackoverflow.com/questions/2816369/ "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
+[StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
 
 *[ISPs]: Internet Service Providers
 *[SSH]: Secure Shell

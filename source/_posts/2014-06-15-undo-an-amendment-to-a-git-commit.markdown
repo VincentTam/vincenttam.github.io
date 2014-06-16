@@ -34,7 +34,7 @@ three relevant web pages.
 
 1. A question on StackOverflow ([URL][StackOverflow1459150])
 
-    At first, I *didn't* understand what `HEAD@{1}` is, and jumped to
+    At first, I *didn't* understand what `HEAD@{1}` was, and jumped to
     the next item.
 
 2. An article on Pivotal Labs ([URL][Pivotal])

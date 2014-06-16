@@ -1,0 +1,223 @@
+---
+layout: post
+title: "My Git command List (1)"
+date: 2014-06-16 00:04:04 +0800
+comments: true
+categories: Git
+---
+
+Since I have *poor long-term memory* in commands, I'll write down the
+Git commands that I know.
+
+This list is written for my reference *only*.  Therefore, I *won't*
+include everything.  I'm going to write some basic stuff, so that I
+can review it if I've forgotten it.  If you want detailed explanation
+for a command, find the documentation instead.  If you've encountered
+a problem using Git, the *best* teacher is, in general, a search
+engine.
+
+<!-- more -->
+
+Initial Setup
+---
+
+Refer to [*Pro Git* section 1.5][GitBook1.5].
+
+I recommend new Git users to set the configuration variable
+`push.default` using `git config` with the `--global` option, which
+make Git save the variables in `~/.gitconfig`, so as to avoid the
+warning shown in [here][StackOverflow13148066].[^1]  Due to my limited
+understanding of Git, I *couldn't* find a way to suppress the warning
+after reading the Stack Overflow question.  I eventually figured it
+out after reading a Chinese blog post found in the first footnote.
+
+Initialize repositories
+---
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git init
+$ git init --bare
+</code></pre>
+
+For the first one, it's the usual command used for a repository which
+contains the source code.  For the second one, it can be used on a
+remote server.[^2]
+
+Note: "Running `git init` on an existing repository is safe."[^3]
+
+Clone repositories
+---
+
+See [*Pro Git* section 2.1][GitBook2.1].
+
+From [here][StackOverflow2816369], I know that one can pass the
+`--bare` option to `git clone`.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git clone --bare repo.old repo</code></pre>
+
+In the above command, `repo.old` is an old repository, and one creates
+a new bare repository `repo` from that old non-bare repository.
+
+Get things from remote repositories
+---
+
+There are basic commands: `git pull`, `git fetch` and `git merge`.
+Roughly speaking, the first one is the "sum" of the following two.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git fetch           # fetch from origin/upstream
+$ git fetch host      # fetch all branches from remote "host"
+$ git fetch host foo  # fetch branch "foo" from remote "host"
+</code></pre>
+
+Note: In the above codeblock, `pull` can be substituted by `pull`.
+
+Before actually merging the branches, we can see their differences
+first.
+
+Viewing the differences
+---
+
+I only know `git diff`.
+
+### Basic usage
+
+If you've written something and have *not yet* committed your changes,
+you may issue `git diff` in the terminal to see the difference between
+your uncommitted changes and the latest commit.  `-` represents the
+older committed contents, whereas `+` represents the newer uncommitted
+changes.
+
+### Compare the tip of the branch with older commits in the same branch
+
+Just appending the first seven digits of the 40-digit SHA-1 hash of
+the commit to `git diff` will do.
+
+### Comparing branches
+
+I found a page in the official reference. ([URL][GitRefGitDiff])  The
+`<1>` form worked well if I compared `origin/source` and
+`octoress/linklog` in `~/octopress`.  However, I *haven't* fully
+understand this command.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git diff origin/source source
+fatal: ambiguous argument 'source': both revision and filename
+Use '--' to separate paths from revisions, like this:
+'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file>...]'
+</code></pre>
+
+Add/remove Files
+---
+
+There are three basic commands:
+
+- `git add`
+- `git mv`
+- `git rm`
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
+$ git add .                     # Add all modified/new files that are tracked
+$ git add -A                    # The `-A' flag stands for "all". See <a title='Difference between "git add -A" and "git add ."' href="http://stackoverflow.com/a/572660">here</a> for details.
+$ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
+$ git rm &lt;file&gt;                 # delete a file and record the action in Git
+</code></pre>
+
+I've read a simplified Chinese blog post which explained the
+difference between `git rm` and `rm`.  ([URL][(git )?rm])
+
+Commit changes
+---
+
+The only command is `git commit`.  There are some basic options that
+one can make use of.
+
+- `-a` (a.k.a. `--all`): commit changes of all tracked files.
+- `--amend`: change the commit message of the tip the working branch.
+- `-m <msg>` (a.k.a. `--message`): Directly input the commit message.
+
+If the `-m` flag is used, then an editor window *won't* be invoked.
+In the editor window that contains the commit message, the first line
+is the header of the commit, while the second line should be left
+blank. The subsequent lines that *don't* begin with `#` is the content
+of the commit message.
+
+If you want revert `git commit --amend`, you may refer to my
+[previous post][PrevPost1].
+
+Revert changes
+---
+
+To me, it's the *most important* part of this post.  I know *only* two
+commands for this type of task.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset HEAD &lt;file&gt;...  # unstage &lt;file&gt;
+$ git reset HEAD --soft     # unstage all uncommitted chanages <span class="ubuntu_hl_code">without</span> changing the file(s)
+$ git reset HEAD --hard     # revert the files to the latest commit
+$ git checkout -- &lt;file&gt;... # undo all uncommitted changes to &lt;file&gt;
+</code></pre>
+
+Show the history
+---
+
+There's [a GUI way](#gitk) to do so.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git show    # Show the diff hunks of recent commits
+$ git log     # Show the commits without diff hunks
+$ git log -6  # Show the 6 most recent commits
+$ git log -p  # Show the commits with diff hunks
+</code></pre>
+
+*Without* the `-p` flag, `git log` will show the user's name and
+email, time, SHA-1 hash, header and content of each commit, but *not*
+the diff hunk(s).  The key motions for browsing through commits in
+`git log` is similar to those in the `less` utility.  If the number of
+commits *isn't* specified, one can browse through the *whole* commit
+history by scrolling down to the bottom.
+
+One can use `git show` to format the output, but I *haven't* learnt
+that.
+
+I am looking forward to writing a second list, but I *don't* think I
+can make it in the next few months.
+
+Some off-topic stuff
+---
+
+### gitk
+
+One can invoke `gitk`, which is a GUI tool for viewing the Git commit
+for showing history, if he/she *doesn't* want to learn the commands in
+the above section.
+
+### fugitive.vim
+
+[fugitive.vim] is a great Vim plugin.
+
+    :Gst[atus]      # Show the `git status' on a horizontal split window
+    :Git <command>  # Equivalent to `:!git <command>'
+    :Glog           # Show the commit messages within Vim
+
+I *don't* know the use of `:Glog`.
+
+Within `Gstatus`, you can conveniently add/remove files from the
+staging area.
+
+- `<C-n>` and `<C-p>` jump to the next and previous files
+    respectively.
+- `cc` is for a Git commit.
+
+---
+
+[^1]: The last sentence of [this blog post][ChinPost].
+[^2]: See my post [*Local Huge File Sharing*][PrevPost2] for details.
+[^3]: Refer to a Stack Overflow question.[URL][StackOverflow5149861]
+
+[GitBook1.5]: http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup "Getting Started - First-Time Git Setup"
+[StackOverflow13148066]: http://stackoverflow.com/questions/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
+[ChinPost]: http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html
+[PrevPost2]: /blog/2014/06/14/local-huge-file-sharing/ "Local Huge File Sharing"
+[StackOverflow5149861]: http://stackoverflow.com/a/5149861 "Does running git init twice initialize a repository or reinitialize an existing repo?"
+[GitBook2.1]: http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository "Cloning an Existing Repository"
+[StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
+[GitRefGitDiff]: http://git-scm.com/docs/git-diff#_examples "git-diff(1) Manual Page"
+[(git )?rm]: http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/ '"git rm" 和 "rm" 的区别'
+[PrevPost1]: /blog/2014/06/15/undo-an-amendment-to-a-git-commit/ "Undo an Amendment to a Git Commit"
+[fugitive.vim]: https://github.com/tpope/vim-fugitive
