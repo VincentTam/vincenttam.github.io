@@ -7,7 +7,7 @@ categories: Git
 ---
 
 Since I have *poor long-term memory* in commands, I'll write down the
-Git commands that I know.
+[Git] commands that I know.
 
 This list is written for my reference *only*.  Therefore, I *won't*
 include everything.  I'm going to write some basic stuff, so that I
@@ -123,6 +123,9 @@ $ git rm &lt;file&gt;                 # delete a file and record the action in G
 I've read a simplified Chinese blog post which explained the
 difference between `git rm` and `rm`.  ([URL][(git )?rm])
 
+You may include some untracked files in `.gitignore`, so that those
+files will be ignored by Git.
+
 Commit changes
 ---
 
@@ -153,6 +156,26 @@ $ git reset HEAD --soft     # unstage all uncommitted chanages <span class="ubun
 $ git reset HEAD --hard     # revert the files to the latest commit
 $ git checkout -- &lt;file&gt;... # undo all uncommitted changes to &lt;file&gt;
 </code></pre>
+
+Working with branches
+---
+
+I know that it's an important feature of Git, but I *don't* that very
+often now, so I just include some simple commands here.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git branch                 # list all branches, <span class="ubuntu_hl_code">excluding</span> the remote ones
+$ git branch --list          # same as above
+$ git branch -a              # list all branches, <span class="ubuntu_hl_code">including</span> the remote ones
+$ git branch foo             # create `foo' branch from the current one
+$ git checkout foo           # switch to `foo' branch from the current one
+$ git checkout -b foo        # the "sum" of the above two commands
+$ git branch -d foo          # delete `foo' branch
+$ git checkout --orphan foo  # create a new orphan branch named `foo'
+</code></pre>
+
+When I started using Octopress, I *wasn't* familiar with Git.  Thus,
+I messed up the commands that dealt with branches and the network
+graph of my Git repository of this blog.
 
 Show the history
 ---
@@ -208,12 +231,13 @@ staging area.
 
 [^1]: The last sentence of [this blog post][ChinPost].
 [^2]: See my post [*Local Huge File Sharing*][PrevPost2] for details.
-[^3]: Refer to a Stack Overflow question.[URL][StackOverflow5149861]
+[^3]: Refer to a Stack Overflow question.  ([URL][StackOverflow5149861])
 
+[Git]: http://git-scm.com/
 [GitBook1.5]: http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup "Getting Started - First-Time Git Setup"
 [StackOverflow13148066]: http://stackoverflow.com/questions/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
-[ChinPost]: http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html
-[PrevPost2]: /blog/2014/06/14/local-huge-file-sharing/ "Local Huge File Sharing"
+[ChinPost]: http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html "git push警告：warning: push.default is unset"
+[PrevPost2]: /blog/2014/06/14/local-huge-file-sharing/
 [StackOverflow5149861]: http://stackoverflow.com/a/5149861 "Does running git init twice initialize a repository or reinitialize an existing repo?"
 [GitBook2.1]: http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository "Cloning an Existing Repository"
 [StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
