@@ -1,0 +1,94 @@
+---
+layout: post
+title: GNU ddrescue—A Powerful Data Recovery Tool
+categories:
+- Linux
+tags:
+- ddrescue
+- Linux
+published: true
+comments: true
+---
+<p>3 days ago, I encountered an error while moving a folder of about 3 GB from my USB stick to my hard disk using GUI. After 1.2 GB of the files are moved, the progress bar of the program just remained unchanged. I left the seat in front of my computer and did something else. Returning to the seat after half an hour, the situation had NOT been better. The displayed remaining time was still "unknown".</p>
+
+<p>The I clicked the cancel button to stop the process, but it simply hangs. After terminating the process from the "System Monitor" (another GUI program), the read/write speed of the USB stick became extremely low. Instead of blinking frequently, the light bulb inside the USB stick went on and off slowing during a read/write operation.<br />
+In <code>/var/log/syslog.1</code>, it says<br />
+[code highlight="3,6,8"]<br />
+[  627.152020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd<br />
+[  658.128020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd<br />
+[  658.493165] sd 3:0:0:0: [sdf] Unhandled error code<br />
+[  658.493169] sd 3:0:0:0: [sdf]  Result: hostbyte=DID_ABORT driverbyte=DRIVER_OK<br />
+[  658.493174] sd 3:0:0:0: [sdf] CDB: Write(10): 2a 00 00 54 e9 30 00 00 01 00<br />
+[  658.493188] end_request: I/O error, dev sdf, sector 5564720<br />
+[  658.494531] quiet_error: 39 callbacks suppressed<br />
+[  658.494533] Buffer I/O error on device sdf1, logical block 5564658<br />
+[  658.495808] lost page write due to I/O error on sdf1<br />
+[/code]<br />
+Oh! I need to recover the data! And I've found GNU ddrescue an excellent tool for the task. No expensive recovery plans are needed. Just ddrescue on a bootable media and some free space in a storage device will do.</p>
+
+<p>It's important to note that the data recovery program should <em>never</em> be run on the <em>damaged</em> device. Otherwise, further damage will be done to the damaged device.<sup id="fnref-17-1"><a href="#fn-17-1" rel="footnote">1</a></sup> In addition, I <em>don't</em> recommend running the data rescue tool on the operating system(s) installed on your hard disk. The process takes a long time, so "patience is key".<sup id="fnref-17-2"><a href="#fn-17-2" rel="footnote">2</a></sup></p>
+
+<p>Booted into the command line interface (CLI) of Ubuntu Rescue Remix 12.04, I first formatted the <code>D</code> drive into an empty NTFS partition after backing up the data on that device. (i.e. <code>/dev/sda5</code>)<br />
+After that , I ran the following command:<sup id="fnref-17-3"><a href="#fn-17-3" rel="footnote">3</a></sup></p>
+
+<p>[code highlight="1" gutter="false"]<br />
+$ ddrescue -r1 -n -S -v /dev/sdxm /dev/sdyn [logfile]<br />
+# Substitute x with the appropriate partition letter of the source partition<br />
+# Substitute y with the appropriate partition letter of the destination partition<br />
+# Substitute m with the appropriate partition number of the source partition<br />
+# Substitute n with the appropriate partition number of the destination partition<br />
+[/code]</p>
+
+<p>Note: <em>This process is irreverisible so do it carefully.</em></p>
+
+<p>In the screenshot below, <code>x=f</code>, <code>y=a</code>, <code>m=1</code>, <code>n=5</code>, and <code>logfile='backup1.log'</code>.</p>
+
+<p>But the program refused to work, so I have to <code>--force</code> it to work.</p>
+
+<p><table class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;" cellspacing="0" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td style="text-align:center;"><a style="margin-left:auto;margin-right:auto;" href="http://blogueun.files.wordpress.com/2014/01/a64c1-trail.png"><img alt="" src="http://blogueun.files.wordpress.com/2014/01/a64c1-trail.png?w=300" width="640" height="512" border="0" /></a></td>
+</tr>
+<tr>
+<td class="tr-caption" style="text-align:center;">Captured using `screendump`.</td>
+</tr>
+</tbody>
+</table></p>
+
+<p>The program read the blocks fast initially but it gradually slowed down. After running the command for over 20 hours, over 3700 MB of the data had been read. Although there's just about 400 MB to go, according to the average speed at that moment, it was an hour to recover 10 MB of the data. What's worse, the average speed was getting slower and slower! (Later, from GeekyProjects, I realised that the heat of the devices inhibits the process<sup id="fnref-17-4"><a href="#fn-17-4" rel="footnote">4</a></sup>, and the logfile file feature enables users to pause the job.<sup id="fnref-17-5"><a href="#fn-17-5" rel="footnote">5</a></sup>) Therefore, <em>always use a logfile</em>.<sup id="fnref-17-6"><a href="#fn-17-6" rel="footnote">6</a></sup></p>
+
+<p>Without adequate knowledge on GNU ddrescue, I stopped the task with ``, but it took the computer several minutes to receive this input. But what's next for an <em>incomplete</em> task? The files <em>don't</em> occupy the whole USB stick. It might took me another day if I waited for some while and then resumed the task. At that moment, I decided to try mounting the destination partition <code>/dev/sdyn</code>. Thinking that the destination was a NTFS partition from the partition table rendered by <code>fdisk -l</code>, I tried <code>mount -t ntfs /dev/sdyn</code>, but the computer wouldn't let me go. I was fortunate to be stopped by this error. Otherwise, I think I would do another harm to the file system. This time, I let <code>mount</code> to automatically decide the partition type by removing the <code>-t</code> flag. It worked! I could browse and open the file there. After that, I copied the files to a safe place (i.e. a <em>normal</em> data storage device) Finally, I've found that <em>most</em> of the files were salvaged, despite some corruption of the multimedia files.</p>
+
+<p>Since then, I've <em>really</em> learnt a lesson: <em>don't</em> to use GUI for copying big files, <em>always</em> use commands. Secondly, <em>never</em> use <code>mv</code> for big files, use <code>cp</code> instead.</p>
+
+<p><div class="footnotes">
+<hr />
+<ol /></div></p>
+
+<p><li id="fn-17-1">
+<a href="http://techmuck.blogspot.hk/2012/03/data-recovery-with-gnu-ddrescue.html">http://techmuck.blogspot.hk/2012/03/data-recovery-with-gnu-ddrescue.html</a>&#160;<a href="#fnref-17-1" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-17-2">
+Ibid.&#160;<a href="#fnref-17-2" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-17-3">
+Ibid.&#160;<a href="#fnref-17-3" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-17-4">
+<a href="http://geekyprojects.com/storage/how-to-recover-data-even-when-hard-drive-is-damaged/">http://geekyprojects.com/storage/how-to-recover-data-even-when-hard-drive-is-damaged/</a>&#160;<a href="#fnref-17-4" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-17-5">
+<a href="https://www.gnu.org/software/ddrescue/ddrescue.html">https://www.gnu.org/software/ddrescue/ddrescue.html</a>&#160;<a href="#fnref-17-5" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-17-6">
+<a href="http://manpages.ubuntu.com/manpages/raring/man1/ddrescue.1.html">http://manpages.ubuntu.com/manpages/raring/man1/ddrescue.1.html</a>&#160;<a href="#fnref-17-6" rev="footnote">&#8617;</a>
+</li></p>
+
+<p>
+</p>

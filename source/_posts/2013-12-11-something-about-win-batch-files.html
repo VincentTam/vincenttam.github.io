@@ -1,0 +1,41 @@
+---
+layout: post
+title: Something about Win* batch files
+categories:
+- M$ Win*
+tags:
+- .bat
+published: true
+comments: true
+---
+<p><h3>Get drive letter</h3></p>
+
+<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn't work, unless you do the tedious modifications every time.<br />
+- Method 1: <code>set var=%cd:~0,3%</code>
+- Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></p>
+
+<p><h3>Alias on Win&#042;</h3></p>
+
+<p>If you're familiar with &#042;nix and use M$-DOS, you may unconsciously type the <code>ls</code> command in DOS; or if you have a portable version of a software and you need to launch it by command, you will discover the difference between the name of the programs—one has <code>portable</code> at the end while the other one doesn't.</p>
+
+<p>Copy and paste the following lines of code into any text editor.<br />
+[code gutter="false"]<br />
+@ECHO OFF<br />
+[command] %*<br />
+[/code]<br />
+Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
+
+<p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
+
+<p>Note: <code>%</code> <em>in Win&#042;</em> is the same as <code>$*</code> in &#042;nix.<sup id="fnref-43-1"><a href="#fn-43-1" rel="footnote">1</a></sup></p>
+
+<p><div class="footnotes">
+<hr />
+<ol /></div></p>
+
+<p><li id="fn-43-1">
+<a href="http://windowsitpro.com/windows-server/how-can-i-output-all-batch-files-arguments">How can I output all of a batch file's arguments?</a>&#160;<a href="#fnref-43-1" rev="footnote">&#8617;</a>
+</li></p>
+
+<p>
+</p>

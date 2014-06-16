@@ -1,0 +1,96 @@
+---
+layout: post
+title: ! 'Testing Online Code Syntax Highlighters for Blogs (5): Embedding Makefiles
+  to a Web Page'
+categories:
+- online code highlighter
+tags:
+- Blogger
+- highlight.js
+- makefile
+published: true
+comments: true
+---
+<p><em>Note: This post won't make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters.html">original post</a>.</em></p>
+
+<p>In my previous post titled <a href="http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html"><em>Fast Compilation and Execution of Source Code</em></a>, I included a <code>makefile</code>. After I've been familiar with SyntaxHighlighter, I changed the code of the <code>makefile</code> so that the new tool is used. However, as I've written in <a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html">my earlier post</a>, SyntaxHighlighter has <em>no</em> makefile support<sup id="fnref-9-1"><a href="#fn-9-1" rel="footnote">1</a></sup>, while <a href="http://highlightjs.org/">highlight.js</a><sup id="fnref-9-2"><a href="#fn-9-2" rel="footnote">2</a></sup> and <a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a><sup id="fnref-9-3"><a href="#fn-9-3" rel="footnote">3</a></sup> have that feature.</p>
+
+<p><blockquote>
+  I think, therefore I am.<br />
+  Réné Descartes (1596–1650)
+</blockquote></p>
+
+<p>In order to be sure about their claims, I've done a test and the results are as follow.</p>
+
+<p><h3>highlight.js:</h3></p>
+
+<p>[code]<br />
+hello: hello.c<br />
+	gcc -o hello hello.c<br />
+	clean:<br />
+	rm -f hello<br />
+[/code]</p>
+
+<p>Maybe my <code>makefile</code> is too simple that it lacks some typical features for the automatic language recognition of highlight.js. Let's see the sample code copied from <a href="http://highlightjs.org/static/test.html">the official demo</a>.</p>
+
+<p>[code]<br />
+# Makefile</p>
+
+<p>BUILDDIR      = _build<br />
+EXTRAS       ?= $(BUILDDIR)/extras</p>
+
+<p>.PHONY: main clean</p>
+
+<p>main:<br />
+	@echo &quot;Building main facility...&quot;<br />
+	build_main $(BUILDDIR)</p>
+
+<p>clean:<br />
+	rm -rf $(BUILDDIR)/*<br />
+[/code]</p>
+
+<p><h3>google-code-prettify</h3></p>
+
+<p><pre class="prettyprint">hello: hello.c
+    gcc -o hello hello.c
+clean:
+    rm -f hello
+</pre></p>
+
+<p>Let's see a <em>real</em> one.</p>
+
+<p><pre class="prettyprint"># Makefile</pre></p>
+
+<p>BUILDDIR      = _build<br />
+EXTRAS       ?= $(BUILDDIR)/extras</p>
+
+<p>.PHONY: main clean</p>
+
+<p>main:<br />
+    @echo "Building main facility..."<br />
+    build_main $(BUILDDIR)</p>
+
+<p>clean:<br />
+    rm -rf $(BUILDDIR)/*
+</p>
+
+<p>Unluckily, I <em>can't</em> figure out the way to include a tab, instead of whitespaces, for makefiles. Anyways, one who use makefiles will know that after running <code>make</code> on the first day.</p>
+
+<p><div class="footnotes">
+<hr />
+<ol /></div></p>
+
+<p><li id="fn-9-1">
+<a href="http://alexgorbatchev.com/SyntaxHighlighter/manual/api/autoloader.html">http://alexgorbatchev.com/SyntaxHighlighter/manual/api/autoloader.html</a>&#160;<a href="#fnref-9-1" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-9-2">
+<a href="http://highlightjs.org/static/test.html">http://highlightjs.org/static/test.html</a>&#160;<a href="#fnref-9-2" rev="footnote">&#8617;</a>
+</li></p>
+
+<p><li id="fn-9-3">
+<a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">http://google-code-prettify.googlecode.com/svn/trunk/README.html</a>&#160;<a href="#fnref-9-3" rev="footnote">&#8617;</a>
+</li></p>
+
+<p>
+</p>

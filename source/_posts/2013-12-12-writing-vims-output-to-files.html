@@ -1,0 +1,33 @@
+---
+layout: post
+title: Writing Vim's Output to Files
+categories:
+- Vi(m)
+tags:
+- Vi(m)
+published: true
+comments: true
+---
+<p><h3>Changing environment variables in vimrc</h3></p>
+
+<p>Refer to <a href="http://vim.wikia.com/wiki/Environment_variables">Vim Wiki's page on environment variables</a>. The tips uses paths in <em>nix in the examples. However, for Win</em>, some inexperienced users don't know whether slashes or backslashes should be used. In fact, backslashes should be used, and the string should be enclosed by a pair of single quote (I don't know if double quotes work.) Then things should run. If you're unlucky and receive a runtime error in the next time you start Vim, then it may be due to the missing space characters around the equal sign.</p>
+
+<p><h3>Writing external commands to files</h3></p>
+
+<p>It's easy! (<code>:r ![command]</code> will do.)</p>
+
+<p><h3>Writing variables to files</h3></p>
+
+<p>Use the <code>=</code> register. First get into normal mode, then type the following commands.<br />
+[code gutter="false"]<br />
+&quot;=[sth_to_eval]p<br />
+[/code]<br />
+The <code>p</code> have to be typed before any further changes of contents. Otherwise, it may not work. For details, see <a href="http://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim">Unix &amp; Linux Stack Exchange question 8101</a>.</p>
+
+<p><h3>Writing internal commands to files</h3></p>
+
+<p>A forum post has answered my doubt. I redirect interested readers to <a href="http://objectmix.com/editors/786190-how-redirect-vim-internal-command-output-current-buffer.html">here</a>.</p>
+
+<p><h3>Quick reference lists of some easy Vim commands</h3></p>
+
+<p>There's "<a href="http://www.catswhocode.com/blog/100-vim-commands-every-programmer-should-know">100 Vim commands every programmers should know</a>". Another page: <a href="http://php.dzone.com/articles/130-essential-vim-commands">130+ Essential Vim Commands</a></p>

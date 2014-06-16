@@ -1,0 +1,52 @@
+---
+layout: post
+title: Links to Good Posts
+categories:
+- Vi(m)
+tags:
+- Ctags
+- Taglist
+published: true
+comments: true
+---
+<p><h3>Taglist installation</h3></p>
+
+<p><a title="Taglist" href="http://github.com/vim-scripts/taglist.vim" target="_blank">Taglist</a> is a popular Vim plugin and it requires <a title="Exuberant Ctags" href="http://ctags.sourceforge.net/" target="_blank">Ctags</a>. c9s has given <a href="http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html" target="_blank">a detailed description of the installation of Ctags</a>. I've found out that putting the whole <code>ctags58</code> folder under the <code>C</code> drive and adding it to the <code>PATH</code> environment variable will do. You don't need to copy <code>ctags.exe</code> under the <code>C</code> drive or <code>$VIMRUNTIME</code>.</p>
+
+<p>TheGeekStuff has <a href="http://vim.wikia.com/wiki/VimTip632" target="_blank">a web page</a> which described numerous powerful functions of Taglist.</p>
+
+<p><h3>Some VIMRC settings</h3></p>
+
+<p>I've learnt something about vim keyboard mappings by reading <a href="http://alexanderle.com/blog/2012/my-vimrc.html" target="_blank">Le's post on customized VIMRC settings</a>.Using this knowledge, I can do something that I couldn't do last month.</p>
+
+<p><h3>Automatic completion of unclosed braces/brackets</h3></p>
+
+<p>Unmatched brackets/braces are the cause of a host of syntax errors in source code. Some novices probably spend hours to find it out, and then say something that their high school teachers will never approve. <a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters" target="_blank">A Vim Tips</a> contains a simple solution that enable users to get the job done. However, I'm not accustomed to its differences with Vim-$latex \LaTeX$, so I decided to add the following lines of code into my VIMRC file:</p>
+
+{% raw %}
+<p>[code firstline="64"]<br />
+inoremap (      ()&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+inoremap (&lt;CR&gt;  (&lt;CR&gt;)&lt;Esc&gt;O<br />
+inoremap ((     (<br />
+inoremap ()     ()&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+inoremap [      []&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+inoremap [&lt;CR&gt;  [&lt;CR&gt;]&lt;Esc&gt;O<br />
+inoremap [[     [<br />
+inoremap []     []&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+inoremap {      {}&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+inoremap {&lt;CR&gt;  {&lt;CR&gt;}&lt;Esc&gt;O<br />
+inoremap {{     {<br />
+inoremap {}     {}&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
+[/code]</p>
+{% endraw %}
+
+<p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just like $latex \LaTeX$-Suite.</p>
+
+<p><h3>New keyboard shortcuts of my gVim</h3></p>
+
+<p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for toggling NERDTree and Taglist respectively.</p>
+
+<p>[code firstline="76"]<br />
+nnoremap &lt;F3&gt; :NERDTreeToggle<br />
+nnoremap &lt;F12&gt; :TlistToggle<br />
+[/code]</p>

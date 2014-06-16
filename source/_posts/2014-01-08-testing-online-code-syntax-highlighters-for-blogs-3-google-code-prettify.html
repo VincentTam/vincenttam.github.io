@@ -1,0 +1,89 @@
+---
+layout: post
+title: ! 'Testing Online Code Syntax Highlighters for Blogs (3): google-code-prettify'
+categories:
+- online code highlighter
+tags:
+- Blogger
+- google-code-prettify
+- highlight.js
+- SyntaxHighlighter
+published: true
+comments: true
+---
+<p><em>Note: This post won't make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for_8.html">original post</a>.</em></p>
+
+<p>Here's another online code syntax highlighter called <a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a>. The following are the test results.</p>
+
+<p>In order to use this technology in your post, the following simple steps will do.</p>
+
+<p><ol>
+<li>Add an "HTML/JavaScript" gadget to your blog. In the contents, just paste the following line of code found on <a href="https://code.google.com/p/google-code-prettify/wiki/GettingStarted">the official tutorial</a>.<sup id="fnref-12-1"><a href="#fn-12-1" rel="footnote">1</a></sup></li></ol></p>
+
+<p><pre class="prettyprint lang-html">&lt;script src=&quot;https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js&quot;&gt;&lt;/script&gt;</pre>
+<li>Insert the following lines of code and replace the text inside the <code>pre</code> tag with your code.<br />
+Note: Like <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a> and <a href="http://highlightjs.org/">highlight.js</a>, you need to encode <code>&lt;</code>, <code>&gt;</code>,  <code>&amp;</code>, etc into HTML encoding using an HTML encoder. At the bottom part of <a href="http://blogue-un.blogspot.hk/2014/01/testing-syntaxhighlighter_5977.html">one of my older posts</a>, I included a link to an HTML encoder, and here's a list of two more.</li></p>
+
+<p><ul>
+<li><a href="http://www.web2generators.com/html/entities">Web 2.0 Generators</a>: it contains a list of reserved characters and their entity names, as well as an HTML decoder.</li>
+<li><a href="http://www.opinionatedgeek.com/DotNet/Tools/HTMLEncode/Default.aspx">OpinionatedGeek</a>: it contains an HTML decoder.</li>
+</ul></p>
+
+<p>i.e. If you want to embed HTML code using an HTML encoder, you need to type the following <em>unencoded</em> code first.</p>
+
+<p><pre class="prettyprint lang-html">&lt;pre class="prettyprint lang-html"&gt;
+&lt;!-- your code here--&gt;
+&lt;/pre&gt;</pre></p>
+
+<p>Then you use a HTML encoder to generate the following output and paste it inside the <code>pre</code> tag.</p>
+
+<p><pre class="prettyprint">&lt;pre class=&quot;prettyprint lang-html&quot;&gt;
+&lt;!-- your code here--&gt;
+&lt;/pre&gt;</pre></p>
+
+<p>Exercise: If you think that you understand the above text, try making a web page that teaches users how to embed HTML code into a web page.<br />
+Hint: Right click and choose "<strong>V</strong>iew Page Source" in the pop up menu.</p>
+<li><p>If your source code contains too many characters in a line, the right part of the code will go out of the box. Add the following CSS code to automatically fix the problem.</p>
+
+<p /><pre class="prettyprint lang-css">pre {
+ overflow: auto;
+}</pre>
+
+<p>Then a scrollbar will be automatically attached to the source code container if the source code has too many columns and/or lines.</p></li>
+
+
+<p><p>Suppose you see the following lines of code in message in response to <a href="http://stackoverflow.com/questions/20977752/php-select-box-with-multiple-options-in-of-times-and-dates">a question on Stack Overflow</a>. However, it has <em>no</em> line number, and you want to embed this piece of code into your web page <em>with</em> line number. So I append <code>linenums</code> to the <code>class</code> attribute of the <code>pre</code> tag.</p>
+
+<p><pre class="prettyprint lang-php linenums">&lt;select&gt;
+ 
+&lt;?php for ($i = 1; $i &lt;= 2; ++$i) { ?&gt;
+ 
+  &lt;optgroup label=&quot;&lt;?php echo date('l j F', strtotime('+ ' . $i . ' day')); ?&gt;&quot;&gt;
+    &lt;?php if($i==0) { ?&gt;
+    &lt;?php for ($n = date('H'); $n &lt; 16; $n += 3) { ?&gt;
+      &lt;option&gt;&lt;?php echo str_pad($n, 2, '0', STR_PAD_LEFT); ?&gt;:00 - &lt;?php echo str_pad($n + 2, 2, '0'); ?&gt;:00&lt;/option&gt;
+    &lt;?php } }?&gt;
+    &lt;?php for ($n = 9; $n &lt; 16; $n = $n + 3) { ?&gt;
+     
+      &lt;option&gt;&lt;?php echo str_pad($n, 2, '0', STR_PAD_LEFT); ?&gt;:00 - &lt;?php echo str_pad($n + 2, 2, '0'); ?&gt;:00&lt;/option&gt;
+     
+    &lt;?php } ?&gt;
+   
+  &lt;/optgroup&gt;
+ 
+&lt;?php } ?&gt;
+ 
+&lt;/select&gt;</pre></p>
+
+<p>For further details, refer to the <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">official README</a>.</p>
+
+<p><div class="footnotes">
+<hr />
+<ol /></div></p>
+
+<p><li id="fn-12-1">
+<a href="http://andmobiz.blogspot.hk/2013/05/blogger-google-code-prettify-github-gist.html">http://andmobiz.blogspot.hk/2013/05/blogger-google-code-prettify-github-gist.html</a>&#160;<a href="#fnref-12-1" rev="footnote">&#8617;</a>
+</li></p>
+
+<p>
+</p></p>

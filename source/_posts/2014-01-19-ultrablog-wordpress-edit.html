@@ -1,0 +1,49 @@
+---
+layout: post
+title: Cross-Platform Blog Editing with UltraBlog and WordPress
+categories:
+- UltraBlog.vim
+tags: []
+published: true
+comments: true
+---
+<p>I suspect that after I write the blog with UltraBlog in Vim and editing the contents with the online editor, the changes done using the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
+
+<p>Let's see how it works. (Typed on <a href="http://wordpress.com" target="_blank">WordPress.com</a>.)</p>
+
+<p>When I reopened the <em>same</em> post in Vim, I realised that the second paragraph is gone! I <em>was</em> disappointed for a while, and googled "ultrablog update database". However, there are too few websites about UltraBlog.vim. Its ineffective to use Google to solve this problem.</p>
+
+<p><img src="http://blogueun.files.wordpress.com/2014/01/posted_via_ultrablog.png" alt="screenshot of the first Google search result" /></p>
+
+<p>From the above figure, it seems that there's 544 search results that contain the <em>entire</em> string "posted via ultrablog.vim".</p>
+
+<p><img src="http://blogueun.files.wordpress.com/2014/01/posted_via_ultrablog3.png" alt="screenshot of the last Google search result" /></p>
+
+<p>However, I go to the third page and find out that hundreds of search results have been omitted.</p>
+
+<p>The above two screenshots show that the number of users of UltraBlog.vim is <em>not</em> as many as other free softwares, libraries or plugins. One may need to wait for the adoption of this plugin by more Vim users before being able to find a forum post on problems using this plugin, provided that he/she doesn't start a new thread on the plugin.</p>
+
+<p>Although there's only a few UltraBlog.vim users, it's still an incredibly excellent blogging plugin.</p>
+
+<p>How can I solve my doubts about updating the local database with the remote one?</p>
+
+<p>When Google <em>doesn't</em> work, then it's sensible for one to go for the official documentation. Geeks will find it informative, but I, as a mediocre <a href="https://www.gnu.org/gnu/gnu-users-never-heard-of-gnu.html" target="_blank"><em>GNU/Linux</em></a> user, often find it hard to retrieve information from manuals.</p>
+
+<p>For example, I searched UltraBlog's official documentation for "sync", but failed. Luckily, in the help for the command <code>:UBList</code> (in <code>UltraBlog.txt</code>), I've found something useful:</p>
+
+<p>[code gutter="false"]<br />
+:UBList post remote 50</p>
+
+<p>This command lists the latest 50 posts in the blog.</p>
+
+<p>Pressing the ENTER key in a remote post list will open the post under <br />
+cursor and save it to the local database if it is not in it, otherwise, <br />
+the local copy will be opened instead of the remote one. This enables <br />
+users to modify markdown source and update the remote post.</p>
+
+<p>The remote post list doesn't support paging.<br />
+[/code]</p>
+
+<p>This solves the problem: I just delete my local copy before downloading the remote copy if the local copy is older than the remote copy.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/" target="_blank">UltraBlog.vim</a>.</p>

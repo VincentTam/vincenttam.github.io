@@ -1,0 +1,76 @@
+---
+layout: post
+title: Fast Compilation and Execution of Source Code
+categories:
+- Vi(m)
+tags:
+- makefile
+- Vi(m)
+published: true
+comments: true
+---
+<p>Possible software: Vim.</p>
+
+<p><h3>Why?</h3></p>
+
+<p>In a heavy IDE, you need to click a button or some keyboard shortcuts.  Unless you frequently use the keystrokes, you'll likely forget them since they are usually non-transferable IT skills.</p>
+
+<p>It's different in Vim. Since it's an F/OSS programmable editor, you can add whatever plugins and extra functions you like. You can adjust you .vimrc file so that the editing environment won't have too many <em>undesirable</em> changes.</p>
+
+<p>Vim is lightweight. If your computer collapses (or even gives you the notorious BoD before RiP) due to loading IDE, Vim is your choice since it may still work with some good design and functions.</p>
+
+<p>What are the good things?</p>
+
+<p><ol>
+<li>Diminished role of mouse and more use of keyboard due to modes</li>
+<li>Syntax highlighting and file type detection</li>
+</ol></p>
+
+<p><h3>How? (Doesn't need c.vim)</h3></p>
+
+<p><ol>
+<li>Set up <code>makefile</code> (<a href="http://kevincrazy.pixnet.net/blog/post/29780477-makefile%E7%B0%A1%E6%98%93%E6%95%99%E5%AD%B8...">simple tutorial about makefile</a>)</li>
+<li>Run <code>:make</code></li>
+<li>Run <code>:!./%&lt;</code> on &#042;nix (or simply <code>:!%&lt;</code> on M$ Win&#042;)</li>
+</ol></p>
+
+<p>Notes:<br />
+1.  <code>set makeprg=mingw32-make</code> in vimrc for MinGW make (<a href="https://sites.google.com/site/jamespandavan/Home/c-c/getting-started-with-c-c-programming-with-vim">more details about <code>makeprg</code></a>)<br />
+2.  <code>%</code> stands for the current file, and <code>&lt;</code> stands for the file name without extension.</p>
+
+<p>Advantages:<br />
+-   In the whole process, you don't have to leave Vim and keyboard.<br />
+-   <em>The commands are the same whatever your files are</em> (already determined by <code>makefile</code>), so you <em>don't waste time to think and type</em> in the correct name.</p>
+
+<p>2 quotes from Sharpe (I don't remember the exact wordings):</p>
+
+<p><blockquote>
+  "The battle is not in the hands of who give the most shots. It should be those who shot the best."<br />
+  "A good soldier can fire 3-4 rounds a minute."
+</blockquote></p>
+
+<p><h3>My sample <code>makefile</code>:</h3></p>
+
+<p>[code lang=text]<br />
+hello : hello.c<br />
+    gcc -o hello hello.c<br />
+clean:<br />
+    rm -f hello<br />
+[/code]</p>
+
+<p>Note: Insert <em>tabs</em> for indentation, <em>not</em> whitespaces. If the compiled program is <code>hello.exe</code>, perhaps the extension name is also needed for <code>rm</code>. (I have <em>never</em> tested it.)</p>
+
+<p><h3>With c.vim</h3></p>
+
+<p>Follow the menu and you'll be also good.<sup id="fnref-45-1"><a href="#fn-45-1" rel="footnote">1</a></sup></p>
+
+<p><div class="footnotes">
+<hr />
+<ol /></div></p>
+
+<p><li id="fn-45-1">
+<a href="http://stackoverflow.com/questions/2627886/how-do-i-run-a-c-program-from-vim">How do I run a C program from Vim?</a>&#160;<a href="#fnref-45-1" rev="footnote">&#8617;</a>
+</li></p>
+
+<p>
+</p>
