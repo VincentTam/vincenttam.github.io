@@ -1,0 +1,36 @@
+---
+layout: post
+title: A Reason for My VimRepress Installation Failure
+categories:
+- Vi(m)
+tags:
+- Blogger
+- Ruby
+- UltraBlog
+- VimRepress
+- WordPress
+published: true
+comments: true
+---
+<p>In <a href="http://blogueun.wordpress.com/2014/01/12/my-first-post-using-ultrablog-vim/"><em>My First Post Using UltraBlog.vim</em></a>, I mentioned that I had tried using VimRepress. However, this plugin kept throwing errors like this.<br />
+[code]<br />
+Confirm Delete [6]: First Post Using VimRepress? [yes/NO] :yesError detected while processing :<br />
+Traceback (most recent call last):<br />
+File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;<br />
+File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 41, in __check<br />
+echoerr(&quot;something wrong: %s&quot; % e)<br />
+File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 47, in &lt;lambda&gt;<br />
+echoerr = lambda s: vim.command('echoerr &quot;%s&quot;' % s)<br />
+vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s:user_input<br />
+[/code]<br />
+I tried browsing <code>vimrepress.py</code> starting from lines 41–50, and using something like <code>*</code>, but I couldn't understand what it was. As you can see from the last paragraph of this post, I finally decided to switch to UltraBlog.vim.</p>
+
+<p>After reading the README of <a href="https://github.com/suan/vim-instant-markdown">vim-instant-markdown</a>, I can make a better <em>guess</em> now. I directly quote Suan's words here.</p>
+
+<p><blockquote>
+  Make sure the ruby gems were installed under your default Ruby (i.e. if you're using RVM, use gem install and NOT sudo gem install as that might cause the gems to be installed under a non-RVM Ruby)
+</blockquote></p>
+
+<p>Despite having a clue, I <em>won't</em> switch back to Blogger since WordPress.com and UltraBlog.vim work together well on my computer.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
