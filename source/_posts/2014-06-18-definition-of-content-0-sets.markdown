@@ -126,7 +126,7 @@ $$\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A\implies\vect{u}
 
 Another trivial fact is from the definition of the *interior* of $A$.
 $$\interior A \subseteq A$$ due to the same reason for
-$$\exterior A \subseteq \reals^n \setminus A$$—
+$$\exterior A \subseteq \reals^n \setminus A$$, that is,
 $$\vect{u}\in\mathcal{B}_r(\vect{u})$$.
 $$\vect{u}\in\interior A\implies\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A$$.
 Thus,
