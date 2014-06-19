@@ -12,7 +12,8 @@ be found [here][err].
 
 Two weeks ago, I found a mistake in the book that *wasn't* in the
 error list.  In p. 430, ln. -3, the '<' sign should actually be a '≤',
-since it's *given* that $\\| \mathbf{B} - \mathbf{A} \\| \le c / 2$.
+since it's *given* that
+$$\norm{\vect{B} - \vect{A}} \le c / 2$$.
 
 <!-- more -->
 

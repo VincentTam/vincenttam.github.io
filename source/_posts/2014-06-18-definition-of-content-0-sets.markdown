@@ -23,153 +23,153 @@ myself what ideas should be introduced.
 <!-- more -->
 
 Unless otherwise specified, assume that
-$$A\in\mathbb{R}^n,\mathbf{x},\mathbf{x_0},\mathbf{u},\mathbf{v}\in\mathbb{R}^n,\mathbf{u}_i\in\mathbb{R}^n\,\forall\,i\in\mathbb{N}$$.
+$$A\in\reals^n,\vect{x},\vect{x_0},\vect{u},\vect{v}\in\reals^n,\vect{u}_i\in\reals^n\,\forall\,i\in\mathbb{N}$$.
 
 Norm
-: The *norm* of $$\mathbf{x}$$ is defined as
+: The *norm* of $$\vect{x}$$ is defined as
 
-  $$\|\mathbf{x}\| := \sqrt{\sum_{i=1}^n x_i^2}.$$
+  $$\norm{\vect{x}} := \sqrt{\sum_{i=1}^n x_i^2}.$$
 
 Distance
-: The *distance* between $$\mathbf{u}$$ and $$\mathbf{v}$$ is
-  $$\|\mathbf{u}-\mathbf{v}\|$$.
+: The *distance* between $$\vect{u}$$ and $$\vect{v}$$ is
+  $$\norm{\vect{u}-\vect{v}}$$.
 
 Open ball
-: \$$\mathcal{B}_r (\mathbf{x}_0):=\{\mathbf{x}\mid\|\mathbf{x}-\mathbf{x}_0\|<r\}$$
+: \$$\mathcal{B}_r (\vect{x}_0):=\{\vect{x}\mid\norm{\vect{x}-\vect{x}_0}<r\}$$
 
 Interior point
-: $$\mathbf{u}$$ is an *interior point in* $A$ if
-  $$\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u}) \subseteq A$$.
+: $$\vect{u}$$ is an *interior point in* $A$ if
+  $$\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq A$$.
   [^1]
 
 Interior of a set
-: \$$\operatorname{int} A := \{\mathbf{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u})\subseteq A\}$$
+: \$$\interior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A\}$$
 
 Open set
-: $A$ is *open* if $$A = \operatorname{int} A$$.
+: $A$ is *open* if $$A = \interior A$$.
 
-Limit of $$\{\mathbf{u}_k\}$$
-: \$$\forall\,\varepsilon>0,\exists\,K\in\mathbb{N}\,\text{s.t.}\,\forall\,k\ge K,\|\mathbf{u}_k-\mathbf{u}\|<\varepsilon$$
+Limit of $$\{\vect{u}_k\}$$
+: \$$\forall\,\varepsilon>0,\exists\,K\in\mathbb{N}\,\text{s.t.}\,\forall\,k\ge K,\norm{\vect{u}_k-\vect{u}}<\varepsilon$$
 
   We denote it as
 
-  $$\lim_{k\to\infty}\mathbf{u}_k=\mathbf{u}.$$
+  $$\lim_{k\to\infty}\vect{u}_k=\vect{u}.$$
 
 Closed set
-: $$\mathbf{u}_k\in A\,\forall\,k\in\mathbb{N},\lim_{k\to\infty}\mathbf{u}_k=\mathbf{u}\implies\mathbf{u}\in A$$
+: $$\vect{u}_k\in A\,\forall\,k\in\mathbb{N},\lim_{k\to\infty}\vect{u}_k=\vect{u}\implies\vect{u}\in A$$
 
 Boundary
-: \$$\partial A := \{\mathbf{x}\mid\forall\,r>0,\exists\,\mathbf{u}\in A,\mathbf{v}\notin A\,\text{s.t.}\,\mathbf{u},\mathbf{v}\in\mathcal{B}_r(\mathbf{x})\}$$
+: \$$\partial A := \{\vect{x}\mid\forall\,r>0,\exists\,\vect{u}\in A,\vect{v}\notin A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})\}$$
 
 Exterior point
-: $$\mathbf{u}$$ is an *exterior point in* $A$ if
-  $$\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u}) \subseteq \mathbb{R}^n\setminus A$$.
+: $$\vect{u}$$ is an *exterior point in* $A$ if
+  $$\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq \reals^n\setminus A$$.
 
 Exterior of a set
-: \$$\operatorname{ext} A := \{\mathbf{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u})\subseteq \mathbb{R}^n\setminus A\}$$
+: \$$\exterior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq \reals^n\setminus A\}$$
 
 Some claims
 ---
 
-If a subset $A$ of $$\mathbb{R}^n$$ is contained in a closed subset
-$B$ of $$\mathbb{R}^n$$, $$\partial A \subseteq B$$.
+If a subset $A$ of $$\reals^n$$ is contained in a closed subset
+$B$ of $$\reals^n$$, $$\partial A \subseteq B$$.
 {: #claim1}
 
 *Proof*. Let
-$$\mathbf{u}\in\partial A.\forall\,k\in\mathbb{N},\exists\,\mathbf{u}_k\in\mathcal{B}_{1/k}(\mathbf{u})\cap A$$.
+$$\vect{u}\in\partial A.\forall\,k\in\mathbb{N},\exists\,\vect{u}_k\in\mathcal{B}_{1/k}(\vect{u})\cap A$$.
 Then
 
-$$\lim_{k\to\infty}\mathbf{u}_k=\mathbf{u}$$
+$$\lim_{k\to\infty}\vect{u}_k=\vect{u}$$
 
 because
-$$\forall\,\varepsilon>0,K>1/\varepsilon,k\ge K\implies\|\mathbf{u}-\mathbf{u}_k\|<1/k\le\varepsilon$$.  
-$$\because\mathbf{u}_k\in A\,\forall\,k\in\mathbb{N}$$,
+$$\forall\,\varepsilon>0,K>1/\varepsilon,k\ge K\implies\norm{\vect{u}-\vect{u}_k}<1/k\le\varepsilon$$.  
+$$\because\vect{u}_k\in A\,\forall\,k\in\mathbb{N}$$,
 
-$$\lim_{k\to\infty}\mathbf{u}_k=\mathbf{u},$$
+$$\lim_{k\to\infty}\vect{u}_k=\vect{u},$$
 
 and $B$ is closed.  
-$$\therefore\mathbf{u}\in B$$.  
+$$\therefore\vect{u}\in B$$.  
 Q.E.D.
 
-\$$\mathbb{R}^n=\operatorname{int} A\sqcup\partial A\sqcup\operatorname{ext} A$$
+\$$\reals^n=\interior A\sqcup\partial A\sqcup\exterior A$$
 
-*Proof*. Let $$\mathbf{x}\notin\operatorname{int} A$$.
+*Proof*. Let $$\vect{x}\notin\interior A$$.
 Then
-$$\forall\,r>0,\exists\,\mathbf{u}\in\mathcal{B}_r(\mathbf{x})\setminus A$$.
+$$\forall\,r>0,\exists\,\vect{u}\in\mathcal{B}_r(\vect{x})\setminus A$$.
 
 Case 1:
-$$\forall\,r>0,\mbox{there also exists}\,\mathbf{v}\in\mathcal{B}_r(\mathbf{x})\cap A$$.  
-Putting the two statements about $$\mathbf{u}$$ and $$\mathbf{v}$$
+$$\forall\,r>0,\mbox{there also exists}\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A$$.  
+Putting the two statements about $$\vect{u}$$ and $$\vect{v}$$
 together, we get
-$$\forall\,r>0,\exists\,\mathbf{u}\notin A,\mathbf{v}\in A\,\text{s.t.}\,\mathbf{u},\mathbf{v}\in\mathcal{B}_r(\mathbf{x})$$.  
-$$\therefore\mathbf{x}\in\partial A$$
+$$\forall\,r>0,\exists\,\vect{u}\notin A,\vect{v}\in A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})$$.  
+$$\therefore\vect{x}\in\partial A$$
 
 Case 2:
-$$\neg\,(\forall\,r>0,\exists\,\mathbf{v}\in\mathcal{B}_r(\mathbf{x})\cap A)$$  
+$$\neg\,(\forall\,r>0,\exists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A)$$  
 i.e. 
-$$\exists\,r>0\,\text{s.t.}\,\nexists\,\mathbf{v}\in\mathcal{B}_r(\mathbf{x})\cap A$$.  
-$$\therefore\exists\,r>0\,\text{s.t.}\,\mathbf{v}\in A\uparrow\mathbf{v}\in\mathcal{B}_r(\mathbf{x})$$[^2]  
+$$\exists\,r>0\,\text{s.t.}\,\nexists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A$$.  
+$$\therefore\exists\,r>0\,\text{s.t.}\,\vect{v}\in A\uparrow\vect{v}\in\mathcal{B}_r(\vect{x})$$[^2]  
 i.e.
-$$\exists\,r>0\,\text{s.t.}\,\mathbf{v}\in\mathcal{B}_r(\mathbf{x})\implies\mathbf{v}\notin A$$  
-$$\therefore\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{x})\subseteq\mathbb{R}^n\setminus A$$  
-Hence $$\mathbf{x}\in\operatorname{ext} A$$.  
+$$\exists\,r>0\,\text{s.t.}\,\vect{v}\in\mathcal{B}_r(\vect{x})\implies\vect{v}\notin A$$  
+$$\therefore\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{x})\subseteq\reals^n\setminus A$$  
+Hence $$\vect{x}\in\exterior A$$.  
 Q.E.D.
 
 From the definition of the *exterior* of $A$, it's clear that
-$$\operatorname{ext} A \subseteq \mathbb{R}^n \setminus A$$.  The
-reason is that $$\mathbf{u}\in\mathcal{B}_r(\mathbf{u})$$.  If
-$$\mathbf{u}\in\operatorname{ext} A$$, then
-$$\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u})\subseteq\mathbb{R}^n\setminus A$$.
+$$\exterior A \subseteq \reals^n \setminus A$$.  The
+reason is that $$\vect{u}\in\mathcal{B}_r(\vect{u})$$.  If
+$$\vect{u}\in\exterior A$$, then
+$$\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A$$.
 Thus,
-$$\mathbf{u}\in\mathcal{B}_r(\mathbf{u})\subseteq\mathbb{R}^n\setminus A\implies\mathbf{u}\notin A$$.
+$$\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A\implies\vect{u}\notin A$$.
 {: #trivial1}
 
 Another trivial fact is from the definition of the *interior* of $A$.
-$$\operatorname{int} A \subseteq A$$ due to the same reason for
-$$\operatorname{ext} A \subseteq \mathbb{R}^n \setminus A$$—
-$$\mathbf{u}\in\mathcal{B}_r(\mathbf{u})$$.
-$$\mathbf{u}\in\operatorname{int} A\implies\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\mathbf{u})\subseteq A$$.
+$$\interior A \subseteq A$$ due to the same reason for
+$$\exterior A \subseteq \reals^n \setminus A$$, that is,
+$$\vect{u}\in\mathcal{B}_r(\vect{u})$$.
+$$\vect{u}\in\interior A\implies\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A$$.
 Thus,
-$$\mathbf{u}\in\mathcal{B}_r(\mathbf{u})\subseteq A\implies\mathbf{u}\in A$$.
+$$\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq A\implies\vect{u}\in A$$.
 {: #trivial2}
 
 More definitions
 ---
 
 Unless otherwise specified, assume that
-$$a_i,b_i \in \mathbb{R}\,\forall\,i \in \mathbb{N}$$.
+$$a_i,b_i \in \reals\,\forall\,i \in \mathbb{N}$$.
 
 Closure
-: \$$\bar{A} := \operatorname{int} A \cup \partial A$$
+: \$$\overline{A} := \interior A \cup \partial A$$
 
 Bounded set
-: \$$\exists\,M\ge 0\,\text{s.t.}\,\|\mathbf{x}\|\ge M\,\forall\,\mathbf{x}\in A$$
+: \$$\exists\,M\ge 0\,\text{s.t.}\,\norm{\vect{x}}\ge M\,\forall\,\vect{x}\in A$$
 
 Generalized rectangle
-: $$\mathbf{I} := \mathbf{I_1} \times \dots \times \mathbf{I_n}$$,
-  where $$\mathbf{I_i} := [a_i,b_i]\,\forall\,i \in \mathbb{N}$$.
+: $$\vect{I} := \vect{I_1} \times \dots \times \vect{I_n}$$,
+  where $$\vect{I_i} := [a_i,b_i]\,\forall\,i \in \mathbb{N}$$.
 
 Volume of generalized rectangle
-: $$\operatorname{vol} \mathbf{I} := \prod_{i=1}^n (b_i - a_i)$$
+: $$\volume \vect{I} := \prod_{i=1}^n (b_i - a_i)$$
 
 From the definition of the closure of a set, we can conclude that
-$$A \subseteq \bar{A}$$ since
-$$\mathbb{R}^n=\operatorname{int} A\sqcup\partial A\sqcup\operatorname{ext} A$$
-and $$A \cap \operatorname{ext} A = \varnothing$$.
+$$A \subseteq \overline{A}$$ since
+$$\reals^n=\interior A\sqcup\partial A\sqcup\exterior A$$
+and $$A \cap \exterior A = \varnothing$$.
 ([proved](#trivial1))  Thus,
-$$A \subseteq \operatorname{int} A \sqcup \partial A = \bar{A}$$.
+$$A \subseteq \interior A \sqcup \partial A = \overline{A}$$.
 
 We can extend the [first claim](#claim1) like this.
 
-> If a subset $A$ of $$\mathbb{R}^n$$ is contained in a closed subset
-> $B$ of $$\mathbb{R}^n$$, $$\bar{A} \subseteq B$$.
+> If a subset $A$ of $$\reals^n$$ is contained in a closed subset
+> $B$ of $$\reals^n$$, $$\overline{A} \subseteq B$$.
 {: #ExtendedClaim}
 
-*Proof*.  $$\bar{A} := \operatorname{int} A \cup \partial A$$.  By the
+*Proof*.  $$\overline{A} := \interior A \cup \partial A$$.  By the
 [first claim](#claim1), it's already known that
 $$\partial A \subseteq B$$, so it remains to show that
-$$\operatorname{int} A \subseteq B$$.  Since
-$$\operatorname{int} A \subseteq A$$ ([proved](#trivial2)) and it's
+$$\interior A \subseteq B$$.  Since
+$$\interior A \subseteq A$$ ([proved](#trivial2)) and it's
 given that $$A \subseteq B$$, we're done!  
 Q.E.D.
 
@@ -178,22 +178,25 @@ Comparing the definitions
 
 That's the definition of *Jordan content 0* sets.
 
-Suppose $D$ is a bounded subset of $$\mathbb{R}^n$$.
+Suppose $D$ is a bounded subset of $$\reals^n$$.
 
-$$\forall\,\varepsilon>0,\exists\,\text{generalized rectangle}\,\mathbf{I}_1,\dots,\mathbf{I}_m\subseteq\mathbb{R}^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m \mathbf{I}_j\;\text{and}\,\sum_{j=1}^m \operatorname{vol} \mathbf{I}_j<\varepsilon$$
+$$\forall\,\varepsilon>0,\exists\,\text{generalized
+rectangle}\,\vect{I}_1,\dots,\vect{I}_m\subseteq\reals^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m
+\vect{I}_j\;\text{and}\,\sum_{j=1}^m \volume \vect{I}_j<\varepsilon$$
 
 I have read another version of the definition, and the only difference
-between those two versions is that $D$ is replaced by $$\bar{D}$$.  It
-took me a short while to understand why this is OK.
+between those two versions is that $D$ is replaced by
+$$\overline{D}$$.  It took me a short while to understand why this is
+OK.
 
-First, $$\mathbf{I}_j$$ is closed for each $j$ since it's the
+First, $$\vect{I}_j$$ is closed for each $j$ since it's the
 Cartesian product of closed intervals.
 
-$$\bigcup_{j=1}^m \mathbf{I}_j\;\text{is also closed. (DeMorgan's Law)}$$
+$$\bigcup_{j=1}^m \vect{I}_j\;\text{is also closed. (DeMorgan's Law)}$$
 
 Hence, by the [extended claim](#ExtendedClaim), one can also write
 
-$$\bar{D} \subseteq \bigcup_{j=1}^m \mathbf{I}_j$$
+$$\overline{D} \subseteq \bigcup_{j=1}^m \vect{I}_j$$
 
 instead of $D$ in the above definition.
 
