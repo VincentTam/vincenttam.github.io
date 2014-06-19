@@ -3,7 +3,7 @@ layout: post
 title: 'An Unreported Mistake in "Advanced Calculus"'
 date: 2014-06-16 23:40:05 +0800
 comments: true
-categories: Math
+categories: math
 ---
 
 After setting up Octopress for several weeks, I can finally begin to
