@@ -30,6 +30,10 @@ After finishing the draft, I committed the change, switched to
 `source` branch is to avoid huge changes in `public` folder.
 <del>I've learnt to do the "merge" from [here][GitMergeTip].</del>
 
+Being *unfamiliar* with kramdown syntax for displayed math
+equations[^1], I had made some mistakes in the source code for my
+[previous post] while writing the draft on `source` branch.
+
 * * *
 (Last edited on JUN 19,2014)
 
@@ -39,29 +43,98 @@ in Git.  I *shouldn't* manually commit the *same* changes on
 *merge* the commit on *another* branch, if the two diverging branches
 have *no* conflict.
 
-* * *
+I continued writing `<posts>`.  Unfortunately, I had *mistakenly*
+committed the changes on `wpcom-importer`, instead of `source` branch.
+I would like to
 
-Being *unfamiliar* with kramdown syntax for displayed math
-equations[^1], I had made some mistakes in the source code for my
-[previous post] while writing the draft on `source` branch.
+1. Remove the commit, but *keep* the changes in the files.
+2. "Move" the changed file from `wpcom-importer` to `source` branch.
+3. Commit the changes on `source` branch.
+4. Merge the changes from `source` branch into `wpcom-importer`.
+
+I issued the following commands to do so.
+
+<pre class="cli"><code>$ git reflog		       # For checking purpose
+$ git reset --soft HEAD^       # Revert to the previous commit
+$ git log -3		       # For checking purpose
+$ git status		       # `&lt;post&gt;' should be in `... not staged for commit'
+$ less &lt;post&gt;		       # For checking purpose
+$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
+$ git checkout source	       # Go to the correct place for the commit
+$ git add &lt;post&gt;	       # Add back `&lt;post&gt;' to `source' branch
+$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
+$ git checkout wpcom-importer  # Go back to another branch for merging
+$ git merge source	       # Merge the changes back
+</code></pre>
+
+* * *
 
 The little list
 ---
 
+### Stashing and Grabbing
+
+"Stash" means going to another branch with *uncommitted* changes in
+the staging area here.
+
 [This list][GitCmdList] written in Chinese is a quick summary of Git
 commands.  I learnt the use of `git stash` commands from there.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git stash                     # save the uncommitted changes
-$ git stash list                # show a list of stashes
-$ git stash show                # inspect a list of stashes
-$ git stash pop                 # apply and discard the topmost stash
-$ git stash apply               # apply but don't discard the topmost stash
-$ git checkout source -- &lt;file&gt; # copy the file from other branch
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git stash                      # save the uncommitted changes
+$ git stash list                 # show a list of stashes
+$ git stash show                 # inspect a list of stashes
+$ git stash pop                  # apply and discard the topmost stash
+$ git stash apply                # apply but don't discard the topmost stash
+$ git checkout source -- &lt;file&gt;  # copy the file from other branch
 </code></pre>
 
 In the last "merge" command, `--` avoids an ambiguity since `source`
 can be either the name of a branch or a folder in this case.  In
 addition, this command *doesn't* affect the commit history.
+
+### More about rewinding things
+
+#### Rewinding to previous versions on the same branch
+
+Here's more commands about reseting the working tree to previous
+versions.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
+</code></pre>
+
+#### Difference between resetting and reverting things
+
+In the manual of `git reset`, I saw a link to`git revert`, and
+*couldn't* understand the difference between those two command from
+there.
+
+> If you want to undo a commit other than the latest on a branch,
+> [git-revert(1)] is your friend.
+
+A page in Stack Overflow is really my friend.
+([URL][StackOverflow8358035])  `git revert` *won't* overwrite the
+commit history, so it's suitable for published changes, while
+`git reset` *can* rewrite history.
+
+#### Undoing merges
+
+See *Undo a merge or pull* and the following section in the manual of
+`git reset` for explanations.
+
+##### Undoing conflicted merges
+
+The SCM will say:
+
+    Automatic merge failed; fix conflicts and then commit the result.
+
+Thus, the problematic merge *hasn't* been committed.  Simply running
+`git reset --hard` will solve the problem.
+
+##### Undoing successful automatic merges
+
+Use `ORIG_HEAD` instead of `HEAD` for the tip of the branch before the
+merge.  (i.e. `git reset --hard ORIG_HEAD`)
 
 ---
 
@@ -72,3 +145,5 @@ addition, this command *doesn't* affect the commit history.
 [GitMergeTip]: http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/ 'Git Tip: How to "Merge" Specific Files from Another Branch'
 [previous post]: /blog/2014/06/17/injectivity-of-stable-mappings/ "Injectivity of Stable Mappings"
 [GitCmdList]: http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/ "Git 初學筆記-指令操作教學-Tsung's Blog"
+[git-revert(1)]: https://www.kernel.org/pub/software/scm/git/docs/git-revert.html
+[StackOverflow8358035]: http://stackoverflow.com/a/8358039
