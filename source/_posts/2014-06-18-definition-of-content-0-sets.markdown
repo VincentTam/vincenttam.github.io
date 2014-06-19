@@ -180,16 +180,18 @@ That's the definition of *Jordan content 0* sets.
 
 Suppose $D$ is a bounded subset of $$\mathbb{R}^n$$.
 
-$$\forall\,\varepsilon>0,\exists\,\text{generalized rectangle}\,\mathbf{I}_1,\dots,\mathbf{I}_m\subseteq\mathbb{R}^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m \mathbf{I}_j\,\text{and}\,\sum_{j=1}^m \operatorname{vol} \mathbf{I}_j<\varepsilon$$
+$$\forall\,\varepsilon>0,\exists\,\text{generalized rectangle}\,\mathbf{I}_1,\dots,\mathbf{I}_m\subseteq\mathbb{R}^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m \mathbf{I}_j\;\text{and}\,\sum_{j=1}^m \operatorname{vol} \mathbf{I}_j<\varepsilon$$
 
 I have read another version of the definition, and the only difference
 between those two versions is that $D$ is replaced by $$\bar{D}$$.  It
 took me a short while to understand why this is OK.
 
 First, $$\mathbf{I}_j$$ is closed for each $j$ since it's the
-Cartesian product of closed intervals.  By DeMorgan's Law,
-$$\bigcup_{j=1}^m \mathbf{I}_j$$ is also closed.  Hence, by the
-[extended claim](#ExtendedClaim), one can also write
+Cartesian product of closed intervals.
+
+$$\bigcup_{j=1}^m \mathbf{I}_j\;\text{is also closed. (DeMorgan's Law)}$$
+
+Hence, by the [extended claim](#ExtendedClaim), one can also write
 
 $$\bar{D} \subseteq \bigcup_{j=1}^m \mathbf{I}_j$$
 
