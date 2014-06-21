@@ -13,17 +13,17 @@ comments: true
 
 <p>The I clicked the cancel button to stop the process, but it simply hangs. After terminating the process from the "System Monitor" (another GUI program), the read/write speed of the USB stick became extremely low. Instead of blinking frequently, the light bulb inside the USB stick went on and off slowing during a read/write operation.<br />
 In <code>/var/log/syslog.1</code>, it says<br />
-[code highlight="3,6,8"]<br />
-[  627.152020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd<br />
-[  658.128020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd<br />
-[  658.493165] sd 3:0:0:0: [sdf] Unhandled error code<br />
-[  658.493169] sd 3:0:0:0: [sdf]  Result: hostbyte=DID_ABORT driverbyte=DRIVER_OK<br />
-[  658.493174] sd 3:0:0:0: [sdf] CDB: Write(10): 2a 00 00 54 e9 30 00 00 01 00<br />
-[  658.493188] end_request: I/O error, dev sdf, sector 5564720<br />
-[  658.494531] quiet_error: 39 callbacks suppressed<br />
-[  658.494533] Buffer I/O error on device sdf1, logical block 5564658<br />
-[  658.495808] lost page write due to I/O error on sdf1<br />
-[/code]<br />
+[code highlight="3,6,8"]
+[  627.152020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd
+[  658.128020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd
+[  658.493165] sd 3:0:0:0: [sdf] Unhandled error code
+[  658.493169] sd 3:0:0:0: [sdf]  Result: hostbyte=DID_ABORT driverbyte=DRIVER_OK
+[  658.493174] sd 3:0:0:0: [sdf] CDB: Write(10): 2a 00 00 54 e9 30 00 00 01 00
+[  658.493188] end_request: I/O error, dev sdf, sector 5564720
+[  658.494531] quiet_error: 39 callbacks suppressed
+[  658.494533] Buffer I/O error on device sdf1, logical block 5564658
+[  658.495808] lost page write due to I/O error on sdf1
+[/code]
 Oh! I need to recover the data! And I've found GNU ddrescue an excellent tool for the task. No expensive recovery plans are needed. Just ddrescue on a bootable media and some free space in a storage device will do.</p>
 
 <p>It's important to note that the data recovery program should <em>never</em> be run on the <em>damaged</em> device. Otherwise, further damage will be done to the damaged device.<sup id="fnref-17-1"><a href="#fn-17-1" rel="footnote">1</a></sup> In addition, I <em>don't</em> recommend running the data rescue tool on the operating system(s) installed on your hard disk. The process takes a long time, so "patience is key".<sup id="fnref-17-2"><a href="#fn-17-2" rel="footnote">2</a></sup></p>
@@ -31,12 +31,12 @@ Oh! I need to recover the data! And I've found GNU ddrescue an excellent tool fo
 <p>Booted into the command line interface (CLI) of Ubuntu Rescue Remix 12.04, I first formatted the <code>D</code> drive into an empty NTFS partition after backing up the data on that device. (i.e. <code>/dev/sda5</code>)<br />
 After that , I ran the following command:<sup id="fnref-17-3"><a href="#fn-17-3" rel="footnote">3</a></sup></p>
 
-<p>[code highlight="1" gutter="false"]<br />
-$ ddrescue -r1 -n -S -v /dev/sdxm /dev/sdyn [logfile]<br />
-# Substitute x with the appropriate partition letter of the source partition<br />
-# Substitute y with the appropriate partition letter of the destination partition<br />
-# Substitute m with the appropriate partition number of the source partition<br />
-# Substitute n with the appropriate partition number of the destination partition<br />
+<p>[code highlight="1" gutter="false"]
+$ ddrescue -r1 -n -S -v /dev/sdxm /dev/sdyn [logfile]
+# Substitute x with the appropriate partition letter of the source partition
+# Substitute y with the appropriate partition letter of the destination partition
+# Substitute m with the appropriate partition number of the source partition
+# Substitute n with the appropriate partition number of the destination partition
 [/code]</p>
 
 <p>Note: <em>This process is irreverisible so do it carefully.</em></p>

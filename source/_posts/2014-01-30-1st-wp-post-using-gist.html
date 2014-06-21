@@ -16,10 +16,10 @@ comments: true
 <p>Note: I can now figure out a way to work with <em>both</em> UltraBlog and WordPress.com's built-in online code highlighter. See my <a href="http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/">newer post</a> for details.</p>
 
 <p><a href="http://daringfireball.net/projects/markdown" title="Markdown">Markdown</a> is easy to write. <del>However, writing code with <code>code</code> tag (surrounded with <code>[]</code>) using UltraBlog in Vim <em>doesn't</em> work. In order to post some code, one needs to <a href="http://en.support.wordpress.com/markdown/" title="WordPress' Markdown Support">use 3 backticks</a>.</del> (I've found a way to use the built-in SyntaxHighlighter now because I've realised that a blank line in Markdown will be changed to a <code>&lt;p&gt;</code> tag in HTML. Thus, <strong><em>don't</em></strong> put any blank lines right above and below the the <code>code</code> tags will do.)<br />
-[code gutter="false" language="javascript"]<br />
-element1 = document.getElementById(&quot;foo&quot;);<br />
-element1.innerHTML = &quot;Hello world!&quot;;<br />
-[/code]<br />
+[code gutter="false" language="javascript"]
+element1 = document.getElementById(&quot;foo&quot;);
+element1.innerHTML = &quot;Hello world!&quot;;
+[/code]
 There's some shortcomings of the above method. If you need to copy a list of source code, you'll need to browse the source code, provided that the "gutter" option of the code list is "true", <a href="http://en.support.wordpress.com/code/posting-source-code/#configuration-parameters" title="Configuartion Parameters">which is the default</a>. Moreover, if you include source code that consists of <code>&lt;angled blocks&gt;</code> in a blog post written in Markdown using the UltraBlog plugin, then the angled block may be interpreted as an HTML tag element, such as the statement <code>#include &lt;iostream&gt;</code> in a C++ program. <em>More importantly, I've found out that <a href="http://en.support.wordpress.com/markdown/" title="WordPress' Markdown Support">this apporach</a> <strong>doesn't</strong> work with UltraBlog.</em> <del>The above code list verifies this assertion. </del></p>
 
 <p><img src="http://blogueun.files.wordpress.com/2014/01/ultrablog.png" alt="Screenshot of the &quot;code list&quot; in UltraBlog.vim" />

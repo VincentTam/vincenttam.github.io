@@ -11,30 +11,30 @@ comments: true
 <p>Three months ago, I gave <a href="https://github.com/gmarik/vundle" title="Vundle">Vundle</a> a try, and it's <em>much</em> more convenient than <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">pathogen.vim</a>. With <a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/" title="Auto Installing Vundle From Your Vimrc">Zaadi's VIMRC configuration</a>, Vundle can be set up within several minutes.</p>
 
 <p>I installed <a href="https://github.com/vim-scripts/FuzzyFinder" title="FuzzyFinder">FuzzyFinder</a> for opening files in other directories without leaving Vim. However, during the installation of the plugin, I carelessly forgot to download <a href="https://github.com/vim-scripts/L9" title="L9">L9</a> library first. Therefore, I put it into <code>$MYVIMRC</code>.<br />
-[code firstline="28"]<br />
-Bundle 'L9' &quot; FuzzyFinder dependency<br />
-Bundle 'FuzzyFinder'<br />
-[/code]<br />
-Then, I got the following error message.<br />
-[code gutter="false"]<br />
-$ vi<br />
-Error detected while processing /home/owner/.vimrc:<br />
-line   28:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-line   30:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-line   31:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-line   32:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-line   33:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-line   39:<br />
-E116: Invalid arguments for function vundle#config#bundle<br />
-Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:<br />
-line   13:<br />
-***** L9 library must be installed! *****<br />
-Press ENTER or type command to continue<br />
+[code firstline="28"]
+Bundle 'L9' &quot; FuzzyFinder dependency
+Bundle 'FuzzyFinder'
+[/code]
+Then, I got the following error message.
+[code gutter="false"]
+$ vi
+Error detected while processing /home/owner/.vimrc:
+line   28:
+E116: Invalid arguments for function vundle#config#bundle
+line   30:
+E116: Invalid arguments for function vundle#config#bundle
+line   31:
+E116: Invalid arguments for function vundle#config#bundle
+line   32:
+E116: Invalid arguments for function vundle#config#bundle
+line   33:
+E116: Invalid arguments for function vundle#config#bundle
+line   39:
+E116: Invalid arguments for function vundle#config#bundle
+Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:
+line   13:
+***** L9 library must be installed! *****
+Press ENTER or type command to continue
 [/code]
 <code>:BundleList</code> doesn't have L9, but <code>~/.vim/bundle</code> has the folder <code>L9</code>. The cause of the problem is the comment on the right of the <code>Bundle 'foo'</code> command.</p>
 

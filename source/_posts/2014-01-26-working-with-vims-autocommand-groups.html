@@ -13,11 +13,11 @@ comments: true
 
 <p>Last Thursday, I extended them to blocks enclosed by single or double quotes.</p>
 
-<p>[code firstline="82"]<br />
-inoremap &quot; &quot;&quot;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
-inoremap &quot;&quot; &quot;<br />
-inoremap ' ''&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
-inoremap '' '<br />
+<p>[code firstline="82"]
+inoremap &quot; &quot;&quot;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+inoremap &quot;&quot; &quot;
+inoremap ' ''&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+inoremap '' '
 [/code]</p>
 
 <p><a href="http://github.com/honza/vim-Snippets" target="_blank">Vim-Snippets</a> has saved me a lot of time while writing blogs in <a href="http://www.vim.org" target="_blank">Vim</a>. With Vim-snippets and <a href="http://github.com/tpope/vim-surround" target="_blank">Vim-surround</a>, the following question is <em>not</em> so useful.</p>
@@ -28,13 +28,13 @@ inoremap '' '<br />
 
 <p>From some web pages that include some autocommands that deal with some specific type(s) of files, one can easily learn what to do, instead of reading the long Reference Manual. The events needed are <code>BufNewFile</code> and <code>BufRead</code>.</p>
 
-<p>[code firstline="86"]<br />
-aug specialCompletion<br />
-	au BufNewFile,BufRead *.htm,*.html inoremap &lt; &lt;&lt;Left&gt;&lt;Right&gt;&gt;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
-	au BufNewFile,BufRead *.htm,*.html inoremap &lt;&lt; &lt;<br />
-	au BufNewFile,BufRead *.tex set spell<br />
-	au BufLeave *.tex set nospell<br />
-aug END<br />
+<p>[code firstline="86"]
+aug specialCompletion
+	au BufNewFile,BufRead *.htm,*.html inoremap &lt; &lt;&lt;Left&gt;&lt;Right&gt;&gt;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+	au BufNewFile,BufRead *.htm,*.html inoremap &lt;&lt; &lt;
+	au BufNewFile,BufRead *.tex set spell
+	au BufLeave *.tex set nospell
+aug END
 [/code]</p>
 
 <p>In line 87, I initially tried using a whitespace character to separate the two extension names. After that, I tried to edit an HTML file with the command <code>:e testing.html</code>, but the autocompletion didn't work. For the command <code>:e testing.htm</code>, Vim threw me an error. It took me a short while to figure out that commas should be used instead of whitespaces. I know that the problem can be beautifully solved by using regular expressions, but I'm <em>not</em> sure if <code><em>.htm[l]</em></code> is correct, and I lack time to test it. I'd like to insert an angled block with empty content, but after I inserted the string <code>&lt;&gt;</code> into my VIMRC file, the syntax highlighter of Vim told me that Vim perceived the empty angled block as the surrounding parts of a literal string which represents a keystroke. To solve this problem, I inserted the literal string that represents a <code>&lt;Left&gt;</code> key followed by a <code>&lt;Right&gt;</code> key inside the originally empty angled block <code>&lt;&gt;</code>. This is what you can see in line 87. With the aid of the syntax highlighter of Vim, the new autocommand has "revealed its colour" in my VIMRC, indicating the success of this change.</p>
@@ -46,12 +46,12 @@ aug END<br />
 <p>Last edited on 3/2/2014 19:45:06 HKT:<br />
 It seems that what I need is the <code>Filetype</code> event.</p>
 
-<p>[code firstline="86"]<br />
-aug specialCompletion<br />
-	au Filetype html inoremap &lt; &lt;&lt;Left&gt;&lt;Right&gt;&gt;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;<br />
-	au Filetype html inoremap &lt;&lt; &lt;<br />
-	au Filetype tex setlocal spell<br />
-aug END<br />
+<p>[code firstline="86"]
+aug specialCompletion
+	au Filetype html inoremap &lt; &lt;&lt;Left&gt;&lt;Right&gt;&gt;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
+	au Filetype html inoremap &lt;&lt; &lt;
+	au Filetype tex setlocal spell
+aug END
 [/code]</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>

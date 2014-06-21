@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Don't Kill a Fly with a Cannon—Console Creation of GIF Files
+date: 2013-12-29 00:30:00 +0000
 categories:
 - Linux
 tags:
@@ -17,13 +18,12 @@ comments: true
 
 <p>With reference to Unix &amp; Linux Stack Exchange question 24014<sup id="fnref-23-1"><a href="#fn-23-1" rel="footnote">1</a></sup>, if your source PNG files are named as <code>[name]%s.png</code>, then the right command is:</p>
 
-<p>[code lang=bash]<br />
-$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 [name]%s.png &quot; $a; done;) [result].gif<br />
-# `-delay 10&#039; means that each image is displayed for 0.1s.<br />
-# [name]: file name of the source PNG files without the ordinal number.<br />
-# `%s&#039;: the n-th PNG file.<br />
-# [result]: file name of the target GIF file.<br />
-[/code]</p>
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 [name]%s.png &quot; $a; done;) [result].gif
+# `-delay 10&#039; means that each image is displayed for 0.1s.
+# [name]: file name of the source PNG files without the ordinal number.
+# `%s&#039;: the n-th PNG file.
+# [result]: file name of the target GIF file.
+</code></pre>
 
 <p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things <em>won't</em> work.<br />
 If the GIF animation has not been finished and intermediate files need to be saved, <em>don't</em> use the .gif format, use .miff instead.<sup id="fnref-23-2"><a href="#fn-23-2" rel="footnote">2</a></sup></p>
