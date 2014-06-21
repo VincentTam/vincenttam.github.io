@@ -136,6 +136,100 @@ Thus, the problematic merge *hasn't* been committed.  Simply running
 Use `ORIG_HEAD` instead of `HEAD` for the tip of the branch before the
 merge.  (i.e. `git reset --hard ORIG_HEAD`)
 
+### Using git-diff for merging commits
+
+(Added on JUN 20, 2014)
+
+#### A shortcoming of ".."
+
+To forsee possible conflicts in `git merge`, one may run
+`git diff <branch1>..<branch2>` to see the differences between two
+diverged branches.  However, the diff hunk *doesn't* show the
+additions and deletions on each branch.  A `-` in the diff hunk can be
+caused by either
+
+1. Addition of contents in `<branch1>`; or
+2. Deletion of contents in `<branch2>`.
+
+Running `git merge <branch1>` on `<branch2>` gives *different*
+results in different cases.
+
+1. The line starting with `-` in the diff hunk will be inserted into
+`<branch2>`.
+2. The line starting with `-` in the diff hunk *won't* be inserted
+into `<branch1>`.
+
+In order to predict whether there will be a conflict, one needs to
+know the *changes done on each branch*.  Therefore, one needs to
+compare the tip of each branch with their common ancestors.
+
+Let me illustrate this by two examples.
+
+##### Example 1
+
+One has a file like this.
+
+``` text Parent of the two branches
+line 1
+line 2
+line 3
+```
+
+Then it diverged into two branches.
+
+``` text Branch 1 (line 1 deleted)
+line 2
+line 3
+```
+
+``` text Branch 2 (line 2 deleted)
+line 1
+line 3
+```
+
+Running `git diff <branch1>..<branch2>`, one gets
+
+    +line 1
+    -line 2
+     line 3
+
+##### Example 2
+
+One has a file like this.
+
+``` text Parent of the two branches
+line 3
+```
+
+Then it diverged into two branches.
+
+``` text Branch 1 (line 2 inserted)
+line 2
+line 3
+```
+
+``` text Branch 2 (line 1 inserted)
+line 1
+line 3
+```
+
+Running `git diff <branch1>..<branch2>`, one gets
+
+    +line 1
+    -line 2
+     line 3
+
+Observation: The diff hunks in the two examples are the **same**, even
+though their common ancestors and changes in files are **different**.
+
+#### Overcoming the shortcoming
+
+From the above sub-section, it's clear that one needs to compare the
+tip of each branch with the common ancestor of the two branches.  To
+see how `<branch1>` has been modified,
+`git diff <branch2>...<branch1>` can be used to compare the tip of
+`<branch1>` with the common ancestor of `<branch1>` and `<branch2>`.
+
 ---
 
 [^1]: The official kramdown syntax documentation. ([URL][kramdownDoc])

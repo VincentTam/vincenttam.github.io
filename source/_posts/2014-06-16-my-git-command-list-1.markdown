@@ -151,10 +151,10 @@ Revert changes
 To me, it's the *most important* part of this post.  I know *only* two
 commands for this type of task.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset HEAD &lt;file&gt;...  # unstage &lt;file&gt;
-$ git reset HEAD --soft     # unstage all uncommitted chanages <span class="ubuntu_hl_code">without</span> changing the file(s)
-$ git reset HEAD --hard     # revert the files to the latest commit
-$ git checkout -- &lt;file&gt;... # undo all uncommitted changes to &lt;file&gt;
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset HEAD &lt;file&gt;...   # unstage &lt;file&gt;
+$ git reset HEAD --soft      # unstage all uncommitted chanages <span class="ubuntu_hl_code">without</span> changing the file(s)
+$ git reset HEAD --hard      # revert the files to the latest commit
+$ git checkout -- &lt;file&gt;...  # undo all uncommitted changes to &lt;file&gt;
 </code></pre>
 
 Working with branches
