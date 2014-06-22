@@ -3,7 +3,6 @@ layout: post
 title: Cross-Platform Blog Editing with UltraBlog and WordPress
 categories:
 - UltraBlog.vim
-tags: []
 published: true
 comments: true
 ---
@@ -13,11 +12,11 @@ comments: true
 
 <p>When I reopened the <em>same</em> post in Vim, I realised that the second paragraph is gone! I <em>was</em> disappointed for a while, and googled "ultrablog update database". However, there are too few websites about UltraBlog.vim. Its ineffective to use Google to solve this problem.</p>
 
-<p><img src="http://blogueun.files.wordpress.com/2014/01/posted_via_ultrablog.png" alt="screenshot of the first Google search result" /></p>
+{% imgpopup /images/posts/UBWPEdit/posted_via_ultrablog.png 85% screenshot of the first Google search result %}
 
 <p>From the above figure, it seems that there's 544 search results that contain the <em>entire</em> string "posted via ultrablog.vim".</p>
 
-<p><img src="http://blogueun.files.wordpress.com/2014/01/posted_via_ultrablog3.png" alt="screenshot of the last Google search result" /></p>
+{% imgpopup /images/posts/UBWPEdit/posted_via_ultrablog3.png 85% screenshot of the last Google search result %}
 
 <p>However, I go to the third page and find out that hundreds of search results have been omitted.</p>
 
@@ -31,18 +30,17 @@ comments: true
 
 <p>For example, I searched UltraBlog's official documentation for "sync", but failed. Luckily, in the help for the command <code>:UBList</code> (in <code>UltraBlog.txt</code>), I've found something useful:</p>
 
-<p>[code gutter="false"]
-:UBList post remote 50</p>
+<pre class="cli"><code class="ubuntu_gnome_terminal">:UBList post remote 50
 
-<p>This command lists the latest 50 posts in the blog.</p>
+This command lists the latest 50 posts in the blog.
 
-<p>Pressing the ENTER key in a remote post list will open the post under 
+Pressing the ENTER key in a remote post list will open the post under 
 cursor and save it to the local database if it is not in it, otherwise, 
 the local copy will be opened instead of the remote one. This enables 
-users to modify markdown source and update the remote post.</p>
+users to modify markdown source and update the remote post.
 
-<p>The remote post list doesn't support paging.
-[/code]</p>
+The remote post list doesn't support paging.
+</code></pre>
 
 <p>This solves the problem: I just delete my local copy before downloading the remote copy if the local copy is older than the remote copy.</p>
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Firefox's Markdown Viewer
+date: 2014-02-04 09:10:36 +0000
 categories:
 - web technologies
 tags:
@@ -15,23 +16,22 @@ comments: true
 
 <p>It turned out that nothing happened! With Lai's review titled <em>Work on Linux</em>, I figured out what to do. After looking at his suggested code for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it and it worked. Critical readers will then ask about the way to include multiple file extensions.</p>
 
-<p>Browsing the code with <code>#</code> in the RDF file helps. Here's what my results.<br />
-[code firstline="123" highlight="5,6,7" language="xml"]
-&lt;RDF:Description RDF:about=&quot;urn:mimetype:application/vnd.ms-excel&quot;
-                 NC:value=&quot;application/vnd.ms-excel&quot;
-                 NC:editable=&quot;true&quot;
-                 NC:description=&quot;Microsoft Excel Worksheet&quot;&gt;
-  &lt;NC:fileExtensions&gt;xls&lt;/NC:fileExtensions&gt;
-  &lt;NC:fileExtensions&gt;xlb&lt;/NC:fileExtensions&gt;
-  &lt;NC:fileExtensions&gt;xlt&lt;/NC:fileExtensions&gt;
-  &lt;NC:handlerProp RDF:resource=&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;/&gt;
-&lt;/RDF:Description&gt;
-[/code]</p>
+<p>Browsing the code with <code>#</code> in the RDF file helps. Here's what my results.</p>
+
+{% codeblock lang:xml %}
+<RDF:Description RDF:about="urn:mimetype:application/vnd.ms-excel"
+NC:value="application/vnd.ms-excel"
+NC:editable="true"
+NC:description="Microsoft Excel Worksheet">
+<NC:fileExtensions>xls</NC:fileExtensions>
+<NC:fileExtensions>xlb</NC:fileExtensions>
+<NC:fileExtensions>xlt</NC:fileExtensions>
+<NC:handlerProp RDF:resource="urn:mimetype:handler:application/vnd.ms-excel"/>
+</RDF:Description>
+{% endcodeblock %}
 
 <p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than one</em> extension name for a Markdown file. However, a GNU/Linux user should <strong>never</strong> use <code>.md</code>.</p>
 
-<p>Finally, combining Lai's and Cas' posts, I've come up with the following Gist.</p>
-
-<p>[gist]8800268[/gist]</p>
+<p>Finally, combining Lai's and Cas' posts, I've come up with <a href="https://gist.github.com/VincentTam/8800268">a Gist.</a></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
