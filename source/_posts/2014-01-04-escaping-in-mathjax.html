@@ -1,31 +1,37 @@
 ---
 layout: post
 title: Escaping '$' in MathJax
-categories:
-- MathJax
-tags: []
+date: 2014-01-04 18:09:00 +08:00
+categories: MathJax
 published: true
 comments: true
 ---
-<p>Anyone who are used to $\rm \LaTeX$'s <code>$</code> character<code>$</code> for switching to inline math mode would like to use the same command for the same thing on MathJax, which suggests the use of backslashed parentheses to enclose an inline math equation.  As a result, in <a href="http://docs.mathjax.org/en/latest/start.html#tex-and-latex-input">the very first part</a> of MathJax's official documentation, it contains several lines code for that.<br />After pasting the code inside the <code>head</code> tag, the above problem is solved, but this method creates <i>another</i> problem.<br />Imagine that you want to compare the price of a product of different companies.  You then typed <i>two prices on the same line</i>.<br />
-[code language="html" firstline="10" highlight="12"]
-&lt;p&gt;...&lt;/p&gt;
-&lt;br /&gt;
-&lt;p&gt;Nowadays, it costs nearly $500. In the past, it only costs around $300. It's too expensive!&lt;/p&gt;
-&lt;br /&gt;
-&lt;p&gt;...&lt;/p&gt;
-[/code]
-Then the web browser will interpret the contents in this way:<br /><br /></p>
+<p>Anyone who are used to $\rm \LaTeX$'s <code>$</code> character<code>$</code> for switching to inline math mode would like to use the same command for the same thing on MathJax, which suggests the use of backslashed parentheses to enclose an inline math equation.  As a result, in <a href="http://docs.mathjax.org/en/latest/start.html#tex-and-latex-input">the very first part</a> of MathJax's official documentation, it contains several lines code for that.<br />After pasting the code inside the <code>&lt;head&gt;</code> tag, the above problem is solved, but this method creates <em>another</em> problem.<br />Imagine that you want to compare the price of a product of different companies.  You then typed <em>two prices on the same line</em>.</p>
 
-<p><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;"><tbody><tr><td style="text-align:center;"><a href="http://blogueun.files.wordpress.com/2014/01/5b4b0-e89ea2e5b995e693b7e59c96e5ad98e782ba2014-01-04175904.png" style="margin-left:auto;margin-right:auto;"><img border="0" height="294" src="http://blogueun.files.wordpress.com/2014/01/5b4b0-e89ea2e5b995e693b7e59c96e5ad98e782ba2014-01-04175904.png?w=300" width="640" /></a></td></tr><tr><td class="tr-caption" style="text-align:center;">Wrongly interpreted contents</td></tr></tbody></table></p>
+{% codeblock lang:html %}
+<p>...</p>
+<br />
+<p>Nowadays, it costs nearly $500. In the past, it only costs around $300. It's too expensive!</p>
+<br />
+<p>...</p>
+{% endcodeblock %}
 
-<p>In order to get the problem fixed, I searched "mathjax escape dollar sign" and found Stack Overflow <a href="http://stackoverflow.com/questions/8773586/mediawiki-mathjax-need-to-use-escape-x">question 8773586</a> very useful.  Following the first answer for the question, I managed to get it right. That is, to change the it like this:<br />
-[code language="html" firstline="10" highlight="12"]
-&lt;p&gt;...&lt;/p&gt;
-&lt;br /&gt;
-&lt;p&gt;Nowadays, it costs nearly &lt;span class=&quot;tex2jax_ignore&quot;&gt;$&lt;/span&gt;500. In the past, it only costs around &lt;span class=&quot;tex2jax_ignore&quot;&gt;$&lt;/span&gt;300. It's too expensive!&lt;/p&gt;
-&lt;br /&gt;
-&lt;p&gt;...&lt;/p&gt;
-[/code]</p>
+<p>Then the web browser will interpret the contents in this way:</p>
 
-<p><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;"><tbody><tr><td style="text-align:center;"><a href="http://blogueun.files.wordpress.com/2014/01/5b673-e89ea2e5b995e693b7e59c96e5ad98e782ba2014-01-04175805.png" style="margin-left:auto;margin-right:auto;"><img border="0" height="294" src="http://blogueun.files.wordpress.com/2014/01/5b673-e89ea2e5b995e693b7e59c96e5ad98e782ba2014-01-04175805.png?w=300" width="640" /></a></td></tr><tr><td class="tr-caption" style="text-align:center;">Correctly interpreted contents</td></tr></tbody></table></p>
+{% img /images/posts/EscMathJax/wrong.png 'fig1' 'wrong contents' %}
+
+<p><small>Wrongly interpreted contents</small></p>
+
+<p>In order to get the problem fixed, I searched "mathjax escape dollar sign" and found Stack Overflow <a href="http://stackoverflow.com/questions/8773586/mediawiki-mathjax-need-to-use-escape-x">question 8773586</a> very useful.  Following the first answer for the question, I managed to get it right. That is, to change the it like this:</p>
+
+{% codeblock lang:html %}
+<p>...</p>
+<br />
+<p>Nowadays, it costs nearly <span class="tex2jax_ignore">$</span>500. In the past, it only costs around <span class="tex2jax_ignore">$</span>300. It's too expensive!</p>
+<br />
+<p>...</p>
+{% endcodeblock %}
+
+{% img /images/posts/EscMathJax/correct.png 'fig2' 'correct contents' %}
+
+<p><small>Correctly interpreted contents</small></p>

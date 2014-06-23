@@ -1,6 +1,7 @@
 ---
 layout: post
-title: ! 'Testing Online Code Syntax Highlighters for Blogs (1): SyntaxHighlighter'
+title: 'Testing Online Code Syntax Highlighters for Blogs (1): SyntaxHighlighter'
+date: 2014-01-06 16:41:00 +0800
 categories:
 - online code highlighter
 tags:
@@ -11,27 +12,33 @@ comments: true
 ---
 <p><em>Note: This post won't make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-syntaxhighlighter_5977.html">original post</a>.</em></p>
 
+<!-- more -->
+
 <p>This is a test of <a href="http://geektalkin.blogspot.hk/2009/11/embed-code-syntax-highlighting-in-blog.html">a guide for embedding code</a> on Blogger found on Geed Talkin Siebel. I've some code that I'd like to share.</p>
 
-<p>When I first learnt Java, I saw these few lines of code.<br />
-[code language="java" highlight="3"]
+<p>When I first learnt Java, I saw these few lines of code.</p>
+
+{% codeblock lang:java %}
 public class Hello {
     public static void main(String args[]) {
-        System.out.println(&quot;Hello world!&quot;);
+	System.out.println(&quot;Hello world!&quot;);
     }
 }
-[/code]
-When I was still in secondary school, one of my classmates complained about the syntactic and conceptual complexity of the <code>print</code> method in Java. He said that it was a lot simpler in C++.<br />
-[code language="cpp" highlight="5"]
-#include &lt;iostream&gt;
+{% endcodeblock %}
+
+<p>When I was still in secondary school, one of my classmates complained about the syntactic and conceptual complexity of the <code>print</code> method in Java. He said that it was a lot simpler in C++.</p>
+
+{% codeblock lang:cpp %}
+#include <iostream>
 using namespace std;
 int main(void)
 {
-    cout &amp;lt;&amp;lt; &quot;Hello world!&quot; &amp;lt;&amp;lt; endl;
-    return 0;
+cout << "Hello world!" << endl;
+return 0;
 }
-[/code]
-Deeply impressed by what I've done using Java, I didn't took his words. After several years, I looked at the code for handling zipped files in Apache Tomcat 2.5, and I understand him a little bit.</p>
+{% endcodeblock %}
+
+<p>Deeply impressed by what I've done using Java, I didn't took his words. After several years, I looked at the code for handling zipped files in Apache Tomcat 2.5, and I understand him a little bit.</p>
 
 <p>A year ago, when I looked at the official web page of Apache Commons FileUpload impatiently, I could get nothing from the sample code there. Fortunately, with the debugger in Eclipse, I managed to apply the knowledge on the user guide on that site. I'm sure that without any debugging tools, I can <em>never</em> get the job done!</p>
 
@@ -39,25 +46,28 @@ Deeply impressed by what I've done using Java, I didn't took his words. After se
 
 <p>In the past few months, without any knowledge and effort to get a good display of the source code, I just typed the following codes directly into the HTML view of the WYSIWYG editor of Blogger.</p>
 
-<p><pre><code>#include &lt;iostream&gt;
+{% codeblock lang:html %}
+<pre>#include <iostream>
 using namespace std;
 int main(void)
 {
-cout &lt;&lt; "Hello world!" &lt;&lt; endl;
-return 0;
+    cout << "Hello world!" << endl;
+    return 0;
 }
-</code></pre></p>
+</pre>
+{% endcodeblock %}
 
 <p>By doing so, the output is like this:</p>
 
-<p><pre><code>#include &lt;iostream&gt;
+<pre><code>#include &lt;iostream&gt;
 using namespace std;
-int main(void)</code></pre></p>
 
-<p>cout &lt;&lt; "Hello world!" &lt;&lt; endl;<br />
-return 0;<br />
+int main(void)
+{
+    cout &lt;&lt; "Hello world!" &lt;&lt; endl;
+    return 0;
 }
-</p>
+</code></pre>
 
 <p>Apart from unattractive appearance, the above list doesn't have line numbers. Though one can easily select and copy and code into a text editor, this is inefficient, when compared to SyntaxHighlighter.</p>
 
@@ -65,16 +75,9 @@ return 0;<br />
 
 <p>Following the guide mentioned above, I clicked the "copy to clipboard" icon at the top right-hand corner of relevant blocks of source code, and pasted them into the HTML of the template.</p>
 
-<p><table class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;" cellspacing="0" cellpadding="0" align="center">
-    <tbody>
-    <tr>
-        <td style="text-align:center;"><img alt="" src="http://blogueun.files.wordpress.com/2014/01/2ea26-template.png?w=300" width="640" height="259" border="0" /></td>
-    </tr>
-    <tr>
-        <td class="tr-caption" style="text-align:center;">*Don't* worry about the single quotes in line 219. It works *fine*.</td>
-    </tr>
-    </tbody>
-</table></p>
+{% imgpopup /images/posts/CodeDisplay1/2ea26-template.png 70% 'Added SyntaxHighlighter into the HEAD' %}
+
+<p><small><em>Don't</em> worry about the single quotes in line 219. It works <em>fine</em>.</small></p>
 
 <p>Without a successful experience of getting it work, I thought that the above guide <em>didn't</em> work and had treated it as another guide that I can't make use of. (After getting things work, I think I <em>was</em> unfair to its author by simply saying that "it <em>doesn't</em> work!")</p>
 

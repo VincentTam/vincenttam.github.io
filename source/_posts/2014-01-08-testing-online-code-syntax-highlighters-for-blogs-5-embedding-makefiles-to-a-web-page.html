@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ! 'Testing Online Code Syntax Highlighters for Blogs (5): Embedding Makefiles
-  to a Web Page'
+title: 'Testing Online Code Syntax Highlighters for Blogs (5): Embedding Makefiles to a Web Page'
+date: 2014-01-08 14:38:00 +0800
 categories:
 - online code highlighter
 tags:
@@ -13,6 +13,8 @@ comments: true
 ---
 <p><em>Note: This post won't make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters.html">original post</a>.</em></p>
 
+<!-- more -->
+
 <p>In my previous post titled <a href="http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html"><em>Fast Compilation and Execution of Source Code</em></a>, I included a <code>makefile</code>. After I've been familiar with SyntaxHighlighter, I changed the code of the <code>makefile</code> so that the new tool is used. However, as I've written in <a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html">my earlier post</a>, SyntaxHighlighter has <em>no</em> makefile support<sup id="fnref-9-1"><a href="#fn-9-1" rel="footnote">1</a></sup>, while <a href="http://highlightjs.org/">highlight.js</a><sup id="fnref-9-2"><a href="#fn-9-2" rel="footnote">2</a></sup> and <a href="https://code.google.com/p/google-code-prettify/">google-code-prettify</a><sup id="fnref-9-3"><a href="#fn-9-3" rel="footnote">3</a></sup> have that feature.</p>
 
 <blockquote>
@@ -22,57 +24,59 @@ comments: true
 
 <p>In order to be sure about their claims, I've done a test and the results are as follow.</p>
 
-<p><h3>highlight.js:</h3></p>
+<h3>highlight.js:</h3>
 
-<p>[code]
+{% codeblock lang:make %}
 hello: hello.c
 	gcc -o hello hello.c
-	clean:
+clean:
 	rm -f hello
-[/code]</p>
+{% endcodeblock %}
 
 <p>Maybe my <code>makefile</code> is too simple that it lacks some typical features for the automatic language recognition of highlight.js. Let's see the sample code copied from <a href="http://highlightjs.org/static/test.html">the official demo</a>.</p>
 
-<p>[code]
-# Makefile</p>
+{% codeblock lang:make %}
+# Makefile
 
-<p>BUILDDIR      = _build
-EXTRAS       ?= $(BUILDDIR)/extras</p>
+BUILDDIR      = _build
+EXTRAS       ?= $(BUILDDIR)/extras
 
-<p>.PHONY: main clean</p>
+.PHONY: main clean
 
-<p>main:
-	@echo &quot;Building main facility...&quot;
-	build_main $(BUILDDIR)</p>
+main:
+	@echo "Building main facility..."
+	build_main $(BUILDDIR)
 
-<p>clean:
-	rm -rf $(BUILDDIR)/*
-[/code]</p>
-
-<p><h3>google-code-prettify</h3></p>
-
-<p><pre class="prettyprint">hello: hello.c
-    gcc -o hello hello.c
 clean:
-    rm -f hello
-</pre></p>
+	rm -rf $(BUILDDIR)/*
+{% endcodeblock %}
+
+<h3>google-code-prettify</h3>
+
+{% codeblock lang:make %}
+hello: hello.c
+	gcc -o hello hello.c
+clean:
+	rm -f hello
+{% endcodeblock %}
 
 <p>Let's see a <em>real</em> one.</p>
 
-<p><pre class="prettyprint"># Makefile</pre></p>
+{% codeblock lang:make %}
+# Makefile
 
-<p>BUILDDIR      = _build
-EXTRAS       ?= $(BUILDDIR)/extras</p>
+BUILDDIR      = _build
+EXTRAS       ?= $(BUILDDIR)/extras
 
-<p>.PHONY: main clean</p>
+.PHONY: main clean
 
-<p>main:
-    @echo "Building main facility..."
-    build_main $(BUILDDIR)</p>
+main:
+	@echo "Building main facility..."
+	build_main $(BUILDDIR)
 
-<p>clean:
-    rm -rf $(BUILDDIR)/*
-</p>
+clean:
+	rm -rf $(BUILDDIR)/*
+{% endcodeblock %}
 
 <p>Unluckily, I <em>can't</em> figure out the way to include a tab, instead of whitespaces, for makefiles. Anyways, one who use makefiles will know that after running <code>make</code> on the first day.</p>
 

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: ! 'Testing Online Code Syntax Highlighters for Blogs (6): Multilingual Source
-  Code Display in Web Pages'
+title: 'Testing Online Code Syntax Highlighters for Blogs (6): Multilingual Source Code Display in Web Pages'
+date: 2014-01-09 19:22:00 +0800
 categories:
 - online code highlighter
 tags:
@@ -12,11 +12,14 @@ comments: true
 ---
 <p><em>Note: This post won't make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html">original post</a>.</em></p>
 
+<!-- more -->
+
 <p><a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html">One of my earlier posts</a> suggests that <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlight</a> supports <em>only one</em> language in a <code>pre</code> tag <em>without</em> proof. Before embedding a source code list to show this, I'll make more assertions and then verify them.</p>
 
 <p><a href="http://highlightjs.org/">highlight.js</a> has the support, while <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> <em>doesn't</em>. For example, you want to attach the following Matlab code to your blog entry. SyntaxHighlight doesn't have the Matlab support. For highlight.js, here's the result.</p>
 
-<p><pre><code>function [rr_array] = nest_fun(x,a)
+{% codeblock lang:matlab %}
+function [rr_array] = nest_fun(x,a)
 %function to find sets of polynormials.
 % a: set of constants, [A B C]
 % x: variables in array
@@ -31,20 +34,19 @@ n = size(a);
   function r = polyx(xx)
   　　r = A.*x.^2 + B.*x +C;
   end
-end</code></pre></p>
+end
+{% endcodeblock %}
 
-<p><table align="center" cellpadding="0" cellspacing="0" class="tr-caption-container" style="margin-left:auto;margin-right:auto;text-align:center;">
-    <tbody>
-    <tr><td style="text-align:center;"><a href="http://blogueun.files.wordpress.com/2014/01/d8435-matlab_correct.png" style="margin-left:auto;margin-right:auto;"><img border="0" src="http://blogueun.files.wordpress.com/2014/01/d8435-matlab_correct.png" height="414" width="640" /></a></td></tr>
-    <tr><td class="tr-caption" style="text-align:center;">highlight.js works on some computer(s).</td></tr>
-    </tbody>
-</table></p>
+{% img /images/posts/CodeDisplay6/d8435-matlab_correct.png 'fig1' 'result of highlight.js' %}
+
+<p><small>highlight.js works on some computer(s).</small></p>
 
 <p>When I was writing the post, highlight.js didn't worked right, but as I gave up trying it and view this post on the next day, things just go fine.</p>
 
 <p>We just see how google-code-prettify works.</p>
 
-<p><pre class="prettyprint lang-matlab">function [rr_array] = nest_fun(x,a)
+{% codeblock lang:matlab %}
+function [rr_array] = nest_fun(x,a)
 %function to find sets of polynormials.
 % a: set of constants, [A B C]
 % x: variables in array
@@ -59,93 +61,103 @@ n = size(a);
   function r = polyx(xx)
   　　r = A.*x.^2 + B.*x +C;
   end
-end</pre></p>
+end
+{% endcodeblock %}
 
 <p>Code copied from <a href="http://bime-matlab.blogspot.hk/2006/10/66.html">Applications of Matlab in Engineering</a>.</p>
 
-<p>Note: In <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">the official README</a>, it's said that we specify the <code>lang-*</code> class by its file extension (i.e. <code>m</code>), but in the page that display the source code of lang-matlab.js on Google Code, it points to <a href="https://github.com/amroamroamro/prettify-matlab">the author's Github repository</a>, which has a README file. According to that file, the HTML tag should be <code>&lt;pre class=&quot;prettyprint lang-<span class="hl_code">matlab</span>"&gt;</code>, instead of <code>&lt;pre class=&quot;prettyprint lang-<span class="wrong_code">m</span>"&gt;</code>.</p>
+<p>Note: In <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">the official README</a>, it's said that we specify the <code>lang-*</code> class by its file extension (i.e. <code>m</code>), but in the page that display the source code of lang-matlab.js on Google Code, it points to <a href="https://github.com/amroamroamro/prettify-matlab">the author's Github repository</a>, which has a README file. According to that file, the HTML tag should be <code>&lt;pre class=&quot;prettyprint lang-<span class="hl_code">matlab</span>"&gt;</code>, instead of <code>&lt;pre class=&quot;prettyprint lang-<span class="err">m</span>"&gt;</code>.</p>
 
 <p>So when one embeds the above source code list using google-code-prettify, one would write</p>
 
-<p><pre class="prettyprint">&lt;pre class="prettyprint lang-matlab"&gt;function [rr_array] = nest_fun(x,a)
+{% codeblock lang:html %}
+<pre class="prettyprint lang-matlab">function [rr_array] = nest_fun(x,a)
 %function to find sets of polynormials.
 % a: set of constants, [A B C]
 % x: variables in array
 % Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
 n = size(a);
-  for i = 1:n
-  A = a(i,1);B = a(i,2);C = a(i,3);
-  rr_array{1,i}=['A=',num2str(A),', B=',...
-      num2str(B),', C=',num2str(C)];
-  rr_array{2,i}=polyx(x);
+for i = 1:n
+A = a(i,1);B = a(i,2);C = a(i,3);
+rr_array{1,i}=['A=',num2str(A),', B=',...
+num2str(B),', C=',num2str(C)];
+rr_array{2,i}=polyx(x);
 　end
-  function r = polyx(xx)
-  　　r = A.*x.^2 + B.*x +C;
-  end
-end&lt;/pre&gt;</pre></p>
+function r = polyx(xx)
+　　r = A.*x.^2 + B.*x +C;
+end
+end
+</pre>
+{% endcodeblock %}
 
 <p>Let's go back to the topic.</p>
 
-<p><h3>SyntaxHighlighter</h3></p>
+<h3>SyntaxHighlighter</h3>
 
 <p>The SyntaxHighlighter code for embedding Java:</p>
 
-<p>[code language="html"]
-&lt;pre class=&quot;brush: java&quot;&gt;public class Hello {
-	public static void main(String args[]) {
-		System.out.println(&quot;Hello world!&quot;);
-	}
-}&lt;/pre&gt;
-[/code]</p>
+{% codeblock lang:html %}
+<pre class="brush: java">public class Hello {
+public static void main(String args[]) {
+System.out.println("Hello world!");
+}
+}</pre>
+{% endcodeblock %}
 
 <p>As the language in determined by <code>brush: html</code>, there's <em>no</em> multiple language feature in SyntaxHighlighter.</p>
 
 <p><h3>highlight.js</h3></p>
 
-<p><pre><code>&lt;pre class="brush: java"&gt;public class Hello {
+{% codeblock lang:html %}
+<pre class="brush: java">public class Hello {
     public static void main(String args[]) {
-        System.out.println("Hello world!");
+	System.out.println("Hello world!");
     }
-}&lt;/pre&gt;</code></pre></p>
+}</pre>
+{% endcodeblock %}
 
 <p>So highlight.js can display multiple languages at one container.</p>
 
-<p><h3>google-code-prettify</h3></p>
+<h3>google-code-prettify</h3>
 
-<p><pre class="prettyprint">&lt;pre class="brush: java"&gt;public class Hello {
+{% codeblock lang:html %}
+<pre class="brush: java">public class Hello {
     public static void main(String args[]) {
-        System.out.println("Hello world!");
+	System.out.println("Hello world!");
     }
-}&lt;/pre&gt;</pre></p>
+}</pre>
+{% endcodeblock %}
 
 <p>So the result of google-code-prettify is similar to that of SyntaxHighlighter.</p>
 
-<p><h3>Further results of highlight.js</h3></p>
+<h3>Further results of highlight.js</h3>
 
 <p>We end this essay with more results in highlight.js.</p>
 
 <p>In order to embed multilingual source code in a list, highlight.js is what you need, but if you insist on using google-code-prettify, here's some sample code.</p>
 
-<p><pre><code>&lt;pre class="prettyprint"&gt;public class Hello {
+{% codeblock %}
+<pre class="prettyprint">public class Hello {
     // Java code sample
-        public static void main(String args[]) {
-            System.out.println("Hello world!");
-        }
-    }</code></pre></p>
+	public static void main(String args[]) {
+	    System.out.println("Hello world!");
+	}
+    }
 
-<p>    &lt;!-- CSS code--&gt;
+    <!-- CSS code-->
     .sidebar #sidebar, .ss{
      margin-top: 12px !important;
      overflow-y: scroll !important;
-    }</p>
+    }
 
-<p>    # C++ code
+    # C++ code
     #include 
-    using namespace std;</p>
+    using namespace std;
 
-<p>    int main(void)
+    int main(void)
     {
-        cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; endl;
+        cout << &quot;Hello world!&quot; << endl;
         return 0;
     }
-&lt;/pre&gt;</p>
+</pre>
+{% endcodeblock %}
