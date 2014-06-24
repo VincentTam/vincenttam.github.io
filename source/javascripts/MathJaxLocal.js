@@ -11,6 +11,7 @@ MathJax.Hub.Config({
       fields: ['\\mathbb{F}'],
 
       zeros: ['\\mathbf{0}'],
+      d: ['\\,\\mathrm{d}'],
 
       vect:['\\boldsymbol{\\mathbf{#1}}',1],
       abs: ['\\lvert#1\\rvert', 1],
