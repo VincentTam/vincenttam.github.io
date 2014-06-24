@@ -4,6 +4,7 @@ title: "Advantages of Blogs over Paper Notebooks"
 date: 2014-05-30 16:19:54 +0800
 comments: true
 categories: 
+- blogging
 ---
 
 1. Blogs

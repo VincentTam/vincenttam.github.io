@@ -3,7 +3,7 @@ layout: post
 title: "Upgrade PulseAudio in Ubuntu 12.04"
 date: 2014-06-11 20:22:51 +0800
 comments: true
-categories: 
+categories: Linux
 ---
 
 Reason for the upgrade

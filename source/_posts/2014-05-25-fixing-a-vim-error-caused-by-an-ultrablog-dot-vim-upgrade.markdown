@@ -3,7 +3,7 @@ layout: post
 title: "Fixing a Vim Error Caused by an UltraBlog.vim Upgrade"
 date: 2014-05-25 20:01:52 +0800
 comments: true
-categories: Vim
+categories: UltraBlog.vim
 ---
 
 Yesterday, I upgraded the Vim plugins on my Ubuntu Desktop using

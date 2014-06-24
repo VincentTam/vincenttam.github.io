@@ -3,7 +3,9 @@ layout: post
 title: "Writing Dollar Signs on Octopress Blogs with MathJax Support"
 date: 2014-06-16 22:14:02 +0800
 comments: true
-categories: Octopress
+categories:
+- Octopress
+- MathJax
 ---
 
 Problem

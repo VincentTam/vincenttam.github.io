@@ -3,7 +3,9 @@ layout: post
 title: "Include Liquid code inside Octopress codeblocks"
 date: 2014-06-12 13:58:30 +0800
 comments: true
-categories: Octopress
+categories:
+- Octopress
+- online code highlighter
 ---
 
 Last night, I wrote

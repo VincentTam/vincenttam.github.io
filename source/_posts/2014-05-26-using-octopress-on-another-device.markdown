@@ -3,7 +3,9 @@ layout: post
 title: "Using Octopress on Another Device"
 date: 2014-05-26 00:42:18 +0800
 comments: true
-categories: Octopress
+categories:
+- M$ Win*
+- Octopress
 ---
 
 Two days ago, my Linux desktop was down.  As a result, I had to use a

@@ -3,7 +3,7 @@ layout: post
 title: "Blogging and Learning"
 date: 2014-06-06 23:30:23 +0800
 comments: true
-categories: 
+categories: blogging
 ---
 
 This afternoon, when I was writing [a post][PrevPost], I viewed

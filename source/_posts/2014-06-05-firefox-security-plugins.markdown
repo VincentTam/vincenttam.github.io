@@ -4,6 +4,7 @@ title: "Firefox Security Plugins"
 date: 2014-06-05 22:35:41 +0800
 comments: true
 categories: 
+- information security
 ---
 
 I'm using [Mozilla Firefox] along with some plugins, such as:
