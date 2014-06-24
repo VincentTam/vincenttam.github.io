@@ -3,7 +3,10 @@ layout: post
 title: "Local Huge File Sharing"
 date: 2014-06-14 13:38:56 +0800
 comments: true
-categories: Git
+categories:
+- Git
+- Linux
+- M$ Win*
 ---
 
 Objective

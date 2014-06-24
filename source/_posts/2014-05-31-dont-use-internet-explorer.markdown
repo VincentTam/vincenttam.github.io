@@ -5,6 +5,8 @@ date: 2014-05-31 22:00:53 +0800
 comments: true
 external-url: http://www.examiner.com/article/internet-explorer-a-security-risk-use-firefox-or-chrome
 categories: 
+- information security
+- M$ Win*
 ---
 
 {% pullquote %}

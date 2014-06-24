@@ -4,7 +4,7 @@ title: "Electronic Gadgets and Absent-mindedness"
 date: 2014-06-14 12:21:12 +0800
 comments: true
 external-url: http://www.skypost.hk/港聞/新聞頭條/20140606/001/常玩手機腦生鏽%2014％青年無記性/141538
-categories: 
+categories: health
 ---
 
 After reading this piece of news from *Sky Post* last week, I'm glad

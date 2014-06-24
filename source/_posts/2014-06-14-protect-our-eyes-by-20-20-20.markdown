@@ -4,7 +4,7 @@ title: 'Protect Our Eyes by "20-20-20"'
 date: 2014-06-14 13:08:48 +0800
 comments: true
 external-url: http://www.am730.com.hk/article-210074
-categories: 
+categories: health
 ---
 
 Unfortunately, I *haven't* find out how to include Octopress's [linklog] feature into my Octopress blog.  Therefore, I've to use blockquotes again, so as to include to link to a news report about the negative impacts on one's eyes after using looking at the monitor for a long time.

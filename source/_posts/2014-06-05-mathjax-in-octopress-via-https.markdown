@@ -3,7 +3,10 @@ layout: post
 title: "MathJax in Octopress via HTTPS"
 date: 2014-06-05 20:25:30 +0800
 comments: true
-categories: Octopress
+categories:
+- information security
+- MathJax
+- Octopress
 ---
 
 Problem

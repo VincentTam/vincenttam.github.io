@@ -3,7 +3,9 @@ layout: post
 title: "Using gVim on Windows to Create Pandoc Slides"
 date: 2014-03-15 12:49:05 +0800
 comments: true
-categories: pandoc
+categories:
+- M$ Win*
+- pandoc
 ---
 
 At night on 25/02/14, I tried to open gVim and use the command mode to

@@ -4,6 +4,7 @@ title: "NoScript ABE Rules for WLAN Web Portal Login"
 date: 2014-06-16 18:51:50 +0800
 comments: true
 categories: 
+- information security
 ---
 
 Objective

@@ -3,7 +3,7 @@ layout: post
 title: "20 Reasons to Switch to Linux"
 date: 2014-06-14 11:07:37 +0800
 comments: true
-categories: 
+categories: Linux
 ---
 
 This morning, I saw some reasons for M$ Win* and Mac users to switch

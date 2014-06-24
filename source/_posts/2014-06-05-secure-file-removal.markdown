@@ -4,6 +4,8 @@ title: "Secure File Removal"
 date: 2014-06-05 13:11:44 +0800
 comments: true
 categories: 
+- information security
+- Linux
 ---
 
 GNU's `shred` utility
