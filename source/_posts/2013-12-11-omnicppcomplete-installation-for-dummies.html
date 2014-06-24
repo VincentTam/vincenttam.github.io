@@ -13,7 +13,7 @@ comments: true
 ---
 <p><span class="important_notice"><em>Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan's <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">blog</a>.</em></span><br />Background: OmniCppComplete is a great Vim plugin that has the popup menu like many big IDEs. <a href="http://youtu.be/MQy2rVOf-z0">A Youtube video</a> can show the power of OmniCppComplete.<br />Download: OmniCppComplete requires ctags.<br /></p>
 
-<p><ol><li>OmniCppComplete: <a href="https://github.com/FromtonRouge/OmniCppComplete">GitHub Repository</a> (To avoid mixing up of files from different plugins, use one plugin management plugin like Pathogen or Vundle.)</li><li>Ctags: <a href="http://ctags.sourceforge.net/">Official homepage</a> on SourceForge (The .zip file for Win* 2**0 is fine.)</li></ol></p>
+<ol><li>OmniCppComplete: <a href="https://github.com/FromtonRouge/OmniCppComplete">GitHub Repository</a> (To avoid mixing up of files from different plugins, use one plugin management plugin like Pathogen or Vundle.)</li><li>Ctags: <a href="http://ctags.sourceforge.net/">Official homepage</a> on SourceForge (The .zip file for Win* 2**0 is fine.)</li></ol>
 
 <p>For more detailed information on the installation of ctags, please refer to my earlier blog post <a href="http://blogue-un.blogspot.hk/2013/12/links-to-good-posts.html"><em>Links to Good Posts</em></a>.<br />Problem: Reading the OmniCppComplete's documentation only, you won't be able to understand how to use this plugin, so follow some tutorials, and the most viewed one should be on <a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">Vim Tips Wiki</a>. Followed its guidance, I got error in typing <code>std::</code> in a new .cpp file. Omni completion told me something like "pattern not  match". I spent nearly 2 hours to figure out what's wrong, and finally  managed to fully understand the contents of <a href="http://carl830.pixnet.net/blog/post/67681043-vim-omnicppcomplete%2Bstl-support">this blog entry</a>.<br />Now, I'm going to make <u>a Win* version of Vim Tips Wiki's tutorial</u>, using the ideas from Carl.<br />Solution: <br /></p>
 
@@ -33,13 +33,13 @@ set tags+=~/.vim/tags/qt4
 [/code]
 </li></p>
 
-<p><h3>Testing</h3></p>
+<h3>Testing</h3>
 
 <p>A picture can illustrate the feature well. Typing <code>std::</code>, you'll get a popup list. <br /></p>
 
 <p><div class="separator" style="clear:both;text-align:center;"><a href="http://blogueun.files.wordpress.com/2013/12/2260b-omni.png" style="margin-left:1em;margin-right:1em;"><img border="0" src="http://blogueun.files.wordpress.com/2013/12/2260b-omni.png?w=300" height="419" width="640" /></a></div></p>
 
-<p><h3>Incompatibility with clang_complete</h3></p>
+<h3>Incompatibility with clang_complete</h3>
 
 <p>Note that Omnicppcomplete is <em>incompatible</em> with another Vim plugin called clang_complete, due to its "unconditional popup of completion list". To understand this, the following pictures give a good interpretation.<br /><br />In Omnicppcomplete, after typing <code>std::</code>, the completion list will pop up.<br />However, in clang_complete, since the information is from the clang compiler, you need to give the syntax in the right position for the compiler so as to let the completion list to show up.<br /><br /></p>
 
