@@ -11,14 +11,35 @@ tags:
 published: true
 comments: true
 ---
-<h3>Why do I switch my PDF viewer?</h3>
+<h2>Why do I switch my PDF viewer?</h2>
 
 <ul><li>Ado* Read* is proprietary. (<b>EULA</b>) </li><li>Sumatra PDF is free. (<b>GPLv3</b>)</li></ul>
 
-<p>Go for FLOSS! Go for freedom! <br /></p>
+<p>Go for FLOSS! Go for freedom! 
+</p>
 
-<h3>Actual process</h3>
+<!-- more -->
 
-<p>Original settings for Ado* Read*: let <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No extension name)<br />Problem: How to change Vim-$\rm \LaTeX$'s setting of <code>\lv</code>?<br />Trial 1: Set <code>g:Tex_ViewRuleComplete_dvi='C:/.../SumatraPDF'</code> in <code>_vimrc</code> (No effect)<br />Trial 2: Set <code>g:Tex_ViewRule_dvi='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> (No effect)<br />Trial 3: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and keep <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (Ado* Read* launched instead)<br />...<br />Trial n: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No effect)<br />Solution:<br /></p>
+<h2>Actual process</h2>
 
-<ol><li>Change <code>PATH</code> environment variable. (You can change it for vim runtime and keep the original one in other programs. See <a href="http://blogue-un.blogspot.hk/2013/12/writing-vims-output-to-files.html">my newer post</a> for details.)</li><li>Set <code>g:Tex_ViewRule_pdf='SumatraPDF'</code></li><li>Disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> </li></ol>
+<p>Original settings for Ado* Read*: let <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No extension name)</p>
+
+<p>Problem: How to change Vim-$\rm \LaTeX$'s setting of <code>\lv</code>?</p>
+
+<p>Trial 1: Set <code>g:Tex_ViewRuleComplete_dvi='C:/.../SumatraPDF'</code> in <code>_vimrc</code> (No effect)</p>
+
+<p>Trial 2: Set <code>g:Tex_ViewRule_dvi='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> (No effect)</p>
+
+<p>Trial 3: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and keep <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (Ado* Read* launched instead)</p>
+
+<p>...</p>
+
+<p>Trial n: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No effect)</p>
+
+<h3>Solution:</h3>
+
+<ol>
+    <li>Change <code>PATH</code> environment variable. (You can change it for vim runtime and keep the original one in other programs. See <a href="http://blogue-un.blogspot.hk/2013/12/writing-vims-output-to-files.html">my newer post</a> for details.)</li>
+    <li>Set <code>g:Tex_ViewRule_pdf='SumatraPDF'</code></li>
+    <li>Disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> </li>
+</ol>

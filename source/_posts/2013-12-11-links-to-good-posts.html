@@ -24,22 +24,22 @@ comments: true
 
 <p>Unmatched brackets/braces are the cause of a host of syntax errors in source code. Some novices probably spend hours to find it out, and then say something that their high school teachers will never approve. <a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">A Vim Tips</a> contains a simple solution that enable users to get the job done. However, I'm not accustomed to its differences with Vim-$\rm \LaTeX$, so I decided to add the following lines of code into my VIMRC file:</p>
 
+{% codeblock lang:vim %}
 {% raw %}
-<p>[code firstline="64"]
-inoremap (      ()&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-inoremap (&lt;CR&gt;  (&lt;CR&gt;)&lt;Esc&gt;O
+inoremap (      ()<++><Left><Left><Left><Left><Left>
+inoremap (<CR>  (<CR>)<Esc>O
 inoremap ((     (
-inoremap ()     ()&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-inoremap [      []&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-inoremap [&lt;CR&gt;  [&lt;CR&gt;]&lt;Esc&gt;O
+inoremap ()     ()<++><Left><Left><Left><Left><Left>
+inoremap [      []<++><Left><Left><Left><Left><Left>
+inoremap [<CR>  [<CR>]<Esc>O
 inoremap [[     [
-inoremap []     []&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-inoremap {      {}&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-inoremap {&lt;CR&gt;  {&lt;CR&gt;}&lt;Esc&gt;O
+inoremap []     []<++><Left><Left><Left><Left><Left>
+inoremap {      {}<++><Left><Left><Left><Left><Left>
+inoremap {<CR>  {<CR>}<Esc>O
 inoremap {{     {
-inoremap {}     {}&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;
-[/code]</p>
+inoremap {}     {}<++><Left><Left><Left><Left><Left>
 {% endraw %}
+{% endcodeblock %}
 
 <p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just like $\rm \LaTeX$-Suite.</p>
 
@@ -47,7 +47,7 @@ inoremap {}     {}&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;
 
 <p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for toggling NERDTree and Taglist respectively.</p>
 
-<p>[code firstline="76"]
-nnoremap &lt;F3&gt; :NERDTreeToggle
-nnoremap &lt;F12&gt; :TlistToggle
-[/code]</p>
+{% codeblock lang:vim %}
+nnoremap <F3>   :NERDTreeToggle
+nnoremap <F12>  :TlistToggle
+{% endcodeblock %}

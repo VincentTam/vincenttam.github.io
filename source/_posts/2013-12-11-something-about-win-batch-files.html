@@ -11,20 +11,25 @@ comments: true
 ---
 <h3>Get drive letter</h3>
 
-<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn't work, unless you do the tedious modifications every time.<br />
-- Method 1: <code>set var=%cd:~0,3%</code>
-- Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></p>
+<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn't work, unless you do the tedious modifications every time.</p>
+
+<ul>
+    <li>Method 1: <code>set var=%cd:~0,3%</code></li>
+    <li>Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></li>
+</ul>
 
 <h3>Alias on Win*</h3>
 
 <p>If you're familiar with *nix and use M\$-DOS, you may unconsciously type the <code>ls</code> command in DOS; or if you have a portable version of a software and you need to launch it by command, you will discover the difference between the name of the programs—one has <code>portable</code> at the end while the other one doesn't.</p>
 
-<p>Copy and paste the following lines of code into any text editor.<br />
-[code gutter="false"]
+<p>Copy and paste the following lines of code into any text editor.</p>
+
+{% codeblock lang:bat %}
 @ECHO OFF
 [command] %*
-[/code]
-Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
+{% endcodeblock %}
+
+<p>Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
 
 <p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
 

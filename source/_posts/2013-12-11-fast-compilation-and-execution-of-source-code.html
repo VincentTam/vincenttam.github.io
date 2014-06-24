@@ -2,8 +2,7 @@
 layout: post
 title: Fast Compilation and Execution of Source Code
 date: 2013-12-11 03:23:00 +08:00
-categories:
-- Vim
+categories: Vim
 tags:
 - makefile
 published: true
@@ -11,7 +10,7 @@ comments: true
 ---
 <p>Possible software: Vim.</p>
 
-<h3>Why?</h3>
+<h2>Why?</h2>
 
 <p>In a heavy IDE, you need to click a button or some keyboard shortcuts.  Unless you frequently use the keystrokes, you'll likely forget them since they are usually non-transferable IT skills.</p>
 
@@ -26,7 +25,9 @@ comments: true
 <li>Syntax highlighting and file type detection</li>
 </ol>
 
-<h3>How? (Doesn't need c.vim)</h3>
+<!-- more -->
+
+<h2>How? (Doesn't need c.vim)</h2>
 
 <ol>
 <li>Set up <code>makefile</code> (<a href="http://kevincrazy.pixnet.net/blog/post/29780477-makefile%E7%B0%A1%E6%98%93%E6%95%99%E5%AD%B8...">simple tutorial about makefile</a>)</li>
@@ -34,25 +35,31 @@ comments: true
 <li>Run <code>:!./%&lt;</code> on *nix (or simply <code>:!%&lt;</code> on M\$ Win*)</li>
 </ol>
 
-<p>Notes:<br />
-1.  <code>set makeprg=mingw32-make</code> in vimrc for MinGW make (<a href="https://sites.google.com/site/jamespandavan/Home/c-c/getting-started-with-c-c-programming-with-vim">more details about <code>makeprg</code></a>)<br />
-2.  <code>%</code> stands for the current file, and <code>&lt;</code> stands for the file name without extension.</p>
+<p>Notes:</p>
 
-<p>Advantages:<br />
--   In the whole process, you don't have to leave Vim and keyboard.<br />
--   <em>The commands are the same whatever your files are</em> (already determined by <code>makefile</code>), so you <em>don't waste time to think and type</em> in the correct name.</p>
+<ol>
+    <li><code>set makeprg=mingw32-make</code> in vimrc for MinGW make (<a href="https://sites.google.com/site/jamespandavan/Home/c-c/getting-started-with-c-c-programming-with-vim">more details about <code>makeprg</code></a>)</li>
+    <li><code>%</code> stands for the current file, and <code>&lt;</code> stands for the file name without extension.</li>
+</ol>
+
+<p>Advantages:</p>
+
+<ul>
+    <li>In the whole process, you don't have to leave Vim and keyboard.</li>
+    <li><em>The commands are the same whatever your files are</em> (already determined by <code>makefile</code>), so you <em>don't waste time to think and type</em> in the correct name.</li>
+</ul>
 
 <p>2 quotes from Sharpe (I don't remember the exact wordings):</p>
 
 <blockquote>
-  "The battle is not in the hands of who give the most shots. It should be those who shot the best."<br />
+  "The battle is not in the hands of who give the most shots. It should be those who shot the best."
   "A good soldier can fire 3-4 rounds a minute."
 </blockquote>
 
-<h3>My sample <code>makefile</code>:</h3>
+<h2>My sample <code>makefile</code>:</h2>
 
 {% codeblock lang:make %}
-hello : hello.c<br />
+hello : hello.c
     gcc -o hello hello.c
 clean:
     rm -f hello
@@ -60,7 +67,7 @@ clean:
 
 <p>Note: Insert <em>tabs</em> for indentation, <em>not</em> whitespaces. If the compiled program is <code>hello.exe</code>, perhaps the extension name is also needed for <code>rm</code>. (I have <em>never</em> tested it.)</p>
 
-<h3>With c.vim</h3>
+<h2>With c.vim</h2>
 
 <p>Follow the menu and you'll be also good.<sup id="fnref-45-1"><a href="#fn-45-1" rel="footnote">1</a></sup></p>
 
