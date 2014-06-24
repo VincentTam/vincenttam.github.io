@@ -13,6 +13,6 @@ page *Open Source For You*.
 
 As a GNU/Linux user, I *strongly* agree with the statement.
 Otherwise, if the current version of
-M<span class="tex2jax_ignore>$</span> Win* is so good, how can the
-company make <span class="tex2jax_ignore>$</span> from a newer
+M<span class="tex2jax_ignore">$</span> Win* is so good, how can the
+company make <span class="tex2jax_ignore">$</span> from a newer
 version?
