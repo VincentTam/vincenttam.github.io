@@ -12,5 +12,7 @@ page *Open Source For You*.
 {% img /images/posts/LinuxFig1/LinuxIsComp.jpg 'fig1' 'A computer minus Linux equals zero.' %}
 
 As a GNU/Linux user, I *strongly* agree with the statement.
-Otherwise, if the current version of M\$ Win\* is so good, how can the
-company make \$ from a newer version?
+Otherwise, if the current version of
+M<span class="tex2jax_ignore>$</span> Win* is so good, how can the
+company make <span class="tex2jax_ignore>$</span> from a newer
+version?
