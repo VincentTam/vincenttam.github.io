@@ -17,7 +17,6 @@ group :development do
   gem 'directory_watcher', '1.4.1'
   gem 'mini_magick'
   gem 'erubis'
-  gem 'hpricot', '~> 0.8.6'
 end
 
 gem 'sinatra', '~> 1.4.2'
