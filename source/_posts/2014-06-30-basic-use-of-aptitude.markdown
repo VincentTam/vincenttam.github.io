@@ -1,0 +1,129 @@
+---
+layout: post
+title: "Basic Use of Aptitude"
+date: 2014-06-30 09:02:49 +0800
+comments: true
+categories: Linux
+---
+
+Why use Aptitude?
+---
+
+I tried upgrading the Linux kernel on Ubuntu using `apt-get`, but it
+*failed*.
+
+{% img /images/posts/Aptitude/GnomeTerm.png 'fig:gnome-term' 'apt-get cannot upgrade kernel' %}
+
+**How can I upgrade the Linux kernel?**
+
+<!-- more -->
+
+### A trivial solution
+
+Using the GUI Update Manager is extremely simple—a click will quickly
+settle this down.
+
+{% img /images/posts/Aptitude/GUI.png 'fig:GUI' 'Update Manager' %}
+
+However, many geeks want a solution in CLI, *not* GUI.
+
+Solution
+--
+
+The command `sudo aptitude` brings user into an interactive program.
+
+{% imgpopup /images/posts/Aptitude/AptitudeBig.png 70% 'Aptitude (Big version)' %}
+
+However, the screenshot is *too wide*.  How can one make it smaller so
+that it's easier to view the image?
+
+{% img /images/posts/Aptitude/Aptitude-0.png 'fig:Aptitude' 'Aptitude' %}
+
+The answer is *not* so difficult.  Several basic `stty` commands will
+be enough.
+
+### Some simple `stty` commands
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ stty -a       # print all settings
+$ stty size     # print the buffer height and width
+64 160
+$ stty cols 80  # set buffer width to 80 characters
+$ stty rows 32  # set buffer height to 32 rows
+</code></pre>
+
+The default `size` for `gnome-terminal` is `24 80`, while the figures
+for `/dev/tty[1-6]` is `64 160`.
+
+I have observed that the changes to `stty` settings should be
+permanent.  If one has quit the `tty`, and then goes back to the
+*same* `tty` again, the settings are still there.  That's why I've
+written down the default buffer sizes above.
+
+I then use the following command to take a screenshot of Aptitude from
+`/dev/tty1`.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ fbgrab -c 1 Aptitude.png</code></pre>
+
+Only the left top quarter of the image is needed.  Using [GIMP] to
+crop the image will be an overkill.  Many users who love using CLIs
+*won't* like that.  Moreover, how above repeating the cropping for
+*several* screenshots with the *same* size?
+
+### ImageMagick commands learnt
+
+`-resize` option will scale down the input image with size
+1280px×1024px to 300px×240px.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ convert -resize 300 1280x1024.png output.png</code></pre>
+
+That's the true cropping command.
+
+<pre class="cli"><code class="ubuntu_gnome_terminal">$ convert -crop 640x512 1280x1024.png output.png</code></pre>
+
+The outputs are four equally-sized image files like `output.png`.
+
+### A list of simple Aptitude keystrokes
+
+The basic key motions for moving the cursor is *exactly* those in Vim.
+
+- Press `?` for help
+
+    However, there's *too much* keys, and I'll list out some
+    elementary ones.
+
+- Press `/` to search
+- Press `n` to repeat search
+- Press `N` to repeat search *backward*
+- Press `<F6>` to move to the next window
+- Press `<F7>` to move to the previous window
+- Press `q` to quit
+- Press `<Enter>` to expand a node.
+
+    {% img /images/posts/Aptitude/AptitudeEnter-0.png 'fig:Enter' 'Press Enter' %}
+
+- Press `[` to expand recursively (`utils` expanded)
+
+    {% img /images/posts/Aptitude/AptitudeExpand1-0.png 'fig:Expand1' 'Before expansion' %}
+
+{% img /images/posts/Aptitude/AptitudeExpand2-0.png 'fig:Expand2' 'After expansion' %}
+
+- Press `+` to install/upgrade things
+- Press `-` to remove things
+- Press `_` to purge things
+- Press `^` to go back to the parent node (`utils` → `Security
+    Updates`)
+
+    {% img /images/posts/Aptitude/AptitudeParent1-0.png 'fig:Parent1' 'Original position' %}
+
+    {% img /images/posts/Aptitude/AptitudeParent2-0.png 'fig:Parent2' 'Jumped to parent node' %}
+
+- Press `]` to collapse all
+- Press `g` to preview the actions
+
+    {% img /images/posts/Aptitude/AptitudePreview-0.png 'fig:Preview' 'Aptitude preview window' %}
+
+- Press `g` *again* in the preview window to apply the actions
+
+    {% img /images/posts/Aptitude/AptitudePreview2-0.png 'fig:Preview2' 'Aptitude showing download progress' %}
+
+[GIMP]: http://www.gimp.org/ "GIMP - The GNU Image Manipulation Program"
