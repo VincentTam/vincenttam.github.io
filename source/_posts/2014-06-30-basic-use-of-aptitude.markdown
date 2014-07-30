@@ -80,36 +80,38 @@ That's the true cropping command.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ convert -crop 640x512 1280x1024.png output.png</code></pre>
 
-The outputs are four equally-sized image files like `output.png`.
+The outputs are four equally-sized image files like `output-0.png`.
 
 ### A list of simple Aptitude keystrokes
 
-The basic key motions for moving the cursor is *exactly* those in Vim.
+The basic key motions for moving the cursor is *exactly* the same as
+those in Vim.
+
+#### Seeking help
 
 - Press `?` for help
 
     However, there's *too much* keys, and I'll list out some
     elementary ones.
 
+#### Searching
+
 - Press `/` to search
 - Press `n` to repeat search
 - Press `N` to repeat search *backward*
+
+#### Working with windows
+
 - Press `<F6>` to move to the next window
 - Press `<F7>` to move to the previous window
 - Press `q` to quit
+
+#### Browsing through nodes
+
 - Press `<Enter>` to expand a node.
 
     {% img /images/posts/Aptitude/AptitudeEnter-0.png 'fig:Enter' 'Press Enter' %}
 
-- Press `[` to expand recursively (`utils` expanded)
-
-    {% img /images/posts/Aptitude/AptitudeExpand1-0.png 'fig:Expand1' 'Before expansion' %}
-
-{% img /images/posts/Aptitude/AptitudeExpand2-0.png 'fig:Expand2' 'After expansion' %}
-
-- Press `+` to install/upgrade things
-- Press `-` to remove things
-- Press `_` to purge things
 - Press `^` to go back to the parent node (`utils` → `Security
     Updates`)
 
@@ -117,13 +119,45 @@ The basic key motions for moving the cursor is *exactly* those in Vim.
 
     {% img /images/posts/Aptitude/AptitudeParent2-0.png 'fig:Parent2' 'Jumped to parent node' %}
 
+- Press `[` to expand recursively (`utils` expanded)
+
+    {% img /images/posts/Aptitude/AptitudeExpand1-0.png 'fig:Expand1' 'Before expansion' %}
+
+    {% img /images/posts/Aptitude/AptitudeExpand2-0.png 'fig:Expand2' 'After expansion' %}
+
 - Press `]` to collapse all
+
+#### Updating packages
+
+- Press `u` to update the package list
+- Press `U` to apply the upgrade to all upgradable packages
+
+Note: One needs to confirm the action by pressing `g`.  See 
+[a section below][a:applying-the-changes] for details.
+
+#### Action on individual packages
+
+- Press `+` to install/upgrade a package
+- Press `-` to remove a package
+- Press `_` to purge a package
+
+Note: One needs to confirm the action by pressing `g`.  See 
+[a section below][a:applying-the-changes] for details.
+
+#### Applying the changes
+
 - Press `g` to preview the actions
 
     {% img /images/posts/Aptitude/AptitudePreview-0.png 'fig:Preview' 'Aptitude preview window' %}
 
-- Press `g` *again* in the preview window to apply the actions
+    - Press `g` *again* in the preview window to apply the actions
 
     {% img /images/posts/Aptitude/AptitudePreview2-0.png 'fig:Preview2' 'Aptitude showing download progress' %}
 
+#### More commands
+
+There's still more commands, like `i` for switching the tabbed panes
+which contain the information of the packages.
+
 [GIMP]: http://www.gimp.org/ "GIMP - The GNU Image Manipulation Program"
+[a:applying-the-changes]: #applying-the-changes "Applying the changes"
