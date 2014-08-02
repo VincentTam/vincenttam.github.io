@@ -32,7 +32,7 @@ Solution
 
 The command `sudo aptitude` brings user into an interactive program.
 
-{% imgpopup /images/posts/Aptitude/AptitudeBig.png 70% 'Aptitude (Big version)' %}
+{% imgpopup /images/posts/Aptitude/AptitudeBig.png 70% Aptitude (Big version) %}
 
 However, the screenshot is *too wide*.  How can one make it smaller so
 that it's easier to view the image?

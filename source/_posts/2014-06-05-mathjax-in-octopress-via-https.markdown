@@ -178,6 +178,13 @@ MathJax.Hub.Config({
 </script>
 ```
 
+---
+(Last edited on AUG 2ND, 2014)
+
+Note: A new address of MathJax via HTTPS protocol is available.  View
+my [new post] for details.
+---
+
 #### Eliminate the "right-click bug"
 
 Lastly, we need to fix the "right-click bug" in MathJax Octopress
@@ -255,6 +262,7 @@ Lessons learnt
 [CryptoMetaStackExchange384]: http://meta.crypto.stackexchange.com/questions/384/
 [MathJaxFAQ]: http://www.mathjax.org/resources/faqs/#problem-https "MathJax FAQ"
 [MathJaxDoc]: http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn "MathJax Documentation on accessing their CDN over HTTPS"
+[new post]: /blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/
 [RightClickBugEg]: http://drz.ac/2013/01/03/blogging-with-math/
 [FixRightClickBugBB]: http://brianbuccola.github.io/blog/2012-11-28-latex-math-in-octopress.html#fix-right-click-bug
 [GrayPadlock]: /images/posts/OctopressHTTPS/GrayPadlock.png "Firefox's gray padlock for encrypted connection"
