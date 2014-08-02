@@ -7,7 +7,7 @@ categories: math
 ---
 
 {% img center /images/posts/PappusHexThm/PappusHexThm.svg 600 %}  
-[Source](/downloads/code/PappusHexThm.tex)
+<small>[Source](/downloads/code/PappusHexThm.tex)</small>
 
 Suppose that points $A,B$ and $C$ lie on the same straight line, and
 $D,E$ and $F$ lie on *another* one.  Draw line segments
@@ -36,7 +36,7 @@ segment whose extension *doesn't* contain any one of points
 <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.
 
 {% img center /images/posts/PappusHexThm/MenelausThm.svg 600 %}  
-[Source](/downloads/code/MenelausThm.tex)
+<small>[Source](/downloads/code/MenelausThm.tex)</small>
 
 It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span>
 divide some segments internally.  However, <span class="grp1">$P$</span> *also* has
@@ -52,7 +52,7 @@ two points should be *on the same side of the line relative to
 Let <span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.
 
 {% img center /images/posts/PappusHexThm/PappusHexThm1.svg 600 %}  
-[Source](/downloads/code/PappusHexThm1.tex)
+<small>[Source](/downloads/code/PappusHexThm1.tex)</small>
 
 Then the light blue triangle $\triangle B\color{blue}{S}F$ is what we
 need.
@@ -123,7 +123,7 @@ below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
 AE\color{blue}{S}$)
 
 {% img center /images/posts/PappusHexThm/PappusHexThm2.svg 600 %}  
-[Source](/downloads/code/PappusHexThm2.tex)
+<small>[Source](/downloads/code/PappusHexThm2.tex)</small>
 
 From equation (5), observe that $AB/CB$ and $EF/DF$ are independent
 from each other.  Then, we need to relate the area of those two
@@ -141,7 +141,7 @@ that $D\color{blue}{S}$ is the "common side" because $D$,
 <span class="grp2">$S$</span> and $B$ are collinear.
 
 {% img center /images/posts/PappusHexThm/PappusHexThm3.svg 600 %}
-[Source](/downloads/code/PappusHexThm3.tex)
+<small>[Source](/downloads/code/PappusHexThm3.tex)</small>
 
 $$
 \begin{align}
@@ -156,7 +156,7 @@ The $CB/BA$ in (7) cancels the $AB/CB$ in (5).  Therefore, we're
 almost done!
 
 {% img center /images/posts/PappusHexThm/PappusHexThm4.svg 600 %}
-[Source](/downloads/code/PappusHexThm4.tex)
+<small>[Source](/downloads/code/PappusHexThm4.tex)</small>
 
 $$
 \begin{align}

@@ -3,7 +3,7 @@ layout: post
 title: "Evince Viewing Error"
 date: 2014-07-13 18:39:52 +0800
 comments: true
-categories: 
+categories: SVG
 ---
 
 | Evince | Firefox | SVG  |

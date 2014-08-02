@@ -6,6 +6,7 @@ comments: true
 categories:
 - $\rm \LaTeX$
 - Linux
+- SVG
 ---
 
 I've drawn a figure in $\rm \LaTeX$ using the [TikZ].  However,
