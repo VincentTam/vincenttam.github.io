@@ -33,5 +33,5 @@ In addition, I've found out that changing `0 0 400 200` to `400 200 0 0`
 *doesn't* work.
 
 ---
-[^1]: Ferrara, D. (n.d.). *Viewbox Attribute in SVG: Understanding the SVG Viewbox*. Retrieved from <http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm>
+[^1]: Ferrara, D. n.d. *Viewbox Attribute in SVG: Understanding the SVG Viewbox*. Retrieved from <http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm>
 [SVGPan]: http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/ "SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library"
