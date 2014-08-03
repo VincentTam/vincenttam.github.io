@@ -11,7 +11,8 @@ categories:
 In my post about proving Pappus's Hexagon Theorem[^1], I inserted some
 SVG graphics to illustrate the ideas.  However, if one thinks that an
 SVG is too small and wants to enlarge it, it's *impossible* to be done
-with the "enlarge" button in a web browser.  I *don't* know why.
+with the "enlarge" button in <del>a web browser</del>Firefox.  I
+*don't* know why.
 
 {% img center /images/posts/PappusHexThm/PappusHexThm4.svg 600 %}  
 <small>An example illustrating the difficulty of enlarging an SVG
@@ -19,7 +20,8 @@ graphics for ordinary users.  The image is borrowed from the post
 about proving Pappus's Hexagon Theorem.  
 [$\rm \LaTeX$ Source code](/downloads/code/PappusHexThm4.tex)</small>
 
-**How can one enlarge SVG images within web browsers?**
+**How can one enlarge SVG images within <del>web
+browsers</del>Firefox?**
 
 <object type="image/svg+xml"
   data="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg"
@@ -34,7 +36,7 @@ scroll to enlarge/reduce it.
 <!-- more -->
 
 Thanks to Andrea Leofreddi, SVG graphics can now be enlarged *within*
-the browser.[^2]
+browsers.[^2]
 
 The instructions on Leofreddi's blog post is quite easy to understand.
 Then, I tried his script.
@@ -53,5 +55,20 @@ Third, if I remove `width="152.832pt" height="98.239pt" viewBox="0 0
 152.832 98.239"`, then it's done!
 
 ---
-[^1]: Tam, V. (2014, July 12). *Pappus's Hexagon Theorem*. Retrieved from <https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/>
-[^2]: Leofreddi, A. (2009, December 8). *SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library*. Retrieved from <http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/>
+(Added on AUG 03, 2014)
+
+Yesterday, I *didn't* know the code for enlarging an SVG image
+embedded by an `<object>` tag.  As a result, the loaded image was
+*too* small.  I've just checked out a guide on MDN about the
+`transform` attribute of `<svg>` tags[^3], and now I know how to make
+it bigger by the function `matrix(<a>,<b>,<c>,<d>,<e>,<f>)`.
+
+Moreover, Chrome supports the scaling of SVG graphics just like the
+scaling of other HTML elements.
+
+---
+[^1]: Tam, V. 2014, Jul 12. *Pappus's Hexagon Theorem*. Retrieved from <https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/>
+[^2]: Leofreddi, A. 2009, Dec 8. *SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library*. Retrieved from <http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/>
+[^3]: MDN. 2014, Feb 23. *Transform*. Retrieved from <https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform>
+
+*[MDN]: Mozilla Developer Network
