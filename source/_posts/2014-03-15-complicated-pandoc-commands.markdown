@@ -19,8 +19,28 @@ Official demo:
 
 ### Beamer
 
-A Vim editor command for APA style reference list:
+A shell command for APA style reference list:
 
-    !pandoc -t beamer -s -S --biblio mybib.bib --csl /path/to/apa.csl % -V theme:Berlin -o %<.pdf
+    $ pandoc -t beamer -s -S --biblio mybib.bib\
+    > --csl /path/to/apa.csl % -V theme:Berlin -o %<.pdf
+
+### Customized PDF
+(Added on AUG 03, 2014)
+
+The command below is just an example of narrowing the margin, and
+choosing a larger font.
+
+    $ pandoc % -V geometry:margin=1in -V fontsize:12pt\
+    > -V linestretch:1.655 -o %<.pdf 
+
+For more variables, refer to the User Guide:
+<http://johnmacfarlane.net/pandoc/README.html#templates>
+
+For many ordinary computer users who are used to write documents using
+WYSIWYG editors, the above command is quite scary, so I've written a
+custom template to save the trouble.  See
+[*My Pandoc Template (1)*][NewPost] for details.
+
+[NewPost]: /blog/2014/08/03/my-pandoc-template-1/
 
 <!-- vim:set tw=70 wrap: -->
