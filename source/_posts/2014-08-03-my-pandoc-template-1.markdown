@@ -10,7 +10,7 @@ The last post about [pandoc] was written four months ago.  Last week,
 I worked on a pandoc template which enables users to easily create
 $\rm \LaTeX$ documents with
 
-- 1-in margin; and
+- 1-inch margin; and
 - one-half (or double) spacing.
 
 The following command can create a PDF using the template.

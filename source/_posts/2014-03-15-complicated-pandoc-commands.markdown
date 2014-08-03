@@ -25,7 +25,7 @@ A shell command for APA style reference list:
     > --csl /path/to/apa.csl % -V theme:Berlin -o %<.pdf
 
 ### Customized PDF
-(Added on AUG 03, 2014)
+(Added on AUG 03RD, 2014)
 
 The command below is just an example of narrowing the margin, and
 choosing a larger font.
