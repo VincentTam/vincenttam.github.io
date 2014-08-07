@@ -14,9 +14,10 @@ should immediately follow line 29 of the file.  However, I updated
 Octopress's source code recently.[^1]  Therefore, the file looked
 *different* from Nung's one—in my own version of the file, I saw the
 following lines of code which caused me to think twice before really
-modifying the file.[^2]
+modifying the file.  (Click "Commit history" to see the highlighted
+section of code.)
 
-```ruby My Rakefile (Rakefile:30–33) https://github.com/imathis/octopress/commit/fe6ef744ede363688e8538ac091519e00c30487c Commit history
+```ruby Part of my `Rakefile` at commit 27d0510 https://github.com/VincentTam/vincenttam.github.io/blob/27d05105f4a82c8512ad6c8233fe7a70dc373e60/Rakefile#L30-33 Commit history
 if (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
   puts '## Set the codepage to 65001 for Windows machines'
   `chcp 65001`
@@ -27,10 +28,10 @@ above section of code.
 
 ---
 
-[^1]: [Corresponding Git commit on GitHub](https://github.com/VincentTam/vincenttam.github.io/commit/27d05105f4a82c8512ad6c8233fe7a70dc373e60)
-[^2]: [My `Rakefile` *before* writing this post](https://github.com/VincentTam/vincenttam.github.io/blob/27d05105f4a82c8512ad6c8233fe7a70dc373e60/Rakefile)
+[^1]: Commit [27d0510]
+[27d0510]: https://github.com/VincentTam/vincenttam.github.io/commit/27d05105f4a82c8512ad6c8233fe7a70dc373e60
 
 [tut1]: http://blog.eavatar.com/post/2013/06/octopress-ping-search-engines/
-[larrynung_rakefile]: https://github.com/larrynung/larrynung.github.io/blob/de3c94717eedf65863fb3a380f045013bb171d18/Rakefile
+[larrynung_rakefile]: https://github.com/larrynung/larrynung.github.io/blob/de3c947/Rakefile
 
 <!-- vim:se tw=70: -->

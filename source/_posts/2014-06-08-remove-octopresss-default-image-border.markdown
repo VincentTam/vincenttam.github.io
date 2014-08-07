@@ -63,9 +63,9 @@ searched for files under the `sass/` folder that contains
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ grep -r flash-video ./sass
 </code></pre>
 
-In lines 45–49 of `sass/partials/_blog.scss`, I observed that the
-mixin `shadow-box` was used.[^1]  I performed another search, and
-found the mixin in `sass/base/_utilities.scss`.
+I observed that the mixin `shadow-box` was used in
+`sass/partials/_blog.scss`.[^1]  I performed another search, and found
+the mixin in `sass/base/_utilities.scss`.[^2]
 
 I tried setting `border: none` for `img` tags in
 `sass/custom/_screen.scss`, but it was overridden by the above four
@@ -80,8 +80,8 @@ this blog—improve the settings in `sass/custom/_print.scss` for
 better printing experience.
 
 ---
-
-[^1]: [The source file on GitHub](https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6eaf79b1d94812fe72f93fb1ecf824c772/sass/partials/_blog.scss "Commit 2d1cec6")
+[^1]: `sass/partials/_blog.scss` at commit [2d1cec6](https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/partials/_blog.scss#L48)
+[^2]: `sass/base/_utilities.scss` at commit [2d1cec6](https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/base/_utilities.scss#L8-L13)
 
 [PrevPost]: /blog/2014/06/05/mathjax-in-octopress-via-https/ "MathJax in Octopress via HTTPS"
 

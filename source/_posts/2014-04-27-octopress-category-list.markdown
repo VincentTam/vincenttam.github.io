@@ -18,15 +18,7 @@ plugin file as `category_list.rb`, and `rake preview` still didn't
 produce the desired list.  Then I moved the HTML file that calls the
 plugin, namely the `category_list.html`, from
 `/source/_includes/asides` to `/source/_includes/custom/asides`, and
-changed `_config.yml` a little bit.
-
-{% codeblock _config.yml (lines 53, 57–59) lang:yaml https://github.com/VincentTam/vincenttam.github.io/blob/source/_config.yml soruce code %}
-default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
-
-blog_index_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
-post_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
-page_asides: [custom/asides/about.html, custom/asides/category_list.html, asides/recent_posts.html, asides/github.html, asides/delicious.html, asides/pinboard.html, asides/googleplus.html]
-{% endcodeblock %}
+changed `_config.yml` a little bit.[^2]
 
 Finally, I copied the contents from my *working* example (i.e.
 `/source/_includes/custom/asides/about.html`) *first*.  As expected, I
@@ -35,8 +27,10 @@ changed the code bit by bit, and I managed to include a list of
 categories.
 
 ---
-
-[^1]: [The source code of my category list page on Github in the past](https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d9739c4ebe705afbc30e6fac7f8374a0c61e/source/blog/categories/index.markdown)
+[^1]: `source/blog/categories/index.markdown` at commit 94c7d97 ([URL][94c7d97])
+[94c7d97]: https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d9739c4ebe705afbc30e6fac7f8374a0c61e/source/blog/categories/index.markdown
+[^2]: `_config.yml` at commit [7dcf6b7]
+[7dcf6b7]: https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7#diff-0
 
 [old_cat_list]: http://vigodome.com/blog/categories/
 [new_cat_list]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/

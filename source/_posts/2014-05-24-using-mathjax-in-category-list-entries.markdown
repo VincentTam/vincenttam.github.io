@@ -47,7 +47,7 @@ part URL: `-rm-latex-`.
 That is, I added the following lines before writing the new item to
 the variable `html`.
 
-```ruby Display MathJax rendered $\rm \LaTeX$ code in category lists item https://github.com/VincentTam/vincenttam.github.io/blob/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537/plugins/category_list_tag.rb source code
+```ruby Display MathJax rendered $\rm \LaTeX$ code in category lists item https://github.com/VincentTam/vincenttam.github.io/blob/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537/plugins/category_list_tag.rb#L11-L15 source code
 category_string = category.gsub(/_|\P{Word}/, '-').gsub(/-{2,}/, '-').downcase
 if category_string == "-rm-latex-"
     latex_category_string = "$-slash-rm-slash-latex$"

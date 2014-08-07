@@ -158,7 +158,7 @@ the above question posted on Cryptography Meta Stack Exchange.  I also
 saw their documentation about secure access to the MathJax CDN.  I
 copied the correct `<script>` tag from [there][MathJaxDoc].
 
-```html My working `source/_includes/custom/head.html` (lines 6–22) https://github.com/VincentTam/vincenttam.github.io/blob/source/source/_includes/custom/head.html view complete file
+```html Part of my working `source/_includes/custom/head.html` https://github.com/VincentTam/vincenttam.github.io/blob/70ba670/source/_includes/custom/head.html#L21 commit history
 <!-- mathjax config similar to math.stackexchange -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -183,6 +183,7 @@ MathJax.Hub.Config({
 
 Note: A new address of MathJax via HTTPS protocol is available.  View
 my [new post] for details.
+
 ---
 
 #### Eliminate the "right-click bug"
@@ -238,9 +239,9 @@ Lessons learnt
 
 [^1]: [HTTP vs HTTP**S**](http://www.wisegeek.org/what-is-the-difference-between-http-and-https.htm "wiseGEEK's answer")
 [^2]: [*Firefox Security Plugins*](/blog/2014/06/05/firefox-security-plugins/)
-[^3]: [*Carpe diem*'s method (see code block in "item 2")](http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/#here-are-the-instructions); and [My code (see lines 6–20)](https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef71cb8f211b59fcf4b070192cf83e731e3b/source/_includes/custom/head.html "My code for embedding MathJax in the past")
-[^4]: [The Git commit for the removal of the embedded PDF document](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670db6ff208e8308774f27d6bf1311d7a29c#diff-15b2c3edf625ef0861662cd07b1ec1c9 "commit 70ba670 on GitHub")
-[^5]: [The Git commit for adding an `s` to Google Fonts' URL](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670db6ff208e8308774f27d6bf1311d7a29c#diff-b50b3374e5da37d32f4429716cb09507 "same commit as above")
+[^3]: [*Carpe diem*'s method (see code block in "item 2")](http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/#here-are-the-instructions); and my `source/_includes/custom/head.html` at [8f72ef7](https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef7/source/_includes/custom/head.html#L6-L20 "My code for embedding MathJax in the past")
+[^4]: `source/_posts/2014-03-16-latex-template-for-essays.markdown` at commit [70ba670](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3)
+[^5]: `source/_includes/custom/head.html` at commit [70ba670](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-2)
 [^6]: ["Get used to skimming through documents" from Prof. C.K. Hung](http://user.frdm.info/ckhung/a/c013.php "Source: 習於略讀各種文件")
 [Octopress]: http://octopress.org/ "Octopress"
 [JPBlog]: https://yamanetoshi.github.io/ "A Japanese Octopress Blog browsed via HTTPS"

@@ -127,11 +127,11 @@ Therefore, I just adopted an ugly approach—input `.gsub(...)` for
 ---
 
 [^1]: For details, you may refer to [my post about RSS][PrevPost] written yesterday.
-[^2]: [`source/plugins/custom_filter.rb` at commit 449a911][449a911]
-[^3]: [`source/blog/2014/03/22/jump-to-latex-syntax-error/index.html` at commit fad55d6][fad55d6]
+[^2]: `source/plugins/custom_filter.rb` at commit [449a911][449a911]
+[^3]: `source/blog/2014/03/22/jump-to-latex-syntax-error/index.html` at commit [fad55d6][fad55d6]
 
 [PrevPost]: /blog/2014/06/10/my-settings-for-rss-1/ "My Settings for RSS (1)"
 [ewal]: http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed "Remove line numbers in Atom Feed"
 [StackOverflow17766216]: http://stackoverflow.com/a/17766326 "Can I use gsub and Hashes in Ruby?" 
-[449a911]: https://github.com/VincentTam/vincenttam.github.io/blob/449a9115af98341f3083e2216343211a1da739f0/plugins/custom_filter.rb
-[fad55d6]: https://github.com/VincentTam/vincenttam.github.io/commit/fad55d62831fa4bf54e2c6b35816d5bb967895e7#diff-1
+[449a911]: https://github.com/VincentTam/vincenttam.github.io/blob/449a911/plugins/custom_filter.rb#L18-L26
+[fad55d6]: https://github.com/VincentTam/vincenttam.github.io/commit/fad55d6#diff-1
