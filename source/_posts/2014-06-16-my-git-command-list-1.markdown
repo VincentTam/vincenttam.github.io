@@ -104,6 +104,14 @@ Use '--' to separate paths from revisions, like this:
 'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file>...]'
 </code></pre>
 
+---
+(Added on AUG 07TH, 2014)
+
+Now I know how to correct the above Git command.  Refer to my newer
+post [*Double Hyphens in Git Diff*][NewPost].
+
+---
+
 Add/remove Files
 ---
 
@@ -226,6 +234,11 @@ staging area.
 - `<C-n>` and `<C-p>` jump to the next and previous files
     respectively.
 - `cc` is for a Git commit.
+- `g?` invokes a list of key mappings which can be used in the `:Gstatus` help
+    window.
+- `D` is like `git diff`, but with the layout of `vimdiff`.  By
+    default, one window is on top of another.
+- `dv` is like `D`, but one window is on the right of another.
 
 ---
 
@@ -242,6 +255,7 @@ staging area.
 [GitBook2.1]: http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository "Cloning an Existing Repository"
 [StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
 [GitRefGitDiff]: http://git-scm.com/docs/git-diff#_examples "git-diff(1) Manual Page"
+[NewPost]: /blog/2014/08/07/double-hyphens-in-git-diff/
 [(git )?rm]: http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/ '"git rm" 和 "rm" 的区别'
 [PrevPost1]: /blog/2014/06/15/undo-an-amendment-to-a-git-commit/ "Undo an Amendment to a Git Commit"
 [fugitive.vim]: https://github.com/tpope/vim-fugitive

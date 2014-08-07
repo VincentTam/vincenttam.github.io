@@ -43,7 +43,9 @@ Building site: source -&gt; public
 
 ERROR: YOUR SITE COULD NOT BE BUILT:
 ------------------------------------
-(&lt;unknown&gt;): did not find expected key while parsing a block mapping at line 2 column 1 in /home/owner/octopress/source/_posts/2014-05-31-testing-double-quotes.markdown
+(&lt;unknown&gt;): did not find expected key while parsing a block mapping at line 2
+column 1 in /home/owner/octopress/source/_posts/2014-05-31-testing-double-
+quotes.markdown
 </code></pre>
 
 I opened `source/_posts/2014-05-31-testing-double-quotes.markdown` to

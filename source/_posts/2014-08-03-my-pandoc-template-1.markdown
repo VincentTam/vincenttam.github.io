@@ -7,15 +7,17 @@ categories: [pandoc, template]
 ---
 
 The last post about [pandoc] was written four months ago.  Last week,
-I worked on a pandoc template which enables users to easily create
-$\rm \LaTeX$ documents with
+I slightly changed the pandoc template `default.latex` on
+[jgm/pandoc-templates] so that users can easily create $\rm \LaTeX$
+documents with
 
 - 1-inch margin; and
 - one-half (or double) spacing.
 
 The following command can create a PDF using the template.
 
-    $ pandoc % --template=my_template1.latex -o %<.pdf
+<pre class="cli"><code>$ pandoc % --template=my_template1.latex -o %&lt;.pdf
+</code></pre>
 
 I hope that more people will use pandoc and write in Markdown.
 
@@ -24,3 +26,4 @@ I hope that more people will use pandoc and write in Markdown.
 {% gist ffad6efe2c65d5e70b28 my_template1.latex %}
 
 [pandoc]: http://johnmacfarlane.net/pandoc/ "pandoc—a universal document converter"
+[jgm/pandoc-templates]: https://github.com/jgm/pandoc-templates "Templates for pandoc"
