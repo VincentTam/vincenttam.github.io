@@ -258,4 +258,4 @@ staging area.
 [NewPost]: /blog/2014/08/07/double-hyphens-in-git-diff/
 [(git )?rm]: http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/ '"git rm" 和 "rm" 的区别'
 [PrevPost1]: /blog/2014/06/15/undo-an-amendment-to-a-git-commit/ "Undo an Amendment to a Git Commit"
-[fugitive.vim]: https://github.com/tpope/vim-fugitive
+[fugitive.vim]: https://github.com/tpope/vim-fugitive "a Git wrapper in Vim"

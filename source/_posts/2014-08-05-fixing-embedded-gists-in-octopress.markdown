@@ -3,7 +3,7 @@ layout: post
 title: "Fixing Embedded Gists in Octopress"
 date: 2014-08-05 20:18:53 +0800
 comments: true
-categories: Octopress
+categories: [Octopress, online code highlighter]
 ---
 
 Background
@@ -22,6 +22,29 @@ users to share code.  This is good for open source technologies.
 in the RSS (category) feeds;[^4]
 5. embed SVG images that support zooming, panning and dragging.[^5]
 
+While I was writing [my previous post][PrevPost], which was about a
+basic pandoc template for generating a $\rm \LaTeX$ PDF file, I would
+like to include a [Gist] in my post.
+
+Some users will say that Octopress's default fuctionality `{% raw %}{%
+include_code %}{% endraw %}` can highlight the code.
+
+***Why does one think of embedding a Gist in Octopress?***
+
+Rationale
+---
+
+To easily modify the embedded code block.
+
+- Octopress's default plugins: `rake generate` is slow, especially
+    when there's a lot of contents.  (say, more than a hundred posts)
+
+- Embedded Gist: `{% raw %}{% gist gist_id [<file>] %}{% endraw %}` is
+    responsible for embedding the code snippet for `<file>`---changing
+    the contents of the Gist for `<file>` *doesn't* change this piece
+    of [Jekyll] code.  Moreover, posting code to Gist is quite fast if
+    you have [Gist.vim] plugin installed in Vim.[^6]
+
 Problem
 ---
 
@@ -33,21 +56,28 @@ position.
 
 <!-- more -->
 
+In [a comment][Octopress#847b] left by Brandon Mathis, the father of
+Octopress, in Octopress issue #847, he said that **external contents**
+in Octopress posts/pages *weren't* good.  However, with [Gist.vim] and
+[fugitive.vim], managing code snippets in multiple places (i.e. the
+Git repository for one's Octopress blog, and the Gist for the code
+snippet) *isn't* so difficult.
+
 Solution
 ---
 
-There's a solution on devspade.[^6]  However, due to my *poor*
+There's a solution on devspade.[^7]  However, due to my *poor*
 knowledge on Ruby, I *couldn't* understand what was actually done in
 `plugins/git_tag.rb`.
 
-Therefore, I followed Rothberg's approach of changing a few CSS
-properties of embedded Gists.[^7]
+Therefore, I followed Alex Rothberg's approach of changing a few CSS
+properties of embedded Gists.[^8]
 
 After an hour of testing, I realized that changing
 `sass/partials/_syntax.scss` would suffice.  There's no need to
 actually change `.themes/classic/sass/partials/_syntax.scss` unless
-one wants to customize the theme.[^8]  Now I can use Gists in my
-posts.[^9]
+one wants to customize the theme.[^9]  Now I can use Gists in my
+posts.[^10]
 
 ---
 [^1]: Refer to [*Testing jQuery Image Popup*][imgpopup] for details.
@@ -60,17 +90,20 @@ posts.[^9]
 [RSS1]: /blog/2014/06/10/my-settings-for-rss-1/
 [RSS2]: /blog/2014/06/11/my-settings-for-rss-2/
 [^5]: Refer to [*Zooming SVG in Web Browsers*][SVGZoom] for details.
+[^6]: Refer to [*Posting Code to Gist Efficiently*][VimGist] for details.
+[VimGist]: /blog/2014/02/01/posting-code-to-gist-efficiently/
 [SVGZoom]: /blog/2014/08/02/zooming-svg-in-web-browsers/
-[^6]: Caffrey, B. Aug 6, 2014. *Fixing Gist Embeds in Octopress*. Retrieved from <http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/>
-[^7]:
+[^7]: Caffrey, B. Aug 6, 2014. *Fixing Gist Embeds in Octopress*. Retrieved from <http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/>
+[^8]:
     For details, refer to
 
-    1. [Octopress issue #847][Octopress#847]; and
+    1. Rothberg's comment in [Octopress issue #847][Octopress#847a];
+    and
     2. [cancan101/cancan101.github.io@d30d956][d30d956]
 
-[Octopress#847]: https://github.com/imathis/octopress/issues/847 "GitHub gist changes break gist plugin formatting"
+[Octopress#847a]: https://github.com/imathis/octopress/issues/847#issuecomment-43047234 "GitHub gist changes break gist plugin formatting"
 [d30d956]: https://github.com/cancan101/cancan101.github.io/commit/d30d956
-[^8]:
+[^9]:
     Before fixing the embedded Gists in Octopress, I *didn't* know how
     the SCSS files under `.themes/classic/partials/` affect those
     under `sass`.  Therefore, to prepare for a possible failure, I
@@ -90,5 +123,10 @@ posts.[^9]
 [e5668de]: https://github.com/VincentTam/vincenttam.github.io/commit/e5668de
 [f687612]: https://github.com/VincentTam/vincenttam.github.io/commit/f687612
 [fc59e2a]: https://github.com/VincentTam/vincenttam.github.io/commit/fc59e2a
-[^9]: For a successful example, you may refer to a Gist in my [previous post][prev_post].
-[prev_post]: /blog/2014/08/03/my-pandoc-template-1/#gist13584483 "My Pandoc Template (1)"
+[^10]: For a successful example, you may refer to a Gist in my [previous post][PrevPost].
+[PrevPost]: /blog/2014/08/03/my-pandoc-template-1/#gist13584483 "My Pandoc Template (1)"
+[Gist]: https://gist.github.com
+[Jekyll]: http://jekyllrb.com/
+[Gist.vim]: https://github.com/mattn/gist-vim "Vim script for Gist"
+[Octopress#847b]: https://github.com/imathis/octopress/issues/847#issuecomment-11386079
+[fugitive.vim]: https://github.com/tpope/vim-fugitive "a Git wrapper in Vim"

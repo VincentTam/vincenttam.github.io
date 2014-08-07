@@ -55,9 +55,9 @@ Source: [The Geek Stuff][msysgit_install_wizard]
     > Only Git will be added to your PATH.
 
     This enables other programs to make use of Git.  For example, Tim
-    Pope's [fugitive.vim][fugitive], which is a Vim plugin for using
-    Git *within* the editor, can be used in gVim on Windows after
-    Git's absolute path is appended to the `PATH` variable.
+    Pope's [fugitive.vim], which is a Vim plugin for using Git
+    *within* the editor, can be used in gVim on Windows after Git's
+    absolute path is appended to the `PATH` variable.
 
 When I installed Git on Windows half a year ago, I didn't pay much
 attention to the text under each option, and I chose the default
@@ -142,7 +142,7 @@ $ git pull origin master  # update the local master branch
 [ruby193]: http://rubyinstaller.org/downloads/
 [rdk]: http://rubyinstaller.org/downloads/
 [msysgit_install_wizard]: http://static.thegeekstuff.com/wp-content/uploads/2012/01/git-06-adjust-path.png
-[fugitive]: https://github.com/tpope/vim-fugitive
+[fugitive.vim]: https://github.com/tpope/vim-fugitive "a Git wrapper in Vim"
 [stackoverflow_11720945]: http://stackoverflow.com/questions/11720945/unable-to-run-git-from-command-line
 [octopress_new_comp]: http://scottcheng.com/blog/2012/11/setting-up-existing-octopress-blog-on-a-new-computer/
 [pull2branch]: http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/
