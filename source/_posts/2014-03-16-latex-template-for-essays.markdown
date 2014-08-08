@@ -21,9 +21,7 @@ Sample output
 Sample code
 ---
 
-{% include_code The essay latex_sample.tex %}
-
-{% include_code The bibliography lang:tex biblio.bib %}
+{% gist 9569005 %}
 
 Explanation of code in "latex_sample.tex"
 ---

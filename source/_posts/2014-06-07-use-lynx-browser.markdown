@@ -3,7 +3,7 @@ layout: post
 title: "Use Lynx Browser"
 date: 2014-06-07 13:01:57 +0800
 comments: true
-categories: 
+categories: [web technologies]
 ---
 
 Why?
