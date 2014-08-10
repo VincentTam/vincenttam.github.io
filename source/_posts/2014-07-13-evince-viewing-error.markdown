@@ -8,10 +8,11 @@ categories: SVG
 
 | Evince | Firefox | SVG  |
 | :----: | :-----: | :--: |
-|{% img /images/posts/EvinceTikZ/Evince.png 200 %}|{% img /images/posts/EvinceTikZ/FF.png 200 %}|{% img /images/posts/EvinceTikZ/SVG.svg 200 %}|
-|  bad   |   ok    | good |
+|{% img /images/posts/EvinceTikZ/Evince.png 200 %} | {% img /images/posts/EvinceTikZ/FF.png 200 %} | {% img /images/posts/EvinceTikZ/SVG.svg 200 %} | 
+|  bad   | ok[^1]  | good |
 
-<small>Source for the TikZ diagram ([download][src])</small>
+<small>The [Gist][src] for the $\rm \LaTeX$ source code of the TikZ
+diagram</small>
 
 This afternoon, while I was using TikZ to fill a triangle with line
 pattern, I found that the filling pattern flowed out of the triangle.
@@ -26,7 +27,12 @@ open the file, but the grids *weren't* being rendered properly either.
 Luckily, if I use [`pdf2svg`] to convert the PDF file to an SVG file,
 the SVG file *doesn't* have such problem.
 
+---
+[^1]:
+    The results are the *same* in Firefox on M\$ Windows and
+    GNU/Linux.
+
 [latexse]: http://tex.stackexchange.com/a/100706 "Why is this TikZ pattern spilling outside the path it fills? [closed]"
 [pdf.js]: http://mozilla.github.io/pdf.js/
 [`pdf2svg`]: http://www.cityinthesky.co.uk/opensource/pdf2svg/
-[src]: /downloads/code/new.tex
+[src]: https://gist.github.com/VincentTam/02391d6016da80df1ffa
