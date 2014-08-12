@@ -47,4 +47,4 @@ That's why I wrote the [previous post][PrevPost].
     from
     <http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf>
 
-[PrevPost]: https://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces/ "Limit of Distances in Metric Spaces"
+[PrevPost]: /blog/2014/08/10/limit-of-distances-in-metric-spaces/ "Limit of Distances in Metric Spaces"
