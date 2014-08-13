@@ -6,7 +6,11 @@ comments: true
 categories: Linux
 ---
 
-I've upgraded [Ubuntu] to 14.04 LTS.  In the first reboot, I saw a few
+I've upgraded [Ubuntu] to 14.04 LTS.
+
+![tty1 of Ubuntu 14.04][tty1]
+
+In the first reboot, I saw a few
 errors.  Since then, usual things like web browsers and terminal have
 run smoothly, except the tool tip text of the [Firefox] icon in the
 [Unity] desktop environment.
@@ -25,8 +29,8 @@ I *won't* try to fix the problem since I think that metric spaces are
 more *interesting* than technical problems.
 
 [Ubuntu]: http://www.ubuntu.com "A popular Linux distro"
+[tty1]: /images/posts/UbuntuDistUpgrade2/tty1.png
 [Firefox]: https://www.mozilla.org/en-US/firefox/new/ "Mozilla Firefox"
 [Unity]: https://unity.ubuntu.com "Ubuntu's default desktop environment"
-[Chrome]: https://www.google.com/intl/en/chrome/browser/ "Google
-Chrome"
+[Chrome]: https://www.google.com/intl/en/chrome/browser/ "Google Chrome"
 [src_code]: /images/posts/UbuntuDistUpgrade2/src_code.png
