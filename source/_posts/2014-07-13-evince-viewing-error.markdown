@@ -6,10 +6,10 @@ comments: true
 categories: SVG
 ---
 
-| Evince | Firefox | SVG  |
-| :----: | :-----: | :--: |
-|{% img /images/posts/EvinceTikZ/Evince.png 200 %} | {% img /images/posts/EvinceTikZ/FF.png 200 %} | {% img /images/posts/EvinceTikZ/SVG.svg 200 %} | 
-|  bad   | ok[^1]  | good |
+| Evince | Firefox | Google Chrome | SVG  |
+| :----: | :-----: | :-----------: | :--: |
+|{% img /images/posts/EvinceTikZ/Evince.png 200 'img:1' 'Evince' %} | {% img /images/posts/EvinceTikZ/FF.png 200 'img:2' 'Firefox' %} | {% img /images/posts/EvinceTikZ/chrome.png 200 'img:3' 'Google Chrome' %} | {% img /images/posts/EvinceTikZ/SVG.svg 200 'img:4' 'SVG' %} |
+|  bad   | ok[^1]  |     good      | good |
 
 <small>The [Gist][src] for the $\rm \LaTeX$ source code of the TikZ
 diagram</small>
