@@ -15,6 +15,18 @@ At first, the time *wasn't* synchronized with the Internet, though it
 had been set to "Automatically from the Internet" in "Time & Date" in
 "Systems Settings".  After an hour or so, it'll be fine.
 
+However, the display of monospaced fonts in some places is strange.
+For example, when I view the source code of a web page in Google
+[Chrome], the font *isn'* monospaced.
+
+![HTML source code viewed inside Chrome][src_code]
+
+I *won't* try to fix the problem since I think that metric spaces are
+more *interesting* than technical problems.
+
 [Ubuntu]: http://www.ubuntu.com "A popular Linux distro"
 [Firefox]: https://www.mozilla.org/en-US/firefox/new/ "Mozilla Firefox"
 [Unity]: https://unity.ubuntu.com "Ubuntu's default desktop environment"
+[Chrome]: https://www.google.com/intl/en/chrome/browser/ "Google
+Chrome"
+[src_code]: /images/posts/UbuntuDistUpgrade2/src_code.png
