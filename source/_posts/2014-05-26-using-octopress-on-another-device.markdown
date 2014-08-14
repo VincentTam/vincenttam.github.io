@@ -132,8 +132,8 @@ $ git pull origin master  # update the local master branch
 </code></pre>
 
 ---
-
-[^1]: [在 Windows 使用 Octopress](http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/)
+[^1]: [在 Windows 使用 Octopress][OctopressInWin]
+[OctopressInWin]: http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/
 
 [tut1]: http://www.techelex.org/setup-octopress-on-windows7/
 [pygment]: http://pygments.org/

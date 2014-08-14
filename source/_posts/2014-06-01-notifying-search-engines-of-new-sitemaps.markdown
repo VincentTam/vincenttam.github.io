@@ -27,9 +27,8 @@ Finally, I decided to add the code for ping services *behind* the
 above section of code.
 
 ---
-
 [^1]: Commit [27d0510]
-[27d0510]: https://github.com/VincentTam/vincenttam.github.io/commit/27d05105f4a82c8512ad6c8233fe7a70dc373e60
+[27d0510]: https://github.com/VincentTam/vincenttam.github.io/commit/27d0510
 
 [tut1]: http://blog.eavatar.com/post/2013/06/octopress-ping-search-engines/
 [larrynung_rakefile]: https://github.com/larrynung/larrynung.github.io/blob/de3c947/Rakefile

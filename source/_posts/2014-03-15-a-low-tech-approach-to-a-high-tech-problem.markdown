@@ -28,8 +28,10 @@ P.S. I has typed this article in Vim *without* doing any ruff work on
 paper.
 
 ----
-
-[^1]: [My about page](http://vincenttam.github.io/about/)
-[^2]: [Why, oh WHY, do those #?@! nutheads use vi?](http://www.viemu.com/a-why-vi-vim.html) Misconception #5
+[^1]: [My about page](/about/)
+[^2]:
+    De Heredia, J. B.  (May 16, 2007).  *Why, oh WHY, do those #?@!
+    nutheads use vi?*.  Retrieved from
+    <http://www.viemu.com/a-why-vi-vim.html>, Misconception #5.
 
 <!-- vim:set tw=70:wrap: -->

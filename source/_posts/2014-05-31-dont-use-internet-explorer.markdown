@@ -19,9 +19,8 @@ fixed, I *won't* use IE anymore on my desktop, which runs on
 {% endpullquote %}
 
 ---
+[^1]:
+    [Internet Explorer a security risk: use Firefox or Chrome–Denver Top News][f1]
 
-[^1]: [Internet Explorer a security risk: use Firefox or Chrome–Denver Top News](http://www.examiner.com/article/internet-explorer-a-security-risk-use-firefox-or-chrome)
-
+[f1]: http://www.examiner.com/article/internet-explorer-a-security-risk-use-firefox-or-chrome
 [gnu_linux]: https://www.gnu.org/gnu/linux-and-gnu.en.html
-
-<!-- vim:se tw=70: -->

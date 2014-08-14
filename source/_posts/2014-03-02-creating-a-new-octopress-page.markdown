@@ -28,6 +28,8 @@ find a blog post on that.[^octopress_about]
 ----
 
 [^doc]: [Blogging Basics](http://octopress.org/docs/blogging/)
-[^octopress_about]: [為 Octopress 添加新的頁面](http://icodeit.org/2013/01/add-new-page-to-octopress/)
+[^octopress_about]: [為 Octopress 添加新的頁面][new_page]
+
+[new_page]: http://icodeit.org/2013/01/add-new-page-to-octopress/
 
 <!-- vim:set tw=70 wrap spell: -->

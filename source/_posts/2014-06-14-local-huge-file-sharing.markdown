@@ -213,11 +213,14 @@ repository at the "remote" *nix computer or pushing the branch will
 solve the problem.[^4]
 
 ---
+[^1]:
+    As can be seen from the contents below, I aim at setting up a
+    connection between Windows and Linux, on which the subnet mask
+    *can't* be set to "225.225.225.0".
 
-[^1]: As can be seen from the contents below, I aim at setting up a connection between Windows and Linux, on which the subnet mask *can't* be set to "225.225.225.0".
-[^2]: See another post on the same topic on wikiHow. ([URL][wikiHow])
+[^2]: See another post on the same topic on [wikiHow].
 [^3]: I learnt it from [Ask Ubuntu].
-[^4]: A question on Stack Overflow ([URL][StackOverflow2816369])
+[^4]: A question on [Stack Overflow][so2816369].
 
 [Dropbox]: https://www.dropbox.com
 [Google Drive]: https://drives.google.com
@@ -234,7 +237,7 @@ solve the problem.[^4]
 [scp1]: https://kb.iu.edu/d/agye "SCP in Unix"
 [scp2]: http://www.tecmint.com/scp-commands-examples/ "10 SCP Commands to Transfer Files/Folders in Linux"
 [GitMan]: http://git-scm.com/docs/git-clone#_git_urls "Git URLs"
-[StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
+[so2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
 
 *[ISPs]: Internet Service Providers
 *[SSH]: Secure Shell

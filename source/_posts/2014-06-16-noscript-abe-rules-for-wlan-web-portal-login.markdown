@@ -74,9 +74,13 @@ Forums appeared on the top.  The second reply solved this problem.
 ---
 
 [^1]: My older post: [*Firefox Security Plugins*][PrevPost1]
-[^2]: My older posts: *My Settings for RSS [(1)][PrevPost2a],[(2)][PrevPost2b]*
+[^2]:
+    My older posts: *My Settings for RSS [(1)][PrevPost2a],
+    [(2)][PrevPost2b]*
+
 [^3]: My older post: [*Using Octopress on Another Device*][PrevPost3]
-[^4]: My older post: [*Liquid Exceptions During Generation of My Blog on Windows 7*][PrevPost4]
+[^4]:
+    My older post: [*Liquid Exceptions During Generation of My Blog on Windows 7*][PrevPost4]
 
 [NoScript]: http://noscript.net/ "Scripts and Flash blocker for a safer Firefox experience"
 [PrevPost1]: /blog/2014/06/05/firefox-security-plugins/

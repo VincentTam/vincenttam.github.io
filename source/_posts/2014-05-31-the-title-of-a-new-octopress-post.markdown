@@ -84,9 +84,8 @@ The solution is again simple: changing `"` to `'`.
 Exclamation marks *and* quotes
 ---
 
-Before writing
-[*Don't use Internet Explorer!*][dont_use_internet_explorer], I
-tried issuing the following command.
+Before writing [*Don't use Internet Explorer!*][dont_use_ie], I tried
+issuing the following command.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post["Don't use Internet Explorer<span class="ubuntu_hl_code">\</span>!"]
 (in /home/owner/octopress)
@@ -108,19 +107,18 @@ some simple tricks will do.
 
 2. Add the things back to `title` in the header of the generated
 markdown file.
-    - For example, change
-
-    <pre><code>title: "Don't use Internet Explorer"</code></pre>
-
-    into
-
-    <pre><code>title: "Don't use Internet Explorer<span class="hl_code">!</span>"</code></pre>
+    - For example, change `title: "Don't use Internet Explorer"` into
+	`title: "Don't use Internet Explorer!"`
 
 ---
 
-[^1]: [*Blogging Basics* by Brandon Mathis](http://octopress.org/docs/blogging/)
+[^1]:
+    Mathis, B.  (Jul 19, 2014).  *Blogging Basics*.  Retrieved from
+    <http://octopress.org/docs/blogging/>
+
 [^2]: Ibid.
 
 [my_desktop_crashed]: /blog/2014/05/27/my-desktop-crashed/
-[dont_use_internet_explorer]: /blog/2014/05/31/dont-use-internet-explorer/
+[dont_use_ie]: /blog/2014/05/31/dont-use-internet-explorer/
+
 <!-- vim:se tw=70: -->

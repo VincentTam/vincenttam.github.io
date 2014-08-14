@@ -158,10 +158,14 @@ including it in my `PATH` variable.
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install imagemagick</code></pre>
 
 ---
+[^1]:
+    [Liquid exception with pygments in codeblocks – Google Groups][f1]
 
-[^1]: [Liquid exception with pygments in codeblocks–Google Groups](https://groups.google.com/forum/#!msg/octopress/EmN5_5nXpRY/rhkzDWV5HoIJ)
-[^2]: [Raison D'souza's answer to his *own* question on Stack Overflow](http://stackoverflow.com/a/20485262)
+[^2]:
+    [Raison D'souza's answer to his *own* question on Stack Overflow][f2]
 
+[f1]: https://groups.google.com/forum/#!msg/octopress/EmN5_5nXpRY/rhkzDWV5HoIJ
+[f2]: http://stackoverflow.com/a/20485262
 [octopress_win7]: /blog/2014/05/26/using-octopress-on-another-device/
 [prefer_blog]: /blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/
 [github]: https://github.com

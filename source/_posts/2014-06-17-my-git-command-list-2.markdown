@@ -231,7 +231,6 @@ see how `<branch1>` has been modified,
 `<branch1>` with the common ancestor of `<branch1>` and `<branch2>`.
 
 ---
-
 [^1]: The official kramdown syntax documentation. ([URL][kramdownDoc])
 
 [kramdownDoc]: http://kramdown.gettalong.org/syntax.html#math-blocks

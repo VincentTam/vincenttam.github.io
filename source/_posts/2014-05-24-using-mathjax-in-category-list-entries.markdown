@@ -56,8 +56,11 @@ end
 ```
 
 ---
+[^1]:
+    [My Git commit history][commit_hist]
 
-[^1]: [My Git commit history](https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7e8cdc6b9fd1f8de9a81a05af128849537#diff-1)
-[^2]: [Watson's Category List Plugin](http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/)
+[^2]: [Watson's Category List Plugin][CatList]
+[CatList]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/
 
+[commit_hist]: https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7#diff-1
 <!-- vim:se tw=70: -->

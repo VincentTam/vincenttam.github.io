@@ -80,23 +80,17 @@ this blog—improve the settings in `sass/custom/_print.scss` for
 better printing experience.
 
 ---
-[^1]: `sass/partials/_blog.scss` at commit [2d1cec6](https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/partials/_blog.scss#L48)
-[^2]: `sass/base/_utilities.scss` at commit [2d1cec6](https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/base/_utilities.scss#L8-L13)
-
+[^1]: `sass/partials/_blog.scss` at commit [2d1cec6a]
+[2d1cec6a]: https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/partials/_blog.scss#L48
+[^2]: `sass/base/_utilities.scss` at commit [2d1cec6b]
+[2d1cec6b]: https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/base/_utilities.scss#L8-L13
 [PrevPost]: /blog/2014/06/05/mathjax-in-octopress-via-https/ "MathJax in Octopress via HTTPS"
-
 [MozSupp]: http://mzl.la/13jCUSU "How does content that isn't secure affect my safety?"
-
 [imgpop]: http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/ "A Simple Octopress Image Popup Plugin"
-
 [Solarized]: http://erikzaadi.com/2012/04/22/solarized-for-octopress/ " Source code of Solarized theme for Octopress"
-
 [LarryNung]: https://github.com/larrynung/larrynung.github.io/tree/source " Source code of Larry Nung's GitHub page"
-
 [OctopressDocImg]: http://octopress.org/docs/plugins/image-tag/ "Image Tag"
-
 [StackExchange1987926]: http://stackoverflow.com/questions/1987926/ "How do I grep recursively?"
-
 [StackExchange7115959]: http://stackoverflow.com/questions/7115959/ "Adding !important using a Compass Mixin"
 
 <!-- vim:se tw=70: -->

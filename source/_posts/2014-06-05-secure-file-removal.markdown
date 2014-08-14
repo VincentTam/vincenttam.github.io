@@ -102,14 +102,21 @@ something strange happens, one may refer to
 [this post][FixBrokenEncryptedSwap].
 
 ---
+[^1]:
+    [A question about recursively shred a folder on Unix Stack Exchange][f1]
 
-[^1]: [A question about recursively shred a folder on Unix Stack Exchange](http://unix.stackexchange.com/questions/27027/how-do-i-recursively-shred-an-entire-directory-tree "How do I recursively shred an entire directory tree?")
-[^2]: [A post that advises users to use `shred`](http://fsckin.com/2008/01/09/using-shred-to-wipe-hard-drives-dod-uses-it-you-should-too/ "Using Shred to Wipe Hard Drives – DoD Uses It – You Should Too!")
-[^3]: [Shane's comment to the post in item 2](http://fsckin.com/2008/01/09/using-shred-to-wipe-hard-drives-dod-uses-it-you-should-too/#comment-960661402)
-[^4]: [A post on *Ask Leo!*](http://ask-leo.com/do_i_need_a_file_shredder_for_my_usb_flash_drive.html "Do I need a file shredder for my USB Flash Drive?")
-[^5]: [Software license of SDelete](http://technet.microsoft.com/en-us/sysinternals/bb469936 "Sysinternals Software License Terms")
-[^6]: [An article on Computerworld about SSD security issues](http://www.computerworld.com/s/article/355159/SSD_Security_Issues_Surprise_Experts "SSD data-erasure challenges surprise experts")
+[^2]: [A post that advises users to use `shred`][use_shred]
+[use_shred]: http://fsckin.com/2008/01/09/using-shred-to-wipe-hard-drives-dod-uses-it-you-should-too/ "Using Shred to Wipe Hard Drives – DoD Uses It – You Should Too!"
+[^3]: [Shane's comment to the post in item 2][shane]
+[shane]: http://fsckin.com/2008/01/09/using-shred-to-wipe-hard-drives-dod-uses-it-you-should-too/#comment-960661402
+[^4]: [A post on *Ask Leo!*][ask_leo]
+[ask_leo]: http://ask-leo.com/do_i_need_a_file_shredder_for_my_usb_flash_drive.html "Do I need a file shredder for my USB Flash Drive?"
+[^5]: [Software license of SDelete][sdel_license]
+[sdel_license]: http://technet.microsoft.com/en-us/sysinternals/bb469936 "Sysinternals Software License Terms"
+[^6]: [An article on Computerworld about SSD security issues][f6]
+[f6]: http://www.computerworld.com/s/article/355159/SSD_Security_Issues_Surprise_Experts "SSD data-erasure challenges surprise experts"
 
+[f1]: http://unix.stackexchange.com/questions/27027/how-do-i-recursively-shred-an-entire-directory-tree "How do I recursively shred an entire directory tree?"
 [EnDisableCryptswap]: http://www.logilab.org/29155 "Enable and disable encrypted swap - Ubuntu"
 [CryptswapHibernate]: https://help.ubuntu.com/community/EnableHibernateWithEncryptedSwap "EnableHibernateWithEncryptedSwap - Ubuntu Community Help Wiki"
 [FixBrokenEncryptedSwap]: http://my-linux-installation-files.blogspot.hk/2012/09/fixing-broken-encrypted-swap-partition.html "Fixing Broken Encrypted Swap Partition"

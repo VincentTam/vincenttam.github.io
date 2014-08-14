@@ -34,5 +34,4 @@ Then
 $$\norm{\vect{u}-\vect{v}}\le\norm{\vect{F}(\vect{u})-\vect{F}(\vect{v})}/c=0\iff\vect{u}=\vect{v}$$.
 
 ---
-
 [^1]: FitzPatrick's *Advanced Calculus*

@@ -21,7 +21,6 @@ According to a Vim tips found in the footnote, the answer is quite
 simple—insert the `\%V` atom at the beginning of the search pattern.
 
 ---
+[^1]: Search and replace in a visual selection—[Vim Tips Wiki]
 
-[^1]: Search and replace in a visual selection—Vim Tips Wiki ([URL][VimTipsWiki])
-
-[VimTipsWiki]: http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection
+[Vim Tips Wiki]: http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection

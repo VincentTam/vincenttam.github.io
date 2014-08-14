@@ -32,12 +32,12 @@ Solution
 I googled "undo git commit amend", and, at the first glance, found
 three relevant web pages.
 
-1. A question on StackOverflow ([URL][StackOverflow1459150])
+1. A question on [StackOverflow][so1459150]
 
     At first, I *didn't* understand what `HEAD@{1}` was, and jumped to
     the next item.
 
-2. An article on Pivotal Labs ([URL][Pivotal])
+2. An article on [Pivotal Labs][Pivotal]
 
     I just skimmed through the whole essay for commands.  I *didn't*
     think that `git diff 8751261..9d3a192 | git apply -` was helpful.
@@ -62,12 +62,14 @@ For non-professionals, using multimedia to illustrate abstract ideas
 is better than just using words.
 
 ---
+[^1]:
+    According to the original version of a GitHub help page, changing
+    a pushed commit will "cause the wrath of Git gods".  However, the
+    quoted phrase has gone, but I can still find it
+    [here][so19096170].
 
-[^1]: According to the original version of a GitHub help page, changing a pushed commit will "cause the wrath of Git gods".  However, the quoted phrase has gone, but I can still find it [here][StackOverflow19096170].
-
-[StackOverflow19096170]: http://stackoverflow.com/questions/19096170/
-"Pushing to remote after locally rebasing commits"
-[StackOverflow1459150]: http://stackoverflow.com/a/1459264 'How to undo "git commit --amend" done instead of "git commit"'
+[so19096170]: http://stackoverflow.com/questions/19096170/ "Pushing to remote after locally rebasing commits"
+[so1459150]: http://stackoverflow.com/a/1459264 'How to undo "git commit --amend" done instead of "git commit"'
 [Pivotal]: http://pivotallabs.com/rewinding-git-commit-amend/ "Rewinding git commit --amend"
 [Coderwall]: https://coderwall.com/p/psskyq "How to undo a git commit --amend"
 [2:38]: http://youtu.be/pW0bITv07ok?t=2m38s

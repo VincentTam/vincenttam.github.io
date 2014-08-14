@@ -52,7 +52,6 @@ Google searches:
 You may refer to [commit 4be1bbf][4be1bbf] for details.
 
 ---
-
 [^1]: Commit [94c7d97]
 [^2]: `sass/custom/_print.scss` at commit [4be1bbf]
 

@@ -92,10 +92,12 @@ detailed practical advantages of Octopress over WordPress, you may
 refer to [my about page][about].
 
 ---
-
-[^1]: [UltraBlog.vim v3.6.1: 文章分類自動補全](http://0x3f.org/blog/ultrablog-v361-released/)
-[^2]: [Migrated to Octopress](http://blogueun.wordpress.com/2014/03/15/migrated-to-octopress/)
-[^3]: [遷移到octopress](http://0x3f.org/blog/migrate-blog-to-octopress/)
+[^1]: [*UltraBlog.vim v3.6.1: 文章分類自動補全*][UB3.6]
+[UB3.6]: http://0x3f.org/blog/ultrablog-v361-released/
+[^2]: [*Migrated to Octopress*][Migrated2Octopress]
+[Migrated2Octopress]: http://blogueun.wordpress.com/2014/03/15/migrated-to-octopress/
+[^3]: [*遷移到octopress*][Migrated2Octopress2]
+[Migrated2Octopress2]: http://0x3f.org/blog/migrate-blog-to-octopress/
 
 [vundle]: https://github.com/gmarik/Vundle.vim
 [ub]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/

@@ -45,11 +45,13 @@ the latest changes.  Otherwise, after writing a new post, it is
 possible that one *can't* upload the new post to the Octopress or
 Jekyll site using `rake deploy`.
 
-Thus, eight days ago, I made Git commit
-[8c7be99f49](https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99f49e0aee10ae74a7ee360e02bab5649c2).
+Thus, eight days ago, I made Git commit [8c7be99].
 
 ----
+[^config_octopress]:
+    Mathis, B.  (Jul 19, 2011).  *Configuring Octopress*.  Retrieved
+    from <http://octopress.org/docs/configuring/>
 
-[^config_octopress]: [Configuring Octopress](http://octopress.org/docs/configuring/)
+[8c7be99]: https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99
 
 <!-- vim:set tw=70 wrap spell: -->

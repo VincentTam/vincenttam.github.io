@@ -236,13 +236,27 @@ Lessons learnt
     - To prevent eavesdropping and surveillance.
 
 ---
+[^1]: [HTTP vs HTTP**S**][wisegeek]
+[wisegeek]: http://www.wisegeek.org/what-is-the-difference-between-http-and-https.htm "wiseGEEK's answer"
+[^2]: [*Firefox Security Plugins*][ff_sec_plug]
+[ff_sec_plug]: /blog/2014/06/05/firefox-security-plugins/
+[^3]:
+    [*Carpe diem*'s method (see code block in "item 2")][Carpediem];
+    and my `source/_includes/custom/head.html` at [8f72ef7]
 
-[^1]: [HTTP vs HTTP**S**](http://www.wisegeek.org/what-is-the-difference-between-http-and-https.htm "wiseGEEK's answer")
-[^2]: [*Firefox Security Plugins*](/blog/2014/06/05/firefox-security-plugins/)
-[^3]: [*Carpe diem*'s method (see code block in "item 2")](http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/#here-are-the-instructions); and my `source/_includes/custom/head.html` at [8f72ef7](https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef7/source/_includes/custom/head.html#L6-L20 "My code for embedding MathJax in the past")
-[^4]: `source/_posts/2014-03-16-latex-template-for-essays.markdown` at commit [70ba670](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3)
-[^5]: `source/_includes/custom/head.html` at commit [70ba670](https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-2)
-[^6]: ["Get used to skimming through documents" from Prof. C.K. Hung](http://user.frdm.info/ckhung/a/c013.php "Source: 習於略讀各種文件")
+[^4]:
+    `source/_posts/2014-03-16-latex-template-for-essays.markdown` at
+    commit [70ba670]
+
+[^5]: `source/_includes/custom/head.html` at commit [70ba670]
+[70ba670]: https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-2
+[^6]:
+    ["Get used to skimming through documents" from Prof. C.K. Hung][f6]
+
+[CarpeDiem]: http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/#here-are-the-instructions
+[8f72ef7]: https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef7/source/_includes/custom/head.html#L6-L20 "My code for embedding MathJax in the past"
+[70ba670]: https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3
+[f6]: http://user.frdm.info/ckhung/a/c013.php "Source: 習於略讀各種文件"
 [Octopress]: http://octopress.org/ "Octopress"
 [JPBlog]: https://yamanetoshi.github.io/ "A Japanese Octopress Blog browsed via HTTPS"
 [HTTPSEverywhere]: https://www.eff.org/https-everywhere "HTTPS Everywhere"

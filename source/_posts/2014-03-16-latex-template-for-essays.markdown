@@ -42,10 +42,16 @@ I've found [$\rm \LaTeX$-Online-Compiler](http://latex.informatik.uni-halle.de/l
 (Last edited on APR 26TH, 2014)
 
 ----
+[^1]:
+    Visual comparison between LaTeX and Word output (hyphenation,
+    typesetting, ligatures etc) on
+    [$\rm \TeX$--$\rm \LaTeX$ Stack Exchange][texse].
 
-[^1]: <http://tex.stackexchange.com/questions/110133/visual-comparison-between-latex-and-word-output-hyphenation-typesetting-ligat>
-[^2]: <http://nitens.org/taraborelli/latex>
+[^2]:
+    Taraborelli, D.  (July 4, 2011).  *The Beauty of $\rm \LaTeX$*.
+    Retrieved from <http://nitens.org/taraborelli/latex>
 
+[texse]: http://tex.stackexchange.com/q/110133
 [sample_output]: /downloads/latex_sample.pdf
 
-<!-- vim:set sw=2:wrap: -->
+<!-- vim:set sw=2:tw=70:wrap: -->

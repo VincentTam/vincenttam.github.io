@@ -27,11 +27,13 @@ changed the code bit by bit, and I managed to include a list of
 categories.
 
 ---
-[^1]: `source/blog/categories/index.markdown` at commit 94c7d97 ([URL][94c7d97])
-[94c7d97]: https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d9739c4ebe705afbc30e6fac7f8374a0c61e/source/blog/categories/index.markdown
+[^1]:
+    `source/blog/categories/index.markdown` at commit [94c7d97]
+
 [^2]: `_config.yml` at commit [7dcf6b7]
 [7dcf6b7]: https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7#diff-0
 
+[94c7d97]: https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d97/source/blog/categories/index.markdown
 [old_cat_list]: http://vigodome.com/blog/categories/
 [new_cat_list]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/
 

@@ -149,12 +149,11 @@ From Walter's plugin, I knew that this involves writing Ruby code.
 Any programmer will know that this can be done by using `gsub` two
 times.  However, this is *not* beautiful.  How about multiple
 replacements in general?  I found the last answer of
-[this question on Stack Overflow][StackOverflow8132492] elegant.  The
-arrow `=>` in variable `map` fascinates me.  At first, I thought that
-there's a "map" object in Ruby, and searched "ruby regex gsub map",
-but I couldn't see a webpage that I, having *no* experience in writing
-Ruby code, could understand.  It took me some time to figure out that
-variable `map` is actually a *Hash*.
+[this question on Stack Overflow][so8132492] elegant.  The arrow `=>` in
+variable `map` fascinates me.  At first, I thought that there's a "map" object
+in Ruby, and searched "ruby regex gsub map", but I couldn't see a webpage that
+I, having *no* experience in writing Ruby code, could understand.  It took me
+some time to figure out that variable `map` is actually a *Hash*.
 
 I copied `public/atom.xml` to my home folder and used a Ruby script to
 test my method first.  To avoid seeing broken things while previewing
@@ -187,7 +186,7 @@ Therefore, I added a method in module `CustomLiquidFilters` in
 `plugins/custom_filter.rb`.
 
 I learnt to use method `each_pair` in Hash class from an answer to
-[another Stack Overflow question about `gsub`][StackOverflow13556555].
+[another Stack Overflow question about `gsub`][so13556555].
 
 {% codeblock My first custom filter lang:ruby %}
 def remove_bigfig(input)
@@ -245,7 +244,7 @@ from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `&lt;
 I searched "ruby dynamic constant assignment" on Google, and read the
 first search result, which was a Stack Overflow question.  The answers
 on the top were very informative and I *couldn't* comprehend them.  I
-could just understand [the last one][StackOverflow6712298].
+could just understand [the last one][so6712298].
 
 After that, I tried to move the lines of code that defined hash
 `Regexp` outside of method `remove_bigfig`, and generate the site
@@ -299,15 +298,13 @@ I tried googling "Liquid Exception: undefined method \`gsub' for", but
 the search *weren't* useful to me.  Appending the word "hash" to the
 search string *didn't* help.  Finally, I changed it to "gsub hash",
 and clicked the first search result, which was
-[a Stack Overflow question][StackOverflow5872941].  In the last row of
-the codeblock, there's a command which printed and *returned* the
-result.  *Not* understanding what the code truly did, I quickly knew
-the reason of the previous build failure—the method `remove_bigfig`
-*wasn't* returning a String.  I added the variable to the last line of
-the method, and finally solved the problem.
+[a Stack Overflow question][so5872941].  In the last row of the codeblock,
+there's a command which printed and *returned* the result.  *Not* understanding
+what the code truly did, I quickly knew the reason of the previous build
+failure—the method `remove_bigfig` *wasn't* returning a String.  I added the
+variable to the last line of the method, and finally solved the problem.
 
 ---
-
 [^1]: [The Git commit for installing the image popup plugin][94c7d97]
 [^2]: [One of my posts][PrevPost]
 
@@ -317,7 +314,7 @@ the method, and finally solved the problem.
 [ewal]: http://www.ewal.net/2012/09/08/octopress-customizations/ "Octopress Customizations"
 [PrevPost]: /blog/2014/06/01/notifying-search-engines-of-new-sitemaps/ "Notifying Search Engines of New Sitemaps"
 [RubyDocRegexpCharClasses]: http://www.ruby-doc.org/core-1.9.3/Regexp.html#class-Regexp-label-Character+Classes "Class: Regexp (Ruby 1.9.3)"
-[StackOverflow8132492]: http://stackoverflow.com/questions/8132492 "Ruby Multiple String Replacement"
-[StackOverflow13556555]: http://stackoverflow.com/a/13556720 "Using many instances of 'gsub' in Ruby"
-[StackOverflow6712298]: http://stackoverflow.com/a/6712512 "Dynamic constant assignment"
-[StackOverflow5872941]: http://stackoverflow.com/a/5873012 "Ruby gsub method - accepting hash?"
+[so8132492]: http://stackoverflow.com/a/8132492 "Ruby Multiple String Replacement"
+[so13556555]: http://stackoverflow.com/a/13556720 "Using many instances of 'gsub' in Ruby"
+[so6712298]: http://stackoverflow.com/a/6712512 "Dynamic constant assignment"
+[so5872941]: http://stackoverflow.com/a/5873012 "Ruby gsub method - accepting hash?"

@@ -125,10 +125,14 @@ Therefore, I just adopted an ugly approach—input `.gsub(...)` for
 *multiple* times.  Eventually, I got the desired output.
 
 ---
+[^1]:
+    For details, you may refer to [my post about RSS][PrevPost]
+    written yesterday.
 
-[^1]: For details, you may refer to [my post about RSS][PrevPost] written yesterday.
-[^2]: `source/plugins/custom_filter.rb` at commit [449a911][449a911]
-[^3]: `source/blog/2014/03/22/jump-to-latex-syntax-error/index.html` at commit [fad55d6][fad55d6]
+[^2]: `source/plugins/custom_filter.rb` at commit [449a911]
+[^3]:
+    `source/blog/2014/03/22/jump-to-latex-syntax-error/index.html` at
+    commit [fad55d6]
 
 [PrevPost]: /blog/2014/06/10/my-settings-for-rss-1/ "My Settings for RSS (1)"
 [ewal]: http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed "Remove line numbers in Atom Feed"

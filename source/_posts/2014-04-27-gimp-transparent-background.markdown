@@ -63,14 +63,21 @@ keys.
 - Use ←/→ to move the cursor to another property.
 
 ---
+[^1]:
+    Source URL:
+    <http://fineprintnyc.com/images/blog/history-of-apple-logo/apple-logo-2.jpg>
 
-[^1]: Source URL: <http://fineprintnyc.com/images/blog/history-of-apple-logo/apple-logo-2.jpg>
-[^2]: [Transparent background in JPEG image – Stack Overflow](http://stackoverflow.com/questions/16906144/transparent-background-in-jpeg-image)
-[^3]: [Center image using text-align center? – Stack Overflow](https://stackoverflow.com/questions/7055393/center-image-using-text-align-center)
+[^2]:
+    [Transparent background in JPEG image – Stack Overflow][so16906144]
+
+[^3]:
+    [Center image using text-align center? – Stack Overflow][so7055393]
 
 [gimp_tutorial]: http://mbrsolution.com/tutorial/gimp-tutorial-how-to-make-an-image-background-transparent.php
 [mbrsolution]: http://mbrsolution.com/
 [apple_logo]: http://fineprintnyc.com/blog/history-of-the-apple-logo
 [hksilicon]: http://www.hksilicon.com/kb/articles/4690/CSS3-box-shadow
+[so16906144]: http://stackoverflow.com/q/16906144
+[so7055393]: http://stackoverflow.com/q/7055393
 
 <!-- vim:se tw=70: -->

@@ -26,7 +26,7 @@ Refer to [*Pro Git* section 1.5][GitBook1.5].
 I recommend new Git users to set the configuration variable
 `push.default` using `git config` with the `--global` option, which
 make Git save the variables in `~/.gitconfig`, so as to avoid the
-warning shown in [here][StackOverflow13148066].[^1]  Due to my limited
+warning shown in [here][so13148066].[^1]  Due to my limited
 understanding of Git, I *couldn't* find a way to suppress the warning
 after reading the Stack Overflow question.  I eventually figured it
 out after reading a Chinese blog post found in the first footnote.
@@ -49,8 +49,8 @@ Clone repositories
 
 See [*Pro Git* section 2.1][GitBook2.1].
 
-From [here][StackOverflow2816369], I know that one can pass the
-`--bare` option to `git clone`.
+From [here][so2816369], I know that one can pass the `--bare` option
+to `git clone`.
 
 <pre class="cli"><code class="ubuntu_gnome_terminal">$ git clone --bare repo.old repo</code></pre>
 
@@ -241,19 +241,18 @@ staging area.
 - `dv` is like `D`, but one window is on the right of another.
 
 ---
-
 [^1]: The last sentence of [this blog post][ChinPost].
 [^2]: See my post [*Local Huge File Sharing*][PrevPost2] for details.
-[^3]: Refer to a Stack Overflow question.  ([URL][StackOverflow5149861])
+[^3]: Refer to a [Stack Overflow question][so5149861].
 
 [Git]: http://git-scm.com/
 [GitBook1.5]: http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup "Getting Started - First-Time Git Setup"
-[StackOverflow13148066]: http://stackoverflow.com/questions/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
+[so13148066]: http://stackoverflow.com/a/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
 [ChinPost]: http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html "git push警告：warning: push.default is unset"
 [PrevPost2]: /blog/2014/06/14/local-huge-file-sharing/
-[StackOverflow5149861]: http://stackoverflow.com/a/5149861 "Does running git init twice initialize a repository or reinitialize an existing repo?"
+[so5149861]: http://stackoverflow.com/a/5149861 "Does running git init twice initialize a repository or reinitialize an existing repo?"
 [GitBook2.1]: http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository "Cloning an Existing Repository"
-[StackOverflow2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
+[so2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
 [GitRefGitDiff]: http://git-scm.com/docs/git-diff#_examples "git-diff(1) Manual Page"
 [NewPost]: /blog/2014/08/07/double-hyphens-in-git-diff/
 [(git )?rm]: http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/ '"git rm" 和 "rm" 的区别'
