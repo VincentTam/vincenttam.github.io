@@ -49,7 +49,7 @@ objects.
 Solution
 ---
 
-### Temporarily method
+### Temporary method
 
 Therefore, I immediately googled the \*nix command for scanning
 documents, and came up with `brscan-skey`.  I ran it with the `-l`
