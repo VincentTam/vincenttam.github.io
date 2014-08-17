@@ -219,7 +219,7 @@ codeblock.</small></del>
 
 Unfortunately, I got strange output from `rake`.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~/octopress]$ rake generate
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress]$ rake generate
 ## Generating Site with Jekyll
 <span class="rake_gen_unchanged">unchanged</span> sass/print.scss
 <span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
@@ -250,7 +250,7 @@ After that, I tried to move the lines of code that defined hash
 `Regexp` outside of method `remove_bigfig`, and generate the site
 again.  I encountered another error.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~/octopress]$ !rake
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress]$ !rake
 rake generate
 ## Generating Site with Jekyll
 <span class="rake_gen_unchanged">unchanged</span> sass/print.scss

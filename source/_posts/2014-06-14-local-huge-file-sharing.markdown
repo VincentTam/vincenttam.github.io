@@ -78,7 +78,7 @@ Remarks: The above steps is for Windows 7 *only*.[^2]
 	Windows 7 laptop as my second one.
 2. Install openssh-server on Linux.[^3]
 
-    <pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install openssh-server</code></pre>
+    <pre class="cli"><code class="UBMono">$ sudo apt-get install openssh-server</code></pre>
 
 3. Do some of the following settings on Linux.
 
@@ -111,13 +111,13 @@ learning.
 
 To sum up, issue the command for "2" right after "1".
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo ifconfig eth0 192.168.1.1 ; sudo route add default gw 192.168.1.3 eth0</code></pre>
+<pre class="cli"><code class="UBMono">$ sudo ifconfig eth0 192.168.1.1 ; sudo route add default gw 192.168.1.3 eth0</code></pre>
 
 Output
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ ifconfig eth0
+<pre class="cli"><code class="UBMono">$ ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr b8:ac:6f:db:d1:0c
-          <span class="ubuntu_hl_code">inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0</span>
+          <span class="UBHLCode">inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0</span>
           inet6 addr: fe80::baac:6fff:fedb:d10c/64 Scope:Link
           UP BROADCAST RUNNING MULTICAST  MTU:8000  Metric:1
           RX packets:36250 errors:0 dropped:17 overruns:0 frame:0
@@ -164,7 +164,7 @@ check if the remote server is up.  For more details, such as the
 number of packets sent to the remote machine, check it elsewhere like
 the command's manpage or the Internet.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ ping [host] # send some packets to `host'
+<pre class="cli"><code class="UBMono">$ ping [host] # send some packets to `host'
 $ nmap [host] # detect which ports are open
 </code></pre>
 
@@ -197,13 +197,13 @@ According to [the official manual][GitMan], SSH paths are supported by
 the SCM.  For example, to copy a Git repository called `myproj` from a
 Linux machine, I can use the following command.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git clone ssh://owner@192.168.1.1/~/myproj</code></pre>
+<pre class="cli"><code class="UBMono">$ git clone ssh://owner@192.168.1.1/~/myproj</code></pre>
 
 One can perform a Git fetch more quickly after adding the SSH path of
 the Git repository on the "remote" machine into the list of remote
 repositories.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
+<pre class="cli"><code class="UBMono">$ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
 $ git fetch ubuntu_desktop [branch]
 </code></pre>
 

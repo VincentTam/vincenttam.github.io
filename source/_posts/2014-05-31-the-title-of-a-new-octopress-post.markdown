@@ -9,7 +9,7 @@ categories: Octopress
 According to Octopress's official documentation, the command for
 generating a new post is like this.[^1]
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post["title"]</code>
+<pre class="cli"><code class="UBMono">$ rake new_post["title"]</code>
 </pre>
 
 How about including some symbols inside `title`?
@@ -27,13 +27,13 @@ Double quotation marks
 
 The following shell command works.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post['testing "double" quotes']
+<pre class="cli"><code class="UBMono">$ rake new_post['testing "double" quotes']
 # Creates source/_posts/2014-05-31-testing-double-quotes.markdown
 </code></pre>
 
 However, as I ran `rake generate`, I encountered an error.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake generate
+<pre class="cli"><code class="UBMono">$ rake generate
 (in /home/owner/octopress)
 ## Generating Site with Jekyll
 <span class="rake_gen_unchanged">unchanged</span> sass/print.scss
@@ -66,7 +66,7 @@ Hello world!
 At line 3 of the faulty markdown file, escaping the `"` inside the
 *outer* pair of double quotes with `\` can resolve the problem.
 
-<pre><code>title: "testing <span class="hl_code">\"</span>double<span class="hl_code">\"</span> quotes"</code></pre>
+<pre><code>title: "testing <span class="HLCode">\"</span>double<span class="HLCode">\"</span> quotes"</code></pre>
 
 Exclamation marks
 ---
@@ -75,7 +75,7 @@ When I started writing the post
 [*My Desktop Crashed!*][my_desktop_crashed], I attempted typing the
 following command.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post["My Desktop Crashed<span class="ubuntu_hl_code">!</span>"]
+<pre class="cli"><code class="UBMono">$ rake new_post["My Desktop Crashed<span class="UBHLCode">!</span>"]
 bash: !"]: event not found
 </code></pre>
 
@@ -87,7 +87,7 @@ Exclamation marks *and* quotes
 Before writing [*Don't use Internet Explorer!*][dont_use_ie], I tried
 issuing the following command.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post["Don't use Internet Explorer<span class="ubuntu_hl_code">\</span>!"]
+<pre class="cli"><code class="UBMono">$ rake new_post["Don't use Internet Explorer<span class="UBHLCode">\</span>!"]
 (in /home/owner/octopress)
 mkdir -p source/_posts
 Creating new post: source/_posts/2014-05-31-dont-use-internet-explorer-slash.markdown
@@ -102,7 +102,7 @@ some simple tricks will do.
 1. Pass a title with `'`, but *without* `"` and `!`.
     - For example
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake new_post["Don't use Internet Explorer"]
+<pre class="cli"><code class="UBMono">$ rake new_post["Don't use Internet Explorer"]
 # Creates source/_posts/2014-05-31-dont-use-internet-explorer.markdown</code></pre>
 
 2. Add the things back to `title` in the header of the generated

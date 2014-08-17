@@ -15,7 +15,7 @@ comments: true
 
 <p>In <code>/var/log/syslog.1</code>, it says</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[  627.152020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd
+<pre class="cli"><code class="UBMono">[  627.152020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd
 [  658.128020] usb 2-1: reset high-speed USB device number 4 using ehci_hcd
 <span class="err">[  658.493165] sd 3:0:0:0: [sdf] Unhandled error code</span>
 [  658.493169] sd 3:0:0:0: [sdf]  Result: hostbyte=DID_ABORT driverbyte=DRIVER_OK
@@ -35,7 +35,7 @@ comments: true
 <p>Booted into the command line interface (CLI) of Ubuntu Rescue Remix 12.04, I first formatted the <code>D</code> drive into an empty NTFS partition after backing up the data on that device. (i.e. <code>/dev/sda5</code>)<br />
 After that , I ran the following command:<sup id="fnref-17-3"><a href="#fn-17-3" rel="footnote">3</a></sup></p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ ddrescue -r1 -n -S -v /dev/sdxm /dev/sdyn [logfile]
+<pre class="cli"><code class="UBMono">$ ddrescue -r1 -n -S -v /dev/sdxm /dev/sdyn [logfile]
 # Substitute x with the appropriate partition letter of the source partition
 # Substitute y with the appropriate partition letter of the destination partition
 # Substitute m with the appropriate partition number of the source partition
@@ -48,7 +48,7 @@ After that , I ran the following command:<sup id="fnref-17-3"><a href="#fn-17-3"
 
 <p>But the program refused to work, so I have to <code>--force</code> it to work.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">   o   create a new empty DOS partition table
+<pre class="cli"><code class="UBMono">   o   create a new empty DOS partition table
    p   print the partition table
    q   quit without saving changes
    s   create a new empty Sun disklabel
@@ -89,11 +89,11 @@ Command action
 Expert command (m for help): q
 root@ubuntu:~# <span class="err">ddrescue -r1 -n -S -v /dev/sdf1 /dev/sda5 backup1.log</span>
 ddrescue: Output file exists and is not a regular file.
-ddrescue: Use <span class="ubuntu_hl_code">`--force'</span> if you really want to overwrite it, but be
+ddrescue: Use <span class="UBHLCode">`--force'</span> if you really want to overwrite it, but be
 ddrescue: aware that all existing data in output file will be lost.
 Try `ddrescue --help' for more information.
 root@ubuntu:~# ls
-root@ubuntu:~# ddrescue -r1 -n -S <span class="ubuntu_hl_code">-f</span> -v /dev/sdf1 /dev/sda5 backup1.log
+root@ubuntu:~# ddrescue -r1 -n -S <span class="UBHLCode">-f</span> -v /dev/sdf1 /dev/sda5 backup1.log
 
 
 About to copy 3999 MBytes from /dev/sdf1 to /dev/sda5

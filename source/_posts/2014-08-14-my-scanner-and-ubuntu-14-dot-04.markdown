@@ -55,7 +55,7 @@ Therefore, I immediately googled the \*nix command for scanning
 documents, and came up with `brscan-skey`.  I ran it with the `-l`
 flag, the it said that my scanner *wasn't* registered.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"># brscan-skey
+<pre class="cli"><code class="UBMono"># brscan-skey
 # brscan-skey -l
  XXX-XXXX          : brotherX:busX;devX  : USB                  <span class="err">Not registered</span>
 </code></pre>

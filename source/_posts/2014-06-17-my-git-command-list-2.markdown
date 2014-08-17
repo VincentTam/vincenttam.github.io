@@ -80,7 +80,7 @@ the staging area here.
 [This list][GitCmdList] written in Chinese is a quick summary of Git
 commands.  I learnt the use of `git stash` commands from there.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git stash                      # save the uncommitted changes
+<pre class="cli"><code class="UBMono">$ git stash                      # save the uncommitted changes
 $ git stash list                 # show a list of stashes
 $ git stash show                 # inspect a list of stashes
 $ git stash pop                  # apply and discard the topmost stash
@@ -99,7 +99,7 @@ addition, this command *doesn't* affect the commit history.
 Here's more commands about reseting the working tree to previous
 versions.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+<pre class="cli"><code class="UBMono">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
 $ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
 </code></pre>
 

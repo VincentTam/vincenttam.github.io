@@ -25,7 +25,7 @@ such as [$\rm \LaTeX$][LaTeXWikibooks] on Wikibooks.  I then decided
 to install it.  I followed the installation commands on its official
 page.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~]$ wget http://www.cityinthesky.co.uk/wp-content/uploads/2013/
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ wget http://www.cityinthesky.co.uk/wp-content/uploads/2013/
 10/pdf2svg-0.2.2.tar.gz
 [owner@localhost ~]$ tar -xzvf pdf2svg-0.2.2.tar.gz
 [owner@localhost ~]$ cd pdf2svg-0.2.2
@@ -40,7 +40,7 @@ checking for CAIRO... yes
 <span class="err">checking for POPPLERGLIB... configure: error: Package requirements (poppler-glib
  >= 0.5.4) were not met:</span>
 
-<span class="ubuntu_hl_code">No package 'poppler-glib' found</span>
+<span class="UBHLCode">No package 'poppler-glib' found</span>
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
@@ -54,7 +54,7 @@ Googling "no package 'poppler-glib' found", I found the
 [second result][poppler-glib-dev] useful.  I installed the missing
 package and ran `./configure` again, before proceeding to `make`.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~/pdf2svg-0.2.2]$ make
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ make
 gcc -DPACKAGE_NAME=\"pdf2svg\" -DPACKAGE_TARNAME=\"pdf2svg\" -DPACKAGE_VERSION=\
 "0.2.1\" -DPACKAGE_STRING=\"pdf2svg\ 0.2.1\" -DPACKAGE_BUGREPORT=\"David\ Barton
 \ \<davebarton@cityinthesky.co.uk\>\" -DPACKAGE=\"pdf2svg\" -DVERSION=\"0.2.1\" 
@@ -99,7 +99,7 @@ I *haven't* learnt C/C++, so I *wouldn't* try `#include <string.h>` in
 
 I ignored the warning and continued the installation.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~]$ make install
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ make install
 make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
 test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
   /usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
@@ -115,7 +115,7 @@ I remembered that the `--prefix=` option used while running
 folder, I realized that I should follow the advice of
 [an answer to an Ask Ubuntu question][AskUbuntu]
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
 [sudo] password for owner: 
 make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
 test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"

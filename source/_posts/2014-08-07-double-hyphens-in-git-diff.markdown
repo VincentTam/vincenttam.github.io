@@ -38,12 +38,12 @@ ambiguity.
 file/path names;
 2. One can use `./source` to mean `source` folder.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"><span class="err">$ git diff origin/source source
+<pre class="cli"><code class="UBMono"><span class="err">$ git diff origin/source source
 fatal: ambiguous argument 'source': both revision and filename
 Use '--' to separate paths from revisions, like this:
 'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'</span>
-$ git diff origin/source source <span class="ubuntu_hl_code">--</span>  # correct command
-$ git diff <span class="ubuntu_hl_code">./</span>source                 # correct command
+$ git diff origin/source source <span class="UBHLCode">--</span>  # correct command
+$ git diff <span class="UBHLCode">./</span>source                 # correct command
 </code></pre>
 
 If one *doesn't* want to type in shell commands, one may consider

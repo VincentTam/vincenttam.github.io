@@ -16,14 +16,14 @@ screenshot is from my terminal.
 
 Then I blindly followed the "advice" of `git status` and typed
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git add .</code></pre>
+<pre class="cli"><code class="UBMono">$ git add .</code></pre>
 
 <del>It seemed that I had made a mistake.</del>  Actually, **without
 adding those modified and untracked files on the stage for commit**,
 the following two commands will <del>do</del> update the contents on
 the GitHub pages.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ rake generate
+<pre class="cli"><code class="UBMono">$ rake generate
 $ rake deploy
 </code></pre>
 

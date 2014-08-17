@@ -155,7 +155,7 @@ about Liquid exception on Stack Overflow[^2] and finally fixed this
 glitch by [installing ImageMagick on Windows 7][imagemagick_win7] and
 including it in my `PATH` variable.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install imagemagick</code></pre>
+<pre class="cli"><code class="UBMono">$ sudo apt-get install imagemagick</code></pre>
 
 ---
 [^1]:

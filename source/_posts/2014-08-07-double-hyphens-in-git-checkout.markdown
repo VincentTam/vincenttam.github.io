@@ -15,10 +15,10 @@ It is *incorrect* to use an en-dash `–` in the above command, instead
 of a double hyphen `--`.  I'll illustrate this with an example below.
 Assume that the current file is `~/octopress`.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ cat &gt;&gt; Gemfile
+<pre class="cli"><code class="UBMono">$ cat &gt;&gt; Gemfile
 bullshxt
 $ git diff
-<span class="ubuntu_hl_code">diff --git a/Gemfile b/Gemfile
+<span class="UBHLCode">diff --git a/Gemfile b/Gemfile
 index 4d028d3..a1718ff 100644
     --- a/Gemfile
     +++ b/Gemfile</span>
@@ -33,7 +33,7 @@ index 4d028d3..a1718ff 100644
 $ git checkout <span class="err">—</span> Gemfile
 <span class="err">error: pathspec '—' did not match any file(s) known to git.</span>
 
-$ git checkout <span class="ubuntu_hl_code">--</span> Gemfile  # correct command
+$ git checkout <span class="UBHLCode">--</span> Gemfile  # correct command
 </code></pre>
 
 [PrevPost]: /blog/2014/08/07/double-hyphens-in-git-diff/ "Double Hyphens in Git Diff"

@@ -16,7 +16,7 @@ GNU's `shred` utility
 For a *single* file, the command should be simple.  For a *directory*,
 the following command can shred the files recursively.[^1]
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ find &lt;dir&gt; -type f -exec shred {} \;</code></pre>
+<pre class="cli"><code class="UBMono">$ find &lt;dir&gt; -type f -exec shred {} \;</code></pre>
 
 ### Effectiveness of `shred` in Ext3 and NTFS file systems
 

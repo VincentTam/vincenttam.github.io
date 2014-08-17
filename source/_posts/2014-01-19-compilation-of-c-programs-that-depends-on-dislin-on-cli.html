@@ -58,7 +58,7 @@ main()
 
 <p><a href="http://stackoverflow.com">Stack Overflow</a> has <em>a few or no</em> questions on the compilation of C++ programs that use DISLIN. The most relevant one that I managed to find is <a href="http://stackoverflow.com/questions/19118465/compiling-dislin-gfortran">question 19118465</a>. It's titled <em>Compiling dislin gfortran</em>. I glanced at the answers quickly. They have some commands like</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ gfortran EX11_1.f90 -o progrname <span class="ubuntu_hl_code">-ldislin</span> -I/path/to/DISLIN/modules</code></pre>
+<pre class="cli"><code class="UBMono">$ gfortran EX11_1.f90 -o progrname <span class="UBHLCode">-ldislin</span> -I/path/to/DISLIN/modules</code></pre>
 
 <p>Then I guessed that I need the <code>-ldislin</code> flag as well. I <em>can't</em> truly figure out the usage of <code>-l</code>, <code>-L</code> and <code>-I</code> flags by just looking at the man page of <code>g++</code>, so I just tried everything. I searched for some new pages, and returned to some web pages that I've <em>already visited</em>, and continued this <em>unproductive</em> process...</p>
 
@@ -66,7 +66,7 @@ main()
 
 <p>I thought that the official README maybe useful, so I browsed the contents in <code>/usr/local/dislin/README</code>. Some websites that teach users to install DISLIN from a gzip tarball contain code that manipulate the environment variables like <code>DISLIN</code>, <code>PATH</code> and <code>LD_LIBRARY_PATH</code>. But in the <code>README</code>, it's clearly stated that I don't need to do so.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">f) To make DISLIN available for general use, write the following com-
+<pre class="cli"><code class="UBMono">f) To make DISLIN available for general use, write the following com-
 mands to your .profile or to /etc/profile
 
 DISLIN=directory
@@ -76,19 +76,19 @@ PATH=${PATH}:${DISLIN}/bin
 LD_LIBRARY_PATH=$DISLIN:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH
 
-<span class="ubuntu_hl_code">Note: The environment variable DISLIN is not necessary if DISLIN
+<span class="UBHLCode">Note: The environment variable DISLIN is not necessary if DISLIN
 is installed in the default directory '/usr/local/dislin'.</span>
 </code></pre>
 
 <p>I think that I <em>don't</em> need to do the above settings, but I am <em>not</em> sure about that. Luckily, the following part that immediately follows the above section gave me some hint on what I, as a newcomer to DISLIN, can do.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">4.) Compiling, Linking and Running the Example Programs
+<pre class="cli"><code class="UBMono">4.) Compiling, Linking and Running the Example Programs
 
     Now you can compile, link and run the example programs in the
     directory $DISLIN/examples with the commands:
 
 		    clink     -a exa_c      (for gcc)
-		    <span class="ubuntu_hl_code">cpplink   -a exa_cpp    (for g++)</span>
+		    <span class="UBHLCode">cpplink   -a exa_cpp    (for g++)</span>
 		    iclink    -a exa_c      (for Intel icc)
 		    sclink    -a exa_c      (Sun Studio cc)
 ...
@@ -98,7 +98,7 @@ is installed in the default directory '/usr/local/dislin'.</span>
 
 <p>After that, I returned to Google again, and was redirected to the <em>same</em> post on Linux for Research again. I glanced through the <em>same</em> command that started with <code>g++</code>.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ g++ test.cpp -lXt -ldislin -lm
+<pre class="cli"><code class="UBMono">$ g++ test.cpp -lXt -ldislin -lm
 </code></pre>
 
 <p>This time, I could read the sentence below the above command.</p>
@@ -130,7 +130,7 @@ qplot(array1,array2,numOfPts);
 
 <p>In the terminal, I typed the following command.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ g++ foo.cpp -lXt -ldislin -lm
+<pre class="cli"><code class="UBMono">$ g++ foo.cpp -lXt -ldislin -lm
 </code></pre>
 
 <p><em>It works!</em> Critical readers will complain about the way that I include <code>dislin.h</code>. I'm not satisfied with this either. Another obvious missing part for those who want to customise the name of the output executable file is the <code>-o</code> flag. I <em>delibrately</em> did this so as to keep things <em>simple and clear</em>.</p>
@@ -139,10 +139,10 @@ qplot(array1,array2,numOfPts);
 
 <p>However, when I tried to do the <em>same</em> task for another time, it surprisingly <em>failed</em>. Looking closely at the two versions, we can draw the following conclusion.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"># `DISLIN' is a variable that represents the path of DISLIN.
+<pre class="cli"><code class="UBMono"># `DISLIN' is a variable that represents the path of DISLIN.
 # In the default case, it is `/usr/local/dislin'.
 $ g++ <span class="err">-lXt -ldislin -lm</span> -I$(DISLIN) foo.cpp -o foo.out # Wrong!
-$ g++ foo.cpp -o foo.out <span class="ubuntu_hl_code">-lXt -ldislin -lm</span> -I$(DISLIN) # Correct!
+$ g++ foo.cpp -o foo.out <span class="UBHLCode">-lXt -ldislin -lm</span> -I$(DISLIN) # Correct!
 </code></pre>
 
 <figure>

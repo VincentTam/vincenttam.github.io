@@ -44,7 +44,7 @@ be enough.
 
 ### Some simple `stty` commands
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ stty -a       # print all settings
+<pre class="cli"><code class="UBMono">$ stty -a       # print all settings
 $ stty size     # print the buffer height and width
 64 160
 $ stty cols 80  # set buffer width to 80 characters
@@ -62,7 +62,7 @@ written down the default buffer sizes above.
 I then use the following command to take a screenshot of Aptitude from
 `/dev/tty1`.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ fbgrab -c 1 Aptitude.png</code></pre>
+<pre class="cli"><code class="UBMono">$ fbgrab -c 1 Aptitude.png</code></pre>
 
 Only the left top quarter of the image is needed.  Using [GIMP] to
 crop the image will be an overkill.  Many users who love using CLIs
@@ -74,11 +74,11 @@ crop the image will be an overkill.  Many users who love using CLIs
 `-resize` option will scale down the input image with size
 1280px×1024px to 300px×240px.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ convert -resize 300 1280x1024.png output.png</code></pre>
+<pre class="cli"><code class="UBMono">$ convert -resize 300 1280x1024.png output.png</code></pre>
 
 That's the true cropping command.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ convert -crop 640x512 1280x1024.png output.png</code></pre>
+<pre class="cli"><code class="UBMono">$ convert -crop 640x512 1280x1024.png output.png</code></pre>
 
 The outputs are four equally-sized image files like `output-0.png`.
 

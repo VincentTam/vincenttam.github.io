@@ -60,7 +60,7 @@ searched for files under the `sass/` folder that contains
 `flash-video`, after learning the command from
 [a question on StackExchange][StackExchange1987926].
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ grep -r flash-video ./sass
+<pre class="cli"><code class="UBMono">$ grep -r flash-video ./sass
 </code></pre>
 
 I observed that the mixin `shadow-box` was used in

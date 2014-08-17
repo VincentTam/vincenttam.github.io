@@ -76,9 +76,8 @@ Solution
 I find `fc-match` at a site, but I *can't* find the site.  Running the
 command, I can identify the culprit.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ fc-match monospace
-DroidSansFallbackFull.ttf: "Droid Sans" "Regular"
-DroidSansMono.ttf: "Droid Sans Mono" "Regular"
+<pre class="cli"><code class="UBMono">$ fc-match monospace
+<span class="err">DroidSansFallbackFull.ttf: "Droid Sans" "Regular"</span>
 </code></pre>
 
 Googling "ubuntu 14.04 monospace droidsansfallback", I find a post
@@ -95,7 +94,7 @@ elegantly advices user to execute `sudo fc-cache -v` to update the
 font cache.[^4]  Actually, *without* the `-v` flag, the command still
 works.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"># fc-cache
+<pre class="cli"><code class="UBMono"># fc-cache
 /usr/share/fonts: skipping, existing cache is valid: 0 fonts, 8 dirs
 /usr/share/fonts/X11: skipping, existing cache is valid: 0 fonts, 4 dirs
 /usr/share/fonts/X11/Type1: skipping, existing cache is valid: 82 fonts, 0 dirs
@@ -268,6 +267,13 @@ s: 2 fonts, 0 dirs
 /home/owner/.fontconfig: cleaning cache directory
 fc-cache: succeeded
 </code></pre>
+
+Now, `fc-match` returns me a fixed-width font.
+
+<pre class="cli"><code class="UBMono">$ fc-match monospace
+DroidSans<span class="UBHLCode">Mono</span>.ttf: "Droid Sans <span class="UBHLCode">Mono</span>" "Regular"
+</code></pre>
+
 
 The following screenshots show that the above configurations can
 really fix the problem.

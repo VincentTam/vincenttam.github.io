@@ -22,7 +22,7 @@ comments: true
 
 <p>In this case, you found the following commands useful.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ curl
+<pre class="cli"><code class="UBMono">$ curl
 # Substitute [version-number] with that of your downloaded archive.
 # If you're NOT sure, use `ls' to list the files inside your folder.
 $ tar -xvzf ruby-[version-number].tar.gz
@@ -36,7 +36,7 @@ $ make
 
 <p>I've found <a href="http://jndistasio.wordpress.com/2012/06/10/installing-ruby-1-9-3-on-opensuse-12-1-openssl-zlib-and-other-problems/">DiStasio's article</a>, which contains a hyperlink to <a href="http://blog.sethladd.com/2007/03/installing-openssl-support-for-ruby-on.html">Ladd's essay</a>. I tried issuing the following commands accroding to the instructions there.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"># Suppose that the current working directory is the same as the one in the above command list.
+<pre class="cli"><code class="UBMono"># Suppose that the current working directory is the same as the one in the above command list.
 # If you're NOT sure, use `pwd' to check it.
 $ cd ext/openssl
 $ make
@@ -51,26 +51,26 @@ $ sudo make reinstall  # I'd installed the wrong version of Ruby.
 
 <p>It took me some time to find out that I overlooked the command below</p> 
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev lib
+<pre class="cli"><code class="UBMono">$ sudo apt-get install build-essential zlib1g-dev libssl-dev libreadline-dev lib
 yaml-dev libcurl4-openssl-dev curl git-core python-software-properties
 </code></pre>
 
 <p>In Oliver's guide, the above command is right aobve those commands for compiling and installing Ruby. Therefore, I installed them, and tried rebuilding Ruby by running <code>make</code> and <code>sudo make reinstall</code> in my <code>ruby -[version-number]</code>. (i.e. my Ruby source folder) It failed again. <em>Without</em> changing the current working directory directory in the above command list, I did the following because of Ladd's web page.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ make
+<pre class="cli"><code class="UBMono">$ make
 $ sudo make reinstall
 </code></pre>
 
 <p>But it failed again. Maybe I need to go back to <code>ruby-[version-number]</code>, recompile the source code and reinstall Ruby again. So using the <em>same</em> current working directory as the one in the above command list, I did the following thing.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal"><span class="ubuntu_hl_code">$ cd ../..</span> # For changing the current working directory to `ruby-[version-number]'.
+<pre class="cli"><code class="UBMono"><span class="UBHLCode">$ cd ../..</span> # For changing the current working directory to `ruby-[version-number]'.
 $ make
 $ sudo make reinstall
 </code></pre>
 
 <p>Things still went wrong! I remembered the <code>make clean</code> command, so <em>without</em> changing the current working directory, I ran the following commands.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ make clean
+<pre class="cli"><code class="UBMono">$ make clean
 $ make
 $ sudo make reinstall
 </code></pre>
@@ -81,7 +81,7 @@ $ sudo make reinstall
 
 <p>This inspired me to run the following commands.</p>
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ cd ext/openssl
+<pre class="cli"><code class="UBMono">$ cd ext/openssl
 $ make clean
 $ make
 $ sudo make reinstall
@@ -89,7 +89,7 @@ $ sudo make reinstall
 
 However, I still got errors. There was a problem in getting the file <code>ossl.o</code> work. (I've forgotten the exact name of that file, and I <em>couldn't</em> find web pages about the same error.) I ignored the message and ran the following commands.<br />
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ cd ../..
+<pre class="cli"><code class="UBMono">$ cd ../..
 $ make clean
 $ make
 $ sudo make reinstall

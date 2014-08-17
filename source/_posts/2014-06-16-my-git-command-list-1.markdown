@@ -34,7 +34,7 @@ out after reading a Chinese blog post found in the first footnote.
 Initialize repositories
 ---
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git init
+<pre class="cli"><code class="UBMono">$ git init
 $ git init --bare
 </code></pre>
 
@@ -52,7 +52,7 @@ See [*Pro Git* section 2.1][GitBook2.1].
 From [here][so2816369], I know that one can pass the `--bare` option
 to `git clone`.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git clone --bare repo.old repo</code></pre>
+<pre class="cli"><code class="UBMono">$ git clone --bare repo.old repo</code></pre>
 
 In the above command, `repo.old` is an old repository, and one creates
 a new bare repository `repo` from that old non-bare repository.
@@ -63,7 +63,7 @@ Get things from remote repositories
 There are basic commands: `git pull`, `git fetch` and `git merge`.
 Roughly speaking, the first one is the "sum" of the following two.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git fetch           # fetch from origin/upstream
+<pre class="cli"><code class="UBMono">$ git fetch           # fetch from origin/upstream
 $ git fetch host      # fetch all branches from remote "host"
 $ git fetch host foo  # fetch branch "foo" from remote "host"
 </code></pre>
@@ -98,7 +98,7 @@ I found a page in the official reference. ([URL][GitRefGitDiff])  The
 `octoress/linklog` in `~/octopress`.  However, I *haven't* fully
 understand this command.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git diff origin/source source
+<pre class="cli"><code class="UBMono">$ git diff origin/source source
 fatal: ambiguous argument 'source': both revision and filename
 Use '--' to separate paths from revisions, like this:
 'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file>...]'
@@ -121,7 +121,7 @@ There are three basic commands:
 - `git mv`
 - `git rm`
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
+<pre class="cli"><code class="UBMono">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
 $ git add .                     # Add all modified/new files that are tracked
 $ git add -A                    # The `-A' flag stands for "all". See <a title='Difference between "git add -A" and "git add ."' href="http://stackoverflow.com/a/572660">here</a> for details.
 $ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
@@ -159,8 +159,8 @@ Revert changes
 To me, it's the *most important* part of this post.  I know *only* two
 commands for this type of task.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git reset HEAD &lt;file&gt;...   # unstage &lt;file&gt;
-$ git reset HEAD --soft      # unstage all uncommitted chanages <span class="ubuntu_hl_code">without</span> changing the file(s)
+<pre class="cli"><code class="UBMono">$ git reset HEAD &lt;file&gt;...   # unstage &lt;file&gt;
+$ git reset HEAD --soft      # unstage all uncommitted chanages <span class="UBHLCode">without</span> changing the file(s)
 $ git reset HEAD --hard      # revert the files to the latest commit
 $ git checkout -- &lt;file&gt;...  # undo all uncommitted changes to &lt;file&gt;
 </code></pre>
@@ -171,9 +171,9 @@ Working with branches
 I know that it's an important feature of Git, but I *don't* that very
 often now, so I just include some simple commands here.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git branch                 # list all branches, <span class="ubuntu_hl_code">excluding</span> the remote ones
+<pre class="cli"><code class="UBMono">$ git branch                 # list all branches, <span class="UBHLCode">excluding</span> the remote ones
 $ git branch --list          # same as above
-$ git branch -a              # list all branches, <span class="ubuntu_hl_code">including</span> the remote ones
+$ git branch -a              # list all branches, <span class="UBHLCode">including</span> the remote ones
 $ git branch foo             # create `foo' branch from the current one
 $ git checkout foo           # switch to `foo' branch from the current one
 $ git checkout -b foo        # the "sum" of the above two commands
@@ -190,7 +190,7 @@ Show the history
 
 There's [a GUI way](#gitk) to do so.
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">$ git show    # Show the diff hunks of recent commits
+<pre class="cli"><code class="UBMono">$ git show    # Show the diff hunks of recent commits
 $ git log     # Show the commits without diff hunks
 $ git log -6  # Show the 6 most recent commits
 $ git log -p  # Show the commits with diff hunks

@@ -8,7 +8,7 @@ categories: [Linux, information security]
 
 Tonight, I uninstalled [Ubuntu Tweak] for security reasons.[^1]
 
-<pre class="cli"><code class="ubuntu_gnome_terminal">[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
 [sudo] password for owner: 
 Reading package lists... Done
 Building dependency tree       
