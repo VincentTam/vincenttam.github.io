@@ -16,7 +16,7 @@ documents with
 
 The following command can create a PDF using the template.
 
-<pre class="cli"><code>$ pandoc % --template=my_template1.latex -o %&lt;.pdf
+<pre class="cli"><code>$ pandoc src.mkd --template=my_template1.latex -o out.pdf
 </code></pre>
 
 I hope that more people will use pandoc and write in Markdown.

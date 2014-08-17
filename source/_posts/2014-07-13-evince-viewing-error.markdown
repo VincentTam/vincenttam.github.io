@@ -6,7 +6,7 @@ comments: true
 categories: SVG
 ---
 
-| Evince | Firefox | Google Chrome | SVG  |
+| Evince | Firefox |  Sumatra PDF  | SVG  |
 | :----: | :-----: | :-----------: | :--: |
 |{% img /images/posts/EvinceTikZ/Evince.png 200 'img:1' 'Evince' %} | {% img /images/posts/EvinceTikZ/FF.png 200 'img:2' 'Firefox' %} | {% img /images/posts/EvinceTikZ/chrome.png 200 'img:3' 'Google Chrome' %} | {% img /images/posts/EvinceTikZ/SVG.svg 200 'img:4' 'SVG' %} |
 |  bad   | ok[^1]  |     good      | good |
