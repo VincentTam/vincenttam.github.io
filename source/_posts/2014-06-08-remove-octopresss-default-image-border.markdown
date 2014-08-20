@@ -47,11 +47,11 @@ Right-click the image and choose "**Inspect Element**".  Scroll down
 the panel on the right that shows the CSS rules, as shown in the below
 figure.
 
-{% imgpopup /images/posts/RemoveImgBorder/Border.png 100% Firefox's DOM and Style Inspector %}
+{% img fancybox /images/posts/RemoveImgBorder/Border.png 'Firefox's DOM and Style Inspector' 'fig1' %}
 
 Uncheck the three checkboxes as shown in the below figure.
 
-{% imgpopup /images/posts/RemoveImgBorder/NoBorder.png 100% Instant preview of layout changes %}
+{% img fancybox /images/posts/RemoveImgBorder/NoBorder.png 'Instant preview of layout changes' 'fig2' %}
 
 The white border will disappear.
 

@@ -14,7 +14,7 @@ What's below is a small picture.  The words inside the screenshot
 show up right after a user has clicked on the image, it'll be *more
 convenient* for the user.
 
-{% imgpopup /images/posts/GitStatusOfMyOctopressFolder/GitStatus.png 55% My Big Image %}
+{% img fancybox /images/posts/GitStatusOfMyOctopressFolder/GitStatus.png 'My Big Image' 'fig1' %}
 
 I tried following [Clapper's guide][official_guide], but as I generate
 the site using `rake`, I got two errors. The first one was about CSS,

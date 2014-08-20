@@ -15,20 +15,20 @@ Problem
 Some contents in [Octopress][] blogs *couldn't* be viewed via
 HTTPS[^1], for example, [a Japanese blog][JPBlog].
 
-{% imgpopup /images/posts/OctopressHTTPS/JPBlog.png 80% Screenshot of an Octopress blog in Japanese %}
+{% img fancybox /images/posts/OctopressHTTPS/JPBlog.png 'Screenshot of an Octopress blog in Japanese' 'fig1' %}
 
 This blog on last Saturday afternoon
 
 + The first category list item "$\rm \LaTeX$" on the right *couldn't*
 be displayed
 
-{% imgpopup /images/posts/OctopressHTTPS/blocked.png 80% Screenshot of my blog on last Saturday afternoon %}
+{% img fancybox /images/posts/OctopressHTTPS/blocked.png 'Screenshot of my blog on last Saturday afternoon' 'fig2' %}
 
 + Using HTTP instead of HTTPS, I can see the blocked contents.
 
-{% imgpopup /images/posts/OctopressHTTPS/disable_blocking.png 80% Disable Protection on This Page %}
+{% img fancybox /images/posts/OctopressHTTPS/disable_blocking.png 'Disable Protection on This Page' 'fig3' %}
 
-{% imgpopup /images/posts/OctopressHTTPS/blocking_disabled.png 80% Blocked contents can be displayed. %}
+{% img fancybox /images/posts/OctopressHTTPS/blocking_disabled.png 'Blocked contents can be displayed.' 'fig4' %}
 
 **How can those blocked contents be displayed automatically?**
 
@@ -106,7 +106,7 @@ web designing, I could only understand two advices:
 2. Invoke Firefox's web console by `<C-S-k>`.  (can be closed with
 `<F12>`)
 
-{% imgpopup /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 80% Firefox's web console %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 'Firefox's web console' 'fig5' %}
 
 In lines 3–4 of the web console, I could see that Google Fonts were
 blocked.  I clicked "[**[Learn More]**][MixedContent]" and was brought
@@ -138,7 +138,7 @@ blocked anymore.
 
 The way to include MathJax equations in Octopress in now clear: refer to an HTTPS version of MathJax library in the head of each page.
 
-{% imgpopup /images/posts/OctopressHTTPS/WebConsoleMathJax.png 80% Firefox's web console %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleMathJax.png 'Firefox's web console' 'fig6' %}
 
 I tried to google 'blocked loading mixed active content
 "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"',

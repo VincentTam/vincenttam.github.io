@@ -4,7 +4,7 @@ title: "Export PDF to SVG"
 date: 2014-06-21 14:23:50 +0800
 comments: true
 categories:
-- $\rm \LaTeX$
+- LaTeX
 - Linux
 - SVG
 ---

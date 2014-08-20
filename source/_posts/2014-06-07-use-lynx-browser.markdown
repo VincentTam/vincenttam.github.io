@@ -58,7 +58,7 @@ What can I see?
 
 This is a screenshot taken in Linux text mode.
 
-{% imgpopup /images/posts/Lynx/Screenshot.png 80% Lynx browser in Linux text mode %}
+{% img fancybox /images/posts/Lynx/Screenshot.png 'Lynx browser in Linux text mode' 'fig1' %}
 
 Some useful keys
 ---

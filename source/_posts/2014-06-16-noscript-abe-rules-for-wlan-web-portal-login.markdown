@@ -27,7 +27,7 @@ to the web portal of a WLAN.
 For ordinary netizens who *don't* have time to read the post on
 InformAction Forums, I've prepared a screenshot to depict the problem.
 
-{% imgpopup /images/posts/NoScriptABE/ABEAtom.png 100% NoScript ABE blocks Atom Feed from reloading %}
+{% img fancybox /images/posts/NoScriptABE/ABEAtom.png 'NoScript ABE blocks Atom Feed from reloading' 'fig1' %}
 
 <!-- more -->
 

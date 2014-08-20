@@ -8,6 +8,16 @@ categories:
 - Ruby
 ---
 
+(Added on AUG 20, 2014)
+
+Since the update of Octopress source code, this post *won't* make
+sense anymore.  I *can't* find a way to use MathJax in category list
+entries anymore because `category` in `plugins/category_generator.rb`
+and `plugins/category_list_tag.rb` have both been changed to *lower
+case*.  I *don't* know how to track the Ruby code to revert it.
+
+<!-- more -->
+
 Background
 ---
 
@@ -16,16 +26,14 @@ and some categories like "$\rm \LaTeX$-Suite" *weren't* displayed
 properly.  Moreover, the link for some categories like "C/C++" was
 *dead* in [Watson’s Category List Plugin][CatList].
 
-{% imgpopup /images/posts/CatList/CatList404.png 75% Dead links in category list %}
-
-<!-- more -->
+{% img fancybox /images/posts/CatList/CatList404.png 'Dead links in category list' 'fig1' %}
 
 Unlike two months ago[^1], I now think that it's better for me to find
 out why the catergory list *failed* to generate a correct URL for a
 category page, but the default links for category pages in the blog
 archive are *right*.
 
-{% imgpopup /images/posts/CatList/CatListURL.png 90% Correct links in blog archive %}
+{% img fancybox /images/posts/CatList/CatListURL.png 'Correct links in blog archive' 'fig2' %}
 
 I certainly know the precise location of the part of
 `plugins/category_list_tag.rb` that has generated the *erroneous*

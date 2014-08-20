@@ -3,7 +3,7 @@ layout: post
 title: "$\\rm \\LaTeX$ Template for Essays"
 date: 2014-03-16 00:28:20 +0800
 comments: true
-categories: [$\rm \LaTeX$, template]
+categories: [LaTeX, template]
 ---
 
 Introduction

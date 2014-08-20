@@ -89,7 +89,7 @@ end
 {% endcodeblock %}
 
 I recorded the output into a file and then browsed through it.  I
-found the `{% raw %}{% imgpopup ... %}{% endraw %}` inside the file.
+found the `{% raw %}imgpopup ...{% endraw %}` inside the file.
 I also viewed the source code of `cdata_escape` so that I knew what
 the function did: HTML encode the only argument.  I compared the
 output before and after `cdata_escape`, and *couldn't* see any

@@ -3,7 +3,7 @@ layout: post
 title: "$\\rm \\LaTeX$ Template for Chinese Essays"
 date: 2014-04-05 21:37:58 +0800
 comments: true
-categories: [$\rm \LaTeX$, template]
+categories: [LaTeX, template]
 ---
 
 With this template, I believe that creating a Chinese article using $\rm \LaTeX$ should be *a lot* quicker and easier.

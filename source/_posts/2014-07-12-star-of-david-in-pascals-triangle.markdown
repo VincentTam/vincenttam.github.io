@@ -5,7 +5,7 @@ date: 2014-07-12 21:44:37 +0800
 comments: true
 categories:
 - math
-- $\rm \LaTeX$
+- LaTeX
 ---
 
 {% img right /images/posts/DavidStar/Nodes1.svg 100 %}
