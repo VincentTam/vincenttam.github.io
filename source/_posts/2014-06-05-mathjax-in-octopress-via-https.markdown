@@ -130,9 +130,9 @@ question is about [Google Chrome][chrome], looking at the first
 answer, I knew what to do next—I added an `s` after `http` in each URL
 of the Google Fonts used.[^5]  After that, I generated and previewed
 the site.  Although
-![the orangle warning triangle][WarningTriangle] still appeared on the
-left of the address bar, the Google Fonts used in the blog *weren't*
-blocked anymore.
+![the orangle warning triangle][WarningTriangle]{:.nobd} still
+appeared on the left of the address bar, the Google Fonts used in the
+blog *weren't* blocked anymore.
 
 ### Fixing MathJax
 
@@ -203,9 +203,10 @@ MathJax *without* the bug.
 
 ### Final result
 
-![A gray padlock][GrayPadlock] appeared on the left of the address
-bar.  It indicates that the connection to this blog is encrypted, and
-the contents, especially the active ones, are safe to be shown.
+![A gray padlock][GrayPadlock]{:.nobd} appeared on the left of the
+address bar.  It indicates that the connection to this blog is
+encrypted, and the contents, especially the active ones, are safe to
+be shown.
 
 {% img /images/posts/OctopressHTTPS/GrayPadlockMsg.png The gray padlock for this blog %}
 
