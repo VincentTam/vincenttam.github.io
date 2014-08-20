@@ -47,7 +47,7 @@ Right-click the image and choose "**Inspect Element**".  Scroll down
 the panel on the right that shows the CSS rules, as shown in the below
 figure.
 
-{% img fancybox /images/posts/RemoveImgBorder/Border.png 'Firefox's DOM and Style Inspector' 'fig1' %}
+{% img fancybox /images/posts/RemoveImgBorder/Border.png 'Firefox DOM and Style Inspector' 'fig1' %}
 
 Uncheck the three checkboxes as shown in the below figure.
 

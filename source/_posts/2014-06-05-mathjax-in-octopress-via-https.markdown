@@ -106,7 +106,7 @@ web designing, I could only understand two advices:
 2. Invoke Firefox's web console by `<C-S-k>`.  (can be closed with
 `<F12>`)
 
-{% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 'Firefox's web console' 'fig5' %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 'Firefox web console' 'fig5' %}
 
 In lines 3–4 of the web console, I could see that Google Fonts were
 blocked.  I clicked "[**[Learn More]**][MixedContent]" and was brought
@@ -138,7 +138,7 @@ blog *weren't* blocked anymore.
 
 The way to include MathJax equations in Octopress in now clear: refer to an HTTPS version of MathJax library in the head of each page.
 
-{% img fancybox /images/posts/OctopressHTTPS/WebConsoleMathJax.png 'Firefox's web console' 'fig6' %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleMathJax.png 'Firefox web console' 'fig6' %}
 
 I tried to google 'blocked loading mixed active content
 "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"',

@@ -14,7 +14,7 @@ Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
 show you how, I use a GIF "animation", instead of a video, so that the
 file size is much smaller.
 
-{% img fancybox /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif 'A GIF animation showing Vim-LaTeX's quickfix window' 'fig1' %}
+{% img fancybox /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif 'A GIF animation showing Vim-LaTeX quickfix window' 'fig1' %}
 
 Explanation:
 

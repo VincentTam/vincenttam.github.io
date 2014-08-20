@@ -23,7 +23,7 @@ Problem
 As can be seen from Clapper's RSS feed page, each popup image appears
 *three* times.
 
-{% img fancybox /images/posts/RSS1/3img.png 'Clapper's RSS' 'fig1' %}
+{% img fancybox /images/posts/RSS1/3img.png 'Clapper RSS' 'fig1' %}
 
 <!-- more -->
 

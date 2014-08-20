@@ -31,7 +31,7 @@ Solution
 
 Using [Firefox]'s "**Inspect Element**" and searching the generated HTML code for a post, I discovered that those missing parts belonged to `<pre class="meta">` tags.  In Clapper's `sass/custom/_print.scss`, he *didn't* display them.  Before the removal of the section of CSS code that hid the author and date, I input ".meta" in the search box above the panel that showed the HTML code of the current document.
 
-{% img fancybox /images/posts/PrintScss/SearchCode.png 'Using Firefox's Style Inspector to search code' 'fig1' %}
+{% img fancybox /images/posts/PrintScss/SearchCode.png 'Using Firefox Style Inspector to search code' 'fig1' %}
 
 I *don't* want the links for previous and next posts to appear in the printed version of a post in this blog, so I inspected the HTML code for those two links, and saw that only those two links belonged to an `<a class="base-alignment ...">` tag.  Therefore, I change `p.meta` to `a.base-alignment` in `sass/custom/_print.scss`.[^2]
 

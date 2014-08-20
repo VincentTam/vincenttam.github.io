@@ -155,7 +155,7 @@ Notes:
 If a local area connection has been set up successfully, one should
 see an active network in Windows 7's Network and Sharing Center.
 
-{% img fancybox /images/posts/LAN/Network6.png 'Windows 7's network information' 'fig1' %}
+{% img fancybox /images/posts/LAN/Network6.png 'Windows 7 network information' 'fig1' %}
 
 ### Remote login via SSH
 
