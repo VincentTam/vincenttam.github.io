@@ -17,11 +17,20 @@ layout: null
 
   {% for post in site.posts limit: 20 %}
   <entry>
-    <title type="html"><![CDATA[{% if site.titlecase %}{{ post.title | titlecase | cdata_escape }}{% else %}{{ post.title | cdata_escape }}{% endif %}]]></title>
-    <link href="{{ site.url }}{{ post.url }}"/>
+    {% if post.external-url %}
+      <title type="html"><![CDATA[{% if site.titlecase %}{{ post.title | titlecase | cdata_escape }}{% else %}{{ post.title | cdata_escape }}{% endif %} {{ site.linklog_marker }}]]></title>
+      <link href="{{ post.external-url }}"/>
+    {% else %}
+      <title type="html"><![CDATA[{% if site.titlecase %}{{ post.title | titlecase | cdata_escape }}{% else %}{{ post.title | cdata_escape }}{% endif %}]]></title>
+      <link href="{{ site.url }}{{ post.url }}"/>
+    {% endif %}
     <updated>{{ post.date | date_to_xmlschema }}</updated>
     <id>{{ site.url }}{{ post.id }}</id>
-    <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]></content>
+    {% if post.external-url %}
+      <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}<p><a rel="full-article" href="{{ site.url }}{{ post.url }}">{{ site.permalink_label_feed }}</a></p>]]></content>
+    {% else %}
+      <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]></content>
+    {% endif %}
   </entry>
   {% endfor %}
 </feed>

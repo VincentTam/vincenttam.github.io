@@ -84,8 +84,9 @@ The solution is again simple: changing `"` to `'`.
 Exclamation marks *and* quotes
 ---
 
-Before writing [*Don't use Internet Explorer!*][dont_use_ie], I tried
-issuing the following command.
+Before writing
+[*Internet Explorer a Security Risk: Use Firefox or Chrome*][DontIE],
+I tried issuing the following command.
 
 <pre class="cli"><code class="UBMono">$ rake new_post["Don't use Internet Explorer<span class="UBHLCode">\</span>!"]
 (in /home/owner/octopress)
@@ -119,6 +120,6 @@ markdown file.
 [^2]: Ibid.
 
 [my_desktop_crashed]: /blog/2014/05/27/my-desktop-crashed/
-[dont_use_ie]: /blog/2014/05/31/dont-use-internet-explorer/
+[DontIE]: /blog/2014/05/31/internet-explorer-a-security-risk-use-firefox-or-chrome/
 
 <!-- vim:se tw=70: -->
