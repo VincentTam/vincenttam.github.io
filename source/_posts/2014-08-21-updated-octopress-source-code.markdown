@@ -101,19 +101,25 @@ Do things bit by bit at a time, so that one can adapt to the changes.
 
 ---
 [^UpUb]:
-    Tam, V.  (Aug 13, 2014).  *Upgraded Ubuntu*.  Retrieved from <https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/>
+    Tam, V.  (Aug 13, 2014).  *Upgraded Ubuntu*.  Retrieved from
+    <https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/>
 
 [^UpRVM]:
-    Tam, V.  (Aug 13, 2014).  *Install Ruby Again! (2)*.  Retrieved from <https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/>
+    Tam, V.  (Aug 13, 2014).  *Install Ruby Again! (2)*.  Retrieved
+    from
+    <https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/>
 
 [^Ruby2Fail]: *Ibid*.
 [^merge]: Commit [f090aac].
 [^ewal]:
-    Walter, E.  (Sep 8, 2012).  *Octopress Customizations*.  Retrieved from <http://www.ewal.net/2012/09/08/octopress-customizations/>
+    Walter, E.  (Sep 8, 2012).  *Octopress Customizations*.  Retrieved
+    from <http://www.ewal.net/2012/09/08/octopress-customizations/>
 
 [^ewal_quote]:
     {% blockquote Erv Walter http://www.ewal.net/2012/09/08/octopress-customizations/ Octopress Customizations %}
-     It's done per-post so that when viewing the main index of the blog, unrelated images don't end up getting added to one large gallery.
+     It's done per-post so that when viewing the main index of the
+     blog, unrelated images don't end up getting added to one large
+     gallery.
     {% endblockquote %}
 
 [^del_imgpopup]: Commit [b787cd7].
