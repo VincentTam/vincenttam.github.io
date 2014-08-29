@@ -1,9 +1,18 @@
 {% unless page.no_header %}
   <header>
     {% if index %}
-      <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+      <!-- This defines how Octopress will use posts with external-url. -->
+      {% if post.external-url %}
+	<h1 class="entry-title external"><a href="{{ post.external-url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a> {{ site.linklog_marker }}</h1>
+      {% else %}
+	<h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+      {% endif %}
     {% else %}
-      <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+      {% if page.external-url %}
+	<h1 class="entry-title external"><a href="{{ page.external-url }}">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</a> {{ site.linklog_marker }}</h1>
+      {% else %}
+	<h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+      {% endif %}
     {% endif %}
     {% unless page.meta == false %}
       <p class="meta">
@@ -12,6 +21,7 @@
            | <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread"
              data-disqus-identifier="{% if post.meta.disqus_id %}{{ post.meta.disqus_id }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">Comments</a>
         {% endif %}
+	| <a rel="bookmark" href="{{ root_url }}{{ post.url }}" title="Permalink">{{ site.permalink_label }}</a>
       </p>
     {% endunless %}
   </header>
