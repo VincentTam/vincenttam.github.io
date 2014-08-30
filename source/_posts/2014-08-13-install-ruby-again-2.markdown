@@ -37,8 +37,8 @@ Configuration file: /home/owner/octopress/_config.yml
       Generating... 
 <span class="err">Liquid Exception: undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa45c82
 4&gt;&gt; in _posts/2013-08-16-edit-latex-equations-in-vim.html/#excerpt</span>
-jekyll 2.3.0 | Error:  undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa45
-c824&gt;&gt;
+jekyll 2.3.0 | Error:  undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa4
+5c824&gt;&gt;
 </code></pre>
 
 Second, it's the `gsub` method *again*!  I'm sorry to that I has been
