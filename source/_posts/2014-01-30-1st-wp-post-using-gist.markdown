@@ -15,17 +15,20 @@ published: true
 comments: true
 ---
 
+*Note: This post won't make sense here. Refer to the
+[original post][op].*
+
 Note: I can now figure out a way to work with *both* UltraBlog and
 WordPress.com's built-in online code highlighter.  See my
 [newer post][np] for details.
 
-[Markdown] is easy to write.  ~~However, writing code with `code` tag
-(surrounded with `[]`) using UltraBlog in Vim *doesn't* work.  In
+[Markdown] is easy to write.  <del>However, writing code with `code`
+tag (surrounded with `[]`) using UltraBlog in Vim *doesn't* work.  In
 order to post some code, one needs to
-[use 3 backticks][use3backticks].~~  (I've found a way to use the
+[use 3 backticks][use3backticks].</del>  (I've found a way to use the
 built-in SyntaxHighlighter now because I've realised that a blank line
-in Markdown will be changed to a `<p>` tag in HTML.  Thus, ***don't***
-put any blank lines right above and below the the `<code>` tags.)
+in Markdown will be changed to a `<p>` tag in HTML.  Thus, *don't* put
+any blank lines right above and below the the `<code>` tags.)
 
 {% codeblock lang:js %}
 element1 = document.getElementById("foo");
@@ -36,13 +39,13 @@ There's some shortcomings of the above method.  If you need to copy a
 list of source code, you'll need to browse the source code, provided
 that the "gutter" option of the code list is "true",
 [which is the default][default].
-Moreover, if you include source code that consists of `<angled blocks>`
-in a blog post written in Markdown using the UltraBlog plugin, then the
-angled block may be interpreted as an HTML tag element, such as the
-statement `#include <iostream>` in a C++ program.  *More importantly,
-I've found out that [this apporach][fail_way]
-**doesn't** work with UltraBlog.* ~~  The above code list verifies this
-assertion.~~
+Moreover, if you include source code that consists of `<angled
+blocks>` in a blog post written in Markdown using the UltraBlog
+plugin, then the angled block may be interpreted as an HTML tag
+element, such as the statement `#include <iostream>` in a C++ program.
+*More importantly, I've found out that [this apporach][fail_way]
+**doesn't** work with UltraBlog.*  <del>The above code list verifies
+this assertion.<del>
 
 {% img /images/posts/1stWPGist/ultrablog.png Screenshot of the "code list" in UltraBlog.vim %}
 
@@ -75,6 +78,7 @@ should be much easier. The following is the result.
 
 Posted via [UltraBlog.vim].
 
+[op]: http://blogueun.wordpress.com/2014/01/30/1st-wp-post-using-gist/
 [np]: /blog/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/ "Another Testing Page for WordPress.com's Built-in SyntaxHighlighter and UltraBlog"
 [Markdown]: http://daringfireball.net/projects/markdown "Markdown"
 [use3backticks]: http://en.support.wordpress.com/markdown/ "WordPress's Markdown Support"
