@@ -45,7 +45,7 @@ The raison d'être of the trailing `%*` is explained in
 Finally, the section `which: no python2 in (...)` *disappeard* after I
 locally generated the site again.
 
-{% img fancybox /images/posts/OctRuby2b/err.png 'The compilation error disappeared' 'Screenshot of problem' %}
+{% img fancybox /images/posts/OctRuby2b/err.png 'Rake can now detect Python2.' 'solved problem' %}
 
 ---
 [^1]:
