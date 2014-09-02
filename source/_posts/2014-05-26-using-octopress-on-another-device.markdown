@@ -46,7 +46,7 @@ Apart from just installing Git on Windows, you may also choose
 Source: [The Geek Stuff][msysgit_install_wizard]
 
 - If you "**use Git Bash only**", then you can only run `git` from
-    {% img /images/posts/OctopressOnOtherDev/gitbash1.png Git Bash icon %},
+    {% img nobd /images/posts/OctopressOnOtherDev/gitbash1.png 'icon' 'Git Bash icon' %},
     instead of the Windows Command Prompt.
 
 - As described by the text under the second option, there's only one
