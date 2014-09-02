@@ -6,6 +6,9 @@ comments: true
 categories: [Octopress, Ruby]
 ---
 
+Note: I	*don't* use [Clapper's image popup plugin][imgpopup] anymore,
+so the settings below are now gone.
+
 Objective
 ---
 

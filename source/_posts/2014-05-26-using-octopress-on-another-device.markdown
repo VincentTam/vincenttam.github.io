@@ -126,9 +126,9 @@ the `source` branch and the `master` branch, which is contained in
 I copied the four commands from [Robert Anderson's post][pull2branch].
 
 <pre class="cli"><code class="UBMono">$ cd octopress
-$ git pull origin source  # update the local source branch
+$ git pull origin source  # update the local `source' branch
 $ cd _deploy
-$ git pull origin master  # update the local master branch
+$ git pull origin master  # update the local `master' branch
 </code></pre>
 
 ---

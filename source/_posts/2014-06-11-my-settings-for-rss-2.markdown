@@ -6,6 +6,9 @@ comments: true
 categories: [Octopress, Ruby]
 ---
 
+Note: I	*don't* use [Clapper's image popup plugin][clapper] anymore,
+so the settings below are now gone.
+
 Background
 ---
 
@@ -134,6 +137,7 @@ Therefore, I just adopted an ugly approach—input `.gsub(...)` for
     `source/blog/2014/03/22/jump-to-latex-syntax-error/index.html` at
     commit [fad55d6]
 
+[clapper]: http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/ "A Simple Octopress Image Popup Plugin"
 [PrevPost]: /blog/2014/06/10/my-settings-for-rss-1/ "My Settings for RSS (1)"
 [ewal]: http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed "Remove line numbers in Atom Feed"
 [StackOverflow17766216]: http://stackoverflow.com/a/17766326 "Can I use gsub and Hashes in Ruby?" 
