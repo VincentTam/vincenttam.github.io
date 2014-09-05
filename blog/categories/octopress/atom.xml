@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-05T23:26:07+08:00</updated>
+  <updated>2014-09-06T01:05:38+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
+    
+    <updated>2014-09-05T23:33:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -252,152 +315,6 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
   </ol>
 </div>
 ]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[The Daring Fireball Linked List &#9733;]]></title>
-      <link href="http://daringfireball.net/linked/"/>
-    
-    <updated>2014-08-30T14:44:16+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list</id>
-    
-      <content type="html"><![CDATA[<p><blockquote><p>&lt;div class=&#8221;article&#8221;&gt;&lt;h5&gt;The Daring Fireball Linked List&lt;/h5&gt;&lt;h6 class=&#8221;dateline&#8221;&gt;Friday, 29 Aug 2014&lt;/h6&gt;<br/>&lt;dl class=&#8221;linkedlist&#8221;&gt;&lt;dt&gt;<a href="http://recode.net/2014/08/29/codered-apple-wearable-wont-ship-until-next-year/">Paczkowski: Apple Wearable Won’t Ship Until Next Year</a> <a class="permalink" title="Permanent link to 'Paczkowski: Apple Wearable Won't Ship Until Next Year'." href="http://daringfireball.net/linked/2014/08/29/paczkowski">★</a>&lt;/dt&gt;&lt;dd&gt;</p><br/><p>John Paczkowski:</p><br/><blockquote><p>So that new wearable device Apple is introducing on September 9?  It&#8217;s going to be a while before anyone is actually wearing it.  Sources in position to know tell me it won&#8217;t arrive at market for a few months.  &#8220;It&#8217;s not shipping anytime soon,&#8221; said one.  So when does Apple plan to ship its eagerly anticipated wearable?  That&#8217;s not clear, but my understanding is that we&#8217;re unlikely to see it at retail until after the holiday season—think early 2015.</p></blockquote><br/><p>If true, why?  I&#8217;m guessing something similar to why they pre-announced the original iPhone—otherwise it would leak through regulatory filings with various governments around the world.  Plus, they have no worries about the <a href="https://en.wikipedia.org/wiki/Osborne_effect">Osborne Effect</a> with a new product category.</p><br/><p>&lt;/dd&gt;&lt;/dl&gt;&lt;/div&gt;…&lt;div class=&#8221;article&#8221;&gt;&lt;h5&gt;About the Linked List&lt;/h5&gt;&lt;p&gt;The Daring Fireball Linked List is a daily list of interesting links and brief commentary, updated frequently but not frenetically. Call it a “link log”, or “linkblog”, or just “a good way to dick around on the Internet for a few minutes a day”.&lt;/p&gt;&lt;/div&gt;</p><footer><strong>Daring Fireball</strong></footer></blockquote></p>
-
-<p>Since I like the clarity of the linked list format, I’d been looking
-for ways to do this in June, but I <em>couldn’t</em> understand them.
-Moreover, as can be seen from the size of <code>git diff
-octopress/linklog</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the difference between <code>linklog</code> and <code>master</code>
-branches is <em>very large</em>.  I <em>couldn’t</em> understand the git-diff result
-for <code>source/javascripts/octopress.js</code>. This would discourage any
-ordinary users from looking into the issue.  Therefore, I once said
-that I <em>didn’t</em> know how to write an Octopress linklog.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>Last night, I added an <em>unofficial</em> linklog feature to Octopress.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
-The official guide <em>didn’t</em> worked for me.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  I could see the
-complaints from some users who had found that this feature <em>wasn’t</em>
-working.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  At the same time, I could see some blogs that included
-this feature.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  The last commit of the <code>linklog</code> branch was in
-2012.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>  It seems that it <em>isn’t</em> likely that Octopress will work on
-this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup></p>
-
-<!-- more -->
-
-<p>Yesterday, I <em>finally</em> understood the following posts about DIY
-Octopress linklogs.</p>
-
-<ol>
-  <li><a href="http://www.candlerblog.com/2012/01/30/octopress-linked-list/">Make a Linked List With Octopress</a> in <em>the Candler Blog</em>.</li>
-  <li>Octopress pull request #<a href="https://github.com/imathis/octopress/pull/1538" title="Add a capture to article include to use external-url">1538</a></li>
-  <li><a href="https://wllmtrng.github.io/blog/2014/04/17/creating-a-linklog-post/">Creating a Linklog Post</a> in <em>New Learnings from Old
-Understandings</em></li>
-</ol>
-
-<p>In the commit in item 2, only <em>a few</em> lines was changed, and it should
-be comprehensible even for one who knows basic HTML and programming
-only.  In item 1, there’s <em>no</em> <code>page.external-url</code> in
-<code>source/_includes/article.html</code>, but it’s present in item 3.  I
-compared those <a href="http://docs.shopify.com/themes/liquid-documentation/basics">Liquid</a> code with the relevant files in <code>linklog</code>
-branch.  Item 1 also contains the changes in <code>source/atom.xml</code>.  From
-this, I worked out <code>source/_includes/custome/category_feeds.xml</code>,
-though the code is <em>far from beautiful</em>.  To work out the blog
-archive, I looked at Dr.Z’s one.</p>
-
-<p>I was bored of this kind of writing code and <em>didn’t</em> want to further
-change the CSS properties of linklog titles.  The linklog markers and
-permalink labels should be enough.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="yaml-front-matter-of-each-post">YAML front matter of each post</h3>
-
-<p>In the following sample Markdown source file for a post, there’s a
-variable <code>external-url</code>.  After looking at the above code blocks, I’ve
-learnt how to use those variables.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Contents of “2014-08-30-title-goes-here.markdown” </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>—
-</span><span class='line'>layout: post
-</span><span class='line'>title: “Title goes here”
-</span><span class='line'>date: 2014-08-30 14:44:16 +0800
-</span><span class='line'>comments: true
-</span><span class='line'>categories: [category 1, category 2]
-</span><span class='line'>external-url: http://www.example.com
-</span><span class='line'>—&lt;/p&gt;
-</span><span class='line'>
-</span><span class='line'>&lt;p&gt;Blog contents goes here…
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<ul>
-  <li><code>{{% if post.external-url %}}</code> tests if the
-  front matter of a post contains <code>external-url</code> variable.</li>
-  <li><code>{{ post.external-url }}</code> returns the value of
-  <code>external-url</code> variable.</li>
-</ul>
-
-<h3 id="yaml-variables-in-configyml">YAML variables in <code>_config.yml</code></h3>
-
-<ul>
-  <li>I added a line <code>myVar: value</code> into <code>_config.yml</code>.</li>
-  <li>While configurating <code>source/_includes/article.html</code>, if I need to
-  access an variable in <code>_config.yml</code>, I have to use
-  <code>{{ site.myVar }}</code>.  You’ll get <em>nothing</em> if
-  you miss <code>site.</code>.</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>I assume that Ocotpress’s GitHub repository has been added to the
-list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p><blockquote><p><del>Unfortunately, I <em>haven’t</em> find out how to include Octopress’s linklog feature into my Octopress blog.</del></p><footer><strong>Me</strong> <cite><a href='http://localhost:4000/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/'>九成人感眼睛疲倦 藍光加快退化</a></cite></footer></blockquote> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/39293af" title="Unofficial linklog support in progress...">39293af</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e35fab7" title="Added unofficial linklog support to more pages">e35fab7</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p><a href="http://octopress.org/docs/blogging/linklog/">Writing a Linklog</a> in <em>Octopress Documentation</em>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:5">
-      <p>Ocotpress issue #<a href="https://github.com/imathis/octopress/issues/418" title="Allow linklog style posts">418</a>. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:6">
-
-      <p>For example,</p>
-
-      <ul>
-        <li><a href="http://drz.ac/blog/">DrZ.ac</a></li>
-        <li><a href="http://makarenko.me/07-17-2013-moving-to-linklog/">Moving to Linklog</a> in <em>Weblog Сергія Макаренка</em>.</li>
-      </ul>
-      <p><a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:7">
-      <p>Commit <a href="https://github.com/imathis/octopress/commit/1750830" title="Merge pull request #800 from mxmerz/linklog">1750830</a> at the tip of <code>linklog</code> branch. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:8">
-
-      <p><blockquote><p>@matrixagent sorry.  It’s killing us too.  The linklog feature is going to be theme based and right now we’re working on breaking out the theme from the release to distribute the development a little better.  It’s tricky to manage asset installation.</p><footer><strong>@octopress</strong> <cite><a href='https://alpha.app.net/octopress/post/14385019'>alpha.app.net/octopress/post/&hellip;</a></cite></footer></blockquote> <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   

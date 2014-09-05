@@ -5,14 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Remove Octopress's Default Image Border - Blog 1</title>
+  <title>Fixing This Repo's Network Graph - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Two days ago, when I was writing
-a post about viewing Octopress blogs over HTTPS, which is
-a secure and encrypted connection, I saw
-a &hellip;">
+  <meta name="description" content="Tonight, I worked on my blog. Here’re something done. Fixed a dead link in Using Octopress on Another Device in
+Blog 1. Fixed url in _config.yml: it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +19,7 @@ a &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -184,7 +182,7 @@ $(document).ready(function() {
   <header>
     
       
-	<h1 class="entry-title">Remove Octopress's Default Image Border</h1>
+	<h1 class="entry-title">Fixing This Repo's Network Graph</h1>
       
     
     
@@ -194,7 +192,7 @@ $(document).ready(function() {
 
 
 
-<time class='entry-date' datetime='2014-06-08T13:45:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:45 pm</span></time>
+<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -205,86 +203,54 @@ $(document).ready(function() {
   </header>
 
 
-<div class="entry-content"><h2 id="background">Background</h2>
+<div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
 
-<p>Two days ago, when I was writing
-<a href="/blog/2014/06/05/mathjax-in-octopress-via-https/" title="MathJax in Octopress via HTTPS">a post about viewing Octopress blogs over HTTPS</a>, which is
-a <em>secure</em> and <em>encrypted</em> connection, I saw
-<a href="http://mzl.la/13jCUSU" title="How does content that isn't secure affect my safety?">a Moziila Support page</a> which contained inline icons.  I
-attempted to include those tiny pictures into some paragraphs.
-However, the resulting appearance of those paragraphs <em>wasn’t</em>
-appealing—the white border surrounding the tiny icon <em>didn’t</em> look
-great.  It would be <em>better</em> if it could be removed.</p>
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
 
-<!-- more -->
-
-<h2 id="failed-attemps">Failed attemps</h2>
-
-<p>I did try to find the solution using Google, but it <em>wasn’t</em>  useful
-this time.  I re-read the source code of
-<a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/" title="A Simple Octopress Image Popup Plugin">Clapper’s image plugin</a>, that of
-<a href="http://erikzaadi.com/2012/04/22/solarized-for-octopress/" title=" Source code of Solarized theme for Octopress">the Solarized theme for Octopress</a>, and that of
-<a href="https://github.com/larrynung/larrynung.github.io/tree/source" title=" Source code of Larry Nung's GitHub page">Larry Nung’s GitHub page</a>, but I still had <em>not</em> yet come
-up with a solution.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>With the help of a modern browser like Firefox, I inspected the CSS
-rules and properties of an image. Clicking the checkbox for some CSS
-properties, I finally found the four properties that were responsible
-for the default white border.  By unchecking three of them, the border
-would disappear.</p>
-
-<p>To illustrate the function of those checkboxes in Firefox’s DOM and
-Style Inspector, I’ve included two screenshots from
-<a href="http://octopress.org/docs/plugins/image-tag/" title="Image Tag">a page in Octopress’s official documentation</a>.</p>
-
-<p>Right-click the image and choose “<strong>Inspect Element</strong>”.  Scroll down
-the panel on the right that shows the CSS rules, as shown in the below
-figure.</p>
-
-<p><img class="fancybox" src="/images/posts/RemoveImgBorder/Border.png" title="Firefox DOM and Style Inspector" alt="fig1" /></p>
-
-<p>Uncheck the three checkboxes as shown in the below figure.</p>
-
-<p><img class="fancybox" src="/images/posts/RemoveImgBorder/NoBorder.png" title="Instant preview of layout changes" alt="fig2" /></p>
-
-<p>The white border will disappear.</p>
-
-<p>Flash videos were also affected by this CSS rule.  Therefore, I
-searched for files under the <code>sass/</code> folder that contains
-<code>flash-video</code>, after learning the command from
-<a href="http://stackoverflow.com/questions/1987926/" title="How do I grep recursively?">a question on StackExchange</a>.</p>
-
-<pre class="cli"><code class="UBMono">$ grep -r flash-video ./sass
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
 </code></pre>
-
-<p>I observed that the mixin <code>shadow-box</code> was used in
-<code>sass/partials/_blog.scss</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  I performed another search, and found
-the mixin in <code>sass/base/_utilities.scss</code>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>I tried setting <code>border: none</code> for <code>img</code> tags in
-<code>sass/custom/_screen.scss</code>, but it was overridden by the above four
-CSS rules.  Modifying the CSS files created by other developers
-<em>wasn’t</em> a good idea for me.  Therefore, I created a custom mixin to
-override the default one.  I learned a way for overriding mixins from
-<a href="http://stackoverflow.com/questions/7115959/" title="Adding !important using a Compass Mixin">another Stack Exchange question</a>.</p>
-
-<p>Though it is an ugly approach, I’m quite satisfied and I would like to
-work on other things, such as my studies and another CSS problem in
-this blog—improve the settings in <code>sass/custom/_print.scss</code> for
-better printing experience.</p>
 
 <hr />
 
-<!-- vim:se tw=70: -->
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p><code>sass/partials/_blog.scss</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/partials/_blog.scss#L48">2d1cec6a</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p><code>sass/base/_utilities.scss</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/2d1cec6/sass/base/_utilities.scss#L8-L13">2d1cec6b</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -303,12 +269,12 @@ better printing experience.</p>
 
 
 
-<time class='entry-date' datetime='2014-06-08T13:45:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:45 pm</span></time>
+<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/css/'>css</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
   
 </span>
 
@@ -317,7 +283,7 @@ better printing experience.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/" >Tweet</a>
   
   
   
@@ -328,10 +294,8 @@ better printing experience.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/07/use-lynx-browser/" title="Previous Post: Use Lynx Browser">&laquo; Use Lynx Browser</a>
+        <a class="basic-alignment left" href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/" title="Previous Post: Git Commits with fugitive.vim on Windows">&laquo; Git Commits with fugitive.vim on Windows</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/06/10/my-settings-for-rss-1/" title="Next Post: My Settings for RSS (1)">My Settings for RSS (1) &raquo;</a>
       
     </p>
   </footer>
@@ -443,8 +407,8 @@ better printing experience.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/';
         var disqus_script = 'embed.js';
       
     (function () {

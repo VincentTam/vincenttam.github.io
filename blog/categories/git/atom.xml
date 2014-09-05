@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-05T23:26:07+08:00</updated>
+  <updated>2014-09-06T01:05:38+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,69 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
+    
+    <updated>2014-09-05T23:33:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -399,263 +462,6 @@ see how <code>&lt;branch1&gt;</code> has been modified,
   <ol>
     <li id="fn:1">
       <p>The official kramdown syntax documentation. (<a href="http://kramdown.gettalong.org/syntax.html#math-blocks">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Git Command List (1)]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/"/>
-    
-    <updated>2014-06-16T00:04:04+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1</id>
-    
-      <content type="html"><![CDATA[<p>Since I have <em>poor long-term memory</em> in commands, I’ll write down the
-<a href="http://git-scm.com/">Git</a> commands that I know.</p>
-
-<p>This list is written for my reference <em>only</em>.  Therefore, I <em>won’t</em>
-include everything.  I’m going to write some basic stuff, so that I
-can review it if I’ve forgotten it.  If you want detailed explanation
-for a command, find the documentation instead.  If you’ve encountered
-a problem using Git, the <em>best</em> teacher is, in general, a search
-engine.</p>
-
-<!-- more -->
-
-<h2 id="initial-setup">Initial Setup</h2>
-
-<p>Refer to <a href="http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup" title="Getting Started - First-Time Git Setup"><em>Pro Git</em> section 1.5</a>.</p>
-
-<p>I recommend new Git users to set the configuration variable
-<code>push.default</code> using <code>git config</code> with the <code>--global</code> option, which
-make Git save the variables in <code>~/.gitconfig</code>, so as to avoid the
-warning shown in <a href="http://stackoverflow.com/a/13148066/" title="Warning: push.default is unset; its implicit value is changing in Git 2.0">here</a>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Due to my limited
-understanding of Git, I <em>couldn’t</em> find a way to suppress the warning
-after reading the Stack Overflow question.  I eventually figured it
-out after reading a Chinese blog post found in the first footnote.</p>
-
-<h2 id="initialize-repositories">Initialize repositories</h2>
-
-<pre class="cli"><code class="UBMono">$ git init
-$ git init --bare
-</code></pre>
-
-<p>For the first one, it’s the usual command used for a repository which
-contains the source code.  For the second one, it can be used on a
-remote server.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>Note: “Running <code>git init</code> on an existing repository is safe.”<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<h2 id="clone-repositories">Clone repositories</h2>
-
-<p>See <a href="http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository" title="Cloning an Existing Repository"><em>Pro Git</em> section 2.1</a>.</p>
-
-<p>From <a href="http://stackoverflow.com/a/14879452" title="Git push error '[remote rejected] master -&gt; master (branch is currently checked out)'">here</a>, I know that one can pass the <code>--bare</code> option
-to <code>git clone</code>.</p>
-
-<pre class="cli"><code class="UBMono">$ git clone --bare repo.old repo</code></pre>
-
-<p>In the above command, <code>repo.old</code> is an old repository, and one creates
-a new bare repository <code>repo</code> from that old non-bare repository.</p>
-
-<h2 id="get-things-from-remote-repositories">Get things from remote repositories</h2>
-
-<p>There are basic commands: <code>git pull</code>, <code>git fetch</code> and <code>git merge</code>.
-Roughly speaking, the first one is the “sum” of the following two.</p>
-
-<pre class="cli"><code class="UBMono">$ git fetch           # fetch from origin/upstream
-$ git fetch host      # fetch all branches from remote "host"
-$ git fetch host foo  # fetch branch "foo" from remote "host"
-</code></pre>
-
-<p>Note: In the above codeblock, <code>pull</code> can be substituted by <code>pull</code>.</p>
-
-<p>Before actually merging the branches, we can see their differences
-first.</p>
-
-<h2 id="viewing-the-differences">Viewing the differences</h2>
-
-<p>I only know <code>git diff</code>.</p>
-
-<h3 id="basic-usage">Basic usage</h3>
-
-<p>If you’ve written something and have <em>not yet</em> committed your changes,
-you may issue <code>git diff</code> in the terminal to see the difference between
-your uncommitted changes and the latest commit.  <code>-</code> represents the
-older committed contents, whereas <code>+</code> represents the newer uncommitted
-changes.</p>
-
-<h3 id="compare-the-tip-of-the-branch-with-older-commits-in-the-same-branch">Compare the tip of the branch with older commits in the same branch</h3>
-
-<p>Just appending the first seven digits of the 40-digit SHA-1 hash of
-the commit to <code>git diff</code> will do.</p>
-
-<h3 id="comparing-branches">Comparing branches</h3>
-
-<p>I found a page in the official reference. (<a href="http://git-scm.com/docs/git-diff#_examples" title="git-diff(1) Manual Page">URL</a>)  The
-<code>&lt;1&gt;</code> form worked well if I compared <code>origin/source</code> and
-<code>octoress/linklog</code> in <code>~/octopress</code>.  However, I <em>haven’t</em> fully
-understand this command.</p>
-
-<pre class="cli"><code class="UBMono">$ git diff origin/source source
-fatal: ambiguous argument 'source': both revision and filename
-Use '--' to separate paths from revisions, like this:
-'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'
-</code></pre>
-
-<hr />
-<p>(Added on AUG 07TH, 2014)</p>
-
-<p>Now I know how to correct the above Git command.  Refer to my newer
-post <a href="/blog/2014/08/07/double-hyphens-in-git-diff/"><em>Double Hyphens in Git Diff</em></a>.</p>
-
-<hr />
-
-<h2 id="addremove-files">Add/remove Files</h2>
-
-<p>There are three basic commands:</p>
-
-<ul>
-  <li><code>git add</code></li>
-  <li><code>git mv</code></li>
-  <li><code>git rm</code></li>
-</ul>
-
-<pre class="cli"><code class="UBMono">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
-$ git add .                     # Add all modified/new files that are tracked
-$ git add -A                    # The `-A' flag stands for "all". See <a title="Difference between &quot;git add -A&quot; and &quot;git add .&quot;" href="http://stackoverflow.com/a/572660">here</a> for details.
-$ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
-$ git rm &lt;file&gt;                 # delete a file and record the action in Git
-</code></pre>
-
-<p>I’ve read a simplified Chinese blog post which explained the
-difference between <code>git rm</code> and <code>rm</code>.  (<a href="http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/" title="&quot;git rm&quot; 和 &quot;rm&quot; 的区别">URL</a>)</p>
-
-<p>You may include some untracked files in <code>.gitignore</code>, so that those
-files will be ignored by Git.</p>
-
-<h2 id="commit-changes">Commit changes</h2>
-
-<p>The only command is <code>git commit</code>.  There are some basic options that
-one can make use of.</p>
-
-<ul>
-  <li><code>-a</code> (a.k.a. <code>--all</code>): commit changes of all tracked files.</li>
-  <li><code>--amend</code>: change the commit message of the tip the working branch.</li>
-  <li><code>-m &lt;msg&gt;</code> (a.k.a. <code>--message</code>): Directly input the commit message.</li>
-</ul>
-
-<p>If the <code>-m</code> flag is used, then an editor window <em>won’t</em> be invoked.
-In the editor window that contains the commit message, the first line
-is the header of the commit, while the second line should be left
-blank. The subsequent lines that <em>don’t</em> begin with <code>#</code> is the content
-of the commit message.</p>
-
-<p>If you want revert <code>git commit --amend</code>, you may refer to my
-<a href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/" title="Undo an Amendment to a Git Commit">previous post</a>.</p>
-
-<h2 id="revert-changes">Revert changes</h2>
-
-<p>To me, it’s the <em>most important</em> part of this post.  I know <em>only</em> two
-commands for this type of task.</p>
-
-<pre class="cli"><code class="UBMono">$ git reset HEAD &lt;file&gt;...   # unstage &lt;file&gt;
-$ git reset HEAD --soft      # unstage all uncommitted chanages <span class="UBHLCode">without</span> changing the file(s)
-$ git reset HEAD --hard      # revert the files to the latest commit
-$ git checkout -- &lt;file&gt;...  # undo all uncommitted changes to &lt;file&gt;
-</code></pre>
-
-<h2 id="working-with-branches">Working with branches</h2>
-
-<p>I know that it’s an important feature of Git, but I <em>don’t</em> that very
-often now, so I just include some simple commands here.</p>
-
-<pre class="cli"><code class="UBMono">$ git branch                 # list all branches, <span class="UBHLCode">excluding</span> the remote ones
-$ git branch --list          # same as above
-$ git branch -a              # list all branches, <span class="UBHLCode">including</span> the remote ones
-$ git branch foo             # create `foo' branch from the current one
-$ git checkout foo           # switch to `foo' branch from the current one
-$ git checkout -b foo        # the "sum" of the above two commands
-$ git branch -d foo          # delete `foo' branch
-$ git checkout --orphan foo  # create a new orphan branch named `foo'
-</code></pre>
-
-<p>When I started using Octopress, I <em>wasn’t</em> familiar with Git.  Thus,
-I messed up the commands that dealt with branches and the network
-graph of my Git repository of this blog.</p>
-
-<h2 id="show-the-history">Show the history</h2>
-
-<p>There’s <a href="#gitk">a GUI way</a> to do so.</p>
-
-<pre class="cli"><code class="UBMono">$ git show    # Show the diff hunks of recent commits
-$ git log     # Show the commits without diff hunks
-$ git log -6  # Show the 6 most recent commits
-$ git log -p  # Show the commits with diff hunks
-</code></pre>
-
-<p><em>Without</em> the <code>-p</code> flag, <code>git log</code> will show the user’s name and
-email, time, SHA-1 hash, header and content of each commit, but <em>not</em>
-the diff hunk(s).  The key motions for browsing through commits in
-<code>git log</code> is similar to those in the <code>less</code> utility.  If the number of
-commits <em>isn’t</em> specified, one can browse through the <em>whole</em> commit
-history by scrolling down to the bottom.</p>
-
-<p>One can use <code>git show</code> to format the output, but I <em>haven’t</em> learnt
-that.</p>
-
-<p>I am looking forward to writing a second list, but I <em>don’t</em> think I
-can make it in the next few months.</p>
-
-<h2 id="some-off-topic-stuff">Some off-topic stuff</h2>
-
-<h3 id="gitk">gitk</h3>
-
-<p>One can invoke <code>gitk</code>, which is a GUI tool for viewing the Git commit
-for showing history, if he/she <em>doesn’t</em> want to learn the commands in
-the above section.</p>
-
-<h3 id="fugitivevim">fugitive.vim</h3>
-
-<p><a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> is a great Vim plugin.</p>
-
-<pre><code>:Gst[atus]      # Show the `git status' on a horizontal split window
-:Git &lt;command&gt;  # Equivalent to `:!git &lt;command&gt;'
-:Glog           # Show the commit messages within Vim
-</code></pre>
-
-<p>I <em>don’t</em> know the use of <code>:Glog</code>.</p>
-
-<p>Within <code>Gstatus</code>, you can conveniently add/remove files from the
-staging area.</p>
-
-<ul>
-  <li><code>&lt;C-n&gt;</code> and <code>&lt;C-p&gt;</code> jump to the next and previous files
-  respectively.</li>
-  <li><code>cc</code> is for a Git commit.</li>
-  <li><code>g?</code> invokes a list of key mappings which can be used in the <code>:Gstatus</code> help
-  window.</li>
-  <li><code>D</code> is like <code>git diff</code>, but with the layout of <code>vimdiff</code>.  By
-  default, one window is on top of another.</li>
-  <li><code>dv</code> is like <code>D</code>, but one window is on the right of another.</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>The last sentence of <a href="http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html" title="git push警告：warning: push.default is unset">this blog post</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>See my post <a href="/blog/2014/06/14/local-huge-file-sharing/"><em>Local Huge File Sharing</em></a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>Refer to a <a href="http://stackoverflow.com/a/5149861" title="Does running git init twice initialize a repository or reinitialize an existing repo?">Stack Overflow question</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

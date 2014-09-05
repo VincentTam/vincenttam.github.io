@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background In *nix, one can use :Gcommit to commit the staged changes,
-provided that fugitive.vim has been installed. Problem How can one use the Vim &hellip;">
+  <meta name="description" content="Tonight, I worked on my blog. Here’re something done. Fixed a dead link in Using Octopress on Another Device in
+Blog 1. Fixed url in _config.yml: it &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -178,6 +178,92 @@ $(document).ready(function() {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
+        
+           | <a href="/blog/2014/09/05/fixing-this-repos-network-graph/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/05/fixing-this-repos-network-graph/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -664,93 +750,6 @@ Press ENTER or type command to continue
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/">My Problems in M$ and Ubuntu</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-27T13:19:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:19 pm</span></time>
-        
-           | <a href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I seldom encounter problems in both operating systems.  However,
-there’s <em>exceptional</em> situations.</p>
-
-<h2 id="m-win-7">M$ Win* 7</h2>
-
-<p>I once booted into its “safe mode”, and experienced some problems
-during an image upload.  I <em>don’t</em> wish to learn more about the
-problem.</p>
-
-<p><img class="fancybox" src="/images/posts/MSUbuProblem/MS.png" title="MS" alt="MS problem" /></p>
-
-<h2 id="ubuntu-1404">Ubuntu 14.04</h2>
-
-<p>Last night, I saw a small dialog box after the login.</p>
-
-<p><img class="fancybox" src="/images/posts/MSUbuProblem/Ubu.png" title="Ubuntu 14.04" alt="MS problem" /></p>
-
-<p>I checked the details—it was the problem of Ubuntu’s greeter, but
-I’m going to do <em>nothing</em> to resolve it.</p>
-
-<p>I think that this is due to my method of getting the newer version of
-Ubuntu—upgrading instead of clearing and installing.<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></p>
-
-<p>Since I lack time to study the official manual and related posts about
-clearing Linux partitions and installing Ubuntu 14.04, I just keep
-using the Ubuntu that I have.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I’m <em>not</em> going to argue whether GNU/Linux is better than M$ Win*.
-There’s already <em>lots of</em> posts on that issue.</p>
-
-<p>I just want to say that problems <em>can</em> exist in <em>any</em> OS.  If you
-<em>don’t</em> intentionally break things and your machine still goes wrong,
-then “keep calm and carry on”.  However, if it’s free software and you
-have the patience and ability to browse its source code, you may see
-what’s wrong.</p>
-
-<p>It’s great to learn what’s really going on in an OS, and I personally
-think that the GNU/Linux commands are better tools for that, when
-compared to GUI tools.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:UpUb">
-
-      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
-<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -782,7 +781,7 @@ compared to GUI tools.</p>
 <li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -792,7 +791,7 @@ compared to GUI tools.</p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (29)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -810,6 +809,10 @@ compared to GUI tools.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
       </li>
     
@@ -823,10 +826,6 @@ compared to GUI tools.</p>
     
       <li class="post">
         <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
       </li>
     
   </ul>
