@@ -3,9 +3,7 @@ layout: post
 title: "Using Octopress on Another Device"
 date: 2014-05-26 00:42:18 +0800
 comments: true
-categories:
-- M$ Win*
-- Octopress
+categories: [M$ Win*, Octopress]
 ---
 
 Two days ago, my Linux desktop was down.  As a result, I had to use a
@@ -96,8 +94,8 @@ Remaining steps for setting up a *new* blog
 Following the guidances of the tutorial should be OK.  However, if you
 have an *existing* Octopress blog and you'd like to post contents onto
 it using your *new* computer, Scott Cheng has provided detailed
-instructions [in his post][octopress_new_comp].  Unluckily, I failed
-to understand point 5 in his post, and got some errors.
+instructions in his post.[^2]  Unluckily, I failed to understand point
+5 in his post, and got some errors.[^3]
 
 {% img center /images/posts/OctopressOnOtherDev/push_rejected.png 800 470 Git push rejected %}
 
@@ -132,7 +130,14 @@ $ git pull origin master  # update the local `master' branch
 </code></pre>
 
 ---
-[^1]: [在 Windows 使用 Octopress][OctopressInWin]
+[^1]: [在 Windows 使用 Octopress][OctopressInWin] in *不歸錄*.
+[^2]:
+    The link is now *dead*.  See [his Markdown source][OctNewComp]
+    file in GitHub instead.
+[^3]:
+    I can now understand point 5 in Scott Cheng's post.  See my
+    [newer post][np] for details.  (Last added on SEP 6, 2014)
+
 [OctopressInWin]: http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/
 
 [tut1]: http://www.techelex.org/setup-octopress-on-windows7/
@@ -144,8 +149,9 @@ $ git pull origin master  # update the local `master' branch
 [msysgit_install_wizard]: http://static.thegeekstuff.com/wp-content/uploads/2012/01/git-06-adjust-path.png
 [fugitive.vim]: https://github.com/tpope/vim-fugitive "a Git wrapper in Vim"
 [stackoverflow_11720945]: http://stackoverflow.com/questions/11720945/unable-to-run-git-from-command-line
-[octopress_new_comp]: http://scottcheng.com/blog/2012/11/setting-up-existing-octopress-blog-on-a-new-computer/
+[OctNewComp]: https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown "Setting Up Existing Octopress Blog on a New Computer"
 [pull2branch]: http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/
+[np]: /blog/2014/09/05/fixing-this-repos-network-graph/ "Fixing This Repo's Network Graph"
 
 *[SCM]: Source Code Management
 <!-- vim:se tw=70: -->

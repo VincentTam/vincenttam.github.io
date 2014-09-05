@@ -3,9 +3,7 @@ layout: post
 title: "Fixing Broken URLs in the Catetory List"
 date: 2014-06-20 23:51:06 +0800
 comments: true
-categories:
-- Octopress
-- Ruby
+categories: [Octopress, Ruby]
 ---
 
 (Added on AUG 20, 2014)
