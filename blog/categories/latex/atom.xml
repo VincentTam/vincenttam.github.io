@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Latex | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Avoid Using Ugly Bitmapped Computer Modern Fonts]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/"/>
+    
+    <updated>2014-08-02T14:22:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts</id>
+    
+      <content type="html"><![CDATA[<p>In a $\rm \LaTeX$ guide found on the website of George Mason
+University, it’s said that Computer Modern fonts can look ugly.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
+Like most Computer Modern users, I <em>didn’t</em> notice that until I wrote
+an article using $\rm \LaTeX$ last weekend.</p>
+
+<p>To illustrate the problem, I used a minimum example which I had posted
+on Gist.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  To simply matters, one may use
+<code>\pagenumbering{gobble}</code> to suppress page numbers.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/cmodern.png" title="‘Ugly bitmapped Computer Modern fonts’ ‘fig1’" ></p>
+
+<p>If one thinks that downloading the Blue Sky fonts from the American
+Mathematical Society is too troublesome, simply including the package
+<code>lmodern</code> will do.</p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/lmodern.png" title="‘Improved outlook using Latin Modern fonts’ ‘fig1’" ></p>
+
+<p>P.S. I have learnt an ImageMagick command from a Stack Overflow
+question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Star of David in Pascal's Triangle]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/"/>
+    
+    <updated>2014-07-12T21:44:37+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle</id>
+    
+      <content type="html"><![CDATA[<p><img class="right" src="/images/posts/DavidStar/Nodes1.svg" width="100"></p>
+
+<p>Yesterday, I learnt drawing simple TikZ diagrams.</p>
+
+<p>In my opinion, defining nodes while connecting them will <em>not</em> look
+good.</p>
+
+<pre><code>\path[draw] (0, 0) node {A} -- (1,0) -- (1,1) node {B};
+</code></pre>
+
+<p>I define the nodes before connecting them, and the result is what I
+desire.</p>
+
+<p><img src="/images/posts/DavidStar/Nodes2.svg" width="100">
+<!-- The image overlapped with the code block. --></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Drawing basic TikZ diagrams</span><a href='http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\node</span> (A) at (0,0) <span class="nb">{</span>A<span class="nb">}</span>;
+</span><span class='line'><span class="k">\node</span> (B) at (1,1) <span class="nb">{</span>B<span class="nb">}</span>;
+</span><span class='line'><span class="k">\draw</span> (A) – (1,0) – (B);
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><img class="center" src="/images/posts/DavidStar/DavidStar.svg" width="600"></p>
+
+<p>I <em>overlooked</em> the meaning of <strong>clipping</strong> in Meik Hellmund’s short
+TikZ tutorial.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  I constructed the diagram using the <code>edge</code>
+command.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (DavidStar.tex)</span> <a href='/downloads/code/DavidStar.tex'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\node</span> (A) at (1,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'>  <span class="k">\node</span> (C) at (4,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (A);
+</span><span class='line'>  <span class="k">\node</span> (E) at (1,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (C)
+</span><span class='line'>                                                 edge (A);
+</span><span class='line'>  <span class="k">\node</span> (B) at (3,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'>  <span class="k">\node</span> (D) at (3,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span> edge (B);
+</span><span class='line'>  <span class="k">\node</span> (F) at (0,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (B)
+</span><span class='line'>                                             edge (D);
+</span><span class='line'>  <span class="k">\node</span> (G) at (2,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{n </span><span class="nv">\choose</span><span class="nb"> r}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<script type="math/tex; mode=display">
+\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
+  \text{one can easily see that} \\
+\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
+  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+</script>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12">p.12</a> of the tutorial.</p>
+
+      <blockquote>
+        <p>“It is often better to define named nodes first and connect them
+later, since then the paths are clipped around the notes…”</p>
+      </blockquote>
+      <p><a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Export PDF to SVG]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg/"/>
+    
+    <updated>2014-06-21T14:23:50+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg</id>
+    
+      <content type="html"><![CDATA[<p>I’ve drawn a figure in $\rm \LaTeX$ using the <a href="http://www.texample.net/tikz/">TikZ</a>.  However,
+<a href="http://www.mathjax.org/">MathJax</a> has <em>no</em> support for TikZ commands.  Therefore, I have to
+generate an SVG figure from $\rm \LaTeX$ if I need to post it on
+Octopress.</p>
+
+<p>I had followed the example <a href="http://tex.stackexchange.com/a/51766" title="How can I use TikZ to make standalone (SVG) graphics?">here</a>.  It worked for
+PNG and JPG files, <em>but</em> not SVG files.  Since the quality of SVG
+files is the <em>best</em>, I would like to include use SVG.</p>
+
+<!-- more -->
+
+<p>I googled “latex export svg”, and saw <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> in some websites,
+such as <a href="https://en.wikibooks.org/wiki/LaTeX">$\rm \LaTeX$</a> on Wikibooks.  I then decided
+to install it.  I followed the installation commands on its official
+page.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ wget http://www.cityinthesky.co.uk/wp-content/uploads/2013/
+10/pdf2svg-0.2.2.tar.gz
+[owner@localhost ~]$ tar -xzvf pdf2svg-0.2.2.tar.gz
+[owner@localhost ~]$ cd pdf2svg-0.2.2
+[owner@localhost ~/pdf2svg-0.2.2]$ ./configure
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+
+... (output omitted)
+
+checking for CAIRO... yes
+<span class="err">checking for POPPLERGLIB... configure: error: Package requirements (poppler-glib
+ &gt;= 0.5.4) were not met:</span>
+
+<span class="UBHLCode">No package 'poppler-glib' found</span>
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables POPPLERGLIB_CFLAGS
+and POPPLERGLIB_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+</code></pre>
+
+<p>Googling “no package ‘poppler-glib’ found”, I found the
+<a href="https://github.com/politza/pdf-tools/issues/3" title="No poppler-glib package in Ubuntu 12.04 #3">second result</a> useful.  I installed the missing
+package and ran <code>./configure</code> again, before proceeding to <code>make</code>.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ make
+gcc -DPACKAGE_NAME=\"pdf2svg\" -DPACKAGE_TARNAME=\"pdf2svg\" -DPACKAGE_VERSION=\
+"0.2.1\" -DPACKAGE_STRING=\"pdf2svg\ 0.2.1\" -DPACKAGE_BUGREPORT=\"David\ Barton
+\ \&lt;davebarton@cityinthesky.co.uk\&gt;\" -DPACKAGE=\"pdf2svg\" -DVERSION=\"0.2.1\" 
+-I.    -I/usr/include/cairo -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/gl
+ib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/l
+ibpng12   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/incl
+ude -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I
+/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/u
+sr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/fr
+eetype2 -I/usr/include/libpng12   -I/usr/include/poppler/glib -I/usr/include/pop
+pler -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/i
+nclude/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/lib
+png12    -g -O2 -MT pdf2svg-pdf2svg.o -MD -MP -MF .deps/pdf2svg-pdf2svg.Tpo -c -
+o pdf2svg-pdf2svg.o `test -f 'pdf2svg.c' || echo './'`pdf2svg.c
+pdf2svg.c: In function ‘main’:
+<span class="err">pdf2svg.c:152:8: warning: incompatible implicit declaration of built-in function
+ ‘free’ [enabled by default]</span>
+mv -f .deps/pdf2svg-pdf2svg.Tpo .deps/pdf2svg-pdf2svg.Po
+gcc -I/usr/include/cairo -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-
+2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libp
+ng12   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include
+ -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/us
+r/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/
+lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freet
+ype2 -I/usr/include/libpng12   -I/usr/include/poppler/glib -I/usr/include/popple
+r -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/incl
+ude/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng
+12    -g -O2   -o pdf2svg pdf2svg-pdf2svg.o -lcairo   -lgtk-x11-2.0 -lgdk-x11-2.
+0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -
+lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0   -lpoppler-glib -lg
+object-2.0 -lcairo -lglib-2.0
+</code></pre>
+
+<p>I guess the reason for GCC to give me such a warning can be found in
+some questions posted on Stack Overflow.</p>
+
+<ol>
+  <li><a href="http://stackoverflow.com/questions/6639572/">The first one</a>.</li>
+  <li><a href="http://stackoverflow.com/questions/977233/">The second one</a>.</li>
+</ol>
+
+<p>I <em>haven’t</em> learnt C/C++, so I <em>wouldn’t</em> try <code>#include &lt;string.h&gt;</code> in
+<code>pdf2svg.c</code>.</p>
+
+<p>I ignored the warning and continued the installation.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ make install
+make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
+test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
+  /usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
+<span class="err">/usr/bin/install: cannot create regular file `/usr/local/bin/pdf2svg': Permissio
+n denied</span>
+make[1]: *** [install-binPROGRAMS] Error 1
+make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
+make: *** [install-am] Error 2
+</code></pre>
+
+<p>I remembered that the <code>--prefix=</code> option used while running
+<code>./configure</code> is <code>/usr/local</code>.  Viewing the file permissions in that
+folder, I realized that I should follow the advice of
+<a href="http://askubuntu.com/a/424787" title="Permission denied while running make install">an answer to an Ask Ubuntu question</a></p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
+[sudo] password for owner: 
+make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
+test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
+/usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
+make[1]: Nothing to be done for `install-data-am'.
+make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
+</code></pre>
+
+<p>After installing <code>pdf2svg</code> from its source code, I can finally start
+using the tool.</p>
+
+<pre><code>pdf2svg input.pdf output.svg
+</code></pre>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Chinese Essays]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/04/05/latex-template-for-chin-essays/"/>
+    
+    <updated>2014-04-05T21:37:58+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/04/05/latex-template-for-chin-essays</id>
+    
+      <content type="html"><![CDATA[<p>With this template, I believe that creating a Chinese article using $\rm \LaTeX$ should be <em>a lot</em> quicker and easier.</p>
+
+<p>I’ve tried including a Gist in one of my posts.  However, each line separates too much from another.  Therefore, including a Gist in my post doesn’t seem to be a good idea.</p>
+
+<p>I think that the default layout of the code list in Octopress is <em>much</em> prettier than Gist.  I included the source code of my $\rm \LaTeX$ essay in <a href="/blog/2014/03/16/latex-template-for-essays/">my previous post on $\rm \LaTeX$</a>.  Unluckily, some of the functions in Octopress’s code block don’t work.  As a result, I have to put the <em>whole</em> source file in that post.</p>
+
+<p>In this post, I’ll just post the link to <del>my $\rm \LaTeX$ Chinese template Gist, and</del> <a href="/downloads/latex_chin_sample.pdf">the PDF file</a>.</p>
+
+<hr />
+<p>(Added on AUG 03RD, 2014)</p>
+
+<p>Since I’ve copied the code for fixing the problem of embedded Gists in Octopress<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I will include the Gist in this post now.</p>
+
+<!-- more -->
+
+<p><div><script src='https://gist.github.com/10473229.js?file=latex_chin_sample.tex'></script>
+<noscript><pre><code>\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xeCJK}
+\setCJKmainfont{AR PL UKai HK}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{\baselineskip}
+\usepackage{setspace}
+\doublespacing
+\usepackage{metalogo}
+
+\author{
+  毛名仕\\
+  1234567890
+}
+\title{ABCD 1234：文章的主題}
+\date{二零一四年四月五日}
+\begin{document}
+\maketitle
+
+老師、各位同學，大家好！我今日想跟大家分享一下我的模版。我們每日花多少時間在找尋微軟的破解版上？各位正在使用微軟辦公室軟體的用者，沒有升級軟體，文件過了幾年就會出現相容性的問題。
+
+下一個段落，說明了我不用微軟所見即所得的文書處理器，也可以排版出漂亮的文章。段落之間有一空行，行與行之間也有行距，方便閱讀。我用自由的 \XeLaTeX 造出的文件，比閉源的微軟的文書處理器所造出的還好！
+
+\end{document}
+
+% vim:nospell</code></pre></noscript></div>
+</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e5668de">e5668de</a> of this repo. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Essays]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/03/16/latex-template-for-essays/"/>
+    
+    <updated>2014-03-16T00:28:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/03/16/latex-template-for-essays</id>
+    
+      <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>This is a $\rm \LaTeX$ template for writing an article.</p>
+
+<h2 id="sample-output">Sample output</h2>
+
+<p><a href="/downloads/latex_sample.pdf">Click here.</a></p>
+
+<!-- more -->
+
+<h2 id="sample-code">Sample code</h2>
+
+<p><div><script src='https://gist.github.com/9569005.js'></script>
+<noscript><pre><code>@online{Gnu13,
+  author = {Richard Stallman},
+  title = {{Free Software and Education}},
+  date = {2013-11-06},
+  url = {http://www.gnu.org/education/education.html}
+}
+
+@article{kaplan2010users,
+  title={{Users of the world, unite! The challenges and opportunities
+    of social media}},
+  author={Kaplan, Andreas M and Haenlein, Michael},
+  journal={{Business Horizons}},
+  volume={53},
+  number={1},
+  pages={59--68},
+  year={2010},
+  publisher={Elsevier}
+}
+</code></pre></noscript></div>
+</p>
+
+<h2 id="explanation-of-code-in-latexsampletex">Explanation of code in “latex_sample.tex”</h2>
+
+<p>For the one-inch margin, I have used the geometry package to do so. (line 2) The font size has been set to 12. (line 1) The 1.5 line spacing has been implemented. (lines 7–8)</p>
+
+<p>The APA-style reference list was automatically generated using the biblatex package along with the biber backend. (lines 15–17,107)</p>
+
+<h2 id="comparison-of-rm-latex-and-other-technologies">Comparison of $\rm \LaTeX$ and other technologies</h2>
+
+<p>I personally appreciate the beauty of Professor Donald Knuff’s Computer Modern typefaces, and thus the font Computer Modern Roman has been chosen through the whole PDF file.  In terms the number of trailing hyphenations in each line, and other relating in-word spacing statistics, $\rm \LaTeX$ is better than an array of internationally-acclaimed proprietary softwares, such as Microsoft Word and Abode InDesign<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.  In addition, the typesetting of Microsoft is incorrect, whereas $\rm \LaTeX$ gives the correct kerning and ligatures of characters, apart from rendering “ancient and rare ligatures”<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.  The staff in the Department of Engineering at the University of Cambridge has made a more comprehensive and detailed comparison of WYSIWYG (What-You-See-Is-What-You-Get) editors and $\rm \LaTeX$ on <a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html">http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html</a>.</p>
+
+<hr />
+
+<p>I’ve found <a href="http://latex.informatik.uni-halle.de/latex-online/latex.php">$\rm \LaTeX$-Online-Compiler</a>, which is useful for testing $\rm \LaTeX$ code.</p>
+
+<p>(Last edited on APR 26TH, 2014)</p>
+
+<hr />
+
+<!-- vim:set sw=2:tw=70:wrap: -->
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Visual comparison between LaTeX and Word output (hyphenation,
+typesetting, ligatures etc) on
+<a href="http://tex.stackexchange.com/q/110133">$\rm \TeX$–$\rm \LaTeX$ Stack Exchange</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>Taraborelli, D.  (July 4, 2011).  <em>The Beauty of $\rm \LaTeX$</em>.
+Retrieved from <a href="http://nitens.org/taraborelli/latex">http://nitens.org/taraborelli/latex</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,537 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The Daring Fireball Linked List - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="The Daring Fireball Linked ListFriday, 29 Aug 2014Paczkowski: Apple Wearable Won't Ship Until Next Year&nbsp;&#9733;John Paczkowski:So that new &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title external"><a href="http://daringfireball.net/linked/">The Daring Fireball Linked List</a> &#9733;</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-30T14:44:16+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:44 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><blockquote><p><div class="article"><h5>The Daring Fireball Linked List</h5><h6 class="dateline">Friday, 29 Aug 2014</h6><br /><dl class="linkedlist"><dt><a href="http://recode.net/2014/08/29/codered-apple-wearable-wont-ship-until-next-year/">Paczkowski: Apple Wearable Won't Ship Until Next Year</a>&nbsp;<a class="permalink" title="Permanent link to 'Paczkowski: Apple Wearable Won't Ship Until Next Year'." href="http://daringfireball.net/linked/2014/08/29/paczkowski">&#9733;</a></dt><dd><br /><p>John Paczkowski:</p><blockquote><p>So that new wearable device Apple is introducing on September 9?  It's going to be a while before anyone is actually wearing it.  Sources in position to know tell me it won't arrive at market for a few months.  "It's not shipping anytime soon," said one.  So when does Apple plan to ship its eagerly anticipated wearable?  That's not clear, but my understanding is that we're unlikely to see it at retail until after the holiday season—think early 2015.</p></blockquote><p>If true, why?  I'm guessing something similar to why they pre-announced the original iPhone—otherwise it would leak through regulatory filings with various governments around the world.  Plus, they have no worries about the <a href="https://en.wikipedia.org/wiki/Osborne_effect">Osborne Effect</a> with a new product category.</p></dd></dl></div>...<div class="article"><h5>About the Linked List</h5><p>The Daring Fireball Linked List is a daily list of interesting links and brief commentary, updated frequently but not frenetically. Call it a "link log", or "linkblog", or just "a good way to dick around on the Internet for a few minutes a day".</p></div></p><footer><strong>Daring Fireball</strong></footer></blockquote>
+
+<p>Since I like the clarity of the linked list format, I’d been looking
+for ways to do this in June, but I <em>couldn’t</em> understand them.
+Moreover, as can be seen from the size of <code>git diff
+octopress/linklog</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the difference between <code>linklog</code> and <code>master</code>
+branches is <em>very large</em>.  I <em>couldn’t</em> understand the git-diff result
+for <code>source/javascripts/octopress.js</code>. This would discourage any
+ordinary users from looking into the issue.  Therefore, I once said
+that I <em>didn’t</em> know how to write an Octopress linklog.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>Last night, I added an <em>unofficial</em> linklog feature to Octopress.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
+The official guide <em>didn’t</em> worked for me.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  I could see the
+complaints from some users who had found that this feature <em>wasn’t</em>
+working.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  At the same time, I could see some blogs that included
+this feature.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  The last commit of the <code>linklog</code> branch was in
+2012.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>  It seems that it <em>isn’t</em> likely that Octopress will work on
+this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup></p>
+
+<!-- more -->
+
+<p>Yesterday, I <em>finally</em> understood the following posts about DIY
+Octopress linklogs.</p>
+
+<ol>
+  <li><a href="http://www.candlerblog.com/2012/01/30/octopress-linked-list/">Make a Linked List With Octopress</a> in <em>the Candler Blog</em>.</li>
+  <li>Octopress pull request #<a href="https://github.com/imathis/octopress/pull/1538" title="Add a capture to article include to use external-url">1538</a></li>
+  <li><a href="https://wllmtrng.github.io/blog/2014/04/17/creating-a-linklog-post/">Creating a Linklog Post</a> in <em>New Learnings from Old
+Understandings</em></li>
+</ol>
+
+<p>In the commit in item 2, only <em>a few</em> lines was changed, and it should
+be comprehensible even for one who knows basic HTML and programming
+only.  In item 1, there’s <em>no</em> <code>page.external-url</code> in
+<code>source/_includes/article.html</code>, but it’s present in item 3.  I
+compared those <a href="http://docs.shopify.com/themes/liquid-documentation/basics">Liquid</a> code with the relevant files in <code>linklog</code>
+branch.  Item 1 also contains the changes in <code>source/atom.xml</code>.  From
+this, I worked out <code>source/_includes/custome/category_feeds.xml</code>,
+though the code is <em>far from beautiful</em>.  To work out the blog
+archive, I looked at Dr.Z’s one.</p>
+
+<p>I was bored of this kind of writing code and <em>didn’t</em> want to further
+change the CSS properties of linklog titles.  The linklog markers and
+permalink labels should be enough.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="yaml-front-matter-of-each-post">YAML front matter of each post</h3>
+
+<p>In the following sample Markdown source file for a post, there’s a
+variable <code>external-url</code>.  After looking at the above code blocks, I’ve
+learnt how to use those variables.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Contents of "2014-08-30-title-goes-here.markdown" </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">---
+</span><span class="line">layout: post
+</span><span class="line">title: &quot;Title goes here&quot;
+</span><span class="line">date: 2014-08-30 14:44:16 +0800
+</span><span class="line">comments: true
+</span><span class="line">categories: [category 1, category 2]
+</span><span class="line">external-url: http://www.example.com
+</span><span class="line">---
+</span><span class="line">
+</span><span class="line">Blog contents goes here...
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>{{% if post.external-url %}}</code> tests if the
+  front matter of a post contains <code>external-url</code> variable.</li>
+  <li><code>{{ post.external-url }}</code> returns the value of
+  <code>external-url</code> variable.</li>
+</ul>
+
+<h3 id="yaml-variables-in-configyml">YAML variables in <code>_config.yml</code></h3>
+
+<ul>
+  <li>I added a line <code>myVar: value</code> into <code>_config.yml</code>.</li>
+  <li>While configurating <code>source/_includes/article.html</code>, if I need to
+  access an variable in <code>_config.yml</code>, I have to use
+  <code>{{ site.myVar }}</code>.  You’ll get <em>nothing</em> if
+  you miss <code>site.</code>.</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>I assume that Ocotpress’s GitHub repository has been added to the
+list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <blockquote><p><del>Unfortunately, I *haven't* find out how to include Octopress's linklog feature into my Octopress blog.</del></p><footer><strong>Me</strong> <cite><a href="http://localhost:4000/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">九成人感眼睛疲倦 藍光加快退化</a></cite></footer></blockquote>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/39293af" title="Unofficial linklog support in progress...">39293af</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e35fab7" title="Added unofficial linklog support to more pages">e35fab7</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="http://octopress.org/docs/blogging/linklog/">Writing a Linklog</a> in <em>Octopress Documentation</em>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Ocotpress issue #<a href="https://github.com/imathis/octopress/issues/418" title="Allow linklog style posts">418</a>. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+
+      <p>For example,</p>
+
+      <ul>
+        <li><a href="http://drz.ac/blog/">DrZ.ac</a></li>
+        <li><a href="http://makarenko.me/07-17-2013-moving-to-linklog/">Moving to Linklog</a> in <em>Weblog Сергія Макаренка</em>.</li>
+      </ul>
+      <p><a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Commit <a href="https://github.com/imathis/octopress/commit/1750830" title="Merge pull request #800 from mxmerz/linklog">1750830</a> at the tip of <code>linklog</code> branch. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+
+      <blockquote><p>@matrixagent sorry.  It's killing us too.  The linklog feature is going to be theme based and right now we're working on breaking out the theme from the release to distribute the development a little better.  It's tricky to manage asset installation.</p><footer><strong>@octopress</strong> <cite><a href="https://alpha.app.net/octopress/post/14385019">alpha.app.net/octopress/post/&hellip;</a></cite></footer></blockquote>
+      <p><a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-08-30T14:44:16+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:44 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/" title="Previous Post: Clang Complete on Ubuntu 14.04">&laquo; Clang Complete on Ubuntu 14.04</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/08/31/syntax-in-octopress-blockquote-tag/" title="Next Post: Syntax in Octopress Blockquote Tag">Syntax in Octopress Blockquote Tag &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,647 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>My Git Command List (1) - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Since I have poor long-term memory in commands, I’ll write down the
+Git commands that I know. This list is written for my reference only. Therefore, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">My Git Command List (1)</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T00:04:04+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:04 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Since I have <em>poor long-term memory</em> in commands, I’ll write down the
+<a href="http://git-scm.com/">Git</a> commands that I know.</p>
+
+<p>This list is written for my reference <em>only</em>.  Therefore, I <em>won’t</em>
+include everything.  I’m going to write some basic stuff, so that I
+can review it if I’ve forgotten it.  If you want detailed explanation
+for a command, find the documentation instead.  If you’ve encountered
+a problem using Git, the <em>best</em> teacher is, in general, a search
+engine.</p>
+
+<!-- more -->
+
+<h2 id="initial-setup">Initial Setup</h2>
+
+<p>Refer to <a href="http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup" title="Getting Started - First-Time Git Setup"><em>Pro Git</em> section 1.5</a>.</p>
+
+<p>I recommend new Git users to set the configuration variable
+<code>push.default</code> using <code>git config</code> with the <code>--global</code> option, which
+make Git save the variables in <code>~/.gitconfig</code>, so as to avoid the
+warning shown in <a href="http://stackoverflow.com/a/13148066/" title="Warning: push.default is unset; its implicit value is changing in Git 2.0">here</a>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Due to my limited
+understanding of Git, I <em>couldn’t</em> find a way to suppress the warning
+after reading the Stack Overflow question.  I eventually figured it
+out after reading a Chinese blog post found in the first footnote.</p>
+
+<h2 id="initialize-repositories">Initialize repositories</h2>
+
+<pre class="cli"><code class="UBMono">$ git init
+$ git init --bare
+</code></pre>
+
+<p>For the first one, it’s the usual command used for a repository which
+contains the source code.  For the second one, it can be used on a
+remote server.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>Note: “Running <code>git init</code> on an existing repository is safe.”<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<h2 id="clone-repositories">Clone repositories</h2>
+
+<p>See <a href="http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository" title="Cloning an Existing Repository"><em>Pro Git</em> section 2.1</a>.</p>
+
+<p>From <a href="http://stackoverflow.com/a/14879452" title="Git push error '[remote rejected] master -&gt; master (branch is currently checked out)'">here</a>, I know that one can pass the <code>--bare</code> option
+to <code>git clone</code>.</p>
+
+<pre class="cli"><code class="UBMono">$ git clone --bare repo.old repo</code></pre>
+
+<p>In the above command, <code>repo.old</code> is an old repository, and one creates
+a new bare repository <code>repo</code> from that old non-bare repository.</p>
+
+<h2 id="get-things-from-remote-repositories">Get things from remote repositories</h2>
+
+<p>There are basic commands: <code>git pull</code>, <code>git fetch</code> and <code>git merge</code>.
+Roughly speaking, the first one is the “sum” of the following two.</p>
+
+<pre class="cli"><code class="UBMono">$ git fetch           # fetch from origin/upstream
+$ git fetch host      # fetch all branches from remote "host"
+$ git fetch host foo  # fetch branch "foo" from remote "host"
+</code></pre>
+
+<p>Note: In the above codeblock, <code>pull</code> can be substituted by <code>pull</code>.</p>
+
+<p>Before actually merging the branches, we can see their differences
+first.</p>
+
+<h2 id="viewing-the-differences">Viewing the differences</h2>
+
+<p>I only know <code>git diff</code>.</p>
+
+<h3 id="basic-usage">Basic usage</h3>
+
+<p>If you’ve written something and have <em>not yet</em> committed your changes,
+you may issue <code>git diff</code> in the terminal to see the difference between
+your uncommitted changes and the latest commit.  <code>-</code> represents the
+older committed contents, whereas <code>+</code> represents the newer uncommitted
+changes.</p>
+
+<h3 id="compare-the-tip-of-the-branch-with-older-commits-in-the-same-branch">Compare the tip of the branch with older commits in the same branch</h3>
+
+<p>Just appending the first seven digits of the 40-digit SHA-1 hash of
+the commit to <code>git diff</code> will do.</p>
+
+<h3 id="comparing-branches">Comparing branches</h3>
+
+<p>I found a page in the official reference. (<a href="http://git-scm.com/docs/git-diff#_examples" title="git-diff(1) Manual Page">URL</a>)  The
+<code>&lt;1&gt;</code> form worked well if I compared <code>origin/source</code> and
+<code>octoress/linklog</code> in <code>~/octopress</code>.  However, I <em>haven’t</em> fully
+understand this command.</p>
+
+<pre class="cli"><code class="UBMono">$ git diff origin/source source
+fatal: ambiguous argument 'source': both revision and filename
+Use '--' to separate paths from revisions, like this:
+'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'
+</code></pre>
+
+<hr />
+<p>(Added on AUG 07TH, 2014)</p>
+
+<p>Now I know how to correct the above Git command.  Refer to my newer
+post <a href="/blog/2014/08/07/double-hyphens-in-git-diff/"><em>Double Hyphens in Git Diff</em></a>.</p>
+
+<hr />
+
+<h2 id="addremove-files">Add/remove Files</h2>
+
+<p>There are three basic commands:</p>
+
+<ul>
+  <li><code>git add</code></li>
+  <li><code>git mv</code></li>
+  <li><code>git rm</code></li>
+</ul>
+
+<pre class="cli"><code class="UBMono">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
+$ git add .                     # Add all modified/new files that are tracked
+$ git add -A                    # The `-A' flag stands for "all". See <a title="Difference between &quot;git add -A&quot; and &quot;git add .&quot;" href="http://stackoverflow.com/a/572660">here</a> for details.
+$ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
+$ git rm &lt;file&gt;                 # delete a file and record the action in Git
+</code></pre>
+
+<p>I’ve read a simplified Chinese blog post which explained the
+difference between <code>git rm</code> and <code>rm</code>.  (<a href="http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/" title="&quot;git rm&quot; 和 &quot;rm&quot; 的区别">URL</a>)</p>
+
+<p>You may include some untracked files in <code>.gitignore</code>, so that those
+files will be ignored by Git.</p>
+
+<h2 id="commit-changes">Commit changes</h2>
+
+<p>The only command is <code>git commit</code>.  There are some basic options that
+one can make use of.</p>
+
+<ul>
+  <li><code>-a</code> (a.k.a. <code>--all</code>): commit changes of all tracked files.</li>
+  <li><code>--amend</code>: change the commit message of the tip the working branch.</li>
+  <li><code>-m &lt;msg&gt;</code> (a.k.a. <code>--message</code>): Directly input the commit message.</li>
+</ul>
+
+<p>If the <code>-m</code> flag is used, then an editor window <em>won’t</em> be invoked.
+In the editor window that contains the commit message, the first line
+is the header of the commit, while the second line should be left
+blank. The subsequent lines that <em>don’t</em> begin with <code>#</code> is the content
+of the commit message.</p>
+
+<p>If you want revert <code>git commit --amend</code>, you may refer to my
+<a href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/" title="Undo an Amendment to a Git Commit">previous post</a>.</p>
+
+<h2 id="revert-changes">Revert changes</h2>
+
+<p>To me, it’s the <em>most important</em> part of this post.  I know <em>only</em> two
+commands for this type of task.</p>
+
+<pre class="cli"><code class="UBMono">$ git reset HEAD &lt;file&gt;...   # unstage &lt;file&gt;
+$ git reset HEAD --soft      # unstage all uncommitted chanages <span class="UBHLCode">without</span> changing the file(s)
+$ git reset HEAD --hard      # revert the files to the latest commit
+$ git checkout -- &lt;file&gt;...  # undo all uncommitted changes to &lt;file&gt;
+</code></pre>
+
+<h2 id="working-with-branches">Working with branches</h2>
+
+<p>I know that it’s an important feature of Git, but I <em>don’t</em> that very
+often now, so I just include some simple commands here.</p>
+
+<pre class="cli"><code class="UBMono">$ git branch                 # list all branches, <span class="UBHLCode">excluding</span> the remote ones
+$ git branch --list          # same as above
+$ git branch -a              # list all branches, <span class="UBHLCode">including</span> the remote ones
+$ git branch foo             # create `foo' branch from the current one
+$ git checkout foo           # switch to `foo' branch from the current one
+$ git checkout -b foo        # the "sum" of the above two commands
+$ git branch -d foo          # delete `foo' branch
+$ git checkout --orphan foo  # create a new orphan branch named `foo'
+</code></pre>
+
+<p>When I started using Octopress, I <em>wasn’t</em> familiar with Git.  Thus,
+I messed up the commands that dealt with branches and the network
+graph of my Git repository of this blog.</p>
+
+<h2 id="show-the-history">Show the history</h2>
+
+<p>There’s <a href="#gitk">a GUI way</a> to do so.</p>
+
+<pre class="cli"><code class="UBMono">$ git show    # Show the diff hunks of recent commits
+$ git log     # Show the commits without diff hunks
+$ git log -6  # Show the 6 most recent commits
+$ git log -p  # Show the commits with diff hunks
+</code></pre>
+
+<p><em>Without</em> the <code>-p</code> flag, <code>git log</code> will show the user’s name and
+email, time, SHA-1 hash, header and content of each commit, but <em>not</em>
+the diff hunk(s).  The key motions for browsing through commits in
+<code>git log</code> is similar to those in the <code>less</code> utility.  If the number of
+commits <em>isn’t</em> specified, one can browse through the <em>whole</em> commit
+history by scrolling down to the bottom.</p>
+
+<p>One can use <code>git show</code> to format the output, but I <em>haven’t</em> learnt
+that.</p>
+
+<p>I am looking forward to writing a second list, but I <em>don’t</em> think I
+can make it in the next few months.</p>
+
+<h2 id="some-off-topic-stuff">Some off-topic stuff</h2>
+
+<h3 id="gitk">gitk</h3>
+
+<p>One can invoke <code>gitk</code>, which is a GUI tool for viewing the Git commit
+for showing history, if he/she <em>doesn’t</em> want to learn the commands in
+the above section.</p>
+
+<h3 id="fugitivevim">fugitive.vim</h3>
+
+<p><a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> is a great Vim plugin.</p>
+
+<pre><code>:Gst[atus]      # Show the `git status' on a horizontal split window
+:Git &lt;command&gt;  # Equivalent to `:!git &lt;command&gt;'
+:Glog           # Show the commit messages within Vim
+</code></pre>
+
+<p>I <em>don’t</em> know the use of <code>:Glog</code>.</p>
+
+<p>Within <code>Gstatus</code>, you can conveniently add/remove files from the
+staging area.</p>
+
+<ul>
+  <li><code>&lt;C-n&gt;</code> and <code>&lt;C-p&gt;</code> jump to the next and previous files
+  respectively.</li>
+  <li><code>cc</code> is for a Git commit.</li>
+  <li><code>g?</code> invokes a list of key mappings which can be used in the <code>:Gstatus</code> help
+  window.</li>
+  <li><code>D</code> is like <code>git diff</code>, but with the layout of <code>vimdiff</code>.  By
+  default, one window is on top of another.</li>
+  <li><code>dv</code> is like <code>D</code>, but one window is on the right of another.</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>The last sentence of <a href="http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html" title="git push警告：warning: push.default is unset">this blog post</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See my post <a href="/blog/2014/06/14/local-huge-file-sharing/"><em>Local Huge File Sharing</em></a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Refer to a <a href="http://stackoverflow.com/a/5149861" title="Does running git init twice initialize a repository or reinitialize an existing repo?">Stack Overflow question</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T00:04:04+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:04 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/git/'>git</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/" title="Previous Post: Undo an Amendment to a Git Commit">&laquo; Undo an Amendment to a Git Commit</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/16/noscript-abe-rules-for-wlan-web-portal-login/" title="Next Post: NoScript ABE Rules for WLAN Web Portal Login">NoScript ABE Rules for WLAN Web Portal Login &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

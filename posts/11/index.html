@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="I&#8217;ve found a page which provides a brief summary of gpg commands. I think some mainland users will find it useful. I hope that I can use these &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/posts/11">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/03/gnupg-encryption/">GnuPG Encryption</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-03T21:03:59+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:03 pm</span></time>
+        
+           | <a href="/blog/2014/02/03/gnupg-encryption/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/03/gnupg-encryption/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/03/gnupg-encryption/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve found <a href="http://blog.aboutc.net/linux/55/pgp-file-encryption-and-decryption" title="PGP Document Encryption">a page</a> which provides a brief summary of gpg commands. I think some mainland users will find it useful. I hope that I can use these commands soon.</p>
+
+<pre class="cli"><code class="UBMono">$ gpg -k
+$ gpg -K
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/03/gnupg-encryption/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-experience-of-using-vundle/">My Experience of Using Vundle</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T12:17:52+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 pm</span></time>
+        
+           | <a href="/blog/2014/02/01/my-experience-of-using-vundle/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/01/my-experience-of-using-vundle/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-experience-of-using-vundle/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Three months ago, I gave <a href="https://github.com/gmarik/vundle" title="Vundle">Vundle</a> a try, and it&#8217;s <em>much</em> more convenient than <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">pathogen.vim</a>. With <a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/" title="Auto Installing Vundle From Your Vimrc">Zaadi&#8217;s VIMRC configuration</a>, Vundle can be set up within several minutes.</p>
+
+<p>I installed <a href="https://github.com/vim-scripts/FuzzyFinder" title="FuzzyFinder">FuzzyFinder</a> for opening files in other directories without leaving Vim. However, during the installation of the plugin, I carelessly forgot to download <a href="https://github.com/vim-scripts/L9" title="L9">L9</a> library first. Therefore, I put it into <code>$MYVIMRC</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>Bundle <span class="s1">&#39;L9&#39;</span> <span class="c">&quot; FuzzyFinder dependency</span>
+</span><span class='line'>Bundle <span class="s1">&#39;FuzzyFinder&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, I got the following error message.</p>
+
+<pre class="cli"><code class="UBMono"><span class="vimErr">$ vi
+Error detected while processing /home/owner/.vimrc:
+line   28:
+E116: Invalid arguments for function vundle#config#bundle
+line   30:
+E116: Invalid arguments for function vundle#config#bundle
+line   31:
+E116: Invalid arguments for function vundle#config#bundle
+line   32:
+E116: Invalid arguments for function vundle#config#bundle
+line   33:
+E116: Invalid arguments for function vundle#config#bundle
+line   39:
+E116: Invalid arguments for function vundle#config#bundle
+Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:
+line   13:
+***** L9 library must be installed! *****
+</span><span class="vimErrCont">Press ENTER or type command to continue</span>
+</code></pre>
+
+<p><code>:BundleList</code> doesn&#8217;t have L9, but <code>~/.vim/bundle</code> has the folder <code>L9</code>. The cause of the problem is the comment on the right of the <code>Bundle 'foo'</code> command.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">My Choice of Vim Alignment Plugin</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T11:16:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>11:16 am</span></time>
+        
+           | <a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is <em>nothing</em> more than a link to a post on <em>Ruby China</em>,
+which recommends some Vim plugins<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup>, and I’d like to use
+<a href="https://github.com/junegunn/vim-easy-align" title="vim-easy-align">vim-easy-align</a> rather than <a href="http://www.drchip.org/astronaut/vim/align.html" title="Align.vim">Align.vim</a>.</p>
+
+<p>For the rest of the plugins, I don’t feel that I need them now, so I
+won’t bother them. For instance, I found the ruler at the bottom of
+each buffer useful, and I can’t see the difference between a powerline
+and the default ruler.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+      <p>See the post <a href="https://ruby-china.org/topics/13350">here</a>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/31/latex-quote-and-quotation-env-comparison/">Comparison of $\rm \LaTeX$'s "Quote" and "Quotation" Environments</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-31T00:25:10+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:25 am</span></time>
+        
+           | <a href="/blog/2014/01/31/latex-quote-and-quotation-env-comparison/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/31/latex-quote-and-quotation-env-comparison/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/31/latex-quote-and-quotation-env-comparison/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To quote another one&#8217;s words, one can paraphrase the words. For some reason(s), (Perhaps being too lazy, or want to accurately reflect another one&#8217;s words.) one would like to directly quote what another one has said.</p>
+
+<p>To show the difference in $\rm \LaTeX$, I&#8217;ve made <a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>. It&#8217;s now on Google Docs.</p>
+
+<p>I created the above PDF document using <code>quote.tex</code>. (Refer to the Gist below.)</p>
+
+<p>For many computer users who <em>aren&#8217;t</em> familiar with $\rm \LaTeX$&#8217;s syntax but HTML&#8217;s, they should find <a href="http://daringfireball.net/projects/markdown" title="Markdown">Markdown</a> easy to write, and <a href="http://johnmacfarlane.net/pandoc/" title="Pandoc">pandoc</a> easy to use.</p>
+
+<pre class="cli"><code class="UBMono">$ pandoc -s <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> foo.markdown foo.tex</code></pre>
+
+<p>The result is shown in <code>quote.markdown</code>. (Refer to <a href="https://gist.github.com/VincentTam/8703633">my Gist</a>.)</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/30/1st-wp-post-using-gist/">My First WordPress Post Using Gist</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T16:25:03+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
+        
+           | <a href="/blog/2014/01/30/1st-wp-post-using-gist/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/30/1st-wp-post-using-gist/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/30/1st-wp-post-using-gist/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Note: This post won’t make sense here. Refer to the
+<a href="http://blogueun.wordpress.com/2014/01/30/1st-wp-post-using-gist/">original post</a>.</em></p>
+
+<p>Note: I can now figure out a way to work with <em>both</em> UltraBlog and
+WordPress.com’s built-in online code highlighter.  See my
+<a href="/blog/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/" title="Another Testing Page for WordPress.com's Built-in SyntaxHighlighter and UltraBlog">newer post</a> for details.</p>
+
+<p><a href="http://daringfireball.net/projects/markdown" title="Markdown">Markdown</a> is easy to write.  <del>However, writing code with <code>code</code>
+tag (surrounded with <code>[]</code>) using UltraBlog in Vim <em>doesn’t</em> work.  In
+order to post some code, one needs to
+<a href="http://en.support.wordpress.com/markdown/" title="WordPress's Markdown Support">use 3 backticks</a>.</del>  (I’ve found a way to use the
+built-in SyntaxHighlighter now because I’ve realised that a blank line
+in Markdown will be changed to a <code>&lt;p&gt;</code> tag in HTML.  Thus, <em>don’t</em> put
+any blank lines right above and below the the <code>&lt;code&gt;</code> tags.)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">element1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">element1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There’s some shortcomings of the above method.  If you need to copy a
+list of source code, you’ll need to browse the source code, provided
+that the “gutter” option of the code list is “true”,
+<a href="http://en.support.wordpress.com/code/posting-source-code/#configuration-parameters" title="Configuartion Parameters">which is the default</a>.
+Moreover, if you include source code that consists of <code>&lt;angled
+blocks&gt;</code> in a blog post written in Markdown using the UltraBlog
+plugin, then the angled block may be interpreted as an HTML tag
+element, such as the statement <code>#include &lt;iostream&gt;</code> in a C++ program.
+<em>More importantly, I’ve found out that <a href="http://en.support.wordpress.com/markdown/" title="WordPress's Markdown Support">this apporach</a>
+<strong>doesn’t</strong> work with UltraBlog.</em>  <del>The above code list verifies
+this assertion.<del></del></del></p>
+
+<p><img src="/images/posts/1stWPGist/ultrablog.png" title="Screenshot of the &#34;code list&#34; in UltraBlog.vim" alt="Screenshot of the &#34;code list&#34; in UltraBlog.vim" /></p>
+
+<p><small>Figure 1: This is a screenshot of the “code list” in
+UltraBlog.vim.  <a href="http://en.support.wordpress.com/markdown-quick-reference/" title="Markdown quick reference">Markdown quick reference</a> suggests the
+use of 3 backticks.</small></p>
+
+<p><img class="fancybox" src="/images/posts/1stWPGist/interpreted.png" title="Screenshot of the interpreted code in WordPress.com online editor" alt="fig1" /></p>
+
+<p><small>Figure 2: The above figure shows how the source code for the
+“code list” (in lines 12–15 in UltraBlog.vim, see Figure 1) is
+interpreted.</small></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/30/1st-wp-post-using-gist/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/30/posting-code-to-gist-efficiently/">Posting Code to Gist Efficiently</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T16:25:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
+        
+           | <a href="/blog/2014/01/30/posting-code-to-gist-efficiently/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/30/posting-code-to-gist-efficiently/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://gist.github.com" title="Gist">Gist</a> enables computer users to post their source code online. Since Gist is a <a href="https://github.com" title="GitHub">GitHub</a> repository, they can view each change to the code.</p>
+
+<p>However, it is inconvenient to use the online editor in the homepage of Gist, especially for geeks. For example, a programmer believes that <a href="http://aknow-work.blogspot.hk/2013/04/programmer-code-gist-vim.html" title="[Aknow::Work]">it&#8217;s <em>not</em> good to manually type or paste the code onto Gist</a>. I directly quote Aknow::Work&#8217;s words here.</p>
+
+<blockquote>
+    但是阿，如果你是手動把 code 弄到 gist 上面，那這樣就太遜了，基本上各大編輯器都有跟 gist 互動的 plugin，如果你用 Vim，可以使用 gist-vim，可以讓你直接在 Vim 裡生成、編輯、讀取 gist，完成後還可以幫你把連結開起來。
+</blockquote>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/30/posting-code-to-gist-efficiently/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Working With Vim's Autocommand Groups</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-26T02:07:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:07 am</span></time>
+        
+           | <a href="/blog/2014/01/26/working-with-vims-autocommand-groups/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/26/working-with-vims-autocommand-groups/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/26/working-with-vims-autocommand-groups/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Before including the autocommand group, I&#8217;d write about the reason of using it.</p>
+
+<p>In my post titled <a href="/blog/2013/12/11/links-to-good-posts/"><em>Links to Good Posts</em></a>, I&#8217;ve included some custom autocompletion keyboard mappings for the automatic completion of <code>{}</code>, <code>[]</code> and <code>()</code> blocks in my VIMRC file.</p>
+
+<p>Last Thursday, I extended them to blocks enclosed by single or double quotes.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">inoremap</span> <span class="s2">&quot; &quot;</span>&quot;<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="s2">&quot;&quot;</span> <span class="c">&quot;</span>
+</span><span class='line'><span class="c">inoremap &#39; &#39;&#39;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="s1">&#39;&#39;</span> &#39;
+</span></code></pre></td></tr></table></div></figure>
+
+<p><a href="http://github.com/honza/vim-Snippets">Vim-Snippets</a> has saved me a lot of time while writing blogs in <a href="http://www.vim.org">Vim</a>. With Vim-snippets and <a href="http://github.com/tpope/vim-surround">Vim-surround</a>, the following question is <em>not</em> so useful.</p>
+
+<p><strong>How can Vim do the same type of job for angled block <em>for HTML files only</em>?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/19/ultrablog-wordpress-edit/">Cross-Platform Blog Editing With UltraBlog and WordPress</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-19T19:21:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:21 pm</span></time>
+        
+           | <a href="/blog/2014/01/19/ultrablog-wordpress-edit/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/19/ultrablog-wordpress-edit/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I suspect that after I write the blog with UltraBlog in Vim and editing the contents with the online editor, the changes done using the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
+
+<p>Let&#8217;s see how it works. (Typed on <a href="http://wordpress.com">WordPress.com</a>.)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/19/ultrablog-wordpress-edit/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Compilation of C++ Programs That Depends on DISLIN on CLI</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-19T14:59:15+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:59 pm</span></time>
+        
+           | <a href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As a supporter of the <a href="https://www.gnu.org/">GNU</a> Project, I am not so happy to use
+<a href="http://www.dislin.de/">DISLIN</a>, which comes with an <em>EULA</em>, but I don’t have time to find
+out another alternative to the plotting library suggested by Prof.
+Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a></sup></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/19/standards-for-c-naming/">Standards for C++ Naming</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-19T05:31:35+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:31 am</span></time>
+        
+           | <a href="/blog/2014/01/19/standards-for-c-naming/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/19/standards-for-c-naming/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/19/standards-for-c-naming/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.nws.noaa.gov/oh/hrl/ihfs/standards/html/C++_naming.htm">This site</a> is what I’ve longed for. What makes it even better is
+that it’s a website from a domain that ends in <code>.gov</code>, making it a
+reliable source of information.</p>
+
+<p>Having a good naming convention can greatly reduce the number of
+syntax errors in the source code and improve its readability.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/12">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/10">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

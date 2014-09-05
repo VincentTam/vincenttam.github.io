@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Commits With fugitive.vim on Windows]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/"/>
+    
+    <updated>2014-09-03T00:48:13+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
+provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
+<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
+
+<p>Then I tried running <code>git commit</code> in 
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="‘icon’ ‘Git Bash icon’" >,
+but it’s “aborting commit due to empty commit message”.</p>
+
+<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
+gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
+The <code>-w</code> flag in the commands for setting other editors as the default
+editor for Git is the key for the above quoted message.</p>
+
+<p>I tried to solve this problem by reading Vim’s offical manual about
+<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
+in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
+
+<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
+<code>:Gcommit</code> in Vim, and use
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="‘icon’ ‘Git Bash icon’" >.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (1)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/"/>
+    
+    <updated>2014-09-02T15:22:25+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This Sunday, I tried to do something similar to what I did in
+May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
+I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
+that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
+easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2a/err.png" title="‘A compilation error’ ‘Screenshot of problem’" ></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I used the relevant part of the error message to search for websites
+describing similar/related problems.  Luckily, I found one in <em>Eaten
+by Grues</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>I manually created a batch file in the <em>same</em> folder of
+<code>python.exe</code>.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>python2.bat </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class='line'>python %*
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The raison d’être of the trailing <code>%*</code> is explained in
+<a href="/blog/2013/12/11/something-about-win-batch-files/" title="Something About Win* Batch Files">one of my old posts</a>.</p>
+
+<p>Finally, the section <code>which: no python2 in (...)</code> <em>disappeard</em> after I
+locally generated the site again.</p>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2b/err.png" title="‘Rake can now detect Python2.’ ‘solved problem’" ></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in <em>Blog 1</em> for
+details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>“Downloads” in the official website of RubyInstaller for Windows.
+(<a href="http://rubyinstaller.org/downloads/">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See [Installing PortableJekyll][sol] in <em>Eaten by Grues</em> for
+details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>I suppose that Python is in the <code>PATH</code> variable. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Problems in M$ and Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu/"/>
+    
+    <updated>2014-08-27T13:19:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu</id>
+    
+      <content type="html"><![CDATA[<p>I seldom encounter problems in both operating systems.  However,
+there’s <em>exceptional</em> situations.</p>
+
+<h2 id="m-win-7">M$ Win* 7</h2>
+
+<p>I once booted into its “safe mode”, and experienced some problems
+during an image upload.  I <em>don’t</em> wish to learn more about the
+problem.</p>
+
+<p><img class="fancybox" src="/images/posts/MSUbuProblem/MS.png" title="‘MS’ ‘MS problem’" ></p>
+
+<h2 id="ubuntu-1404">Ubuntu 14.04</h2>
+
+<p>Last night, I saw a small dialog box after the login.</p>
+
+<p><img class="fancybox" src="/images/posts/MSUbuProblem/Ubu.png" title="‘Ubuntu 14.04’ ‘MS problem’" ></p>
+
+<p>I checked the details—it was the problem of Ubuntu’s greeter, but
+I’m going to do <em>nothing</em> to resolve it.</p>
+
+<p>I think that this is due to my method of getting the newer version of
+Ubuntu—upgrading instead of clearing and installing.<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></p>
+
+<p>Since I lack time to study the official manual and related posts about
+clearing Linux partitions and installing Ubuntu 14.04, I just keep
+using the Ubuntu that I have.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I’m <em>not</em> going to argue whether GNU/Linux is better than M$ Win*.
+There’s already <em>lots of</em> posts on that issue.</p>
+
+<p>I just want to say that problems <em>can</em> exist in <em>any</em> OS.  If you
+<em>don’t</em> intentionally break things and your machine still goes wrong,
+then “keep calm and carry on”.  However, if it’s free software and you
+have the patience and ability to browse its source code, you may see
+what’s wrong.</p>
+
+<p>It’s great to learn what’s really going on in an OS, and I personally
+think that the GNU/Linux commands are better tools for that, when
+compared to GUI tools.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:UpUb">
+
+      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
+<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Local Huge File Sharing]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/14/local-huge-file-sharing/"/>
+    
+    <updated>2014-06-14T13:38:56+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/14/local-huge-file-sharing</id>
+    
+      <content type="html"><![CDATA[<h2 id="objective">Objective</h2>
+
+<p>To share files of several gigabytes (GBs) <em>locally</em> between two
+computers.</p>
+
+<h2 id="usual-ways">Usual ways</h2>
+
+<ul>
+  <li>Cloud storage (e.g. <a href="https://www.dropbox.com">Dropbox</a>, <a href="https://drives.google.com">Google Drive</a>)
+    <ul>
+      <li><em>Inefficient</em> for slow Internet connection</li>
+      <li><em>Limited</em> file size in an upload</li>
+    </ul>
+  </li>
+  <li>USB storage devices (an example of <a href="http://en.wikipedia.org/wiki/Sneakernet">Sneakernet</a>)
+    <ul>
+      <li>Need to copy the file <em>twice</em></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- more -->
+
+<h2 id="technology-that-i-used">Technology that I used</h2>
+
+<p>Connect the two computers using a LAN cable.</p>
+
+<p>Reasons:</p>
+
+<ul>
+  <li>Unlimited sharing of data</li>
+  <li>Fast data transfer: the bandwidth <em>isn’t</em> limited by <abbr title="Internet Service Providers">ISPs</abbr>.</li>
+</ul>
+
+<p>Following <a href="http://an0nym0u5-hakerx.blogspot.hk/2012/10/connect-pc-to-pc-lan-cable.html" title="Connect PC to PC LAN Cable">the instructions from <em>AN0NYM0U5</em></a>, one should be
+able to set up a “connection” between two Windows 7 computers.  I just
+highlight some important configurations to be done in Windows 7’s
+Network and Sharing Center.</p>
+
+<ol>
+  <li>Connect the 2 machines through a LAN cable.</li>
+  <li>Ensure that the file access rights are properly set.</li>
+  <li>Set the properties of the “<strong>Local Area Connection</strong>” →
+“<strong>…IPv4</strong>”.</li>
+  <li>
+    <p>Set the values according to the table below.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left"> </th>
+          <th style="text-align: right">First computer</th>
+          <th style="text-align: right">Second computer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">IP address</td>
+          <td style="text-align: right">192.168.1.1</td>
+          <td style="text-align: right">192.168.1.3</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Subnet mask<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></td>
+          <td style="text-align: right">255.255.255.0</td>
+          <td style="text-align: right">255.255.255.0</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Default gateway</td>
+          <td style="text-align: right">192.168.1.3</td>
+          <td style="text-align: right">192.168.1.1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p>Observations:</p>
+
+<ol>
+  <li>The IP addresses for both computers should start with “192.168.”,
+which stands for private network, and they should be <em>different</em>.</li>
+  <li>The computers in the connection should share the <em>same</em> subnet
+masks.</li>
+  <li>The default gateway for each computer should be the IP address of
+the other computer.</li>
+</ol>
+
+<h4 id="sample-screenshot">Sample screenshot</h4>
+
+<p><img src="/images/posts/LAN/Win7IPSettings.png" alt="Windows 7 IP settings" title="Windows 7 IP Settings—Screenshot" /><br />
+<small>The IPv4 properties for the second computer.</small></p>
+
+<p>Remarks: The above steps is for Windows 7 <em>only</em>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p><strong>How about setting up a connection between Linux and Windows?</strong></p>
+
+<h3 id="connection-between-windows-and-linux">Connection between Windows and Linux</h3>
+
+<ol>
+  <li>Do the above network configurations on Windows 7.
+    <ul>
+      <li>I will treat my Linux desktop as my first computer, and my
+ Windows 7 laptop as my second one.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Install openssh-server on Linux.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+    <pre class="cli"><code class="UBMono">$ sudo apt-get install openssh-server</code></pre>
+  </li>
+  <li>Do some of the following settings on Linux.</li>
+</ol>
+
+<p>Remarks: These steps should be done <em>efficiently</em>.</p>
+
+<h4 id="using-gui-on-ubuntu">Using GUI on Ubuntu</h4>
+
+<p>It’s quite easy to set up the connection with Ubuntu’s Network
+Manager.</p>
+
+<p><img src="/images/posts/LAN/NetMgrSettings.png" alt="Ubuntu IP settings" title="Ubuntu 12.04 LTS IP Settings—Screenshot" /></p>
+
+<p>The route settings (the button with “(R)”) can be left out.</p>
+
+<h4 id="using-the-terminal">Using the terminal</h4>
+
+<p>It’s possible that the layout of GUI tools changes from time to time,
+but unlikely for commands.  Moreover, a Linux computer does <em>not</em>
+necessarily has a desktop.  Therefore, the commands are worth
+learning.</p>
+
+<hr />
+<p>(Last edited on JUN 16, 2014)</p>
+
+<ol>
+  <li>Change IP addresses in both machines.
+(<a href="http://www.cyberciti.biz/faq/linux-change-ip-address/" title="Linux Change IP Address">Instructions on nixCraft</a>)</li>
+  <li>Set the default gateway.
+(<a href="http://www.cyberciti.biz/faq/linux-setup-default-gateway-with-route-command/" title="Linux Setup Default Gateway with Route Command">Instructions on nixCraft</a>)</li>
+</ol>
+
+<p>To sum up, issue the command for “2” right after “1”.</p>
+
+<pre class="cli"><code class="UBMono">$ sudo ifconfig eth0 192.168.1.1 ; sudo route add default gw 192.168.1.3 eth0</code></pre>
+
+<p>Output</p>
+
+<pre class="cli"><code class="UBMono">$ ifconfig eth0
+eth0      Link encap:Ethernet  HWaddr b8:ac:6f:db:d1:0c
+          <span class="UBHLCode">inet addr:192.168.1.1  Bcast:192.168.1.255  Mask:255.255.255.0</span>
+          inet6 addr: fe80::baac:6fff:fedb:d10c/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:8000  Metric:1
+          RX packets:36250 errors:0 dropped:17 overruns:0 frame:0
+          TX packets:27619 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:29592391 (29.5 MB)  TX bytes:4441266 (4.4 MB)
+          Interrupt:42 Base address:0xe000
+
+$ route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         192.168.1.3     0.0.0.0         UG    0      0        0 eth0
+169.254.0.0     0.0.0.0         255.255.0.0     U     1000   0        0 eth0
+192.168.1.0     0.0.0.0         255.255.255.0   U     1      0        0 eth0
+</code></pre>
+
+<p>If the net mask is omitted, it will be automatically set.  It <em>can’t</em>
+be arbitrarily set.  If <code>eth0</code> is already up, then the word <code>up</code> can
+be omitted in the command.</p>
+
+<p>Notes:</p>
+
+<ul>
+  <li>The changed network settings can <em>disappear</em> if one <del>does it
+  slowly</del> <em>doesn’t</em> uncheck the “Automatically Connect” option
+  in Ubuntu’s Network Manager.</li>
+  <li>If the default gateway <em>isn’t</em> set, one can still connect the two
+  computers.  <del>However, I observed that such a connection
+  <em>isn’t</em> so stable.</del></li>
+  <li>The connection established through Ubuntu’s Network Manager
+  <em>doesn’t</em> have such problem.</li>
+</ul>
+
+<hr />
+
+<p>If a local area connection has been set up successfully, one should
+see an active network in Windows 7’s Network and Sharing Center.</p>
+
+<p><img class="fancybox" src="/images/posts/LAN/Network6.png" title="‘Windows 7 network information’ ‘fig1’" ></p>
+
+<h3 id="remote-login-via-ssh">Remote login via <abbr title="Secure Shell">SSH</abbr></h3>
+
+<p>Before actually using <abbr title="Secure Shell">SSH</abbr>, one can using the following commands to
+check if the remote server is up.  For more details, such as the
+number of packets sent to the remote machine, check it elsewhere like
+the command’s manpage or the Internet.</p>
+
+<pre class="cli"><code class="UBMono">$ ping [host] # send some packets to `host'
+$ nmap [host] # detect which ports are open
+</code></pre>
+
+<p>At first, I tried <code>ssh 192.168.1.1</code>, and was prompted to input my
+password.  Unfortunately, I <em>overlooked the user name</em>.  Even though I
+repeatedly input the <em>correct</em> password, my Ubuntu computer <em>denied</em>
+my “remote” access via <abbr title="Secure Shell">SSH</abbr>.</p>
+
+<p><img src="/images/posts/LAN/GitBashSSH.png" alt="Wrong username" title="Wrong user name" /></p>
+
+<p>I recalled that *nix terminal are <em>case sensitive</em>, unlike Window’s
+Command Prompt.  Therefore, specifying the appropriate user name and
+password at the remote host, the <abbr title="Secure Shell">SSH</abbr> connection should be set up.</p>
+
+<p><img src="/images/posts/LAN/ViaSSH.png" alt="Successful SSH connection" title="Successful SSH connection" /></p>
+
+<h3 id="file-sharing-via-scp">File sharing via <abbr title="Secure Copy">SCP</abbr></h3>
+
+<p>To save time and effort, I just include two links for interested
+readers.</p>
+
+<ol>
+  <li>A brief summary of the usage of <code>scp</code> on Indiana University
+Knowledge Base (<a href="https://kb.iu.edu/d/agye" title="SCP in Unix">URL</a>)
+    <ul>
+      <li><code>~</code> can be used after <code>user@host:</code> to indicate the home folder.</li>
+    </ul>
+  </li>
+  <li>More examples of <abbr title="Secure Copy">SCP</abbr> commands. (<a href="http://www.tecmint.com/scp-commands-examples/" title="10 SCP Commands to Transfer Files/Folders in Linux">URL</a>)</li>
+</ol>
+
+<h3 id="using-git">Using Git</h3>
+
+<p>According to <a href="http://git-scm.com/docs/git-clone#_git_urls" title="Git URLs">the official manual</a>, <abbr title="Secure Shell">SSH</abbr> paths are supported by
+the SCM.  For example, to copy a Git repository called <code>myproj</code> from a
+Linux machine, I can use the following command.</p>
+
+<pre class="cli"><code class="UBMono">$ git clone ssh://owner@192.168.1.1/~/myproj</code></pre>
+
+<p>One can perform a Git fetch more quickly after adding the <abbr title="Secure Shell">SSH</abbr> path of
+the Git repository on the “remote” machine into the list of remote
+repositories.</p>
+
+<pre class="cli"><code class="UBMono">$ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
+$ git fetch ubuntu_desktop [branch]
+</code></pre>
+
+<p>However, <code>git push</code> to remote machines will fail if the remote
+repository being “pushed” is non-bare.  Either setting up a bare
+repository at the “remote” *nix computer or pushing the branch will
+solve the problem.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>As can be seen from the contents below, I aim at setting up a
+connection between Windows and Linux, on which the subnet mask
+<em>can’t</em> be set to “225.225.225.0”. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See another post on the same topic on <a href="http://www.wikihow.com/Make-Your-Own-Ethernet-Cable-and-Set-up-a-Network-Between-Two-Laptops-Using-Ethernet-Cable#Warnings" title="How to Make Your Own Ethernet Cable and Set up a Network Between Two Laptops Using Ethernet Cable">wikiHow</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>I learnt it from <a href="http://askubuntu.com/a/107218" title="A Quick Way To Transfer files From Ubuntu To Windows">Ask Ubuntu</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>A question on <a href="http://stackoverflow.com/a/14879452" title="Git push error '[remote rejected] master -&gt; master (branch is currently checked out)'">Stack Overflow</a>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Internet Explorer a Security Risk: Use Firefox or Chrome &#9733;]]></title>
+      <link href="http://www.examiner.com/article/internet-explorer-a-security-risk-use-firefox-or-chrome"/>
+    
+    <updated>2014-05-31T22:00:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/05/31/internet-explorer-a-security-risk-use-firefox-or-chrome</id>
+    
+      <content type="html"><![CDATA[<p>Surround your pullquote like this {" text to be quoted "}</p>
+
+<hr />
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/05/31/internet-explorer-a-security-risk-use-firefox-or-chrome/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Two months ago, I wrote my first list of Git commands, and said that I
+didn’t know how to use Git commands to view the changes.1 Now, I can &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/posts/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/07/double-hyphens-in-git-diff/">Double Hyphens in Git Diff</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-07T15:41:10+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:41 pm</span></time>
+        
+           | <a href="/blog/2014/08/07/double-hyphens-in-git-diff/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-diff/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/07/double-hyphens-in-git-diff/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two months ago, I wrote my first list of Git commands, and said that I
+<em>didn’t</em> know how to use Git commands to view the changes.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>Now, I can understand how one can “use ‘<code>--</code>’ to separate paths from
+revisions [or branches]”.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/07/double-hyphens-in-git-diff/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Fixing Embedded Gists in Octopress</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-05T20:18:53+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:18 pm</span></time>
+        
+           | <a href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Octopress’s default plugins for including code snippets/blocks enable
+users to share code.  This is good for open source technologies.
+<em>Without</em> intelligent and generous users of open source tools, I
+<em>won’t</em> be able to</p>
+
+<ol>
+  <li>show images which can be enlarged with a click;<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>display a category list of Octopress posts;<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+  <li>find out how to include contents rendered by Mathjax (e.g. $\rm
+\LaTeX$) in the category list;<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></li>
+  <li>figure out a way to remove the line numbers and repeating figures
+in the RSS (category) feeds;<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></li>
+  <li>embed SVG images that support zooming, panning and dragging.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></li>
+</ol>
+
+<p>While I was writing <a href="/blog/2014/08/03/my-pandoc-template-1/#gist13584483" title="My Pandoc Template (1)">my previous post</a>, which was about a
+basic pandoc template for generating a $\rm \LaTeX$ PDF file, I would
+like to include a <a href="https://gist.github.com">Gist</a> in my post.</p>
+
+<p>Some users will say that Octopress’s default fuctionality <code>{%
+include_code %}</code> can highlight the code.</p>
+
+<p><strong><em>Why does one think of embedding a Gist in Octopress?</em></strong></p>
+
+<h2 id="rationale">Rationale</h2>
+
+<p>To easily modify the embedded code block.</p>
+
+<ul>
+  <li>
+    <p>Octopress’s default plugins: <code>rake generate</code> is slow, especially
+  when there’s a lot of contents.  (say, more than a hundred posts)</p>
+  </li>
+  <li>
+    <p>Embedded Gist: <code>{% gist gist_id [&lt;file&gt;] %}</code> is
+  responsible for embedding the code snippet for <code>&lt;file&gt;</code>—changing
+  the contents of the Gist for <code>&lt;file&gt;</code> <em>doesn’t</em> change this piece
+  of <a href="http://jekyllrb.com/">Jekyll</a> code.  Moreover, posting code to Gist is quite fast if
+  you have <a href="https://github.com/mattn/gist-vim" title="Vim script for Gist">Gist.vim</a> plugin installed in Vim.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup></p>
+  </li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>However, if one uses Gist instead of Octopress’s default plugins for
+sharing code, one will see that the line numbers <em>aren’t</em> in the right
+position.</p>
+
+<p><img src="/images/posts/FixGist/wrong.png" title="Gist #1" alt="A Gist that does not look good" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/03/my-pandoc-template-1/">My Pandoc Template (1)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-03T17:21:01+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
+        
+           | <a href="/blog/2014/08/03/my-pandoc-template-1/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/03/my-pandoc-template-1/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The last post about <a href="http://johnmacfarlane.net/pandoc/" title="pandoc—a universal document converter">pandoc</a> was written four months ago.  Last week,
+I slightly changed the pandoc template <code>default.latex</code> on
+<a href="https://github.com/jgm/pandoc-templates" title="Templates for pandoc">jgm/pandoc-templates</a> so that users can easily create $\rm \LaTeX$
+documents with</p>
+
+<ul>
+  <li>1-inch margin; and</li>
+  <li>one-half (or double) spacing.</li>
+</ul>
+
+<p>The following command can create a PDF using the template.</p>
+
+<pre class="cli"><code>$ pandoc src.mkd --template=my_template1.latex -o out.pdf
+</code></pre>
+
+<p>I hope that more people will use pandoc and write in Markdown.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/03/my-pandoc-template-1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/">After Reading About.com's Introduction to the SVG Viewbox</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T20:30:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:30 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While I was testing <a href="http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/" title="SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library">SVGPan</a>, I saw the <code>viewBox</code> attribute.  I learnt
+something from the first search result after googling “svg viewbox”.
+It was an article introducing the SVG viewbox.  There’s <em>no</em> difficult
+concepts in the guide, but I <em>can’t</em> understand it because of the
+following claim.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<blockquote>
+  <pre><code>&lt;svg width="800" height="400" viewBox="0 0 400 200"&gt;
+</code></pre>
+
+  <p>This view box covers half the page starting in the <strong>upper right
+hand corner</strong>. </p>
+</blockquote>
+
+<p>I have investigated into this, and I’m dubious about this idea.  I’ll
+illustrate my doubts using two examples.  Click “download” at the top
+right-hand corner to view the result.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My first example (viewBox1.html)</span> <a href="/downloads/code/SVGViewBox/viewBox1.html">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;body&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;h1&gt;</span>My first SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line"><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 800 400&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  Sorry, your browser does not support inline SVG.
+</span><span class="line"><span class="nt">&lt;/svg&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>“The view box covers the entire page”, as expected.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My second example (viewBox2.html)</span> <a href="/downloads/code/SVGViewBox/viewBox2.html">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;body&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;h1&gt;</span>My second SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line"><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 400 200&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  Sorry, your browser does not support inline SVG.
+</span><span class="line"><span class="nt">&lt;/svg&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This time, the view box only covers the top left-hand corner.</p>
+
+<p>In addition, I’ve found out that changing <code>0 0 400 200</code> to <code>400 200 0 0</code>
+<em>doesn’t</em> work.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Ferrara, D. n.d. <em>Viewbox Attribute in SVG: Understanding the SVG Viewbox</em>. Retrieved from <a href="http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm">http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/linux-compose-keys-list/">Linux Compose Keys List</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T19:17:11+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>7:17 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/linux-compose-keys-list/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/linux-compose-keys-list/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/linux-compose-keys-list/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While writing a post on Ubuntu, I forgot how to type an en-dash <code>–</code>
+using Linux compose key.  It would be quite inefficient if I use the
+corresponding Vim’s digraph <code>&lt;C-k&gt;-n</code>.  Therefore, I tried to search
+for a Linux compose key list.  However, both <a href="https://en.wikipedia.org/wiki/Compose_key#External_links" title="Compose Key–Wikipedia">Wikipedia</a> and <a href="https://help.ubuntu.com/community/ComposeKey" title="Compose Key–Ubuntu Community Help Wiki">Ubuntu
+Community Help Wiki</a> points to a non-existent list at
+http://hermit.org/Linux/ComposeKeys.html</p>
+
+<p>Luckily, I remembered that I had viewed the desired list in Firefox a
+long time ago.  As a result, I opened Firefox and typed “linux
+compose” in the address bar.  Finally, I was able to access
+<a href="http://www.topology.org/soft/linuxcomposekey.html" title="Linux Compose Key Sequences">the list</a> hosted on <a href="http://www.topology.org">http://www.topology.org</a></p>
+
+<p>If you’re not willing to disclose whether you are a human or not<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
+you may refer to <a href="http://fsymbols.com/keyboard/linux/compose/" title="Linux keyboard text symbols: Compose key shortcuts">this one</a>.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>There’s a human test for viewing any page on <a href="http://www.topology.org">http://www.topology.org</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/zooming-svg-in-web-browsers/">Zooming SVG in Web Browsers</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T18:07:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/zooming-svg-in-web-browsers/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/zooming-svg-in-web-browsers/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my post about proving Pappus’s Hexagon Theorem<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I inserted some
+SVG graphics to illustrate the ideas.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600" /><br />
+<small>An example illustrating the difficulty of enlarging an SVG
+graphics for ordinary users.  The image is borrowed from the post
+about proving Pappus’s Hexagon Theorem.<br />
+<a href="/downloads/code/PappusHexThm4.tex">$\rm \LaTeX$ Source code</a></small></p>
+
+<p><strong>How can one enlarge SVG images <em>only</em> within web browsers?</strong></p>
+
+<object type="image/svg+xml" data="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg" width="800" height="600">
+  Your browser does not support SVG
+</object>
+<p><small>A working example showing the zooming, panning and dragging
+functions of SVG graphics.  Drag the figure to translate it, and
+scroll to enlarge/reduce it.<br />
+<a href="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg">Source code</a></small></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/02/zooming-svg-in-web-browsers/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Avoid Using Ugly Bitmapped Computer Modern Fonts</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T14:22:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:22 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In a $\rm \LaTeX$ guide found on the website of George Mason
+University, it’s said that Computer Modern fonts can look ugly.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
+Like most Computer Modern users, I <em>didn’t</em> notice that until I wrote
+an article using $\rm \LaTeX$ last weekend.</p>
+
+<p>To illustrate the problem, I used a minimum example which I had posted
+on Gist.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  To simply matters, one may use
+<code>\pagenumbering{gobble}</code> to suppress page numbers.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/cmodern.png" title="Ugly bitmapped Computer Modern fonts" alt="fig1" /></p>
+
+<p>If one thinks that downloading the Blue Sky fonts from the American
+Mathematical Society is too troublesome, simply including the package
+<code>lmodern</code> will do.</p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/lmodern.png" title="Improved outlook using Latin Modern fonts" alt="fig1" /></p>
+
+<p>P.S. I have learnt an ImageMagick command from a Stack Overflow
+question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/07/13/evince-viewing-error/">Evince Viewing Error</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-13T18:39:52+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:39 pm</span></time>
+        
+           | <a href="/blog/2014/07/13/evince-viewing-error/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/07/13/evince-viewing-error/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/07/13/evince-viewing-error/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Evince</th>
+      <th style="text-align: center">Firefox</th>
+      <th style="text-align: center">Sumatra PDF</th>
+      <th style="text-align: center">SVG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/Evince.png" width="200" title="img:1" alt="Evince" /></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/FF.png" width="200" title="img:2" alt="Firefox" /></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/chrome.png" width="200" title="img:3" alt="Google Chrome" /></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/SVG.svg" width="200" title="img:4" alt="SVG" /></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">bad</td>
+      <td style="text-align: center">ok<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></td>
+      <td style="text-align: center">good</td>
+      <td style="text-align: center">good</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><small>The <a href="https://gist.github.com/VincentTam/02391d6016da80df1ffa">Gist</a> for the $\rm \LaTeX$ source code of the TikZ
+diagram</small></p>
+
+<p>This afternoon, while I was using TikZ to fill a triangle with line
+pattern, I found that the filling pattern flowed out of the triangle.
+Using the <code>clip</code> command doesn’t help.  Initially, I thought it was
+the problem of TikZ.  As a result, I tried searching “tikz fill
+pattern triagnle”, and <em>didn’t</em> read anything useful.  Finally, I
+found <a href="http://tex.stackexchange.com/a/100706" title="Why is this TikZ pattern spilling outside the path it fills? [closed]">a question on $\rm \LaTeX$ Stack Exchange</a>, and
+realized that it was a problem of the PDF viewer, instead of my use of
+the markup language for graphics.  I tried using Mozilla’s <a href="http://mozilla.github.io/pdf.js/">pdf.js</a> to
+open the file, but the grids <em>weren’t</em> being rendered properly either.</p>
+
+<p>Luckily, if I use <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> to convert the PDF file to an SVG file,
+the SVG file <em>doesn’t</em> have such problem.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>The results are the <em>same</em> in Firefox on M$ Windows and
+GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/07/12/pappuss-hexagon-theorem/">Pappus's Hexagon Theorem</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-12T23:48:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:48 pm</span></time>
+        
+           | <a href="/blog/2014/07/12/pappuss-hexagon-theorem/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/07/12/pappuss-hexagon-theorem/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm.svg" width="600" /><br />
+<small><a href="/downloads/code/PappusHexThm.tex">Source</a></small></p>
+
+<p>Suppose that points $A,B$ and $C$ lie on the same straight line, and
+$D,E$ and $F$ lie on <em>another</em> one.  Draw line segments
+$AE,BD,BF,CE,AF$ and $CD$.<br />
+Let <span class="grp1">$P$</span> be the intersection point of $AE$
+and $BD$.<br />
+Let <span class="grp1">$Q$</span> be the intersection point of $AF$
+and $CD$.<br />
+Let <span class="grp1">$R$</span> be the intersection point of $BF$
+and $CE$.<br />
+Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
+are <em>collinear</em>.  (i.e.  The red dashed line and the red solid line
+are collinear.)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/07/12/pappuss-hexagon-theorem/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/4">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/2">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

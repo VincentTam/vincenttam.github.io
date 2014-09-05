@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C/c++ | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Compilation of C++ Programs That Depends on DISLIN on CLI]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/"/>
+    
+    <updated>2014-01-19T14:59:15+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli</id>
+    
+      <content type="html"><![CDATA[<p>As a supporter of the <a href="https://www.gnu.org/">GNU</a> Project, I am not so happy to use
+<a href="http://www.dislin.de/">DISLIN</a>, which comes with an <em>EULA</em>, but I don’t have time to find
+out another alternative to the plotting library suggested by Prof.
+Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a></sup></p>
+
+<!-- more -->
+
+<p>A DISLIN installation guide on Ubuntu was written more than six years
+ago, so I am a bit dubious that if steps 2 and 3 are still needed for
+the installation using a DEB file.<sup id="fnref:blog1"><a href="#fn:blog1" class="footnote">2</a></sup>  Therefore, I overlooked an
+important command and I regret this after wasting about two hours on
+<a href="https://www.google.com/">Google</a>.</p>
+
+<p>As a result, I just downloaded the DEB file from the DISLIN official
+website and use the GUI tool “Ubuntu Software Centre” to install the
+library. Then I directly copied the code from the book and tried to
+compile the program .</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>first_graphics_prog.cpp </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;dislin.h&gt;&lt;/dislin.h&gt;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Some code for defining variables</span>
+</span><span class='line'>    <span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'>    <span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'>    <span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>However, the compiler gave me the message that I had used an
+“undefined reference to qplot”.</p>
+
+<p>I googled for two hours and found nothing that I can understand. I
+even tried compiling the following sample code found in section 2.7 of
+<a href="http://www2.mps.mpg.de/dislin/contents.html">the official DISLIN online manual</a>.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: Helmut Michels</span>
+</span><span class='line'><span class="c1">// Source: DISLIN 10.4—A Data Plotting Library</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &amp;#8220;discpp.h&amp;#8221;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Dislin</span> <span class="n">g</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disini</span> <span class="p">();</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">messag</span> <span class="p">(</span><span class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span><span class="err">”</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disfin</span> <span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I have <em>no</em> hope on published books because their authors would expect their students to do something easy—Use <a href="http://www.bloodshed.net/devcpp.html">Dev-C++</a> on M$ Win<em>, or *nix GUI IDE like <a href="http://www.eclipse.org">Eclipse</a>. However, some geeks *won’t</em> be satisfied because GUI buttons/objects hide the commands away from users. As a result, they <em>don’t</em> know what tasks are invoked by clicking the button/object. In other words, they <em>don’t</em> know what they are <em>actually</em> doing. Therefore, they have the motivation to find out the <em>real</em> command for the compilation of C++ programs that <code>#include "dislin.h"</code>.</p>
+
+<p>Stack Overflow has <em>a few or no</em> questions on the compilation of C++
+programs that use DISLIN. The most relevant one that I managed to find
+is <a href="http://stackoverflow.com/q/19118465" title="Compiling dislin gfortran">question 19118465</a>. I glanced at the answers quickly.
+They have some commands like</p>
+
+<pre class="cli"><code class="UBMono">$ gfortran EX11_1.f90 -o progrname <span class="UBHLCode">-ldislin</span> -I/path/to/DISLIN/modules
+</code></pre>
+
+<p>Then I guessed that I need the <code>-ldislin</code> flag as well. I <em>can’t</em>
+truly figure out the usage of <code>-l</code>, <code>-L</code> and <code>-I</code> flags by just
+looking at the man page of <code>g++</code>, so I just tried everything. I
+searched for some new pages, and returned to some web pages that I’ve
+<em>already visited</em>, and continued this <em>unproductive</em> process…</p>
+
+<p>I googled the websites and I saw the post on Linux for Research
+mentioned before. I looked at the command that begins with <code>g++</code> and
+tried to adapt it to my needs, but it simply <em>failed</em>.</p>
+
+<p>I thought that the official README maybe useful, so I browsed the
+contents in <code>/usr/local/dislin/README</code>. Some websites that teach users
+to install DISLIN from a gzip tarball contain code that manipulate the
+environment variables like <code>DISLIN</code>, <code>PATH</code> and <code>LD_LIBRARY_PATH</code>. But
+in the <code>README</code>, it’s clearly stated that I don’t need to do so.</p>
+
+<pre class="cli"><code class="UBMono">f) To make DISLIN available for general use, write the following com-
+mands to your .profile or to /etc/profile
+
+DISLIN=directory
+export DISLIN
+PATH=${PATH}:${DISLIN}/bin
+
+LD_LIBRARY_PATH=$DISLIN:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+<span class="UBHLCode">Note: The environment variable DISLIN is not necessary if DISLIN
+is installed in the default directory '/usr/local/dislin'.</span>
+</code></pre>
+
+<p>I think that I <em>don’t</em> need to do the above settings, but I am <em>not</em> sure about that. Luckily, the following part that immediately follows the above section gave me some hint on what I, as a newcomer to DISLIN, can do.</p>
+
+<pre class="cli"><code class="UBMono">4.) Compiling, Linking and Running the Example Programs
+
+    Now you can compile, link and run the example programs in the
+    directory $DISLIN/examples with the commands:
+
+		    clink     -a exa_c      (for gcc)
+		    <span class="UBHLCode">cpplink   -a exa_cpp    (for g++)</span>
+		    iclink    -a exa_c      (for Intel icc)
+		    sclink    -a exa_c      (Sun Studio cc)
+...
+</code></pre>
+
+<p>Thus, I <em>really</em> went to <code>/usr/local/dislin/example</code> and compiled <code>exa_cpp.cpp</code> using <code>cpplink</code> with the <code>-a</code> flag. <em>It works! No complaints from <code>g++</code>!</em> It seemed that I could give <code>cpplink</code> a try, but it quickly turned out that my idea failed to work. <code>g++</code> either complained that <code>dislin.h</code> was <em>not</em> found, or there’s “undefined reference” to a DISLIN function.</p>
+
+<p>After that, I returned to Google again, and was redirected to the <em>same</em> post on Linux for Research again. I glanced through the <em>same</em> command that started with <code>g++</code>.</p>
+
+<pre class="cli"><code class="UBMono">$ g++ test.cpp -lXt -ldislin -lm
+</code></pre>
+
+<p>This time, I could read the sentence below the above command.</p>
+
+<blockquote>
+    Don&#8217;t forget the `-lXt`
+</blockquote>
+
+<p>I finally realised that I had forgotten an important principle in programming: <em>Don’t</em> do too much at one time. At the very first stage, I need to get things done, though the approach is <em>not</em> elegant.</p>
+
+<p>With the above principle in my mind, I could merely compile a C++ program that made use of DISLIN by making the following changes in both the source file and the command that I issued.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &amp;lt;iostream&amp;gt;</span>
+</span><span class='line'><span class="cp">#include &amp;#8220;/usr/local/dislin/dislin.h&amp;#8221;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="c1">// Some code for defining variables</span>
+</span><span class='line'><span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'><span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'><span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>In the terminal, I typed the following command.</p>
+
+<pre class="cli"><code class="UBMono">$ g++ foo.cpp -lXt -ldislin -lm
+</code></pre>
+
+<p><em>It works!</em> Critical readers will complain about the way that I include <code>dislin.h</code>. I’m not satisfied with this either. Another obvious missing part for those who want to customise the name of the output executable file is the <code>-o</code> flag. I <em>delibrately</em> did this so as to keep things <em>simple and clear</em>.</p>
+
+<p>After trying the <code>-l</code>, <code>-L</code> and <code>-I</code> flags of the command <code>g++</code>, I realised that the <code>-I</code> flag will do.</p>
+
+<p>However, when I tried to do the <em>same</em> task for another time, it surprisingly <em>failed</em>. Looking closely at the two versions, we can draw the following conclusion.</p>
+
+<pre class="cli"><code class="UBMono"># `DISLIN' is a variable that represents the path of DISLIN.
+# In the default case, it is `/usr/local/dislin'.
+$ g++ <span class="err">-lXt -ldislin -lm</span> -I$(DISLIN) foo.cpp -o foo.out # Wrong!
+$ g++ foo.cpp -o foo.out <span class="UBHLCode">-lXt -ldislin -lm</span> -I$(DISLIN) # Correct!
+</code></pre>
+
+<p><img src="/images/posts/DISLIN/dislin_compile-140119.png" title="‘fig1’ ‘message_from_g++’" ></p>
+
+<p>I conclude this post with the fact that the flags <code>-g -Wall</code> can be put either
+before or after <code>foo.cpp</code>.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:book">
+
+      <p>Yevick, D.  (2012).  <em>A Short Course in Computational Science and
+Engineering: C++, Java and Octave Numerical Programming with Free
+Software Tools</em>.  Cambridge University Press. <a href="#fnref:book" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:blog1">
+      <p>See <a href="http://linux4research.blogspot.hk/2007/05/install-and-use-dislin-under-linuxe.html">here</a> for the post. <a href="#fnref:blog1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Standards for C++ Naming]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/01/19/standards-for-c-naming/"/>
+    
+    <updated>2014-01-19T05:31:35+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/01/19/standards-for-c-naming</id>
+    
+      <content type="html"><![CDATA[<p><a href="http://www.nws.noaa.gov/oh/hrl/ihfs/standards/html/C++_naming.htm">This site</a> is what I’ve longed for. What makes it even better is
+that it’s a website from a domain that ends in <code>.gov</code>, making it a
+reliable source of information.</p>
+
+<p>Having a good naming convention can greatly reduce the number of
+syntax errors in the source code and improve its readability.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[C++ Hello World Using Clang_complete and Vim]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/12/30/c-hello-world-using-clang_complete-and-vim/"/>
+    
+    <updated>2013-12-30T01:52:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/12/30/c-hello-world-using-clang_complete-and-vim</id>
+    
+      <content type="html"><![CDATA[<p>Many posts on the advantages of <a href="https://github.com/Rip-Rip/clang_complete">clang&#095;complete</a> have already been posted. For example, there&#8217;s <a href="http://www.zwiener.org/vimautocomplete.html#sec2">a demonstration of the plugin</a> on Mac. If you can understand Chinese (or you have a translator that <em>truly</em> understands it), you may even look at more sites, such as <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">Chen&#8217;s post</a>.</p>
+
+<!-- more -->
+
+<p>The authors of the above posts are likely to work in the IT sector. For new comers of programming, they may like to start from zero. On which platform can they start from? I&#8217;d recommend popular *nix distributions (e.g. Debian-based/Fedora-based ones) due to their package managing tools like APT or YUM. For a M\$ Vis* Stu* like code completion on Vim, clang_complete is the right answer, but it is often hard to install on M\$ Win*<sup id="fnref-22-1"><a href="#fn-22-1" rel="footnote">1</a></sup>, but the installation is incredibly easy on *nix.<sup id="fnref-22-2"><a href="#fn-22-2" rel="footnote">2</a></sup></p>
+
+<p>Many writers of posts on clang_complete installation stopped writing further after completing the whole installation and configuration of the plugin, and I haven&#8217;t seen any post that uses &#8220;hello world&#8221; as an example. This is alright since many users of Vim are experienced programmers who would like to demonstrate some advanced features of the editor with the additional plugin (e.g. jumping between Ctags), and a simple <code>hello.cpp</code> can&#8217;t be used for that. Moreover, many teachers would teach programming on M\$ Win*, and even if a *nix desktop is used, the work is most likely done using an IDE on GUI (Emacs is a text editor and IDE that runs on command line.) &#8230; The concept of modal editing may be too hard for newbies to accept it, and you need to get several commands right before entering any text into a buffer. The steep learning curve might frighten learners away from Vim&#8230; Some computer users believe in the myth that Vim and Emacs are too old and nobody use them.</p>
+
+<p>Anyways, the mixed use of both the built-in omni-complete function of Vim (invoked by <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code>) and the popup menu of clang_complete (invoked by <code>&lt;C-x&gt;&lt;C-u&gt;</code>)to write a &#8220;hello world&#8221; program is a productive way of doing the job. However, due to the limitations of human mind, we can remember very few unfamiliar things at a time. This is not the case in storage devices. They can capture every word that come out of our mind, though many physical means of storage of information are subject to aging, especially those in the past&#8230; Luckily, information technology allows words, and even fonts, to be replicated efficiently and almost identically. This has brought the human race a variety of new subjects, such as web *ng, and has extended our old knowledge into many fields, such as typography&#8230; In addition, the advancement of technology enables us to capture visible images and copy it rapidly, and I&#8217;ve recorded my experience of &#8220;hello world&#8221; using clang_complete with Vim on a series of screenshots.</p>
+
+<p>In addition to adding Wu&#8217;s custom vimrc configuration for clang_complete<sup id="fnref-22-3"><a href="#fn-22-3" rel="footnote">3</a></sup>, I&#8217;ve also installed vim-snipmate and vim-snippets for more auto-complete mappings.</p>
+
+<p>Before actually beginning the steps for writing a &#8220;hello world&#8221;, we should know that we <em>won&#8217;t</em> learn anything from successes. It&#8217;s <em>failures</em> that help us reflect on the mistakes in our understand of theories. Therefore, I&#8217;ll <em>deliberately</em> find something wrong, and elaborate on that using some ideas. In other words, that&#8217;s &#8220;to blow water&#8221; in Cantonese.</p>
+
+<h3>1. Comparison between clang_complete and the editor&#8217;s built-in completion in typing <code>#include&lt;iostream&gt;</code></h3>
+
+<h4>1.1 The editor&#8217;s built-in completion</h4>
+
+<p>The following &#8220;hello world&#8221; procedure contains some <em>wrong</em> steps.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete.gif" title="‘Figure 1’ ‘fig1’" ></p>
+
+<ol>
+    <li>Type <code>inc&lt;Tab&gt;</code>.</li>
+    <li>Vim-snippet completes the code, with <code>stdio.h</code> as default. The file name of the included file is selected so that you can input something else.</li>
+    <li>Since <code>cout</code> is used later, we need to <code>#include&lt;iostream&gt;</code>. First type <code>io</code> to override the default input.</li>
+    <li>Type <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code> to get a completion list.</li>
+    <li>Select <code>iostream</code> (without &#8216;s&#8217;).</li>
+    <li>Continue typing the whole program, and compile it.</li>
+    <li>The source code fails!</li>
+</ol>
+
+<p>Obviously, there&#8217;s a syntax error at the line <code>#include&lt;iostream&gt;</code>. Thinking about the auto-completion function again, one will notice that the correct step is to press <code>&lt;Esc&gt;</code> after step 1, and use <code>ci&lt;</code> to clear the code inside the <code>&lt;&gt;</code> block, that&#8217;s a good try, but I personally think that the steps can be more beautiful.</p>
+
+<h4>1.2 clang_complete&#8217;s solution</h4>
+
+<p>This is just a <em>part</em> of correct steps. I leave the remaining parts of codes of this simple program into later sections.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete_clang.gif" title="‘Figure 2’ ‘fig2’" ></p>
+
+<p>This time, after typing <code>#</code> at the beginning of the line, press <code>&lt;C-x&gt;&lt;C-u&gt;</code> to use the automatic completion list, and choose the <code># include</code> option with the <code>$`header'</code> surrounded by a <code>&lt;&gt;</code> block, <em>not</em> a double quote. Use <code>&lt;Alt-Tab&gt;</code> to select the inner <code>&lt;&gt;</code> block and type <code>io&lt;C-n&gt;</code> to use the built-in (<em>not</em> plugin) function to complete the code. (The <code>&lt;Alt-Tab&gt;</code> keystroke doesn&#8217;t work in GUI, since it means changing the window on focus.)</p>
+
+<p>Note: In this method, <code>stdio.h</code> needs to be included. Otherwise, the built-in insert completion popup menu containing <code>iostream</code> will not be shown.</p>
+
+<h3>2. Completion of <code>using namespace std;</code></h3>
+
+<ol>
+    <li>Without clang_complete: Directly type in everything, or use <code>&lt;C-n&gt;</code> for <em>word-by-word completion</em>.</li>
+    <li>With clang_complete:  The completion menu can complete the whole line.</li>
+</ol>
+
+<p>Analysis: Finding an item from a menu requires coordination of our eyes and hands, while typing the code directly requires more memory. For a newbie, the former should be easier since he/she doesn&#8217;t waste time to recall his/her memory. For a geek, the later should be faster since the process has been repeated for many time. Luckily, being the second in the popup list, the problem of reaction time does not matter much if one looks at the list from the top to the bottom. Moreover, typing the code directly may lead to syntax errors. This problem can be overcome if one has the capability to read the error message from the compiler and to browse code quickly.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/using_complete.png" title="‘Figure 3’ ‘fig3’" ></p>
+
+<p><small>Without clang_complete: word-by-word completion</small></p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/using_clang.gif" title="‘Figure 4’ ‘fig4’" ></p>
+
+<p><small>With clang_complete: completion of the whole line</small></p>
+
+<p>The remaining parts of this post <em>doesn&#8217;t</em> make use of the clang_complete plugin.</p>
+
+<h3>3. The main method</h3>
+
+<p>Just typing <code>main&lt;Tab&gt;</code> will do. That&#8217;s from vim-snippets.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/prog.gif" title="‘Figure 5’ ‘fig5’" ></p>
+
+<h3>4. Greeting the world!</h3>
+
+<p>If you type <code>cout&lt;Tab&gt;</code>, you&#8217;ll get <code>std::cout&lt;&lt;&nbsp;&nbsp;&lt;&lt;std::endl;</code>, with the cursor located in between the two whitespace characters in the middle. Using a regular expression to delete the <code>std::</code> in front of <code>cout</code> and <code>endl</code>.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/cout.gif" title="‘Figure 6’ ‘fig6’" ></p>
+
+<h3>5. Getting the indentation correct</h3>
+
+<p>Modifying the c.snippet file maybe a bit troublesome, and may bring strange consequences to the plugin. If you don&#8217;t have time to study the plugin, you may not like to bother it. Manually decreasing the indentation of the line <code>return 0;</code> each time is not likely to be an elegant solution for Vim Lovers. The actual way to fix the problem (using the command <code>gg=G</code> in the normal mode) is on p. 73 of the book Vi iMproved—Vim.<sup id="fnref-22-4"><a href="#fn-22-4" rel="footnote">4</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/cindent.gif" title="‘Figure 7’ ‘fig7’" ></p>
+
+<h3>6. Running the program</h3>
+
+<p>For some newbies, it might be too much for them to digest if I discuss more on the creation of a sample makefile, which automatically executes more complicated compiling commands with a simple <code>make</code> command, searching &#8220;makefile tutorial&#8221; on the web will do. If you don&#8217;t like the clang compiler, just substitute <code>clang++</code> with <code>g++</code>.</p>
+
+<p>According to Henri Poincaré, a French mathematician, things are beautiful if they are simple. Repetition of facts build up our understanding. I end this post with a short and simple command that can be repeatedly used to compile .cpp source files with different file names. For more details about that, refer to my earlier post titled <em><a href="http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html">Fast Compilation and Execution of Source Code</a></em>.</p>
+
+<p><img class="fancybox" src="/images/posts/ClangComplete/run.gif" title="‘Figure 8’ ‘fig8’" ></p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn-22-1">
+<a href="http://blog.chinaunix.net/uid-53564-id-3558537.html">http://blog.chinaunix.net/uid-53564-id-3558537.html</a>&#160;<a href="#fnref-22-1" rev="footnote">&#8617;</a>
+</li>
+
+<li id="fn-22-2">
+<a href="http://changyy.pixnet.net/blog/post/31706673-%5Bvim%5D-using-clang_complete-plugin-@-ubuntu-12.04">http://changyy.pixnet.net/blog/post/31706673-%5Bvim%5D-using-clang_complete-plugin-@-ubuntu-12.04</a>&#160;<a href="#fnref-22-2" rev="footnote">&#8617;</a>
+</li>
+
+<li id="fn-22-3">
+<a href="http://blog.wuwon.id.au/2011/10/vim-plugin-for-navigating-c-with.html">http://blog.wuwon.id.au/2011/10/vim-plugin-for-navigating-c-with.html</a>&#160;<a href="#fnref-22-3" rev="footnote">&#8617;</a>
+</li>
+
+<li id="fn-22-4">
+<a href="ftp://ftp.vim.org/pub/vim/doc/book/vimbook-OPL.pdf">ftp://ftp.vim.org/pub/vim/doc/book/vimbook-OPL.pdf</a>&#160;<a href="#fnref-22-4" rev="footnote">&#8617;</a>
+</li>
+
+</ol></div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[OmniCppComplete Installation for Dummies]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/"/>
+    
+    <updated>2013-12-12T01:01:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies</id>
+    
+      <content type="html"><![CDATA[<p><em>Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan&#8217;s <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">blog</a>.</em></p>
+
+<!-- more -->
+
+<p>Background: OmniCppComplete is a great Vim plugin that has the popup menu like many big IDEs. <a href="http://youtu.be/MQy2rVOf-z0">A Youtube video</a> can show the power of OmniCppComplete.<br />Download: OmniCppComplete requires ctags.</p>
+
+<ol>
+    <li>OmniCppComplete: <a href="https://github.com/FromtonRouge/OmniCppComplete">GitHub Repository</a> (To avoid mixing up of files from different plugins, use one plugin management plugin like Pathogen or Vundle.)</li>
+    <li>Ctags: <a href="http://ctags.sourceforge.net/">Official homepage</a> on SourceForge (The ZIP file for Win* 2**0 is fine.)</li>
+</ol>
+
+<p>For more detailed information on the installation of ctags, please refer to my earlier blog post <a href="http://blogue-un.blogspot.hk/2013/12/links-to-good-posts.html"><em>Links to Good Posts</em></a>.</p>
+
+<p>Problem: Reading the OmniCppComplete&#8217;s documentation only, you won&#8217;t be able to understand how to use this plugin, so follow some tutorials, and the most viewed one should be on <a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">Vim Tips Wiki</a>. Followed its guidance, I got error in typing <code>std::</code> in a new .cpp file. Omni completion told me something like &#8220;pattern not  match&#8221;. I spent nearly 2 hours to figure out what&#8217;s wrong, and finally  managed to fully understand the contents of <a href="http://carl830.pixnet.net/blog/post/67681043-vim-omnicppcomplete%2Bstl-support">this blog entry</a>.<br />Now, I&#8217;m going to make <u>a Win* version of Vim Tips Wiki&#8217;s tutorial</u>, using the ideas from Carl.</p>
+
+<p>Solution:</p>
+
+<ol>
+    <li>
+    I suppose OmniCppComplete and ctags are installed properly.
+    <ul>
+	<li>
+	<p>OmniCppComplete does not mix up with other plugins.</p>
+
+	<p>Note: For gVimPortable, do store files under the Data folder, but NOT the <code>$VIMRUNTIME</code> file. Otherwise the settings will be lost after upgrading gVimPortable.</p>
+
+	<img src="/images/posts/OmniCpp/pathogen.png" title="&#8216;fig1&#8217; &#8216;Vim plugins location using pathogen.vim&#8217;" >
+
+	<p><small>The folder for different plugins are separated (except the plugin management plugin itself).</small></p>
+	</li>
+
+	<li>
+	Typing <code>:h omnicppcomplete</code> in Vim normal mode gives up the help file for OmniCppComplete.
+
+	<img src="/images/posts/OmniCpp/omnicpp.png" title="&#8216;fig2&#8217; &#8216;Help for OmniCppComplete.txt&#8217;" >
+
+	<p><small>Typing <code>:h omnicppcomplete</code> gives you the corresponding help file.</small></p>
+	</li>
+
+	<li>
+	<p>The folder for ctags is in the PATH environment variable.</p>
+
+	<p>Follow <a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">this page</a> for setting the PATH variable.</p>
+
+	<img class="fancybox" src="/images/posts/OmniCpp/ctags.png" title="&#8216;Set PATH variable&#8217; &#8216;fig1&#8217;" >
+
+	<p><small><code>C:\ctags58</code> should be in the <code>PATH</code> variable.</small></p>
+	</li>
+    </ul>
+    </li>
+
+    <li>
+    Download the <a href="http://www.vim.org/scripts/script.php?script_id=2358">modified libstdc++ headers</a> from <a href="https://github.com/vim-scripts/tags-for-std-cpp-STL-streams-...">GitHub</a>.
+    </li>
+
+    <li>
+    Unzip the folder and place it under &#8220;somewhere meaningful to you&#8221;<br />
+    My suggestion: <code>C:\Users\[your-user-name]\.vim</code><br />
+    Here you can substitute <code>[your user name]</code> with your <u>real</u> user name on Win*.<br />
+    Note: In the dialogue (in case you use GUI), DON&#8217;T input <code>tags</code> at the end. Otherwise, you&#8217;ll get <code>C:\Users\[your-user-name]\.vim<b><span class="err">\tags</span></b>\tags</code>
+    </li>
+
+    <li>
+    <p>If things go right, you should have <code>C:\Users\[your-user-name]\.vim\tags</code></p>
+
+    <p>Go to that directory by typing <code>cd .vim\tags</code> in Win*&#8217;s Command Prompt, which can be involked by typing <code>cmd</code> in the &#8220;Start&#8221; menu. (For Win* XP, choose &#8220;Run&#8221; and type &#8220;cmd&#8221; in the popup dialogue. If you like choosing from the menu, follow <a href="http://windows.microsoft.com/en-hk/windows-vista/open-a-command-prompt-window">the way on the official website</a>.)</p>
+
+    <p>At first, a commad prompt should be like this.</p>
+
+    <img src="/images/posts/OmniCpp/cmd.png" title="&#8216;fig4&#8217; &#8216;Command Prompt default starting display&#8217;" >
+
+    <p><small>The current directory is <code>C:\Users\<span class="HLCode">Owner</span></code>.</small></p>
+
+    <img src="/images/posts/OmniCpp/cmd2.png" title="&#8216;fig5&#8217; &#8216;Change directory in Win* CMD&#8217;" >
+
+    <p><small>Change the current directory to <code>C:\Users\<span class="HLCode">Owner</span>\.vim\tags</code>.</small></p>
+
+    <p>The contents should be shown by typing <code>dir</code> (There&#8217;re so many files that I use the <code>/w</code> option to save space.)</p>
+
+    <img src="/images/posts/OmniCpp/dir1.png" title="&#8216;fig6&#8217; &#8216;w flag in dir command in Win* CMD&#8217;" >
+
+    <p><small>The contents are in the right place, so we may proceed.</small></p>
+
+    <img src="/images/posts/OmniCpp/ctags1.png" title="&#8216;fig7&#8217; &#8216;Ctags in Win* CMD&#8217;" >
+
+    <p><small>Get a list of ctags.</small></p>
+
+    <p>To get a list of ctags, the correct command:</p>
+
+    <pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="HLCode">.</span></code></pre>
+
+    <p>The one you see on Vim Tips Wiki:</p>
+
+    <pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="err">cpp_src</span></code></pre>
+    </li>
+
+    <li>Then you should have a huge list of ctags with the file name cpp. Not adding the additional tags for OpenGL, etc, is OK.</li>
+
+    <li>
+    <p>Finally, adding the lines found in the Vim Tips Wiki into your vimrc will do.</p>
+
+    <p>Note: If you don&#8217;t add the additional tags in step 5, then the following lines should NOT be added.</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/gl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/sdl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/qt4
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+    </li>
+</ol>
+
+<h3>Testing</h3>
+
+<p>A picture can illustrate the feature well. Typing <code>std::</code>, you&#8217;ll get a popup list.</p>
+
+<pre><code><img src="/images/posts/OmniCpp/omni.png" title="fig8" alt="OmniCppComplete in GVim">
+</code></pre>
+
+<h3>Incompatibility with clang_complete</h3>
+
+<p>Note that Omnicppcomplete is <em>incompatible</em> with another Vim plugin called clang_complete, due to its &#8220;unconditional popup of completion list&#8221;. To understand this, the following pictures give a good interpretation.</p>
+
+<p>In OmniCppComplete, after typing <code>std::</code>, the completion list will pop up.</p>
+
+<p>However, in clang_complete, since the information is from the clang compiler, you need to give the syntax in the right position for the compiler so as to let the completion list to show up.</p>
+
+<p><img src="/images/posts/OmniCpp/ClangComplete1.png" title="‘fig9’ ‘missing iostream’" ></p>
+
+<p><small>Missing <code>#include &lt;iostream&gt;</code>.</small></p>
+
+<p><img src="/images/posts/OmniCpp/std_err.png" title="‘fig10’ ‘wrong place for std::’" ></p>
+
+<p><small>Still wrong position of the input</small></p>
+
+<p><img src="/images/posts/OmniCpp/ClangComplete2.png" title="‘fig11’ ‘clang_complete work for correct code’" ></p>
+
+<p><small>Right position</small></p>
+
+<p>On Ubuntu, it&#8217;s easy to install. Note that you need <code>clang-dev</code> as well. For Win*, maybe you need to download the source. (I hope there will be a <em>compiled version of the compiler</em>.)</p>
+]]></content>
+    
+  </entry>
+  
+</feed>

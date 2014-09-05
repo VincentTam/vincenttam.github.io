@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Definition of Content 0 Sets - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Motivation I saw a minor difference the definition of Jordan content 0 sets
+between two books. Some basic definitions I make this list for my &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">Definition of Content 0 Sets</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-18T16:16:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:16 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>I saw a minor difference the definition of Jordan content 0 sets
+between two books.</p>
+
+<h2 id="some-basic-definitions">Some basic definitions</h2>
+
+<p>I make this list <em>for my reference only</em>.  If I’m asked the <em>true</em>
+meaning of some geometric concepts, such as <em>boundary</em>, by someone
+<em>seriously</em>, then I can quickly refer to this list in order to remind
+myself what ideas should be introduced.</p>
+
+<!-- more -->
+
+<p>Unless otherwise specified, assume that
+<script type="math/tex">A\in\reals^n,\vect{x},\vect{x_0},\vect{u},\vect{v}\in\reals^n,\vect{u}_i\in\reals^n\,\forall\,i\in\mathbb{N}</script>.</p>
+
+<dl>
+  <dt>Norm</dt>
+  <dd>The <em>norm</em> of <script type="math/tex">\vect{x}</script> is defined as
+
+    <script type="math/tex; mode=display">\norm{\vect{x}} := \sqrt{\sum_{i=1}^n x_i^2}.</script>
+  </dd>
+  <dt>Distance</dt>
+  <dd>The <em>distance</em> between <script type="math/tex">\vect{u}</script> and <script type="math/tex">\vect{v}</script> is
+<script type="math/tex">\norm{\vect{u}-\vect{v}}</script>.</dd>
+  <dt>Open ball</dt>
+  <dd><script type="math/tex">% <![CDATA[
+\mathcal{B}_r (\vect{x}_0):=\{\vect{x}\mid\norm{\vect{x}-\vect{x}_0}<r\} %]]></script></dd>
+  <dt>Interior point</dt>
+  <dd><script type="math/tex">\vect{u}</script> is an <em>interior point in</em> $A$ if
+<script type="math/tex">\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq A</script>.
+<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></dd>
+  <dt>Interior of a set</dt>
+  <dd><script type="math/tex">\interior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A\}</script></dd>
+  <dt>Open set</dt>
+  <dd>$A$ is <em>open</em> if <script type="math/tex">A = \interior A</script>.</dd>
+  <dt>Limit of <script type="math/tex">\{\vect{u}_k\}</script></dt>
+  <dd><script type="math/tex">% <![CDATA[
+\forall\,\varepsilon>0,\exists\,K\in\mathbb{N}\,\text{s.t.}\,\forall\,k\ge K,\norm{\vect{u}_k-\vect{u}}<\varepsilon %]]></script>
+
+    <p>We denote it as</p>
+
+    <script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u}.</script>
+  </dd>
+  <dt>Closed set</dt>
+  <dd>
+    <script type="math/tex; mode=display">\vect{u}_k\in A\,\forall\,k\in\mathbb{N},\lim_{k\to\infty}\vect{u}_k=\vect{u}\implies\vect{u}\in A</script>
+  </dd>
+  <dt>Boundary</dt>
+  <dd><script type="math/tex">\partial A := \{\vect{x}\mid\forall\,r>0,\exists\,\vect{u}\in A,\vect{v}\notin A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})\}</script></dd>
+  <dt>Exterior point</dt>
+  <dd><script type="math/tex">\vect{u}</script> is an <em>exterior point in</em> $A$ if
+<script type="math/tex">\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq \reals^n\setminus A</script>.</dd>
+  <dt>Exterior of a set</dt>
+  <dd><script type="math/tex">\exterior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq \reals^n\setminus A\}</script></dd>
+</dl>
+
+<h2 id="some-claims">Some claims</h2>
+
+<p id="claim1">If a subset $A$ of <script type="math/tex">\reals^n</script> is contained in a closed subset
+$B$ of <script type="math/tex">\reals^n</script>, <script type="math/tex">\partial A \subseteq B</script>.</p>
+
+<p><em>Proof</em>. Let
+<script type="math/tex">\vect{u}\in\partial A.\forall\,k\in\mathbb{N},\exists\,\vect{u}_k\in\mathcal{B}_{1/k}(\vect{u})\cap A</script>.
+Then</p>
+
+<script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u}</script>
+
+<p>because
+<script type="math/tex">% <![CDATA[
+\forall\,\varepsilon>0,K>1/\varepsilon,k\ge K\implies\norm{\vect{u}-\vect{u}_k}<1/k\le\varepsilon %]]></script>.<br />
+<script type="math/tex">\because\vect{u}_k\in A\,\forall\,k\in\mathbb{N}</script>,</p>
+
+<script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u},</script>
+
+<p>and $B$ is closed.<br />
+<script type="math/tex">\therefore\vect{u}\in B</script>.<br />
+Q.E.D.</p>
+
+<p><script type="math/tex">\reals^n=\interior A\sqcup\partial A\sqcup\exterior A</script></p>
+
+<p><em>Proof</em>. Let <script type="math/tex">\vect{x}\notin\interior A</script>.
+Then
+<script type="math/tex">\forall\,r>0,\exists\,\vect{u}\in\mathcal{B}_r(\vect{x})\setminus A</script>.</p>
+
+<p>Case 1:
+<script type="math/tex">\forall\,r>0,\mbox{there also exists}\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A</script>.<br />
+Putting the two statements about <script type="math/tex">\vect{u}</script> and <script type="math/tex">\vect{v}</script>
+together, we get
+<script type="math/tex">\forall\,r>0,\exists\,\vect{u}\notin A,\vect{v}\in A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})</script>.<br />
+<script type="math/tex">\therefore\vect{x}\in\partial A</script></p>
+
+<p>Case 2:
+<script type="math/tex">\neg\,(\forall\,r>0,\exists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A)</script><br />
+i.e. 
+<script type="math/tex">\exists\,r>0\,\text{s.t.}\,\nexists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A</script>.<br />
+<script type="math/tex">\therefore\exists\,r>0\,\text{s.t.}\,\vect{v}\in A\uparrow\vect{v}\in\mathcal{B}_r(\vect{x})</script><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup><br />
+i.e.
+<script type="math/tex">\exists\,r>0\,\text{s.t.}\,\vect{v}\in\mathcal{B}_r(\vect{x})\implies\vect{v}\notin A</script><br />
+<script type="math/tex">\therefore\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{x})\subseteq\reals^n\setminus A</script><br />
+Hence <script type="math/tex">\vect{x}\in\exterior A</script>.<br />
+Q.E.D.</p>
+
+<p id="trivial1">From the definition of the <em>exterior</em> of $A$, it’s clear that
+<script type="math/tex">\exterior A \subseteq \reals^n \setminus A</script>.  The
+reason is that <script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})</script>.  If
+<script type="math/tex">\vect{u}\in\exterior A</script>, then
+<script type="math/tex">\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A</script>.
+Thus,
+<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A\implies\vect{u}\notin A</script>.</p>
+
+<p id="trivial2">Another trivial fact is from the definition of the <em>interior</em> of $A$.
+<script type="math/tex">\interior A \subseteq A</script> due to the same reason for
+<script type="math/tex">\exterior A \subseteq \reals^n \setminus A</script>, that is,
+<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})</script>.
+<script type="math/tex">\vect{u}\in\interior A\implies\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A</script>.
+Thus,
+<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq A\implies\vect{u}\in A</script>.</p>
+
+<h2 id="more-definitions">More definitions</h2>
+
+<p>Unless otherwise specified, assume that
+<script type="math/tex">a_i,b_i \in \reals\,\forall\,i \in \mathbb{N}</script>.</p>
+
+<dl>
+  <dt>Closure</dt>
+  <dd><script type="math/tex">\overline{A} := \interior A \cup \partial A</script></dd>
+  <dt>Bounded set</dt>
+  <dd><script type="math/tex">\exists\,M\ge 0\,\text{s.t.}\,\norm{\vect{x}}\ge M\,\forall\,\vect{x}\in A</script></dd>
+  <dt>Generalized rectangle</dt>
+  <dd><script type="math/tex">\vect{I} := \vect{I_1} \times \dots \times \vect{I_n}</script>,
+where <script type="math/tex">\vect{I_i} := [a_i,b_i]\,\forall\,i \in \mathbb{N}</script>.</dd>
+  <dt>Volume of generalized rectangle</dt>
+  <dd>
+    <script type="math/tex; mode=display">\volume \vect{I} := \prod_{i=1}^n (b_i - a_i)</script>
+  </dd>
+</dl>
+
+<p>From the definition of the closure of a set, we can conclude that
+<script type="math/tex">A \subseteq \overline{A}</script> since
+<script type="math/tex">\reals^n=\interior A\sqcup\partial A\sqcup\exterior A</script>
+and <script type="math/tex">A \cap \exterior A = \varnothing</script>.
+(<a href="#trivial1">proved</a>)  Thus,
+<script type="math/tex">A \subseteq \interior A \sqcup \partial A = \overline{A}</script>.</p>
+
+<p>We can extend the <a href="#claim1">first claim</a> like this.</p>
+
+<blockquote id="ExtendedClaim">
+  <p>If a subset $A$ of <script type="math/tex">\reals^n</script> is contained in a closed subset
+$B$ of <script type="math/tex">\reals^n</script>, <script type="math/tex">\overline{A} \subseteq B</script>.</p>
+</blockquote>
+
+<p><em>Proof</em>.  <script type="math/tex">\overline{A} := \interior A \cup \partial A</script>.  By the
+<a href="#claim1">first claim</a>, it’s already known that
+<script type="math/tex">\partial A \subseteq B</script>, so it remains to show that
+<script type="math/tex">\interior A \subseteq B</script>.  Since
+<script type="math/tex">\interior A \subseteq A</script> (<a href="#trivial2">proved</a>) and it’s
+given that <script type="math/tex">A \subseteq B</script>, we’re done!<br />
+Q.E.D.</p>
+
+<h2 id="comparing-the-definitions">Comparing the definitions</h2>
+
+<p>That’s the definition of <em>Jordan content 0</em> sets.</p>
+
+<p>Suppose $D$ is a bounded subset of <script type="math/tex">\reals^n</script>.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\forall\,\varepsilon>0,\exists\,\text{generalized
+rectangle}\,\vect{I}_1,\dots,\vect{I}_m\subseteq\reals^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m
+\vect{I}_j\;\text{and}\,\sum_{j=1}^m \volume \vect{I}_j<\varepsilon %]]></script>
+
+<p>I have read another version of the definition, and the only difference
+between those two versions is that $D$ is replaced by
+<script type="math/tex">\overline{D}</script>.  It took me a short while to understand why this is
+OK.</p>
+
+<p>First, <script type="math/tex">\vect{I}_j</script> is closed for each $j$ since it’s the
+Cartesian product of closed intervals.</p>
+
+<script type="math/tex; mode=display">\bigcup_{j=1}^m \vect{I}_j\;\text{is also closed. (DeMorgan's Law)}</script>
+
+<p>Hence, by the <a href="#ExtendedClaim">extended claim</a>, one can also write</p>
+
+<script type="math/tex; mode=display">\overline{D} \subseteq \bigcup_{j=1}^m \vect{I}_j</script>
+
+<p>instead of $D$ in the above definition.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>By writing “<script type="math/tex">\subseteq</script>”, I mean “subset” here, but <em>not</em>
+“proper subset”.</p>
+
+      <p>According to 
+<a href="https://proofwiki.org/wiki/Symbols:Set_Operations_and_Relations#Subset.2C_Superset"><script type="math/tex">\mathsf{Pr}\infty\mathsf{fWiki}</script></a>, the use of
+“<script type="math/tex">\subset</script>” to denote “subset” is “not recommended”, though the
+<script type="math/tex">\rm \LaTeX</script> code for “<script type="math/tex">\subset</script>” is <code>$$\subset$$</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>According to <a href="https://proofwiki.org/wiki/Symbols:Logical_Operators#Nand"><script type="math/tex">\mathsf{Pr}\infty\mathsf{fWiki}</script></a>,
+“<script type="math/tex">\uparrow</script>” means “nand”. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-18T16:16:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:16 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/math/'>math</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/17/my-git-command-list-2/" title="Previous Post: My Git Command List (2)">&laquo; My Git Command List (2)</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/" title="Next Post: Archimedean Sequence of Partitions of a Square">Archimedean Sequence of Partitions of a Square &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

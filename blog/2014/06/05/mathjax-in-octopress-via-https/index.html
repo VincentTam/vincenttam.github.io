@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MathJax in Octopress via HTTPS - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Problem Some contents in Octopress blogs couldn’t be viewed via
+HTTPS1, for example, a Japanese blog. This blog on last Saturday afternoon The first &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">MathJax in Octopress via HTTPS</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-05T20:25:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:25 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>Some contents in <a href="http://octopress.org/" title="Octopress">Octopress</a> blogs <em>couldn’t</em> be viewed via
+<abbr title="HTTP Secure">HTTPS</abbr><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, for example, <a href="https://yamanetoshi.github.io/" title="A Japanese Octopress Blog browsed via HTTPS">a Japanese blog</a>.</p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/JPBlog.png" title="Screenshot of an Octopress blog in Japanese" alt="fig1" /></p>
+
+<p>This blog on last Saturday afternoon</p>
+
+<ul>
+  <li>The first category list item “$\rm \LaTeX$” on the right <em>couldn’t</em>
+be displayed</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocked.png" title="Screenshot of my blog on last Saturday afternoon" alt="fig2" /></p>
+
+<ul>
+  <li>Using <abbr title="Hypertext Transfer Protocol">HTTP</abbr> instead of <abbr title="HTTP Secure">HTTPS</abbr>, I can see the blocked contents.</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/disable_blocking.png" title="Disable Protection on This Page" alt="fig3" /></p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocking_disabled.png" title="Blocked contents can be displayed." alt="fig4" /></p>
+
+<p><strong>How can those blocked contents be displayed automatically?</strong></p>
+
+<!-- more -->
+
+<h2 id="my-initial-attempt-to-view-the-contents">My initial attempt to view the contents</h2>
+
+<p>Half a month ago, I upgraded Firefox to 29.  Before the upgrade,
+receiving the link of this blog, the browser would use the <abbr title="Hypertext Transfer Protocol">HTTP</abbr>
+version of the link; after the upgrade, it displayed the <abbr title="Hypertext Transfer Protocol">HTTP</abbr><strong>S</strong>
+version of the blog instead.</p>
+
+<p>I installed some Firefox plugins.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  I thought
+<a href="https://www.eff.org/https-everywhere" title="HTTPS Everywhere"><abbr title="HTTP Secure">HTTPS</abbr> Everywhere</a> was the cause for this problem.
+After I disabled this plugin and restarted Firefox, <em>everything</em> in my
+blog were displayed.  Therefore, I spent hours to find out how to
+automatically change the communication protocol from “https://” to
+“http://” in <abbr title="HTTP Secure">HTTPS</abbr> Everywhere last week.  After reading the official
+documentation, I tried manually creating a downgrade rule for browsing
+this blog.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My FAILED <abbr title="HTTP Secure">HTTPS</abbr> Everywhere downgrade rule for this blog (gh-pages.xml)</span> <a href="/downloads/code/gh-pages.xml">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;ruleset</span> <span class="na">name=</span><span class="s">&quot;My GitHub Page&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;target</span> <span class="na">host=</span><span class="s">&quot;vincenttam.github.io&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;rule</span> <span class="na">from=</span><span class="s">&quot;^https://vincenttam\.github\.io/&quot;</span>
+</span><span class="line">	<span class="na">to=</span><span class="s">&quot;http://vincenttam.github.io/&quot;</span> <span class="na">downgrade=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ruleset&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It worked for <em>some</em> pages in my blog, and failed for <em>some</em> of them.
+I <em>didn’t</em>, <em>don’t</em>, and <em>won’t</em> know why.  I gave up and thought in
+another way—change the contents of this blog so that MathJax <em>won’t</em>
+be blocked when <abbr title="HTTP Secure">HTTPS</abbr> is used.</p>
+
+<p>I attempted to observe other sites’ HTML source code for embedded
+MathJax, such as <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em></a>.  I copied the code from
+him.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I was puzzled by the fact that his code worked and mine
+<em>didn’t</em>.</p>
+
+<p>Failed Google searches:</p>
+
+<ul>
+  <li>octopress “https” blocked content</li>
+  <li>firefox blocked octopress mathjax</li>
+</ul>
+
+<h2 id="learning-from-firefoxs-messages">Learning from Firefox’s messages</h2>
+
+<p>On the left of the address bar, I clicked the shield icon, and <strong>learn
+more</strong>.</p>
+
+<p><img src="/images/posts/OctopressHTTPS/ff_shield.png" alt="Firefox 29 blocked insecure contents" title="Firefox 29's message about insecure mixed contents" /><br />
+<small>Source: <a href="https://support.cdn.mozilla.net/media/uploads/gallery/images/2014-03-25-07-10-44-1aa0ef.png" title="Image source">Mozilla support</a></small></p>
+
+<p>Then, I was taken to <a href="http://mzl.la/13jCUSU" title="How does content that isn't secure affect my safety?">a page in Mozilla Support</a>.  At the
+bottom of the section <em>What is mixed content?</em>, there’s a note that
+contains a link to <a href="https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/" title="Mixed Content Blocking Enabled in Firefox 23!">a blog post</a>.  I <em>didn’t</em> want to
+spend much time to read something unrelated to my major.  I found the
+author’s reply to DaveP, a developer who ask for more information for
+fixing issues caused by Firefox’s security features.  He gave two
+links to DaveP, and I clicked the first one.  At first glance, I
+<em>didn’t</em> understand what was
+<a href="https://developer.mozilla.org/docs/Security/MixedContent#Mixed_active_content">active mixed content</a>, and I clicked that link.</p>
+
+<p>It’s said that some “active” contents were considered to be
+“<em>secure</em>”, such as</p>
+
+<ul>
+  <li>some HTML tags like <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;object&gt;</code>, etc</li>
+  <li>some JavaScripts and CSS</li>
+</ul>
+
+<p>As a result, I replaced the <code>&lt;iframe&gt;</code> element which embedded a <abbr title="Portable Document Format">PDF</abbr>
+document in
+<a href="/blog/2014/03/16/latex-template-for-essays/" title="*$\LaTeX$ Template for Essays*">one of my previous on $\rm \LaTeX$ template</a>
+by a hyperlink.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  Nevertheless, MathJax still <em>didn’t</em> load in this
+blog.  I clicked
+<a href="https://developer.mozilla.org/docs/Security/MixedContent/fix_website_with_mixed_content">“<em>How to fix a website with blocked mixed content</em>”</a>,
+and was taken back to the previous page.  Having <em>no</em> experience in
+web designing, I could only understand two advices:</p>
+
+<ol>
+  <li><a href="http://www.mozilla.org/en-US/firefox/aurora/" title="latest Aurora">Install Aurora</a>: I <em>didn’t</em> want to install it.</li>
+  <li>Invoke Firefox’s web console by <code>&lt;C-S-k&gt;</code>.  (can be closed with
+<code>&lt;F12&gt;</code>)</li>
+</ol>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png" title="Firefox web console" alt="fig5" /></p>
+
+<p>In lines 3–4 of the web console, I could see that Google Fonts were
+blocked.  I clicked “<a href="https://developer.mozilla.org/docs/Security/MixedContent"><strong>[Learn More]</strong></a>” and was brought
+to a page on <abbr title="Mozilla Developer Network">MDN</abbr> that I had already visited.  I clicked the link for
+fixing the website at the bottom <em>again</em>, learnt <em>nothing</em> new about
+the problem.</p>
+
+<h2 id="source-code-changes-to-fix-things">Source code changes to fix things</h2>
+
+<h3 id="fixing-google-fonts-first">Fixing Google Fonts first</h3>
+
+<p>I searched “blocked loading mixed active content google fonts” on
+Google and <a href="https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/" title="Mixed Content Blocking Enabled in Firefox 23!">Tanvi’s blog post</a> appeared at the top of the
+page.  I skimmed through it <em>once more</em>, and searched for “google
+fonts”, but I could just find a reference to another comment (comment
+40) which explained the reasons for blocking mixed content fonts.
+I browsed another search result, which was
+<a href="https://stackoverflow.com/questions/13833210/" title="No Google Fonts Working in Google Chrome">a question on Stack Overflow</a>.  Though the
+question is about <a href="https://www.google.com/chrome/" title="Google Chrome Browser">Google Chrome</a>, looking at the first
+answer, I knew what to do next—I added an <code>s</code> after <code>http</code> in each <abbr title="Uniform Resource Locator">URL</abbr>
+of the Google Fonts used.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  After that, I generated and previewed
+the site.  Although
+<img src="/images/posts/OctopressHTTPS/WarningTriangle.png" alt="the orangle warning triangle" title="Firefox's warning triangle for unsafe contents" class="nobd" /> still
+appeared on the left of the address bar, the Google Fonts used in the
+blog <em>weren’t</em> blocked anymore.</p>
+
+<h3 id="fixing-mathjax">Fixing MathJax</h3>
+
+<p>The way to include MathJax equations in Octopress in now clear: refer to an <abbr title="HTTP Secure">HTTPS</abbr> version of MathJax library in the head of each page.</p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/WebConsoleMathJax.png" title="Firefox web console" alt="fig6" /></p>
+
+<p>I tried to google ‘blocked loading mixed active content
+“http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML”’,
+and found a few sites:</p>
+
+<ul>
+  <li><a href="http://meta.crypto.stackexchange.com/questions/384/">https-everywhere breaks MathJax due to https/http mixed-content rules - Cryptography Meta Stack Exchange</a></li>
+  <li><a href="http://meta.math.stackexchange.com/questions/10776/">MathJax not working - Mathematics Meta Stack Exchange</a></li>
+</ul>
+
+<p>Reading these sites, I knew that I could either adjust the rules in
+<abbr title="HTTP Secure">HTTPS</abbr> Everywhere, or use an <abbr title="HTTP Secure">HTTPS</abbr> version of MathJax.  For the former,
+I <em>didn’t</em> have the ability and time to study the documentation and
+test the results.  Though most of the other Jekyll blogs <em>doesn’t</em> use
+the JavaScript library over <abbr title="HTTP Secure">HTTPS</abbr>, in order to view the contents
+rendered by MathJax, I read
+<a href="http://www.mathjax.org/resources/faqs/#problem-https" title="MathJax FAQ">a question in the MathJax FAQ</a> in the second answer to
+the above question posted on Cryptography Meta Stack Exchange.  I also
+saw their documentation about secure access to the MathJax <abbr title="Content Delivery Network">CDN</abbr>.  I
+copied the correct <code>&lt;script&gt;</code> tag from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn" title="MathJax Documentation on accessing their CDN over HTTPS">there</a>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of my working `source/_includes/custom/head.html`</span><a href="https://github.com/VincentTam/vincenttam.github.io/blob/70ba670/source/_includes/custom/head.html#L21">commit history</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+</span><span class="line"><span class="err">  </span><span class="nx">jax</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;input/TeX&quot;</span><span class="p">,</span> <span class="s2">&quot;output/HTML-CSS&quot;</span><span class="p">],</span>
+</span><span class="line"><span class="err">  </span><span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line"><span class="err">    </span><span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">]</span> <span class="p">],</span>
+</span><span class="line"><span class="err">    </span><span class="nx">displayMath</span><span class="o">:</span> <span class="p">[</span> <span class="p">[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">]],</span>
+</span><span class="line"><span class="err">    </span><span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line"><span class="err">    </span><span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
+</span><span class="line"><span class="err">  </span><span class="p">},</span>
+</span><span class="line"><span class="err">  </span><span class="nx">messageStyle</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+</span><span class="line"><span class="err">  </span><span class="s2">&quot;HTML-CSS&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">preferredFont</span><span class="o">:</span> <span class="s2">&quot;TeX&quot;</span><span class="p">,</span> <span class="nx">availableFonts</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;STIX&quot;</span><span class="p">,</span><span class="s2">&quot;TeX&quot;</span><span class="p">]</span> <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</span><span class="line"><span class="err">  </span><span class="na">src=</span><span class="s">&quot;https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<hr />
+<p>(Last edited on AUG 2ND, 2014)</p>
+
+<p>Note: A new address of MathJax via <abbr title="HTTP Secure">HTTPS</abbr> protocol is available.  View
+my <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">new post</a> for details.</p>
+
+<hr />
+
+<h4 id="eliminate-the-right-click-bug">Eliminate the “right-click bug”</h4>
+
+<p>Lastly, we need to fix the “right-click bug” in MathJax Octopress
+blogs.  To find a typical example, I searched “octopress mathjax” on
+Google, and <a href="http://drz.ac/2013/01/03/blogging-with-math/">a post on <em>DrZ.ac</em></a> came first in the
+search results.  There’s an equation, and once you right-click it, you
+<em>can’t</em> see anything except the popup menu.  The second comment to the
+post included a link to an article in Brain Buccola’s GitHub page,
+which discussed the method of fixing the bug in
+<a href="http://brianbuccola.github.io/blog/2012-11-28-latex-math-in-octopress.html#fix-right-click-bug">the fifth point</a>.  In the beginning of Buccola’s
+post, he said that he had set it up with the help of some Octopress
+users, particularly the author of <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em></a>.  I guess
+<em>Carpe diem</em> is the first Octopress site that manages to include
+MathJax <em>without</em> the bug.</p>
+
+<h3 id="final-result">Final result</h3>
+
+<p><img src="/images/posts/OctopressHTTPS/GrayPadlock.png" alt="A gray padlock" title="Firefox's gray padlock for encrypted connection" class="nobd" /> appeared on the left of the
+address bar.  It indicates that the connection to this blog is
+encrypted, and the contents, especially the active ones, are safe to
+be shown.</p>
+
+<p><img src="/images/posts/OctopressHTTPS/GrayPadlockMsg.png" title="The gray padlock for this blog" /></p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>Make use of official documentation</p>
+
+    <p>Even though there’s <em>so many mannuals</em> and it’s <em>impossible</em> to
+ <em>read them all</em><sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  I should try to <em>find the useful parts</em> and
+ <em>understand the contents that are within my level</em>.</p>
+  </li>
+  <li>
+    <p>Consult Google</p>
+
+    <p>If there’s someone who has already come over the problem that I’m
+ facing with, it can be more quickly solved.</p>
+  </li>
+  <li>
+    <p>Give up if too <em>much</em> time have been spent and the progress is
+<em>little</em></p>
+
+    <p>In the future, it is possible that others will develop some better
+ methods in doing things.  The exchange of ideas on the Internet
+ will help.</p>
+  </li>
+  <li>
+    <p>Use <abbr title="HTTP Secure">HTTPS</abbr> to browsing web for better information security</p>
+
+    <ul>
+      <li>To avoid the notorious <abbr title="man-in-the-middle">MITM</abbr> attacks.</li>
+      <li>To prevent eavesdropping and surveillance.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<!-- vim:se tw=70: -->
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://www.wisegeek.org/what-is-the-difference-between-http-and-https.htm" title="wiseGEEK's answer">HTTP vs HTTP<strong>S</strong></a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="/blog/2014/06/05/firefox-security-plugins/"><em>Firefox Security Plugins</em></a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p><a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em>’s method (see code block in “item 2”)</a>;
+and my <code>source/_includes/custom/head.html</code> at <a href="https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef7/source/_includes/custom/head.html#L6-L20" title="My code for embedding MathJax in the past">8f72ef7</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p><code>source/_posts/2014-03-16-latex-template-for-essays.markdown</code> at
+commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3">70ba670</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3">70ba670</a> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+
+      <p><a href="http://user.frdm.info/ckhung/a/c013.php" title="Source: 習於略讀各種文件">“Get used to skimming through documents” from Prof. C.K. Hung</a> <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-06-05T20:25:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:25 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/information-security/'>information security</a>, <a class='category' href='/blog/categories/mathjax/'>mathjax</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/06/05/secure-file-removal/" title="Previous Post: Secure File Removal">&laquo; Secure File Removal</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/06/05/firefox-security-plugins/" title="Next Post: Firefox Security Plugins">Firefox Security Plugins &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Commits With fugitive.vim on Windows]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/"/>
+    
+    <updated>2014-09-03T00:48:13+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
+provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
+<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
+
+<p>Then I tried running <code>git commit</code> in 
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="‘icon’ ‘Git Bash icon’" >,
+but it’s “aborting commit due to empty commit message”.</p>
+
+<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
+gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
+The <code>-w</code> flag in the commands for setting other editors as the default
+editor for Git is the key for the above quoted message.</p>
+
+<p>I tried to solve this problem by reading Vim’s offical manual about
+<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
+in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
+
+<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
+<code>:Gcommit</code> in Vim, and use
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="‘icon’ ‘Git Bash icon’" >.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Clang Complete on Ubuntu 14.04]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2014-08-29T13:44:03+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
+following problem.</p>
+
+<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
+Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
+ contains libclang?
+    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
+tory. To provide a path to libclang use Config.set_library_path() or Config.set_
+library_file().
+
+Press ENTER or type command to continue
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “loading libclang failed”, and skimmed two results.  The
+first one was an clang complete issue on GitHub.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, at
+first glance, the problem was on Ubuntu <em>13.10, not 14.04</em>, and the
+error messages <em>didn’t</em> resemble the above message.  The second one
+was a Stack Overflow question.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  From the first answer, I knew that
+I need to check if <code>libclang1</code> package was installed.  <code>dkpg -l | grep
+clang</code> told me that I’d got clang.  I read the second answer, and
+viewed the list of files in <code>/usr/lib/</code>.  There’s <em>no</em> folders whose
+name started with <code>x86</code>, and <em>no</em> file called <code>libclang.so.1</code> in each
+sub-folder.  Looking at the issue <em>again</em> on GitHub, I found out how
+to make use of the information from both sites.</p>
+
+<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
+</code></pre>
+
+<p>To avoid problems, I <em>didn’t</em> set Vim global variable
+<code>clang_library_path</code>.</p>
+
+<p>I <em>didn’t</em> know whether <code>.1</code> should be appended to the end of
+<code>libclang.so</code>.  Finally, I <em>didn’t</em> do so, and the plugin just
+<em>worked</em>.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See clang complete <a href="https://github.com/Rip-Rip/clang_complete/issues/370">issue #370</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See Stack Overflow <a href="http://stackoverflow.com/q/22733943" title="Where is libclang.so?">question 22733943</a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Search and Replace in Vim's Visual Mode]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/16/search-and-replace-in-vims-visual-mode/"/>
+    
+    <updated>2014-06-16T22:45:43+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/16/search-and-replace-in-vims-visual-mode</id>
+    
+      <content type="html"><![CDATA[<p>If you want to select some lines of text and search for a word to
+replace in Vim, many users will do it like this:</p>
+
+<ol>
+  <li>Use <code>v</code> to do the selection.</li>
+  <li>Press <code>:</code> to start inputting an editor command.</li>
+  <li>Use <code>s/&lt;pat&gt;/&lt;text&gt;/g</code> to search and replace text.</li>
+</ol>
+
+<p>Observation: <code>:'&lt;,'&gt;s</code> “applies to whole lines”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How about an arbitrary visual selection?</strong></p>
+
+<p>According to a Vim tips found in the footnote, the answer is quite
+simple—insert the <code>\%V</code> atom at the beginning of the search pattern.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Search and replace in a visual selection—<a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection">Vim Tips Wiki</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Vim Lover Page]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/03/02/a-vim-lover-page/"/>
+    
+    <updated>2014-03-02T14:39:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/03/02/a-vim-lover-page</id>
+    
+      <content type="html"><![CDATA[<p>I’ve found <a href="http://wiki.hotoo.me/Vim.html">a useful page</a> introducing
+a Vim lover.  It consists of plenty of links to many useful resources.
+Unfortunately, for Vim users who <em>can’t</em> understand Chinese, I’m not
+sure if they can understand the contents of the page.  I hope Google
+Translation can help.  Otherwise, they can also find some hyperlinks
+which take them to other English websites.</p>
+
+<!-- vim:set tw=70 wrap spell: -->
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Reason for My VimRepress Installation Failure]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/02/04/vimrepress-installation-failure/"/>
+    
+    <updated>2014-02-04T14:11:58+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/02/04/vimrepress-installation-failure</id>
+    
+      <content type="html"><![CDATA[<p>In <a href="http://vincenttam.github.io/blog/2014/01/12/my-first-post-using-ultrablog-vim.html"><em>My First Post Using UltraBlog.vim</em></a>, I mentioned that I had tried using VimRepress. However, this plugin kept throwing errors like this.</p>
+
+<pre class="cli"><code class="UBMono">Confirm Delete [6]: First Post Using VimRepress? [yes/NO] :yes
+<span class="vimErr">Error detected while processing :
+Traceback (most recent call last):
+File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 41, in __check
+echoerr(&quot;something wrong: %s&quot; % e)
+File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 47, in &lt;lambda&gt;
+echoerr = lambda s: vim.command('echoerr &quot;%s&quot;' % s)
+vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s:user_input</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+</code></pre>
+
+<p>I tried browsing <code>vimrepress.py</code> starting from lines 41–50, and using something like <code>*</code>, but I couldn&#8217;t understand what it was. As you can see from the last paragraph of this post, I finally decided to switch to UltraBlog.vim.</p>
+
+<p>After reading the README of <a href="https://github.com/suan/vim-instant-markdown">vim-instant-markdown</a>, I can make a better <em>guess</em> now. I directly quote Suan&#8217;s words here.</p>
+
+<blockquote>
+    Make sure the ruby gems were installed under your default Ruby (i.e. if you&#8217;re using RVM, use gem install and NOT sudo gem install as that might cause the gems to be installed under a non-RVM Ruby)
+</blockquote>
+
+<p>Despite having a clue, I <em>won&#8217;t</em> switch back to Blogger since WordPress.com and UltraBlog.vim work together well on my computer.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+]]></content>
+    
+  </entry>
+  
+</feed>

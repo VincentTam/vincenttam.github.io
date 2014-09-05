@@ -1,0 +1,851 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="To use Vim in other computers, the official website of PortableApps has already provided users a satisfactory solution. The installation size is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/posts/14">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/23/my-experience-of-using-vim-js/">My Experience of Using Vim.js</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-23T23:56:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>11:56 pm</span></time>
+        
+           | <a href="/blog/2013/12/23/my-experience-of-using-vim-js/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/23/my-experience-of-using-vim-js/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/23/my-experience-of-using-vim-js/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To use Vim in other computers, the official website of PortableApps has already provided users <a href="http://portableapps.com/apps/development/gvim_portable">a satisfactory solution</a>. The installation size is about 28 MB (according to the released figure). If you won&#8217;t have it installed in a portable device and don&#8217;t want to download and install it into a new machine each time, maybe you can try <a href="http://coolwanglu.github.io/vim.js/web/vim.html">Vim.js</a>. However, I&#8217;ve found it slow, when compared to a Vim program.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/23/vi-key-bindings-in-emacs/">Vi Key Bindings in Emacs</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-23T23:40:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>11:40 pm</span></time>
+        
+           | <a href="/blog/2013/12/23/vi-key-bindings-in-emacs/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/23/vi-key-bindings-in-emacs/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/23/vi-key-bindings-in-emacs/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>From Wikipedia&#8217;s post on the Editor&#8217;s War, we can see some nicknames of GNU Emacs, such as &#8220;EMACS Makes All Computers Slow&#8221;, &#8220;Esc Meta Alt Ctrl Shift&#8221;, etc. I found the second one true. I tried using Viper, but it&#8217;s inconvenient to browse info files since the <code>&lt;C-]&gt;</code> button doesn&#8217;t work. As a result, I need to toggle Viper using <code>&lt;C-z&gt;</code> all the time. Nevertheless, it&#8217;s too inconvenient.  Maybe that&#8217;s because of my low level of Viper set (level 1), and there are other plug-ins that enables users to use Vi(m)&#8217;s key bindings in Emacs, but I&#8217;m tired of this sort of tedious work.</p>
+
+<p>After overcoming a steep slope in the very first part of the learning curve of a powerful tool, maybe you&#8217;ll find out that there&#8217;s some other more productive tool for doing the job. That&#8217;s not something new and that&#8217;s the reason for so many different tools to come up. For example, Vim is originally intended to be part of the shell, and you&#8217;ve spent hours to get a Vim plug-in for GDB integration (e.g. pyclewn). Finally you found out that you forgot that both Emacs and GDB are developed by GNU, and they are the early famous softwares from GNU, so they should work well together. Otherwise, how can GNU encourage users to use free softwares? Therefore, it&#8217;s sensible to expect that Emacs has a built-in support for GDB (and it does!).</p>
+
+<p><em>Hence, the best way is to be flexible and use suitable tools to do different jobs.</em></p>
+
+<p>After realising the use of both of the two most famous text editors for *nix users, it&#8217;s important for us to get use to them. As a Vim user, reading the official Emacs tutorial available on the homepage of Emacs, I&#8217;ve found out that it&#8217;s too long if what I need is to do some basic editing work. Some introductory web pages on elementary Emacs commands from some tertiary educational institutions can help some newbies of Emacs, but if you can link up new knowledge with any previously known ideas, it&#8217;ll be even better to refer to <a href="http://www.elmindreda.org/emacs.html">this post</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/13/writing-vims-output-to-files/">Writing Vim's Output to Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-13T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+        
+           | <a href="/blog/2013/12/13/writing-vims-output-to-files/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/13/writing-vims-output-to-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Changing environment variables in vimrc</h3>
+
+<p>Refer to <a href="http://vim.wikia.com/wiki/Environment_variables">Vim Wiki&#8217;s page on environment variables</a>. The tips uses paths in <em>*nix in the examples. However, for Win*</em>, some inexperienced users don&#8217;t know whether slashes or backslashes should be used. In fact, backslashes should be used, and the string should be enclosed by a pair of single quote (I don&#8217;t know if double quotes work.) Then things should run. If you&#8217;re unlucky and receive a runtime error in the next time you start Vim, then it may be due to the missing space characters around the equal sign.</p>
+
+<h3>Writing external commands to files</h3>
+
+<p>It&#8217;s easy! (<code>:r ![command]</code> will do.)</p>
+
+<h3>Writing variables to files</h3>
+
+<p>Use the <code>=</code> register. First get into normal mode, then type the following commands.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="c">&quot;=sin(1)p</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The <code>p</code> have to be typed before any further changes of contents. Otherwise, it may not work. For details, see <a href="http://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim">Unix &amp; Linux Stack Exchange question 8101</a>.</p>
+
+<h3>Writing internal commands to files</h3>
+
+<p>A forum post has answered my doubt. I redirect interested readers to <a href="http://objectmix.com/editors/786190-how-redirect-vim-internal-command-output-current-buffer.html">here</a>.</p>
+
+<h3>Quick reference lists of some easy Vim commands</h3>
+
+<ul>
+    <li>
+    <a href="http://www.catswhocode.com/blog/100-vim-commands-every-programmer-should-know">100 Vim commands every programmers should know</a>
+    </li>
+    <li>
+    <a href="http://php.dzone.com/articles/130-essential-vim-commands">130+ Essential Vim Commands</a>
+    </li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/12/omnicppcomplete-installation-for-dummies/">OmniCppComplete Installation for Dummies</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-12T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+        
+           | <a href="/blog/2013/12/12/omnicppcomplete-installation-for-dummies/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/12/omnicppcomplete-installation-for-dummies/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan&#8217;s <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">blog</a>.</em></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/12/omnicppcomplete-installation-for-dummies/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/choosing-a-font-for-gvim/">Choosing a Font for gVim</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T19:39:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:39 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/choosing-a-font-for-gvim/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/choosing-a-font-for-gvim/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/choosing-a-font-for-gvim/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Unclear difference in appearance between 1 with l, 0 with O can be a source of inconvenience for computer users. This summer, I&#8217;ve found <a href="http://hivelogic.com/articles/top-10-programming-fonts">this site</a> informative, but I quickly forgot it.</p>
+
+<p>Installation of many fonts in some popular Linux distributions can be done in GUI just like Win*, so I attempted to change my default font on Vim, and a picture is worth a thousand words.</p> 
+
+<p>The following command from <a href="http://vim.wikia.com/wiki/VimTip632">Vim Tips Wikia</a> will do: <code>:set guifont=[font-name]:h[font-size]</code>. (Escape the whitespace character with a backslash, i.e. use <code>\ </code> to represent a whitespace.)</p>
+
+<img src="/images/posts/GVimFont/gvim.png" title="fig1" alt="GVim GUI font changed">
+
+<p><small>GVim with Inconsolata 12pt</small></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/links-to-good-posts/">Links to Good Posts</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T19:03:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:03 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/links-to-good-posts/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/links-to-good-posts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/links-to-good-posts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Taglist installation</h3>
+
+<p><a title="Taglist" href="http://github.com/vim-scripts/taglist.vim">Taglist</a> is a popular Vim plugin and it requires <a title="Exuberant Ctags" href="http://ctags.sourceforge.net/">Ctags</a>. c9s has given <a href="http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html">a detailed description of the installation of Ctags</a>. I&#8217;ve found out that putting the whole <code>ctags58</code> folder under the <code>C</code> drive and adding it to the <code>PATH</code> environment variable will do. You don&#8217;t need to copy <code>ctags.exe</code> under the <code>C</code> drive or <code>$VIMRUNTIME</code>.</p>
+
+<p>TheGeekStuff has <a href="http://vim.wikia.com/wiki/VimTip632">a web page</a> which described numerous powerful functions of Taglist.</p>
+
+<h3>Some VIMRC settings</h3>
+
+<p>I&#8217;ve learnt something about vim keyboard mappings by reading <a href="http://alexanderle.com/blog/2012/my-vimrc.html">Le&#8217;s post on customized VIMRC settings</a>.Using this knowledge, I can do something that I couldn&#8217;t do last month.</p>
+
+<h3>Automatic completion of unclosed braces/brackets</h3>
+
+<p>Unmatched brackets/braces are the cause of a host of syntax errors in source code. Some novices probably spend hours to find it out, and then say something that their high school teachers will never approve. <a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">A Vim Tips</a> contains a simple solution that enable users to get the job done. However, I&#8217;m not accustomed to its differences with Vim-$\rm \LaTeX$, so I decided to add the following lines of code into my VIMRC file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">inoremap</span> <span class="p">(</span>      <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">(&lt;</span>CR<span class="p">&gt;</span>  <span class="p">(&lt;</span>CR<span class="p">&gt;)&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">((</span>     <span class="p">(</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">()</span>     <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> [      []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> [<span class="p">&lt;</span>CR<span class="p">&gt;</span>  [<span class="p">&lt;</span>CR<span class="p">&gt;</span>]<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> [[     [
+</span><span class='line'><span class="nb">inoremap</span> []     []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> {      {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> {<span class="p">&lt;</span>CR<span class="p">&gt;</span>  {<span class="p">&lt;</span>CR<span class="p">&gt;</span>}<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> {{     {
+</span><span class='line'><span class="nb">inoremap</span> {}     {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just like $\rm \LaTeX$-Suite.</p>
+
+<h3>New keyboard shortcuts of my gVim</h3>
+
+<p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for toggling NERDTree and Taglist respectively.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F3<span class="p">&gt;</span>   :NERDTreeToggle
+</span><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F12<span class="p">&gt;</span>  :TlistToggle
+</span></code></pre></td></tr></table></div></figure>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/vim-file-name-modifier/">Vim File Name Modifier</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T13:19:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:19 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/vim-file-name-modifier/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/vim-file-name-modifier/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/vim-file-name-modifier/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in <code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is <code>extension-removal</code>. The list maybe too detailed, especially for users who don&#8217;t have much time to learn it. Bram Moolenaar, the father of Vim, once said that trying to learn all the things in his lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see habit 7). (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.) Fortunately, there&#8217;re some examples below the list. I found some useful in the following cases.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/vim-file-name-modifier/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/something-about-win-batch-files/">Something About Win* Batch Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T11:10:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:10 am</span></time>
+        
+           | <a href="/blog/2013/12/11/something-about-win-batch-files/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/something-about-win-batch-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Get drive letter</h3>
+
+<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn&#8217;t work, unless you do the tedious modifications every time.</p>
+
+<ul>
+    <li>Method 1: <code>set var=%cd:~0,3%</code></li>
+    <li>Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></li>
+</ul>
+
+<h3>Alias on Win*</h3>
+
+<p>If you&#8217;re familiar with *nix and use M\$-DOS, you may unconsciously type the <code>ls</code> command in DOS; or if you have a portable version of a software and you need to launch it by command, you will discover the difference between the name of the programs—one has <code>portable</code> at the end while the other one doesn&#8217;t.</p>
+
+<p>Copy and paste the following lines of code into any text editor.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class='line'>[command] %*
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
+
+<p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
+
+<p>Note: <code>%</code> <em>in Win*</em> is the same as <code>$*</code> in *nix.<sup id="fnref-43-1"><a href="#fn-43-1" rel="footnote">1</a></sup></p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn-43-1">
+<a href="http://windowsitpro.com/windows-server/how-can-i-output-all-batch-files-arguments">How can I output all of a batch file&#8217;s arguments?</a>&#160;<a href="#fnref-43-1" rev="footnote">&#8617;</a>
+</li>
+
+</ol></div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Using Vim Keystrokes in Web Browser</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T04:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:01 am</span></time>
+        
+           | <a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Vim fans will be delighted and amazed for knowing this the first time: Vimperator is the plugin for Vim-like behaviour on Firefox. It&#8217;s the original one and it focuses on usability. Following the hints with <code>f</code> is great! Here&#8217;re some useful keystrokes:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/">Fast Compilation and Execution of Source Code</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T03:23:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:23 am</span></time>
+        
+           | <a href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/fast-compilation-and-execution-of-source-code/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Possible software: Vim.</p>
+
+<h2>Why?</h2>
+
+<p>In a heavy IDE, you need to click a button or some keyboard shortcuts.  Unless you frequently use the keystrokes, you&#8217;ll likely forget them since they are usually non-transferable IT skills.</p>
+
+<p>It&#8217;s different in Vim. Since it&#8217;s an F/OSS programmable editor, you can add whatever plugins and extra functions you like. You can adjust you .vimrc file so that the editing environment won&#8217;t have too many <em>undesirable</em> changes.</p>
+
+<p>Vim is lightweight. If your computer collapses (or even gives you the notorious BoD before RiP) due to loading IDE, Vim is your choice since it may still work with some good design and functions.</p>
+
+<p>What are the good things?</p>
+
+<ol>
+<li>Diminished role of mouse and more use of keyboard due to modes</li>
+<li>Syntax highlighting and file type detection</li>
+</ol>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/15">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/13">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (8)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (10)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (28)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/">Set Transparent Background Using ImageMagick</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/08/31/octopress-codeblock-syntax/">Octopress Codeblock Syntax</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

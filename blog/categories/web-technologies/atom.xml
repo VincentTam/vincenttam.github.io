@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Zooming SVG in Web Browsers]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/"/>
+    
+    <updated>2014-08-02T18:07:08+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers</id>
+    
+      <content type="html"><![CDATA[<p>In my post about proving Pappus’s Hexagon Theorem<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I inserted some
+SVG graphics to illustrate the ideas.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600"><br />
+<small>An example illustrating the difficulty of enlarging an SVG
+graphics for ordinary users.  The image is borrowed from the post
+about proving Pappus’s Hexagon Theorem.<br />
+<a href="/downloads/code/PappusHexThm4.tex">$\rm \LaTeX$ Source code</a></small></p>
+
+<p><strong>How can one enlarge SVG images <em>only</em> within web browsers?</strong></p>
+
+<object type="image/svg+xml" data="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg" width="800" height="600">
+  Your browser does not support SVG
+</object>
+<p><small>A working example showing the zooming, panning and dragging
+functions of SVG graphics.  Drag the figure to translate it, and
+scroll to enlarge/reduce it.<br />
+<a href="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg">Source code</a></small></p>
+
+<!-- more -->
+
+<p>Thanks to Andrea Leofreddi, SVG graphics can now be enlarged <em>within</em>
+browsers.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>The instructions on Leofreddi’s blog post is quite easy to understand.
+Then, I tried his script.</p>
+
+<p>First, I copied lines 4–5 of the source code of official demo (a
+tiger) to my file.  (i.e. <code>PappusHexThm4.svg</code>)  I also closed the <code>&lt;g
+id="viewport" transform="translate(200,200)"&gt;</code> tag at the bottom of my
+file.  However, I saw <em>nothing</em> in a web browser.</p>
+
+<p>Second, I deleted <code>transform="translate(200,200)"</code>.  What I could see in
+the web browser was a small picture.  I <em>couldn’t</em> use the scroll
+wheel on the mouse to enlarge the figure.  I dragged the picture to the
+right, but part of the image is truncated after the drag.</p>
+
+<p>Third, if I remove <code>width="152.832pt" height="98.239pt" viewBox="0 0
+152.832 98.239"</code>, then it’s done!</p>
+
+<hr />
+<p>(Added on AUG 03, 2014)</p>
+
+<p>Yesterday, I <em>didn’t</em> know the code for enlarging an SVG image
+embedded by an <code>&lt;object&gt;</code> tag.  As a result, the loaded image was
+<em>too</em> small.  I’ve just checked out a guide on <abbr title="Mozilla Developer Network">MDN</abbr> about the
+<code>transform</code> attribute of <code>&lt;svg&gt;</code> tags<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, and now I know how to make
+it bigger by the function <code>matrix(&lt;a&gt;,&lt;b&gt;,&lt;c&gt;,&lt;d&gt;,&lt;e&gt;,&lt;f&gt;)</code>.</p>
+
+<p>Moreover, Chrome supports the scaling of SVG graphics just like the
+scaling of other HTML elements.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jul 12. <em>Pappus’s Hexagon Theorem</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Leofreddi, A. 2009, Dec 8. <em>SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library</em>. Retrieved from <a href="http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/">http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>MDN. 2014, Feb 23. <em>Transform</em>. Retrieved from <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform">https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Use Lynx Browser]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/07/use-lynx-browser/"/>
+    
+    <updated>2014-06-07T13:01:57+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/07/use-lynx-browser</id>
+    
+      <content type="html"><![CDATA[<h2 id="why">Why?</h2>
+
+<p>This morning, I saw <a href="http://www.searchenginepeople.com/blog/see-what-google-sees.html" title="Use This Browser To See What Google Does">a post on Search Engine People Blog</a>,
+and decided to make a summary of it, so that I <em>don’t</em> have to think
+of the reasons for using <a href="http://lynx.isc.org/" title="Lynx Browser">Lynx</a> when I’m asked for that next time.</p>
+
+<h3 id="past-usage">Past usage</h3>
+
+<ul>
+  <li>Lack of <abbr title="Graphical User Interface">GUI</abbr> web browsers like <a href="https://www.mozilla.org/en-US/firefox/new/" title="Mozilla Firefox">Firefox</a> and <a href="http://www.microsoft.com/en-us/download/internet-explorer.aspx" title="Microsoft Internet Explorer">Internet Explorer</a></li>
+  <li>Text browsers were capable of loading contents quickly, if there’s
+  <em>no</em> connection problem.</li>
+  <li>The Internet wasn’t fast enought for extensive transmission of
+  images and flash animations.</li>
+</ul>
+
+<h3 id="present-usage">Present usage</h3>
+
+<ul>
+  <li>“You really love text and hate images” :)</li>
+  <li>“<strong>For marketing to search engines</strong>”
+    <ul>
+      <li>“<em>See what <abbr title="Search Engine Optimizers">SEOs</abbr> see</em>”: they use browsers similar to Lynx.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><small>Remarks: Due to my laziness, reasons for search engines to use
+text browsers, instead of “a modern browser”, are omitted.</small></p>
+
+<!-- more -->
+
+<h2 id="how">How?</h2>
+
+<p>For GNU/Linux, type the command for installing Lynx.  For</p>
+
+<h3 id="ubuntudebian-based-distros">Ubuntu/Debian-based Distros</h3>
+
+<pre class="cli"><code class="UBMono">$ sudo apt-get install lynx
+</code></pre>
+
+<h3 id="fedora">Fedora</h3>
+
+<pre class="cli"><code>$ su
+# yum install lynx
+</code></pre>
+
+<h3 id="microsoft-windows">Microsoft Windows</h3>
+
+<p>Refer to the section <em>Lynx Links</em> in the post on Search Engine People
+Blog.</p>
+
+<h2 id="what-can-i-see">What can I see?</h2>
+
+<p>This is a screenshot taken in Linux text mode.</p>
+
+<p><img class="fancybox" src="/images/posts/Lynx/Screenshot.png" title="‘Lynx browser in Linux text mode’ ‘fig1’" ></p>
+
+<h2 id="some-useful-keys">Some useful keys</h2>
+
+<h3 id="help">Help</h3>
+
+<ul>
+  <li>Use <code>k</code> for keymap</li>
+  <li>Use <code>h</code> or <code>?</code> for help</li>
+</ul>
+
+<h3 id="browsing">Browsing</h3>
+
+<ul>
+  <li>Use <code>g</code> for inputting URL</li>
+  <li>Use <code>G</code> for inputting URL similar to the one of the current page.</li>
+  <li>Use <code>l</code> for displaying URLs of hyperlinks.</li>
+  <li>Use <code>&lt;Backspace&gt;</code> for displaying browsing history.</li>
+  <li>Use <code>\</code> to view the source code</li>
+</ul>
+
+<h3 id="searches">Searches</h3>
+
+<ul>
+  <li>Use <code>/</code> for forward search</li>
+  <li>Use <code>n</code> for repeating search forwardly</li>
+  <li>Use <code>N</code> for repeating search backwardly</li>
+</ul>
+
+<h2 id="how-to-save-the-pages">How to save the pages?</h2>
+
+<ul>
+  <li>Source code
+    <ul>
+      <li>Inside Lynx
+        <ol>
+          <li>Highlight the link using the cursor</li>
+          <li>Press <code>d</code> to download the source code</li>
+        </ol>
+      </li>
+      <li>Outside Lynx<br />
+  Use the following command</li>
+    </ul>
+
+    <pre class="cli">$ lynx -source [URL]</pre>
+  </li>
+  <li>
+    <p>Formatted output</p>
+
+    <pre class="cli">$ lynx -dump [URL]</pre>
+  </li>
+</ul>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Google’s Homepage Downloaded with <code>lynx -dump</code>  (LynxDumpGoogle.txt)</span> <a href='/downloads/code/LynxDumpGoogle.txt'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>   Search [1]Images [2]Maps [3]Play [4]YouTube [5]News [6]Gmail [7]Drive
+</span><span class='line'>   [8]More »
+</span><span class='line'>   [9]Web History | [10]Settings | [11]Sign in
+</span><span class='line'>
+</span><span class='line'>   Google
+</span><span class='line'>
+</span><span class='line'>   _______________________________________________________
+</span><span class='line'>   Google Search  I&#39;m Feeling Lucky                          [12]Advanced search
+</span><span class='line'>                                                             [13]Language tools
+</span><span class='line'>
+</span><span class='line'>   [14]Advertising Programs     [15]Business Solutions     [16]+Google
+</span><span class='line'>    [17]About Google     [18]Google.com.hk
+</span><span class='line'>
+</span><span class='line'>                        © 2013 - [19]Privacy &amp; Terms
+</span><span class='line'>
+</span><span class='line'>References
+</span><span class='line'>
+</span><span class='line'>   1. http://www.google.com/imghp?hl=en&amp;tab=wi
+</span><span class='line'>   2. http://maps.google.com/maps?hl=en&amp;tab=wl
+</span><span class='line'>   3. https://play.google.com/?hl=en&amp;tab=w8
+</span><span class='line'>   4. http://www.youtube.com/?hl=en&amp;tab=w1
+</span><span class='line'>   5. http://news.google.com/nwshp?hl=en&amp;tab=wn
+</span><span class='line'>   6. https://mail.google.com/mail/?tab=wm
+</span><span class='line'>   7. https://drive.google.com/?tab=wo
+</span><span class='line'>   8. http://www.google.com/intl/en/options/
+</span><span class='line'>   9. http://www.google.com/history/optout?hl=en
+</span><span class='line'>  10. http://www.google.com/preferences?hl=en
+</span><span class='line'>  11. https://accounts.google.com/ServiceLogin?hl=en&amp;continue=http://www.google.com/%3Fhl%3Den
+</span><span class='line'>  12. http://www.google.com/advanced_search?hl=en&amp;authuser=0
+</span><span class='line'>  13. http://www.google.com/language_tools?hl=en&amp;authuser=0
+</span><span class='line'>  14. http://www.google.com/intl/en/ads/
+</span><span class='line'>  15. http://www.google.com/services/
+</span><span class='line'>  16. https://plus.google.com/116899029375914044550
+</span><span class='line'>  17. http://www.google.com/intl/en/about.html
+</span><span class='line'>  18. http://www.google.com/setprefdomain?prefdom=HK&amp;prev=http://www.google.com.hk/&amp;sig=0_E8LrWwWohWMriV1EcfDOmEFgqE4%3D
+</span><span class='line'>  19. http://www.google.com/intl/en/policies/
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<!-- vim:se tw=70: -->
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing jQuery Image Popup]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/03/30/testing-jquery-image-popup/"/>
+    
+    <updated>2014-03-30T01:50:50+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/03/30/testing-jquery-image-popup</id>
+    
+      <content type="html"><![CDATA[<p>What’s below is a small picture.  The words inside the screenshot
+<em>can’t</em> be displayed.  Users may right-click on the picture and select
+“View Image”, if there’s a script that enables a magnified image to
+show up right after a user has clicked on the image, it’ll be <em>more
+convenient</em> for the user.</p>
+
+<p><img class="fancybox" src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" title="‘My Big Image’ ‘fig1’" ></p>
+
+<p>I tried following <a href="http://goo.gl/5qCaj">Clapper’s guide</a>, but as I generate
+the site using <code>rake</code>, I got two errors. The first one was about CSS,
+while the second one was about one of the two required Ruby gems.
+(Namely, <a href="http://goo.gl/qeN28">mini_magick</a> and <a href="http://goo.gl/0oZy6">Erubis</a>.)</p>
+
+<!-- more -->
+
+<p>For the first error, I got something like <code>Undefined mixin
+'centered'</code>, and so I googled <code>octopress "Undefined mixin
+'centered'"</code>.  Using this query string, no match was returned.
+Instead, Google performed a similar search using a query string
+<em>without the double quotes</em>.  Among the search results, I found an
+article also written by Clapper.<sup id="fnref:toc"><a href="#fn:toc" class="footnote">1</a></sup>  I’ve known that I also need to
+download <code>sass/custom/_mixins.scss</code>
+<a href="http://goo.gl/qvYPRI">from his GitHub repo</a>.</p>
+
+<p>For the second error, I’ve realised that I forgot to include those
+gems in <code>Gemfile</code>, because I lacked knowledge in Ruby, and the guide
+didn’t mention that.  In fact, adding the following two lines into
+<code>Gemfile</code> solved the problem.</p>
+
+<pre><code>gem 'mini_magick'
+gem 'erubis'
+</code></pre>
+
+<p><del>I don’t know why.  The plugin doesn’t work, but</del> I can get
+jQuery working here.  The following script from Clapper doesn’t work
+for me.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>jQuery on the Google CDN</span><a href='http://goo.gl/hOF4mR'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="c1">// Revert jQuery&#39;s &#39;$&#39; alias, to avoid clashes with ender.js. NOTE:</span>
+</span><span class='line'>  <span class="c1">// Use</span>
+</span><span class='line'>  <span class="c1">// jQuery(...), instead of $(...) from here on.</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The <code>noConflict</code> method disabled my button for hiding the sidebar on
+the right hand side.  <del>Anyways, I gave up trying this
+plugin.</del>  Before trying <del>it again</del> more things, I think
+I should have more knowledge in jQuery first.</p>
+
+<p>To get things work, I played some <em>dirty and little</em> tricks on
+<code>plugins/img_popup.html.erb</code>.  Since some features of Octopress’s
+codeblock are <em>not</em> working<sup id="fnref:no_start_num"><a href="#fn:no_start_num" class="footnote">2</a></sup>, I just manually include
+part of the code.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My adaptations of the plugin</span><a href='http://goo.gl/53fIEZ'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class='js+erb'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
+</span><span class='line'>    <span class="nx">autoOpen</span><span class="o">:</span>  <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">modal</span><span class="o">:</span>     <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">draggable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">minWidth</span><span class="o">:</span>  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">full_width</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;,</span>
+</span><span class='line'>    <span class="nx">minHeight</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">full_height</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">if</span> <span class="nx">title</span> <span class="o">-%&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">title</span><span class="o">:</span>     <span class="err">“</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">title</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">,</span>
+</span><span class='line'>    <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%</span> <span class="nx">end</span> <span class="o">-%&amp;</span><span class="nx">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">show</span><span class="o">:</span>      <span class="err">‘</span><span class="nx">scale</span><span class="err">’</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">hide</span><span class="o">:</span>      <span class="err">‘</span><span class="nx">scale</span><span class="err">’</span>
+</span><span class='line'>  <span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="err">‘</span><span class="nx">open</span><span class="err">’</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>What I’ve actually done in the above code block is to replace <code>jQuery</code>
+with <code>$</code>.  At that time, if I ran <code>rake generate</code>, Octopress let me
+pass.  However, when I locally previewed the result, clicking on the
+picture <em>couldn’t</em> trigger a popup window showing a larger picture.</p>
+
+<p>I tried comparing the generated HTML source code of my site and that
+of Clapper’s site unproductively.  I decided to give up, and wrote a
+paragraph on this.  Then I removed the related files and sections of
+code.  Since I was running <code>rake preview</code>, I pressed <code>&lt;F5&gt;</code> and
+expected to see a <em>static</em> picture.  I was surprised to see <em>two</em>
+pictures.  The lower one was a static picture that I had seen for
+numerous times during this test.  The uppper one is smaller, and as I
+clicked on it, a popup window showed up.  This result amazed me.  As a
+result, I decided to grab back the files from Clapper’s GitHub repo,
+and studied his Sass settings.</p>
+
+<p>I re-worked the whole thing again, and tried adapting Clapper’s Sass
+rules to mine, but I <em>couldn’t</em> manage to create the popup window
+again.  Then I tried to reduce the complexity of the relations of the
+SCSS files by reducing the amount of files.  I appended the following
+lines of code to <code>sass/screen.scss</code>. (You may refer to
+<a href="http://goo.gl/BNqlL7">my original file</a>.)</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My <em>temporary</em> <code>sass/screen.scss</code> </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="err">“</span><span class="n">compass</span><span class="err">”</span><span class="p">;</span>
+</span><span class='line'><span class="k">@include</span><span class="nd"> global-reset</span><span class="p">;</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">colors</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">fonts</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">layout</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">base</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">partials</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">plugins</span><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;*/&lt;/</span><span class="nt">em</span><span class="o">&gt;</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">styles</span><span class="err">”</span><span class="o">;</span>
+</span><span class='line'><span class="o">/*</span> <span class="nt">I</span> <span class="nt">appended</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">lines</span><span class="nc">.</span> <span class="o">*/</span>
+</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">mixins</span><span class="err">”</span><span class="o">;&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$base2</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">60</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'>    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="nc">.caption</span> <span class="p">{</span>
+</span><span class='line'>	<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.screen</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.illustration</span> <span class="p">{</span>
+</span><span class='line'>        <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I did something strange: <em>while <code>rake preview</code> was running</em>, in my
+<code>sass/screen.scss</code>, I commented the line <code>@import custom/mixins</code>.  One
+would expect I got error due to the line <code>@include centered(100%)</code>.
+Although the Solarized theme was gone, the image popup window was
+<em>back</em>.  Without changing other lines of code, I repeated the process
+for a few times, and discovered that if <code>@import custom/mixins</code> was
+<em>gone</em>, then the popup window was <em>back</em>.  It was important for me
+<em>not to stop the <code>rake preview</code> command</em>. Otherwise, the command <code>rake
+generate</code> would <em>fail</em> me.  I wondered how these two lines could
+coexist.  I finally noticed that the <code>screen</code> class was <em>hidden</em> due
+to <code>display: none;</code>!  I commented that line and imported
+<code>sass/custom/_mixins.scss</code>, then the two images are <em>back</em>!</p>
+
+<p>This time, in order to find out useful information such as the class
+name and the id of relevant HTML elements, I used Firefox to quickly
+inspect the code.  Finally, I found out that for pictures that
+<em>couldn’t</em> trigger a popup window, it was inside a <code>&lt;div&gt;</code> container
+of classes <code>illustration</code> and <code>print</code>, and there’s <em>another</em> image in
+<em>another</em> <code>&lt;div&gt;</code> container of classes <code>imgpopup</code> and <code>screen</code>.
+However, it didn’t show up because of the line <code>display: none;</code> inside
+the <code>screen</code> class.  Looking at Clapper’s Sass settings again on his
+GitHub repo, I eventually have a clue on the two SCSS code blocks in
+Clapper’s blog post about his Octopress image popup plugin.</p>
+
+<p>The <em>true</em> reason for my failure in creating the image popup window at
+the beginning is on line 20 of the code block below: it should be
+<code>print</code> instead of <code>screen</code> since it’s a user’s custom Sass rule for
+the display on the web browser. (i.e. <em>screen</em>), and we want to <em>hide</em>
+the static picture, which is for printing.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Correct <code>sass/custom/_screen.scss</code></span><a href='http://goo.gl/Vw52BS'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">80</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
+</span><span class='line'>    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+</span><span class='line'>    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">80</span><span class="kt">%</span><span class="p">);</span>
+</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">pre</span><span class="o">&gt;&lt;</span><span class="nt">code</span><span class="o">&gt;</span><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class='line'><span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span> <span class="p">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">code</span><span class="o">&gt;&lt;/</span><span class="nt">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.print</span> <span class="p">{</span> <span class="c1">// It should be &lt;em&gt;print&lt;/em&gt;, instead of &lt;em&gt;screen&lt;/em&gt;.</span>
+</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>In Clapper’s guide, the SCSS code block below the above one should be
+included in <code>sass/custom/_print.scss</code>.  Then, a new file
+<code>sass/print.scss</code> is created.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span><code>sass/screen.scss</code> </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="err">“</span><span class="n">custom</span><span class="o">/</span><span class="n">print</span><span class="err">”</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<hr />
+
+<!-- vim:set tw=70:wrap: -->
+<div class="footnotes">
+  <ol>
+    <li id="fn:toc">
+      <p><a href="http://goo.gl/hOF4mR">http://goo.gl/hOF4mR</a> <a href="#fnref:toc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:no_start_num">
+      <p><a href="http://goo.gl/o5IeWk">http://goo.gl/o5IeWk</a> <a href="#fnref:no_start_num" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[EMACS Key Bindings in Vimperator?]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/02/04/emacs-key-bindings-in-vimperator/"/>
+    
+    <updated>2014-02-04T20:54:05+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/02/04/emacs-key-bindings-in-vimperator</id>
+    
+      <content type="html"><![CDATA[<p>I&#8217;ve written <a href="http://vincenttam.github.io/blog/2013/12/11/using-vim-keystrokes-in-web-browser/" title="Using Vim Keystrokes in Web Browser">a post about Vimperator</a>, and also <a href="http://vincenttam.github.io/blog/2013/12/23/vi-key-bindings-in-emacs/" title="Vi Key Bindings in Emacs">another one about Viper</a>. However, I&#8217;ve <em>never</em> seen web pages that introduce the following Vimperator insert mode commands written by fans of Vim or Vimperator.</p>
+
+<ul>
+    <li>Typing <code>&lt;C-a&gt;</code> moves the cursor to the beginning of the line.</li>
+    <li>Typing <code>&lt;C-e&gt;</code> moves the cursor to the end of the line.</li>
+    <li>Typing <code>&lt;C-k&gt;</code> removes the characters <em>after</em> the cursor.</li>
+</ul>
+
+<p>They behave <em>exactly</em> like the keyboard commands in GNU Emacs!</p>
+
+<p>In my opinion, they&#8217;re just behaving like the commands used in a *nix terminal. Anyways, I&#8217;ve learnt some new commands, no matter where they&#8217;re used. For a Vim user, it <em>won&#8217;t</em> hurt to take the official tutorial of Emacs since they can applied once you&#8217;re in an Info page. For example, if you want to scroll down by one screen in an Info document, you can issue the command <code>&lt;C-v&gt;</code>. To reverse the change, you can type <code>&lt;M-v&gt;</code>.</p>
+
+<p>I end this post with <code>&lt;C-j&gt;</code>, though its behaviour in Emacs differs from the behaviour in Vimperator. It&#8217;s just another way for using the search engine: moving the cursor to the search box at the top right-hand corner.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Firefox's Markdown Viewer]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/"/>
+    
+    <updated>2014-02-04T17:10:36+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer</id>
+    
+      <content type="html"><![CDATA[<p>This morning, I&#8217;ve found a Firefox Add-on called <a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>. As its name suggests, it&#8217;s a Firefox plugin that enables users to view Markdown documents. The screenshot provided on the home page of the add-on illustrates that it works on M\$ Win*. How about GNU/Linux? I clicked the button and installed the plugin. After that, I used <code>:restart</code> in Vimperator to see what happened if I used Firefox to view a local Markdown file with extension name <code>.md</code>.</p>
+
+<p>It turned out that nothing happened! With Lai&#8217;s review titled <em>Work on Linux</em>, I figured out what to do. After looking at his suggested code for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it and it worked. Critical readers will then ask about the way to include multiple file extensions.</p>
+
+<p>Browsing the code with <code>#</code> in the RDF file helps. Here&#8217;s what my results.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;rdf:description</span> <span class="na">rdf:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span> <span class="na">nc:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span> <span class="na">nc:editable=</span><span class="s">&quot;true&quot;</span> <span class="na">nc:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;&lt;/rdf:description&gt;&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xls<span class="nt">&lt;/nc:fileextensions&gt;</span>
+</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xlb<span class="nt">&lt;/nc:fileextensions&gt;</span>
+</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xlt<span class="nt">&lt;/nc:fileextensions&gt;</span>
+</span><span class='line'><span class="nt">&lt;nc:handlerprop</span> <span class="na">rdf:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>/RDF:Description<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than one</em> extension name for a Markdown file. However, a GNU/Linux user should <strong>never</strong> use <code>.md</code>.</p>
+
+<p>Finally, combining Lai&#8217;s and Cas&#8217; posts, I&#8217;ve come up with <a href="https://gist.github.com/VincentTam/8800268">a Gist.</a></p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+]]></content>
+    
+  </entry>
+  
+</feed>

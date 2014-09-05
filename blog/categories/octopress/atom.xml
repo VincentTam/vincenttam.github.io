@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-05T23:26:07+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (2)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/"/>
+    
+    <updated>2014-09-02T23:39:57+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2b/err.png" title="‘A compilation error’ ‘solved problem’" ></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>See Octopress issue #<a href="https://github.com/imathis/octopress/issues/413">413</a> for details.</p>
+
+<h3 id="method-1--draychou">Method 1 (@ DrayChou)</h3>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Add the following 2 lines in “C:\your\ruby\location\setup_environment.bat” </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="k">set</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF<span class="m">-8</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF<span class="m">-8</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>I’ve <em>only</em> tested the above two commands in the command prompt, and
+I’ve <em>never</em> touched <code>setup_environment.bat</code>.</p>
+
+<h3 id="method-2--robatron">Method 2 (@ robatron)</h3>
+
+<p>I now use this method.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s much simpler than the above
+one—just add/set <code>encoding: UTF-8</code> in <code>_config.yml</code>.</p>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2b/ok.png" title="‘Successful compilation’ ‘solved problem’" ></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/f5847538b19e769b6fc05ef01bce3b8e88e3aa77/_config.yml#L53">f584753</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (1)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/"/>
+    
+    <updated>2014-09-02T15:22:25+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This Sunday, I tried to do something similar to what I did in
+May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
+I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
+that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
+easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2a/err.png" title="‘A compilation error’ ‘Screenshot of problem’" ></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I used the relevant part of the error message to search for websites
+describing similar/related problems.  Luckily, I found one in <em>Eaten
+by Grues</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>I manually created a batch file in the <em>same</em> folder of
+<code>python.exe</code>.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>python2.bat </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class='line'>python %*
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>The raison d’être of the trailing <code>%*</code> is explained in
+<a href="/blog/2013/12/11/something-about-win-batch-files/" title="Something About Win* Batch Files">one of my old posts</a>.</p>
+
+<p>Finally, the section <code>which: no python2 in (...)</code> <em>disappeard</em> after I
+locally generated the site again.</p>
+
+<p><img class="fancybox" src="/images/posts/OctRuby2b/err.png" title="‘Rake can now detect Python2.’ ‘solved problem’" ></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in <em>Blog 1</em> for
+details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>“Downloads” in the official website of RubyInstaller for Windows.
+(<a href="http://rubyinstaller.org/downloads/">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See [Installing PortableJekyll][sol] in <em>Eaten by Grues</em> for
+details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>I suppose that Python is in the <code>PATH</code> variable. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress Codeblock Syntax]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/31/octopress-codeblock-syntax/"/>
+    
+    <updated>2014-08-31T22:14:29+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/31/octopress-codeblock-syntax</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>When I was writing the post <a href="/blog/2014/08/30/the-daring-fireball-linked-list/"><em>The Daring Fireball Linked List</em></a>, I
+included a sample Markdown source file for an Ocotpress post.  I would
+like to have a monospaced font and a line number at the left of each
+line of the source file.  In addition, I <em>didn’t</em> need any syntax
+highlighting for that file.</p>
+
+<p>I looked at the official manual, and it’s said that “passing <code>plain</code>
+disables highlighting”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  <em>However, I got errors from <a href="http://pygments.org/" title="A generic syntax highlighter">Pygments</a>!</em></p>
+
+<pre class="cli"><code class="UBMono">127.0.0.1 - - [30/Aug/2014 21:36:51] "GET /images/noise.png?1408511469 HTTP/1.1"
+ 304 - 0.0010
+      Regenerating: 1 files at 2014-08-30 21:38:38 ...done.
+      Regenerating: 1 files at 2014-08-30 21:43:53   <span class="err">Liquid Exception: Pygments 
+can't parse unknown language: plain. in _posts/2014-08-30-the-daring-fireball-li
+nked-list.markdown/#excerpt</span>
+...error:
+             <span class="RakeErr2">Error: Pygments can't parse unknown language: plain.
+             Error: Run jekyll build --trace for more information.</span>
+      Regenerating: 1 files at 2014-08-30 21:44:21   <span class="err">Liquid Exception: Pygments 
+can't parse unknown language: plain. in _posts/2014-08-30-the-daring-fireball-li
+nked-list.markdown/#excerpt</span>
+...error:
+             <span class="RakeErr2">Error: Pygments can't parse unknown language: plain.
+             Error: Run jekyll build --trace for more information.</span>
+      Regenerating: 1 files at 2014-08-30 21:48:26 ...done.
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>Just use <code>{% codeblock %}</code>
+    <ul>
+      <li>Omit <code>lang: xxx</code></li>
+      <li>I’m <em>not</em> sure if I can add title after <code>codeblock</code>.</li>
+    </ul>
+  </li>
+  <li>Use <code>lang:text</code> to indicate plain text.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Codeblock in <em>Octopress Documentation</em>. (<a href="http://octopress.org/docs/plugins/codeblock/">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Available lexers in <em>Pygments Documentation</em>. (<a href="http://pygments.org/docs/lexers/#pygments.lexers.special.TextLexer">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Syntax in Octopress Blockquote Tag]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/"/>
+    
+    <updated>2014-08-31T00:44:13+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="/images/posts/OctBlockquote/err.png" title="‘Wrongly rendered contents’ ‘Fig 1’" ></p>
+
+<p>If I input Markdown code inside a
+<code>{% blockquote %}</code> tag, it <em>won’t</em> be parsed.</p>
+
+<p><strong><em>How can the headings and hyperlinks inside the quoted text be
+displayed?</em></strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>That’s trivial.  Changing the Markdown code into HTML solves the
+problem.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>A newline character <code>\n</code> in each
+<code>{% blockquote %}</code> tag <em>really</em> means a newline
+in the resulting blockquote.</li>
+  <li>Pullquotes can be used inside blockquote.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">常玩手機腦生鏽 14%青年無記性</a> in <em>Blog 1</em> for an working
+example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[The Daring Fireball Linked List &#9733;]]></title>
+      <link href="http://daringfireball.net/linked/"/>
+    
+    <updated>2014-08-30T14:44:16+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list</id>
+    
+      <content type="html"><![CDATA[<p><blockquote><p>&lt;div class=&#8221;article&#8221;&gt;&lt;h5&gt;The Daring Fireball Linked List&lt;/h5&gt;&lt;h6 class=&#8221;dateline&#8221;&gt;Friday, 29 Aug 2014&lt;/h6&gt;<br/>&lt;dl class=&#8221;linkedlist&#8221;&gt;&lt;dt&gt;<a href="http://recode.net/2014/08/29/codered-apple-wearable-wont-ship-until-next-year/">Paczkowski: Apple Wearable Won’t Ship Until Next Year</a> <a class="permalink" title="Permanent link to 'Paczkowski: Apple Wearable Won't Ship Until Next Year'." href="http://daringfireball.net/linked/2014/08/29/paczkowski">★</a>&lt;/dt&gt;&lt;dd&gt;</p><br/><p>John Paczkowski:</p><br/><blockquote><p>So that new wearable device Apple is introducing on September 9?  It&#8217;s going to be a while before anyone is actually wearing it.  Sources in position to know tell me it won&#8217;t arrive at market for a few months.  &#8220;It&#8217;s not shipping anytime soon,&#8221; said one.  So when does Apple plan to ship its eagerly anticipated wearable?  That&#8217;s not clear, but my understanding is that we&#8217;re unlikely to see it at retail until after the holiday season—think early 2015.</p></blockquote><br/><p>If true, why?  I&#8217;m guessing something similar to why they pre-announced the original iPhone—otherwise it would leak through regulatory filings with various governments around the world.  Plus, they have no worries about the <a href="https://en.wikipedia.org/wiki/Osborne_effect">Osborne Effect</a> with a new product category.</p><br/><p>&lt;/dd&gt;&lt;/dl&gt;&lt;/div&gt;…&lt;div class=&#8221;article&#8221;&gt;&lt;h5&gt;About the Linked List&lt;/h5&gt;&lt;p&gt;The Daring Fireball Linked List is a daily list of interesting links and brief commentary, updated frequently but not frenetically. Call it a “link log”, or “linkblog”, or just “a good way to dick around on the Internet for a few minutes a day”.&lt;/p&gt;&lt;/div&gt;</p><footer><strong>Daring Fireball</strong></footer></blockquote></p>
+
+<p>Since I like the clarity of the linked list format, I’d been looking
+for ways to do this in June, but I <em>couldn’t</em> understand them.
+Moreover, as can be seen from the size of <code>git diff
+octopress/linklog</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the difference between <code>linklog</code> and <code>master</code>
+branches is <em>very large</em>.  I <em>couldn’t</em> understand the git-diff result
+for <code>source/javascripts/octopress.js</code>. This would discourage any
+ordinary users from looking into the issue.  Therefore, I once said
+that I <em>didn’t</em> know how to write an Octopress linklog.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>Last night, I added an <em>unofficial</em> linklog feature to Octopress.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
+The official guide <em>didn’t</em> worked for me.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  I could see the
+complaints from some users who had found that this feature <em>wasn’t</em>
+working.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  At the same time, I could see some blogs that included
+this feature.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  The last commit of the <code>linklog</code> branch was in
+2012.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>  It seems that it <em>isn’t</em> likely that Octopress will work on
+this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup></p>
+
+<!-- more -->
+
+<p>Yesterday, I <em>finally</em> understood the following posts about DIY
+Octopress linklogs.</p>
+
+<ol>
+  <li><a href="http://www.candlerblog.com/2012/01/30/octopress-linked-list/">Make a Linked List With Octopress</a> in <em>the Candler Blog</em>.</li>
+  <li>Octopress pull request #<a href="https://github.com/imathis/octopress/pull/1538" title="Add a capture to article include to use external-url">1538</a></li>
+  <li><a href="https://wllmtrng.github.io/blog/2014/04/17/creating-a-linklog-post/">Creating a Linklog Post</a> in <em>New Learnings from Old
+Understandings</em></li>
+</ol>
+
+<p>In the commit in item 2, only <em>a few</em> lines was changed, and it should
+be comprehensible even for one who knows basic HTML and programming
+only.  In item 1, there’s <em>no</em> <code>page.external-url</code> in
+<code>source/_includes/article.html</code>, but it’s present in item 3.  I
+compared those <a href="http://docs.shopify.com/themes/liquid-documentation/basics">Liquid</a> code with the relevant files in <code>linklog</code>
+branch.  Item 1 also contains the changes in <code>source/atom.xml</code>.  From
+this, I worked out <code>source/_includes/custome/category_feeds.xml</code>,
+though the code is <em>far from beautiful</em>.  To work out the blog
+archive, I looked at Dr.Z’s one.</p>
+
+<p>I was bored of this kind of writing code and <em>didn’t</em> want to further
+change the CSS properties of linklog titles.  The linklog markers and
+permalink labels should be enough.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="yaml-front-matter-of-each-post">YAML front matter of each post</h3>
+
+<p>In the following sample Markdown source file for a post, there’s a
+variable <code>external-url</code>.  After looking at the above code blocks, I’ve
+learnt how to use those variables.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Contents of “2014-08-30-title-goes-here.markdown” </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>—
+</span><span class='line'>layout: post
+</span><span class='line'>title: “Title goes here”
+</span><span class='line'>date: 2014-08-30 14:44:16 +0800
+</span><span class='line'>comments: true
+</span><span class='line'>categories: [category 1, category 2]
+</span><span class='line'>external-url: http://www.example.com
+</span><span class='line'>—&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'>&lt;p&gt;Blog contents goes here…
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<ul>
+  <li><code>{{% if post.external-url %}}</code> tests if the
+  front matter of a post contains <code>external-url</code> variable.</li>
+  <li><code>{{ post.external-url }}</code> returns the value of
+  <code>external-url</code> variable.</li>
+</ul>
+
+<h3 id="yaml-variables-in-configyml">YAML variables in <code>_config.yml</code></h3>
+
+<ul>
+  <li>I added a line <code>myVar: value</code> into <code>_config.yml</code>.</li>
+  <li>While configurating <code>source/_includes/article.html</code>, if I need to
+  access an variable in <code>_config.yml</code>, I have to use
+  <code>{{ site.myVar }}</code>.  You’ll get <em>nothing</em> if
+  you miss <code>site.</code>.</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>I assume that Ocotpress’s GitHub repository has been added to the
+list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p><blockquote><p><del>Unfortunately, I <em>haven’t</em> find out how to include Octopress’s linklog feature into my Octopress blog.</del></p><footer><strong>Me</strong> <cite><a href='http://localhost:4000/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/'>九成人感眼睛疲倦 藍光加快退化</a></cite></footer></blockquote> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/39293af" title="Unofficial linklog support in progress...">39293af</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e35fab7" title="Added unofficial linklog support to more pages">e35fab7</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="http://octopress.org/docs/blogging/linklog/">Writing a Linklog</a> in <em>Octopress Documentation</em>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Ocotpress issue #<a href="https://github.com/imathis/octopress/issues/418" title="Allow linklog style posts">418</a>. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+
+      <p>For example,</p>
+
+      <ul>
+        <li><a href="http://drz.ac/blog/">DrZ.ac</a></li>
+        <li><a href="http://makarenko.me/07-17-2013-moving-to-linklog/">Moving to Linklog</a> in <em>Weblog Сергія Макаренка</em>.</li>
+      </ul>
+      <p><a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Commit <a href="https://github.com/imathis/octopress/commit/1750830" title="Merge pull request #800 from mxmerz/linklog">1750830</a> at the tip of <code>linklog</code> branch. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+
+      <p><blockquote><p>@matrixagent sorry.  It’s killing us too.  The linklog feature is going to be theme based and right now we’re working on breaking out the theme from the release to distribute the development a little better.  It’s tricky to manage asset installation.</p><footer><strong>@octopress</strong> <cite><a href='https://alpha.app.net/octopress/post/14385019'>alpha.app.net/octopress/post/&hellip;</a></cite></footer></blockquote> <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+</feed>
