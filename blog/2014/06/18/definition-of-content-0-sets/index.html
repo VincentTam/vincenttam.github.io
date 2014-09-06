@@ -217,179 +217,175 @@ myself what ideas should be introduced.</p>
 
 <!-- more -->
 
-<p>Unless otherwise specified, assume that
-<script type="math/tex">A\in\reals^n,\vect{x},\vect{x_0},\vect{u},\vect{v}\in\reals^n,\vect{u}_i\in\reals^n\,\forall\,i\in\mathbb{N}</script>.</p>
+<p>Unless otherwise specified, assume that $A \in \reals^n,\vect{x},
+\vect{x_0},\vect{u},\vect{v} \in \reals^n,\vect{u}_i \in \reals^n\,
+\forall\,i \in \naturals$.</p>
 
 <dl>
   <dt>Norm</dt>
-  <dd>The <em>norm</em> of <script type="math/tex">\vect{x}</script> is defined as
-
-    <script type="math/tex; mode=display">\norm{\vect{x}} := \sqrt{\sum_{i=1}^n x_i^2}.</script>
-  </dd>
+  <dd>The <em>norm</em> of $\vect{x}$ is defined as
+$\displaystyle \norm{\vect{x}} := \sqrt{\sum_{i = 1}^n x_i^2}$.</dd>
   <dt>Distance</dt>
-  <dd>The <em>distance</em> between <script type="math/tex">\vect{u}</script> and <script type="math/tex">\vect{v}</script> is
-<script type="math/tex">\norm{\vect{u}-\vect{v}}</script>.</dd>
+  <dd>The <em>distance</em> between $\vect{u}$ and $\vect{v}$ is
+$\norm{\vect{u} - \vect{v}}$.</dd>
   <dt>Open ball</dt>
-  <dd><script type="math/tex">% <![CDATA[
-\mathcal{B}_r (\vect{x}_0):=\{\vect{x}\mid\norm{\vect{x}-\vect{x}_0}<r\} %]]></script></dd>
+  <dd>$\mathcal{B}_r (\vect{x}_0) := \{\vect{x} \mid
+\norm{\vect{x} - \vect{x}_0} &lt; r\}$</dd>
   <dt>Interior point</dt>
-  <dd><script type="math/tex">\vect{u}</script> is an <em>interior point in</em> $A$ if
-<script type="math/tex">\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq A</script>.
+  <dd>$\vect{u}$ is an <em>interior point in</em> $A$ if
+$\,\exists\,r &gt; 0\text{ s.t. } \mathcal{B}_r(\vect{u})\subseteq A$.
 <sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></dd>
   <dt>Interior of a set</dt>
-  <dd><script type="math/tex">\interior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A\}</script></dd>
+  <dd>$\interior A := \{\vect{u} \mid \exists\,r &gt; 0 \text{ s.t. }
+\mathcal{B}_r(\vect{u}) \subseteq A\}$</dd>
   <dt>Open set</dt>
-  <dd>$A$ is <em>open</em> if <script type="math/tex">A = \interior A</script>.</dd>
-  <dt>Limit of <script type="math/tex">\{\vect{u}_k\}</script></dt>
-  <dd><script type="math/tex">% <![CDATA[
-\forall\,\varepsilon>0,\exists\,K\in\mathbb{N}\,\text{s.t.}\,\forall\,k\ge K,\norm{\vect{u}_k-\vect{u}}<\varepsilon %]]></script>
+  <dd>$A$ is <em>open</em> if $A = \interior A$.</dd>
+  <dt>Limit of $\{\vect{u}_k\}$</dt>
+  <dd>$\forall\,\varepsilon &gt; 0,\exists\,K \in \naturals \text{ s.t. }
+\forall\,k \ge K, \norm{\vect{u}_k - \vect{u}} &lt; \varepsilon$
 
-    <p>We denote it as</p>
-
-    <script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u}.</script>
+    <p>We denote it as
+$\displaystyle \lim_{k \to \infty} \vect{u}_k = \vect{u}$.</p>
   </dd>
   <dt>Closed set</dt>
-  <dd>
-    <script type="math/tex; mode=display">\vect{u}_k\in A\,\forall\,k\in\mathbb{N},\lim_{k\to\infty}\vect{u}_k=\vect{u}\implies\vect{u}\in A</script>
-  </dd>
+  <dd>$\displaystyle \vect{u}_k \in A\,\forall\,k \in \naturals,
+\lim_{k \to \infty} \vect{u}_k = \vect{u} \implies \vect{u}\in A$</dd>
   <dt>Boundary</dt>
-  <dd><script type="math/tex">\partial A := \{\vect{x}\mid\forall\,r>0,\exists\,\vect{u}\in A,\vect{v}\notin A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})\}</script></dd>
+  <dd>$\partial A := \{\vect{x}\mid\forall\,r &gt; 0,\exists\,\vect{u}\in A,
+\vect{v} \notin A \text{ s.t. } \vect{u},\vect{v} \in
+\mathcal{B}_r(\vect{x})\}$</dd>
   <dt>Exterior point</dt>
-  <dd><script type="math/tex">\vect{u}</script> is an <em>exterior point in</em> $A$ if
-<script type="math/tex">\,\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u}) \subseteq \reals^n\setminus A</script>.</dd>
+  <dd>$\vect{u}$ is an <em>exterior point in</em> $A$ if
+$\,\exists\,r &gt; 0 \text{ s.t. } \mathcal{B}_r(\vect{u}) \subseteq
+\reals^n \setminus A$.</dd>
   <dt>Exterior of a set</dt>
-  <dd><script type="math/tex">\exterior A := \{\vect{u}\mid\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq \reals^n\setminus A\}</script></dd>
+  <dd>$\exterior A := \{\vect{u} \mid \exists\,r &gt; 0 \text{ s.t. }
+\mathcal{B}_r(\vect{u}) \subseteq \reals^n \setminus A\}$</dd>
 </dl>
 
 <h2 id="some-claims">Some claims</h2>
 
-<p id="claim1">If a subset $A$ of <script type="math/tex">\reals^n</script> is contained in a closed subset
-$B$ of <script type="math/tex">\reals^n</script>, <script type="math/tex">\partial A \subseteq B</script>.</p>
+<p id="claim1">If a subset $A$ of $\reals^n$ is contained in a closed subset $B$ of
+$\reals^n$, $\partial A \subseteq B$.</p>
 
 <p><em>Proof</em>. Let
-<script type="math/tex">\vect{u}\in\partial A.\forall\,k\in\mathbb{N},\exists\,\vect{u}_k\in\mathcal{B}_{1/k}(\vect{u})\cap A</script>.
-Then</p>
-
-<script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u}</script>
-
-<p>because
-<script type="math/tex">% <![CDATA[
-\forall\,\varepsilon>0,K>1/\varepsilon,k\ge K\implies\norm{\vect{u}-\vect{u}_k}<1/k\le\varepsilon %]]></script>.<br />
-<script type="math/tex">\because\vect{u}_k\in A\,\forall\,k\in\mathbb{N}</script>,</p>
-
-<script type="math/tex; mode=display">\lim_{k\to\infty}\vect{u}_k=\vect{u},</script>
-
-<p>and $B$ is closed.<br />
-<script type="math/tex">\therefore\vect{u}\in B</script>.<br />
+$\vect{u} \in \partial A. \forall\,k\in\naturals,
+\exists\,\vect{u}_k \in \mathcal{B}_{1/k}(\vect{u}) \cap A$.
+Then $\displaystyle \lim_{k \to \infty} \vect{u}_k = \vect{u}$
+because $\forall\,\varepsilon &gt; 0,K &gt; 1/\varepsilon,
+(k \ge K \implies \norm{\vect{u} - \vect{u}_k} &lt; 1/k
+\le \varepsilon)$.<br />
+$\because \vect{u}_k \in A\,\forall\,k \in \naturals,
+{\displaystyle \lim_{k \to \infty} \vect{u}_k = \vect{u}}$, and $B$
+is closed.<br />
+$\therefore\vect{u}\in B$.<br />
 Q.E.D.</p>
 
-<p><script type="math/tex">\reals^n=\interior A\sqcup\partial A\sqcup\exterior A</script></p>
+<p>$\reals^n = \interior A \sqcup \partial A \sqcup \exterior A$</p>
 
-<p><em>Proof</em>. Let <script type="math/tex">\vect{x}\notin\interior A</script>.
-Then
-<script type="math/tex">\forall\,r>0,\exists\,\vect{u}\in\mathcal{B}_r(\vect{x})\setminus A</script>.</p>
+<p><em>Proof</em>. Let $\vect{x} \notin \interior A$.  Then
+$\forall\,r &gt; 0,\exists\,\vect{u} \in \mathcal{B}_r(\vect{x})
+\setminus A$.</p>
 
 <p>Case 1:
-<script type="math/tex">\forall\,r>0,\mbox{there also exists}\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A</script>.<br />
-Putting the two statements about <script type="math/tex">\vect{u}</script> and <script type="math/tex">\vect{v}</script>
-together, we get
-<script type="math/tex">\forall\,r>0,\exists\,\vect{u}\notin A,\vect{v}\in A\,\text{s.t.}\,\vect{u},\vect{v}\in\mathcal{B}_r(\vect{x})</script>.<br />
-<script type="math/tex">\therefore\vect{x}\in\partial A</script></p>
+$\forall\,r &gt; 0,\mbox{there also exists}\, \vect{v} \in
+\mathcal{B}_r(\vect{x}) \cap A$.<br />
+Putting the two statements about $\vect{u}$ and $\vect{v}$ together,
+we get
+$\forall\,r &gt; 0, \exists\,\vect{u} \notin A, \vect{v} \in A
+\text{ s.t. } \vect{u},\vect{v} \in \mathcal{B}_r(\vect{x})$.<br />
+$\therefore \vect{x} \in \partial A$</p>
 
 <p>Case 2:
-<script type="math/tex">\neg\,(\forall\,r>0,\exists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A)</script><br />
-i.e. 
-<script type="math/tex">\exists\,r>0\,\text{s.t.}\,\nexists\,\vect{v}\in\mathcal{B}_r(\vect{x})\cap A</script>.<br />
-<script type="math/tex">\therefore\exists\,r>0\,\text{s.t.}\,\vect{v}\in A\uparrow\vect{v}\in\mathcal{B}_r(\vect{x})</script><sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup><br />
-i.e.
-<script type="math/tex">\exists\,r>0\,\text{s.t.}\,\vect{v}\in\mathcal{B}_r(\vect{x})\implies\vect{v}\notin A</script><br />
-<script type="math/tex">\therefore\exists\,r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{x})\subseteq\reals^n\setminus A</script><br />
-Hence <script type="math/tex">\vect{x}\in\exterior A</script>.<br />
+$\neg\,(\forall\,r &gt; 0,\exists\,\vect{v} \in \mathcal{B}_r(\vect{x})
+\cap A)$<br />
+i.e. $\exists\,r &gt; 0 \text{ s.t. } \nexists\,\vect{v} \in
+\mathcal{B}_r(\vect{x}) \cap A$.<br />
+$\therefore \exists\,r &gt; 0 \text{ s.t. } \vect{v} \in A \uparrow
+\vect{v} \in \mathcal{B}_r(\vect{x})$<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup><br />
+i.e. $\exists\,r &gt; 0 \text{ s.t. } \vect{v} \in
+\mathcal{B}_r(\vect{x}) \implies \vect{v} \notin A$<br />
+$\therefore \exists\,r &gt; 0 \text{ s.t. } \mathcal{B}_r(\vect{x})
+\subseteq \reals^n \setminus A$<br />
+Hence $\vect{x}\in\exterior A$.<br />
 Q.E.D.</p>
 
 <p id="trivial1">From the definition of the <em>exterior</em> of $A$, it’s clear that
-<script type="math/tex">\exterior A \subseteq \reals^n \setminus A</script>.  The
-reason is that <script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})</script>.  If
-<script type="math/tex">\vect{u}\in\exterior A</script>, then
-<script type="math/tex">\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A</script>.
-Thus,
-<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq\reals^n\setminus A\implies\vect{u}\notin A</script>.</p>
+$\exterior A \subseteq \reals^n \setminus A$.  The reason is that
+$\vect{u} \in \mathcal{B}_r(\vect{u})$.  If $\vect{u} \in \exterior
+A$, then $\exists r &gt; 0 \text{ s.t. } \mathcal{B}_r(\vect{u})
+\subseteq \reals^n \setminus A$.  Thus, $\vect{u} \in
+\mathcal{B}_r(\vect{u}) \subseteq \reals^n \setminus A \implies
+\vect{u} \notin A$.</p>
 
 <p id="trivial2">Another trivial fact is from the definition of the <em>interior</em> of $A$.
-<script type="math/tex">\interior A \subseteq A</script> due to the same reason for
-<script type="math/tex">\exterior A \subseteq \reals^n \setminus A</script>, that is,
-<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})</script>.
-<script type="math/tex">\vect{u}\in\interior A\implies\exists r>0\,\text{s.t.}\,\mathcal{B}_r(\vect{u})\subseteq A</script>.
-Thus,
-<script type="math/tex">\vect{u}\in\mathcal{B}_r(\vect{u})\subseteq A\implies\vect{u}\in A</script>.</p>
+$\interior A \subseteq A$ due to the same reason for $\exterior A
+\subseteq \reals^n \setminus A$, that is, $\vect{u} \in
+\mathcal{B}_r(\vect{u})$.
+$\vect{u} \in \interior A \implies \exists r &gt; 0 \text{ s.t. }
+\mathcal{B}_r(\vect{u}) \subseteq A$.
+Thus, $\vect{u} \in \mathcal{B}_r(\vect{u}) \subseteq A \implies
+\vect{u} \in A$.</p>
 
 <h2 id="more-definitions">More definitions</h2>
 
 <p>Unless otherwise specified, assume that
-<script type="math/tex">a_i,b_i \in \reals\,\forall\,i \in \mathbb{N}</script>.</p>
+$a_i,b_i \in \reals\,\forall\,i \in \naturals$.</p>
 
 <dl>
   <dt>Closure</dt>
-  <dd><script type="math/tex">\overline{A} := \interior A \cup \partial A</script></dd>
+  <dd>$\overline{A} := \interior A \cup \partial A$</dd>
   <dt>Bounded set</dt>
-  <dd><script type="math/tex">\exists\,M\ge 0\,\text{s.t.}\,\norm{\vect{x}}\ge M\,\forall\,\vect{x}\in A</script></dd>
+  <dd>$\exists\,M \ge 0 \text{ s.t. } \norm{\vect{x}} \ge M\,
+\forall\,\vect{x} \in A$</dd>
   <dt>Generalized rectangle</dt>
-  <dd><script type="math/tex">\vect{I} := \vect{I_1} \times \dots \times \vect{I_n}</script>,
-where <script type="math/tex">\vect{I_i} := [a_i,b_i]\,\forall\,i \in \mathbb{N}</script>.</dd>
+  <dd>$\vect{I} := \vect{I_1} \times \dots \times \vect{I_n}$, where
+$\vect{I_i} := [a_i,b_i]\,\forall\,i \in \naturals$.</dd>
   <dt>Volume of generalized rectangle</dt>
-  <dd>
-    <script type="math/tex; mode=display">\volume \vect{I} := \prod_{i=1}^n (b_i - a_i)</script>
-  </dd>
+  <dd>$\displaystyle \volume \vect{I} := \prod_{i = 1}^n (b_i - a_i)$</dd>
 </dl>
 
 <p>From the definition of the closure of a set, we can conclude that
-<script type="math/tex">A \subseteq \overline{A}</script> since
-<script type="math/tex">\reals^n=\interior A\sqcup\partial A\sqcup\exterior A</script>
-and <script type="math/tex">A \cap \exterior A = \varnothing</script>.
-(<a href="#trivial1">proved</a>)  Thus,
-<script type="math/tex">A \subseteq \interior A \sqcup \partial A = \overline{A}</script>.</p>
+$A \subseteq \overline{A}$ since $\reals^n = \interior A \sqcup 
+\partial A \sqcup \exterior A$ and $A \cap \exterior A = \varnothing$.
+(<a href="#trivial1">proved</a>)  Thus, $A \subseteq \interior A \sqcup
+\partial A = \overline{A}$.</p>
 
 <p>We can extend the <a href="#claim1">first claim</a> like this.</p>
 
 <blockquote id="ExtendedClaim">
-  <p>If a subset $A$ of <script type="math/tex">\reals^n</script> is contained in a closed subset
-$B$ of <script type="math/tex">\reals^n</script>, <script type="math/tex">\overline{A} \subseteq B</script>.</p>
+  <p>If a subset $A$ of $\reals^n$ is contained in a closed subset $B$ of
+$\reals^n$, $\overline{A} \subseteq B$.</p>
 </blockquote>
 
-<p><em>Proof</em>.  <script type="math/tex">\overline{A} := \interior A \cup \partial A</script>.  By the
-<a href="#claim1">first claim</a>, it’s already known that
-<script type="math/tex">\partial A \subseteq B</script>, so it remains to show that
-<script type="math/tex">\interior A \subseteq B</script>.  Since
-<script type="math/tex">\interior A \subseteq A</script> (<a href="#trivial2">proved</a>) and it’s
-given that <script type="math/tex">A \subseteq B</script>, we’re done!<br />
+<p><em>Proof</em>.  $\overline{A} := \interior A \cup \partial A$.  By the
+<a href="#claim1">first claim</a>, it’s already known that $\partial A \subseteq
+B$, so it remains to show that $\interior A \subseteq B$.  Since
+$\interior A \subseteq A$ (<a href="#trivial2">proved</a>) and it’s given that
+$A \subseteq B$, we’re done!<br />
 Q.E.D.</p>
 
 <h2 id="comparing-the-definitions">Comparing the definitions</h2>
 
 <p>That’s the definition of <em>Jordan content 0</em> sets.</p>
 
-<p>Suppose $D$ is a bounded subset of <script type="math/tex">\reals^n</script>.</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\forall\,\varepsilon>0,\exists\,\text{generalized
-rectangle}\,\vect{I}_1,\dots,\vect{I}_m\subseteq\reals^n\,\text{s.t.}\,D\subseteq\bigcup_{j=1}^m
-\vect{I}_j\;\text{and}\,\sum_{j=1}^m \volume \vect{I}_j<\varepsilon %]]></script>
+<p>Suppose $D$ is a bounded subset of $\reals^n$.<br />
+$\forall\,\varepsilon &gt; 0,\exists$ generalized rectangle $\vect{I}_1,
+\dots,\vect{I}_m \subseteq \reals^n$ s.t.
+$\displaystyle D \subseteq \bigcup_{j = 1}^m \vect{I}_j$ and
+$\displaystyle \sum_{j = 1}^m \volume \vect{I}_j &lt; \varepsilon$.</p>
 
 <p>I have read another version of the definition, and the only difference
-between those two versions is that $D$ is replaced by
-<script type="math/tex">\overline{D}</script>.  It took me a short while to understand why this is
-OK.</p>
+between those two versions is that $D$ is replaced by $\overline{D}$.
+It took me a short while to understand why this is OK.</p>
 
-<p>First, <script type="math/tex">\vect{I}_j</script> is closed for each $j$ since it’s the
-Cartesian product of closed intervals.</p>
-
-<script type="math/tex; mode=display">\bigcup_{j=1}^m \vect{I}_j\;\text{is also closed. (DeMorgan's Law)}</script>
-
-<p>Hence, by the <a href="#ExtendedClaim">extended claim</a>, one can also write</p>
-
-<script type="math/tex; mode=display">\overline{D} \subseteq \bigcup_{j=1}^m \vect{I}_j</script>
-
-<p>instead of $D$ in the above definition.</p>
+<p>First, $\vect{I}_j$ is closed for each $j$ since it’s the Cartesian
+product of closed intervals.<br />
+$\displaystyle \bigcup_{j = 1}^m \vect{I}_j$ is also closed.
+(DeMorgan’s Law)<br />
+Hence, by the <a href="#ExtendedClaim">extended claim</a>, one can also write
+$\displaystyle \overline{D} \subseteq \bigcup_{j=1}^m \vect{I}_j$
+instead of $D$ in the above definition.</p>
 
 <hr />
 
