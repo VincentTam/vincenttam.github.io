@@ -3,9 +3,7 @@ layout: post
 title: "Star of David in Pascal's Triangle"
 date: 2014-07-12 21:44:37 +0800
 comments: true
-categories:
-- math
-- LaTeX
+categories: [LaTeX, math]
 ---
 
 {% img right /images/posts/DavidStar/Nodes1.svg 100 %}
@@ -38,10 +36,12 @@ command.
 {% include_code DavidStar.tex %}
 
 $$
-\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
-  \text{one can easily see that} \\
-\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
-  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+\begin{align*}
+  &\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
+    \text{one can easily see that} \\
+  &\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
+    \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+\end{align*}
 $$
 
 ---
