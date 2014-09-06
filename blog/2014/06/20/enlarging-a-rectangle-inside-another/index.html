@@ -9,10 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="is a generalized rectangle in with edges of
-length $l_i$. is the main character
-here. If the edges of is allowed to coincide with those
-of , then &hellip;">
+  <meta name="description" content="$\vect{I}$ is a generalized rectangle in $\reals^n$ with edges of
+length $l_i$. $\vect{J} \subseteq \vect{I}$ is the main character
+here. If the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -205,14 +204,13 @@ $(document).ready(function() {
   </header>
 
 
-<div class="entry-content"><p><script type="math/tex">\vect{I}</script> is a generalized rectangle in <script type="math/tex">\reals^n</script> with edges of
-length $l_i$.  <script type="math/tex">\vect{J} \subseteq \vect{I}</script> is the main character
-here.  If the edges of <script type="math/tex">\vect{J}</script> is allowed to coincide with those
-of <script type="math/tex">\vect{I}</script>, then the problem is trivial.</p>
+<div class="entry-content"><p>$\vect{I}$ is a generalized rectangle in $\reals^n$ with edges of
+length $l_i$.  $\vect{J} \subseteq \vect{I}$ is the main character
+here.  If the edges of $\vect{J}$ is allowed to coincide with those of
+$\vect{I}$, then the problem is trivial.</p>
 
-<p><strong>How about finding <script type="math/tex">\vect{J} \subseteq \interior \vect{I}</script> such
-that <script type="math/tex">% <![CDATA[
-\volume \vect{I} - \volume \vect{J} < \varepsilon %]]></script>?</strong></p>
+<p><strong>How about finding $\vect{J} \subseteq \interior \vect{I}$ such that
+$\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
 
 <!-- more -->
 
@@ -221,29 +219,31 @@ $\varepsilon$.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 
-\begin{align}
-  \volume \vect{J}
-  :=& \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right) \\
-  \volume \vect{I}
-  =& \prod_{i = 1}^n l_i \\
-  =& \prod_{i = 1}^n \left [ \left( l_i - \frac{\varepsilon}{L}
-  \right) + \frac{\varepsilon}{L} \right] \\
-  =& \left[ \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right)
-  \right] \\
-  =& \left[ \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right)
-  \right] + \sum_{i = 1}^{n \choose 1} \left( l_i -
-  \frac{\varepsilon}{L} \right) \left( \frac{\varepsilon}{L}
-  \right)^{n - 1} \\
-  & + \sum_{i = 2}^{n - 1} \sum_{\left\{ a_j \right\} \in S_i} \left[
-  \prod_{j = 1}^i \left( l_{a_j} - \frac{\varepsilon}{L} \right)
-  \right] \left( \frac{\varepsilon}{L} \right)^{n - i} + \left(
-  \frac{\varepsilon}{L} \right)^n,
-\end{align}
+\begin{equation*}
+\begin{split}
+\volume \vect{J}
+:=& \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right) \\
+\volume \vect{I}
+=& \prod_{i = 1}^n l_i \\
+=& \prod_{i = 1}^n \left [ \left( l_i - \frac{\varepsilon}{L} \right)
++ \frac{\varepsilon}{L} \right] \\
+=& \left[ \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right)
+\right] \\
+=& \left[ \prod_{i = 1}^n \left( l_i - \frac{\varepsilon}{L} \right)
+\right] + \sum_{i = 1}^{n \choose 1} \left( l_i -
+\frac{\varepsilon}{L} \right) \left( \frac{\varepsilon}{L}
+\right)^{n - 1} \\
+& + \sum_{i = 2}^{n - 1} \sum_{\left\{ a_j \right\} \in S_i} \left[
+\prod_{j = 1}^i \left( l_{a_j} - \frac{\varepsilon}{L} \right)
+\right] \left( \frac{\varepsilon}{L} \right)^{n - i} + \left(
+\frac{\varepsilon}{L} \right)^n,
+\end{split}
+\end{equation*}
  %]]></script>
 
-<p>where $S_i$ is a set of $i$ numbers chosen from
-<script type="math/tex">\left\{ 1,\dots,n \right\}</script>, and <script type="math/tex">\left\{ a_j \right\}</script> is an
-increasing sequence in $S_i$.</p>
+<p>where $S_i$ is a set of $i$ numbers chosen from $\left\{ 1,\dots,n
+\right\}$, and $\left\{ a_j \right\}$ is an increasing sequence in
+$S_i$.</p>
 
 <p>I assumed that $n &gt; 2$.  For $n = 2$, deleting the third term in the
 last step will do.  For $n = 1$, the problem is trivial.</p>
@@ -252,23 +252,25 @@ last step will do.  For $n = 1$, the problem is trivial.</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 
-\begin{align}
-  \volume \vect{I}
-  =& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j
-  \right\} \in S_i} \left[ \prod_{j = 1}^i \left( l_{a_j} -
-  \frac{\varepsilon}{L} \right) \right] \left( \frac{\varepsilon}{L}
-  \right)^{n - i} + \left( \frac{\varepsilon}{L} \right)^n \\
-  <& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j
-  \right\} \in S_i} \left( \prod_{j = 1}^n l_{a_j} \right) \left(
-  \frac{\varepsilon}{L} \right)^{n - i} + \left( \frac{\varepsilon}{L}
-  \right)^n \\
-  =& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j
-  \right\} \in S_i} \volume \vect{I} \, \left( \frac{\varepsilon}{L}
-  \right)^{n - i} + \left( \frac{\varepsilon}{L} \right)^n \\
-  =& \volume \vect{J} + \sum_{i = 1}^{n - 1} {n \choose i} \volume
-  \vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} + \left(
-  \frac{\varepsilon}{L} \right)^n
-\end{align}
+\begin{equation*}
+\begin{split}
+\volume \vect{I}
+=& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j \right\}
+\in S_i} \left[ \prod_{j = 1}^i \left( l_{a_j} - \frac{\varepsilon}{L}
+\right) \right] \left( \frac{\varepsilon}{L} \right)^{n - i} + \left(
+\frac{\varepsilon}{L} \right)^n \\
+<& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j \right\}
+\in S_i} \left( \prod_{j = 1}^n l_{a_j} \right) \left(
+\frac{\varepsilon}{L} \right)^{n - i} + \left( \frac{\varepsilon}{L}
+\right)^n \\
+=& \volume \vect{J} + \sum_{i = 1}^{n - 1} \sum_{\left\{ a_j \right\}
+\in S_i} \volume \vect{I} \, \left( \frac{\varepsilon}{L}
+\right)^{n - i} + \left( \frac{\varepsilon}{L} \right)^n \\
+=& \volume \vect{J} + \sum_{i = 1}^{n - 1} {n \choose i} \volume
+\vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} + \left(
+\frac{\varepsilon}{L} \right)^n
+\end{split}
+\end{equation*}
  %]]></script>
 
 <p>Rearanging the above inequality gives</p>
@@ -280,16 +282,16 @@ i} \volume \vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} +
 \left( \frac{\varepsilon}{L} \right)^n
  %]]></script>
 
-<p>Assume <script type="math/tex">% <![CDATA[
-\varepsilon < 1, L \ge 1 %]]></script>, and let</p>
+<p>Assume $\varepsilon &lt; 1, L \ge 1$, and let</p>
 
-<script type="math/tex; mode=display">M \equiv \max_{1 \le i \le n - 1} {n \choose i}.</script>
+<p><script type="math/tex">M := \max_{1 \le i \le n - 1} {n \choose i}</script>.</p>
 
 <p>Then we have</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 
-\begin{align}
+\begin{equation*}
+\begin{split}
   \volume \vect{I} - \volume \vect{J}
   <& \left( \frac{\varepsilon}{L} \right)^n + \sum_{i = 1}^{n - 1} {n
   \choose i} \volume \vect{I} \, \left( \frac{\varepsilon}{L}
@@ -297,12 +299,12 @@ i} \volume \vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} +
   =& \frac{\varepsilon}{L} + M (n - 1) \volume \vect{I}
   \frac{\varepsilon}{L} \\
   =& [1 + M (n - 1) \volume \vect{I}] \frac{\varepsilon}{L}
-\end{align}
+\end{split}
+\end{equation*}
  %]]></script>
 
-<p>Hence, if <script type="math/tex">L \ge 1 + M (n - 1) \volume \vect{I}</script>, then
-<script type="math/tex">% <![CDATA[
-\volume \vect{I} - \volume \vect{J} < \varepsilon %]]></script>.</p>
+<p>Hence, if $L \ge 1 + M (n - 1) \volume \vect{I}$, then
+$\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$.</p>
 
 <hr />
 <div class="footnotes">

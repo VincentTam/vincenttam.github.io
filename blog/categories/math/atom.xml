@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-06T14:07:05+08:00</updated>
+  <updated>2014-09-06T18:32:54+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -275,28 +275,26 @@ are collinear.)</p>
 
 <p>To prove that three points are collinear, Menelaus’s Theorem is often
 useful.  To apply the theorem to this problem, (TL;DR;C image below)
-one needs to find a triangle such that <em>exactly</em> one of points
-<span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> lies on the <em>line</em> formed by
-two vertices of the triangle, but <em>not</em> on the <em>segment</em> connecting
-those two vertices, while each of the remaining two points lies on a
-segment whose extension <em>doesn’t</em> contain any one of points
-<span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.</p>
+one needs to find a triangle such that <em>exactly</em> one of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> lies on
+the <em>line</em> formed by two vertices of the triangle, but <em>not</em> on the
+<em>segment</em> connecting those two vertices, while each of the remaining
+two points lies on a segment whose extension <em>doesn’t</em> contain any one
+of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.</p>
 
 <p><img class="center" src="/images/posts/PappusHexThm/MenelausThm.svg" width="600"><br />
 <small><a href="/downloads/code/MenelausThm.tex">Source</a></small></p>
 
-<p>It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span>
-divide some segments internally.  However, <span class="grp1">$P$</span> <em>also</em> has
-such property.  How can one find a segment through <span class="grp1">$P$</span>
-such that <span class="grp1">$P$</span> <em>externally</em> divides the segment?</p>
+<p>It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span> divide some segments internally.  However,
+<span class="grp1">$P$</span> <em>also</em> has such property.  How can one
+find a segment through <span class="grp1">$P$</span> such that <span class="grp1">$P$</span> <em>externally</em> divides the segment?</p>
 
 <p>The answer can be find out by a careful observation of the two
-segments that pass through <span class="grp1">$P$</span>.  Since we want a segment
-so that <span class="grp1">$P$</span> <em>externally</em> divides the segment, we need at
-least two points on a line through <span class="grp1">$P$</span>.  Moreover, those
-two points should be <em>on the same side of the line relative to
-<span class="grp1">$P$</span></em>.  This led us to define a <em>new</em> point.<br />
-Let <span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.</p>
+segments that pass through <span class="grp1">$P$</span>.  Since we
+want a segment so that <span class="grp1">$P$</span> <em>externally</em>
+divides the segment, we need at least two points on a line through
+<span class="grp1">$P$</span>.  Moreover, those two points should be
+<em>on the same side of the line relative to <span class="grp1">$P$</span></em>.  This led us to define a <em>new</em> point.  Let
+<span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.</p>
 
 <p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm1.svg" width="600"><br />
 <small><a href="/downloads/code/PappusHexThm1.tex">Source</a></small></p>
@@ -314,30 +312,32 @@ depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn
 <p>From the above figure, it’s clear that what we need to show is</p>
 
 <script type="math/tex; mode=display">
-\begin{equation}
+\begin{equation*}
   \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
     \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
     \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\end{equation}
+\end{equation*}
 </script>
 
-<p><strong>The main idea of this proof is simple: reduce everything to what is
-given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$</span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
+<p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
+given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
 The tool that we’re going to use is Co-side Theorem.</p>
 
-<script type="math/tex; mode=display">
-\begin{equation}
-  \frac{F\color{red}{R}}{\color{red}{R}B} = 
-    \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} = 
-    \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}}
-    \label{eq:3} \\
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} = 
-    -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
-\end{equation}
-</script>
+<script type="math/tex; mode=display">% &lt;![CDATA[
 
-<p>On the right-hand side of (2), one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
+\begin{equation}
+  \begin{split}
+    \frac{F\color{red}{R}}{\color{red}{R}B} &=
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &=
+      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}}\\
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &=
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
+  \end{split}
+\end{equation}
+ %]]&gt;</script>
+
+<p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
 the <span class="grp2">$S$</span>.  Moreover, dealing with length of
 segments is <em>easier</em> than their area because the former and the later
 are one-dimensional and two-dimensional quantities respectively.
@@ -345,34 +345,37 @@ Therefore, we rearrange the area of the triangles to get</p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
-\begin{align}
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-    \frac{F\color{red}{R}}{\color{red}{R}B} &=
-    -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
-    \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
-    \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-  &= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
-    \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
-    \frac{S_{\triangle CD\color{blue}{S}}}
-    {S_{\triangle AE\color{blue}{S}}} \\
-  &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-    \frac{S_{\triangle CD\color{blue}{S}}}
-    {S_{\triangle AE\color{blue}{S}}}
-\end{align}
+\begin{equation}
+  \begin{split}
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+      \frac{F\color{red}{R}}{\color{red}{R}B} &=
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
+    &= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}} \\
+    &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}}
+  \end{split}
+\end{equation}
  %]]&gt;</script>
 
-<p>However, those two triangles in (5) have <em>no</em> common side.  Thus, we
-need to work out the area of the two coloured triangles in the figure
-below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
+<p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
+Thus, we need to work out the area of the two coloured triangles in
+the figure below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
 AE\color{blue}{S}$)</p>
 
 <p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm2.svg" width="600"><br />
 <small><a href="/downloads/code/PappusHexThm2.tex">Source</a></small></p>
 
-<p>From equation (5), observe that $AB/CB$ and $EF/DF$ are independent
-from each other.  Then, we need to relate the area of those two
-colored triangles to the ratios of segment lengths in (5).</p>
+<p>From equation <a href="#sub1">(2)</a>, observe that $AB/CB$ and $EF/DF$ are
+independent from each other.  Then, we need to relate the area of
+those two colored triangles to the ratios of segment lengths in
+<a href="#sub1">(2)</a>.</p>
 
 <p>I still use Co-side Theorem since I <em>can’t</em> think of another theorem
 to eliminate <span class="grp2">S</span>.  In order to use that
@@ -385,48 +388,60 @@ we want.  Looking at $\triangle CD\color{blue}{S}$ again, it’s obvious
 that $D\color{blue}{S}$ is the “common side” because $D$,
 <span class="grp2">$S$</span> and $B$ are collinear.</p>
 
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600">
+<p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600">
 <small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
-\begin{align}
-  \frac{S_{\triangle CD\color{blue}{S}}}
-    {S_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}\text{, or} \\
-  S_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
-    S_{\triangle AD\color{blue}{S}}
-\end{align}
+\begin{equation}
+  \begin{split}
+    \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}\text{, or} \\
+    S_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
+      S_{\triangle AD\color{blue}{S}}
+  \end{split}
+\end{equation}
  %]]&gt;</script>
 
-<p>The $CB/BA$ in (7) cancels the $AB/CB$ in (5).  Therefore, we’re
-almost done!</p>
+<p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
+Therefore, we’re almost done!</p>
 
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600">
+<p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600">
 <small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
 
 <script type="math/tex; mode=display">% &lt;![CDATA[
 
-\begin{align}
-  \frac{S_{\triangle AE\color{blue}{S}}}
-    {S_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}\text{, or} \\
-  S_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
-    S_{\triangle AD\color{blue}{S}}
-\end{align}
+\begin{equation}
+  \begin{split}
+    \frac{S_{\triangle AE\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}\text{, or}\\
+      S_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
+      S_{\triangle AD\color{blue}{S}}
+  \end{split}
+\end{equation}
  %]]&gt;</script>
 
-<p>Substituting (7) and (9) into (5), we get
-<script type="math/tex">
-\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-  \frac{F\color{red}{R}}{\color{red}{R}B}
-  = -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-  \frac{\frac{CB}{BA} \cdot S\_{\triangle AD\color{blue}{S}}}
-  {-\frac{EF}{FD} \cdot S\_{\triangle AD\color{blue}{S}}} = -1
-</script></p>
+<p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
+get</p>
+
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{equation*}
+  \begin{split}
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+      \frac{F\color{red}{R}}{\color{red}{R}B}
+      &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+      \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
+      {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} \\
+      &= -1
+  \end{split}
+\end{equation*}
+ %]]&gt;</script>
 
 <p>Hence, by Menelaus’s Theorem, we can conclude that
 <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
-<em>collinear</em>, and prove Pappus’s Hexagon Theorem.</p>
+<em>collinear</em>, and prove Pappus’s Hexagon Theorem</p>
 
 <hr />
 
@@ -515,12 +530,15 @@ command.</p>
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
-<script type="math/tex; mode=display">
-\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
-  \text{one can easily see that} \\
-\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
-  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
-</script>
+<script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{align*}
+  &\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
+    \text{one can easily see that} \\
+  &\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
+    \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+\end{align*}
+ %]]&gt;</script>
 
 <hr />
 
