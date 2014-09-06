@@ -22,6 +22,9 @@ MathJax.Hub.Config({
       interior: ['\\mathop{\\mathrm{int}}'],
       exterior: ['\\mathop{\\mathrm{ext}}'],
       volume: ['\\mathop{\\mathrm{vol}}'],
+
+      GL: ['\\mathrm{GL}'],
+      SL: ['\\mathrm{SL}'],
     }
   }
 });
