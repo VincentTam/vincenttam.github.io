@@ -6,13 +6,12 @@ comments: true
 categories: math
 ---
 
-Let $X$ be a metric space and $g \in X$.  Suppose that sequence
-$$\left\{ p_k \right\}$$ in $X$ converges to a point $p$ in $X$.
-Then, $$\left\{d(p_k,q)\right\}$$ converges to $d(p,q)$.
+Let $X$ be a metric space and $q \in X$.  Suppose that sequence
+$\left\\{ p\_k \right\\}$ in $X$ converges to a point $p$ in $X$.
+Then, $\left\\{ d(p\_k,q) \right\\}$ converges to $d(p,q)$.
 
 $$
 \begin{align}
-  & \because \left\{ p_k \right\} \text{ converges to } p. \\
   & \therefore \forall \varepsilon \exists N \forall k (k \ge N
   \implies d(p_k,p) < \varepsilon) \label{eq2} \\
   & \abs{d(p_k,q) - d(p,q)} < \varepsilon \iff d(p_k,q) - d(p,q) <

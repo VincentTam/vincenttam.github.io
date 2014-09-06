@@ -33,7 +33,7 @@ limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
 \infty$.[^2] After looking at Corollary 2.4 in the PDF file in
 footnote #2 for a while, I know what I've missed.
 
-If $$\left\{ p_k \right\}$$ converges to $p$,
+If $\left\\{ p\_k \right\\}$ converges to $p$,
 
 $$
 \begin{equation}
@@ -48,10 +48,10 @@ That's why I wrote the [previous post][PrevPost].
 With equation \eqref{eq:dist_limit}, I can now derive
 \eqref{eq:inf_err} from \eqref{eq:finite_err}.
 
-$$ \because \lim_{k \to \infty} x_k = x_*, $$
+$\displaystyle \because \lim\_{k \to \infty} x\_k = x\_\*$
 
 $$
-\begin{equation}
+\begin{equation*}
   \begin{aligned}
     d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n \right) \\
     =& \lim_{k \to \infty} d(x_k,x_n) \\
@@ -59,7 +59,7 @@ $$
       \text{by \eqref{eq:finite_err}} \\
     =& \frac{q^n}{1 - q} d(x_1,x_0)
   \end{aligned}
-\end{equation}
+\end{equation*}
 $$
 
 ---

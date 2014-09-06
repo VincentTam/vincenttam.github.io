@@ -50,7 +50,7 @@ I assumed that $n > 2$.  For $n = 2$, deleting the third term in the
 last step will do.  For $n = 1$, the problem is trivial.
 
 Then
- 
+
 $$
 \begin{equation*}
 \begin{split}
@@ -81,9 +81,8 @@ i} \volume \vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} +
 \left( \frac{\varepsilon}{L} \right)^n
 $$
 
-Assume $\varepsilon < 1, L \ge 1$, and let
-
-$$M := \max_{1 \le i \le n - 1} {n \choose i}$$.
+Assume $\varepsilon < 1, L \ge 1$, and let $\displaystyle M :=
+\max\_{1 \le i \le n - 1} {n \choose i}$.
 
 Then we have
 
