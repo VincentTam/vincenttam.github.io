@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-06T01:05:38+08:00</updated>
+  <updated>2014-09-06T14:07:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Weaker Group Axioms]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/"/>
+    
+    <updated>2014-09-06T11:12:06+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms</id>
+    
+      <content type="html"><![CDATA[<p>The following axioms seem to be weaker.</p>
+
+<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+
+<dl>
+  <dt>Associativity</dt>
+  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dt>Existence of <em>left</em> identity</dt>
+  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dt>Existence of <em>left</em> inverse</dt>
+  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
+e$</dd>
+</dl>
+
+<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
+
+<!-- more -->
+
+<p><em>Proof</em></p>
+
+<dl>
+  <dt>Existence of inverse</dt>
+  <dd>We try to show that a left inverse of a group element is <em>also</em> a
+right inverse of the group element.
+
+    <p>$\forall a \in G,$</p>
+
+    <script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{equation*}
+\begin{split}
+a * a^{-1} &= e * (a * a^{-1}) &\qquad \text{(existence of left
+identity)}\\
+&= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &\qquad \text{(existence
+of left identity of $a^{-1}$)}\\
+&= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &\qquad
+\text{(associativity)}\\
+&= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &\qquad
+\text{(associativity)}\\
+&= ((a^{-1})^{-1} * e) * a^{-1} &\\
+&= (a^{-1})^{-1} * (e * a^{-1}) &\qquad \text{(associativity)}\\
+&= (a^{-1})^{-1} * a^{-1} &\\
+&= e &
+\end{split}
+\end{equation*}
+ %]]&gt;</script>
+
+    <p>∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+e = a^{-1} * a.$</p>
+  </dd>
+  <dt>Existence of identity</dt>
+  <dd>Similarly, we try to show that a left identity is <em>also</em> a right
+identity.
+
+    <p>$\forall a \in G,$</p>
+
+    <script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{equation*}
+\begin{split}
+a * e &= a * (a^{-1} * a) &\qquad \text{(existence of inverse of
+$a$)}\\
+&= (a * a^{-1}) * a &\qquad \text{(associativity)}\\
+&= e * a &\\
+&= a&
+\end{split}
+\end{equation*}
+ %]]&gt;</script>
+
+    <p>∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+a$.</p>
+  </dd>
+</dl>
+
+<h2 id="an-application-in-secondary-school-mathematics">An application in secondary school mathematics</h2>
+
+<p>In high school, to show that $B \in M_{n \times n}(\reals)$ is an
+inverse of $A \in M_{n \times n}(\reals)$<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, one is taught to show
+<em>both</em> $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
+general.</p>
+
+<p>Taking $G = \GL(n,\reals)$ and regard $*$ as matrix multiplication,
+one can just show that $AB = I$ by direct calculation and then
+conclude that $BA = I$, and vice versa.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1544,44 +1649,6 @@ from
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Limit of Distances in Metric Spaces]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces/"/>
-    
-    <updated>2014-08-10T20:35:40+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces</id>
-    
-      <content type="html"><![CDATA[<p>Let $X$ be a metric space and $g \in X$.  Suppose that sequence
-<script type="math/tex">\left\{ p_k \right\}</script> in $X$ converges to a point $p$ in $X$.
-Then, <script type="math/tex">\left\{d(p_k,q)\right\}</script> converges to $d(p,q)$.</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{align}
-  & \because \left\{ p_k \right\} \text{ converges to } p. \\
-  & \therefore \forall \varepsilon \exists N \forall k (k \ge N
-  \implies d(p_k,p) < \varepsilon) \label{eq2} \\
-  & \abs{d(p_k,q) - d(p,q)} < \varepsilon \iff d(p_k,q) - d(p,q) <
-  \varepsilon \land d(p,q) - d(p_k,q) < \varepsilon \\
-  & d(p_k,q) - d(p,q) \le d(p,p_k) \iff d(p_k,q) \le
-  d(p,q) + d(p,p_k) \label{eq4} \\
-  & d(p,q) - d(p_k,q) \le d(p,p_k) \iff d(p,q) \le
-  d(p_k,q) + d(p,p_k) \label{eq5}
-\end{align}
- %]]&gt;</script>
-
-<p>\eqref{eq4}, and \eqref{eq5} follows from the Triangular Inequality.
-Apply \eqref{eq2} to \eqref{eq4} and \eqref{eq5} to finish the proof.
-Q.E.D.</p>
-
-<p>Remark: Quantifications similar to \eqref{eq2} can be found in
-<a href="https://en.wikipedia.org/wiki/Uniform_continuity#Local_continuity_versus_global_uniform_continuity">Wikipedia</a>’s entry for uniform continuity.</p>
-
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-06T01:05:38+08:00</updated>
+  <updated>2014-09-06T14:07:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,111 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Weaker Group Axioms]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/"/>
+    
+    <updated>2014-09-06T11:12:06+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms</id>
+    
+      <content type="html"><![CDATA[<p>The following axioms seem to be weaker.</p>
+
+<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+
+<dl>
+  <dt>Associativity</dt>
+  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dt>Existence of <em>left</em> identity</dt>
+  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dt>Existence of <em>left</em> inverse</dt>
+  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
+e$</dd>
+</dl>
+
+<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
+
+<!-- more -->
+
+<p><em>Proof</em></p>
+
+<dl>
+  <dt>Existence of inverse</dt>
+  <dd>We try to show that a left inverse of a group element is <em>also</em> a
+right inverse of the group element.
+
+    <p>$\forall a \in G,$</p>
+
+    <script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{equation*}
+\begin{split}
+a * a^{-1} &= e * (a * a^{-1}) &\qquad \text{(existence of left
+identity)}\\
+&= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &\qquad \text{(existence
+of left identity of $a^{-1}$)}\\
+&= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &\qquad
+\text{(associativity)}\\
+&= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &\qquad
+\text{(associativity)}\\
+&= ((a^{-1})^{-1} * e) * a^{-1} &\\
+&= (a^{-1})^{-1} * (e * a^{-1}) &\qquad \text{(associativity)}\\
+&= (a^{-1})^{-1} * a^{-1} &\\
+&= e &
+\end{split}
+\end{equation*}
+ %]]&gt;</script>
+
+    <p>∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+e = a^{-1} * a.$</p>
+  </dd>
+  <dt>Existence of identity</dt>
+  <dd>Similarly, we try to show that a left identity is <em>also</em> a right
+identity.
+
+    <p>$\forall a \in G,$</p>
+
+    <script type="math/tex; mode=display">% &lt;![CDATA[
+
+\begin{equation*}
+\begin{split}
+a * e &= a * (a^{-1} * a) &\qquad \text{(existence of inverse of
+$a$)}\\
+&= (a * a^{-1}) * a &\qquad \text{(associativity)}\\
+&= e * a &\\
+&= a&
+\end{split}
+\end{equation*}
+ %]]&gt;</script>
+
+    <p>∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+a$.</p>
+  </dd>
+</dl>
+
+<h2 id="an-application-in-secondary-school-mathematics">An application in secondary school mathematics</h2>
+
+<p>In high school, to show that $B \in M_{n \times n}(\reals)$ is an
+inverse of $A \in M_{n \times n}(\reals)$<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, one is taught to show
+<em>both</em> $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
+general.</p>
+
+<p>Taking $G = \GL(n,\reals)$ and regard $*$ as matrix multiplication,
+one can just show that $AB = I$ by direct calculation and then
+conclude that $BA = I$, and vice versa.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -433,56 +538,6 @@ later, since then the paths are clipped around the notes…”</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Adding Integrals Over Partitions]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/06/21/adding-integrals-over-partitions/"/>
-    
-    <updated>2014-06-21T12:25:35+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/06/21/adding-integrals-over-partitions</id>
-    
-      <content type="html"><![CDATA[<p>In the error list of FitzPatrick’s <em>Advanced Calculus</em>, it’s said that
-on p. 479, ln. 14–21, “it doesn’t seem that <script type="math/tex">\vect{P}_k</script> can be
-chosen as indicated…”  I spent some time to understand what
-<script type="math/tex">\vect{P}^*_k</script> was.</p>
-
-<p>It took me an hour to see what’s wrong with <script type="math/tex">\vect{P}_k</script>.  It’s
-<em>much</em> easier to understand the words using figures.</p>
-
-<!-- more -->
-
-<h2 id="what-the-vectjs-are">What the <script type="math/tex">\vect{J}</script>’s are?</h2>
-
-<p>Suppose <script type="math/tex">\vect{I} \equiv [0,2] \times [0,2]</script>.</p>
-
-<p><img src="/images/posts/Fitz479/partition1.svg" width="500" title="What the J’s are?" ><br />
-<small><a href="/downloads/code/partition1.tex">Source code</a></small></p>
-
-<p><script type="math/tex">\vect{J}</script> is any of the small rectangles in the above figure inside
-<script type="math/tex">\vect{I}</script>.</p>
-
-<h2 id="understanding-vectpk-vectj">Understanding <script type="math/tex">\vect{P}_k (\vect{J})</script></h2>
-
-<p><img src="/images/posts/Fitz479/partition2.svg" width="500" title="What the P_k (J)’s are?" ><br />
-<small><a href="/downloads/code/partition2.tex">Source code</a></small></p>
-
-<p><script type="math/tex">\vect{P}_k (\vect{J})</script> is a partition of <script type="math/tex">\vect{J}</script>.  In other
-words, <script type="math/tex">\vect{P}_k (\vect{J})</script> contains a small black solid square
-and the gray dashed lines inside the square.</p>
-
-<p>The above figure <em>can’t</em> be a partition of <script type="math/tex">\vect{I}</script>.</p>
-
-<h2 id="understanding-vectpk-vectj-1">Understanding <script type="math/tex">\vect{P}^*_k (\vect{J})</script></h2>
-
-<p><img src="/images/posts/Fitz479/partition3.svg" width="500" title="What the P^*_k (J)’s are?" ><br />
-<small><a href="/downloads/code/partition3.tex">Source code</a></small></p>
-
-<p><script type="math/tex">\vect{P}^*_k (\vect{J})</script> is a refinement of <script type="math/tex">\vect{J}</script>.</p>
-
 ]]></content>
     
   </entry>
