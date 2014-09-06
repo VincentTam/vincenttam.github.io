@@ -24,14 +24,14 @@ and some categories like "$\rm \LaTeX$-Suite" *weren't* displayed
 properly.  Moreover, the link for some categories like "C/C++" was
 *dead* in [Watson’s Category List Plugin][CatList].
 
-{% img fancybox /images/posts/CatList/CatList404.png 'Dead links in category list' 'fig1' %}
+{% img fancybox /images/posts/CatList/CatList404.png 800 'Dead links in category list' 'fig1' %}
 
 Unlike two months ago[^1], I now think that it's better for me to find
 out why the catergory list *failed* to generate a correct URL for a
 category page, but the default links for category pages in the blog
 archive are *right*.
 
-{% img fancybox /images/posts/CatList/CatListURL.png 'Correct links in blog archive' 'fig2' %}
+{% img fancybox /images/posts/CatList/CatListURL.png 800 'Correct links in blog archive' 'fig2' %}
 
 I certainly know the precise location of the part of
 `plugins/category_list_tag.rb` that has generated the *erroneous*
@@ -79,8 +79,7 @@ method that generated `category_url` should be changed like this:
     Last month, I used a specfic way to get things work.
 
     {% blockquote Me https://vincenttam.github.io/blog/2014/05/24/using-mathjax-in-category-list-entries/ Using MathJax in Category List Entries %}
-    As I am not going to spend most of my time to study IT, I aimed at
-    merely changing "LaTeX" to "$\rm \LaTeX$".
+    As I am not going to spend most of my time to study IT, I aimed at merely changing "LaTeX" to "$\rm \LaTeX$".
     {% endblockquote %}
 
 [OldWPBlog]: https://blogue.wordpress.com/

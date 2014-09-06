@@ -2,15 +2,7 @@
 layout: post
 title: My First WordPress Post using Gist
 date: 2014-01-30 16:25:03 +0800
-categories:
-- online code highlighter
-- UltraBlog.vim
-tags:
-- Blogger
-- Gist
-- Markdown
-- Vim
-- WordPress
+categories: [online code highlighter, UltraBlog.vim]
 published: true
 comments: true
 ---
@@ -53,7 +45,7 @@ this assertion.<del>
 UltraBlog.vim.  [Markdown quick reference][md_quick_ref] suggests the
 use of 3 backticks.</small>
 
-{% img fancybox /images/posts/1stWPGist/interpreted.png 'Screenshot of the interpreted code in WordPress.com online editor' 'fig1' %}
+{% img fancybox /images/posts/1stWPGist/interpreted.png 800 'Screenshot of the interpreted code in WordPress.com online editor' 'fig1' %}
 
 <small>Figure 2: The above figure shows how the source code for the
 "code list" (in lines 12–15 in UltraBlog.vim, see Figure 1) is

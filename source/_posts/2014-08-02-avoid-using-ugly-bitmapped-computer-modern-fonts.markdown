@@ -3,8 +3,7 @@ layout: post
 title: "Avoid Using Ugly Bitmapped Computer Modern Fonts"
 date: 2014-08-02 14:22:20 +0800
 comments: true
-categories: 
-- LaTeX
+categories: LaTeX
 ---
 
 In a $\rm \LaTeX$ guide found on the website of George Mason
@@ -16,13 +15,13 @@ To illustrate the problem, I used a minimum example which I had posted
 on Gist.[^2]  To simply matters, one may use
 `\pagenumbering{gobble}` to suppress page numbers.[^3]
 
-{% img fancybox /images/posts/CMvsLM/cmodern.png 'Ugly bitmapped Computer Modern fonts' 'fig1' %}
+{% img fancybox /images/posts/CMvsLM/cmodern.png 800 'Ugly bitmapped Computer Modern fonts' 'fig1' %}
 
 If one thinks that downloading the Blue Sky fonts from the American
 Mathematical Society is too troublesome, simply including the package
 `lmodern` will do.
 
-{% img fancybox /images/posts/CMvsLM/lmodern.png 'Improved outlook using Latin Modern fonts' 'fig1' %}
+{% img fancybox /images/posts/CMvsLM/lmodern.png 800 'Improved outlook using Latin Modern fonts' 'fig2' %}
 
 P.S. I have learnt an ImageMagick command from a Stack Overflow
 question to convert a PDF file to an image.[^4]

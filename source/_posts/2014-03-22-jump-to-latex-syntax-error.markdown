@@ -3,8 +3,7 @@ layout: post
 title: "Jump to $\\rm \\LaTeX$ Syntax Error"
 date: 2014-03-22 17:23:19 +0800
 comments: true
-categories:
-- LaTeX-Suite
+categories: LaTeX-Suite
 ---
 
 **This post is written in response to a question of
@@ -14,7 +13,7 @@ Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
 show you how, I use a GIF "animation", instead of a video, so that the
 file size is much smaller.
 
-{% img fancybox /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif 'A GIF animation showing Vim-LaTeX quickfix window' 'fig1' %}
+{% img fancybox /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif 800 'A GIF animation showing Vim-LaTeX quickfix window' 'fig1' %}
 
 Explanation:
 

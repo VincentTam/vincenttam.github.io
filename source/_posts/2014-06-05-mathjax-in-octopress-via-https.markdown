@@ -3,32 +3,29 @@ layout: post
 title: "MathJax in Octopress via HTTPS"
 date: 2014-06-05 20:25:30 +0800
 comments: true
-categories:
-- information security
-- MathJax
-- Octopress
+categories: [information security, MathJax, Octopress]
 ---
 
 Problem
 ---
 
-Some contents in [Octopress][] blogs *couldn't* be viewed via
-HTTPS[^1], for example, [a Japanese blog][JPBlog].
+Some contents in [Octopress] blogs *couldn't* be viewed via HTTPS[^1],
+for example, [a Japanese blog][JPBlog].
 
-{% img fancybox /images/posts/OctopressHTTPS/JPBlog.png 'Screenshot of an Octopress blog in Japanese' 'fig1' %}
+{% img fancybox /images/posts/OctopressHTTPS/JPBlog.png 800 'Screenshot of an Octopress blog in Japanese' 'fig1' %}
 
 This blog on last Saturday afternoon
 
 + The first category list item "$\rm \LaTeX$" on the right *couldn't*
 be displayed
 
-{% img fancybox /images/posts/OctopressHTTPS/blocked.png 'Screenshot of my blog on last Saturday afternoon' 'fig2' %}
+{% img fancybox /images/posts/OctopressHTTPS/blocked.png 800 'Screenshot of my blog on last Saturday afternoon' 'fig2' %}
 
 + Using HTTP instead of HTTPS, I can see the blocked contents.
 
-{% img fancybox /images/posts/OctopressHTTPS/disable_blocking.png 'Disable Protection on This Page' 'fig3' %}
+{% img fancybox /images/posts/OctopressHTTPS/disable_blocking.png 800 'Disable Protection on This Page' 'fig3' %}
 
-{% img fancybox /images/posts/OctopressHTTPS/blocking_disabled.png 'Blocked contents can be displayed.' 'fig4' %}
+{% img fancybox /images/posts/OctopressHTTPS/blocking_disabled.png 800 'Blocked contents can be displayed.' 'fig4' %}
 
 **How can those blocked contents be displayed automatically?**
 
@@ -106,7 +103,7 @@ web designing, I could only understand two advices:
 2. Invoke Firefox's web console by `<C-S-k>`.  (can be closed with
 `<F12>`)
 
-{% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 'Firefox web console' 'fig5' %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 800 'Firefox web console' 'fig5' %}
 
 In lines 3–4 of the web console, I could see that Google Fonts were
 blocked.  I clicked "[**[Learn More]**][MixedContent]" and was brought
@@ -136,9 +133,10 @@ blog *weren't* blocked anymore.
 
 ### Fixing MathJax
 
-The way to include MathJax equations in Octopress in now clear: refer to an HTTPS version of MathJax library in the head of each page.
+The way to include MathJax equations in Octopress in now clear: refer
+to an HTTPS version of MathJax library in the head of each page.
 
-{% img fancybox /images/posts/OctopressHTTPS/WebConsoleMathJax.png 'Firefox web console' 'fig6' %}
+{% img fancybox /images/posts/OctopressHTTPS/WebConsoleMathJax.png 800 'Firefox web console' 'fig6' %}
 
 I tried to google 'blocked loading mixed active content
 "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"',

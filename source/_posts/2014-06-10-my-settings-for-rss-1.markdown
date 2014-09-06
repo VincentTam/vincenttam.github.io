@@ -26,7 +26,7 @@ Problem
 As can be seen from Clapper's RSS feed page, each popup image appears
 *three* times.
 
-{% img fancybox /images/posts/RSS1/3img.png 'Clapper RSS' 'fig1' %}
+{% img fancybox /images/posts/RSS1/3img.png 800 'Clapper RSS' 'fig1' %}
 
 <!-- more -->
 
@@ -227,21 +227,33 @@ Unfortunately, I got strange output from `rake`.
 <span class="rake_gen_unchanged">unchanged</span> sass/print.scss
 <span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
 Configuration from /home/owner/octopress/_config.yml
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:78:in `require': /home/owner/octopress/plugins/custom_filter.rb:7: dynamic constant assignment (SyntaxError)
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:78: 
+in `require': /home/owner/octopress/plugins/custom_filter.rb:7: dynamic constant
+ assignment (SyntaxError)
 RegexMap = {
 ^
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:78:in `block (2 levels) in setup'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:77:in `each'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:77:in `block in setup'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:76:in `each'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:76:in `setup'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:31:in `initialize'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:238:in `new'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:238:in `&lt;top (required)&gt;'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:78:in `block (2 levels) in setup'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:77:in `each'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:77:in `block in setup'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:76:in `each'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:76:in `setup'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb
+:31:in `initialize'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:238:in 
+`new'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:238:in 
+`&lt;top (required)&gt;'
 from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/jekyll:23:in `load'
 from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/jekyll:23:in `&lt;main&gt;'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `eval'
-from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `eval
+'
+from /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `&lt;mai
+n&gt;'
 </code></pre>
 
 I searched "ruby dynamic constant assignment" on Google, and read the
@@ -260,36 +272,64 @@ rake generate
 <span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
 Configuration from /home/owner/octopress/_config.yml
 Building site: source -&gt; public
-Liquid Exception: undefined method `gsub' for #&lt;Hash:0xa927e30&gt; in atom.xml
+Liquid Exception: undefined method `gsub' for #&lt;Hash:0xa927e30&gt; in atom.xm
+l
 /home/owner/octopress/plugins/octopress_filters.rb:81:in `expand_urls'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/context.rb:58:in `invoke'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:43:in `block in render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:38:in `each'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:38:in `inject'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:38:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:116:in `block (2 levels) in render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:104:in `each'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:104:in `each_with_index'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:104:in `block in render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/context.rb:91:in `stack'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:103:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/convertible.rb:79:in `do_layout'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/context.rb:58
+:in `invoke'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:4
+3:in `block in render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:3
+8:in `each'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:3
+8:in `inject'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/variable.rb:3
+8:in `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:94:i
+n `block in render_all'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:i
+n `collect'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:i
+n `render_all'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:1
+16:in `block (2 levels) in render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:1
+04:in `each'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:1
+04:in `each_with_index'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:1
+04:in `block in render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/context.rb:91
+:in `stack'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/tags/for.rb:1
+03:in `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:94:i
+n `block in render_all'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:i
+n `collect'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:92:i
+n `render_all'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/block.rb:82:i
+n `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/template.rb:1
+24:in `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/liquid-2.3.0/lib/liquid/template.rb:1
+32:in `render!'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/convertible.
+rb:79:in `do_layout'
 /home/owner/octopress/plugins/post_filters.rb:167:in `do_layout'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/page.rb:100:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:204:in `block in render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:203:in `each'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:203:in `render'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:41:in `process'
-/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:264:in `&lt;top (required)&gt;'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/page.rb:100:
+in `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:204:
+in `block in render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:203:
+in `each'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:203:
+in `render'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/lib/jekyll/site.rb:41:i
+n `process'
+/home/owner/.rvm/gems/ruby-1.9.3-p484/gems/jekyll-0.12.1/bin/jekyll:264:in `&lt;top
+ (required)&gt;'
 /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/jekyll:23:in `load'
 /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/jekyll:23:in `&lt;main&gt;'
 /home/owner/.rvm/gems/ruby-1.9.3-p484/bin/ruby_executable_hooks:15:in `eval'

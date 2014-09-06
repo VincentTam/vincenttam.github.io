@@ -9,7 +9,7 @@ categories: Octopress
 Problem
 ---
 
-{% img fancybox /images/posts/OctBlockquote/err.png 'Wrongly rendered contents' 'Fig 1' %}
+{% img fancybox /images/posts/OctBlockquote/err.png 800 'Wrongly rendered contents' 'Fig 1' %}
 
 If I input Markdown code inside a
 `{% raw %}{% blockquote %}{% endraw %}` tag, it *won't* be parsed.
