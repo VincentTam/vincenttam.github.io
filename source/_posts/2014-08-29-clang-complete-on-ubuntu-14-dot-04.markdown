@@ -3,7 +3,7 @@ layout: post
 title: "Clang Complete on Ubuntu 14.04"
 date: 2014-08-29 13:44:03 +0800
 comments: true
-categories: Vim
+categories: [Linux, Vim]
 ---
 
 Problem
