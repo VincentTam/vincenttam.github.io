@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Basic Use of Aptitude - Blog 1</title>
+  <title>The Greek Alphabet in $\rm \LaTeX$ - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why use Aptitude? I tried upgrading the Linux kernel on Ubuntu using apt-get, but it
-failed. How can I upgrade the Linux kernel? A trivial solution &hellip;">
+  <meta name="description" content="I’ve found a list of $\rm \LaTeX$ commands for Greek alphabets.
+Unluckily, when I right-clicked each alphabet, the popped-up menu
+could only show the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ failed. How can I upgrade the Linux kernel? A trivial solution &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -169,7 +170,7 @@ $(document).ready(function() {
   <header>
     
       
-	<h1 class="entry-title">Basic Use of Aptitude</h1>
+	<h1 class="entry-title external"><a href="http://jblevins.org/notes/greek">The Greek Alphabet in $\rm \LaTeX$</a> &#9733;</h1>
       
     
     
@@ -179,7 +180,7 @@ $(document).ready(function() {
 
 
 
-<time class='entry-date' datetime='2014-06-30T09:02:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:02 am</span></time>
+<time class='entry-date' datetime='2014-09-07T22:01:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:01 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -190,181 +191,11 @@ $(document).ready(function() {
   </header>
 
 
-<div class="entry-content"><h2 id="why-use-aptitude">Why use Aptitude?</h2>
-
-<p>I tried upgrading the Linux kernel on Ubuntu using <code>apt-get</code>, but it
-<em>failed</em>.</p>
-
-<p><img src="/images/posts/Aptitude/GnomeTerm.png" title="fig:gnome-term" alt="apt-get cannot upgrade kernel" /></p>
-
-<p><strong>How can I upgrade the Linux kernel?</strong></p>
-
-<!-- more -->
-
-<h3 id="a-trivial-solution">A trivial solution</h3>
-
-<p>Using the GUI Update Manager is extremely simple—a click will quickly
-settle this down.</p>
-
-<p><img src="/images/posts/Aptitude/GUI.png" title="fig:GUI" alt="Update Manager" /></p>
-
-<p>However, many geeks want a solution in CLI, <em>not</em> GUI.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>The command <code>sudo aptitude</code> brings user into an interactive program.</p>
-
-<p><img class="fancybox" src="/images/posts/Aptitude/AptitudeBig.png" title="Aptitude (Big version)" alt="fig1" /></p>
-
-<p>However, the screenshot is <em>too wide</em>.  How can one make it smaller so
-that it’s easier to view the image?</p>
-
-<p><img src="/images/posts/Aptitude/Aptitude-0.png" title="fig:Aptitude" alt="Aptitude" /></p>
-
-<p>The answer is <em>not</em> so difficult.  Several basic <code>stty</code> commands will
-be enough.</p>
-
-<h3 id="some-simple-stty-commands">Some simple <code>stty</code> commands</h3>
-
-<pre class="cli"><code class="UBMono">$ stty -a       # print all settings
-$ stty size     # print the buffer height and width
-64 160
-$ stty cols 80  # set buffer width to 80 characters
-$ stty rows 32  # set buffer height to 32 rows
-</code></pre>
-
-<p>The default <code>size</code> for <code>gnome-terminal</code> is <code>24 80</code>, while the figures
-for <code>/dev/tty[1-6]</code> is <code>64 160</code>.</p>
-
-<p>I have observed that the changes to <code>stty</code> settings should be
-permanent.  If one has quit the <code>tty</code>, and then goes back to the
-<em>same</em> <code>tty</code> again, the settings are still there.  That’s why I’ve
-written down the default buffer sizes above.</p>
-
-<p>I then use the following command to take a screenshot of Aptitude from
-<code>/dev/tty1</code>.</p>
-
-<pre class="cli"><code class="UBMono">$ fbgrab -c 1 Aptitude.png</code></pre>
-
-<p>Only the left top quarter of the image is needed.  Using <a href="http://www.gimp.org/" title="GIMP - The GNU Image Manipulation Program">GIMP</a> to
-crop the image will be an overkill.  Many users who love using CLIs
-<em>won’t</em> like that.  Moreover, how above repeating the cropping for
-<em>several</em> screenshots with the <em>same</em> size?</p>
-
-<h3 id="imagemagick-commands-learnt">ImageMagick commands learnt</h3>
-
-<p><code>-resize</code> option will scale down the input image with size
-1280px×1024px to 300px×240px.</p>
-
-<pre class="cli"><code class="UBMono">$ convert -resize 300 1280x1024.png output.png</code></pre>
-
-<p>That’s the true cropping command.</p>
-
-<pre class="cli"><code class="UBMono">$ convert -crop 640x512 1280x1024.png output.png</code></pre>
-
-<p>The outputs are four equally-sized image files like <code>output-0.png</code>.</p>
-
-<h3 id="a-list-of-simple-aptitude-keystrokes">A list of simple Aptitude keystrokes</h3>
-
-<p>The basic key motions for moving the cursor is <em>exactly</em> the same as
-those in Vim.</p>
-
-<h4 id="seeking-help">Seeking help</h4>
-
-<ul>
-  <li>
-    <p>Press <code>?</code> for help</p>
-
-    <p>However, there’s <em>too much</em> keys, and I’ll list out some
-  elementary ones.</p>
-  </li>
-</ul>
-
-<h4 id="searching">Searching</h4>
-
-<ul>
-  <li>Press <code>/</code> to search</li>
-  <li>Press <code>n</code> to repeat search</li>
-  <li>Press <code>N</code> to repeat search <em>backward</em></li>
-</ul>
-
-<h4 id="working-with-windows">Working with windows</h4>
-
-<ul>
-  <li>Press <code>&lt;F6&gt;</code> to move to the next window</li>
-  <li>Press <code>&lt;F7&gt;</code> to move to the previous window</li>
-  <li>Press <code>q</code> to quit</li>
-</ul>
-
-<h4 id="browsing-through-nodes">Browsing through nodes</h4>
-
-<ul>
-  <li>
-    <p>Press <code>&lt;Enter&gt;</code> to expand a node.</p>
-
-    <p><img src="/images/posts/Aptitude/AptitudeEnter-0.png" title="fig:Enter" alt="Press Enter" /></p>
-  </li>
-  <li>
-    <p>Press <code>^</code> to go back to the parent node (<code>utils</code> → <code>Security
-  Updates</code>)</p>
-
-    <p><img src="/images/posts/Aptitude/AptitudeParent1-0.png" title="fig:Parent1" alt="Original position" /></p>
-
-    <p><img src="/images/posts/Aptitude/AptitudeParent2-0.png" title="fig:Parent2" alt="Jumped to parent node" /></p>
-  </li>
-  <li>
-    <p>Press <code>[</code> to expand recursively (<code>utils</code> expanded)</p>
-
-    <p><img src="/images/posts/Aptitude/AptitudeExpand1-0.png" title="fig:Expand1" alt="Before expansion" /></p>
-
-    <p><img src="/images/posts/Aptitude/AptitudeExpand2-0.png" title="fig:Expand2" alt="After expansion" /></p>
-  </li>
-  <li>
-    <p>Press <code>]</code> to collapse all</p>
-  </li>
-</ul>
-
-<h4 id="updating-packages">Updating packages</h4>
-
-<ul>
-  <li>Press <code>u</code> to update the package list</li>
-  <li>Press <code>U</code> to apply the upgrade to all upgradable packages</li>
-</ul>
-
-<p>Note: One needs to confirm the action by pressing <code>g</code>.  See 
-<a href="#applying-the-changes" title="Applying the changes">a section below</a> for details.</p>
-
-<h4 id="action-on-individual-packages">Action on individual packages</h4>
-
-<ul>
-  <li>Press <code>+</code> to install/upgrade a package</li>
-  <li>Press <code>-</code> to remove a package</li>
-  <li>Press <code>_</code> to purge a package</li>
-</ul>
-
-<p>Note: One needs to confirm the action by pressing <code>g</code>.  See 
-<a href="#applying-the-changes" title="Applying the changes">a section below</a> for details.</p>
-
-<h4 id="applying-the-changes">Applying the changes</h4>
-
-<ul>
-  <li>
-    <p>Press <code>g</code> to preview the actions</p>
-
-    <p><img src="/images/posts/Aptitude/AptitudePreview-0.png" title="fig:Preview" alt="Aptitude preview window" /></p>
-
-    <ul>
-      <li>Press <code>g</code> <em>again</em> in the preview window to apply the actions</li>
-    </ul>
-
-    <p><img src="/images/posts/Aptitude/AptitudePreview2-0.png" title="fig:Preview2" alt="Aptitude showing download progress" /></p>
-  </li>
-</ul>
-
-<h4 id="more-commands">More commands</h4>
-
-<p>There’s still more commands, like <code>i</code> for switching the tabbed panes
-which contain the information of the packages.</p>
+<div class="entry-content"><p>I’ve found a list of $\rm \LaTeX$ commands for Greek alphabets.
+Unluckily, when I right-clicked each alphabet, the popped-up menu
+could only show the MathML code, but <em>not</em> the $\rm \LaTeX$ code.
+Therefore, I have to use <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-dynamic.html" title="Display an equation typed in by a user">MathJax’s previewer</a> to
+verify the commands.</p>
 
 </div>
 
@@ -381,12 +212,12 @@ which contain the information of the packages.</p>
 
 
 
-<time class='entry-date' datetime='2014-06-30T09:02:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:02 am</span></time>
+<time class='entry-date' datetime='2014-09-07T22:01:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:01 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -395,7 +226,7 @@ which contain the information of the packages.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/" >Tweet</a>
   
   
   
@@ -406,10 +237,8 @@ which contain the information of the packages.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/25/interesting-linux-figures-1/" title="Previous Post: Interesting Linux Figures (1)">&laquo; Interesting Linux Figures (1)</a>
+        <a class="basic-alignment left" href="/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/" title="Previous Post: Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion">&laquo; Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/07/12/star-of-david-in-pascals-triangle/" title="Next Post: Star of David in Pascal's Triangle">Star of David in Pascal's Triangle &raquo;</a>
       
     </p>
   </footer>
@@ -521,8 +350,8 @@ which contain the information of the packages.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/';
         var disqus_script = 'embed.js';
       
     (function () {
