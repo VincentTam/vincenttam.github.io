@@ -9,24 +9,21 @@ categories: math
 This afternoon, I read the proof of Banach fixed-point theorem in
 *Wikipedia*.[^1]  It's said that
 
-$$
 \begin{equation}
-  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
+  d(x^\*,x\_n) \le \frac{q^n}{1 - q} d(x\_1,x\_0).
   \label{eq:inf_err}
 \end{equation}
-$$
 
 In the proofs for the lemmas, I could only find something like $x_k$
 inside the brackets, but *not* $x^\*$.  Thus, I *couldn't* figure out
 how one can derive inequality \eqref{eq:inf_err} from an inequality
 derived in the proof of Lemma 2.
 
-$$
 \begin{equation}
-  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0), \text{ where } m > n.
+  d(x\_m,x\_n) \le \frac{q^n}{1 - q} d(x\_1,x\_0),
+  \text{ where } m > n.
   \label{eq:finite_err}
 \end{equation}
-$$
 
 I googled for some notes, and found one which told me to take the
 limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
@@ -35,13 +32,11 @@ footnote #2 for a while, I know what I've missed.
 
 If $\left\\{ p\_k \right\\}$ converges to $p$,
 
-$$
 \begin{equation}
-  \lim_{k \to \infty} d(p_k,q) = d(p,q)
-    = d\left(\lim_{k \to \infty} p_k,q \right)
+  \lim\_{k \to \infty} d(p\_k,q) = d(p,q)
+    = d\left(\lim\_{k \to \infty} p\_k,q \right)
   \label{eq:dist_limit}
 \end{equation}
-$$
 
 That's why I wrote the [previous post][PrevPost].
 
@@ -50,17 +45,15 @@ With equation \eqref{eq:dist_limit}, I can now derive
 
 $\displaystyle \because \lim\_{k \to \infty} x\_k = x\_\*$
 
-$$
-\begin{equation*}
-  \begin{aligned}
-    d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n \right) \\
-    =& \lim_{k \to \infty} d(x_k,x_n) \\
-    \le& \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-      \text{by \eqref{eq:finite_err}} \\
-    =& \frac{q^n}{1 - q} d(x_1,x_0)
-  \end{aligned}
-\end{equation*}
-$$
+\\[
+\begin{aligned}
+d(x^\*,x\_n) =& d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
+=& \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
+\le& \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
+  \text{(by \eqref{eq:finite_err})} \\\\\\\\
+=& \frac{q^n}{1 - q} d(x\_1,x\_0)
+\end{aligned}
+\\]
 
 ---
 [^1]:

@@ -31,26 +31,23 @@ Existence of inverse
   right inverse of the group element.
 
   $\forall a \in G,$
-
-  $$
-  \begin{equation*}
+  \\[
   \begin{split}
   a * a^{-1} &= e * (a * a^{-1}) &\qquad \text{(existence of left
-  identity)}\\
+  identity)}\\\\\\\\
   &= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &\qquad \text{(existence
-  of left identity of $a^{-1}$)}\\
+  of left identity of $a^{-1}$)}\\\\\\\\
   &= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &\qquad
-  \text{(associativity)}\\
+  \text{(associativity)}\\\\\\\\
   &= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &\qquad
-  \text{(associativity)}\\
-  &= ((a^{-1})^{-1} * e) * a^{-1} &\\
-  &= (a^{-1})^{-1} * (e * a^{-1}) &\qquad \text{(associativity)}\\
-  &= (a^{-1})^{-1} * a^{-1} &\\
+  \text{(associativity)}\\\\\\\\
+  &= ((a^{-1})^{-1} * e) * a^{-1} &\\\\\\\\
+  &= (a^{-1})^{-1} * (e * a^{-1}) &\qquad
+  \text{(associativity)}\\\\\\\\
+  &= (a^{-1})^{-1} * a^{-1} &\\\\\\\\
   &= e &
   \end{split}
-  \end{equation*}
-  $$
-
+  \\]
   ∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a \* a^{-1} =
   e = a^{-1} \* a.$
 
@@ -59,19 +56,15 @@ Existence of identity
   identity.
 
   $\forall a \in G,$
-
-  $$
-  \begin{equation*}
+  \\[
   \begin{split}
   a * e &= a * (a^{-1} * a) &\qquad \text{(existence of inverse of
-  $a$)}\\
-  &= (a * a^{-1}) * a &\qquad \text{(associativity)}\\
-  &= e * a &\\
+  $a$)}\\\\\\\\
+  &= (a * a^{-1}) * a &\qquad \text{(associativity)}\\\\\\\\
+  &= e * a &\\\\\\\\
   &= a&
   \end{split}
-  \end{equation*}
-  $$
-
+  \\]
   ∴$\exists e \in G \text{ s.t. } \forall a \in G, a \* e = e \* a =
   a$.
 

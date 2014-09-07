@@ -35,14 +35,13 @@ command.
 
 {% include_code DavidStar.tex %}
 
-$$
-\begin{align*}
-  &\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
-    \text{one can easily see that} \\
-  &\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
-    \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
-\end{align*}
-$$
+Realising that $\displaystyle {n \choose k} = \frac{n!}{r! (n - r)!}$,
+one can easily see that
+
+\\[
+\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
+  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+\\]
 
 ---
 [^1]:
