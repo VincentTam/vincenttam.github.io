@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="At night on 25/02/14, I tried to open gVim and use the command mode to
-issue system commands, so that I can use pandoc to create $\rm \LaTeX$
-Beamer &hellip;">
+  <meta name="description" content="I don’t need to memorize these commands. Instead, what I need is to
+create a page here so that I can make quickly get the right command
+for my work. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -166,6 +166,78 @@ $(document).ready(function() {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/03/15/complicated-pandoc-commands/">Complicated Pandoc Commands</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-15T12:55:46+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:55 pm</span></time>
+        
+           | <a href="/blog/2014/03/15/complicated-pandoc-commands/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/03/15/complicated-pandoc-commands/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/03/15/complicated-pandoc-commands/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I don’t need to memorize these commands.  Instead, what I need is to
+create a page here so that I can make quickly get the right command
+for my work.  This saves the time for checking and testing the right
+command.</p>
+
+<h2 id="pandoc-markdown">Pandoc markdown</h2>
+
+<p>Official demo:
+<a href="http://johnmacfarlane.net/pandoc/demos.html">http://johnmacfarlane.net/pandoc/demos.html</a></p>
+
+<h3 id="beamer">Beamer</h3>
+
+<p>A shell command for APA style reference list:</p>
+
+<pre><code>$ pandoc -t beamer -s -S --biblio mybib.bib\
+&gt; --csl /path/to/apa.csl % -V theme:Berlin -o %&lt;.pdf
+</code></pre>
+
+<h3 id="customized-pdf">Customized PDF</h3>
+<p>(Added on AUG 03RD, 2014)</p>
+
+<p>The command below is just an example of narrowing the margin, and
+choosing a larger font.</p>
+
+<pre><code>$ pandoc % -V geometry:margin=1in -V fontsize:12pt\
+&gt; -V linestretch:1.655 -o %&lt;.pdf 
+</code></pre>
+
+<p>For more variables, refer to the User Guide:
+<a href="http://johnmacfarlane.net/pandoc/README.html#templates">http://johnmacfarlane.net/pandoc/README.html#templates</a></p>
+
+<p>For many ordinary computer users who are used to write documents using
+WYSIWYG editors, the above command is quite scary, so I’ve written a
+custom template to save the trouble.  See
+<a href="/blog/2014/08/03/my-pandoc-template-1/"><em>My Pandoc Template (1)</em></a> for details.</p>
+
+<!-- vim:set tw=70 wrap: -->
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -670,68 +742,6 @@ has found a mistake in
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/06/dont-allow-pingbacks/">Don't Allow Pingbacks</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-06T01:27:57+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:27 am</span></time>
-        
-           | <a href="/blog/2014/02/06/dont-allow-pingbacks/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/06/dont-allow-pingbacks/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/06/dont-allow-pingbacks/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This noon, I received some pingback notifications. It is possible that I get these messages because I included some hyperlinks that link back to my own posts. After viewing the contents, I found them meaningless and wanted to delete them. Harrison provides the reasons for <em>not</em> allowing pingbacks.<sup id="fnref-524-1"><a href="#fn-524-1" rel="footnote">1</a></sup></p>
-
-<p>As the author has said, he will simply delete the pingbacks on his blog pages. Moreover, I <em>don&#8217;t</em> want to bother the authors of posts to which I has linked. Therefore, I&#8217;ve found the last part of the official support page useful.<sup id="fnref-524-2"><a href="#fn-524-2" rel="footnote">2</a></sup></p>
-
-<blockquote>
-  <h3>Disabling Pingbacks</h3>
-  <br />
-  You can easily disable pingbacks on individual posts via the Discussion module on your Add New or Edit Post page:<br />
-  <br />
-  <img src="/images/posts/ForbidPingback/discussionmodule.jpg" alt="Wordpress.com's interface" title="Figure 1" />
-</blockquote>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-<div class="footnotes">
-<hr />
-<ol>
-
-<li id="fn-524-1">
-<a href="http://www.wpdoctors.co.uk/with-wordpress-whats-a-pingback-should-i-approve-them">Dan Harrison&#8217;s post on WP Doctors</a>&#160;<a href="#fnref-524-1" rev="footnote">&#8617;</a>
-</li>
-
-<li id="fn-524-2">
-<a href="/images/posts/ForbidPingback/discussionmodule.jpg">WordPress.com&#8217;s support page on pingbacks</a>&#160;<a href="#fnref-524-2" rev="footnote">&#8617;</a>
-</li>
-
-</ol></div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -771,11 +781,11 @@ has found a mistake in
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (10)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (21)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (29)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (7)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (30)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -793,6 +803,10 @@ has found a mistake in
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">The Greek Alphabet in $\rm \LaTeX$</a>
       </li>
     
@@ -806,10 +820,6 @@ has found a mistake in
     
       <li class="post">
         <a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-07T22:09:04+08:00</updated>
+  <updated>2014-09-07T23:52:58+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Clang Complete on Ubuntu 14.04]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2014-08-29T13:44:03+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
+following problem.</p>
+
+<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
+Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
+ contains libclang?
+    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
+tory. To provide a path to libclang use Config.set_library_path() or Config.set_
+library_file().
+
+Press ENTER or type command to continue
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “loading libclang failed”, and skimmed two results.  The
+first one was an clang complete issue on GitHub.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, at
+first glance, the problem was on Ubuntu <em>13.10, not 14.04</em>, and the
+error messages <em>didn’t</em> resemble the above message.  The second one
+was a Stack Overflow question.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  From the first answer, I knew that
+I need to check if <code>libclang1</code> package was installed.  <code>dkpg -l | grep
+clang</code> told me that I’d got clang.  I read the second answer, and
+viewed the list of files in <code>/usr/lib/</code>.  There’s <em>no</em> folders whose
+name started with <code>x86</code>, and <em>no</em> file called <code>libclang.so.1</code> in each
+sub-folder.  Looking at the issue <em>again</em> on GitHub, I found out how
+to make use of the information from both sites.</p>
+
+<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
+</code></pre>
+
+<p>To avoid problems, I <em>didn’t</em> set Vim global variable
+<code>clang_library_path</code>.</p>
+
+<p>I <em>didn’t</em> know whether <code>.1</code> should be appended to the end of
+<code>libclang.so</code>.  Finally, I <em>didn’t</em> do so, and the plugin just
+<em>worked</em>.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See clang complete <a href="https://github.com/Rip-Rip/clang_complete/issues/370">issue #370</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See Stack Overflow <a href="http://stackoverflow.com/q/22733943" title="Where is libclang.so?">question 22733943</a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -582,58 +646,6 @@ Retrieved 13:53, August 14, 2014, from
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Install Ruby Again! (2)]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/"/>
-    
-    <updated>2014-08-13T20:26:05+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2</id>
-    
-      <content type="html"><![CDATA[<p>I installed Ruby 2.1.2 so as to build Octopress on top of it.
-Luckily, the installation was successful.</p>
-
-<p><img src="/images/posts/Ruby212/rvm_install.png" alt="Installed Ruby 2.1.2 in the terminal" /></p>
-
-<p>This afternoon, I tried running <code>rake</code> on Ruby 2.1.2.  Unluckily, I
-failed.</p>
-
-<!-- more -->
-
-<p><img src="/images/posts/Ruby212/gen_failed.png" alt="`rake generate` failed" /></p>
-
-<p>The above problem could be fixed by simply changing <code>nil</code> to <code>null</code> at
-the second line of <code>source/_includes/custom/category_feed.xml</code>, so
-it’s <em>not</em> really a problem.</p>
-
-<p>First, the image popup plugin complained about the new version of gems.</p>
-
-<p>I tried to replace all <code>imgpopup</code> by <code>img</code> to find further problems
-first.</p>
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~/octopress$ rake generate
-## Generating Site with Jekyll
-<span class="rake_gen_unchanged">unchanged</span> sass/print.scss
-<span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-<span class="err">Liquid Exception: undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa45c82
-4&gt;&gt; in _posts/2013-08-16-edit-latex-equations-in-vim.html/#excerpt</span>
-jekyll 2.3.0 | Error:  undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa4
-5c824&gt;&gt;
-</code></pre>
-
-<p>Second, it’s the <code>gsub</code> method <em>again</em>!  I’m sorry to that I has been
-tired of reading Ruby’s documentation, so I decided to reset my commit
-history to the tip of <code>origin/source</code>, and revert the default RVM
-version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
-
 ]]></content>
     
   </entry>

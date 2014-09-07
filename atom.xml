@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-07T22:09:04+08:00</updated>
+  <updated>2014-09-07T23:52:58+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MathJax and RSS]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/"/>
+    
+    <updated>2014-09-07T22:31:11+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>In the past, I used double dollar signs <code>$$</code> to enclose block
+equations.  As a result, readers <em>couldn’t</em> see them in <a href="https://www.mozilla.org/firefox/">Firefox</a>.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/old.png" width="900" title="No block equation in RSS" alt="old" /></p>
+
+<p><strong>How can these missing parts be put back to the <abbr title="Rich Site Summary">RSS</abbr> feeds?</strong></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I <em>didn’t</em> know how to use</p>
+
+<ol>
+  <li>typeset curly brackets <code>{}</code> using MathJax <em>without</em> using <code>$$</code> to
+surround the brackets.  If only one <code>$</code> was used, then it would fail.
+For example, <code>$\{a_k\}$</code> <em>wouldn’t</em> work.</li>
+  <li>inline display mode for summation, limit, etc.</li>
+  <li><code>\[</code> and <code>\]</code> to surround block equations in Octopress.</li>
+</ol>
+
+<p>Now, I know that <a href="http://kramdown.gettalong.org/">kramdown</a> parses the Markdown source code for a post
+<em>before</em> <a href="http://www.mathjax.org/">MathJax</a> does.  Therefore, to mean a backslash ‘\’, one
+needs to “double the effort”.  (i.e. use <code>\\{a_k\\}</code> for $\{a_k\}$)
+Moreover, I have to use backslash ‘\’ to escape askterisks <code>*</code> and
+underscores <code>_</code>.</p>
+
+<p>Before I upgraded to Ruby 2 and updated my Octopress source code<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
+<code>$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$</code> <em>didn’t</em> work.
+Now, I can insert inline display equations like
+$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$.</p>
+
+<p>With reference to an example on the MathJax <abbr title="Content Delivery Network">CDN</abbr>, I’ve learnt to use
+<code>begin{equation}</code> just like what $\rm \LaTeX$ users do.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  When
+using it, there’s <em>no</em> need to use <code>$$</code> to surround it.</p>
+
+<p>Viewing <a href="http://drz.ac/javascripts/MathJaxLocal.js"><code>MathJaxLocal.js</code></a> on <em>DrZ.ac</em>, I know why I <em>couldn’t</em>
+use <code>\[</code> for a block equation—I <em>didn’t</em> add it to the corresponding
+list of delimiters in <code>displayMath</code>.  Actually, at that line, the
+whitespace character between two square brackets <code>[</code> <em>aren’t</em>
+necessary.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>While editing a multi-line block equation in a post about the
+Contraction Mapping Principle, I encountered a technical problem:
+there’s <em>no</em> newline character in the equation.  I could just see
+<em>one very long line</em>.  To see how the code was interpreted, I made a
+screenshot of Firefox before MathJax loaded.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/trial.png" title="MathJax code processed by kramdown" alt="interpreted MathJax code" /></p>
+
+<p>It was evident that putting four backslashes at the end of lines for a
+line break <em>wasn’t</em> enough.  Therefore, I put <em>two more</em> backslashes
+there.  This time, the page for an individual post was OK, but the
+contents in the blog index page and those under folder <code>/posts/</code>
+<em>wasn’t</em>.  I viewed the “$\rm \TeX$ Commands” from the popup menu, and
+saw that in the page for an individual post, <em>two</em> backslashes were
+found; at <code>/posts/*</code> and the blog index page, <em>only one</em> backslash was
+found.</p>
+
+<p>By trial, I finally used <em>eight</em> backslashes in the Markdown source
+files for a post for a line break.</p>
+
+<h2 id="result">Result</h2>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/new.png" width="900" title="Block equation in RSS" alt="new" /></p>
+
+<p>The source code for a block equation can now be seen in <abbr title="Rich Site Summary">RSS</abbr> feeds.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See <a href="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/">Updated Octopress Source Code</a> in <em>Blog 1</em> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>View the source of <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> for
+details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See <a href="http://docs.mathjax.org/en/latest/tex.html#tex-and-latex-math-delimiters">$\rm \TeX$ and $\rm \LaTeX$ math delimiters</a> in
+<em>MathJax Documentation</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1528,58 +1629,6 @@ Retrieved 13:53, August 14, 2014, from
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Install Ruby Again! (2)]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/"/>
-    
-    <updated>2014-08-13T20:26:05+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2</id>
-    
-      <content type="html"><![CDATA[<p>I installed Ruby 2.1.2 so as to build Octopress on top of it.
-Luckily, the installation was successful.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/Ruby212/rvm_install.png" alt="Installed Ruby 2.1.2 in the terminal" /></p>
-
-<p>This afternoon, I tried running <code>rake</code> on Ruby 2.1.2.  Unluckily, I
-failed.</p>
-
-<!-- more -->
-
-<p><img src="http://vincenttam.github.io/images/posts/Ruby212/gen_failed.png" alt="`rake generate` failed" /></p>
-
-<p>The above problem could be fixed by simply changing <code>nil</code> to <code>null</code> at
-the second line of <code>source/_includes/custom/category_feed.xml</code>, so
-it’s <em>not</em> really a problem.</p>
-
-<p>First, the image popup plugin complained about the new version of gems.</p>
-
-<p>I tried to replace all <code>imgpopup</code> by <code>img</code> to find further problems
-first.</p>
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~/octopress$ rake generate
-## Generating Site with Jekyll
-<span class="rake_gen_unchanged">unchanged</span> sass/print.scss
-<span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-<span class="err">Liquid Exception: undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa45c82
-4&gt;&gt; in _posts/2013-08-16-edit-latex-equations-in-vim.html/#excerpt</span>
-jekyll 2.3.0 | Error:  undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa4
-5c824&gt;&gt;
-</code></pre>
-
-<p>Second, it’s the <code>gsub</code> method <em>again</em>!  I’m sorry to that I has been
-tired of reading Ruby’s documentation, so I decided to reset my commit
-history to the tip of <code>origin/source</code>, and revert the default RVM
-version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
-
 ]]></content>
     
   </entry>
