@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-07T02:42:50+08:00</updated>
+  <updated>2014-09-07T21:51:49+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion &#9733;]]></title>
+      <link href="http://detexify.kirelabs.org/classify.html"/>
+    
+    <updated>2014-09-07T17:07:43+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion</id>
+    
+      <content type="html"><![CDATA[<p>Searching symbols in
+<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
+time-consuming.  For example, when I was writing my
+<a href="/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
+‘$\circ$’ symbol for composition of two functions.  At first, I typed
+<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
+‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
+Detexify is the answer for commonly used symbols.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -625,45 +655,6 @@ included in <code>sass/custom/_print.scss</code>.  Then, a new file
 <p>In my opinion, they&#8217;re just behaving like the commands used in a *nix terminal. Anyways, I&#8217;ve learnt some new commands, no matter where they&#8217;re used. For a Vim user, it <em>won&#8217;t</em> hurt to take the official tutorial of Emacs since they can applied once you&#8217;re in an Info page. For example, if you want to scroll down by one screen in an Info document, you can issue the command <code>&lt;C-v&gt;</code>. To reverse the change, you can type <code>&lt;M-v&gt;</code>.</p>
 
 <p>I end this post with <code>&lt;C-j&gt;</code>, though its behaviour in Emacs differs from the behaviour in Vimperator. It&#8217;s just another way for using the search engine: moving the cursor to the search box at the top right-hand corner.</p>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Firefox's Markdown Viewer]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/"/>
-    
-    <updated>2014-02-04T17:10:36+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer</id>
-    
-      <content type="html"><![CDATA[<p>This morning, I&#8217;ve found a Firefox Add-on called <a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>. As its name suggests, it&#8217;s a Firefox plugin that enables users to view Markdown documents. The screenshot provided on the home page of the add-on illustrates that it works on M\$ Win*. How about GNU/Linux? I clicked the button and installed the plugin. After that, I used <code>:restart</code> in Vimperator to see what happened if I used Firefox to view a local Markdown file with extension name <code>.md</code>.</p>
-
-<p>It turned out that nothing happened! With Lai&#8217;s review titled <em>Work on Linux</em>, I figured out what to do. After looking at his suggested code for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it and it worked. Critical readers will then ask about the way to include multiple file extensions.</p>
-
-<p>Browsing the code with <code>#</code> in the RDF file helps. Here&#8217;s what my results.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;rdf:description</span> <span class="na">rdf:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span> <span class="na">nc:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span> <span class="na">nc:editable=</span><span class="s">&quot;true&quot;</span> <span class="na">nc:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;&lt;/rdf:description&gt;&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xls<span class="nt">&lt;/nc:fileextensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xlb<span class="nt">&lt;/nc:fileextensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;nc:fileextensions&gt;</span>xlt<span class="nt">&lt;/nc:fileextensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;nc:handlerprop</span> <span class="na">rdf:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span><span class="ni">&amp;lt;</span>/RDF:Description<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than one</em> extension name for a Markdown file. However, a GNU/Linux user should <strong>never</strong> use <code>.md</code>.</p>
-
-<p>Finally, combining Lai&#8217;s and Cas&#8217; posts, I&#8217;ve come up with <a href="https://gist.github.com/VincentTam/8800268">a Gist.</a></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 ]]></content>

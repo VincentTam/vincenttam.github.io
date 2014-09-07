@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-07T02:42:50+08:00</updated>
+  <updated>2014-09-07T21:51:49+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion &#9733;]]></title>
+      <link href="http://detexify.kirelabs.org/classify.html"/>
+    
+    <updated>2014-09-07T17:07:43+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion</id>
+    
+      <content type="html"><![CDATA[<p>Searching symbols in
+<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
+time-consuming.  For example, when I was writing my
+<a href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
+‘$\circ$’ symbol for composition of two functions.  At first, I typed
+<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
+‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
+Detexify is the answer for commonly used symbols.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Fake Function]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/"/>
+    
+    <updated>2014-09-07T14:16:31+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/a-fake-function</id>
+    
+      <content type="html"><![CDATA[<p>Half a year ago, when I heard the concept of <strong>well-defined
+functions</strong>, I <em>wasn’t</em> familiar with it.</p>
+
+<p>I’ve just worked out a problem, and got more idea about that concept.
+The problem should be quite easy.  It asks readers to show that if
+$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
+is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
+$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
+the wordings in the question, and attempted to prove that the binary
+structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
+isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
+composition of functions.  As a result, I let $\phi: \{\varphi_g
+\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
+The associativity, existence of identity element and existence of
+inverse of the binary structure can be easily verified.  By the very
+definition of $\phi$, it seems that its surjectivity is very obvious.
+I continued to write “injectivity of $\phi$ is also obvious.”</p>
+
+<p>\[
+\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
+  \implies \varphi_{g_1} = \varphi_{g_2}
+\]</p>
+
+<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
+double-headed one.  If I <em>couldn’t</em> do so, it means that
+$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
+g_2$.  I realised that I need to check whether $\phi$ was
+<em>well-defined</em>.  As a result, I wasted an hour on some equations.
+Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
+$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
+G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
+did was a waste of time.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -46,51 +120,42 @@ e$</dd>
   <dd>We try to show that a left inverse of a group element is <em>also</em> a
 right inverse of the group element.
 
-    <p>$\forall a \in G,$</p>
-
-    <script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
+    <p>$\forall a \in G,$
+\[
 \begin{split}
-a * a^{-1} &= e * (a * a^{-1}) &\qquad \text{(existence of left
-identity)}\\
-&= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &\qquad \text{(existence
-of left identity of $a^{-1}$)}\\
-&= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &\qquad
-\text{(associativity)}\\
-&= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &\qquad
-\text{(associativity)}\\
-&= ((a^{-1})^{-1} * e) * a^{-1} &\\
-&= (a^{-1})^{-1} * (e * a^{-1}) &\qquad \text{(associativity)}\\
-&= (a^{-1})^{-1} * a^{-1} &\\
-&= e &
+a * a^{-1} &amp;= e * (a * a^{-1}) &amp;\qquad \text{(existence of left
+identity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &amp;\qquad \text{(existence
+of left identity of $a^{-1}$)}&#92;\<br />
+&amp;= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * e) * a^{-1} &amp;&#92;\<br />
+&amp;= (a^{-1})^{-1} * (e * a^{-1}) &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= (a^{-1})^{-1} * a^{-1} &amp;&#92;\<br />
+&amp;= e &amp;
 \end{split}
-\end{equation*}
- %]]&gt;</script>
-
-    <p>∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+\]
+∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
 e = a^{-1} * a.$</p>
   </dd>
   <dt>Existence of identity</dt>
   <dd>Similarly, we try to show that a left identity is <em>also</em> a right
 identity.
 
-    <p>$\forall a \in G,$</p>
-
-    <script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
+    <p>$\forall a \in G,$
+\[
 \begin{split}
-a * e &= a * (a^{-1} * a) &\qquad \text{(existence of inverse of
-$a$)}\\
-&= (a * a^{-1}) * a &\qquad \text{(associativity)}\\
-&= e * a &\\
-&= a&
+a * e &amp;= a * (a^{-1} * a) &amp;\qquad \text{(existence of inverse of
+$a$)}&#92;\<br />
+&amp;= (a * a^{-1}) * a &amp;\qquad \text{(associativity)}&#92;\<br />
+&amp;= e * a &amp;&#92;\<br />
+&amp;= a&amp;
 \end{split}
-\end{equation*}
- %]]&gt;</script>
-
-    <p>∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+\]
+∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
 a$.</p>
   </dd>
 </dl>
@@ -1537,118 +1602,6 @@ more <em>interesting</em> than technical problems.</p>
 <p>I have now worked out a solution to this problem.  Refer to <a href="http://vincenttam.github.io/blog/2014/08/17/ubuntu-14-dot-04-monospaced-font-family/"><em>Ubuntu
 14.04 Monospaced Font Family</em></a> for details.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Ubuntu Distribution Upgrade to 14.04]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/"/>
-    
-    <updated>2014-08-12T23:46:40+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04</id>
-    
-      <content type="html"><![CDATA[<p><img src="http://vincenttam.github.io/images/posts/UbuntuDistUpgrade/img.png" alt="Screenshot of the GUI upgrade manager" title="Upgrading Ubuntu to version 14.04" /></p>
-
-<p>I’m upgrading my <a href="http://www.ubuntu.com/" title="A popular Linux distro">Ubuntu</a> 12.04 LTS to 14.04 LTS.  I hope the process
-will go smoothly.  However, I saw something like this.</p>
-
-<pre><code>File descriptor 46 (pipe:[31349]) leaked on lvs invocation. Parent PID 20708: /bin/sh
-</code></pre>
-
-<p>As <em>not</em> a IT student, I probably <em>won’t</em> find the cause for it for
-the next few years.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Error Bound of the Fixed Point of Contraction Mappings]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/"/>
-    
-    <updated>2014-08-11T01:32:23+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings</id>
-    
-      <content type="html"><![CDATA[<p>This afternoon, I read the proof of Banach fixed-point theorem in
-<em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
-
-<script type="math/tex; mode=display">
-\begin{equation}
-  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
-  \label{eq:inf_err}
-\end{equation}
-</script>
-
-<p>In the proofs for the lemmas, I could only find something like $x_k$
-inside the brackets, but <em>not</em> $x^*$.  Thus, I <em>couldn’t</em> figure out
-how one can derive inequality \eqref{eq:inf_err} from an inequality
-derived in the proof of Lemma 2.</p>
-
-<script type="math/tex; mode=display">
-\begin{equation}
-  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0), \text{ where } m > n.
-  \label{eq:finite_err}
-\end{equation}
-</script>
-
-<p>I googled for some notes, and found one which told me to take the
-limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
-\infty$.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> After looking at Corollary 2.4 in the PDF file in
-footnote #2 for a while, I know what I’ve missed.</p>
-
-<p>If $\left\{ p_k \right\}$ converges to $p$,</p>
-
-<script type="math/tex; mode=display">
-\begin{equation}
-  \lim_{k \to \infty} d(p_k,q) = d(p,q)
-    = d\left(\lim_{k \to \infty} p_k,q \right)
-  \label{eq:dist_limit}
-\end{equation}
-</script>
-
-<p>That’s why I wrote the <a href="http://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
-
-<p>With equation \eqref{eq:dist_limit}, I can now derive
-\eqref{eq:inf_err} from \eqref{eq:finite_err}.</p>
-
-<p>$\displaystyle \because \lim_{k \to \infty} x_k = x_*$</p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
-  \begin{aligned}
-    d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n \right) \\
-    =& \lim_{k \to \infty} d(x_k,x_n) \\
-    \le& \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-      \text{by \eqref{eq:finite_err}} \\
-    =& \frac{q^n}{1 - q} d(x_1,x_0)
-  \end{aligned}
-\end{equation*}
- %]]&gt;</script>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Banach fixed-point theorem.  (2014, July 15).  In <em>Wikipedia, The
-Free Encyclopedia</em>.  Retrieved 17:34, August 10, 2014, from
-<a href="http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697">http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>Conrad, K.  (2014).  The contraction mapping theorem.  <em>Expository
-paper.  University of Connecticut, College of Liberal Arts and
-Sciences, Department of Mathematics</em>.  Retrieved August 10,2014,
-from
-<a href="http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf">http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-07T02:42:50+08:00</updated>
+  <updated>2014-09-07T21:51:49+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Fake Function]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/"/>
+    
+    <updated>2014-09-07T14:16:31+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/a-fake-function</id>
+    
+      <content type="html"><![CDATA[<p>Half a year ago, when I heard the concept of <strong>well-defined
+functions</strong>, I <em>wasn’t</em> familiar with it.</p>
+
+<p>I’ve just worked out a problem, and got more idea about that concept.
+The problem should be quite easy.  It asks readers to show that if
+$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
+is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
+$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
+the wordings in the question, and attempted to prove that the binary
+structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
+isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
+composition of functions.  As a result, I let $\phi: \{\varphi_g
+\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
+The associativity, existence of identity element and existence of
+inverse of the binary structure can be easily verified.  By the very
+definition of $\phi$, it seems that its surjectivity is very obvious.
+I continued to write “injectivity of $\phi$ is also obvious.”</p>
+
+<p>\[
+\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
+  \implies \varphi_{g_1} = \varphi_{g_2}
+\]</p>
+
+<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
+double-headed one.  If I <em>couldn’t</em> do so, it means that
+$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
+g_2$.  I realised that I need to check whether $\phi$ was
+<em>well-defined</em>.  As a result, I wasted an hour on some equations.
+Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
+$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
+G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
+did was a waste of time.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -46,51 +90,42 @@ e$</dd>
   <dd>We try to show that a left inverse of a group element is <em>also</em> a
 right inverse of the group element.
 
-    <p>$\forall a \in G,$</p>
-
-    <script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
+    <p>$\forall a \in G,$
+\[
 \begin{split}
-a * a^{-1} &= e * (a * a^{-1}) &\qquad \text{(existence of left
-identity)}\\
-&= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &\qquad \text{(existence
-of left identity of $a^{-1}$)}\\
-&= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &\qquad
-\text{(associativity)}\\
-&= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &\qquad
-\text{(associativity)}\\
-&= ((a^{-1})^{-1} * e) * a^{-1} &\\
-&= (a^{-1})^{-1} * (e * a^{-1}) &\qquad \text{(associativity)}\\
-&= (a^{-1})^{-1} * a^{-1} &\\
-&= e &
+a * a^{-1} &amp;= e * (a * a^{-1}) &amp;\qquad \text{(existence of left
+identity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &amp;\qquad \text{(existence
+of left identity of $a^{-1}$)}&#92;\<br />
+&amp;= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * e) * a^{-1} &amp;&#92;\<br />
+&amp;= (a^{-1})^{-1} * (e * a^{-1}) &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= (a^{-1})^{-1} * a^{-1} &amp;&#92;\<br />
+&amp;= e &amp;
 \end{split}
-\end{equation*}
- %]]&gt;</script>
-
-    <p>∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+\]
+∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
 e = a^{-1} * a.$</p>
   </dd>
   <dt>Existence of identity</dt>
   <dd>Similarly, we try to show that a left identity is <em>also</em> a right
 identity.
 
-    <p>$\forall a \in G,$</p>
-
-    <script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
+    <p>$\forall a \in G,$
+\[
 \begin{split}
-a * e &= a * (a^{-1} * a) &\qquad \text{(existence of inverse of
-$a$)}\\
-&= (a * a^{-1}) * a &\qquad \text{(associativity)}\\
-&= e * a &\\
-&= a&
+a * e &amp;= a * (a^{-1} * a) &amp;\qquad \text{(existence of inverse of
+$a$)}&#92;\<br />
+&amp;= (a * a^{-1}) * a &amp;\qquad \text{(associativity)}&#92;\<br />
+&amp;= e * a &amp;&#92;\<br />
+&amp;= a&amp;
 \end{split}
-\end{equation*}
- %]]&gt;</script>
-
-    <p>∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+\]
+∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
 a$.</p>
   </dd>
 </dl>
@@ -129,24 +164,21 @@ conclude that $BA = I$, and vice versa.</p>
       <content type="html"><![CDATA[<p>This afternoon, I read the proof of Banach fixed-point theorem in
 <em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
 
-<script type="math/tex; mode=display">
-\begin{equation}
+<p>\begin{equation}
   d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
   \label{eq:inf_err}
-\end{equation}
-</script>
+\end{equation}</p>
 
 <p>In the proofs for the lemmas, I could only find something like $x_k$
 inside the brackets, but <em>not</em> $x^*$.  Thus, I <em>couldn’t</em> figure out
 how one can derive inequality \eqref{eq:inf_err} from an inequality
 derived in the proof of Lemma 2.</p>
 
-<script type="math/tex; mode=display">
-\begin{equation}
-  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0), \text{ where } m > n.
+<p>\begin{equation}
+  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
+  \text{ where } m &gt; n.
   \label{eq:finite_err}
-\end{equation}
-</script>
+\end{equation}</p>
 
 <p>I googled for some notes, and found one which told me to take the
 limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
@@ -155,13 +187,11 @@ footnote #2 for a while, I know what I’ve missed.</p>
 
 <p>If $\left\{ p_k \right\}$ converges to $p$,</p>
 
-<script type="math/tex; mode=display">
-\begin{equation}
+<p>\begin{equation}
   \lim_{k \to \infty} d(p_k,q) = d(p,q)
     = d\left(\lim_{k \to \infty} p_k,q \right)
   \label{eq:dist_limit}
-\end{equation}
-</script>
+\end{equation}</p>
 
 <p>That’s why I wrote the <a href="/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
 
@@ -170,18 +200,15 @@ footnote #2 for a while, I know what I’ve missed.</p>
 
 <p>$\displaystyle \because \lim_{k \to \infty} x_k = x_*$</p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
-  \begin{aligned}
-    d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n \right) \\
-    =& \lim_{k \to \infty} d(x_k,x_n) \\
-    \le& \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-      \text{by \eqref{eq:finite_err}} \\
-    =& \frac{q^n}{1 - q} d(x_1,x_0)
-  \end{aligned}
-\end{equation*}
- %]]&gt;</script>
+<p>\[
+\begin{aligned}
+d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
+=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
+\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
+  \text{(by \eqref{eq:finite_err})} &#92;\<br />
+=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+\end{aligned}
+\]</p>
 
 <hr />
 
@@ -219,19 +246,17 @@ from
 $\left\{ p_k \right\}$ in $X$ converges to a point $p$ in $X$.
 Then, $\left\{ d(p_k,q) \right\}$ converges to $d(p,q)$.</p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{align}
-  & \therefore \forall \varepsilon \exists N \forall k (k \ge N
-  \implies d(p_k,p) < \varepsilon) \label{eq2} \\
-  & \abs{d(p_k,q) - d(p,q)} < \varepsilon \iff d(p_k,q) - d(p,q) <
-  \varepsilon \land d(p,q) - d(p_k,q) < \varepsilon \\
-  & d(p_k,q) - d(p,q) \le d(p,p_k) \iff d(p_k,q) \le
-  d(p,q) + d(p,p_k) \label{eq4} \\
-  & d(p,q) - d(p_k,q) \le d(p,p_k) \iff d(p,q) \le
+<p>\begin{align}
+  &amp; \therefore \forall \varepsilon \exists N \forall k (k \ge N
+  \implies d(p_k,p) &lt; \varepsilon) \label{eq2} &#92;\<br />
+  &amp; \abs{d(p_k,q) - d(p,q)} &lt; \varepsilon &#92;\<br />
+  &amp; \iff d(p_k,q) - d(p,q) &lt;
+  \varepsilon \land d(p,q) - d(p_k,q) &lt; \varepsilon \notag &#92;\<br />
+  &amp; d(p_k,q) - d(p,q) \le d(p,p_k) \iff d(p_k,q) \le
+  d(p,q) + d(p,p_k) \label{eq4} &#92;\<br />
+  &amp; d(p,q) - d(p_k,q) \le d(p,p_k) \iff d(p,q) \le
   d(p_k,q) + d(p,p_k) \label{eq5}
-\end{align}
- %]]&gt;</script>
+\end{align}</p>
 
 <p>\eqref{eq4}, and \eqref{eq5} follows from the Triangular Inequality.
 Apply \eqref{eq2} to \eqref{eq4} and \eqref{eq5} to finish the proof.
@@ -310,31 +335,27 @@ depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn
 
 <p>From the above figure, it’s clear that what we need to show is</p>
 
-<script type="math/tex; mode=display">
-\begin{equation*}
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-    \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\end{equation*}
-</script>
+<p>\[
+\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
+\]</p>
 
 <p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
 given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
 The tool that we’re going to use is Co-side Theorem.</p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
-    \frac{F\color{red}{R}}{\color{red}{R}B} &=
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &=
-      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}}\\
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &=
+    \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &amp;=
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle CDF}}&#92;\<br />
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &amp;=
       -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
   \end{split}
-\end{equation}
- %]]&gt;</script>
+\end{equation}</p>
 
 <p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
 the <span class="grp2">$S$</span>.  Moreover, dealing with length of
@@ -342,26 +363,23 @@ segments is <em>easier</em> than their area because the former and the later
 are one-dimensional and two-dimensional quantities respectively.
 Therefore, we rearrange the area of the triangles to get</p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
       \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B} &=
+      \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
       -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-    &= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
+    &amp;= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
       \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}} \\
-    &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+      {S_{\triangle AE\color{blue}{S}}} &#92;\<br />
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}
       {S_{\triangle AE\color{blue}{S}}}
   \end{split}
-\end{equation}
- %]]&gt;</script>
+\end{equation}</p>
 
 <p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
 Thus, we need to work out the area of the two coloured triangles in
@@ -390,17 +408,15 @@ that $D\color{blue}{S}$ is the “common side” because $D$,
 <p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600">
 <small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}\text{, or} \\
-    S_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
+      {S_{\triangle AD\color{blue}{S}}} &amp;= \frac{CB}{BA}
+      \text{, or} &#92;\<br />
+    S_{\triangle CD\color{blue}{S}} &amp;= \frac{CB}{BA} \cdot
       S_{\triangle AD\color{blue}{S}}
   \end{split}
-\end{equation}
- %]]&gt;</script>
+\end{equation}</p>
 
 <p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
 Therefore, we’re almost done!</p>
@@ -408,35 +424,30 @@ Therefore, we’re almost done!</p>
 <p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600">
 <small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{S_{\triangle AE\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}\text{, or}\\
-      S_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
+      {S_{\triangle AD\color{blue}{S}}} &amp;= -\frac{EF}{FD}
+      \text{, or}&#92;\<br />
+      S_{\triangle AE\color{blue}{S}} &amp;= -\frac{EF}{FD} \cdot
       S_{\triangle AD\color{blue}{S}}
   \end{split}
-\end{equation}
- %]]&gt;</script>
+\end{equation}</p>
 
 <p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
 get</p>
 
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{equation*}
-  \begin{split}
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B}
-      &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-      \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
-      {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} \\
-      &= -1
-  \end{split}
-\end{equation*}
- %]]&gt;</script>
+<p>\[
+\begin{split}
+  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+    \frac{F\color{red}{R}}{\color{red}{R}B}
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
+    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} &#92;\<br />
+    &amp;= -1
+\end{split}
+\]</p>
 
 <p>Hence, by Menelaus’s Theorem, we can conclude that
 <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
@@ -453,105 +464,6 @@ production of traditional proofs for constructive geometry
 theorems</em>.  In Logic in Computer Science, 1993. LICS’93.,
 Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
 (<a href="http://www.researchgate.net/publication/226332702_Automated_production_of_traditional_proofs_for_theorems_in_Euclidean_geometry_I._The_Hilbert_intersection_point_theorems/file/60b7d51a5db85afdd3.pdf">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Star of David in Pascal's Triangle]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/"/>
-    
-    <updated>2014-07-12T21:44:37+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle</id>
-    
-      <content type="html"><![CDATA[<p><img class="right" src="/images/posts/DavidStar/Nodes1.svg" width="100"></p>
-
-<p>Yesterday, I learnt drawing simple TikZ diagrams.</p>
-
-<p>In my opinion, defining nodes while connecting them will <em>not</em> look
-good.</p>
-
-<pre><code>\path[draw] (0, 0) node {A} -- (1,0) -- (1,1) node {B};
-</code></pre>
-
-<p>I define the nodes before connecting them, and the result is what I
-desire.</p>
-
-<p><img src="/images/posts/DavidStar/Nodes2.svg" width="100">
-<!-- The image overlapped with the code block. --></p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Drawing basic TikZ diagrams</span><a href='http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\node</span> (A) at (0,0) <span class="nb">{</span>A<span class="nb">}</span>;
-</span><span class='line'><span class="k">\node</span> (B) at (1,1) <span class="nb">{</span>B<span class="nb">}</span>;
-</span><span class='line'><span class="k">\draw</span> (A) – (1,0) – (B);
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<p><img class="center" src="/images/posts/DavidStar/DavidStar.svg" width="600"></p>
-
-<p>I <em>overlooked</em> the meaning of <strong>clipping</strong> in Meik Hellmund’s short
-TikZ tutorial.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  I constructed the diagram using the <code>edge</code>
-command.</p>
-
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (DavidStar.tex)</span> <a href='/downloads/code/DavidStar.tex'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\node</span> (A) at (1,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'>  <span class="k">\node</span> (C) at (4,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (A);
-</span><span class='line'>  <span class="k">\node</span> (E) at (1,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (C)
-</span><span class='line'>                                                 edge (A);
-</span><span class='line'>  <span class="k">\node</span> (B) at (3,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'>  <span class="k">\node</span> (D) at (3,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span> edge (B);
-</span><span class='line'>  <span class="k">\node</span> (F) at (0,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (B)
-</span><span class='line'>                                             edge (D);
-</span><span class='line'>  <span class="k">\node</span> (G) at (2,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{n </span><span class="nv">\choose</span><span class="nb"> r}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
-
-<script type="math/tex; mode=display">% &lt;![CDATA[
-
-\begin{align*}
-  &\text{Realising that } {n \choose k} = \frac{n!}{r! (n - r)!},
-    \text{one can easily see that} \\
-  &\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
-    \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
-\end{align*}
- %]]&gt;</script>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>See <a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12">p.12</a> of the tutorial.</p>
-
-      <blockquote>
-        <p>“It is often better to define named nodes first and connect them
-later, since then the paths are clipped around the notes…”</p>
-      </blockquote>
-      <p><a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

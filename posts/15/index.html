@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Vim fans will be delighted and amazed for knowing this the first time: Vimperator is the plugin for Vim-like behaviour on Firefox. It&#8217;s the &hellip;">
+  <meta name="description" content="Typing :h %:p will give you a list of file name modifiers in cmdline.txt, and the section below filename-modifiers is extension-removal. The list &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -35,19 +35,6 @@
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 
 <!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
 <script type="text/javascript"
   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -177,6 +164,118 @@ $(document).ready(function() {
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/vim-file-name-modifier/">Vim File Name Modifier</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T13:19:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:19 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/vim-file-name-modifier/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/vim-file-name-modifier/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/vim-file-name-modifier/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in <code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is <code>extension-removal</code>. The list maybe too detailed, especially for users who don&#8217;t have much time to learn it. Bram Moolenaar, the father of Vim, once said that trying to learn all the things in his lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see habit 7). (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.) Fortunately, there&#8217;re some examples below the list. I found some useful in the following cases.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/vim-file-name-modifier/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/something-about-win-batch-files/">Something About Win* Batch Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T11:10:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:10 am</span></time>
+        
+           | <a href="/blog/2013/12/11/something-about-win-batch-files/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/something-about-win-batch-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Get drive letter</h3>
+
+<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn&#8217;t work, unless you do the tedious modifications every time.</p>
+
+<ul>
+    <li>Method 1: <code>set var=%cd:~0,3%</code></li>
+    <li>Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></li>
+</ul>
+
+<h3>Alias on Win*</h3>
+
+<p>If you&#8217;re familiar with *nix and use M\$-DOS, you may unconsciously type the <code>ls</code> command in DOS; or if you have a portable version of a software and you need to launch it by command, you will discover the difference between the name of the programs—one has <code>portable</code> at the end while the other one doesn&#8217;t.</p>
+
+<p>Copy and paste the following lines of code into any text editor.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class='line'>[command] %*
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
+
+<p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
+
+<p>Note: <code>%</code> <em>in Win*</em> is the same as <code>$*</code> in *nix.<sup id="fnref-43-1"><a href="#fn-43-1" rel="footnote">1</a></sup></p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn-43-1">
+<a href="http://windowsitpro.com/windows-server/how-can-i-output-all-batch-files-arguments">How can I output all of a batch file&#8217;s arguments?</a>&#160;<a href="#fnref-43-1" rev="footnote">&#8617;</a>
+</li>
+
+</ol></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -540,109 +639,9 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/edit-latex-equations-in-vim/">Edit $\rm \LaTeX$ Equations in Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T14:56:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:56 pm</span></time>
-        
-           | <a href="/blog/2013/08/16/edit-latex-equations-in-vim/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/edit-latex-equations-in-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>
-With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equations with Vim quickly without making syntax errors. (e.g. undefined control sequence caused by mismatched braces &#8216;{}&#8217;)
-</p>
-
-<a class="fancybox-media" href="//www.youtube.com/embed/y67t-05nFD0">
-    <img src="/images/posts/EditLaTeXEquations/Video.png"
-    alt="Youtube video" />
-</a>
-
-<p><strong>
-    Please view it fullscreen in HD. Sorry for the inconvenience
-    caused.
-</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/edit-latex-equations-in-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/testing-mathjax/">Testing MathJax</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T14:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:00 pm</span></time>
-        
-           | <a href="/blog/2013/08/16/testing-mathjax/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/08/16/testing-mathjax/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/testing-mathjax/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following the instructions <a href="http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html">here</a>, MathJax works on Blogpost.</p>
-
-<p>I typed</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="s">$</span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">-</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">=</span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nv">\theta</span><span class="s">$</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>and here&#8217;s the result: $\cos^2\theta-\sin^2\theta=\cos 2\theta$</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/testing-mathjax/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/16">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -677,11 +676,11 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (9)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (11)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (29)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -691,7 +690,7 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (9)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -699,6 +698,14 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a>
@@ -710,14 +717,6 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
     
       <li class="post">
         <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
       </li>
     
   </ul>

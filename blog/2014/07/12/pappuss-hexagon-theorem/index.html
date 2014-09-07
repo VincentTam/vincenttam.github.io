@@ -37,19 +37,6 @@ $AE,BD,BF,CE,AF$ &hellip;">
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 
 <!-- mathjax config similar to math.stackexchange -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  jax: ["input/TeX", "output/HTML-CSS"],
-  tex2jax: {
-    inlineMath: [ ['$', '$'] ],
-    displayMath: [ ['$$', '$$']],
-    processEscapes: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-  },
-  messageStyle: "none",
-  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-});
-</script>
 <script type="text/javascript"
   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
@@ -262,31 +249,27 @@ depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn
 
 <p>From the above figure, it’s clear that what we need to show is</p>
 
-<script type="math/tex; mode=display">
-\begin{equation*}
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-    \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\end{equation*}
-</script>
+<p>\[
+\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
+\]</p>
 
 <p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
 given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
 The tool that we’re going to use is Co-side Theorem.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
-    \frac{F\color{red}{R}}{\color{red}{R}B} &=
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &=
-      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}}\\
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &=
+    \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\\<br />
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &amp;=
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle CDF}}\\\<br />
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &amp;=
       -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
   \end{split}
-\end{equation}
- %]]></script>
+\end{equation}</p>
 
 <p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
 the <span class="grp2">$S$</span>.  Moreover, dealing with length of
@@ -294,26 +277,23 @@ segments is <em>easier</em> than their area because the former and the later
 are one-dimensional and two-dimensional quantities respectively.
 Therefore, we rearrange the area of the triangles to get</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
       \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B} &=
+      \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
       -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
-    &= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\\<br />
+    &amp;= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
       \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}} \\
-    &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+      {S_{\triangle AE\color{blue}{S}}} \\\<br />
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
       \frac{S_{\triangle CD\color{blue}{S}}}
       {S_{\triangle AE\color{blue}{S}}}
   \end{split}
-\end{equation}
- %]]></script>
+\end{equation}</p>
 
 <p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
 Thus, we need to work out the area of the two coloured triangles in
@@ -342,17 +322,15 @@ that $D\color{blue}{S}$ is the “common side” because $D$,
 <p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600" />
 <small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}\text{, or} \\
-    S_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
+      {S_{\triangle AD\color{blue}{S}}} &amp;= \frac{CB}{BA}
+      \text{, or} \\\<br />
+    S_{\triangle CD\color{blue}{S}} &amp;= \frac{CB}{BA} \cdot
       S_{\triangle AD\color{blue}{S}}
   \end{split}
-\end{equation}
- %]]></script>
+\end{equation}</p>
 
 <p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
 Therefore, we’re almost done!</p>
@@ -360,35 +338,30 @@ Therefore, we’re almost done!</p>
 <p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600" />
 <small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-
-\begin{equation}
+<p>\begin{equation}
   \begin{split}
     \frac{S_{\triangle AE\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}\text{, or}\\
-      S_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
+      {S_{\triangle AD\color{blue}{S}}} &amp;= -\frac{EF}{FD}
+      \text{, or}\\\<br />
+      S_{\triangle AE\color{blue}{S}} &amp;= -\frac{EF}{FD} \cdot
       S_{\triangle AD\color{blue}{S}}
   \end{split}
-\end{equation}
- %]]></script>
+\end{equation}</p>
 
 <p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
 get</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-
-\begin{equation*}
-  \begin{split}
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B}
-      &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-      \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
-      {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} \\
-      &= -1
-  \end{split}
-\end{equation*}
- %]]></script>
+<p>\[
+\begin{split}
+  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+    \frac{F\color{red}{R}}{\color{red}{R}B}
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
+    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} \\\<br />
+    &amp;= -1
+\end{split}
+\]</p>
 
 <p>Hence, by Menelaus’s Theorem, we can conclude that
 <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
@@ -492,11 +465,11 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
 <li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (8)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (9)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (20)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (11)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (6)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (29)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -506,7 +479,7 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (8)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (9)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -514,6 +487,14 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a>
@@ -525,14 +506,6 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
     
       <li class="post">
         <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a>
       </li>
     
   </ul>
