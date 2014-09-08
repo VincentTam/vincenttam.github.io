@@ -3,14 +3,12 @@ layout: post
 title: "Include Liquid code inside Octopress codeblocks"
 date: 2014-06-12 13:58:30 +0800
 comments: true
-categories:
-- Octopress
-- online code highlighter
+categories: [Octopress, online code highlighter]
 ---
 
-Last night, I wrote
-[a post on editing a Ruby plugin file and an Atom Feed XML file for removing redundant images in Atom Feeds][PrevPost].
-To show how to change the files, I put some codeblocks in my post.
+Last night, I wrote a post on editing a Ruby plugin file and an Atom
+Feed XML file for removing redundant images in Atom Feeds.[^1] To show
+how to change the files, I put some codeblocks in my post.
 
 {% codeblock Sample codeblock that contains Liquid code lang:xml /blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
 {% raw %}
@@ -41,8 +39,13 @@ post about how his use of Neiner's
 `{% raw %}{% raw %}{% endraw %}` tag was used to surround the interior
 of the codeblock which contained Liquid code.
 
-[PrevPost]: /blog/2014/06/10/my-settings-for-rss-1/ "My Settings for RSS (1)"
+---
+[^1]: See [My Settings for RSS (1)][pp] for details.
+
+[pp]: /blog/2014/06/10/my-settings-for-rss-1/
 [Liquid]: http://liquidmarkup.org/ "Liquid markup language"
 [imgpopup]: http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/ "A Simple Octopress Image Popup Plugin"
 [toc]: http://fuelyourcoding.com/scripts/toc/
 [PostMdSrc]: https://raw.githubusercontent.com/bmc/brizzled/master/source/_posts/2012-02-04-generating-a-table-of-contents-in-octopress.markdown
+
+*[XML]: EXtensible Markup Language
