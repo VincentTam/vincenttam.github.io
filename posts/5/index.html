@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="I’ve drawn a figure in $\rm \LaTeX$ using the TikZ. However,
+MathJax has no support for TikZ commands. Therefore, I have to
+generate an SVG figure &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/posts/5">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/21/export-pdf-to-svg/">Export PDF to SVG</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-21T14:23:50+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>2:23 pm</span></time>
+        
+           | <a href="/blog/2014/06/21/export-pdf-to-svg/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/21/export-pdf-to-svg/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve drawn a figure in $\rm \LaTeX$ using the <a href="http://www.texample.net/tikz/">TikZ</a>.  However,
+<a href="http://www.mathjax.org/">MathJax</a> has <em>no</em> support for TikZ commands.  Therefore, I have to
+generate an SVG figure from $\rm \LaTeX$ if I need to post it on
+Octopress.</p>
+
+<p>I had followed the example <a href="http://tex.stackexchange.com/a/51766" title="How can I use TikZ to make standalone (SVG) graphics?">here</a>.  It worked for
+PNG and JPG files, <em>but</em> not SVG files.  Since the quality of SVG
+files is the <em>best</em>, I would like to include use SVG.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/21/export-pdf-to-svg/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/21/adding-integrals-over-partitions/">Adding Integrals Over Partitions</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-21T12:25:35+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:25 pm</span></time>
+        
+           | <a href="/blog/2014/06/21/adding-integrals-over-partitions/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/21/adding-integrals-over-partitions/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/21/adding-integrals-over-partitions/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the error list of FitzPatrick’s <em>Advanced Calculus</em>, it’s said that
+on p. 479, ln. 14–21, “it doesn’t seem that $\vect{P}_k$ can be
+chosen as indicated…”  I spent some time to understand what
+$\vect{P}^*_k$ was.</p>
+
+<p>It took me an hour to see what’s wrong with $\vect{P}_k$.  It’s
+<em>much</em> easier to understand the words using figures.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/21/adding-integrals-over-partitions/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Fixing Broken URLs in the Catetory List</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-20T23:51:06+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:51 pm</span></time>
+        
+           | <a href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>(Added on AUG 20, 2014)</p>
+
+<p>Since the update of Octopress source code, this post <em>won’t</em> make
+sense anymore.  I <em>can’t</em> find a way to use MathJax in category list
+entries anymore because <code>category</code> in <code>plugins/category_generator.rb</code>
+and <code>plugins/category_list_tag.rb</code> have both been changed to <em>lower
+case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title external"><a href="http://lanyrd.com/2011/houcodecamp/sgwhy/">Stop Using Git Like Subversion</a> &#9733;</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-20T15:22:11+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
+        
+           | <a href="/blog/2014/06/20/stop-using-git-like-subversion/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/20/stop-using-git-like-subversion/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I saw a sentence like “Git does SVN better than SVN does” long ago,
+but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
+double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
+to use it just like SVN, but to explore more powerful commands for
+branching.</p>
+
+<p>Reasons for using branches:</p>
+
+<ul>
+  <li>Working with multiple features</li>
+  <li>Sharing with others</li>
+  <li>Merging others work conveniently</li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Enlarging a Rectangle Inside Another</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-20T14:28:14+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:28 pm</span></time>
+        
+           | <a href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>$\vect{I}$ is a generalized rectangle in $\reals^n$ with edges of
+length $l_i$.  $\vect{J} \subseteq \vect{I}$ is the main character
+here.  If the edges of $\vect{J}$ is allowed to coincide with those of
+$\vect{I}$, then the problem is trivial.</p>
+
+<p><strong>How about finding $\vect{J} \subseteq \interior \vect{I}$ such that
+$\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/">Archimedean Sequence of Partitions of a Square</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-19T20:13:52+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:13 pm</span></time>
+        
+           | <a href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppose $f: \vect{I} \to \reals^2$, where $\vect{I} = [0,1] \times
+[0,1]$,</p>
+
+<p>\[
+f(x,y) = \left\{
+  \begin{aligned}
+    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
+    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
+  \end{aligned}
+\right.
+\]</p>
+
+<p>$P_k := \{0,1/k,\dots,1\}, \vect{P}_k := (P_k,P_k)$.</p>
+
+<p>It’s said that
+$\mathcal{U}(f,\vect{P}_k) - \mathcal{L}(f,\vect{P}_k) &lt; 2/k.$</p>
+
+<p>However, at first, I <em>don’t</em> understand why there are fewer than $2k$
+squares which contribute to the difference between
+$\mathcal{U}(f,\vect{P}_k)$ and $\mathcal{L}(f,\vect{P}_k)$.  I
+wrongly think that only the $k$ diagonal squares make such a
+contribution.  Actually, $\forall\,i = 1,\dots,k - 1,
+[i / k,(i + 1) / k] \times [(i - 1) / k,i / k]$ also causes the
+difference between those two Darboux sums because</p>
+
+<p>\[
+\begin{aligned}
+  \inf\,\{f(\vect{x}) \mid \vect{x} \in [i / k,(i + 1) / k] \times
+    [(i - 1) / k,i / k]\} &amp;= f(i / k,i / k) = 0 \text{ and}&#92;\<br />
+  \sup\,\{f(\vect{x}) \mid \vect{x} \in [i / k,(i + 1) / k] \times
+    [(i - 1) / k,i / k]\} &amp;= 1.
+\end{aligned}
+\]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/18/definition-of-content-0-sets/">Definition of Content 0 Sets</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-18T16:16:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:16 pm</span></time>
+        
+           | <a href="/blog/2014/06/18/definition-of-content-0-sets/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/18/definition-of-content-0-sets/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>I saw a minor difference the definition of Jordan content 0 sets
+between two books.</p>
+
+<h2 id="some-basic-definitions">Some basic definitions</h2>
+
+<p>I make this list <em>for my reference only</em>.  If I’m asked the <em>true</em>
+meaning of some geometric concepts, such as <em>boundary</em>, by someone
+<em>seriously</em>, then I can quickly refer to this list in order to remind
+myself what ideas should be introduced.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/18/definition-of-content-0-sets/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/17/my-git-command-list-2/">My Git Command List (2)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-17T22:51:14+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:51 pm</span></time>
+        
+           | <a href="/blog/2014/06/17/my-git-command-list-2/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/17/my-git-command-list-2/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/17/my-git-command-list-2/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="situation-tldr">Situation (TL;DR)</h2>
+
+<p>Since I tried to import my old WordPress posts to this blog <em>without</em>
+affecting <code>source</code> branch, I created a new branch called
+<code>wpcom-importer</code> branch, on which <code>rake deploy</code> was successfully run.
+However, some of my old WordPress posts contain some unusual
+characters, which triggered an encoding problem in
+<a href="https://gist.github.com/1394128">Chuang’s WordPress XML to Octopress importer</a>.  Looking at
+<code>rake</code>’s error message, I feel that I’ve put the converted posts from
+WordPress’s XML on the right branch.</p>
+
+<p>Thus, I drafted my new posts on <code>source</code> branch, but <em>not</em> on
+<code>wpcom-importer</code> branch.  I then switched to <code>wpcom-importer</code> and
+deleted some unwanted parts of XML file.  However, I <em>couldn’t</em> switch
+back to <code>source</code> branch to do another commit.  As a result, I used
+<code>git stash</code> to solve the problem.</p>
+
+<p>After finishing the draft, I committed the change, switched to
+<code>wpcom-importer</code> and “merged” the last change on <code>source</code> branch for
+<code>rake preview</code>.  The reason for <em>not</em> running the preview command on
+<code>source</code> branch is to avoid huge changes in <code>public</code> folder.
+<del>I’ve learnt to do the “merge” from <a href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" title="Git Tip: How to &quot;Merge&quot; Specific Files from Another Branch">here</a>.</del></p>
+
+<p>Being <em>unfamiliar</em> with kramdown syntax for displayed math
+equations<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I had made some mistakes in the source code for my
+<a href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Injectivity of Stable Mappings">previous post</a> while writing the draft on <code>source</code> branch.</p>
+
+<hr />
+<p>(Last edited on JUN 19,2014)</p>
+
+<p>From the network graph, I realized my mistake in understanding merging
+in Git.  I <em>shouldn’t</em> manually commit the <em>same</em> changes on
+<em>different</em> branch, but to commit it <em>once only</em> on a branch and
+<em>merge</em> the commit on <em>another</em> branch, if the two diverging branches
+have <em>no</em> conflict.</p>
+
+<p>I continued writing <code>&lt;posts&gt;</code>.  Unfortunately, I had <em>mistakenly</em>
+committed the changes on <code>wpcom-importer</code>, instead of <code>source</code> branch.
+I would like to</p>
+
+<ol>
+  <li>Remove the commit, but <em>keep</em> the changes in the files.</li>
+  <li>“Move” the changed file from <code>wpcom-importer</code> to <code>source</code> branch.</li>
+  <li>Commit the changes on <code>source</code> branch.</li>
+  <li>Merge the changes from <code>source</code> branch into <code>wpcom-importer</code>.</li>
+</ol>
+
+<p>I issued the following commands to do so.</p>
+
+<pre class="cli"><code>$ git reflog		       # For checking purpose
+$ git reset --soft HEAD^       # Revert to the previous commit
+$ git log -3		       # For checking purpose
+$ git status		       # `&lt;post&gt;' should be in `... not staged for commit'
+$ less &lt;post&gt;		       # For checking purpose
+$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
+$ git checkout source	       # Go to the correct place for the commit
+$ git add &lt;post&gt;	       # Add back `&lt;post&gt;' to `source' branch
+$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
+$ git checkout wpcom-importer  # Go back to another branch for merging
+$ git merge source	       # Merge the changes back
+</code></pre>
+
+<hr />
+
+<h2 id="the-little-list">The little list</h2>
+
+<h3 id="stashing-and-grabbing">Stashing and Grabbing</h3>
+
+<p>“Stash” means going to another branch with <em>uncommitted</em> changes in
+the staging area here.</p>
+
+<p><a href="http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/" title="Git 初學筆記-指令操作教學-Tsung's Blog">This list</a> written in Chinese is a quick summary of Git
+commands.  I learnt the use of <code>git stash</code> commands from there.</p>
+
+<pre class="cli"><code class="UBMono">$ git stash                      # save the uncommitted changes
+$ git stash list                 # show a list of stashes
+$ git stash show                 # inspect a list of stashes
+$ git stash pop                  # apply and discard the topmost stash
+$ git stash apply                # apply but don't discard the topmost stash
+$ git checkout source -- &lt;file&gt;  # copy the file from other branch
+</code></pre>
+
+<p>In the last “merge” command, <code>--</code> avoids an ambiguity since <code>source</code>
+can be either the name of a branch or a folder in this case.  In
+addition, this command <em>doesn’t</em> affect the commit history.</p>
+
+<h3 id="more-about-rewinding-things">More about rewinding things</h3>
+
+<h4 id="rewinding-to-previous-versions-on-the-same-branch">Rewinding to previous versions on the same branch</h4>
+
+<p>Here’s more commands about reseting the working tree to previous
+versions.</p>
+
+<pre class="cli"><code class="UBMono">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
+</code></pre>
+
+<h4 id="difference-between-resetting-and-reverting-things">Difference between resetting and reverting things</h4>
+
+<p>In the manual of <code>git reset</code>, I saw a link to<code>git revert</code>, and
+<em>couldn’t</em> understand the difference between those two command from
+there.</p>
+
+<blockquote>
+  <p>If you want to undo a commit other than the latest on a branch,
+<a href="https://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a> is your friend.</p>
+</blockquote>
+
+<p>A page in Stack Overflow is really my friend.
+(<a href="http://stackoverflow.com/a/8358039">URL</a>)  <code>git revert</code> <em>won’t</em> overwrite the
+commit history, so it’s suitable for published changes, while
+<code>git reset</code> <em>can</em> rewrite history.</p>
+
+<h4 id="undoing-merges">Undoing merges</h4>
+
+<p>See <em>Undo a merge or pull</em> and the following section in the manual of
+<code>git reset</code> for explanations.</p>
+
+<h5 id="undoing-conflicted-merges">Undoing conflicted merges</h5>
+
+<p>The SCM will say:</p>
+
+<pre><code>Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p>Thus, the problematic merge <em>hasn’t</em> been committed.  Simply running
+<code>git reset --hard</code> will solve the problem.</p>
+
+<h5 id="undoing-successful-automatic-merges">Undoing successful automatic merges</h5>
+
+<p>Use <code>ORIG_HEAD</code> instead of <code>HEAD</code> for the tip of the branch before the
+merge.  (i.e. <code>git reset --hard ORIG_HEAD</code>)</p>
+
+<h3 id="using-git-diff-for-merging-commits">Using git-diff for merging commits</h3>
+
+<p>(Added on JUN 20, 2014)</p>
+
+<h4 id="a-shortcoming-of-">A shortcoming of “..”</h4>
+
+<p>To forsee possible conflicts in <code>git merge</code>, one may run
+<code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code> to see the differences between two
+diverged branches.  However, the diff hunk <em>doesn’t</em> show the
+additions and deletions on each branch.  A <code>-</code> in the diff hunk can be
+caused by either</p>
+
+<ol>
+  <li>Addition of contents in <code>&lt;branch1&gt;</code>; or</li>
+  <li>Deletion of contents in <code>&lt;branch2&gt;</code>.</li>
+</ol>
+
+<p>Running <code>git merge &lt;branch1&gt;</code> on <code>&lt;branch2&gt;</code> gives <em>different</em>
+results in different cases.</p>
+
+<ol>
+  <li>The line starting with <code>-</code> in the diff hunk will be inserted into
+<code>&lt;branch2&gt;</code>.</li>
+  <li>The line starting with <code>-</code> in the diff hunk <em>won’t</em> be inserted
+into <code>&lt;branch1&gt;</code>.</li>
+</ol>
+
+<p>In order to predict whether there will be a conflict, one needs to
+know the <em>changes done on each branch</em>.  Therefore, one needs to
+compare the tip of each branch with their common ancestors.</p>
+
+<p>Let me illustrate this by two examples.</p>
+
+<h5 id="example-1">Example 1</h5>
+
+<p>One has a file like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then it diverged into two branches.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 1 (line 1 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 2 (line 2 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<h5 id="example-2">Example 2</h5>
+
+<p>One has a file like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then it diverged into two branches.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 1 (line 2 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 2 (line 1 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<p>Observation: The diff hunks in the two examples are the <strong>same</strong>, even
+though their common ancestors and changes in files are <strong>different</strong>.</p>
+
+<h4 id="overcoming-the-shortcoming">Overcoming the shortcoming</h4>
+
+<p>From the above sub-section, it’s clear that one needs to compare the
+tip of each branch with the common ancestor of the two branches.  To
+see how <code>&lt;branch1&gt;</code> has been modified,
+<code>git diff &lt;branch2&gt;...&lt;branch1&gt;</code> can be used to compare the tip of
+<code>&lt;branch1&gt;</code> with the common ancestor of <code>&lt;branch1&gt;</code> and <code>&lt;branch2&gt;</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>The official kramdown syntax documentation. (<a href="http://kramdown.gettalong.org/syntax.html#math-blocks">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/17/injectivity-of-stable-mappings/">Injectivity of Stable Mappings</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-17T19:44:37+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:44 pm</span></time>
+        
+           | <a href="/blog/2014/06/17/injectivity-of-stable-mappings/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two weeks ago, I revised calculus and read the proof of the Inverse
+Function Theorem in the calculus textbook that I was reading.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  The
+Nonlinear Stablity Theorem is first applied to a continuously
+differentiable function $\vect{F}: \mathcal{O} \to \reals^n$, where
+$\mathcal{O}$ is an open subset of $\reals^n$ and contains a point
+$\vect{x}_*$ at which $\det \vect{DF}(\vect{x}_*) \ne 0$, to
+construct a neighbourhood $U$ of $\vect{x}_*$ and find $c &gt; 0$ such
+that
+$\norm{\vect{F}(\vect{u})-\vect{F}(\vect{v})} \ge c \norm{\vect{u} -
+\vect{v}}\quad\forall\,\vect{u},\vect{v} \in U$.</p>
+
+<p>It’s said that if $V := \vect{F}(U)$, then $\vect{F}: U \to V$ is
+bijective.  The surjectivity is obvious, but I <em>wasn’t</em> smart enough
+to see the injectivity immediately.  After a week, I realised that I
+overlooked the discussion about invertible linear operators on
+$\fields^n$ that preceeded the introduction to the idea of <em>stable
+mapping</em>.  In fact,
+$\forall\,\vect{u},\vect{v} \in U,\vect{F}(\vect{u}) =
+\vect{F}(\vect{v}) \iff \norm{\vect{F}(\vect{u}) - \vect{F}(\vect{v})}
+= 0$.</p>
+
+<p>Then
+$\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
+\vect{F}(\vect{v})} / c = 0 \iff \vect{u} = \vect{v}$.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>FitzPatrick’s <em>Advanced Calculus</em> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">An Unreported Mistake in "Advanced Calculus"</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T23:40:05+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:40 pm</span></time>
+        
+           | <a href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After setting up Octopress for several weeks, I can finally begin to
+write some math.  The errors of FitzPatrick’s <em>Advanced Calculus</em> can
+be found <a href="http://people.wallawalla.edu/~thomth/453/Fitzpatrick2ndTextbookErrors.pdf">here</a>.</p>
+
+<p>Two weeks ago, I found a mistake in the book that <em>wasn’t</em> in the
+error list.  In p. 430, ln. -3, the ‘&lt;’ sign should actually be a ‘≤’,
+since it’s <em>given</em> that
+<script type="math/tex">\norm{\vect{B} - \vect{A}} \le c / 2</script>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/posts/6">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/posts/4">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (21)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (8)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (31)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (9)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Another Way of Writing Piecewise Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">The Greek Alphabet in $\rm \LaTeX$</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

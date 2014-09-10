@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
+    
+    <updated>2014-09-05T23:33:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Double Hyphens in Git Checkout]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-checkout/"/>
+    
+    <updated>2014-08-07T18:08:56+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-checkout</id>
+    
+      <content type="html"><![CDATA[<p>While I was writing my <a href="/blog/2014/08/07/double-hyphens-in-git-diff/" title="Double Hyphens in Git Diff">previous post</a>, I made a link to
+<a href="http://supercollider.sourceforge.net/wiki/index.php/Developer_cheatsheet_for_git#Common_git_commands" title="Developer Cheatsheet for Git">a Git cheatsheet</a>.  In the list, I saw a <em>wrong</em> command.</p>
+
+<pre><code>git checkout – &lt;file&gt;
+</code></pre>
+
+<p>It is <em>incorrect</em> to use an en-dash <code>–</code> in the above command, instead
+of a double hyphen <code>--</code>.  I’ll illustrate this with an example below.
+Assume that the current file is <code>~/octopress</code>.</p>
+
+<pre class="cli"><code class="UBMono">$ cat &gt;&gt; Gemfile
+bullshxt
+$ git diff
+<span class="UBHLCode">diff --git a/Gemfile b/Gemfile
+index 4d028d3..a1718ff 100644
+    --- a/Gemfile
+    +++ b/Gemfile</span>
+<span class="gitA">@@ -20,3 +20,4 @@</span> group :development do
+ end
+ 
+ gem 'sinatra', '~&gt; 1.4.2'
+<span class="gitP">+bullshxt</span>
+
+...
+
+$ git checkout <span class="err">—</span> Gemfile
+<span class="err">error: pathspec '—' did not match any file(s) known to git.</span>
+
+$ git checkout <span class="UBHLCode">--</span> Gemfile  # correct command
+</code></pre>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Double Hyphens in Git Diff]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-diff/"/>
+    
+    <updated>2014-08-07T15:41:10+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-diff</id>
+    
+      <content type="html"><![CDATA[<p>Two months ago, I wrote my first list of Git commands, and said that I
+<em>didn’t</em> know how to use Git commands to view the changes.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>Now, I can understand how one can “use ‘<code>--</code>’ to separate paths from
+revisions [or branches]”.</p>
+
+<!-- more -->
+
+<p>For example, if a developer relies on <a href="http://supercollider.sourceforge.net/wiki/index.php/Developer_cheatsheet_for_git#Simple_work_on_your_main_.28master.29_branch" title="Developer Cheatsheet for Git">this Git cheatsheet</a>
+for blogging with Octopress, then he/she will learn to some Git
+commands, for example:</p>
+
+<ol>
+  <li><code>git diff &lt;branch&gt;</code> to view the uncommitted changes;</li>
+  <li><code>git diff &lt;path&gt;</code> to show the uncommitted changes in files under
+<code>&lt;path&gt;</code>.</li>
+</ol>
+
+<p>Those commands should be enough for most cases.  However, if he/she
+blogs with <a href="http://www.octopress.org">Octopress</a>, then he/she will encounter the some problems:</p>
+
+<ol>
+  <li><code>git diff source</code> <em>can’t</em> view the uncommitted changes on <code>source</code>
+branch;  (Click the linked post in <a href="#fn:1">footnote 1</a> for the error
+thrown by Git.)</li>
+  <li><code>git diff source</code> <em>can’t</em> show the uncommitted changes in files
+under <code>source</code> folder.</li>
+</ol>
+
+<p>In order to use <code>git diff</code> to do the intended task, one has to avoid
+ambiguity.</p>
+
+<ol>
+  <li>If necessary, one can use <code>--</code> to separate branch name(s) from
+file/path names;</li>
+  <li>One can use <code>./source</code> to mean <code>source</code> folder.</li>
+</ol>
+
+<pre class="cli"><code class="UBMono"><span class="err">$ git diff origin/source source
+fatal: ambiguous argument 'source': both revision and filename
+Use '--' to separate paths from revisions, like this:
+'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'</span>
+$ git diff origin/source source <span class="UBHLCode">--</span>  # correct command
+$ git diff <span class="UBHLCode">./</span>source                 # correct command
+</code></pre>
+
+<p>If one <em>doesn’t</em> want to type in shell commands, one may consider
+using <a href="https://github.com/tpope/vim-fugitive">fugitive.vim</a>: in a window invoked by <code>:Gst</code>, press <code>D</code> at the
+line where the modified file is shown.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 16. <em>My Git Command List (1)</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/#comparing-branches">https://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/#comparing-branches</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Stop Using Git Like Subversion &#9733;]]></title>
+      <link href="http://lanyrd.com/2011/houcodecamp/sgwhy/"/>
+    
+    <updated>2014-06-20T15:22:11+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion</id>
+    
+      <content type="html"><![CDATA[<p>I saw a sentence like “Git does SVN better than SVN does” long ago,
+but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
+double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
+to use it just like SVN, but to explore more powerful commands for
+branching.</p>
+
+<p>Reasons for using branches:</p>
+
+<ul>
+  <li>Working with multiple features</li>
+  <li>Sharing with others</li>
+  <li>Merging others work conveniently</li>
+</ul>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Git Command List (2)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/17/my-git-command-list-2/"/>
+    
+    <updated>2014-06-17T22:51:14+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/17/my-git-command-list-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="situation-tldr">Situation (TL;DR)</h2>
+
+<p>Since I tried to import my old WordPress posts to this blog <em>without</em>
+affecting <code>source</code> branch, I created a new branch called
+<code>wpcom-importer</code> branch, on which <code>rake deploy</code> was successfully run.
+However, some of my old WordPress posts contain some unusual
+characters, which triggered an encoding problem in
+<a href="https://gist.github.com/1394128">Chuang’s WordPress XML to Octopress importer</a>.  Looking at
+<code>rake</code>’s error message, I feel that I’ve put the converted posts from
+WordPress’s XML on the right branch.</p>
+
+<p>Thus, I drafted my new posts on <code>source</code> branch, but <em>not</em> on
+<code>wpcom-importer</code> branch.  I then switched to <code>wpcom-importer</code> and
+deleted some unwanted parts of XML file.  However, I <em>couldn’t</em> switch
+back to <code>source</code> branch to do another commit.  As a result, I used
+<code>git stash</code> to solve the problem.</p>
+
+<p>After finishing the draft, I committed the change, switched to
+<code>wpcom-importer</code> and “merged” the last change on <code>source</code> branch for
+<code>rake preview</code>.  The reason for <em>not</em> running the preview command on
+<code>source</code> branch is to avoid huge changes in <code>public</code> folder.
+<del>I’ve learnt to do the “merge” from <a href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" title="Git Tip: How to &quot;Merge&quot; Specific Files from Another Branch">here</a>.</del></p>
+
+<p>Being <em>unfamiliar</em> with kramdown syntax for displayed math
+equations<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I had made some mistakes in the source code for my
+<a href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Injectivity of Stable Mappings">previous post</a> while writing the draft on <code>source</code> branch.</p>
+
+<hr />
+<p>(Last edited on JUN 19,2014)</p>
+
+<p>From the network graph, I realized my mistake in understanding merging
+in Git.  I <em>shouldn’t</em> manually commit the <em>same</em> changes on
+<em>different</em> branch, but to commit it <em>once only</em> on a branch and
+<em>merge</em> the commit on <em>another</em> branch, if the two diverging branches
+have <em>no</em> conflict.</p>
+
+<p>I continued writing <code>&lt;posts&gt;</code>.  Unfortunately, I had <em>mistakenly</em>
+committed the changes on <code>wpcom-importer</code>, instead of <code>source</code> branch.
+I would like to</p>
+
+<ol>
+  <li>Remove the commit, but <em>keep</em> the changes in the files.</li>
+  <li>“Move” the changed file from <code>wpcom-importer</code> to <code>source</code> branch.</li>
+  <li>Commit the changes on <code>source</code> branch.</li>
+  <li>Merge the changes from <code>source</code> branch into <code>wpcom-importer</code>.</li>
+</ol>
+
+<p>I issued the following commands to do so.</p>
+
+<pre class="cli"><code>$ git reflog		       # For checking purpose
+$ git reset --soft HEAD^       # Revert to the previous commit
+$ git log -3		       # For checking purpose
+$ git status		       # `&lt;post&gt;' should be in `... not staged for commit'
+$ less &lt;post&gt;		       # For checking purpose
+$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
+$ git checkout source	       # Go to the correct place for the commit
+$ git add &lt;post&gt;	       # Add back `&lt;post&gt;' to `source' branch
+$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
+$ git checkout wpcom-importer  # Go back to another branch for merging
+$ git merge source	       # Merge the changes back
+</code></pre>
+
+<hr />
+
+<h2 id="the-little-list">The little list</h2>
+
+<h3 id="stashing-and-grabbing">Stashing and Grabbing</h3>
+
+<p>“Stash” means going to another branch with <em>uncommitted</em> changes in
+the staging area here.</p>
+
+<p><a href="http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/" title="Git 初學筆記-指令操作教學-Tsung's Blog">This list</a> written in Chinese is a quick summary of Git
+commands.  I learnt the use of <code>git stash</code> commands from there.</p>
+
+<pre class="cli"><code class="UBMono">$ git stash                      # save the uncommitted changes
+$ git stash list                 # show a list of stashes
+$ git stash show                 # inspect a list of stashes
+$ git stash pop                  # apply and discard the topmost stash
+$ git stash apply                # apply but don't discard the topmost stash
+$ git checkout source -- &lt;file&gt;  # copy the file from other branch
+</code></pre>
+
+<p>In the last “merge” command, <code>--</code> avoids an ambiguity since <code>source</code>
+can be either the name of a branch or a folder in this case.  In
+addition, this command <em>doesn’t</em> affect the commit history.</p>
+
+<h3 id="more-about-rewinding-things">More about rewinding things</h3>
+
+<h4 id="rewinding-to-previous-versions-on-the-same-branch">Rewinding to previous versions on the same branch</h4>
+
+<p>Here’s more commands about reseting the working tree to previous
+versions.</p>
+
+<pre class="cli"><code class="UBMono">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
+</code></pre>
+
+<h4 id="difference-between-resetting-and-reverting-things">Difference between resetting and reverting things</h4>
+
+<p>In the manual of <code>git reset</code>, I saw a link to<code>git revert</code>, and
+<em>couldn’t</em> understand the difference between those two command from
+there.</p>
+
+<blockquote>
+  <p>If you want to undo a commit other than the latest on a branch,
+<a href="https://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a> is your friend.</p>
+</blockquote>
+
+<p>A page in Stack Overflow is really my friend.
+(<a href="http://stackoverflow.com/a/8358039">URL</a>)  <code>git revert</code> <em>won’t</em> overwrite the
+commit history, so it’s suitable for published changes, while
+<code>git reset</code> <em>can</em> rewrite history.</p>
+
+<h4 id="undoing-merges">Undoing merges</h4>
+
+<p>See <em>Undo a merge or pull</em> and the following section in the manual of
+<code>git reset</code> for explanations.</p>
+
+<h5 id="undoing-conflicted-merges">Undoing conflicted merges</h5>
+
+<p>The SCM will say:</p>
+
+<pre><code>Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p>Thus, the problematic merge <em>hasn’t</em> been committed.  Simply running
+<code>git reset --hard</code> will solve the problem.</p>
+
+<h5 id="undoing-successful-automatic-merges">Undoing successful automatic merges</h5>
+
+<p>Use <code>ORIG_HEAD</code> instead of <code>HEAD</code> for the tip of the branch before the
+merge.  (i.e. <code>git reset --hard ORIG_HEAD</code>)</p>
+
+<h3 id="using-git-diff-for-merging-commits">Using git-diff for merging commits</h3>
+
+<p>(Added on JUN 20, 2014)</p>
+
+<h4 id="a-shortcoming-of-">A shortcoming of “..”</h4>
+
+<p>To forsee possible conflicts in <code>git merge</code>, one may run
+<code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code> to see the differences between two
+diverged branches.  However, the diff hunk <em>doesn’t</em> show the
+additions and deletions on each branch.  A <code>-</code> in the diff hunk can be
+caused by either</p>
+
+<ol>
+  <li>Addition of contents in <code>&lt;branch1&gt;</code>; or</li>
+  <li>Deletion of contents in <code>&lt;branch2&gt;</code>.</li>
+</ol>
+
+<p>Running <code>git merge &lt;branch1&gt;</code> on <code>&lt;branch2&gt;</code> gives <em>different</em>
+results in different cases.</p>
+
+<ol>
+  <li>The line starting with <code>-</code> in the diff hunk will be inserted into
+<code>&lt;branch2&gt;</code>.</li>
+  <li>The line starting with <code>-</code> in the diff hunk <em>won’t</em> be inserted
+into <code>&lt;branch1&gt;</code>.</li>
+</ol>
+
+<p>In order to predict whether there will be a conflict, one needs to
+know the <em>changes done on each branch</em>.  Therefore, one needs to
+compare the tip of each branch with their common ancestors.</p>
+
+<p>Let me illustrate this by two examples.</p>
+
+<h5 id="example-1">Example 1</h5>
+
+<p>One has a file like this.</p>
+
+<p><code>text Parent of the two branches
+line 1
+line 2
+line 3
+</code></p>
+
+<p>Then it diverged into two branches.</p>
+
+<p><code>text Branch 1 (line 1 deleted)
+line 2
+line 3
+</code></p>
+
+<p><code>text Branch 2 (line 2 deleted)
+line 1
+line 3
+</code></p>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<h5 id="example-2">Example 2</h5>
+
+<p>One has a file like this.</p>
+
+<p><code>text Parent of the two branches
+line 3
+</code></p>
+
+<p>Then it diverged into two branches.</p>
+
+<p><code>text Branch 1 (line 2 inserted)
+line 2
+line 3
+</code></p>
+
+<p><code>text Branch 2 (line 1 inserted)
+line 1
+line 3
+</code></p>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<p>Observation: The diff hunks in the two examples are the <strong>same</strong>, even
+though their common ancestors and changes in files are <strong>different</strong>.</p>
+
+<h4 id="overcoming-the-shortcoming">Overcoming the shortcoming</h4>
+
+<p>From the above sub-section, it’s clear that one needs to compare the
+tip of each branch with the common ancestor of the two branches.  To
+see how <code>&lt;branch1&gt;</code> has been modified,
+<code>git diff &lt;branch2&gt;...&lt;branch1&gt;</code> can be used to compare the tip of
+<code>&lt;branch1&gt;</code> with the common ancestor of <code>&lt;branch1&gt;</code> and <code>&lt;branch2&gt;</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>The official kramdown syntax documentation. (<a href="http://kramdown.gettalong.org/syntax.html#math-blocks">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

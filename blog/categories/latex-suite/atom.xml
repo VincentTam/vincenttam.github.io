@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Latex-suite | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/latex-suite/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Jump to $\rm \LaTeX$ Syntax Error]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/"/>
+    
+    <updated>2014-03-22T17:23:19+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error</id>
+    
+      <content type="html"><![CDATA[<p><strong>This post is written in response to a question of
+<a href="http://youtu.be/y67t-05nFD0">one of my video</a>.</strong></p>
+
+<p>Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
+show you how, I use a GIF “animation”, instead of a video, so that the
+file size is much smaller.</p>
+
+<p><img class="fancybox" src="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif" width="800" title="‘A GIF animation showing Vim-LaTeX quickfix window’ ‘fig1’" ></p>
+
+<p>Explanation:</p>
+
+<p>Error message: The <code>equation*</code> environment is “undefined”.<br />
+Cause of error: I forget to include the <code>amsmath</code> package in the
+preamble.</p>
+
+<ul>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err1.png">Figure 1</a>: Compilation error occurs,
+so a quickfix window pops up.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err2.png">Figure 2</a>: I typed <code>j</code> to move the
+cursor down in the quickfix window by one line, and the window below
+showing the log file automatically scrolled down. </li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err3.png">Figure 3</a>: I typed <code>k</code> to go up one
+line, so the situation goes back to Figure 1.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err4.png">Figure 4</a>: I typed <code>&lt;Enter&gt;</code> to jump
+to the “error location”. (line 6)</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err5.png">Figure 5</a>: I typed <code>&lt;C-w&gt; j</code> to go
+back to the quickfix window, and the situation goes back to Figure 1
+again.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err6.png">Figure 6</a>: I typed <code>j</code> again, and
+the situation goes back to Figure 2.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err7.png">Figure 7</a>: I typed <code>&lt;Enter&gt;</code> again
+to jump to <em>another</em> “error location”.</li>
+</ul>
+
+<p>P.S. As I’ve said in my “<a href="/about">About</a>” page, I mainly write in
+Markdown now, unless a teacher want me to submit homework with
+specific formatting requirements like 1 inch margin, 1.5 line spacing,
+etc.  As you can see from the footer of this blog, this post is also
+written in Markdown.</p>
+
+<!-- vim:set tw=70:wrap: -->
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Vim-$\rm \LaTeX$'s \lv Command With Sumatra PDF]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/12/11/vim-rm-latexs-lv-command-with-sumatra-pdf/"/>
+    
+    <updated>2013-12-11T02:07:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/12/11/vim-rm-latexs-lv-command-with-sumatra-pdf</id>
+    
+      <content type="html"><![CDATA[<h2>Why do I switch my PDF viewer?</h2>
+
+<ul><li>Ado* Read* is proprietary. (<b>EULA</b>) </li><li>Sumatra PDF is free. (<b>GPLv3</b>)</li></ul>
+
+<p>Go for FLOSS! Go for freedom! 
+</p>
+
+<!-- more -->
+
+<h2>Actual process</h2>
+
+<p>Original settings for Ado* Read*: let <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No extension name)</p>
+
+<p>Problem: How to change Vim-$\rm \LaTeX$&#8217;s setting of <code>\lv</code>?</p>
+
+<p>Trial 1: Set <code>g:Tex_ViewRuleComplete_dvi='C:/.../SumatraPDF'</code> in <code>_vimrc</code> (No effect)</p>
+
+<p>Trial 2: Set <code>g:Tex_ViewRule_dvi='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> (No effect)</p>
+
+<p>Trial 3: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and keep <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (Ado* Read* launched instead)</p>
+
+<p>&#8230;</p>
+
+<p>Trial n: Set <code>g:Tex_ViewRule_pdf='C:/.../SumatraPDF'</code> and disable <code>g:Tex_ViewRuleComplete_dvi='C:/.../AcroRd32'</code> in <code>_vimrc</code> (No effect)</p>
+
+<h3>Solution:</h3>
+
+<ol>
+    <li>Change <code>PATH</code> environment variable. (You can change it for vim runtime and keep the original one in other programs. See <a href="http://blogue-un.blogspot.hk/2013/12/writing-vims-output-to-files.html">my newer post</a> for details.)</li>
+    <li>Set <code>g:Tex_ViewRule_pdf='SumatraPDF'</code></li>
+    <li>Disable <code>g:Tex_ViewRuleComplete_dvi</code> in <code>_vimrc</code> </li>
+</ol>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Bug in Vim-$\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/10/18/a-bug-in-vim-rm-latex/"/>
+    
+    <updated>2013-10-18T22:26:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/10/18/a-bug-in-vim-rm-latex</id>
+    
+      <content type="html"><![CDATA[<p>It&#8217;s a small syntax error, and can be easily fixed with the addition of a space character. I found it from <a href="http://www.mail-archive.com/vim-latex-devel@lists.sourceforge.net/msg00083.html">a Google search result</a>. (I&#8217;ve forgotten the query string.)</p>
+
+<p>This shows to good things of free and open source software:</p>
+
+<ul>
+    <li>Find bugs quickly through effective communication between users and developers</li>
+    <li>Fix bugs quickly through hands-on configuration of source code</li>
+</ul>
+
+<p>From the <a href="http://github.com/vim-scripts/">Vim plugins on the GitHub</a>, you&#8217;ll discover even more good points of FLOSS:</p>
+
+<ul>
+    <li>Everyone can tune the software to adapt to his/her needs.</li>
+    <li>Everyone can share and contribute their changes.</li>
+</ul>
+
+<p><em>and more &#8230;</em></p>
+
+<p>The more the FLOSS developers, the better our free software!</p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[APA Citing]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/08/16/apa-citing/"/>
+    
+    <updated>2013-08-16T16:51:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/08/16/apa-citing</id>
+    
+      <content type="html"><![CDATA[<p>Typing in the APA reference list entries are tedious. Therefore, use the <code>biblatex-apa</code> package.</p>
+
+<p><a class="fancybox-media" href="//www.youtube.com/embed/ly8BlePO4ws">
+    <img src="http://vincenttam.github.io/images/posts/APACiting/Video.png" alt="Youtube video" />
+</a></p>
+
+<!-- more -->
+
+<p>For the sample files, please click the above &#8220;Youtube&#8221; button.</p>
+
+<p>Why <code>biblatex</code> instead of Bib$\rm \TeX$?<br />
+Apart from the support of <code>@online</code> tag, see <a href="http://codydunne.blogspot.hk/2011/03/better-apa-style-working-around.html">this blog post</a> on the comparison between the <code>apacite</code> and <code>biblatex-apa</code> packages.</p>
+
+<p>For writing scientific reports, refer to <a href="http://schneider.ncifcrf.gov/latex.html">$\rm \LaTeX$ Style and Bib$\rm \TeX$ Bibliography Formats for Biologists: $\rm \TeX$ and $\rm \LaTeX$ Resources</a></p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Edit $\rm \LaTeX$ Equations in Vim]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/"/>
+    
+    <updated>2013-08-16T14:56:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim</id>
+    
+      <content type="html"><![CDATA[<p>
+With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equations with Vim quickly without making syntax errors. (e.g. undefined control sequence caused by mismatched braces &#8216;{}&#8217;)
+</p>
+
+<p><a class="fancybox-media" href="//www.youtube.com/embed/y67t-05nFD0">
+    <img src="http://vincenttam.github.io/images/posts/EditLaTeXEquations/Video.png" alt="Youtube video" />
+</a></p>
+
+<p><strong>
+    Please view it fullscreen in HD. Sorry for the inconvenience
+    caused.
+</strong></p>
+
+<!-- more -->
+
+<p>For the sample files, please click the above &#8220;Youtube&#8221; button.</p>
+
+<p>
+Why use Vim? Please refer to
+<a href="http://vincenttam.github.io/blog/2013/08/16/why-vim/">my post on Vim</a>.
+</p>
+
+<p>
+For a quick startup guide, see the
+<a href="http://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/">official tutorial</a>.
+If you&#8217;ve learnt those keyboard mappings, here&#8217;s
+<a href="http://www.cheat-sheets.org/saved-copy/vimlatexqrc.pdf">a quick review</a>
+of some commands. For detailed list of all keyboard shortcuts and
+customizations (e.g. custom compile rule: use <code>pdflatex</code>
+instead of <code>latex</code> and <code>dvipdfm</code>), you can refer
+to
+<a href="http://vim-latex.sourceforge.net/documentation/latex-suite.html">the user manual</a>.
+</p>
+
+<p>
+There&#8217;re many blog entries about how to install $\rm \LaTeX$ on
+Vim/GVim on UNIX/Linux and M\$. Searching &#8220;vim latex&#8221; gives you
+millions of search results. Summarizing the articles, the three major
+components are:
+</p>
+
+<ol>
+    <li>Editor
+    <ul>
+        <li>
+	Vim (found on <em>almost every distribution of *nix</em>)
+	</li>
+        <li>GVim (on GUI of any platform)</li>
+    </ul>
+    </li>
+    <li>$\rm \LaTeX$
+    <ul>
+        <li>$\rm \TeX$Live (found in package manager on *nix)</li>
+        <li>Mik$\rm \TeX$ (have a $\rm \LaTeX$ package manager)</li>
+    </ul>
+    </li>
+    <li>Vim plugin for writing $\rm \LaTeX$: Latex-Suite</li>
+</ol>
+
+<p>
+For *nix, you may find some GUI tools for installing packages.
+(especially in some popular distributions)
+</p>
+
+<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/SoftwareCenter.png" title="‘Software Centre in Ubuntu 12.04 LTS’ ‘fig1’" ></p>
+
+<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/FedoraSoftwareMgr.png" title="‘PackageKit in Fedora 17’ ‘fig2’" ></p>
+
+<p>
+You can also type the install commands for these packages on the
+terminal. For example:
+</p>
+
+<ol>
+    <li>Ubuntu
+
+    <pre class="cli"><code class="UBMono"># Also include `vim-gnome' if you'd like to install GVim.
+$ sudo apt get install vim-gnome vim-latexsuite texlive</code></pre>
+    </li>
+    <li>Fedora
+    <pre class="cli"><code># Also include `vim-X11' if you'd like to install GVim.
+[root@localhost]# yum install vim-latex latex</code></pre>
+    </li>
+</ol>
+
+<p>Unlike M\$, the dependencies will be automatically resolved.</p>
+
+<p>
+For M\$, the installation procedures for GVim (portable), Vim-$\rm
+\LaTeX$ and Mik$\rm \TeX$ (portable) are as followed:
+</p>
+
+<ol>
+    <li>
+    Go to the official websites of GVim and Mik$\rm \TeX$ (or
+    equivalent packages) and download the packages.
+    </li>
+    <li>
+    Put Mik$\rm \TeX$ portable and GVim portable to any folder you
+    like
+    <ul>
+        <li>e.g. <code>C:\Temp</code></li>
+        <li>DON&#8217;T put them under <code>C:\Program Files</code></li>
+    </ul>
+    </li>
+    <li>Download Vim-$\rm \LaTeX$ from SourceForge</li>
+    <li>
+    Follow the steps
+    <a href="http://vim-latex.sourceforge.net/index.php?subject=download&amp;title=Download">here</a>
+    </li>
+</ol>
+
+<p>
+Remarks: The installation of Vim-$\rm \LaTeX$ (items 3 and 4) is the
+same for portable and non-portable versions of GVim.
+</p>
+]]></content>
+    
+  </entry>
+  
+</feed>

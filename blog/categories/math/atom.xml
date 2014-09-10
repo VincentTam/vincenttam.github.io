@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Math | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Fake Function]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/"/>
+    
+    <updated>2014-09-07T14:16:31+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/a-fake-function</id>
+    
+      <content type="html"><![CDATA[<p>Half a year ago, when I heard the concept of <strong>well-defined
+functions</strong>, I <em>wasn’t</em> familiar with it.</p>
+
+<p>I’ve just worked out a problem, and got more idea about that concept.
+The problem should be quite easy.  It asks readers to show that if
+$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
+is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
+$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
+the wordings in the question, and attempted to prove that the binary
+structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
+isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
+composition of functions.  As a result, I let $\phi: \{\varphi_g
+\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
+The associativity, existence of identity element and existence of
+inverse of the binary structure can be easily verified.  By the very
+definition of $\phi$, it seems that its surjectivity is very obvious.
+I continued to write “injectivity of $\phi$ is also obvious.”</p>
+
+<p>\[
+\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
+  \implies \varphi_{g_1} = \varphi_{g_2}
+\]</p>
+
+<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
+double-headed one.  If I <em>couldn’t</em> do so, it means that
+$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
+g_2$.  I realised that I need to check whether $\phi$ was
+<em>well-defined</em>.  As a result, I wasted an hour on some equations.
+Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
+$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
+G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
+did was a waste of time.</p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Weaker Group Axioms]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/"/>
+    
+    <updated>2014-09-06T11:12:06+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms</id>
+    
+      <content type="html"><![CDATA[<p>The following axioms seem to be weaker.</p>
+
+<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+
+<dl>
+  <dt>Associativity</dt>
+  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dt>Existence of <em>left</em> identity</dt>
+  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dt>Existence of <em>left</em> inverse</dt>
+  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
+e$</dd>
+</dl>
+
+<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
+
+<!-- more -->
+
+<p><em>Proof</em></p>
+
+<dl>
+  <dt>Existence of inverse</dt>
+  <dd>We try to show that a left inverse of a group element is <em>also</em> a
+right inverse of the group element.
+
+    <p>$\forall a \in G,$
+\[
+\begin{split}
+a * a^{-1} &amp;= e * (a * a^{-1}) &amp;\qquad \text{(existence of left
+identity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &amp;\qquad \text{(existence
+of left identity of $a^{-1}$)}&#92;\<br />
+&amp;= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * e) * a^{-1} &amp;&#92;\<br />
+&amp;= (a^{-1})^{-1} * (e * a^{-1}) &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= (a^{-1})^{-1} * a^{-1} &amp;&#92;\<br />
+&amp;= e &amp;
+\end{split}
+\]
+∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+e = a^{-1} * a.$</p>
+  </dd>
+  <dt>Existence of identity</dt>
+  <dd>Similarly, we try to show that a left identity is <em>also</em> a right
+identity.
+
+    <p>$\forall a \in G,$
+\[
+\begin{split}
+a * e &amp;= a * (a^{-1} * a) &amp;\qquad \text{(existence of inverse of
+$a$)}&#92;\<br />
+&amp;= (a * a^{-1}) * a &amp;\qquad \text{(associativity)}&#92;\<br />
+&amp;= e * a &amp;&#92;\<br />
+&amp;= a&amp;
+\end{split}
+\]
+∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+a$.</p>
+  </dd>
+</dl>
+
+<h2 id="an-application-in-secondary-school-mathematics">An application in secondary school mathematics</h2>
+
+<p>In high school, to show that $B \in M_{n \times n}(\reals)$ is an
+inverse of $A \in M_{n \times n}(\reals)$<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, one is taught to show
+<em>both</em> $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
+general.</p>
+
+<p>Taking $G = \GL(n,\reals)$ and regard $*$ as matrix multiplication,
+one can just show that $AB = I$ by direct calculation and then
+conclude that $BA = I$, and vice versa.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Error Bound of the Fixed Point of Contraction Mappings]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/"/>
+    
+    <updated>2014-08-11T01:32:23+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings</id>
+    
+      <content type="html"><![CDATA[<p>This afternoon, I read the proof of Banach fixed-point theorem in
+<em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
+
+<p>\begin{equation}
+  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
+  \label{eq:inf_err}
+\end{equation}</p>
+
+<p>In the proofs for the lemmas, I could only find something like $x_k$
+inside the brackets, but <em>not</em> $x^*$.  Thus, I <em>couldn’t</em> figure out
+how one can derive inequality \eqref{eq:inf_err} from an inequality
+derived in the proof of Lemma 2.</p>
+
+<p>\begin{equation}
+  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
+  \text{ where } m &gt; n.
+  \label{eq:finite_err}
+\end{equation}</p>
+
+<p>I googled for some notes, and found one which told me to take the
+limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
+\infty$.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> After looking at Corollary 2.4 in the PDF file in
+footnote #2 for a while, I know what I’ve missed.</p>
+
+<p>If $\left\{ p_k \right\}$ converges to $p$,</p>
+
+<p>\begin{equation}
+  \lim_{k \to \infty} d(p_k,q) = d(p,q)
+    = d\left(\lim_{k \to \infty} p_k,q \right)
+  \label{eq:dist_limit}
+\end{equation}</p>
+
+<p>That’s why I wrote the <a href="/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
+
+<p>With equation \eqref{eq:dist_limit}, I can now derive
+\eqref{eq:inf_err} from \eqref{eq:finite_err}.</p>
+
+<p>$\displaystyle \because \lim_{k \to \infty} x_k = x_*$</p>
+
+<p>\[
+\begin{aligned}
+d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
+=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
+\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
+  \text{(by \eqref{eq:finite_err})} &#92;\<br />
+=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+\end{aligned}
+\]</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Banach fixed-point theorem.  (2014, July 15).  In <em>Wikipedia, The
+Free Encyclopedia</em>.  Retrieved 17:34, August 10, 2014, from
+<a href="http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697">http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>Conrad, K.  (2014).  The contraction mapping theorem.  <em>Expository
+paper.  University of Connecticut, College of Liberal Arts and
+Sciences, Department of Mathematics</em>.  Retrieved August 10,2014,
+from
+<a href="http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf">http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Limit of Distances in Metric Spaces]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces/"/>
+    
+    <updated>2014-08-10T20:35:40+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/10/limit-of-distances-in-metric-spaces</id>
+    
+      <content type="html"><![CDATA[<p>Let $X$ be a metric space and $q \in X$.  Suppose that sequence
+$\left\{ p_k \right\}$ in $X$ converges to a point $p$ in $X$.
+Then, $\left\{ d(p_k,q) \right\}$ converges to $d(p,q)$.</p>
+
+<p>\begin{align}
+  &amp; \therefore \forall \varepsilon \exists N \forall k (k \ge N
+  \implies d(p_k,p) &lt; \varepsilon) \label{eq2} &#92;\<br />
+  &amp; \abs{d(p_k,q) - d(p,q)} &lt; \varepsilon &#92;\<br />
+  &amp; \iff d(p_k,q) - d(p,q) &lt;
+  \varepsilon \land d(p,q) - d(p_k,q) &lt; \varepsilon \notag &#92;\<br />
+  &amp; d(p_k,q) - d(p,q) \le d(p,p_k) \iff d(p_k,q) \le
+  d(p,q) + d(p,p_k) \label{eq4} &#92;\<br />
+  &amp; d(p,q) - d(p_k,q) \le d(p,p_k) \iff d(p,q) \le
+  d(p_k,q) + d(p,p_k) \label{eq5}
+\end{align}</p>
+
+<p>\eqref{eq4}, and \eqref{eq5} follows from the Triangular Inequality.
+Apply \eqref{eq2} to \eqref{eq4} and \eqref{eq5} to finish the proof.
+Q.E.D.</p>
+
+<p>Remark: Quantifications similar to \eqref{eq2} can be found in
+<a href="https://en.wikipedia.org/wiki/Uniform_continuity#Local_continuity_versus_global_uniform_continuity">Wikipedia</a>’s entry for uniform continuity.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Pappus's Hexagon Theorem]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/"/>
+    
+    <updated>2014-07-12T23:48:36+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem</id>
+    
+      <content type="html"><![CDATA[<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm.svg" width="600"><br />
+<small><a href="/downloads/code/PappusHexThm.tex">Source</a></small></p>
+
+<p>Suppose that points $A,B$ and $C$ lie on the same straight line, and
+$D,E$ and $F$ lie on <em>another</em> one.  Draw line segments
+$AE,BD,BF,CE,AF$ and $CD$.<br />
+Let <span class="grp1">$P$</span> be the intersection point of $AE$
+and $BD$.<br />
+Let <span class="grp1">$Q$</span> be the intersection point of $AF$
+and $CD$.<br />
+Let <span class="grp1">$R$</span> be the intersection point of $BF$
+and $CE$.<br />
+Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
+are <em>collinear</em>.  (i.e.  The red dashed line and the red solid line
+are collinear.)</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>To prove that three points are collinear, Menelaus’s Theorem is often
+useful.  To apply the theorem to this problem, (TL;DR;C image below)
+one needs to find a triangle such that <em>exactly</em> one of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> lies on
+the <em>line</em> formed by two vertices of the triangle, but <em>not</em> on the
+<em>segment</em> connecting those two vertices, while each of the remaining
+two points lies on a segment whose extension <em>doesn’t</em> contain any one
+of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/MenelausThm.svg" width="600"><br />
+<small><a href="/downloads/code/MenelausThm.tex">Source</a></small></p>
+
+<p>It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span> divide some segments internally.  However,
+<span class="grp1">$P$</span> <em>also</em> has such property.  How can one
+find a segment through <span class="grp1">$P$</span> such that <span class="grp1">$P$</span> <em>externally</em> divides the segment?</p>
+
+<p>The answer can be find out by a careful observation of the two
+segments that pass through <span class="grp1">$P$</span>.  Since we
+want a segment so that <span class="grp1">$P$</span> <em>externally</em>
+divides the segment, we need at least two points on a line through
+<span class="grp1">$P$</span>.  Moreover, those two points should be
+<em>on the same side of the line relative to <span class="grp1">$P$</span></em>.  This led us to define a <em>new</em> point.  Let
+<span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm1.svg" width="600"><br />
+<small><a href="/downloads/code/PappusHexThm1.tex">Source</a></small></p>
+
+<p>Then the light blue triangle $\triangle B\color{blue}{S}F$ is what we
+need.</p>
+
+<h2 id="the-proof">The proof</h2>
+
+<p>Since I have been tired of drawing figures using TikZ and typing
+equations with $\rm \LaTeX$, I <em>don’t</em> want to illustrate or prove any
+one of the four cases of Co-side Theorem, on which this proof heavily
+depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>From the above figure, it’s clear that what we need to show is</p>
+
+<p>\[
+\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
+\]</p>
+
+<p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
+given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
+The tool that we’re going to use is Co-side Theorem.</p>
+
+<p>\begin{equation}
+  \begin{split}
+    \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &amp;=
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle CDF}}&#92;\<br />
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &amp;=
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
+  \end{split}
+\end{equation}</p>
+
+<p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
+the <span class="grp2">$S$</span>.  Moreover, dealing with length of
+segments is <em>easier</em> than their area because the former and the later
+are one-dimensional and two-dimensional quantities respectively.
+Therefore, we rearrange the area of the triangles to get</p>
+
+<p>\begin{equation}
+  \begin{split}
+    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+      \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
+    &amp;= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}} &#92;\<br />
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}}
+  \end{split}
+\end{equation}</p>
+
+<p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
+Thus, we need to work out the area of the two coloured triangles in
+the figure below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
+AE\color{blue}{S}$)</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm2.svg" width="600"><br />
+<small><a href="/downloads/code/PappusHexThm2.tex">Source</a></small></p>
+
+<p>From equation <a href="#sub1">(2)</a>, observe that $AB/CB$ and $EF/DF$ are
+independent from each other.  Then, we need to relate the area of
+those two colored triangles to the ratios of segment lengths in
+<a href="#sub1">(2)</a>.</p>
+
+<p>I still use Co-side Theorem since I <em>can’t</em> think of another theorem
+to eliminate <span class="grp2">S</span>.  In order to use that
+theorem, one has to find another triangle and compare it with one of
+those two coloured triangles.  I’ve looked at the picture and the
+symbols to find out some clues.  Since the letter $C$ is present in
+both $AB/CB$ and $\triangle CD\color{blue}{S}$, $C$ <em>can’t</em> be the
+“common side” of $\triangle CD\color{blue}{S}$ and the triangle that
+we want.  Looking at $\triangle CD\color{blue}{S}$ again, it’s obvious
+that $D\color{blue}{S}$ is the “common side” because $D$,
+<span class="grp2">$S$</span> and $B$ are collinear.</p>
+
+<p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600">
+<small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
+
+<p>\begin{equation}
+  \begin{split}
+    \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &amp;= \frac{CB}{BA}
+      \text{, or} &#92;\<br />
+    S_{\triangle CD\color{blue}{S}} &amp;= \frac{CB}{BA} \cdot
+      S_{\triangle AD\color{blue}{S}}
+  \end{split}
+\end{equation}</p>
+
+<p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
+Therefore, we’re almost done!</p>
+
+<p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600">
+<small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
+
+<p>\begin{equation}
+  \begin{split}
+    \frac{S_{\triangle AE\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &amp;= -\frac{EF}{FD}
+      \text{, or}&#92;\<br />
+      S_{\triangle AE\color{blue}{S}} &amp;= -\frac{EF}{FD} \cdot
+      S_{\triangle AD\color{blue}{S}}
+  \end{split}
+\end{equation}</p>
+
+<p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
+get</p>
+
+<p>\[
+\begin{split}
+  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
+    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+    \frac{F\color{red}{R}}{\color{red}{R}B}
+    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
+    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
+    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} &#92;\<br />
+    &amp;= -1
+\end{split}
+\]</p>
+
+<p>Hence, by Menelaus’s Theorem, we can conclude that
+<span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
+<em>collinear</em>, and prove Pappus’s Hexagon Theorem</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Chou, S. C., Gao, X. S., &amp; Zhang, J. Z. (1993, June). <em>Automated
+production of traditional proofs for constructive geometry
+theorems</em>.  In Logic in Computer Science, 1993. LICS’93.,
+Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
+(<a href="http://www.researchgate.net/publication/226332702_Automated_production_of_traditional_proofs_for_theorems_in_Euclidean_geometry_I._The_Hilbert_intersection_point_theorems/file/60b7d51a5db85afdd3.pdf">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

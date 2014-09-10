@@ -1,0 +1,530 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OmniCppComplete Installation for Dummies - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan's blog. Background: &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.entry-content').each(function(i){
+      var _i = i;
+      $(this).find('img.fancybox').each(function(){
+	var img = $(this);
+	var title = img.attr("title");
+	var classes = img.attr("class");
+	img.removeAttr("class");
+	img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+	if (title != "")
+	{
+	img.parent().attr("title", title);
+	}
+	});
+      });
+    $(".fancybox").fancybox();
+
+    $('.fancybox-media')
+    .attr('rel', 'media-gallery')
+    .fancybox({
+      openEffect : 'none',
+      closeEffect : 'none',
+      prevEffect : 'none',
+      nextEffect : 'none',
+
+      arrows : false,
+      helpers : {
+      media : {},
+      buttons : {}
+    }
+    });
+    });
+</script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">OmniCppComplete Installation for Dummies</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-12T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><em>Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan's <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">blog</a>.</em></p>
+
+<!-- more -->
+
+<p>Background: OmniCppComplete is a great Vim plugin that has the popup menu like many big IDEs. <a href="http://youtu.be/MQy2rVOf-z0">A Youtube video</a> can show the power of OmniCppComplete.<br />Download: OmniCppComplete requires ctags.</p>
+
+<ol>
+    <li>OmniCppComplete: <a href="https://github.com/FromtonRouge/OmniCppComplete">GitHub Repository</a> (To avoid mixing up of files from different plugins, use one plugin management plugin like Pathogen or Vundle.)</li>
+    <li>Ctags: <a href="http://ctags.sourceforge.net/">Official homepage</a> on SourceForge (The ZIP file for Win* 2**0 is fine.)</li>
+</ol>
+
+<p>For more detailed information on the installation of ctags, please refer to my earlier blog post <a href="http://blogue-un.blogspot.hk/2013/12/links-to-good-posts.html"><em>Links to Good Posts</em></a>.</p>
+
+<p>Problem: Reading the OmniCppComplete's documentation only, you won't be able to understand how to use this plugin, so follow some tutorials, and the most viewed one should be on <a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">Vim Tips Wiki</a>. Followed its guidance, I got error in typing <code>std::</code> in a new .cpp file. Omni completion told me something like "pattern not  match". I spent nearly 2 hours to figure out what's wrong, and finally  managed to fully understand the contents of <a href="http://carl830.pixnet.net/blog/post/67681043-vim-omnicppcomplete%2Bstl-support">this blog entry</a>.<br />Now, I'm going to make <u>a Win* version of Vim Tips Wiki's tutorial</u>, using the ideas from Carl.</p>
+
+<p>Solution:</p>
+
+<ol>
+    <li>
+    I suppose OmniCppComplete and ctags are installed properly.
+    <ul>
+	<li>
+	<p>OmniCppComplete does not mix up with other plugins.</p>
+
+	<p>Note: For gVimPortable, do store files under the Data folder, but NOT the <code>$VIMRUNTIME</code> file. Otherwise the settings will be lost after upgrading gVimPortable.</p>
+
+	<img src="/images/posts/OmniCpp/pathogen.png" title="fig1" alt="Vim plugins location using pathogen.vim">
+
+	<p><small>The folder for different plugins are separated (except the plugin management plugin itself).</small></p>
+	</li>
+
+	<li>
+	Typing <code>:h omnicppcomplete</code> in Vim normal mode gives up the help file for OmniCppComplete.
+
+	<img src="/images/posts/OmniCpp/omnicpp.png" title="fig2" alt="Help for OmniCppComplete.txt">
+
+	<p><small>Typing <code>:h omnicppcomplete</code> gives you the corresponding help file.</small></p>
+	</li>
+
+	<li>
+	<p>The folder for ctags is in the PATH environment variable.</p>
+
+	<p>Follow <a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">this page</a> for setting the PATH variable.</p>
+
+	<img class="fancybox" src="/images/posts/OmniCpp/ctags.png" width="800" title="Set PATH variable" alt="fig1">
+
+	<p><small><code>C:\ctags58</code> should be in the <code>PATH</code> variable.</small></p>
+	</li>
+    </ul>
+    </li>
+
+    <li>
+    Download the <a href="http://www.vim.org/scripts/script.php?script_id=2358">modified libstdc++ headers</a> from <a href="https://github.com/vim-scripts/tags-for-std-cpp-STL-streams-...">GitHub</a>.
+    </li>
+
+    <li>
+    Unzip the folder and place it under "somewhere meaningful to you"<br />
+    My suggestion: <code>C:\Users\[your-user-name]\.vim</code><br />
+    Here you can substitute <code>[your user name]</code> with your <u>real</u> user name on Win*.<br />
+    Note: In the dialogue (in case you use GUI), DON'T input <code>tags</code> at the end. Otherwise, you'll get <code>C:\Users\[your-user-name]\.vim<b><span class="err">\tags</span></b>\tags</code>
+    </li>
+
+    <li>
+    <p>If things go right, you should have <code>C:\Users\[your-user-name]\.vim\tags</code></p>
+
+    <p>Go to that directory by typing <code>cd .vim\tags</code> in Win*'s Command Prompt, which can be involked by typing <code>cmd</code> in the "Start" menu. (For Win* XP, choose "Run" and type "cmd" in the popup dialogue. If you like choosing from the menu, follow <a href="http://windows.microsoft.com/en-hk/windows-vista/open-a-command-prompt-window">the way on the official website</a>.)</p>
+
+    <p>At first, a commad prompt should be like this.</p>
+
+    <img src="/images/posts/OmniCpp/cmd.png" title="fig4" alt="Command Prompt default starting display">
+
+    <p><small>The current directory is <code>C:\Users\<span class="HLCode">Owner</span></code>.</small></p>
+
+    <img src="/images/posts/OmniCpp/cmd2.png" title="fig5" alt="Change directory in Win* CMD">
+
+    <p><small>Change the current directory to <code>C:\Users\<span class="HLCode">Owner</span>\.vim\tags</code>.</small></p>
+
+    <p>The contents should be shown by typing <code>dir</code> (There're so many files that I use the <code>/w</code> option to save space.)</p>
+
+    <img src="/images/posts/OmniCpp/dir1.png" title="fig6" alt="w flag in dir command in Win* CMD">
+
+    <p><small>The contents are in the right place, so we may proceed.</small></p>
+
+    <img src="/images/posts/OmniCpp/ctags1.png" title="fig7" alt="Ctags in Win* CMD">
+
+    <p><small>Get a list of ctags.</small></p>
+
+    <p>To get a list of ctags, the correct command:</p>
+
+    <pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="HLCode">.</span></code></pre>
+
+    <p>The one you see on Vim Tips Wiki:</p>
+
+    <pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="err">cpp_src</span></code></pre>
+    </li>
+
+    <li>Then you should have a huge list of ctags with the file name cpp. Not adding the additional tags for OpenGL, etc, is OK.</li>
+
+    <li>
+    <p>Finally, adding the lines found in the Vim Tips Wiki into your vimrc will do.</p>
+
+    <p>Note: If you don't add the additional tags in step 5, then the following lines should NOT be added.</p>
+
+<div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/gl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/sdl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/qt4
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+    </li>
+</ol>
+
+<h3>Testing</h3>
+
+<p>A picture can illustrate the feature well. Typing <code>std::</code>, you'll get a popup list.</p>
+
+    <img src="/images/posts/OmniCpp/omni.png" title="fig8" alt="OmniCppComplete in GVim">
+
+<h3>Incompatibility with clang_complete</h3>
+
+<p>Note that Omnicppcomplete is <em>incompatible</em> with another Vim plugin called clang_complete, due to its "unconditional popup of completion list". To understand this, the following pictures give a good interpretation.</p>
+
+<p>In OmniCppComplete, after typing <code>std::</code>, the completion list will pop up.</p>
+
+<p>However, in clang_complete, since the information is from the clang compiler, you need to give the syntax in the right position for the compiler so as to let the completion list to show up.</p>
+
+<img src="/images/posts/OmniCpp/ClangComplete1.png" title="fig9" alt="missing iostream">
+
+<p><small>Missing <code>#include &lt;iostream&gt;</code>.</small></p>
+
+
+<img src="/images/posts/OmniCpp/std_err.png" title="fig10" alt="wrong place for std::">
+
+<p><small>Still wrong position of the input</small></p>
+
+<img src="/images/posts/OmniCpp/ClangComplete2.png" title="fig11" alt="clang_complete work for correct code">
+
+<p><small>Right position</small></p>
+
+<p>On Ubuntu, it's easy to install. Note that you need <code>clang-dev</code> as well. For Win*, maybe you need to download the source. (I hope there will be a <em>compiled version of the compiler</em>.)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2013-12-12T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/c-slash-c-plus-plus/'>c/c++</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/11/choosing-a-font-for-gvim/" title="Previous Post: Choosing a Font for gVim">&laquo; Choosing a Font for gVim</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/13/writing-vims-output-to-files/" title="Next Post: Writing Vim's Output to Files">Writing Vim's Output to Files &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (21)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (8)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (31)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (9)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Another Way of Writing Piecewise Functions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">The Greek Alphabet in $\rm \LaTeX$</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

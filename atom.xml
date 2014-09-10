@@ -1,0 +1,1773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Blog 1]]></title>
+  <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Another Way of Writing Piecewise Functions]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions/"/>
+    
+    <updated>2014-09-08T18:38:29+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I changed my way of writing block equations for <abbr title="Rich Site Summary">RSS</abbr>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, in
+my old post about the Contraction Mapping Principles, there’s an
+inequality on the rate of convergence of a point in a complete metric
+space to the unique fixed point of the Lipschitz mapping with a
+Lipschitz constant strictly less than one.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>\[
+\begin{aligned}
+d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
+=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
+\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) &#92;\<br />
+=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+\end{aligned}
+\]</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
+</span><span class="line">\begin{aligned}
+</span><span class="line">d(x^\*,x\_n) =&amp; d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
+</span><span class="line">=&amp; \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
+</span><span class="line">\le&amp; \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
+</span><span class="line">  \text{(by \eqref{eq:finite_err})} \\\\\\\\
+</span><span class="line">=&amp; \frac{q^n}{1 - q} d(x\_1,x\_0)
+</span><span class="line">\end{aligned}
+</span><span class="line">\\]
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Starting from the second line in the above block equation, at the left
+of the binary relation symbols there’s a whitespace character.</p>
+
+<!-- more -->
+
+<h3 id="visual-effects-in-a-page-for-a-single-post">Visual effects in a page for a single post</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/post.png" title="LaTeX code seen in post" alt="fig1" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line">d(x<span class="nb">^</span>*,x<span class="nb">_</span>n) =<span class="nb">&amp;</span> d<span class="k">\left</span>( <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> x<span class="nb">_</span>k,x<span class="nb">_</span>n<span class="k">\right</span>) <span class="k">\\</span><span class="err">\</span>
+</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> d(x<span class="nb">_</span>k,x<span class="nb">_</span>n) <span class="k">\\</span><span class="err">\</span>
+</span><span class="line"><span class="k">\le</span><span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0) <span class="k">\qquad</span>
+</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>(by <span class="k">\eqref</span><span class="nb">{</span>eq:finite<span class="nb">_</span>err<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span><span class="err">\</span>
+</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0)
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="visual-effects-in-pages-under-posts-or-the-index-page">Visual effects in pages under “/posts/” or the index page</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/collection.png" title="LaTeX code seen in index page" alt="fig2" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line">d(x<span class="nb">^</span>*,x<span class="nb">_</span>n) =<span class="nb">&amp;</span> d<span class="k">\left</span>( <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> x<span class="nb">_</span>k,x<span class="nb">_</span>n<span class="k">\right</span>) <span class="k">\\</span>
+</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> d(x<span class="nb">_</span>k,x<span class="nb">_</span>n) <span class="k">\\</span>
+</span><span class="line"><span class="k">\le</span><span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0) <span class="k">\qquad</span>
+</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>(by <span class="k">\eqref</span><span class="nb">{</span>eq:finite<span class="nb">_</span>err<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span>
+</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0)
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It <em>doesn’t</em> matter much in block equations.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>However, it <em>does</em> matter if I have to define a piecewise function.
+Take one defined in one of my old posts as an example.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>\[
+f(x,y) =
+  \begin{cases}
+    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
+    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
+  \end{cases}
+\]</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
+</span><span class="line">f(x,y) =
+</span><span class="line">  \begin{cases}
+</span><span class="line">    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
+</span><span class="line">    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
+</span><span class="line">  \end{cases}
+</span><span class="line">\\]
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="visual-effects-in-a-page-for-a-single-post-1">Visual effects in a page for a single post</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/cases3.png" title="LaTeX code seen in post" alt="fig3" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) =
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>cases<span class="nb">}</span>
+</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span><span class="err">\</span>
+</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x
+</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>cases<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-1">Visual effects in pages under “/posts/” or the index page</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/cases2.png" title="LaTeX code seen in index page" alt="fig4" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) =
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>cases<span class="nb">}</span>
+</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span>
+</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x
+</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>cases<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="solution">Solution</h2>
+
+<p>After I observed that the two equations, which are aligned by the
+<code>aligned</code> environment, at the bottom of the post cited in footnote #3,
+I used the $\rm \LaTeX$ commands <code>\left\\{</code> and <code>\right.</code> in the
+Markdown source file for posts to construct the left curly brace
+<em>only</em>.</p>
+
+<p>\[
+f(x,y) = \left\{
+  \begin{aligned}
+    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
+    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
+  \end{aligned}
+\right.
+\]</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
+</span><span class="line">f(x,y) = \left\\{
+</span><span class="line">  \begin{aligned}
+</span><span class="line">    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
+</span><span class="line">    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
+</span><span class="line">  \end{aligned}
+</span><span class="line">\right.
+</span><span class="line">\\]
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="visual-effects-in-a-page-for-a-single-post-2">Visual effects in a page for a single post</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/aligned3.png" title="LaTeX code seen in post" alt="fig5" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) = <span class="k">\left\{</span>
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span><span class="err">\</span>
+</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x,
+</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line"><span class="k">\right</span>.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-2">Visual effects in pages under “/posts/” or the index page</h3>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/aligned2.png" title="LaTeX code seen in index page" alt="fig6" /></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) = <span class="k">\left\{</span>
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span>
+</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x,
+</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
+</span><span class="line"><span class="k">\right</span>.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>‘0’ and ‘1’ in the above example are aligned.  Though in pages for
+each individual posts, the whitespace character preceeding ‘1’ still
+exists, it <em>isn’t</em> visible unless it’s highlighted.  I’m quite
+satified with this alternative method of typesetting piecewise
+functions.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a> in <em>Blog 1</em> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/">Error Bound of the Fixed Point of Contraction Mappings</a>
+in <em>Blog 1</em> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/">Archimedean Sequence of Partitions of a Square</a> in <em>Blog
+1</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MathJax and RSS]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/"/>
+    
+    <updated>2014-09-07T22:31:11+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>In the past, I used double dollar signs <code>$$</code> to enclose block
+equations.  As a result, readers <em>couldn’t</em> see them in <a href="https://www.mozilla.org/firefox/">Firefox</a>.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/old.png" width="900" title="No block equation in RSS" alt="old" /></p>
+
+<p><strong>How can these missing parts be put back to the <abbr title="Rich Site Summary">RSS</abbr> feeds?</strong></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I <em>didn’t</em> know how to use</p>
+
+<ol>
+  <li>typeset curly brackets <code>{}</code> using MathJax <em>without</em> using <code>$$</code> to
+surround the brackets.  If only one <code>$</code> was used, then it would fail.
+For example, <code>$\{a_k\}$</code> <em>wouldn’t</em> work.</li>
+  <li>inline display mode for summation, limit, etc.</li>
+  <li><code>\[</code> and <code>\]</code> to surround block equations in Octopress.</li>
+</ol>
+
+<p>Now, I know that <a href="http://kramdown.gettalong.org/">kramdown</a> parses the Markdown source code for a post
+<em>before</em> <a href="http://www.mathjax.org/">MathJax</a> does.  Therefore, to mean a backslash ‘\’, one
+needs to “double the effort”.  (i.e. use <code>\\{a_k\\}</code> for $\{a_k\}$)
+Moreover, I have to use backslash ‘\’ to escape askterisks <code>*</code> and
+underscores <code>_</code>.</p>
+
+<p>Before I upgraded to Ruby 2 and updated my Octopress source code<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
+<code>$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$</code> <em>didn’t</em> work.
+Now, I can insert inline display equations like
+$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$.</p>
+
+<p>With reference to an example on the MathJax <abbr title="Content Delivery Network">CDN</abbr>, I’ve learnt to use
+<code>begin{equation}</code> just like what $\rm \LaTeX$ users do.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  When
+using it, there’s <em>no</em> need to use <code>$$</code> to surround it.</p>
+
+<p>Viewing <a href="http://drz.ac/javascripts/MathJaxLocal.js"><code>MathJaxLocal.js</code></a> on <em>DrZ.ac</em>, I know why I <em>couldn’t</em>
+use <code>\[</code> for a block equation—I <em>didn’t</em> add it to the corresponding
+list of delimiters in <code>displayMath</code>.  Actually, at that line, the
+whitespace character between two square brackets <code>[</code> <em>aren’t</em>
+necessary.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>While editing a multi-line block equation in a post about the
+Contraction Mapping Principle, I encountered a technical problem:
+there’s <em>no</em> newline character in the equation.  I could just see
+<em>one very long line</em>.  To see how the code was interpreted, I made a
+screenshot of Firefox before MathJax loaded.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/trial.png" title="MathJax code processed by kramdown" alt="interpreted MathJax code" /></p>
+
+<p>It was evident that putting four backslashes at the end of lines for a
+line break <em>wasn’t</em> enough.  Therefore, I put <em>two more</em> backslashes
+there.  This time, the page for an individual post was OK, but the
+contents in the blog index page and those under folder <code>/posts/</code>
+<em>wasn’t</em>.  I viewed the “$\rm \TeX$ Commands” from the popup menu, and
+saw that in the page for an individual post, <em>two</em> backslashes were
+found; at <code>/posts/*</code> and the blog index page, <em>only one</em> backslash was
+found.</p>
+
+<p>By trial, I finally used <em>eight</em> backslashes in the Markdown source
+files for a post for a line break.</p>
+
+<h2 id="result">Result</h2>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay/new.png" width="900" title="Block equation in RSS" alt="new" /></p>
+
+<p>The source code for a block equation can now be seen in <abbr title="Rich Site Summary">RSS</abbr> feeds.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See <a href="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/">Updated Octopress Source Code</a> in <em>Blog 1</em> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>View the source of <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> for
+details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See <a href="http://docs.mathjax.org/en/latest/tex.html#tex-and-latex-math-delimiters">$\rm \TeX$ and $\rm \LaTeX$ math delimiters</a> in
+<em>MathJax Documentation</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[The Greek Alphabet in $\rm \LaTeX$ &#9733;]]></title>
+      <link href="http://jblevins.org/notes/greek"/>
+    
+    <updated>2014-09-07T22:01:43+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$</id>
+    
+      <content type="html"><![CDATA[<p>I’ve found a list of $\rm \LaTeX$ commands for Greek alphabets.
+Unluckily, when I right-clicked each alphabet, the popped-up menu
+could only show the MathML code, but <em>not</em> the $\rm \LaTeX$ code.
+Therefore, I have to use <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-dynamic.html" title="Display an equation typed in by a user">MathJax’s previewer</a> to
+verify the commands.</p>
+
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion &#9733;]]></title>
+      <link href="http://detexify.kirelabs.org/classify.html"/>
+    
+    <updated>2014-09-07T17:07:43+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion</id>
+    
+      <content type="html"><![CDATA[<p>Searching symbols in
+<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
+time-consuming.  For example, when I was writing my
+<a href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
+‘$\circ$’ symbol for composition of two functions.  At first, I typed
+<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
+‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
+Detexify is the answer for commonly used symbols.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Fake Function]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/"/>
+    
+    <updated>2014-09-07T14:16:31+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/07/a-fake-function</id>
+    
+      <content type="html"><![CDATA[<p>Half a year ago, when I heard the concept of <strong>well-defined
+functions</strong>, I <em>wasn’t</em> familiar with it.</p>
+
+<p>I’ve just worked out a problem, and got more idea about that concept.
+The problem should be quite easy.  It asks readers to show that if
+$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
+is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
+$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
+the wordings in the question, and attempted to prove that the binary
+structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
+isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
+composition of functions.  As a result, I let $\phi: \{\varphi_g
+\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
+The associativity, existence of identity element and existence of
+inverse of the binary structure can be easily verified.  By the very
+definition of $\phi$, it seems that its surjectivity is very obvious.
+I continued to write “injectivity of $\phi$ is also obvious.”</p>
+
+<p>\[
+\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
+  \implies \varphi_{g_1} = \varphi_{g_2}
+\]</p>
+
+<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
+double-headed one.  If I <em>couldn’t</em> do so, it means that
+$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
+g_2$.  I realised that I need to check whether $\phi$ was
+<em>well-defined</em>.  As a result, I wasted an hour on some equations.
+Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
+$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
+G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
+did was a waste of time.</p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Weaker Group Axioms]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/"/>
+    
+    <updated>2014-09-06T11:12:06+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms</id>
+    
+      <content type="html"><![CDATA[<p>The following axioms seem to be weaker.</p>
+
+<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+
+<dl>
+  <dt>Associativity</dt>
+  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dt>Existence of <em>left</em> identity</dt>
+  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dt>Existence of <em>left</em> inverse</dt>
+  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
+e$</dd>
+</dl>
+
+<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
+
+<!-- more -->
+
+<p><em>Proof</em></p>
+
+<dl>
+  <dt>Existence of inverse</dt>
+  <dd>We try to show that a left inverse of a group element is <em>also</em> a
+right inverse of the group element.
+
+    <p>$\forall a \in G,$
+\[
+\begin{split}
+a * a^{-1} &amp;= e * (a * a^{-1}) &amp;\qquad \text{(existence of left
+identity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &amp;\qquad \text{(existence
+of left identity of $a^{-1}$)}&#92;\<br />
+&amp;= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= ((a^{-1})^{-1} * e) * a^{-1} &amp;&#92;\<br />
+&amp;= (a^{-1})^{-1} * (e * a^{-1}) &amp;\qquad
+\text{(associativity)}&#92;\<br />
+&amp;= (a^{-1})^{-1} * a^{-1} &amp;&#92;\<br />
+&amp;= e &amp;
+\end{split}
+\]
+∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
+e = a^{-1} * a.$</p>
+  </dd>
+  <dt>Existence of identity</dt>
+  <dd>Similarly, we try to show that a left identity is <em>also</em> a right
+identity.
+
+    <p>$\forall a \in G,$
+\[
+\begin{split}
+a * e &amp;= a * (a^{-1} * a) &amp;\qquad \text{(existence of inverse of
+$a$)}&#92;\<br />
+&amp;= (a * a^{-1}) * a &amp;\qquad \text{(associativity)}&#92;\<br />
+&amp;= e * a &amp;&#92;\<br />
+&amp;= a&amp;
+\end{split}
+\]
+∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
+a$.</p>
+  </dd>
+</dl>
+
+<h2 id="an-application-in-secondary-school-mathematics">An application in secondary school mathematics</h2>
+
+<p>In high school, to show that $B \in M_{n \times n}(\reals)$ is an
+inverse of $A \in M_{n \times n}(\reals)$<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, one is taught to show
+<em>both</em> $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
+general.</p>
+
+<p>Taking $G = \GL(n,\reals)$ and regard $*$ as matrix multiplication,
+one can just show that $AB = I$ by direct calculation and then
+conclude that $BA = I$, and vice versa.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
+    
+    <updated>2014-09-05T23:33:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="http://vincenttam.github.io/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Commits With fugitive.vim on Windows]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/"/>
+    
+    <updated>2014-09-03T00:48:13+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
+provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
+<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
+
+<p>Then I tried running <code>git commit</code> in 
+<img class="nobd" src="http://vincenttam.github.io/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />,
+but it’s “aborting commit due to empty commit message”.</p>
+
+<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
+gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
+The <code>-w</code> flag in the commands for setting other editors as the default
+editor for Git is the key for the above quoted message.</p>
+
+<p>I tried to solve this problem by reading Vim’s offical manual about
+<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
+in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
+
+<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
+<code>:Gcommit</code> in Vim, and use
+<img class="nobd" src="http://vincenttam.github.io/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (2)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/"/>
+    
+    <updated>2014-09-02T23:39:57+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2b/err.png" title="A compilation error" alt="solved problem" /></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>See Octopress issue #<a href="https://github.com/imathis/octopress/issues/413">413</a> for details.</p>
+
+<h3 id="method-1--draychou">Method 1 (@ DrayChou)</h3>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Add the following 2 lines in &#8220;C:\your\ruby\location\setup_environment.bat&#8221; </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="k">set</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.UTF<span class="m">-8</span>
+</span><span class="line"><span class="k">set</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF<span class="m">-8</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I’ve <em>only</em> tested the above two commands in the command prompt, and
+I’ve <em>never</em> touched <code>setup_environment.bat</code>.</p>
+
+<h3 id="method-2--robatron">Method 2 (@ robatron)</h3>
+
+<p>I now use this method.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s much simpler than the above
+one—just add/set <code>encoding: UTF-8</code> in <code>_config.yml</code>.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2b/ok.png" title="Successful compilation" alt="solved problem" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/f5847538b19e769b6fc05ef01bce3b8e88e3aa77/_config.yml#L53">f584753</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (1)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/"/>
+    
+    <updated>2014-09-02T15:22:25+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This Sunday, I tried to do something similar to what I did in
+May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
+I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
+that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
+easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2a/err.png" title="A compilation error" alt="Screenshot of problem" /></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I used the relevant part of the error message to search for websites
+describing similar/related problems.  Luckily, I found one in <em>Eaten
+by Grues</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p>I manually created a batch file in the <em>same</em> folder of
+<code>python.exe</code>.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python2.bat </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class="line">python %*
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The raison d’être of the trailing <code>%*</code> is explained in
+<a href="http://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/" title="Something About Win* Batch Files">one of my old posts</a>.</p>
+
+<p>Finally, the section <code>which: no python2 in (...)</code> <em>disappeard</em> after I
+locally generated the site again.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2b/err.png" title="Rake can now detect Python2." alt="solved problem" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in <em>Blog 1</em> for
+details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>“Downloads” in the official website of RubyInstaller for Windows.
+(<a href="http://rubyinstaller.org/downloads/">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See [Installing PortableJekyll][sol] in <em>Eaten by Grues</em> for
+details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>I suppose that Python is in the <code>PATH</code> variable. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Set Transparent Background Using ImageMagick &#9733;]]></title>
+      <link href="http://stackoverflow.com/a/11115408"/>
+    
+    <updated>2014-09-01T00:45:15+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick</id>
+    
+      <content type="html"><![CDATA[<p>I made use of the suggested command in an answer for a Stack Overflow
+question to remove the white background of my gravatar.</p>
+
+<p>If you need to do it using GIMP, you may refer to <a href="http://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background/" title="Make Images With Transparent Background Using GIMP, and More ...">here</a>.</p>
+
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress Codeblock Syntax]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/31/octopress-codeblock-syntax/"/>
+    
+    <updated>2014-08-31T22:14:29+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/31/octopress-codeblock-syntax</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>When I was writing the post <a href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/"><em>The Daring Fireball Linked List</em></a>, I
+included a sample Markdown source file for an Ocotpress post.  I would
+like to have a monospaced font and a line number at the left of each
+line of the source file.  In addition, I <em>didn’t</em> need any syntax
+highlighting for that file.</p>
+
+<p>I looked at the official manual, and it’s said that “passing <code>plain</code>
+disables highlighting”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  <em>However, I got errors from <a href="http://pygments.org/" title="A generic syntax highlighter">Pygments</a>!</em></p>
+
+<pre class="cli"><code class="UBMono">127.0.0.1 - - [30/Aug/2014 21:36:51] "GET /images/noise.png?1408511469 HTTP/1.1"
+ 304 - 0.0010
+      Regenerating: 1 files at 2014-08-30 21:38:38 ...done.
+      Regenerating: 1 files at 2014-08-30 21:43:53   <span class="err">Liquid Exception: Pygments 
+can't parse unknown language: plain. in _posts/2014-08-30-the-daring-fireball-li
+nked-list.markdown/#excerpt</span>
+...error:
+             <span class="RakeErr2">Error: Pygments can't parse unknown language: plain.
+             Error: Run jekyll build --trace for more information.</span>
+      Regenerating: 1 files at 2014-08-30 21:44:21   <span class="err">Liquid Exception: Pygments 
+can't parse unknown language: plain. in _posts/2014-08-30-the-daring-fireball-li
+nked-list.markdown/#excerpt</span>
+...error:
+             <span class="RakeErr2">Error: Pygments can't parse unknown language: plain.
+             Error: Run jekyll build --trace for more information.</span>
+      Regenerating: 1 files at 2014-08-30 21:48:26 ...done.
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>Just use <code>{% codeblock %}</code>
+    <ul>
+      <li>Omit <code>lang: xxx</code></li>
+      <li>I’m <em>not</em> sure if I can add title after <code>codeblock</code>.</li>
+    </ul>
+  </li>
+  <li>Use <code>lang:text</code> to indicate plain text.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Codeblock in <em>Octopress Documentation</em>. (<a href="http://octopress.org/docs/plugins/codeblock/">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Available lexers in <em>Pygments Documentation</em>. (<a href="http://pygments.org/docs/lexers/#pygments.lexers.special.TextLexer">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Hotlinking: What Is It, and Why Is It Bad? &#9733;]]></title>
+      <link href="http://greekgeek.squidoo.com/hotlinking"/>
+    
+    <updated>2014-08-31T12:21:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/31/hotlinking-what-is-it-and-why-is-it-bad</id>
+    
+      <content type="html"><![CDATA[<blockquote><p><strong>Why Hotlinking Is Theft</strong><br />Even if You Have Permission to Use a Graphic</p><p>Each and every time someone looks at a webpage, their browser has to call up the image host and say, &#8220;send that image file over to me.&#8221; It&#8217;s like making a phone call.</p><p>&#8230;Multiply that by hours, days, and months, and then multiply that by the number of graphics on a clipart site. You can see why hotlinking puts a substantial load on an image host. That load is <em>bandwidth</em>, and someone has to pay for it.</p><footer><strong>Greekgeek</strong></footer></blockquote>
+
+<p>Luckily, I usually download the images and write down their sources if
+I use resources from other hosts.  However, I did hotlinked to the
+CC-BY-SA icon since I just copied the code from Creative Commons.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>Now, I’ve got rid of those hotlinked figures.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Click <a href="https://creativecommons.org/choose/results-one?license_code=by-sa&amp;jurisdiction=&amp;version=4.0&amp;lang=en">here</a> for the HTML code for embedding the Creative Commons
+license. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/31/hotlinking-what-is-it-and-why-is-it-bad/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Syntax in Octopress Blockquote Tag]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/"/>
+    
+    <updated>2014-08-31T00:44:13+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctBlockquote/err.png" width="800" title="Wrongly rendered contents" alt="Fig 1" /></p>
+
+<p>If I input Markdown code inside a
+<code>{% blockquote %}</code> tag, it <em>won’t</em> be parsed.</p>
+
+<p><strong><em>How can the headings and hyperlinks inside the quoted text be
+displayed?</em></strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>That’s trivial.  Changing the Markdown code into HTML solves the
+problem.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>A newline character <code>\n</code> in each
+<code>{% blockquote %}</code> tag <em>really</em> means a newline
+in the resulting blockquote.</li>
+  <li>Pullquotes can be used inside blockquote.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">常玩手機腦生鏽 14%青年無記性</a> in <em>Blog 1</em> for an working
+example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[The Daring Fireball Linked List &#9733;]]></title>
+      <link href="http://daringfireball.net/linked/"/>
+    
+    <updated>2014-08-30T14:44:16+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list</id>
+    
+      <content type="html"><![CDATA[<blockquote><p><div class="article"><h5>The Daring Fireball Linked List</h5><h6 class="dateline">Friday, 29 Aug 2014</h6><br /><dl class="linkedlist"><dt><a href="http://recode.net/2014/08/29/codered-apple-wearable-wont-ship-until-next-year/">Paczkowski: Apple Wearable Won&#8217;t Ship Until Next Year</a>&nbsp;<a class="permalink" title="Permanent link to 'Paczkowski: Apple Wearable Won't Ship Until Next Year'." href="http://daringfireball.net/linked/2014/08/29/paczkowski">&#9733;</a></dt><dd><br /><p>John Paczkowski:</p><blockquote><p>So that new wearable device Apple is introducing on September 9?  It&#8217;s going to be a while before anyone is actually wearing it.  Sources in position to know tell me it won&#8217;t arrive at market for a few months.  &#8220;It&#8217;s not shipping anytime soon,&#8221; said one.  So when does Apple plan to ship its eagerly anticipated wearable?  That&#8217;s not clear, but my understanding is that we&#8217;re unlikely to see it at retail until after the holiday season—think early 2015.</p></blockquote><p>If true, why?  I&#8217;m guessing something similar to why they pre-announced the original iPhone—otherwise it would leak through regulatory filings with various governments around the world.  Plus, they have no worries about the <a href="https://en.wikipedia.org/wiki/Osborne_effect">Osborne Effect</a> with a new product category.</p></dd></dl></div>&#8230;<div class="article"><h5>About the Linked List</h5><p>The Daring Fireball Linked List is a daily list of interesting links and brief commentary, updated frequently but not frenetically. Call it a &#8220;link log&#8221;, or &#8220;linkblog&#8221;, or just &#8220;a good way to dick around on the Internet for a few minutes a day&#8221;.</p></div></p><footer><strong>Daring Fireball</strong></footer></blockquote>
+
+<p>Since I like the clarity of the linked list format, I’d been looking
+for ways to do this in June, but I <em>couldn’t</em> understand them.
+Moreover, as can be seen from the size of <code>git diff
+octopress/linklog</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the difference between <code>linklog</code> and <code>master</code>
+branches is <em>very large</em>.  I <em>couldn’t</em> understand the git-diff result
+for <code>source/javascripts/octopress.js</code>. This would discourage any
+ordinary users from looking into the issue.  Therefore, I once said
+that I <em>didn’t</em> know how to write an Octopress linklog.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>Last night, I added an <em>unofficial</em> linklog feature to Octopress.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
+The official guide <em>didn’t</em> worked for me.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  I could see the
+complaints from some users who had found that this feature <em>wasn’t</em>
+working.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  At the same time, I could see some blogs that included
+this feature.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  The last commit of the <code>linklog</code> branch was in
+2012.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>  It seems that it <em>isn’t</em> likely that Octopress will work on
+this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup></p>
+
+<!-- more -->
+
+<p>Yesterday, I <em>finally</em> understood the following posts about DIY
+Octopress linklogs.</p>
+
+<ol>
+  <li><a href="http://www.candlerblog.com/2012/01/30/octopress-linked-list/">Make a Linked List With Octopress</a> in <em>the Candler Blog</em>.</li>
+  <li>Octopress pull request #<a href="https://github.com/imathis/octopress/pull/1538" title="Add a capture to article include to use external-url">1538</a></li>
+  <li><a href="https://wllmtrng.github.io/blog/2014/04/17/creating-a-linklog-post/">Creating a Linklog Post</a> in <em>New Learnings from Old
+Understandings</em></li>
+</ol>
+
+<p>In the commit in item 2, only <em>a few</em> lines was changed, and it should
+be comprehensible even for one who knows basic HTML and programming
+only.  In item 1, there’s <em>no</em> <code>page.external-url</code> in
+<code>source/_includes/article.html</code>, but it’s present in item 3.  I
+compared those <a href="http://docs.shopify.com/themes/liquid-documentation/basics">Liquid</a> code with the relevant files in <code>linklog</code>
+branch.  Item 1 also contains the changes in <code>source/atom.xml</code>.  From
+this, I worked out <code>source/_includes/custome/category_feeds.xml</code>,
+though the code is <em>far from beautiful</em>.  To work out the blog
+archive, I looked at Dr.Z’s one.</p>
+
+<p>I was bored of this kind of writing code and <em>didn’t</em> want to further
+change the CSS properties of linklog titles.  The linklog markers and
+permalink labels should be enough.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="yaml-front-matter-of-each-post">YAML front matter of each post</h3>
+
+<p>In the following sample Markdown source file for a post, there’s a
+variable <code>external-url</code>.  After looking at the above code blocks, I’ve
+learnt how to use those variables.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Contents of &#8220;2014-08-30-title-goes-here.markdown&#8221; </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">---
+</span><span class="line">layout: post
+</span><span class="line">title: &quot;Title goes here&quot;
+</span><span class="line">date: 2014-08-30 14:44:16 +0800
+</span><span class="line">comments: true
+</span><span class="line">categories: [category 1, category 2]
+</span><span class="line">external-url: http://www.example.com
+</span><span class="line">---
+</span><span class="line">
+</span><span class="line">Blog contents goes here...
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li><code>{{% if post.external-url %}}</code> tests if the
+  front matter of a post contains <code>external-url</code> variable.</li>
+  <li><code>{{ post.external-url }}</code> returns the value of
+  <code>external-url</code> variable.</li>
+</ul>
+
+<h3 id="yaml-variables-in-configyml">YAML variables in <code>_config.yml</code></h3>
+
+<ul>
+  <li>I added a line <code>myVar: value</code> into <code>_config.yml</code>.</li>
+  <li>While configurating <code>source/_includes/article.html</code>, if I need to
+  access an variable in <code>_config.yml</code>, I have to use
+  <code>{{ site.myVar }}</code>.  You’ll get <em>nothing</em> if
+  you miss <code>site.</code>.</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>I assume that Ocotpress’s GitHub repository has been added to the
+list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <blockquote><p><del>Unfortunately, I *haven&#8217;t* find out how to include Octopress&#8217;s linklog feature into my Octopress blog.</del></p><footer><strong>Me</strong> <cite><a href="http://localhost:4000/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">九成人感眼睛疲倦 藍光加快退化</a></cite></footer></blockquote>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/39293af" title="Unofficial linklog support in progress...">39293af</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e35fab7" title="Added unofficial linklog support to more pages">e35fab7</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="http://octopress.org/docs/blogging/linklog/">Writing a Linklog</a> in <em>Octopress Documentation</em>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>Ocotpress issue #<a href="https://github.com/imathis/octopress/issues/418" title="Allow linklog style posts">418</a>. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+
+      <p>For example,</p>
+
+      <ul>
+        <li><a href="http://drz.ac/blog/">DrZ.ac</a></li>
+        <li><a href="http://makarenko.me/07-17-2013-moving-to-linklog/">Moving to Linklog</a> in <em>Weblog Сергія Макаренка</em>.</li>
+      </ul>
+      <p><a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>Commit <a href="https://github.com/imathis/octopress/commit/1750830" title="Merge pull request #800 from mxmerz/linklog">1750830</a> at the tip of <code>linklog</code> branch. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+
+      <blockquote><p>@matrixagent sorry.  It&#8217;s killing us too.  The linklog feature is going to be theme based and right now we&#8217;re working on breaking out the theme from the release to distribute the development a little better.  It&#8217;s tricky to manage asset installation.</p><footer><strong>@octopress</strong> <cite><a href="https://alpha.app.net/octopress/post/14385019">alpha.app.net/octopress/post/&hellip;</a></cite></footer></blockquote>
+      <p><a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Clang Complete on Ubuntu 14.04]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2014-08-29T13:44:03+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
+following problem.</p>
+
+<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
+Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
+ contains libclang?
+    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
+tory. To provide a path to libclang use Config.set_library_path() or Config.set_
+library_file().
+
+Press ENTER or type command to continue
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “loading libclang failed”, and skimmed two results.  The
+first one was an clang complete issue on GitHub.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, at
+first glance, the problem was on Ubuntu <em>13.10, not 14.04</em>, and the
+error messages <em>didn’t</em> resemble the above message.  The second one
+was a Stack Overflow question.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  From the first answer, I knew that
+I need to check if <code>libclang1</code> package was installed.  <code>dkpg -l | grep
+clang</code> told me that I’d got clang.  I read the second answer, and
+viewed the list of files in <code>/usr/lib/</code>.  There’s <em>no</em> folders whose
+name started with <code>x86</code>, and <em>no</em> file called <code>libclang.so.1</code> in each
+sub-folder.  Looking at the issue <em>again</em> on GitHub, I found out how
+to make use of the information from both sites.</p>
+
+<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
+</code></pre>
+
+<p>To avoid problems, I <em>didn’t</em> set Vim global variable
+<code>clang_library_path</code>.</p>
+
+<p>I <em>didn’t</em> know whether <code>.1</code> should be appended to the end of
+<code>libclang.so</code>.  Finally, I <em>didn’t</em> do so, and the plugin just
+<em>worked</em>.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See clang complete <a href="https://github.com/Rip-Rip/clang_complete/issues/370">issue #370</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>See Stack Overflow <a href="http://stackoverflow.com/q/22733943" title="Where is libclang.so?">question 22733943</a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Problems in M$ and Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu/"/>
+    
+    <updated>2014-08-27T13:19:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu</id>
+    
+      <content type="html"><![CDATA[<p>I seldom encounter problems in both operating systems.  However,
+there’s <em>exceptional</em> situations.</p>
+
+<h2 id="m-win-7">M$ Win* 7</h2>
+
+<p>I once booted into its “safe mode”, and experienced some problems
+during an image upload.  I <em>don’t</em> wish to learn more about the
+problem.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MSUbuProblem/MS.png" title="MS" alt="MS problem" /></p>
+
+<h2 id="ubuntu-1404">Ubuntu 14.04</h2>
+
+<p>Last night, I saw a small dialog box after the login.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MSUbuProblem/Ubu.png" title="Ubuntu 14.04" alt="MS problem" /></p>
+
+<p>I checked the details—it was the problem of Ubuntu’s greeter, but
+I’m going to do <em>nothing</em> to resolve it.</p>
+
+<p>I think that this is due to my method of getting the newer version of
+Ubuntu—upgrading instead of clearing and installing.<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></p>
+
+<p>Since I lack time to study the official manual and related posts about
+clearing Linux partitions and installing Ubuntu 14.04, I just keep
+using the Ubuntu that I have.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I’m <em>not</em> going to argue whether GNU/Linux is better than M$ Win*.
+There’s already <em>lots of</em> posts on that issue.</p>
+
+<p>I just want to say that problems <em>can</em> exist in <em>any</em> OS.  If you
+<em>don’t</em> intentionally break things and your machine still goes wrong,
+then “keep calm and carry on”.  However, if it’s free software and you
+have the patience and ability to browse its source code, you may see
+what’s wrong.</p>
+
+<p>It’s great to learn what’s really going on in an OS, and I personally
+think that the GNU/Linux commands are better tools for that, when
+compared to GUI tools.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:UpUb">
+
+      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
+<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Updated Octopress Source Code]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/"/>
+    
+    <updated>2014-08-21T21:37:59+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<ol>
+  <li>Upgraded to Ubuntu 14.04 LTS<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></li>
+  <li>Installed Ruby 2.1.2.<sup id="fnref:UpRVM"><a href="#fn:UpRVM" class="footnote">2</a></sup></li>
+  <li>Tried to generate the blog from the <em>same</em> Markdown and HTML
+source, but failed.<sup id="fnref:Ruby2Fail"><a href="#fn:Ruby2Fail" class="footnote">3</a></sup></li>
+</ol>
+
+<p>During the merge of Octopress source code last week, there’re some
+conflicts between my old working source code and the new one fetched
+from Octopress’s Github repository.  When <code>rake</code> complained, I changed
+my original code bit by bit—this turned out to be a <em>failed and
+inefficient</em> approach.  <em>Not</em> familiar with Ruby, I gave up the whole
+idea of updating Octopress’s source code and generating the contents
+on top of a new version of Ruby.  In order to keep posting things to
+this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Glimpsing the commit messages and their corresponding dates, I decided
+to try the Octopress update again.</p>
+
+<h3 id="yesterdays-work">Yesterday’s work</h3>
+
+<p>I simply fetched and merged the code from Octopress’s remote Git
+repository.<sup id="fnref:merge"><a href="#fn:merge" class="footnote">4</a></sup>  I remembered <em>minimizing</em> the changes while
+resolving the expected conflicts.  Here’s a brief outline of what I
+had done using <em>Ruby 1.9.3</em>.</p>
+
+<ol>
+  <li><code>git pull octopress master</code></li>
+  <li>Resolved conflicts and committed the changes <em>without</em> pushing it,
+so that I can easily undo the commit <em>without</em> leaving a mark in the
+commit history.</li>
+  <li>Ran <code>rake update_source</code> to apply the changes in
+<code>.themes/classic/soruce/*</code> to <code>source/*</code>.</li>
+  <li>
+    <p>Ran <code>rake generate</code>, <em>failed</em>, and learnt that there’re some syntax
+errors.</p>
+
+    <ul>
+      <li>At the beginning of some files, <code>layout: nil</code> had <em>not</em> yet been
+ changed to <code>layout: null</code>.</li>
+      <li><a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/">Clapper’s image popup plugin</a> <em>didn’t</em> work with the
+<em>updated</em> Octopress code.  In order to use the updated Octopress
+source code, I <em>temporarily</em> removed the curly brackets that
+surrounded each
+<code>{% imgpopup /path/to/image nn% title %}</code>
+tag, using Vim’s <code>:argdo %s/pat/rep/ge | up</code> command.</li>
+    </ul>
+  </li>
+  <li>Corrected the above mistakes, and amended the last commit.</li>
+  <li>Ran <code>rake generate</code> <em>again</em>, and <em>succeeded</em>.</li>
+  <li>Found <a href="http://fancyapps.com/fancybox/">fancyBox</a> to replace the image popup plugin.</li>
+  <li>
+    <p>Followed Erv Walter’s instructions to use fancyBox in my
+posts.<sup id="fnref:ewal"><a href="#fn:ewal" class="footnote">5</a></sup></p>
+
+    <ol>
+      <li>Downloaded the <em>whole</em> ZIP archive from fancyBox’s official
+ website.</li>
+      <li>Extracted the archive to <code>source/</code> and renamed the folder as
+ <code>source/fancybox/</code>, and deleted <code>source/fancybox/demo/</code>.</li>
+      <li>Just added the references to the necessary CSS and JS files to
+ <code>source/_includes/custom/head.html</code> for simplicity.</li>
+      <li>Used <code>:vimgrep /pat/rep/ source/_posts/*</code> to obtain a list of
+ files which contained “imgpopup”.  The list was in a quickfix
+ window, which could be invoked by <code>:cw</code>.  <code>:cn</code> and <code>:cp</code> point to
+ the next and previous match respectively.</li>
+      <li>In <em>one</em> of my posts, I changed the line containing “imgpopup”
+ to “img fancybox”.</li>
+      <li>Misunderstood his words<sup id="fnref:ewal_quote"><a href="#fn:ewal_quote" class="footnote">6</a></sup>, I added his jQuery
+ function at the end of my post.  However, as I clicked the image,
+ <em>nothing</em> popped up.</li>
+      <li>Used a simpler jQuery function found on fancyBox’s website for
+ testing, and put it in <code>source/_includes/custom/head.html</code>.  This
+ time, a box popped up upon a click on the images.  However, after
+ I closed the popped up window, the clicked image <em>disappeared</em>.</li>
+      <li>Read and understood these two jQuery functions, incorporated
+ them into <code>source/_includes/custom/head.html</code>, and <em>succeeded</em>.</li>
+      <li>Changed <em>all</em> instances of “imgpopup” to “img fancybox”.</li>
+    </ol>
+  </li>
+  <li>Cleared up the Ruby scripts in <code>plugins/</code>.<sup id="fnref:del_imgpopup"><a href="#fn:del_imgpopup" class="footnote">7</a></sup></li>
+  <li>Used fancyBox for embedded Youtube videos.</li>
+  <li>Added back the default white round border for pictures in
+Octopress posts except for tiny icons.<sup id="fnref:img_bd"><a href="#fn:img_bd" class="footnote">8</a></sup></li>
+</ol>
+
+<h3 id="todays-work">Today’s work</h3>
+
+<p><img src="http://vincenttam.github.io/images/posts/OctopressUpdate/rvm212.png" alt="Screenshot of GNOME Terminal" /></p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>Do things bit by bit at a time, so that one can adapt to the changes.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:UpUb">
+
+      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
+<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:UpRVM">
+
+      <p>Tam, V.  (Aug 13, 2014).  <em>Install Ruby Again! (2)</em>.  Retrieved
+from
+<a href="https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/">https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/</a> <a href="#fnref:UpRVM" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:Ruby2Fail">
+      <p><em>Ibid</em>. <a href="#fnref:Ruby2Fail" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:merge">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/f090aac">f090aac</a>. <a href="#fnref:merge" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ewal">
+
+      <p>Walter, E.  (Sep 8, 2012).  <em>Octopress Customizations</em>.  Retrieved
+from <a href="http://www.ewal.net/2012/09/08/octopress-customizations/">http://www.ewal.net/2012/09/08/octopress-customizations/</a> <a href="#fnref:ewal" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ewal_quote">
+
+      <blockquote><p>It&#8217;s done per-post so that when viewing the main index of the<br />     blog, unrelated images don&#8217;t end up getting added to one large<br />     gallery.</p><footer><strong>Erv Walter</strong> <cite><a href="http://www.ewal.net/2012/09/08/octopress-customizations/">Octopress Customizations</a></cite></footer></blockquote>
+      <p><a href="#fnref:ewal_quote" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:del_imgpopup">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/b787cd7">b787cd7</a>. <a href="#fnref:del_imgpopup" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:img_bd">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/a3b5986">a3b5986</a>. <a href="#fnref:img_bd" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Ubuntu 14.04 Monospaced Font Family]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/17/ubuntu-14-dot-04-monospaced-font-family/"/>
+    
+    <updated>2014-08-17T16:00:48+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/17/ubuntu-14-dot-04-monospaced-font-family</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Last Wednesday, I upgraded Ubuntu from 12.04 LTS to 14.04 LTS.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>As we can see from the second figure in the post in footnote 1, in
+Chromium, the font used for displaying the source code of a website is
+<em>not</em> monospaced.</p>
+
+<p><img src="http://vincenttam.github.io/images/posts/UbuntuDistUpgrade2/src_code.png" alt="HTML source code viewed in Chromium" /></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>This is <em>not</em> the problem of Chromium.  I can also see this problem in
+Firefox as well as GNOME Terminal.</p>
+
+<ul>
+  <li>
+    <p>Firefox</p>
+
+    <p><img src="http://vincenttam.github.io/images/posts/Ubuntu1404Mono/FFViewSrc.png" alt="HTML source code viewed in Firefox" /></p>
+  </li>
+  <li>
+    <p>GNOME Terminal</p>
+
+    <ol>
+      <li>Uncheck the first checkbox, whose label means “use the system
+  fixed width font”, between “Default” and “Monospace 12”.</li>
+      <li>The letters in the terminal will look ugly.</li>
+    </ol>
+
+    <p><img src="http://vincenttam.github.io/images/posts/Ubuntu1404Mono/GnomeTerminal.png" alt="A screenshot of GNOME Terminal" /></p>
+  </li>
+</ul>
+
+<p>When I wrote the post in footnote 1, I searched “ubuntu 14.04
+monospace”, and I <em>couldn’t</em> find anything that helped me solve this
+problem.</p>
+
+<p>Today, I limit the search to “past year”, and discover a post about
+font configurations on Linux Desktop.  It is the continuation of
+another post, which contains two code blocks for testing “monospaced”
+and “Courier New” font families.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>The HTML source code for testing &#8220;monospaced&#8221; font family</span><a href="http://www.cnblogs.com/youxia/p/linux004.html">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;font-family: monospace; font-size: 12pt;&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">#include <span class="ni">&amp;lt;</span>stdio.h<span class="ni">&amp;gt;</span><span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line">int main(){<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>return 0;//很顯然這是為了測試等寬字體<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line">}
+</span><span class="line"><span class="nt">&lt;/span&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>The HTML source code for testing &#8220;Courier New&#8221; font family</span><a href="http://www.cnblogs.com/youxia/p/linux004.html">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;span</span> <span class="na">style=</span><span class="s">&quot;font-family: monospace; font-size: 12pt;&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">#include <span class="ni">&amp;lt;</span>stdio.h<span class="ni">&amp;gt;</span><span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line">int main(){<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="ni">&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span>return 0;//觀察下面的代碼了解monospace是否等於Courier New<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line">}
+</span><span class="line"><span class="nt">&lt;/span&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I inspect the elements in those code blocks, and realize that it is
+the problem of the monospaced font family in Ubuntu 14.04.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I find <code>fc-match</code> at a site, but I <em>can’t</em> find the site.  Running the
+command, I can identify the culprit.</p>
+
+<pre class="cli"><code class="UBMono">$ fc-match monospace
+<span class="err">DroidSansFallbackFull.ttf: "Droid Sans" "Regular"</span>
+</code></pre>
+
+<p>Googling “ubuntu 14.04 monospace droidsansfallback”, I find a post
+about the way to improve the display of Chinese characters.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  Following
+<em>part</em> of the method, I inserted the word <code>Mono</code> after <code>Droid Sans</code> in
+the first <code>&lt;string&gt;</code> tag under the <code>&lt;edit&gt;</code> tag in the <code>&lt;match&gt;</code> tag
+which contains <code>&lt;string&gt;monospace&lt;/string&gt;</code> in
+<code>/etc/fonts/conf.avail/69-language-selector-zh-hk.conf</code>.</p>
+
+<div><script src="https://gist.github.com/5fe406cf6bfcd6a6179b.js"></script>
+<noscript><pre><code>&lt;match target=&quot;pattern&quot;&gt;
+	&lt;test qual=&quot;any&quot; name=&quot;family&quot;&gt;
+		&lt;string&gt;monospace&lt;/string&gt;
+	&lt;/test&gt;
+&lt;test name=&quot;lang&quot;&gt;
+    &lt;string&gt;zh-hk&lt;/string&gt;
+&lt;/test&gt;
+	&lt;edit name=&quot;family&quot; mode=&quot;prepend&quot; binding=&quot;strong&quot;&gt;
+		&lt;string&gt;Droid Sans&lt;/string&gt;
+		&lt;string&gt;AR PL UMing HK&lt;/string&gt;
+		&lt;string&gt;AR PL New Sung&lt;/string&gt;
+		&lt;string&gt;HYSong&lt;/string&gt;
+		&lt;string&gt;AR PL UKai HK&lt;/string&gt;
+		&lt;string&gt;AR PL ZenKai Uni&lt;/string&gt;
+	&lt;/edit&gt;
+&lt;/match&gt;</code></pre></noscript></div>
+
+<p>The last part of Steve Chang’s post about using Ubuntu 14.04 LTS
+elegantly advices user to execute <code>sudo fc-cache -v</code> to update the
+font cache.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  Actually, <em>without</em> the <code>-v</code> flag, the command still
+works.</p>
+
+<pre class="cli"><code class="UBMono"># fc-cache
+/usr/share/fonts: skipping, existing cache is valid: 0 fonts, 8 dirs
+/usr/share/fonts/X11: skipping, existing cache is valid: 0 fonts, 4 dirs
+/usr/share/fonts/X11/Type1: skipping, existing cache is valid: 82 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: skipping, existing cache is valid: 0 fonts, 1 di
+rs
+/usr/share/fonts/X11/encodings/large: skipping, existing cache is valid: 0 fonts
+, 0 dirs
+/usr/share/fonts/X11/misc: skipping, existing cache is valid: 59 fonts, 0 dirs
+/usr/share/fonts/X11/util: skipping, existing cache is valid: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: skipping, existing cache is valid: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: skipping, existing cache is valid: 0 fonts, 0 
+dirs
+/usr/share/fonts/cmap/adobe-gb1: skipping, existing cache is valid: 0 fonts, 0 d
+irs
+/usr/share/fonts/cmap/adobe-japan1: skipping, existing cache is valid: 0 fonts, 
+0 dirs
+/usr/share/fonts/cmap/adobe-japan2: skipping, existing cache is valid: 0 fonts, 
+0 dirs
+/usr/share/fonts/cmap/adobe-korea1: skipping, existing cache is valid: 0 fonts, 
+0 dirs
+/usr/share/fonts/eot: skipping, existing cache is valid: 0 fonts, 1 dirs
+/usr/share/fonts/eot/font-awesome: skipping, existing cache is valid: 0 fonts, 0
+dirs
+/usr/share/fonts/opentype: skipping, existing cache is valid: 0 fonts, 11 dirs
+/usr/share/fonts/opentype/cabin: skipping, existing cache is valid: 8 fonts, 0 d
+irs
+/usr/share/fonts/opentype/font-awesome: skipping, existing cache is valid: 1 fon
+ts, 0 dirs
+/usr/share/fonts/opentype/freefont: skipping, existing cache is valid: 12 fonts,
+0 dirs
+/usr/share/fonts/opentype/ipaexfont-gothic: skipping, existing cache is valid: 1
+fonts, 0 dirs
+/usr/share/fonts/opentype/ipaexfont-mincho: skipping, existing cache is valid: 1
+fonts, 0 dirs
+/usr/share/fonts/opentype/ipafont-gothic: skipping, existing cache is valid: 2 f
+onts, 0 dirs
+/usr/share/fonts/opentype/ipafont-mincho: skipping, existing cache is valid: 2 f
+onts, 0 dirs
+/usr/share/fonts/opentype/linux-libertine: skipping, existing cache is valid: 13
+fonts, 0 dirs
+/usr/share/fonts/opentype/lobster: skipping, existing cache is valid: 1 fonts, 0
+dirs
+/usr/share/fonts/opentype/lobstertwo: skipping, existing cache is valid: 4 fonts
+, 0 dirs
+/usr/share/fonts/opentype/stix: skipping, existing cache is valid: 29 fonts, 0 d
+irs
+/usr/share/fonts/svg: skipping, existing cache is valid: 0 fonts, 1 dirs
+/usr/share/fonts/svg/font-awesome: skipping, existing cache is valid: 0 fonts, 0
+dirs
+/usr/share/fonts/truetype: skipping, existing cache is valid: 2 fonts, 42 dirs
+/usr/share/fonts/truetype/abyssinica: skipping, existing cache is valid: 1 fonts
+, 0 dirs
+/usr/share/fonts/truetype/adf: skipping, existing cache is valid: 28 fonts, 0 di
+rs
+/usr/share/fonts/truetype/arphic: skipping, existing cache is valid: 8 fonts, 0 
+dirs
+/usr/share/fonts/truetype/artemisia: skipping, existing cache is valid: 4 fonts,
+0 dirs
+/usr/share/fonts/truetype/asana-math: skipping, existing cache is valid: 1 fonts
+, 0 dirs
+/usr/share/fonts/truetype/comfortaa: skipping, existing cache is valid: 3 fonts,
+0 dirs
+/usr/share/fonts/truetype/complutum: skipping, existing cache is valid: 1 fonts,
+0 dirs
+/usr/share/fonts/truetype/dejavu: skipping, existing cache is valid: 21 fonts, 0
+dirs
+/usr/share/fonts/truetype/didot: skipping, existing cache is valid: 4 fonts, 0 d
+irs
+/usr/share/fonts/truetype/droid: skipping, existing cache is valid: 18 fonts, 0 
+dirs
+/usr/share/fonts/truetype/font-awesome: skipping, existing cache is valid: 1 fon
+ts, 0 dirs
+/usr/share/fonts/truetype/freefont: skipping, existing cache is valid: 12 fonts,
+0 dirs
+/usr/share/fonts/truetype/gentium: skipping, existing cache is valid: 4 fonts, 0
+dirs
+/usr/share/fonts/truetype/gentium-basic: skipping, existing cache is valid: 8 fo
+nts, 0 dirs
+/usr/share/fonts/truetype/horai-umefont: skipping, existing cache is valid: 18 f
+onts, 0 dirs
+/usr/share/fonts/truetype/inconsolata: skipping, existing cache is valid: 1 font
+s, 0 dirs
+/usr/share/fonts/truetype/junicode: skipping, existing cache is valid: 4 fonts, 
+0 dirs
+/usr/share/fonts/truetype/kacst: skipping, existing cache is valid: 15 fonts, 0 
+dirs
+/usr/share/fonts/truetype/kacst-one: skipping, existing cache is valid: 2 fonts,
+0 dirs
+/usr/share/fonts/truetype/lao: skipping, existing cache is valid: 1 fonts, 0 dir
+s
+/usr/share/fonts/truetype/lato: skipping, existing cache is valid: 10 fonts, 0 d
+irs
+/usr/share/fonts/truetype/liberation: skipping, existing cache is valid: 16 font
+s, 0 dirs
+/usr/share/fonts/truetype/msttcorefonts: skipping, existing cache is valid: 60 f
+onts, 0 dirs
+/usr/share/fonts/truetype/nanum: skipping, existing cache is valid: 6 fonts, 0 d
+irs
+/usr/share/fonts/truetype/neohellenic: skipping, existing cache is valid: 4 font
+s, 0 dirs
+/usr/share/fonts/truetype/olga: skipping, existing cache is valid: 1 fonts, 0 di
+rs
+/usr/share/fonts/truetype/openoffice: skipping, existing cache is valid: 1 fonts
+, 0 dirs
+/usr/share/fonts/truetype/padauk: skipping, existing cache is valid: 4 fonts, 0 
+dirs
+/usr/share/fonts/truetype/sinhala: skipping, existing cache is valid: 1 fonts, 0
+dirs
+/usr/share/fonts/truetype/solomos: skipping, existing cache is valid: 1 fonts, 0
+dirs
+/usr/share/fonts/truetype/takao-gothic: skipping, existing cache is valid: 1 fon
+ts, 0 dirs
+/usr/share/fonts/truetype/tibetan-machine: skipping, existing cache is valid: 1 
+fonts, 0 dirs
+/usr/share/fonts/truetype/tlwg: skipping, existing cache is valid: 54 fonts, 0 d
+irs
+/usr/share/fonts/truetype/ttf-dejavu: skipping, existing cache is valid: 21 font
+s, 0 dirs
+/usr/share/fonts/truetype/ttf-indic-fonts-core: skipping, existing cache is vali
+d: 17 fonts, 0 dirs
+/usr/share/fonts/truetype/ttf-khmeros-core: skipping, existing cache is valid: 2
+fonts, 0 dirs
+/usr/share/fonts/truetype/ttf-liberation: skipping, existing cache is valid: 16 
+fonts, 0 dirs
+/usr/share/fonts/truetype/ttf-marvosym: skipping, existing cache is valid: 1 fon
+ts, 0 dirs
+/usr/share/fonts/truetype/ttf-punjabi-fonts: skipping, existing cache is valid: 
+2 fonts, 0 dirs
+/usr/share/fonts/truetype/ubuntu-font-family: skipping, existing cache is valid:
+13 fonts, 0 dirs
+/usr/share/fonts/truetype/unfonts-core: skipping, existing cache is valid: 12 fo
+nts, 0 dirs
+/usr/share/fonts/truetype/wqy: skipping, existing cache is valid: 5 fonts, 0 dir
+s
+/usr/share/fonts/type1: skipping, existing cache is valid: 0 fonts, 3 dirs
+/usr/share/fonts/type1/gsfonts: skipping, existing cache is valid: 35 fonts, 0 d
+irs
+/usr/share/fonts/type1/mathml: skipping, existing cache is valid: 1 fonts, 0 dir
+s
+/usr/share/fonts/type1/texlive-fonts-recommended: skipping, existing cache is va
+lid: 47 fonts, 0 dirs
+/usr/share/fonts/woff: skipping, existing cache is valid: 0 fonts, 1 dirs
+/usr/share/fonts/woff/font-awesome: skipping, existing cache is valid: 1 fonts, 
+0 dirs
+/usr/local/share/fonts: skipping, existing cache is valid: 0 fonts, 0 dirs
+/home/owner/.local/share/fonts: skipping, no such directory
+/home/owner/.fonts: skipping, existing cache is valid: 29 fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/lm: skipping, existing cache is valid: 72
+fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/lm-math: skipping, existing cache is vali
+d: 1 fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/tex-gyre: skipping, existing cache is val
+id: 33 fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/tex-gyre-math: skipping, existing cache i
+s valid: 2 fonts, 0 dirs
+/usr/share/fonts: caching, new cache contents: 0 fonts, 8 dirs
+/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+/home/owner/.local/share/fonts: skipping, no such directory
+/home/owner/.fonts: caching, new cache contents: 29 fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/lm: caching, new cache contents: 72 fonts
+, 0 dirs
+/usr/share/texmf/fonts/opentype/public/lm-math: caching, new cache contents: 1 f
+onts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/tex-gyre: caching, new cache contents: 33
+fonts, 0 dirs
+/usr/share/texmf/fonts/opentype/public/tex-gyre-math: caching, new cache content
+s: 2 fonts, 0 dirs
+/var/cache/fontconfig: cleaning cache directory
+/home/owner/.cache/fontconfig: cleaning cache directory
+/home/owner/.fontconfig: cleaning cache directory
+fc-cache: succeeded
+</code></pre>
+
+<p>Now, <code>fc-match</code> returns me a fixed-width font.</p>
+
+<pre class="cli"><code class="UBMono">$ fc-match monospace
+DroidSans<span class="UBHLCode">Mono</span>.ttf: "Droid Sans <span class="UBHLCode">Mono</span>" "Regular"
+</code></pre>
+
+<p>The following screenshots show that the above configurations can
+really fix the problem.</p>
+
+<ul>
+  <li>
+    <p>Chromium</p>
+
+    <p><img src="http://vincenttam.github.io/images/posts/Ubuntu1404Mono/FFViewSrc2.png" alt="HTML source code viewed in Chromium again" /></p>
+  </li>
+  <li>
+    <p>Firefox</p>
+
+    <p><img src="http://vincenttam.github.io/images/posts/Ubuntu1404Mono/ChromeViewSrc2.png" alt="HTML source code viewed in Firefox again" /></p>
+  </li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Refer to <a href="http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/"><em>Upgraded Ubuntu</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Refer to <a href="http://www.cnblogs.com/youxia/p/linux004.html">the post</a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Refer to <a href="http://goo.gl/tKCOA1" title="修改ubuntu 14.04 中文版的默認中文字體">the post</a> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p>Chang, S.  (Jun 23, 2014).  <em>如何優雅的使用Ubuntu 14.04 LTS</em>.
+Retrieved from <a href="https://emitvoice.github.io/2014/06/diy-ubuntu/">https://emitvoice.github.io/2014/06/diy-ubuntu/</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Removed Ubuntu Tweak]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak/"/>
+    
+    <updated>2014-08-15T23:50:16+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I uninstalled <a href="http://ubuntu-tweak.com/">Ubuntu Tweak</a> for security reasons.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
+[sudo] password for owner: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be REMOVED:
+ubuntu-tweak
+0 upgraded, 0 newly installed, 1 to remove and 1 not upgraded.
+After this operation, 4,034 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 354631 files and directories currently installed.)
+Removing ubuntu-tweak (0.8.7-1~precise1) ...
+Processing triggers for bamfdaemon (0.5.1+14.04.20140409-0ubuntu1) ...
+Rebuilding /usr/share/applications/bamf-2.index...
+Processing triggers for desktop-file-utils (0.22-1ubuntu1) ...
+Processing triggers for mime-support (3.54ubuntu1) ...
+Processing triggers for gnome-menus (3.10.1-0ubuntu2) ...
+Processing triggers for libglib2.0-0:i386 (2.40.0-2) ...
+Processing triggers for gconf2 (3.2.6-0ubuntu2) ...
+Processing triggers for hicolor-icon-theme (0.13-1) ...
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="https://sites.google.com/site/easylinuxtipsproject/fatalmistakes#TOC-High-danger-level-orange-alert-:-Ubuntu-Tweak-and-Ubuntu-Sources-List-Generator"><em>Avoid 10 fatal mistakes in Ubuntu and Linux Mint</em></a> in
+Easy Linux tips project. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

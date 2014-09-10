@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Information Security | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/information-security/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Removed Ubuntu Tweak]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak/"/>
+    
+    <updated>2014-08-15T23:50:16+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I uninstalled <a href="http://ubuntu-tweak.com/">Ubuntu Tweak</a> for security reasons.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
+[sudo] password for owner: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be REMOVED:
+ubuntu-tweak
+0 upgraded, 0 newly installed, 1 to remove and 1 not upgraded.
+After this operation, 4,034 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 354631 files and directories currently installed.)
+Removing ubuntu-tweak (0.8.7-1~precise1) ...
+Processing triggers for bamfdaemon (0.5.1+14.04.20140409-0ubuntu1) ...
+Rebuilding /usr/share/applications/bamf-2.index...
+Processing triggers for desktop-file-utils (0.22-1ubuntu1) ...
+Processing triggers for mime-support (3.54ubuntu1) ...
+Processing triggers for gnome-menus (3.10.1-0ubuntu2) ...
+Processing triggers for libglib2.0-0:i386 (2.40.0-2) ...
+Processing triggers for gconf2 (3.2.6-0ubuntu2) ...
+Processing triggers for hicolor-icon-theme (0.13-1) ...
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="https://sites.google.com/site/easylinuxtipsproject/fatalmistakes#TOC-High-danger-level-orange-alert-:-Ubuntu-Tweak-and-Ubuntu-Sources-List-Generator"><em>Avoid 10 fatal mistakes in Ubuntu and Linux Mint</em></a> in
+Easy Linux tips project. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Change of Encrypted MathJax CDN Access]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/"/>
+    
+    <updated>2014-08-02T16:21:47+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access</id>
+    
+      <content type="html"><![CDATA[<p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[NoScript ABE Rules for WLAN Web Portal Login]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/16/noscript-abe-rules-for-wlan-web-portal-login/"/>
+    
+    <updated>2014-06-16T18:51:50+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/16/noscript-abe-rules-for-wlan-web-portal-login</id>
+    
+      <content type="html"><![CDATA[<h2 id="objective">Objective</h2>
+
+<p>To browse the web safely.</p>
+
+<h2 id="background">Background</h2>
+
+<p>To block malicious scripts from running inside the browser ⇒ I installed
+<a href="http://noscript.net/" title="Scripts and Flash blocker for a safer Firefox experience">NoScript</a> plugin in Firefox.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Similar to the one described in <a href="https://forums.informaction.com/viewtopic.php?f=23&amp;t=8992" title="ABE rule to allow display of WLAN provider login page">here</a>:  I <em>couldn’t</em> log on
+to the web portal of a WLAN.</p>
+
+<p>For ordinary netizens who <em>don’t</em> have time to read the post on
+InformAction Forums, I’ve prepared a screenshot to depict the problem.</p>
+
+<p><img class="fancybox" src="/images/posts/NoScriptABE/ABEAtom.png" title="‘NoScript ABE blocks Atom Feed from reloading’ ‘fig1’" ></p>
+
+<!-- more -->
+
+<p>When I preview the Atom Feed of this blog at
+http://localhost:4000/atom.xml while fixing some layout problems on
+those pages<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, I <em>couldn’t</em> refresh that page to preview my changes.
+As a result, I needed to go back to the homepage and click “RSS”
+again, which was quite <em>inconvenient</em>.</p>
+
+<h2 id="why-do-i-post-it"><em>Why</em> do I post it?</h2>
+
+<p>To share my working ABE settings, which improve the users’ experience
+of using NoScript and Firefox for secure web browsing.</p>
+
+<h2 id="why-do-i-post-it-now--tldr">Why do I post it <em>now</em>?  (TL;DR)</h2>
+
+<p>I’ve solved the above problem last year and I would like to write this
+post.  However, I <em>hadn’t</em> learnt how to set up Octopress on M$ Win*
+7 when I set up this blogging system on Ubuntu 12.04 LTS.  Thus, I
+<em>didn’t</em> knew the actual procedures until <a href="/blog/2014/05/27/my-desktop-crashed/">my desktop crashed</a>.  The
+system failure has caused to seriously learn that.  I started from an
+easier target: setting up a <em>new</em> Octopress blog on M$ Win* 7.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.
+After that, I cloned the remote repository of this blog on GitHub to
+M<span class="tex2jax_ignore">$</span> Win* 7, and solved some
+technical problems before really deploying the site from M
+<span class="tex2jax_ignore">$</span> Win* 7 to GitHub.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “noscript abe wlan”, and the above post on InformAction
+Forums appeared on the top.  The second reply solved this problem.</p>
+
+<h3 id="sample-screenshot-for-wlan-web-portal-login">Sample Screenshot for WLAN web portal login</h3>
+
+<p><img src="/images/posts/NoScriptABE/ABEWebPortalSettings.png" alt="NoScript ABE settings for web portal login page" /></p>
+
+<h3 id="sample-screenshot-for-previewing-atom-feed">Sample Screenshot for previewing Atom Feed</h3>
+
+<p><img src="/images/posts/NoScriptABE/ABEAtomSettings.png" alt="NoScript ABE settings for previewing Octopress's Atom Feed" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>My older post: <a href="/blog/2014/06/05/firefox-security-plugins/"><em>Firefox Security Plugins</em></a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>My older posts: <em>My Settings for RSS <a href="/blog/2014/06/10/my-settings-for-rss-1/">(1)</a>,
+<a href="/blog/2014/06/11/my-settings-for-rss-2/">(2)</a></em> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My older post: <a href="/blog/2014/05/26/using-octopress-on-another-device/"><em>Using Octopress on Another Device</em></a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p>My older post: <a href="/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/"><em>Liquid Exceptions During Generation of My Blog on Windows 7</em></a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Firefox Security Plugins]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/05/firefox-security-plugins/"/>
+    
+    <updated>2014-06-05T22:35:41+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/05/firefox-security-plugins</id>
+    
+      <content type="html"><![CDATA[<p>I’m using <a href="https://www.mozilla.org/en-US/firefox/new/" title="Mozilla Firefox">Mozilla Firefox</a> along with some plugins, such as:</p>
+
+<ul>
+  <li><a href="https://www.eff.org/https-everywhere/rulesets" title="HTTPS Everywhere">HTTPS Everywhere</a></li>
+  <li><a href="https://adblockplus.org/" title="Adblock Plus">Adblock Plus</a></li>
+  <li><a href="http://noscript.net/" title="NoScript">NoScript</a></li>
+</ul>
+
+<p>These plugins enable users to browse the web more safely.  Anyone who
+pursue true freedom should use these to avoid running some unnecessary
+scripts that “betray” them, possibly to authoritarian governments.</p>
+
+<!-- vim:se tw=70: -->
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MathJax in Octopress via HTTPS]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/"/>
+    
+    <updated>2014-06-05T20:25:30+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Some contents in <a href="http://octopress.org/" title="Octopress">Octopress</a> blogs <em>couldn’t</em> be viewed via <abbr title="HTTP Secure">HTTPS</abbr><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
+for example, <a href="https://yamanetoshi.github.io/" title="A Japanese Octopress Blog browsed via HTTPS">a Japanese blog</a>.</p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/JPBlog.png" width="800" title="‘Screenshot of an Octopress blog in Japanese’ ‘fig1’" ></p>
+
+<p>This blog on last Saturday afternoon</p>
+
+<ul>
+  <li>The first category list item “$\rm \LaTeX$” on the right <em>couldn’t</em>
+be displayed</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocked.png" width="800" title="‘Screenshot of my blog on last Saturday afternoon’ ‘fig2’" ></p>
+
+<ul>
+  <li>Using <abbr title="Hypertext Transfer Protocol">HTTP</abbr> instead of <abbr title="HTTP Secure">HTTPS</abbr>, I can see the blocked contents.</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/disable_blocking.png" width="800" title="‘Disable Protection on This Page’ ‘fig3’" ></p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocking_disabled.png" width="800" title="‘Blocked contents can be displayed.’ ‘fig4’" ></p>
+
+<p><strong>How can those blocked contents be displayed automatically?</strong></p>
+
+<!-- more -->
+
+<h2 id="my-initial-attempt-to-view-the-contents">My initial attempt to view the contents</h2>
+
+<p>Half a month ago, I upgraded Firefox to 29.  Before the upgrade,
+receiving the link of this blog, the browser would use the <abbr title="Hypertext Transfer Protocol">HTTP</abbr>
+version of the link; after the upgrade, it displayed the <abbr title="Hypertext Transfer Protocol">HTTP</abbr><strong>S</strong>
+version of the blog instead.</p>
+
+<p>I installed some Firefox plugins.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  I thought
+<a href="https://www.eff.org/https-everywhere" title="HTTPS Everywhere"><abbr title="HTTP Secure">HTTPS</abbr> Everywhere</a> was the cause for this problem.
+After I disabled this plugin and restarted Firefox, <em>everything</em> in my
+blog were displayed.  Therefore, I spent hours to find out how to
+automatically change the communication protocol from “https://” to
+“http://” in <abbr title="HTTP Secure">HTTPS</abbr> Everywhere last week.  After reading the official
+documentation, I tried manually creating a downgrade rule for browsing
+this blog.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My FAILED <abbr title="HTTP Secure">HTTPS</abbr> Everywhere downgrade rule for this blog (gh-pages.xml)</span> <a href='/downloads/code/gh-pages.xml'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;ruleset</span> <span class="na">name=</span><span class="s">&quot;My GitHub Page&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;target</span> <span class="na">host=</span><span class="s">&quot;vincenttam.github.io&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;rule</span> <span class="na">from=</span><span class="s">&quot;^https://vincenttam\.github\.io/&quot;</span>
+</span><span class='line'>	<span class="na">to=</span><span class="s">&quot;http://vincenttam.github.io/&quot;</span> <span class="na">downgrade=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ruleset&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>It worked for <em>some</em> pages in my blog, and failed for <em>some</em> of them.
+I <em>didn’t</em>, <em>don’t</em>, and <em>won’t</em> know why.  I gave up and thought in
+another way—change the contents of this blog so that MathJax <em>won’t</em>
+be blocked when <abbr title="HTTP Secure">HTTPS</abbr> is used.</p>
+
+<p>I attempted to observe other sites’ HTML source code for embedded
+MathJax, such as <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em></a>.  I copied the code from
+him.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I was puzzled by the fact that his code worked and mine
+<em>didn’t</em>.</p>
+
+<p>Failed Google searches:</p>
+
+<ul>
+  <li>octopress “https” blocked content</li>
+  <li>firefox blocked octopress mathjax</li>
+</ul>
+
+<h2 id="learning-from-firefoxs-messages">Learning from Firefox’s messages</h2>
+
+<p>On the left of the address bar, I clicked the shield icon, and <strong>learn
+more</strong>.</p>
+
+<p><img src="/images/posts/OctopressHTTPS/ff_shield.png" alt="Firefox 29 blocked insecure contents" title="Firefox 29's message about insecure mixed contents" /><br />
+<small>Source: <a href="https://support.cdn.mozilla.net/media/uploads/gallery/images/2014-03-25-07-10-44-1aa0ef.png" title="Image source">Mozilla support</a></small></p>
+
+<p>Then, I was taken to <a href="http://mzl.la/13jCUSU" title="How does content that isn't secure affect my safety?">a page in Mozilla Support</a>.  At the
+bottom of the section <em>What is mixed content?</em>, there’s a note that
+contains a link to <a href="https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/" title="Mixed Content Blocking Enabled in Firefox 23!">a blog post</a>.  I <em>didn’t</em> want to
+spend much time to read something unrelated to my major.  I found the
+author’s reply to DaveP, a developer who ask for more information for
+fixing issues caused by Firefox’s security features.  He gave two
+links to DaveP, and I clicked the first one.  At first glance, I
+<em>didn’t</em> understand what was
+<a href="https://developer.mozilla.org/docs/Security/MixedContent#Mixed_active_content">active mixed content</a>, and I clicked that link.</p>
+
+<p>It’s said that some “active” contents were considered to be
+“<em>secure</em>”, such as</p>
+
+<ul>
+  <li>some HTML tags like <code>&lt;video&gt;</code>, <code>&lt;audio&gt;</code>, <code>&lt;object&gt;</code>, etc</li>
+  <li>some JavaScripts and CSS</li>
+</ul>
+
+<p>As a result, I replaced the <code>&lt;iframe&gt;</code> element which embedded a <abbr title="Portable Document Format">PDF</abbr>
+document in
+<a href="/blog/2014/03/16/latex-template-for-essays/" title="*$\LaTeX$ Template for Essays*">one of my previous on $\rm \LaTeX$ template</a>
+by a hyperlink.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  Nevertheless, MathJax still <em>didn’t</em> load in this
+blog.  I clicked
+<a href="https://developer.mozilla.org/docs/Security/MixedContent/fix_website_with_mixed_content">“<em>How to fix a website with blocked mixed content</em>”</a>,
+and was taken back to the previous page.  Having <em>no</em> experience in
+web designing, I could only understand two advices:</p>
+
+<ol>
+  <li><a href="http://www.mozilla.org/en-US/firefox/aurora/" title="latest Aurora">Install Aurora</a>: I <em>didn’t</em> want to install it.</li>
+  <li>Invoke Firefox’s web console by <code>&lt;C-S-k&gt;</code>.  (can be closed with
+<code>&lt;F12&gt;</code>)</li>
+</ol>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png" width="800" title="‘Firefox web console’ ‘fig5’" ></p>
+
+<p>In lines 3–4 of the web console, I could see that Google Fonts were
+blocked.  I clicked “<a href="https://developer.mozilla.org/docs/Security/MixedContent"><strong>[Learn More]</strong></a>” and was brought
+to a page on <abbr title="Mozilla Developer Network">MDN</abbr> that I had already visited.  I clicked the link for
+fixing the website at the bottom <em>again</em>, learnt <em>nothing</em> new about
+the problem.</p>
+
+<h2 id="source-code-changes-to-fix-things">Source code changes to fix things</h2>
+
+<h3 id="fixing-google-fonts-first">Fixing Google Fonts first</h3>
+
+<p>I searched “blocked loading mixed active content google fonts” on
+Google and <a href="https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/" title="Mixed Content Blocking Enabled in Firefox 23!">Tanvi’s blog post</a> appeared at the top of the
+page.  I skimmed through it <em>once more</em>, and searched for “google
+fonts”, but I could just find a reference to another comment (comment
+40) which explained the reasons for blocking mixed content fonts.
+I browsed another search result, which was
+<a href="https://stackoverflow.com/questions/13833210/" title="No Google Fonts Working in Google Chrome">a question on Stack Overflow</a>.  Though the
+question is about <a href="https://www.google.com/chrome/" title="Google Chrome Browser">Google Chrome</a>, looking at the first
+answer, I knew what to do next—I added an <code>s</code> after <code>http</code> in each <abbr title="Uniform Resource Locator">URL</abbr>
+of the Google Fonts used.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  After that, I generated and previewed
+the site.  Although
+<img src="/images/posts/OctopressHTTPS/WarningTriangle.png" alt="the orangle warning triangle" title="Firefox's warning triangle for unsafe contents" class="nobd" /> still
+appeared on the left of the address bar, the Google Fonts used in the
+blog <em>weren’t</em> blocked anymore.</p>
+
+<h3 id="fixing-mathjax">Fixing MathJax</h3>
+
+<p>The way to include MathJax equations in Octopress in now clear: refer
+to an <abbr title="HTTP Secure">HTTPS</abbr> version of MathJax library in the head of each page.</p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/WebConsoleMathJax.png" width="800" title="‘Firefox web console’ ‘fig6’" ></p>
+
+<p>I tried to google ‘blocked loading mixed active content
+“http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML”’,
+and found a few sites:</p>
+
+<ul>
+  <li><a href="http://meta.crypto.stackexchange.com/questions/384/">https-everywhere breaks MathJax due to https/http mixed-content rules - Cryptography Meta Stack Exchange</a></li>
+  <li><a href="http://meta.math.stackexchange.com/questions/10776/">MathJax not working - Mathematics Meta Stack Exchange</a></li>
+</ul>
+
+<p>Reading these sites, I knew that I could either adjust the rules in
+<abbr title="HTTP Secure">HTTPS</abbr> Everywhere, or use an <abbr title="HTTP Secure">HTTPS</abbr> version of MathJax.  For the former,
+I <em>didn’t</em> have the ability and time to study the documentation and
+test the results.  Though most of the other Jekyll blogs <em>doesn’t</em> use
+the JavaScript library over <abbr title="HTTP Secure">HTTPS</abbr>, in order to view the contents
+rendered by MathJax, I read
+<a href="http://www.mathjax.org/resources/faqs/#problem-https" title="MathJax FAQ">a question in the MathJax FAQ</a> in the second answer to
+the above question posted on Cryptography Meta Stack Exchange.  I also
+saw their documentation about secure access to the MathJax <abbr title="Content Delivery Network">CDN</abbr>.  I
+copied the correct <code>&lt;script&gt;</code> tag from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn" title="MathJax Documentation on accessing their CDN over HTTPS">there</a>.</p>
+
+<p><code>html Part of my working `source/_includes/custom/head.html` https://github.com/VincentTam/vincenttam.github.io/blob/70ba670/source/_includes/custom/head.html#L21 commit history
+&lt;!-- mathjax config similar to math.stackexchange --&gt;
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+&lt;/script&gt;
+&lt;script type="text/javascript"
+  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;
+&lt;/script&gt;
+</code></p>
+
+<hr />
+<p>(Last edited on AUG 2ND, 2014)</p>
+
+<p>Note: A new address of MathJax via <abbr title="HTTP Secure">HTTPS</abbr> protocol is available.  View
+my <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">new post</a> for details.</p>
+
+<hr />
+
+<h4 id="eliminate-the-right-click-bug">Eliminate the “right-click bug”</h4>
+
+<p>Lastly, we need to fix the “right-click bug” in MathJax Octopress
+blogs.  To find a typical example, I searched “octopress mathjax” on
+Google, and <a href="http://drz.ac/2013/01/03/blogging-with-math/">a post on <em>DrZ.ac</em></a> came first in the
+search results.  There’s an equation, and once you right-click it, you
+<em>can’t</em> see anything except the popup menu.  The second comment to the
+post included a link to an article in Brain Buccola’s GitHub page,
+which discussed the method of fixing the bug in
+<a href="http://brianbuccola.github.io/blog/2012-11-28-latex-math-in-octopress.html#fix-right-click-bug">the fifth point</a>.  In the beginning of Buccola’s
+post, he said that he had set it up with the help of some Octopress
+users, particularly the author of <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em></a>.  I guess
+<em>Carpe diem</em> is the first Octopress site that manages to include
+MathJax <em>without</em> the bug.</p>
+
+<h3 id="final-result">Final result</h3>
+
+<p><img src="/images/posts/OctopressHTTPS/GrayPadlock.png" alt="A gray padlock" title="Firefox's gray padlock for encrypted connection" class="nobd" /> appeared on the left of the
+address bar.  It indicates that the connection to this blog is
+encrypted, and the contents, especially the active ones, are safe to
+be shown.</p>
+
+<p><img src="/images/posts/OctopressHTTPS/GrayPadlockMsg.png" title="The gray padlock for this blog" ></p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>Make use of official documentation</p>
+
+    <p>Even though there’s <em>so many mannuals</em> and it’s <em>impossible</em> to
+ <em>read them all</em><sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  I should try to <em>find the useful parts</em> and
+ <em>understand the contents that are within my level</em>.</p>
+  </li>
+  <li>
+    <p>Consult Google</p>
+
+    <p>If there’s someone who has already come over the problem that I’m
+ facing with, it can be more quickly solved.</p>
+  </li>
+  <li>
+    <p>Give up if too <em>much</em> time have been spent and the progress is
+<em>little</em></p>
+
+    <p>In the future, it is possible that others will develop some better
+ methods in doing things.  The exchange of ideas on the Internet
+ will help.</p>
+  </li>
+  <li>
+    <p>Use <abbr title="HTTP Secure">HTTPS</abbr> to browsing web for better information security</p>
+
+    <ul>
+      <li>To avoid the notorious <abbr title="man-in-the-middle">MITM</abbr> attacks.</li>
+      <li>To prevent eavesdropping and surveillance.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<!-- vim:se tw=70: -->
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://www.wisegeek.org/what-is-the-difference-between-http-and-https.htm" title="wiseGEEK's answer">HTTP vs HTTP<strong>S</strong></a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="/blog/2014/06/05/firefox-security-plugins/"><em>Firefox Security Plugins</em></a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p><a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/" title="Writing Math Equations on Octopress"><em>Carpe diem</em>’s method (see code block in “item 2”)</a>;
+and my <code>source/_includes/custom/head.html</code> at <a href="https://github.com/VincentTam/vincenttam.github.io/blob/8f72ef7/source/_includes/custom/head.html#L6-L20" title="My code for embedding MathJax in the past">8f72ef7</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p><code>source/_posts/2014-03-16-latex-template-for-essays.markdown</code> at
+commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3">70ba670</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/70ba670#diff-3">70ba670</a> <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+
+      <p><a href="http://user.frdm.info/ckhung/a/c013.php" title="Source: 習於略讀各種文件">“Get used to skimming through documents” from Prof. C.K. Hung</a> <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

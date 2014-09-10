@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Svg | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/svg/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[After Reading About.com's Introduction to the SVG Viewbox]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/"/>
+    
+    <updated>2014-08-02T20:30:22+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox</id>
+    
+      <content type="html"><![CDATA[<p>While I was testing <a href="http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/" title="SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library">SVGPan</a>, I saw the <code>viewBox</code> attribute.  I learnt
+something from the first search result after googling “svg viewbox”.
+It was an article introducing the SVG viewbox.  There’s <em>no</em> difficult
+concepts in the guide, but I <em>can’t</em> understand it because of the
+following claim.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<blockquote>
+  <pre><code>&lt;svg width="800" height="400" viewBox="0 0 400 200"&gt;
+</code></pre>
+
+  <p>This view box covers half the page starting in the <strong>upper right
+hand corner</strong>. </p>
+</blockquote>
+
+<p>I have investigated into this, and I’m dubious about this idea.  I’ll
+illustrate my doubts using two examples.  Click “download” at the top
+right-hand corner to view the result.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My first example (viewBox1.html)</span> <a href='/downloads/code/SVGViewBox/viewBox1.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>My first SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 800 400&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  Sorry, your browser does not support inline SVG.
+</span><span class='line'><span class="nt">&lt;/svg&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>“The view box covers the entire page”, as expected.</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My second example (viewBox2.html)</span> <a href='/downloads/code/SVGViewBox/viewBox2.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>My second SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 400 200&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  Sorry, your browser does not support inline SVG.
+</span><span class='line'><span class="nt">&lt;/svg&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p>This time, the view box only covers the top left-hand corner.</p>
+
+<p>In addition, I’ve found out that changing <code>0 0 400 200</code> to <code>400 200 0 0</code>
+<em>doesn’t</em> work.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Ferrara, D. n.d. <em>Viewbox Attribute in SVG: Understanding the SVG Viewbox</em>. Retrieved from <a href="http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm">http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Zooming SVG in Web Browsers]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/"/>
+    
+    <updated>2014-08-02T18:07:08+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers</id>
+    
+      <content type="html"><![CDATA[<p>In my post about proving Pappus’s Hexagon Theorem<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I inserted some
+SVG graphics to illustrate the ideas.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600"><br />
+<small>An example illustrating the difficulty of enlarging an SVG
+graphics for ordinary users.  The image is borrowed from the post
+about proving Pappus’s Hexagon Theorem.<br />
+<a href="/downloads/code/PappusHexThm4.tex">$\rm \LaTeX$ Source code</a></small></p>
+
+<p><strong>How can one enlarge SVG images <em>only</em> within web browsers?</strong></p>
+
+<object type="image/svg+xml" data="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg" width="800" height="600">
+  Your browser does not support SVG
+</object>
+<p><small>A working example showing the zooming, panning and dragging
+functions of SVG graphics.  Drag the figure to translate it, and
+scroll to enlarge/reduce it.<br />
+<a href="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg">Source code</a></small></p>
+
+<!-- more -->
+
+<p>Thanks to Andrea Leofreddi, SVG graphics can now be enlarged <em>within</em>
+browsers.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>The instructions on Leofreddi’s blog post is quite easy to understand.
+Then, I tried his script.</p>
+
+<p>First, I copied lines 4–5 of the source code of official demo (a
+tiger) to my file.  (i.e. <code>PappusHexThm4.svg</code>)  I also closed the <code>&lt;g
+id="viewport" transform="translate(200,200)"&gt;</code> tag at the bottom of my
+file.  However, I saw <em>nothing</em> in a web browser.</p>
+
+<p>Second, I deleted <code>transform="translate(200,200)"</code>.  What I could see in
+the web browser was a small picture.  I <em>couldn’t</em> use the scroll
+wheel on the mouse to enlarge the figure.  I dragged the picture to the
+right, but part of the image is truncated after the drag.</p>
+
+<p>Third, if I remove <code>width="152.832pt" height="98.239pt" viewBox="0 0
+152.832 98.239"</code>, then it’s done!</p>
+
+<hr />
+<p>(Added on AUG 03, 2014)</p>
+
+<p>Yesterday, I <em>didn’t</em> know the code for enlarging an SVG image
+embedded by an <code>&lt;object&gt;</code> tag.  As a result, the loaded image was
+<em>too</em> small.  I’ve just checked out a guide on <abbr title="Mozilla Developer Network">MDN</abbr> about the
+<code>transform</code> attribute of <code>&lt;svg&gt;</code> tags<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, and now I know how to make
+it bigger by the function <code>matrix(&lt;a&gt;,&lt;b&gt;,&lt;c&gt;,&lt;d&gt;,&lt;e&gt;,&lt;f&gt;)</code>.</p>
+
+<p>Moreover, Chrome supports the scaling of SVG graphics just like the
+scaling of other HTML elements.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jul 12. <em>Pappus’s Hexagon Theorem</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Leofreddi, A. 2009, Dec 8. <em>SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library</em>. Retrieved from <a href="http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/">http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>MDN. 2014, Feb 23. <em>Transform</em>. Retrieved from <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform">https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Evince Viewing Error]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/07/13/evince-viewing-error/"/>
+    
+    <updated>2014-07-13T18:39:52+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/07/13/evince-viewing-error</id>
+    
+      <content type="html"><![CDATA[<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Evince</th>
+      <th style="text-align: center">Firefox</th>
+      <th style="text-align: center">Sumatra PDF</th>
+      <th style="text-align: center">SVG</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/Evince.png" width="200" title="‘img:1’ ‘Evince’" ></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/FF.png" width="200" title="‘img:2’ ‘Firefox’" ></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/chrome.png" width="200" title="‘img:3’ ‘Google Chrome’" ></td>
+      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/SVG.svg" width="200" title="‘img:4’ ‘SVG’" ></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">bad</td>
+      <td style="text-align: center">ok<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></td>
+      <td style="text-align: center">good</td>
+      <td style="text-align: center">good</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><small>The <a href="https://gist.github.com/VincentTam/02391d6016da80df1ffa">Gist</a> for the $\rm \LaTeX$ source code of the TikZ
+diagram</small></p>
+
+<p>This afternoon, while I was using TikZ to fill a triangle with line
+pattern, I found that the filling pattern flowed out of the triangle.
+Using the <code>clip</code> command doesn’t help.  Initially, I thought it was
+the problem of TikZ.  As a result, I tried searching “tikz fill
+pattern triagnle”, and <em>didn’t</em> read anything useful.  Finally, I
+found <a href="http://tex.stackexchange.com/a/100706" title="Why is this TikZ pattern spilling outside the path it fills? [closed]">a question on $\rm \LaTeX$ Stack Exchange</a>, and
+realized that it was a problem of the PDF viewer, instead of my use of
+the markup language for graphics.  I tried using Mozilla’s <a href="http://mozilla.github.io/pdf.js/">pdf.js</a> to
+open the file, but the grids <em>weren’t</em> being rendered properly either.</p>
+
+<p>Luckily, if I use <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> to convert the PDF file to an SVG file,
+the SVG file <em>doesn’t</em> have such problem.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>The results are the <em>same</em> in Firefox on M$ Windows and
+GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Export PDF to SVG]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg/"/>
+    
+    <updated>2014-06-21T14:23:50+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg</id>
+    
+      <content type="html"><![CDATA[<p>I’ve drawn a figure in $\rm \LaTeX$ using the <a href="http://www.texample.net/tikz/">TikZ</a>.  However,
+<a href="http://www.mathjax.org/">MathJax</a> has <em>no</em> support for TikZ commands.  Therefore, I have to
+generate an SVG figure from $\rm \LaTeX$ if I need to post it on
+Octopress.</p>
+
+<p>I had followed the example <a href="http://tex.stackexchange.com/a/51766" title="How can I use TikZ to make standalone (SVG) graphics?">here</a>.  It worked for
+PNG and JPG files, <em>but</em> not SVG files.  Since the quality of SVG
+files is the <em>best</em>, I would like to include use SVG.</p>
+
+<!-- more -->
+
+<p>I googled “latex export svg”, and saw <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> in some websites,
+such as <a href="https://en.wikibooks.org/wiki/LaTeX">$\rm \LaTeX$</a> on Wikibooks.  I then decided
+to install it.  I followed the installation commands on its official
+page.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ wget http://www.cityinthesky.co.uk/wp-content/uploads/2013/
+10/pdf2svg-0.2.2.tar.gz
+[owner@localhost ~]$ tar -xzvf pdf2svg-0.2.2.tar.gz
+[owner@localhost ~]$ cd pdf2svg-0.2.2
+[owner@localhost ~/pdf2svg-0.2.2]$ ./configure
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+
+... (output omitted)
+
+checking for CAIRO... yes
+<span class="err">checking for POPPLERGLIB... configure: error: Package requirements (poppler-glib
+ &gt;= 0.5.4) were not met:</span>
+
+<span class="UBHLCode">No package 'poppler-glib' found</span>
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables POPPLERGLIB_CFLAGS
+and POPPLERGLIB_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+</code></pre>
+
+<p>Googling “no package ‘poppler-glib’ found”, I found the
+<a href="https://github.com/politza/pdf-tools/issues/3" title="No poppler-glib package in Ubuntu 12.04 #3">second result</a> useful.  I installed the missing
+package and ran <code>./configure</code> again, before proceeding to <code>make</code>.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ make
+gcc -DPACKAGE_NAME=\"pdf2svg\" -DPACKAGE_TARNAME=\"pdf2svg\" -DPACKAGE_VERSION=\
+"0.2.1\" -DPACKAGE_STRING=\"pdf2svg\ 0.2.1\" -DPACKAGE_BUGREPORT=\"David\ Barton
+\ \&lt;davebarton@cityinthesky.co.uk\&gt;\" -DPACKAGE=\"pdf2svg\" -DVERSION=\"0.2.1\" 
+-I.    -I/usr/include/cairo -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/gl
+ib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/l
+ibpng12   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/incl
+ude -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I
+/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/u
+sr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/fr
+eetype2 -I/usr/include/libpng12   -I/usr/include/poppler/glib -I/usr/include/pop
+pler -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/i
+nclude/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/lib
+png12    -g -O2 -MT pdf2svg-pdf2svg.o -MD -MP -MF .deps/pdf2svg-pdf2svg.Tpo -c -
+o pdf2svg-pdf2svg.o `test -f 'pdf2svg.c' || echo './'`pdf2svg.c
+pdf2svg.c: In function ‘main’:
+<span class="err">pdf2svg.c:152:8: warning: incompatible implicit declaration of built-in function
+ ‘free’ [enabled by default]</span>
+mv -f .deps/pdf2svg-pdf2svg.Tpo .deps/pdf2svg-pdf2svg.Po
+gcc -I/usr/include/cairo -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-
+2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libp
+ng12   -pthread -I/usr/include/gtk-2.0 -I/usr/lib/i386-linux-gnu/gtk-2.0/include
+ -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/us
+r/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/
+lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freet
+ype2 -I/usr/include/libpng12   -I/usr/include/poppler/glib -I/usr/include/popple
+r -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/incl
+ude/cairo -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng
+12    -g -O2   -o pdf2svg pdf2svg-pdf2svg.o -lcairo   -lgtk-x11-2.0 -lgdk-x11-2.
+0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -
+lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0   -lpoppler-glib -lg
+object-2.0 -lcairo -lglib-2.0
+</code></pre>
+
+<p>I guess the reason for GCC to give me such a warning can be found in
+some questions posted on Stack Overflow.</p>
+
+<ol>
+  <li><a href="http://stackoverflow.com/questions/6639572/">The first one</a>.</li>
+  <li><a href="http://stackoverflow.com/questions/977233/">The second one</a>.</li>
+</ol>
+
+<p>I <em>haven’t</em> learnt C/C++, so I <em>wouldn’t</em> try <code>#include &lt;string.h&gt;</code> in
+<code>pdf2svg.c</code>.</p>
+
+<p>I ignored the warning and continued the installation.</p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~]$ make install
+make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
+test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
+  /usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
+<span class="err">/usr/bin/install: cannot create regular file `/usr/local/bin/pdf2svg': Permissio
+n denied</span>
+make[1]: *** [install-binPROGRAMS] Error 1
+make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
+make: *** [install-am] Error 2
+</code></pre>
+
+<p>I remembered that the <code>--prefix=</code> option used while running
+<code>./configure</code> is <code>/usr/local</code>.  Viewing the file permissions in that
+folder, I realized that I should follow the advice of
+<a href="http://askubuntu.com/a/424787" title="Permission denied while running make install">an answer to an Ask Ubuntu question</a></p>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
+[sudo] password for owner: 
+make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
+test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
+/usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
+make[1]: Nothing to be done for `install-data-am'.
+make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
+</code></pre>
+
+<p>After installing <code>pdf2svg</code> from its source code, I can finally start
+using the tool.</p>
+
+<pre><code>pdf2svg input.pdf output.svg
+</code></pre>
+
+]]></content>
+    
+  </entry>
+  
+</feed>

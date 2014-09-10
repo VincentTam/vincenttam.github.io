@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gimp | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/gimp/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-09T02:26:04+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Make Images With Transparent Background Using GIMP, and More ...]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background/"/>
+    
+    <updated>2014-04-27T13:38:12+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background</id>
+    
+      <content type="html"><![CDATA[<h2 id="getting-an-image-with-transparent-background">Getting an image with transparent background</h2>
+
+<h3 id="an-apple-with-white-background">An apple with white background</h3>
+
+<p><img class="left" src="/images/posts/GIMPTransparentBg/apple-logo-2.jpg" width="285" height="251"></p>
+
+<p>Downloaded from <a href="http://fineprintnyc.com/blog/history-of-the-apple-logo"><em>History of the Apple Logo</em></a>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>Thanks to <a href="http://mbrsolution.com/tutorial/gimp-tutorial-how-to-make-an-image-background-transparent.php">Ruiz’s GIMP tutorial</a> on
+<a href="http://mbrsolution.com/">Mbrsolution</a>, I can remove the white background of the
+picture on the left.</p>
+
+<h3 id="using-gimp">Using GIMP</h3>
+
+<p>It’s a brief summary of the referenced tutorial.  To save time, I
+won’t post screenshots here.  You may refer to those in the tutorial.</p>
+
+<p><img class="right" src="/images/posts/GIMPTransparentBg/apple-logo-3.png" width="171" height="150"></p>
+
+<ol>
+  <li>Use the <strong>Fuzzy Tool</strong> and click on the background.</li>
+  <li>Click <strong>Layer → Transparency</strong> to check if an alpha channel has
+been added.  If not, then add one.</li>
+  <li>Produce a transparent background by <strong>Edit → Clear</strong>.</li>
+  <li>Save it as a PNG file.
+    <ul>
+      <li>See the detailed instructions in the tutorial.</li>
+      <li>JPEG images can’t have transparent background.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+    </ul>
+  </li>
+</ol>
+
+<!-- more -->
+
+<h2 id="centering-an-image-in-html">Centering an image in HTML</h2>
+
+<p>I’ve found Mrchief’s answer to Web_Designer’s question on Stack
+Overflow useful.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<h2 id="inserting-shadows-for-images">Inserting shadows for images</h2>
+
+<p>Inspired by <a href="http://www.hksilicon.com/kb/articles/4690/CSS3-box-shadow">ParaImage’s tutorial on Hong Kong Silicon</a>,
+I’ve written a small and simple HTML file to practice the concepts
+learnt from Stack Overflow and HK Silicon.<br />
+(Click “download” for viewing the HTML code in a web browser.)</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>A small HTML file for displaying pictures  (transparent.html)</span> <a href='/downloads/code/transparent.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">img</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">20px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="o">.</span><span class="m">5</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">20px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="o">.</span><span class="m">5</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="m">20px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="o">.</span><span class="m">5</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin-left</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin-right</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="o">.</span><span class="m">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">h1</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">text-align</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">255</span><span class="o">,</span> <span class="m">214</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="o">.</span><span class="m">9</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>An image with white backgroud<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/posts/GIMPTransparentBg/apple-logo-2.jpg&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;h1&gt;</span>An image with transparent backgroud<span class="nt">&lt;/h1&gt;</span>
+</span><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/posts/GIMPTransparentBg/apple-logo-3.png&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div> </p>
+
+<p>Using Firefox, I can dynamically change the width and displacement of
+the shadow of an image by choosing “Inspect Element” and hitting arrow
+keys.</p>
+
+<p><img class="fancybox" src="/images/posts/GIMPTransparentBg/inspect_element.png" width="800" title="‘Dynamically change box shadow using Firefox’ ‘fig1’" ></p>
+
+<ul>
+  <li>Click the values of a CSS property.</li>
+  <li>Move the cursor to a number, then hit ↑/↓ to adjust the values.</li>
+  <li>Use ←/→ to move the cursor to another property.</li>
+</ul>
+
+<hr />
+
+<!-- vim:se tw=70: -->
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Source URL:
+<a href="http://fineprintnyc.com/images/blog/history-of-apple-logo/apple-logo-2.jpg">http://fineprintnyc.com/images/blog/history-of-apple-logo/apple-logo-2.jpg</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p><a href="http://stackoverflow.com/q/16906144">Transparent background in JPEG image – Stack Overflow</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p><a href="http://stackoverflow.com/q/7055393">Center image using text-align center? – Stack Overflow</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>
