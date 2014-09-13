@@ -3,7 +3,7 @@ layout: post
 title: "Test Embedded Fancybox Inline Element"
 date: 2014-09-13 13:48:47 +0800
 comments: true
-categories: [online technologies]
+categories: [web technologies]
 ---
 
 Why?
