@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-13T00:53:16+08:00</updated>
+  <updated>2014-09-14T00:28:37+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,228 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Completely Remove Linux Kernels]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/"/>
+    
+    <updated>2014-09-13T23:24:51+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I issued the following command and then rebooted the machine.</p>
+
+<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How can that package disappear from the list?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Use <code>purge</code> instead of <code>remove</code> in the above command.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pa
+e</span>
+[sudo] password for owner:
+The following packages will be REMOVED:
+  linux-image-3.2.0-67-generic-pae{p}
+0 packages upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.2.0-67-generic-pae (3.2.0-67.101) ...
+Purging configuration files for linux-image-3.2.0-67-generic-pae (3.2.0-67.101) 
+...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic l
+inux-image-extra-3.13.0-33-generic</span>
+The following packages will be REMOVED:
+  linux-image-3.13.0-33-generic{p} linux-image-extra-3.13.0-33-generic{p}
+0 packages upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+Removing linux-image-extra-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-extra-3.13.0-33-generic (3.13.0-33.5
+8) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+</code></pre>
+
+<p>After running the above two commands, the above three removed Linux
+kernel images with status <code>rc</code> <em>shouldn’t</em> be seen in the list of
+packages anymore.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div id="list1" class="noscr">
+<p>The <strong>bolded</strong> lines represent the packages that are
+going to be completely removed.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.13.0-33-generic                         3.13.0-33.58                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.2.0-67-generic-pae                      3.2.0-67.101                                        i386         Linux kernel image for version 3.2.0
+on 32 bit x86 SMP</span>
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-extra-3.13.0-33-generic                   3.13.0-33.58                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+
+<div id="list2" class="noscr">
+<p>There&#8217;s <em>no</em> lines beginning with <code>rc</code>.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Click <a href="#list1" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Click <a href="#list2" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[I/O Errors During Removal of Old Kernels]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/"/>
+    
+    <updated>2014-09-13T23:14:25+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+
+<p><img class="fancybox" src="/images/posts/RmOldKer/err.png" width="900" title="‘Received errors in tty1’ ‘error messages’" ></p>
+
+<!-- more -->
+
+<p>As the error messages were just after the line <code>Found Fedora ...</code>, I
+booted into Fedora 17 out of curiousity.</p>
+
+<h2 id="cause">Cause</h2>
+
+<p>In Fedora’s file manager, I found the reason for the above error
+messages.</p>
+
+<p><img class="fancybox" src="/images/posts/RmOldKer/cause.png" width="900" title="‘Cause of the above error’ ‘Fedora file manager’" ></p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -480,169 +702,6 @@ really fix the problem.</p>
 
       <p>Chang, S.  (Jun 23, 2014).  <em>如何優雅的使用Ubuntu 14.04 LTS</em>.
 Retrieved from <a href="https://emitvoice.github.io/2014/06/diy-ubuntu/">https://emitvoice.github.io/2014/06/diy-ubuntu/</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Removed Ubuntu Tweak]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak/"/>
-    
-    <updated>2014-08-15T23:50:16+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak</id>
-    
-      <content type="html"><![CDATA[<p>Tonight, I uninstalled <a href="http://ubuntu-tweak.com/">Ubuntu Tweak</a> for security reasons.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
-[sudo] password for owner: 
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following packages will be REMOVED:
-ubuntu-tweak
-0 upgraded, 0 newly installed, 1 to remove and 1 not upgraded.
-After this operation, 4,034 kB disk space will be freed.
-Do you want to continue? [Y/n] y
-(Reading database ... 354631 files and directories currently installed.)
-Removing ubuntu-tweak (0.8.7-1~precise1) ...
-Processing triggers for bamfdaemon (0.5.1+14.04.20140409-0ubuntu1) ...
-Rebuilding /usr/share/applications/bamf-2.index...
-Processing triggers for desktop-file-utils (0.22-1ubuntu1) ...
-Processing triggers for mime-support (3.54ubuntu1) ...
-Processing triggers for gnome-menus (3.10.1-0ubuntu2) ...
-Processing triggers for libglib2.0-0:i386 (2.40.0-2) ...
-Processing triggers for gconf2 (3.2.6-0ubuntu2) ...
-Processing triggers for hicolor-icon-theme (0.13-1) ...
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>See <a href="https://sites.google.com/site/easylinuxtipsproject/fatalmistakes#TOC-High-danger-level-orange-alert-:-Ubuntu-Tweak-and-Ubuntu-Sources-List-Generator"><em>Avoid 10 fatal mistakes in Ubuntu and Linux Mint</em></a> in
-Easy Linux tips project. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Scanner and Ubuntu 14.04]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/14/my-scanner-and-ubuntu-14-dot-04/"/>
-    
-    <updated>2014-08-14T11:57:26+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/14/my-scanner-and-ubuntu-14-dot-04</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ul>
-  <li>Scanning and printing works fine in my Ubuntu 12.04 desktop.</li>
-  <li>I’ve upgraded to Ubuntu 14.04 LTS yesterday.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I used Simple Scan, Ubuntu’s GUI tool for scanning documents, I
-encountered an error—the program <em>couldn’t</em> detect my scanner.</p>
-
-<p><img src="/images/posts/Ubuntu1404Scan/ecscan.png" alt="Simple Scan didn't detect my scanner" /></p>
-
-<p><strong>How can I scan images from my scanner in Ubuntu?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>The working principle GUI tools are <em>much</em> more complicated than its
-command line counterpart.</p>
-
-<p>I’ll illustrate the idea by a typical component in GUI by borrowing
-other’s depication of the <em>delegation model</em> in Java GUI programming.</p>
-
-<p><img src="/images/posts/Ubuntu1404Scan/AWT_ActionListener.png" alt="Java GUI button and listener" /><br />
-<img src="/images/posts/Ubuntu1404Scan/AWT_WindowEventSeqDiagram.png" alt="Java GUI delegation model" /><br />
-<small>Source: <em>yet another insignificant programming
-notes</em><sup id="fnref:img_src"><a href="#fn:img_src" class="footnote">2</a></sup></small></p>
-
-<p>In my opinion, the working principle of a button in GUI is much more
-abstract than that of the nervous system in a human body.  One can
-learn about the bilogical principles through observations of concrete
-objects.</p>
-
-<p><img src="/images/posts/Ubuntu1404Scan/VoluntaryAction.jpg" alt="Human nervous system" /><br />
-<small>Source: <em>Passnownow</em><sup id="fnref:img_src2"><a href="#fn:img_src2" class="footnote">3</a></sup></small></p>
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="temporary-method">Temporary method</h3>
-
-<p>Therefore, I immediately googled the *nix command for scanning
-documents, and came up with <code>brscan-skey</code>.  I ran it with the <code>-l</code>
-flag, the it said that my scanner <em>wasn’t</em> registered.</p>
-
-<pre class="cli"><code class="UBMono"># brscan-skey
-# brscan-skey -l
- XXX-XXXX          : brotherX:busX;devX  : USB                  <span class="err">Not registered</span>
-</code></pre>
-
-<p>A <a href="http://ubuntuforums.org/showthread.php?t=937898&amp;p=11707315#post11707315" title="Re: Brother MFC-465CN">comment</a> for <em>Brother MFC-465CN</em> took me to Brother’s
-documentation for Linux drivers, but finding the right page by viewing
-the right hyperlink was too slow, so I searched the command and
-restricted the results to those in Brother’s website.  The page in the
-official documentation inspired me to add the following lines just
-before the last line of <code>/lib/udev/rules.d/40-libsane.rules</code>.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">4</a></sup></p>
-
-<pre><code># Brother scanners
-ATTRS{idVendor}=="04f9", ENV{libsane_matched}="yes"
-</code></pre>
-
-<p>I rebooted my computer and my scanner became “active”.  However,
-Simple Scan still <em>couldn’t</em> detect it.  I followed the official
-documentation and pressed “Scan” button on the device.  It worked and
-the scanned files with the TIFF format could be found under
-<code>~/brscan/</code>.</p>
-
-<p>After an hour, when I ran the <em>same</em> command to list out the devices
-that <code>brscan-skey</code> could detect, I got <em>no</em> output.</p>
-
-<p>However, I could still use the button on my scanner to produce scanned
-images.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Refer to <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/"><em>Ubuntu Distribution Upgrade to 14.04</em></a> and
-<a href="/blog/2014/08/13/upgraded-ubuntu/"><em>Upgraded Ubuntu</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:img_src">
-
-      <p>Chua Hock-Chuan.  (2014, March).  <em>Java Programming Tutorial</em>.
-Retrieved 12:25, August 14, 2014, from
-<a href="http://www.ntu.edu.sg/home/ehchua/programming/java/j4a_gui.html#zz-3.1">http://www.ntu.edu.sg/home/ehchua/programming/java/j4a_gui.html#zz-3.1</a> <a href="#fnref:img_src" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:img_src2">
-
-      <p>Reflex and Voluntary Actions.  (n.d.).  In <em>Passnownow</em>.
-Retrieved 12:52, August 14, 2014, from
-<a href="http://passnownow.com/classwork-series-and-exercises-biology-ss3-reflex-and-voluntary-actions/">http://passnownow.com/classwork-series-and-exercises-biology-ss3-reflex-and-voluntary-actions/</a> <a href="#fnref:img_src2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:doc">
-
-      <p>Scanner setting for normal user. (2013). In <em>Linux Informations</em>.
-Retrieved 13:53, August 14, 2014, from
-<a href="http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;redirect=on#u9.10">http://support.brother.com/g/s/id/linux/en/instruction_scn1c.html?c=us_ot&amp;lang=en&amp;redirect=on#u9.10</a> <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

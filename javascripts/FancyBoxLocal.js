@@ -13,7 +13,11 @@ $(document).ready(function() {
     }
     });
   });
-  $(".fancybox").fancybox();
+
+  $(".fancybox").fancybox({
+    prevEffect : 'none',
+    nextEffect : 'none',
+  });
 
   $('.fancybox-media')
   .attr('rel', 'media-gallery')
@@ -29,4 +33,6 @@ $(document).ready(function() {
     buttons : {}
     }
   });
+
+  $(".cliwide").fancybox();
 });

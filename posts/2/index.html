@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem ">
+  <meta name="description" content="The following axioms seem to be weaker. Let $G$ be a set, and $*: G \times G \to G$ be a binary operation. Associativity $\forall a,b,c \in G, (a * b &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -131,6 +131,213 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-06T11:12:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:12 am</span></time>
+        
+           | <a href="/blog/2014/09/06/weaker-group-axioms/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/06/weaker-group-axioms/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The following axioms seem to be weaker.</p>
+
+<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+
+<dl>
+  <dt>Associativity</dt>
+  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dt>Existence of <em>left</em> identity</dt>
+  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dt>Existence of <em>left</em> inverse</dt>
+  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
+e$</dd>
+</dl>
+
+<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/06/weaker-group-axioms/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
+        
+           | <a href="/blog/2014/09/05/fixing-this-repos-network-graph/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/05/fixing-this-repos-network-graph/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
+
+<ol>
+  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
+<em>Blog 1</em>.</li>
+  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>Understand item 5 of Scott Cheng’s post on setting up
+<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
+it in order to understand what it really means.  After running <code>rake
+setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
+branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
+remote the <em>only</em> branch there.  To avoid conflicts when I push my
+commits on <code>master</code> branch to my remote repository in GitHub, I ran
+some commands as shown below.</li>
+  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
+    <ul>
+      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
+ branch shares, as shown in the graph, a common node with
+ <code>source</code> branch.  This is <em>wrong</em>!</li>
+      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
+ the remote repository to clear the mess.</li>
+      <li>In the new graph, those two branches <em>don’t</em> share a common node
+ anymore.</li>
+    </ul>
+  </li>
+</ol>
+
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
+Deleted remote branch origin/master (was e745caf).
+owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+* <span class="GitBrName">master</span>
+[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
+To git@github.com:vincenttam/vincenttam.github.io.git
+ - [deleted]         master
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-03T00:48:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:48 am</span></time>
+        
+           | <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
+provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
+<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
+
+<p>Then I tried running <code>git commit</code> in 
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />,
+but it’s “aborting commit due to empty commit message”.</p>
+
+<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
+gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
+The <code>-w</code> flag in the commands for setting other editors as the default
+editor for Git is the key for the above quoted message.</p>
+
+<p>I tried to solve this problem by reading Vim’s offical manual about
+<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
+in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
+
+<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
+<code>:Gcommit</code> in Vim, and use
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -497,204 +704,6 @@ this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Clang Complete on Ubuntu 14.04</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-29T13:44:03+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:44 pm</span></time>
-        
-           | <a href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
-following problem.</p>
-
-<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
-Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
- contains libclang?
-    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
-tory. To provide a path to libclang use Config.set_library_path() or Config.set_
-library_file().
-
-Press ENTER or type command to continue
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/">My Problems in M$ and Ubuntu</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-27T13:19:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:19 pm</span></time>
-        
-           | <a href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/27/my-problems-in-m$-and-ubuntu/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I seldom encounter problems in both operating systems.  However,
-there’s <em>exceptional</em> situations.</p>
-
-<h2 id="m-win-7">M$ Win* 7</h2>
-
-<p>I once booted into its “safe mode”, and experienced some problems
-during an image upload.  I <em>don’t</em> wish to learn more about the
-problem.</p>
-
-<p><img class="fancybox" src="/images/posts/MSUbuProblem/MS.png" title="MS" alt="MS problem" /></p>
-
-<h2 id="ubuntu-1404">Ubuntu 14.04</h2>
-
-<p>Last night, I saw a small dialog box after the login.</p>
-
-<p><img class="fancybox" src="/images/posts/MSUbuProblem/Ubu.png" title="Ubuntu 14.04" alt="MS problem" /></p>
-
-<p>I checked the details—it was the problem of Ubuntu’s greeter, but
-I’m going to do <em>nothing</em> to resolve it.</p>
-
-<p>I think that this is due to my method of getting the newer version of
-Ubuntu—upgrading instead of clearing and installing.<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></p>
-
-<p>Since I lack time to study the official manual and related posts about
-clearing Linux partitions and installing Ubuntu 14.04, I just keep
-using the Ubuntu that I have.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I’m <em>not</em> going to argue whether GNU/Linux is better than M$ Win*.
-There’s already <em>lots of</em> posts on that issue.</p>
-
-<p>I just want to say that problems <em>can</em> exist in <em>any</em> OS.  If you
-<em>don’t</em> intentionally break things and your machine still goes wrong,
-then “keep calm and carry on”.  However, if it’s free software and you
-have the patience and ability to browse its source code, you may see
-what’s wrong.</p>
-
-<p>It’s great to learn what’s really going on in an OS, and I personally
-think that the GNU/Linux commands are better tools for that, when
-compared to GUI tools.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:UpUb">
-
-      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
-<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/21/updated-octopress-source-code/">Updated Octopress Source Code</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-21T21:37:59+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:37 pm</span></time>
-        
-           | <a href="/blog/2014/08/21/updated-octopress-source-code/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/21/updated-octopress-source-code/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<ol>
-  <li>Upgraded to Ubuntu 14.04 LTS<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></li>
-  <li>Installed Ruby 2.1.2.<sup id="fnref:UpRVM"><a href="#fn:UpRVM" class="footnote">2</a></sup></li>
-  <li>Tried to generate the blog from the <em>same</em> Markdown and HTML
-source, but failed.<sup id="fnref:Ruby2Fail"><a href="#fn:Ruby2Fail" class="footnote">3</a></sup></li>
-</ol>
-
-<p>During the merge of Octopress source code last week, there’re some
-conflicts between my old working source code and the new one fetched
-from Octopress’s Github repository.  When <code>rake</code> complained, I changed
-my original code bit by bit—this turned out to be a <em>failed and
-inefficient</em> approach.  <em>Not</em> familiar with Ruby, I gave up the whole
-idea of updating Octopress’s source code and generating the contents
-on top of a new version of Ruby.  In order to keep posting things to
-this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/21/updated-octopress-source-code/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -734,12 +743,13 @@ this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (21)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (23)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (33)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-technologies/'>online technologies (1)</a> <a href='/blog/categories/online-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -756,23 +766,23 @@ this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/test-embedded-fancybox-inline-element/">Test Embedded Fancybox Inline Element</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Another Way of Writing Piecewise Functions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">The Greek Alphabet in $\rm \LaTeX$</a>
       </li>
     
   </ul>

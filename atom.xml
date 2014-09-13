@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-13T00:53:16+08:00</updated>
+  <updated>2014-09-14T00:28:37+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,339 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Completely Remove Linux Kernels]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/"/>
+    
+    <updated>2014-09-13T23:24:51+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I issued the following command and then rebooted the machine.</p>
+
+<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How can that package disappear from the list?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Use <code>purge</code> instead of <code>remove</code> in the above command.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pa
+e</span>
+[sudo] password for owner:
+The following packages will be REMOVED:
+  linux-image-3.2.0-67-generic-pae{p}
+0 packages upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.2.0-67-generic-pae (3.2.0-67.101) ...
+Purging configuration files for linux-image-3.2.0-67-generic-pae (3.2.0-67.101) 
+...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic l
+inux-image-extra-3.13.0-33-generic</span>
+The following packages will be REMOVED:
+  linux-image-3.13.0-33-generic{p} linux-image-extra-3.13.0-33-generic{p}
+0 packages upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+Removing linux-image-extra-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-extra-3.13.0-33-generic (3.13.0-33.5
+8) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+</code></pre>
+
+<p>After running the above two commands, the above three removed Linux
+kernel images with status <code>rc</code> <em>shouldn’t</em> be seen in the list of
+packages anymore.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div id="list1" class="noscr">
+<p>The <strong>bolded</strong> lines represent the packages that are
+going to be completely removed.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.13.0-33-generic                         3.13.0-33.58                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.2.0-67-generic-pae                      3.2.0-67.101                                        i386         Linux kernel image for version 3.2.0
+on 32 bit x86 SMP</span>
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-extra-3.13.0-33-generic                   3.13.0-33.58                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+
+<div id="list2" class="noscr">
+<p>There&#8217;s <em>no</em> lines beginning with <code>rc</code>.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Click <a href="#list1" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Click <a href="#list2" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[I/O Errors During Removal of Old Kernels]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/"/>
+    
+    <updated>2014-09-13T23:14:25+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/RmOldKer/err.png" width="900" title="Received errors in tty1" alt="error messages" /></p>
+
+<!-- more -->
+
+<p>As the error messages were just after the line <code>Found Fedora ...</code>, I
+booted into Fedora 17 out of curiousity.</p>
+
+<h2 id="cause">Cause</h2>
+
+<p>In Fedora’s file manager, I found the reason for the above error
+messages.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/RmOldKer/cause.png" width="900" title="Cause of the above error" alt="Fedora file manager" /></p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Test Embedded Fancybox Inline Element]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/13/test-embedded-fancybox-inline-element/"/>
+    
+    <updated>2014-09-13T13:48:47+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/13/test-embedded-fancybox-inline-element</id>
+    
+      <content type="html"><![CDATA[<h2 id="why">Why?</h2>
+
+<p>It’s because I’ve some code block/console input/output which have more
+than 80 characters and their width <em>can’t</em> be reduced.  For example,
+in <a href="http://vincenttam.github.io/blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/"><em>GNU ddrescue—A Powerful Data Recovery Tool</em></a>, there’s a
+<code>&lt;pre&gt;</code> tag which is very wide.  There’s a scrollbar at the bottom,
+but it’s <em>hard</em> to see.</p>
+
+<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll1.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig1" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll2.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig2" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll3.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig3" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll4.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig4" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll5.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig5" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll6.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig6" /></p>
+
+<p><img class="fancybox noscr nopr" src="http://vincenttam.github.io/images/posts/FancyboxInline/scroll7.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig7" /></p>
+
+<h2 id="result">Result</h2>
+
+<p>Click <a href="#eg1" class="cliwide">here</a> to view the console message, which has
+160 columns.  It’s so wide that putting it into a popup dialog can
+help.</p>
+
+<div id="eg1" class="noscr">
+<pre class="cli"><code class="UBMono">   o   create a new empty DOS partition table
+   p   print the partition table
+   q   quit without saving changes
+   s   create a new empty Sun disklabel
+   t   change a partition's system id
+   u   change display/entry units
+   v   verify the partition table
+   w   write table to disk and exit
+   x   extra functionality (experts only)
+Command (m for help): l
+ 0  Empty            c  FAT32 LBA       1e  Hidd FAT16 LBA  52  CP/M            80  Minix &lt;1.4a     9f  BSD/OS          bf  Solaris         eb  BeOS fs
+ 1  FAT12            e  FAT16 LBA       24  NEC DOS         53  OnTrackDM6 Aux3 81  Minix &gt;1.4b     a0  Thinkpad hib    c1  DRDOS/2 FAT12   ee  GPT
+ 2  XENIX root       f  Extended LBA    39  Plan 9          54  OnTrack DM6     82  Linux swap      a5  FreeBSD         c4  DRDOS/2 smFAT16 ef  EFI FAT
+ 3  XENIX usr       10  OPUS            3c  PMagic recovery 55  EZ Drive        83  Linux           a6  OpenBSD         c6  DRDOS/2 FAT16   f0  Lnx/PA-RISC bt
+ 4  Small FAT16     11  Hidden FAT12    40  Venix 80286     56  Golden Bow      84  OS/2 hidden C:  a7  NeXTSTEP        c7  Syrinx          f1  SpeedStor
+ 5  Extended        12  Compaq diag     41  PPC PReP Boot   5c  Priam Edisk     85  Linux extended  a8  Darwin UFS      da  Non-FS data     f2  DOS secondary
+ 6  FAT16           14  Hidd Sm FAT16   42  SFS             61  SpeedStor       86  NTFS volume set a9  NetBSD          db  CP/M / CTOS     f4  SpeedStor
+ 7  HPFS/NTFS       16  Hidd FAT16      4d  QNX4.x          63  GNU HURD/SysV   87  NTFS volume set ab  Darwin boot     de  Dell Utility    fd  Lnx RAID auto
+ 8  AIX             17  Hidd HPFS/NTFS  4e  QNX4.x 2nd part 64  Netware 286     88  Linux plaintext b7  BSDI fs         df  BootIt          fe  LANstep
+ 9  AIX bootable    18  AST SmartSleep  4f  QNX4.x 3rd part 65  Netware 386     8e  Linux LVM       b8  BSDI swap       e1  DOS access      ff  XENIX BBT
+ a  OS/2 boot mgr   1b  Hidd FAT32      50  OnTrack DM      70  DiskSec MltBoot 93  Amoeba          bb  Boot Wizard Hid e3  DOS R/O
+ b  FAT32           1c  Hidd FAT32 LBA  51  OnTrackDM6 Aux1 75  PC/IX           94  Amoeba BBT      be  Solaris boot    e4  SpeedStor
+Command (m for help): x
+Expert command (m for help): m
+Command action
+   b   move beginning of data in a partition
+   c   change number of cylinders
+   e   list extended partitions
+   f   fix partition order
+   g   create an IRIX (SGI) partition table
+   h   change number of heads
+   m   print this menu
+   p   print the partition table
+   q   quit without saving changes
+   r   return to the main menu
+   s   change number of sectors/track
+   v   verify the partition table
+   w   write table to disk and exit
+Expert command (m for help): q
+root@ubuntu:~# <span class="err">ddrescue -r1 -n -S -v /dev/sdf1 /dev/sda5 backup1.log</span>
+ddrescue: Output file exists and is not a regular file.
+ddrescue: Use <span class="UBHLCode">`--force'</span> if you really want to overwrite it, but be
+ddrescue: aware that all existing data in output file will be lost.
+Try `ddrescue --help' for more information.
+root@ubuntu:~# ls
+root@ubuntu:~# ddrescue -r1 -n -S <span class="UBHLCode">-f</span> -v /dev/sdf1 /dev/sda5 backup1.log
+
+
+About to copy 3999 MBytes from /dev/sdf1 to /dev/sda5
+    Starting positions: infile = 0 B,  outfile = 0 B
+    Copy block size: 128 sectors
+Sector size: 512  bytes
+Max retries: 1
+Direct: no    Sparse: yes    Split: no    Truncate: no
+
+Press Ctrl-C to interrupt
+Initial status (read from logfile)
+rescued:         0 B,  errsize:       0 B,  errors:       0
+Current status
+rescued:   377286 kB,  errsize:    4096 B,  current rate:    2686 kB/s
+rescued:   594792 kB,  errsize:   12288 B,  current rate:    1179 kB/s
+   ipos:   594804 kB,   errors:       2,    average rate:     389 kB/s
+   opos:   594804 kB,     time from last successful read:       0 s
+Copying non-tried blocks...
+</code></pre>
+</div>
+
+<p>Unluckily, I <em>can’t</em> to anything about the horizontal scrollbar at the
+bottom.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1182,285 +1515,6 @@ list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1
   </ol>
 </div>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Clang Complete on Ubuntu 14.04]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/"/>
-    
-    <updated>2014-08-29T13:44:03+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
-following problem.</p>
-
-<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
-Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
- contains libclang?
-    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
-tory. To provide a path to libclang use Config.set_library_path() or Config.set_
-library_file().
-
-Press ENTER or type command to continue
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “loading libclang failed”, and skimmed two results.  The
-first one was an clang complete issue on GitHub.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, at
-first glance, the problem was on Ubuntu <em>13.10, not 14.04</em>, and the
-error messages <em>didn’t</em> resemble the above message.  The second one
-was a Stack Overflow question.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  From the first answer, I knew that
-I need to check if <code>libclang1</code> package was installed.  <code>dkpg -l | grep
-clang</code> told me that I’d got clang.  I read the second answer, and
-viewed the list of files in <code>/usr/lib/</code>.  There’s <em>no</em> folders whose
-name started with <code>x86</code>, and <em>no</em> file called <code>libclang.so.1</code> in each
-sub-folder.  Looking at the issue <em>again</em> on GitHub, I found out how
-to make use of the information from both sites.</p>
-
-<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
-</code></pre>
-
-<p>To avoid problems, I <em>didn’t</em> set Vim global variable
-<code>clang_library_path</code>.</p>
-
-<p>I <em>didn’t</em> know whether <code>.1</code> should be appended to the end of
-<code>libclang.so</code>.  Finally, I <em>didn’t</em> do so, and the plugin just
-<em>worked</em>.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See clang complete <a href="https://github.com/Rip-Rip/clang_complete/issues/370">issue #370</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>See Stack Overflow <a href="http://stackoverflow.com/q/22733943" title="Where is libclang.so?">question 22733943</a> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Problems in M$ and Ubuntu]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu/"/>
-    
-    <updated>2014-08-27T13:19:20+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/27/my-problems-in-m$-and-ubuntu</id>
-    
-      <content type="html"><![CDATA[<p>I seldom encounter problems in both operating systems.  However,
-there’s <em>exceptional</em> situations.</p>
-
-<h2 id="m-win-7">M$ Win* 7</h2>
-
-<p>I once booted into its “safe mode”, and experienced some problems
-during an image upload.  I <em>don’t</em> wish to learn more about the
-problem.</p>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MSUbuProblem/MS.png" title="MS" alt="MS problem" /></p>
-
-<h2 id="ubuntu-1404">Ubuntu 14.04</h2>
-
-<p>Last night, I saw a small dialog box after the login.</p>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MSUbuProblem/Ubu.png" title="Ubuntu 14.04" alt="MS problem" /></p>
-
-<p>I checked the details—it was the problem of Ubuntu’s greeter, but
-I’m going to do <em>nothing</em> to resolve it.</p>
-
-<p>I think that this is due to my method of getting the newer version of
-Ubuntu—upgrading instead of clearing and installing.<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></p>
-
-<p>Since I lack time to study the official manual and related posts about
-clearing Linux partitions and installing Ubuntu 14.04, I just keep
-using the Ubuntu that I have.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I’m <em>not</em> going to argue whether GNU/Linux is better than M$ Win*.
-There’s already <em>lots of</em> posts on that issue.</p>
-
-<p>I just want to say that problems <em>can</em> exist in <em>any</em> OS.  If you
-<em>don’t</em> intentionally break things and your machine still goes wrong,
-then “keep calm and carry on”.  However, if it’s free software and you
-have the patience and ability to browse its source code, you may see
-what’s wrong.</p>
-
-<p>It’s great to learn what’s really going on in an OS, and I personally
-think that the GNU/Linux commands are better tools for that, when
-compared to GUI tools.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:UpUb">
-
-      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
-<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Updated Octopress Source Code]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/"/>
-    
-    <updated>2014-08-21T21:37:59+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ol>
-  <li>Upgraded to Ubuntu 14.04 LTS<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></li>
-  <li>Installed Ruby 2.1.2.<sup id="fnref:UpRVM"><a href="#fn:UpRVM" class="footnote">2</a></sup></li>
-  <li>Tried to generate the blog from the <em>same</em> Markdown and HTML
-source, but failed.<sup id="fnref:Ruby2Fail"><a href="#fn:Ruby2Fail" class="footnote">3</a></sup></li>
-</ol>
-
-<p>During the merge of Octopress source code last week, there’re some
-conflicts between my old working source code and the new one fetched
-from Octopress’s Github repository.  When <code>rake</code> complained, I changed
-my original code bit by bit—this turned out to be a <em>failed and
-inefficient</em> approach.  <em>Not</em> familiar with Ruby, I gave up the whole
-idea of updating Octopress’s source code and generating the contents
-on top of a new version of Ruby.  In order to keep posting things to
-this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Glimpsing the commit messages and their corresponding dates, I decided
-to try the Octopress update again.</p>
-
-<h3 id="yesterdays-work">Yesterday’s work</h3>
-
-<p>I simply fetched and merged the code from Octopress’s remote Git
-repository.<sup id="fnref:merge"><a href="#fn:merge" class="footnote">4</a></sup>  I remembered <em>minimizing</em> the changes while
-resolving the expected conflicts.  Here’s a brief outline of what I
-had done using <em>Ruby 1.9.3</em>.</p>
-
-<ol>
-  <li><code>git pull octopress master</code></li>
-  <li>Resolved conflicts and committed the changes <em>without</em> pushing it,
-so that I can easily undo the commit <em>without</em> leaving a mark in the
-commit history.</li>
-  <li>Ran <code>rake update_source</code> to apply the changes in
-<code>.themes/classic/soruce/*</code> to <code>source/*</code>.</li>
-  <li>
-    <p>Ran <code>rake generate</code>, <em>failed</em>, and learnt that there’re some syntax
-errors.</p>
-
-    <ul>
-      <li>At the beginning of some files, <code>layout: nil</code> had <em>not</em> yet been
- changed to <code>layout: null</code>.</li>
-      <li><a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/">Clapper’s image popup plugin</a> <em>didn’t</em> work with the
-<em>updated</em> Octopress code.  In order to use the updated Octopress
-source code, I <em>temporarily</em> removed the curly brackets that
-surrounded each
-<code>{% imgpopup /path/to/image nn% title %}</code>
-tag, using Vim’s <code>:argdo %s/pat/rep/ge | up</code> command.</li>
-    </ul>
-  </li>
-  <li>Corrected the above mistakes, and amended the last commit.</li>
-  <li>Ran <code>rake generate</code> <em>again</em>, and <em>succeeded</em>.</li>
-  <li>Found <a href="http://fancyapps.com/fancybox/">fancyBox</a> to replace the image popup plugin.</li>
-  <li>
-    <p>Followed Erv Walter’s instructions to use fancyBox in my
-posts.<sup id="fnref:ewal"><a href="#fn:ewal" class="footnote">5</a></sup></p>
-
-    <ol>
-      <li>Downloaded the <em>whole</em> ZIP archive from fancyBox’s official
- website.</li>
-      <li>Extracted the archive to <code>source/</code> and renamed the folder as
- <code>source/fancybox/</code>, and deleted <code>source/fancybox/demo/</code>.</li>
-      <li>Just added the references to the necessary CSS and JS files to
- <code>source/_includes/custom/head.html</code> for simplicity.</li>
-      <li>Used <code>:vimgrep /pat/rep/ source/_posts/*</code> to obtain a list of
- files which contained “imgpopup”.  The list was in a quickfix
- window, which could be invoked by <code>:cw</code>.  <code>:cn</code> and <code>:cp</code> point to
- the next and previous match respectively.</li>
-      <li>In <em>one</em> of my posts, I changed the line containing “imgpopup”
- to “img fancybox”.</li>
-      <li>Misunderstood his words<sup id="fnref:ewal_quote"><a href="#fn:ewal_quote" class="footnote">6</a></sup>, I added his jQuery
- function at the end of my post.  However, as I clicked the image,
- <em>nothing</em> popped up.</li>
-      <li>Used a simpler jQuery function found on fancyBox’s website for
- testing, and put it in <code>source/_includes/custom/head.html</code>.  This
- time, a box popped up upon a click on the images.  However, after
- I closed the popped up window, the clicked image <em>disappeared</em>.</li>
-      <li>Read and understood these two jQuery functions, incorporated
- them into <code>source/_includes/custom/head.html</code>, and <em>succeeded</em>.</li>
-      <li>Changed <em>all</em> instances of “imgpopup” to “img fancybox”.</li>
-    </ol>
-  </li>
-  <li>Cleared up the Ruby scripts in <code>plugins/</code>.<sup id="fnref:del_imgpopup"><a href="#fn:del_imgpopup" class="footnote">7</a></sup></li>
-  <li>Used fancyBox for embedded Youtube videos.</li>
-  <li>Added back the default white round border for pictures in
-Octopress posts except for tiny icons.<sup id="fnref:img_bd"><a href="#fn:img_bd" class="footnote">8</a></sup></li>
-</ol>
-
-<h3 id="todays-work">Today’s work</h3>
-
-<p><img src="http://vincenttam.github.io/images/posts/OctopressUpdate/rvm212.png" alt="Screenshot of GNOME Terminal" /></p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>Do things bit by bit at a time, so that one can adapt to the changes.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:UpUb">
-
-      <p>Tam, V.  (Aug 13, 2014).  <em>Upgraded Ubuntu</em>.  Retrieved from
-<a href="https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/">https://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/</a> <a href="#fnref:UpUb" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:UpRVM">
-
-      <p>Tam, V.  (Aug 13, 2014).  <em>Install Ruby Again! (2)</em>.  Retrieved
-from
-<a href="https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/">https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/</a> <a href="#fnref:UpRVM" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:Ruby2Fail">
-      <p><em>Ibid</em>. <a href="#fnref:Ruby2Fail" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:merge">
-      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/f090aac">f090aac</a>. <a href="#fnref:merge" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:ewal">
-
-      <p>Walter, E.  (Sep 8, 2012).  <em>Octopress Customizations</em>.  Retrieved
-from <a href="http://www.ewal.net/2012/09/08/octopress-customizations/">http://www.ewal.net/2012/09/08/octopress-customizations/</a> <a href="#fnref:ewal" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:ewal_quote">
-
-      <blockquote><p>It&#8217;s done per-post so that when viewing the main index of the<br />     blog, unrelated images don&#8217;t end up getting added to one large<br />     gallery.</p><footer><strong>Erv Walter</strong> <cite><a href="http://www.ewal.net/2012/09/08/octopress-customizations/">Octopress Customizations</a></cite></footer></blockquote>
-      <p><a href="#fnref:ewal_quote" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:del_imgpopup">
-      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/b787cd7">b787cd7</a>. <a href="#fnref:del_imgpopup" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:img_bd">
-      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/a3b5986">a3b5986</a>. <a href="#fnref:img_bd" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
     
   </entry>
   

@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Completely Remove Linux Kernels - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Background I issued the following command and then rebooted the machine. $ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
+
+<!-- Printing rules -->
+<link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/javascript"
+  src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/javascript" src="/javascripts/MathJaxLocal.js">
+</script>
+
+<!-- START COPYING HERE -->
+<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
+<!--[if lt IE 9]>
+  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
+<![endif]-->
+<!-- END COPYING HERE -->
+
+<!-- Blog Ownership Verification for Bing Webmaster -->
+<meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+
+<!-- table css -->
+<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
+
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Optionally add helpers - button, thumbnail and/or media -->
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
+<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+<script type="text/javascript" src="/javascripts/FancyBoxLocal.js"></script>
+
+<!-- vim:set sw=2: -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46788371-2']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+
+  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
+  <div class="github-fork-ribbon-wrapper right">
+    <div class="github-fork-ribbon">
+      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
+    </div>
+  </div>
+  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
+
+</hgroup>
+
+<!-- vim:set sw=2: -->
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+<!-- vim:set sw=2:wrap: -->
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">Completely Remove Linux Kernels</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:24:51+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:24 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I issued the following command and then rebooted the machine.</p>
+
+<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How can that package disappear from the list?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Use <code>purge</code> instead of <code>remove</code> in the above command.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pa
+e</span>
+[sudo] password for owner:
+The following packages will be REMOVED:
+  linux-image-3.2.0-67-generic-pae{p}
+0 packages upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.2.0-67-generic-pae (3.2.0-67.101) ...
+Purging configuration files for linux-image-3.2.0-67-generic-pae (3.2.0-67.101) 
+...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.2.0-67-generic-pae /
+boot/vmlinuz-3.2.0-67-generic-pae
+owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic l
+inux-image-extra-3.13.0-33-generic</span>
+The following packages will be REMOVED:
+  linux-image-3.13.0-33-generic{p} linux-image-extra-3.13.0-33-generic{p}
+0 packages upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
+Need to get 0 B of archives. After unpacking 0 B will be used.
+Do you want to continue? [Y/n/?] Y
+(Reading database ... 349931 files and directories currently installed.)
+Removing linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-3.13.0-33-generic (3.13.0-33.58) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+Removing linux-image-extra-3.13.0-33-generic (3.13.0-33.58) ...
+Purging configuration files for linux-image-extra-3.13.0-33-generic (3.13.0-33.5
+8) ...
+Examining /etc/kernel/postrm.d .
+run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
+t/vmlinuz-3.13.0-33-generic
+run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
+/vmlinuz-3.13.0-33-generic
+</code></pre>
+
+<p>After running the above two commands, the above three removed Linux
+kernel images with status <code>rc</code> <em>shouldn’t</em> be seen in the list of
+packages anymore.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div id="list1" class="noscr">
+<p>The <strong>bolded</strong> lines represent the packages that are
+going to be completely removed.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.13.0-33-generic                         3.13.0-33.58                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+on 32 bit x86 SMP
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.2.0-67-generic-pae                      3.2.0-67.101                                        i386         Linux kernel image for version 3.2.0
+on 32 bit x86 SMP</span>
+<span class="UBHLCode">rc  <span class="grep">linux</span>-image-extra-3.13.0-33-generic                   3.13.0-33.58                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP</span>
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+
+<div id="list2" class="noscr">
+<p>There's <em>no</em> lines beginning with <code>rc</code>.</p>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
+ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
+ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
+raries
+ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
+ibrary
+ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
+ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
+ders
+ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
+ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
+version 3.13.0
+ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
+.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
+ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
+ on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
+n 3.13.0 on 32 bit x86 SMP
+ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
+ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
+ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
+ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
+ystems
+ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
+TP) Client
+ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
+ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
+les)
+ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
+S floppies
+ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
+</code></pre>
+</div>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Click <a href="#list1" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Click <a href="#list2" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:24:51+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:24 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/linux/'>linux</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" title="Previous Post: I/O Errors during Removal of Old Kernels">&laquo; I/O Errors during Removal of Old Kernels</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li><strong>NOT</strong> an IT student or staff</li>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/blogging/'>blogging (7)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (4)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (23)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (33)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-technologies/'>online technologies (1)</a> <a href='/blog/categories/online-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (9)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<!-- vim:set sw=2:wrap: -->
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/test-embedded-fancybox-inline-element/">Test Embedded Fancybox Inline Element</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+<!-- vim:se sw=2 -->
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="When I set up Blog 1 for MathJax and fancybox, I included some
-custom code in source/_includes/custom/head.html. I moved them to
-source/javascripts/ &hellip;">
+  <meta name="description" content="Background I issued the following command and then rebooted the machine. $ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -133,6 +132,239 @@ source/javascripts/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:24:51+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:24 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/completely-remove-linux-kernels/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/completely-remove-linux-kernels/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I issued the following command and then rebooted the machine.</p>
+
+<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How can that package disappear from the list?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/13/completely-remove-linux-kernels/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:14:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:14 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+
+<p><img class="fancybox" src="/images/posts/RmOldKer/err.png" width="900" title="Received errors in tty1" alt="error messages" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/test-embedded-fancybox-inline-element/">Test Embedded Fancybox Inline Element</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T13:48:47+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:48 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/test-embedded-fancybox-inline-element/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/13/test-embedded-fancybox-inline-element/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/test-embedded-fancybox-inline-element/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="why">Why?</h2>
+
+<p>It’s because I’ve some code block/console input/output which have more
+than 80 characters and their width <em>can’t</em> be reduced.  For example,
+in <a href="/blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/"><em>GNU ddrescue—A Powerful Data Recovery Tool</em></a>, there’s a
+<code>&lt;pre&gt;</code> tag which is very wide.  There’s a scrollbar at the bottom,
+but it’s <em>hard</em> to see.</p>
+
+<p><img class="fancybox" src="/images/posts/FancyboxInline/scroll1.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig1" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll2.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig2" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll3.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig3" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll4.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig4" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll5.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig5" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll6.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig6" /></p>
+
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll7.png" width="900" title="Move the mouse to the right and click for the next image" alt="fig7" /></p>
+
+<h2 id="result">Result</h2>
+
+<p>Click <a href="#eg1" class="cliwide">here</a> to view the console message, which has
+160 columns.  It’s so wide that putting it into a popup dialog can
+help.</p>
+
+<div id="eg1" class="noscr">
+<pre class="cli"><code class="UBMono">   o   create a new empty DOS partition table
+   p   print the partition table
+   q   quit without saving changes
+   s   create a new empty Sun disklabel
+   t   change a partition's system id
+   u   change display/entry units
+   v   verify the partition table
+   w   write table to disk and exit
+   x   extra functionality (experts only)
+Command (m for help): l
+ 0  Empty            c  FAT32 LBA       1e  Hidd FAT16 LBA  52  CP/M            80  Minix &lt;1.4a     9f  BSD/OS          bf  Solaris         eb  BeOS fs
+ 1  FAT12            e  FAT16 LBA       24  NEC DOS         53  OnTrackDM6 Aux3 81  Minix &gt;1.4b     a0  Thinkpad hib    c1  DRDOS/2 FAT12   ee  GPT
+ 2  XENIX root       f  Extended LBA    39  Plan 9          54  OnTrack DM6     82  Linux swap      a5  FreeBSD         c4  DRDOS/2 smFAT16 ef  EFI FAT
+ 3  XENIX usr       10  OPUS            3c  PMagic recovery 55  EZ Drive        83  Linux           a6  OpenBSD         c6  DRDOS/2 FAT16   f0  Lnx/PA-RISC bt
+ 4  Small FAT16     11  Hidden FAT12    40  Venix 80286     56  Golden Bow      84  OS/2 hidden C:  a7  NeXTSTEP        c7  Syrinx          f1  SpeedStor
+ 5  Extended        12  Compaq diag     41  PPC PReP Boot   5c  Priam Edisk     85  Linux extended  a8  Darwin UFS      da  Non-FS data     f2  DOS secondary
+ 6  FAT16           14  Hidd Sm FAT16   42  SFS             61  SpeedStor       86  NTFS volume set a9  NetBSD          db  CP/M / CTOS     f4  SpeedStor
+ 7  HPFS/NTFS       16  Hidd FAT16      4d  QNX4.x          63  GNU HURD/SysV   87  NTFS volume set ab  Darwin boot     de  Dell Utility    fd  Lnx RAID auto
+ 8  AIX             17  Hidd HPFS/NTFS  4e  QNX4.x 2nd part 64  Netware 286     88  Linux plaintext b7  BSDI fs         df  BootIt          fe  LANstep
+ 9  AIX bootable    18  AST SmartSleep  4f  QNX4.x 3rd part 65  Netware 386     8e  Linux LVM       b8  BSDI swap       e1  DOS access      ff  XENIX BBT
+ a  OS/2 boot mgr   1b  Hidd FAT32      50  OnTrack DM      70  DiskSec MltBoot 93  Amoeba          bb  Boot Wizard Hid e3  DOS R/O
+ b  FAT32           1c  Hidd FAT32 LBA  51  OnTrackDM6 Aux1 75  PC/IX           94  Amoeba BBT      be  Solaris boot    e4  SpeedStor
+Command (m for help): x
+Expert command (m for help): m
+Command action
+   b   move beginning of data in a partition
+   c   change number of cylinders
+   e   list extended partitions
+   f   fix partition order
+   g   create an IRIX (SGI) partition table
+   h   change number of heads
+   m   print this menu
+   p   print the partition table
+   q   quit without saving changes
+   r   return to the main menu
+   s   change number of sectors/track
+   v   verify the partition table
+   w   write table to disk and exit
+Expert command (m for help): q
+root@ubuntu:~# <span class="err">ddrescue -r1 -n -S -v /dev/sdf1 /dev/sda5 backup1.log</span>
+ddrescue: Output file exists and is not a regular file.
+ddrescue: Use <span class="UBHLCode">`--force'</span> if you really want to overwrite it, but be
+ddrescue: aware that all existing data in output file will be lost.
+Try `ddrescue --help' for more information.
+root@ubuntu:~# ls
+root@ubuntu:~# ddrescue -r1 -n -S <span class="UBHLCode">-f</span> -v /dev/sdf1 /dev/sda5 backup1.log
+
+
+About to copy 3999 MBytes from /dev/sdf1 to /dev/sda5
+    Starting positions: infile = 0 B,  outfile = 0 B
+    Copy block size: 128 sectors
+Sector size: 512  bytes
+Max retries: 1
+Direct: no    Sparse: yes    Split: no    Truncate: no
+
+Press Ctrl-C to interrupt
+Initial status (read from logfile)
+rescued:         0 B,  errsize:       0 B,  errors:       0
+Current status
+rescued:   377286 kB,  errsize:    4096 B,  current rate:    2686 kB/s
+rescued:   594792 kB,  errsize:   12288 B,  current rate:    1179 kB/s
+   ipos:   594804 kB,   errors:       2,    average rate:     389 kB/s
+   opos:   594804 kB,     time from last successful read:       0 s
+Copying non-tried blocks...
+</code></pre>
+</div>
+
+<p>Unluckily, I <em>can’t</em> to anything about the horizontal scrollbar at the
+bottom.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,213 +786,6 @@ did was a waste of time.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-06T11:12:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:12 am</span></time>
-        
-           | <a href="/blog/2014/09/06/weaker-group-axioms/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/06/weaker-group-axioms/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The following axioms seem to be weaker.</p>
-
-<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
-
-<dl>
-  <dt>Associativity</dt>
-  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
-  <dt>Existence of <em>left</em> identity</dt>
-  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
-  <dt>Existence of <em>left</em> inverse</dt>
-  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
-e$</dd>
-</dl>
-
-<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/06/weaker-group-axioms/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
-        
-           | <a href="/blog/2014/09/05/fixing-this-repos-network-graph/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/05/fixing-this-repos-network-graph/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
-
-<ol>
-  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
-<em>Blog 1</em>.</li>
-  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-  <li>Understand item 5 of Scott Cheng’s post on setting up
-<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
-it in order to understand what it really means.  After running <code>rake
-setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
-branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
-remote the <em>only</em> branch there.  To avoid conflicts when I push my
-commits on <code>master</code> branch to my remote repository in GitHub, I ran
-some commands as shown below.</li>
-  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
-    <ul>
-      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
- branch shares, as shown in the graph, a common node with
- <code>source</code> branch.  This is <em>wrong</em>!</li>
-      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
- the remote repository to clear the mess.</li>
-      <li>In the new graph, those two branches <em>don’t</em> share a common node
- anymore.</li>
-    </ul>
-  </li>
-</ol>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
-Deleted remote branch origin/master (was e745caf).
-owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
-* <span class="GitBrName">master</span>
-[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
-To git@github.com:vincenttam/vincenttam.github.io.git
- - [deleted]         master
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-03T00:48:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:48 am</span></time>
-        
-           | <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
-provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
-<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
-
-<p>Then I tried running <code>git commit</code> in 
-<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />,
-but it’s “aborting commit due to empty commit message”.</p>
-
-<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
-gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
-The <code>-w</code> flag in the commands for setting other editors as the default
-editor for Git is the key for the above quoted message.</p>
-
-<p>I tried to solve this problem by reading Vim’s offical manual about
-<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
-in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
-
-<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
-<code>:Gcommit</code> in Vim, and use
-<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -798,12 +823,13 @@ in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (21)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (23)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (33)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-technologies/'>online technologies (1)</a> <a href='/blog/categories/online-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -820,23 +846,23 @@ in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/09/13/test-embedded-fancybox-inline-element/">Test Embedded Fancybox Inline Element</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Another Way of Writing Piecewise Functions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/07/the-greek-alphabet-in-$-slash-slash-rm-slash-slash-latex$/">The Greek Alphabet in $\rm \LaTeX$</a>
       </li>
     
   </ul>
