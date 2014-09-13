@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-14T00:28:37+08:00</updated>
+  <updated>2014-09-14T00:34:41+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -173,7 +173,7 @@ so the settings below are now gone.</p>
 <p>Using the following plugin, I finished removing the repeating figures
 in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Erv Walter’s plugin with my modifications</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Erv Walter’s plugin with my modifications</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -209,7 +209,7 @@ in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></
 </span><span class='line'><span class="sr">end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="ss">Liquid</span><span class="p">:</span><span class="ss">:Template</span><span class="o">.</span><span class="n">register_filter</span> <span class="no">CustomLiquidFilters</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="problem">Problem</h2>
 
@@ -220,7 +220,7 @@ in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></
 do the same modification like what I had already did in
 <code>source/atom.xml</code>.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My initial attempt to solve the problem in category feed page</span><a href='https://vincenttam.github.io/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>My initial attempt to solve the problem in category feed page</span><a href='https://vincenttam.github.io/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -232,7 +232,7 @@ do the same modification like what I had already did in
 </span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
 </span><span class='line'><span class="nt">&lt;/entry&gt;</span>
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Then I generated the site <em>without</em> getting any errors.  However, when
 I was previewing one of my category Atom Feeds, I found out that the
@@ -263,13 +263,13 @@ see what’s going on inside Octopress by getting the standard output.
 <em>Not</em> going take an online tutorial about using Ruby debugger, I used
 the most primitive way of debugging.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
 </span><span class='line'>  <span class="nb">puts</span> <span class="n">input</span>
 </span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I recorded the output into a file and then browsed through it.  I
 found the <code>imgpopup ...</code> inside the file.
@@ -363,7 +363,7 @@ ago.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
 <p>The HTML code provides some information about this problem.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Source code of his RSS page in Firefox’s Inspector</span><a href='http://brizzled.clapper.org/feed.atom'>His Atom Feed </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Source code of his RSS page in Firefox’s Inspector</span><a href='http://brizzled.clapper.org/feed.atom'>His Atom Feed </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -376,20 +376,20 @@ ago.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>div xmlns=<span class="ni">&amp;#8221;</span>http://www.w3.org/1999/xhtml<span class="ni">&amp;#8221;</span> class=<span class="ni">&amp;#8221;</span>imgpopup screen<span class="ni">&amp;#8221;</span> xml:base=<span class="ni">&amp;#8221;</span>http://brizzled.clapper.org/feed.atom<span class="ni">&amp;#8221;&amp;gt;</span>
-</span><span class='line'>  <span class="ni">&amp;lt;</span>div class=<span class="ni">&amp;#8221;</span>caption<span class="ni">&amp;#8221;&amp;gt;</span>Click the image for a larger view.<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;imgpopup screen&quot; xml:base=&quot;http://brizzled.clapper.org/feed.atom&quot;<span class="ni">&amp;gt;</span>
+</span><span class='line'>  <span class="ni">&amp;lt;</span>div class=&quot;caption&quot;<span class="ni">&amp;gt;</span>Click the image for a larger view.<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
 </span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;image-4&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;240&quot;</span> <span class="na">height=</span><span class="s">&quot;183&quot;</span> <span class="na">alt=</span><span class="s">&quot;Click me.&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>    <span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>    <span class="ni">&amp;lt;</span>div id=<span class="ni">&amp;#8221;</span>image-dialog-4<span class="ni">&amp;#8221;&amp;gt;</span>
+</span><span class='line'>    <span class="ni">&amp;lt;</span>div id=&quot;image-dialog-4&quot;<span class="ni">&amp;gt;</span>
 </span><span class='line'>      <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;610&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>      <span class="nt">&lt;br</span> <span class="na">clear=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
 </span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>div xmlns=<span class="ni">&amp;#8221;</span>http://www.w3.org/1999/xhtml<span class="ni">&amp;#8221;</span> class=<span class="ni">&amp;#8221;</span>illustration print<span class="ni">&amp;#8221;</span> xml:base=<span class="ni">&amp;#8221;</span>http://brizzled.clapper.org/feed.atom<span class="ni">&amp;#8221;&amp;gt;</span>
+</span><span class='line'><span class="ni">&amp;lt;</span>div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;illustration print&quot; xml:base=&quot;http://brizzled.clapper.org/feed.atom&quot;<span class="ni">&amp;gt;</span>
 </span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;610&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="failed-approach-change-the-css">Failed approach: change the CSS</h2>
 
@@ -407,7 +407,7 @@ also failed.</p>
 visited</a> when I inserted some Ruby code into my <code>Rakefile</code> to
 submit new sitemaps.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Erv Walter’s plugin to remove line numbers in Atom Feed</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Erv Walter’s plugin to remove line numbers in Atom Feed</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -421,7 +421,7 @@ submit new sitemaps.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></su
 </span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="sr">&lt;p&gt;Liquid::Template.register_filter CustomLiquidFilters</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="some-ruby-regular-expressions-learnt-tldr">Some Ruby regular expressions learnt (TL;DR)</h3>
 
@@ -461,7 +461,7 @@ Ruby’s regular expression syntax.</p>
   </li>
 </ol>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Some simple Ruby methods on regular expressions </span></figcaption>
+<p><figure class='code'><figcaption><span>Some simple Ruby methods on regular expressions </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -484,7 +484,7 @@ Ruby’s regular expression syntax.</p>
 </span><span class='line'>  <span class="err">‘</span><span class="n">e</span><span class="err">’</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘</span><span class="mi">3</span><span class="err">’</span><span class="p">,</span>      <span class="c1"># except ‘o’ is NOT mapped</span>
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="n">str</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">map</span><span class="p">)</span>  <span class="c1"># =&amp;gt; “h3ll”</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="my-interpretation-of-the-code-of-the-above-plugin">My interpretation of the code of the above plugin</h3>
 
@@ -533,7 +533,7 @@ some time to figure out that variable <code>map</code> is actually a <em>Hash</e
 test my method first.  To avoid seeing broken things while previewing
 the site, I <em>didn’t</em> directly modify <code>plugins/custom_filter.rb</code>.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>‘My testing Ruby scripts’ (ri20min.rb)</span> <a href='/downloads/code/ri20min.rb'>download</a></figcaption>
+<p><figure class='code'><figcaption><span>‘My testing Ruby scripts’ (ri20min.rb)</span> <a href='/downloads/code/ri20min.rb'>download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -556,7 +556,7 @@ the site, I <em>didn’t</em> directly modify <code>plugins/custom_filter.rb</co
 </span><span class='line'><span class="p">}</span>
 </span><span class='line'><span class="no">RegexMap</span><span class="o">.</span><span class="n">each_pair</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">input</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)}</span>
 </span><span class='line'><span class="nb">puts</span> <span class="n">input</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I <em>didn’t</em> have much time to study Ruby’s File I/O, so I just direct
 the standard output to a file.  Thus, within the Vim buffer that held
@@ -587,7 +587,7 @@ Therefore, I added a method in module <code>CustomLiquidFilters</code> in
 <p>I learnt to use method <code>each_pair</code> in Hash class from an answer to
 <a href="http://stackoverflow.com/a/13556720" title="Using many instances of 'gsub' in Ruby">another Stack Overflow question about <code>gsub</code></a>.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>My first custom filter </span></figcaption>
+<p><figure class='code'><figcaption><span>My first custom filter </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -606,13 +606,13 @@ Therefore, I added a method in module <code>CustomLiquidFilters</code> in
 </span><span class='line'>
 </span><span class='line'><span class="sr">&lt;p&gt;RegexMap.each_pair {|k,v| input.gsub!(k, v)}</span>
 </span><span class='line'><span class="sr">end</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Moreover, similar to Walter’s modification to his <code>source/atom.xml</code>,
 to test my newly written code, I also needed to change it a little
 bit.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span>Change the XML file as well</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<p><figure class='code'><figcaption><span>Change the XML file as well</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -624,7 +624,7 @@ bit.</p>
 </span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
 </span><span class='line'><span class="nt">&lt;/entry&gt;</span>
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p><del><small>Due to my limited knowledge in Jekyll, I <em>can’t</em> find a
 way to escape the Liquid command inside an Octopress
@@ -785,15 +785,15 @@ variable to the last line of the method, and finally solved the problem.</p>
 
 <pre class="cli"><code class="UBMono">$ rvm pkg install iconv</code></pre>
 
-<div class='bogus-wrapper'><notextile><figure>
+<figure>
     <img src="http://vincenttam.github.io/images/posts/RubyInstall2/rvm_install_iconv.png" alt="failure of installing iconv" />
-</figure></notextile></div>
+</figure>
 
 <pre class="cli"><code class="UBMono">$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr</code></pre>
 
-<div class='bogus-wrapper'><notextile><figure>
+<figure>
     <img src="http://vincenttam.github.io/images/posts/RubyInstall2/rvm_install_ruby1.png" alt="failure of compiling ruby 1.9.2" />
-</figure></notextile></div>
+</figure>
 
 <p>The <a href="http://www.lennu.net/2012/05/11/octopress-installation-in-ubuntu-12-dot-04-with-rsync/">Octopress official documentation</a> as well as <a href="http://whbzju.github.io/blog/2013/02/02/octopress-peizhi/">a Chinese page</a> have those commands. Luckily, <a href="https://gist.github.com/aahan/5226975">Krish&#8217;s approach</a> works on my computer.</p>
 

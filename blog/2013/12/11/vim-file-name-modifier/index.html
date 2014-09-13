@@ -156,7 +156,7 @@
   </header>
 
 
-<div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in <code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is <code>extension-removal</code>. The list maybe too detailed, especially for users who don't have much time to learn it. Bram Moolenaar, the father of Vim, once said that trying to learn all the things in his lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see habit 7). (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.) Fortunately, there're some examples below the list. I found some useful in the following cases.</p>
+<div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in <code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is <code>extension-removal</code>. The list maybe too detailed, especially for users who don&#8217;t have much time to learn it. Bram Moolenaar, the father of Vim, once said that trying to learn all the things in his lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see habit 7). (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.) Fortunately, there&#8217;re some examples below the list. I found some useful in the following cases.</p>
 
 <!-- more -->
 
@@ -173,22 +173,22 @@
 
 <h3>Case 3: Searching contents of <em>The User Manual</em></h3>
 
-<p>In the very first section of the user manual, it's said that users should read the user manual "from the beginning to the end like a book". However, you sometimes don't have much time to do so and you need to quickly perform some tasks not covered in the sections of the user manual that you've read, such as compiling programs. Using the command <code>:![compiler] [src-file] ...</code> and <code>:![command-to-run-prog]</code> is already good since you don't have to leaving Vim, but you may want to see if Vim has some special features. Searching something like "vim c programming" probably gives users links to an array of GitHub repositories for Vim plugins. Even though you have <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> or <a href="https://github.com/gmarik/vundle">Vundle</a>, if things are in conflict with each other, you need a lot of time to figure out the culprits and fix the problem. If there's already something written on the official manual, why don't read them first?</p>
+<p>In the very first section of the user manual, it&#8217;s said that users should read the user manual &#8220;from the beginning to the end like a book&#8221;. However, you sometimes don&#8217;t have much time to do so and you need to quickly perform some tasks not covered in the sections of the user manual that you&#8217;ve read, such as compiling programs. Using the command <code>:![compiler] [src-file] ...</code> and <code>:![command-to-run-prog]</code> is already good since you don&#8217;t have to leaving Vim, but you may want to see if Vim has some special features. Searching something like &#8220;vim c programming&#8221; probably gives users links to an array of GitHub repositories for Vim plugins. Even though you have <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> or <a href="https://github.com/gmarik/vundle">Vundle</a>, if things are in conflict with each other, you need a lot of time to figure out the culprits and fix the problem. If there&#8217;s already something written on the official manual, why don&#8217;t read them first?</p>
 
-<p>The official manual has 2 parts, namely the user manual and the reference manual. For the former, the contents are easier to learn, but the parts are often hard to locate with <code>:h howto</code> and search commands. For the latter, it's easier to locate with <code>:h [sth]</code> since you can pass the <code>[command]</code> that you don't know to <code>[sth]</code> before reaching a relevant section that is too hard for you to keep reading. Therefore, <em>searching contents in the user manual is needed</em>.</p>
+<p>The official manual has 2 parts, namely the user manual and the reference manual. For the former, the contents are easier to learn, but the parts are often hard to locate with <code>:h howto</code> and search commands. For the latter, it&#8217;s easier to locate with <code>:h [sth]</code> since you can pass the <code>[command]</code> that you don&#8217;t know to <code>[sth]</code> before reaching a relevant section that is too hard for you to keep reading. Therefore, <em>searching contents in the user manual is needed</em>.</p>
 
-<p>Then you have to extract the path of the documentation files, which in under some folders that you don't know. Searching it with a file browser will certainly be ineffective, which using searching commands in the terminal needs time and may not guarantee a success due to the possibility of making syntax errors. A more efficient approach is, assuming that the reference manual is <em>near</em> to the user manual, to first open only page in the reference manual in order to make use of <code>%</code> in Vim commands for the extraction of the path of the user manual. Of course you need to check the <em>actual</em> contents inside the directory. (I have <a href="https://github.com/scrooloose/nerdtree">NERDTree</a> installed so I use <code>:NERDTree %</code> for a popup file tree and <code>cd</code> for a change of current directory.)</p>
+<p>Then you have to extract the path of the documentation files, which in under some folders that you don&#8217;t know. Searching it with a file browser will certainly be ineffective, which using searching commands in the terminal needs time and may not guarantee a success due to the possibility of making syntax errors. A more efficient approach is, assuming that the reference manual is <em>near</em> to the user manual, to first open only page in the reference manual in order to make use of <code>%</code> in Vim commands for the extraction of the path of the user manual. Of course you need to check the <em>actual</em> contents inside the directory. (I have <a href="https://github.com/scrooloose/nerdtree">NERDTree</a> installed so I use <code>:NERDTree %</code> for a popup file tree and <code>cd</code> for a change of current directory.)</p>
 
-<p>Thus, with some knowledge in the reference manual (I learn this from <code>:h %:p</code>.), one will find out that the modifier needed is <code>:h</code>. In <em>*nix, the command <code>grep</code> can find contents in a file; in *</em>, I'm too lazy to something new so I use something like Cygwin for <code>grep</code>.</p>
+<p>Thus, with some knowledge in the reference manual (I learn this from <code>:h %:p</code>.), one will find out that the modifier needed is <code>:h</code>. In <em>*nix, the command <code>grep</code> can find contents in a file; in *</em>, I&#8217;m too lazy to something new so I use something like Cygwin for <code>grep</code>.</p>
 
 <h3>Case 4: More about extraction of path of the current file</h3>
 
-<p>In the previous case, <code>%</code> and its modifiers enables you to refer to the path of the file, but you don't <em>see</em> its full path. In order to do so, type <code>:echo expand("%")</code>. 
+<p>In the previous case, <code>%</code> and its modifiers enables you to refer to the path of the file, but you don&#8217;t <em>see</em> its full path. In order to do so, type <code>:echo expand("%")</code>. 
 </p>
 
 <h3>Conclusion: Stop repeatedly typing the same long thing</h3>
 
-<p>Leave machines to machines since they can efficiently replicate long things. That's another tip from Bram Moolenaar (<a href="http://www.moolenaar.net/habits.html">Tip 2</a>).</p>
+<p>Leave machines to machines since they can efficiently replicate long things. That&#8217;s another tip from Bram Moolenaar (<a href="http://www.moolenaar.net/habits.html">Tip 2</a>).</p>
 </div>
 
 
@@ -251,7 +251,7 @@
     <section>
   <h1>About Me (Brief)</h1>
   <a href="http://www.gravatar.com/avatar/4980f828b9588a712cc2013ac10fd13a"><img src="/images/gravatar256.png" alt="My Gravatar"/></a>
-  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <p><a href="/about">Here</a>&#8217;s a more detailed version.</p>
   <ol>
     <li><strong>NOT</strong> an IT student or staff</li>
     <li>A free software supporter</li>
