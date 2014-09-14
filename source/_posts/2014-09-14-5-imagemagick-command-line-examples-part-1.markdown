@@ -12,22 +12,29 @@ past, *without* knowing the use of `+[x-pos]+[y-pos]`, I got *more
 than one* image, and needed to delete them *except* the desired
 one.[^1]
 
-When I wrote a post about `screendump`, I took a screenshot of TTY1 so as to prove that the text that followed the screenshot was *really* contents in TTY1.[^2]  The width and height of the screenshot was 1280 px and 1024 px respectively.  I then used my old way to crop it to an image with width 520 px and height 230 px, and got similar error message described in ImageMagick's examples.[^3].
+When I wrote a post about `screendump`, I took a screenshot of TTY1 so
+as to prove that the text that followed the screenshot was *really*
+contents in TTY1.[^2]  The width and height of the screenshot was
+1280 px and 1024 px respectively.  I then used my old way to crop it
+to an image with width 520 px and height 230 px, and got similar error
+message described in ImageMagick's examples.[^3].
 
 ---
 [^1]:
-    In "[ImageMagick commands learnt][pp1]" in *Basic Use of Aptitude*,
-    I got *four* images because I *didn't* append `+0+0` after
-    `640x512`.
+    In "[ImageMagick commands learnt][pp1]" in *Basic Use of
+    Aptitude*, I got *four* images because I *didn't* append `+0+0`
+    after `640x512`.
 
 [^2]:
-    There's an image cropped with ImageMagick in "[Usage][pp2]" in *Record Linux Terminal*.
+    There's an image cropped with ImageMagick in "[Usage][pp2]" in
+    *Record Linux Terminal*.
 
     <pre class="cli"><code class="UBMono">$ convert tty1.png 512x225+0+0 src.png
     </code></pre>
 
 [^3]:
-    In "[The Missed Image (from a bad crop)][err]" in *Examples of ImageMagick Usage (version 6)*.
+    In "[The Missed Image (from a bad crop)][err]" in *Examples of
+    ImageMagick Usage (version 6)*.
 
 [pp1]: /blog/2014/06/30/basic-use-of-aptitude/#imagemagick-commands-learnt
 [pp2]: /blog/2014/09/14/record-linux-terminal/
