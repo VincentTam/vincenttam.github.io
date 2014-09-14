@@ -46,7 +46,7 @@ It took me some time a find out that the file needed to be changed was
 do the same modification like what I had already did in
 `source/atom.xml`.
 
-{% codeblock My initial attempt to solve the problem in category feed page lang:xml https://vincenttam.github.io/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
+{% codeblock My initial attempt to solve the problem in category feed page lang:xml /blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
 {% raw %}
 <entry>
   <!-- other elements -->

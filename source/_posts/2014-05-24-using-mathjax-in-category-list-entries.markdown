@@ -6,6 +6,16 @@ comments: true
 categories: Octopress
 ---
 
+(Added on SEP 14, 2014)
+
+Since the update of Octopress source code, this post *won't* make
+sense anymore.  I *can't* find a way to use MathJax in category list
+entries anymore because `category` in `plugins/category_generator.rb`
+and `plugins/category_list_tag.rb` have both been changed to *lower
+case*.  I *don't* know how to track the Ruby code to revert it.
+
+<!-- more -->
+
 About three weeks ago, I successfully changed the category "LaTeX" to
 "$\rm \LaTeX$".[^1]  By trial, I discovered that `$\rm \LaTeX$` should
 be input for "categories" at the head of the markdown source file of

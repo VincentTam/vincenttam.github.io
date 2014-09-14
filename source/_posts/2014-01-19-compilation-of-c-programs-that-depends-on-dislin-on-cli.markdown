@@ -2,11 +2,7 @@
 layout: post
 title: Compilation of C++ Programs that Depends on DISLIN on CLI
 date: 2014-01-19 06:59:15 +0000
-categories:
-- C/C++
-tags:
-- DISLIN
-- programming
+categories: C/C++
 published: true
 comments: true
 ---
