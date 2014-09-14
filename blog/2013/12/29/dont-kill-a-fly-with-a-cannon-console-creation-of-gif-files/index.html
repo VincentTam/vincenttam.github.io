@@ -9,7 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="As the saying goes, a picture is worth a thousand words. Some netizens believe that if a picture tells the truth. If you want to take a screenshot in &hellip;">
+  <meta name="description" content="As the saying goes, a picture is worth a thousand words. Some netizens
+believe that if a picture tells the truth. If you want to take a screenshot in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -156,37 +157,50 @@
   </header>
 
 
-<div class="entry-content"><p>As the saying goes, a picture is worth a thousand words. Some netizens believe that if a picture tells the truth.</p>
+<div class="entry-content"><p>As the saying goes, a picture is worth a thousand words. Some netizens
+believe that if a picture tells the truth.</p>
 
-<p>If you want to take a screenshot in Linux text mode, you may use <code>fbgrab</code> to get a PNG file (<code>fbcat</code> gives you a PPM file).</p>
+<p>If you want to take a screenshot in GNU/Linux text mode, you may use
+<code>fbgrab</code> to get a <abbr title="Portable Network Graphics">PNG</abbr> file (<code>fbcat</code> gives you a <abbr title="Portable Pix Map">PPM</abbr> file).</p>
 
-<p>If you want to illustrate a process with a series of pictures, then you&#8217;ll probably need a GIF file. GIMP provides an easy way of creating GIF files by selecting menu items and clicking a few buttons, but for geeks who are used to command line interfaces (CLI), this is not the final answer for them.</p>
+<p>If you want to illustrate a process with a series of pictures, then
+you’ll probably need a <abbr title="Graphics Interchange Format">GIF</abbr> file. <abbr title="GNU Image Manipulation Program">GIMP</abbr> provides an easy way of creating
+<abbr title="Graphics Interchange Format">GIF</abbr> files by selecting menu items and clicking a few buttons, but for
+geeks who are used to <abbr title="Command Line Interfaces">CLI</abbr>, this is not the final answer for them.</p>
 
-<p>With reference to Unix &amp; Linux Stack Exchange question 24014<sup id="fnref-23-1"><a href="#fn-23-1" rel="footnote">1</a></sup>, if your source PNG files are named as <code>[name]%s.png</code>, then the right command is:</p>
+<p>If your source <abbr title="Portable Network Graphics">PNG</abbr> files are named as <code>[name]%s.png</code>, then the right
+command is:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<pre class="cli"><code class="UBMono">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 [name]%s.png &quot; $a; done;) [result].gif
+<pre class="cli"><code class="UBMono">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 \
+[name]%s.png &quot; $a; done;) [result].gif
 # `-delay 10&#039; means that each image is displayed for 0.1s.
-# [name]: file name of the source PNG files without the ordinal number.
-# `%s&#039;: the n-th PNG file.
-# [result]: file name of the target GIF file.
+# [name]: file name of the source <abbr title="Portable Network Graphics">PNG</abbr> files without the ordinal number.
+# `%s&#039;: the n-th <abbr title="Portable Network Graphics">PNG</abbr> file.
+# [result]: file name of the target <abbr title="Graphics Interchange Format">GIF</abbr> file.
 </code></pre>
 
-<p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things <em>won&#8217;t</em> work.<br />
-If the GIF animation has not been finished and intermediate files need to be saved, <em>don&#8217;t</em> use the .gif format, use .miff instead.<sup id="fnref-23-2"><a href="#fn-23-2" rel="footnote">2</a></sup></p>
+<p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things
+<em>won’t</em> work.</p>
+
+<p>If the <abbr title="Graphics Interchange Format">GIF</abbr> animation has not been finished and intermediate files need
+to be saved, <em>don’t</em> use the <abbr title="Graphics Interchange Format">GIF</abbr> format, use <abbr title="Magick Image File Format">MIFF</abbr> instead.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
 
 <div class="footnotes">
-<hr />
-<ol>
+  <ol>
+    <li id="fn:1">
 
-<li id="fn-23-1">
-<a href="https://unix.stackexchange.com/questions/24014/creating-a-gif-animation-from-png-files">Creating a GIF animation from PNG files</a>&#160;<a href="#fnref-23-1" rev="footnote">&#8617;</a>
-</li>
+      <p><a href="http://unix.stackexchange.com/q/24014/">Creating a GIF animation from PNG files</a> on Unix &amp;
+Linux Stack Exchange <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
 
-<li id="fn-23-2">
-<a href="http://www.imagemagick.org/Usage/anim_basics/#gif_anim">GIF Animations and Animation Meta-data</a>&#160;<a href="#fnref-23-2" rev="footnote">&#8617;</a>
-</li>
-
-</ol></div>
+      <p><a href="http://www.imagemagick.org/Usage/anim_basics/#gif_anim">GIF Animations and Animation Meta-data</a> in <em>Examples of
+ImageMagick Usage (Version 6)</em> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -207,7 +221,7 @@ If the GIF animation has not been finished and intermediate files need to be sav
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/imagemagick/'>imagemagick</a>
   
 </span>
 
@@ -270,6 +284,7 @@ If the GIF animation has not been finished and intermediate files need to be sav
 <li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (2)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -295,6 +310,10 @@ If the GIF animation has not been finished and intermediate files need to be sav
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/14/record-linux-terminal/">Record Linux Terminal</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a>
       </li>
     
@@ -308,10 +327,6 @@ If the GIF animation has not been finished and intermediate files need to be sav
     
       <li class="post">
         <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-14T00:44:08+08:00</updated>
+  <updated>2014-09-14T15:44:09+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,174 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Record Linux Terminal]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal/"/>
+    
+    <updated>2014-09-14T11:52:09+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal</id>
+    
+      <content type="html"><![CDATA[<h2 id="why">Why?</h2>
+
+<p>With detailed output from the terminal, other users can understand the
+problem better.  This helps them come up with a solution to the
+problem.</p>
+
+<p>Why don’t we use <code>&gt;</code> and <code>&gt;&gt;</code> to capture the standard output?</p>
+
+<p>Using <code>screendump</code>, one can record the commands <em>and</em> their output at
+<em>one</em> time; using <code>[cmd] &gt; output.txt</code>, <code>output.txt</code> only consists of
+the output of <code>[cmd]</code>, but <em>not</em> what he/she has typed.  (i.e.
+<code>[cmd]</code>)  The commands are often complicated and more than one line in
+length—copying and pasting text from the terminal are thus more
+difficult.  Therefore, <code>screendump</code> is useful.</p>
+
+<p>Why don’t we use <code>fbgrab</code> or <code>fbcat</code> to get a screenshot of the
+terminal?</p>
+
+<p>The goal is to let other know what’s in the terminal.   A screenshot
+of the terminal is easy to make.  However, its file size is <em>much</em>
+greater than the screen capture made of text.  Bitmaps <em>don’t</em> look
+good when one zooms in on them with a great magnification.  Therefore,
+to achieve the same goal, one may use text instead of images.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<!-- more -->
+
+<p>Usage —</p>
+
+<p>Suppose you want to record your TTY1.</p>
+
+<p><img src="http://vincenttam.github.io/images/posts/Screendump/tty1.png" title="Screenshot of TTY 1 taken with fbgrab" alt="tty1" /></p>
+
+<p>The above screenshot is taken using <code>fbgrab -c 1 tty1.png</code>.  Even
+though it’s cropped, it still has thousands of bytes.  Nevertheless,
+if I show it using text, there’re only 337 bytes since the text only
+consists of 337 characters.</p>
+
+<pre class="cli"><code class="UBMono">
+Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
+
+owner-Inspiron-560s login: owner
+Password:
+Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
+Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
+This is tty1.
+owner@owner-Inspiron-560s:~$
+</code></pre>
+
+<p>The above text is captured with <code>screendump</code>.  How to use
+<code>screendump</code>?  There’s a manual page about this tool. The following
+examples save the time.</p>
+
+<h3 id="failed-commands">Failed commands</h3>
+
+<ol>
+  <li>Using <code>screendump</code> like <code>fbgrab</code> <em>doesn’t</em> work.</li>
+  <li>Just copying the suggested command <em>doesn’t</em> work either.</li>
+</ol>
+
+<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
+usage: screendump [n]
+owner@owner-Inspiron-560s:~$ screendump 1
+couldn't read /dev/vcsa1
+</code></pre>
+
+<h3 id="successful-examples">Successful examples</h3>
+
+<p>Suppose that each of TTY1-6 has 64 rows and 160 columns.</p>
+
+<p>After one issued the command <code>screendump 1</code> with <em>root</em> privilege in
+<em>another</em> <abbr title="TeleTYpewriter">TTY</abbr>, the <em>whole</em> TTY1 is printed on the <abbr title="TeleTYpewriter">TTY</abbr> that invoked
+<code>screendump</code>.  Since TTY1 has 64 rows, to view the first line of TTY1,
+one needs to use <code>&lt;C-Page Up&gt;</code> to scroll up the screen.  The cursor
+will be at the bottom.</p>
+
+<pre class="cli"><code class="UBMono">Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
+
+owner-Inspiron-560s login: owner
+Password:
+Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
+Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
+This is tty1.
+owner@owner-Inspiron-560s:~$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+owner@owner-Inspiron-560s:~$
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization#eliminating-and-replacing-images">Eliminating the replacing images</a> in <em>Web
+Fundamentals</em> in Google Developers. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1217,7 +1385,7 @@ details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
       <content type="html"><![CDATA[<p>I made use of the suggested command in an answer for a Stack Overflow
 question to remove the white background of my gravatar.</p>
 
-<p>If you need to do it using GIMP, you may refer to <a href="http://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background/" title="Make Images With Transparent Background Using GIMP, and More ...">here</a>.</p>
+<p>If you need to do it using <abbr title="GNU Image Manipulation Program">GIMP</abbr>, you may refer to <a href="http://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background/" title="Make Images With Transparent Background Using GIMP, and More ...">here</a>.</p>
 
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick/">&infin; Permalink</a></p>]]></content>
     
@@ -1367,154 +1535,6 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
   </ol>
 </div>
 ]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[The Daring Fireball Linked List &#9733;]]></title>
-      <link href="http://daringfireball.net/linked/"/>
-    
-    <updated>2014-08-30T14:44:16+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list</id>
-    
-      <content type="html"><![CDATA[<blockquote><p><div class="article"><h5>The Daring Fireball Linked List</h5><h6 class="dateline">Friday, 29 Aug 2014</h6><br /><dl class="linkedlist"><dt><a href="http://recode.net/2014/08/29/codered-apple-wearable-wont-ship-until-next-year/">Paczkowski: Apple Wearable Won&#8217;t Ship Until Next Year</a>&nbsp;<a class="permalink" title="Permanent link to 'Paczkowski: Apple Wearable Won't Ship Until Next Year'." href="http://daringfireball.net/linked/2014/08/29/paczkowski">&#9733;</a></dt><dd><br /><p>John Paczkowski:</p><blockquote><p>So that new wearable device Apple is introducing on September 9?  It&#8217;s going to be a while before anyone is actually wearing it.  Sources in position to know tell me it won&#8217;t arrive at market for a few months.  &#8220;It&#8217;s not shipping anytime soon,&#8221; said one.  So when does Apple plan to ship its eagerly anticipated wearable?  That&#8217;s not clear, but my understanding is that we&#8217;re unlikely to see it at retail until after the holiday season—think early 2015.</p></blockquote><p>If true, why?  I&#8217;m guessing something similar to why they pre-announced the original iPhone—otherwise it would leak through regulatory filings with various governments around the world.  Plus, they have no worries about the <a href="https://en.wikipedia.org/wiki/Osborne_effect">Osborne Effect</a> with a new product category.</p></dd></dl></div>&#8230;<div class="article"><h5>About the Linked List</h5><p>The Daring Fireball Linked List is a daily list of interesting links and brief commentary, updated frequently but not frenetically. Call it a &#8220;link log&#8221;, or &#8220;linkblog&#8221;, or just &#8220;a good way to dick around on the Internet for a few minutes a day&#8221;.</p></div></p><footer><strong>Daring Fireball</strong></footer></blockquote>
-
-<p>Since I like the clarity of the linked list format, I’d been looking
-for ways to do this in June, but I <em>couldn’t</em> understand them.
-Moreover, as can be seen from the size of <code>git diff
-octopress/linklog</code><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the difference between <code>linklog</code> and <code>master</code>
-branches is <em>very large</em>.  I <em>couldn’t</em> understand the git-diff result
-for <code>source/javascripts/octopress.js</code>. This would discourage any
-ordinary users from looking into the issue.  Therefore, I once said
-that I <em>didn’t</em> know how to write an Octopress linklog.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>Last night, I added an <em>unofficial</em> linklog feature to Octopress.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>
-The official guide <em>didn’t</em> worked for me.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  I could see the
-complaints from some users who had found that this feature <em>wasn’t</em>
-working.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup>  At the same time, I could see some blogs that included
-this feature.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>  The last commit of the <code>linklog</code> branch was in
-2012.<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup>  It seems that it <em>isn’t</em> likely that Octopress will work on
-this in the next few months.<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup></p>
-
-<!-- more -->
-
-<p>Yesterday, I <em>finally</em> understood the following posts about DIY
-Octopress linklogs.</p>
-
-<ol>
-  <li><a href="http://www.candlerblog.com/2012/01/30/octopress-linked-list/">Make a Linked List With Octopress</a> in <em>the Candler Blog</em>.</li>
-  <li>Octopress pull request #<a href="https://github.com/imathis/octopress/pull/1538" title="Add a capture to article include to use external-url">1538</a></li>
-  <li><a href="https://wllmtrng.github.io/blog/2014/04/17/creating-a-linklog-post/">Creating a Linklog Post</a> in <em>New Learnings from Old
-Understandings</em></li>
-</ol>
-
-<p>In the commit in item 2, only <em>a few</em> lines was changed, and it should
-be comprehensible even for one who knows basic HTML and programming
-only.  In item 1, there’s <em>no</em> <code>page.external-url</code> in
-<code>source/_includes/article.html</code>, but it’s present in item 3.  I
-compared those <a href="http://docs.shopify.com/themes/liquid-documentation/basics">Liquid</a> code with the relevant files in <code>linklog</code>
-branch.  Item 1 also contains the changes in <code>source/atom.xml</code>.  From
-this, I worked out <code>source/_includes/custome/category_feeds.xml</code>,
-though the code is <em>far from beautiful</em>.  To work out the blog
-archive, I looked at Dr.Z’s one.</p>
-
-<p>I was bored of this kind of writing code and <em>didn’t</em> want to further
-change the CSS properties of linklog titles.  The linklog markers and
-permalink labels should be enough.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="yaml-front-matter-of-each-post">YAML front matter of each post</h3>
-
-<p>In the following sample Markdown source file for a post, there’s a
-variable <code>external-url</code>.  After looking at the above code blocks, I’ve
-learnt how to use those variables.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Contents of &#8220;2014-08-30-title-goes-here.markdown&#8221; </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">---
-</span><span class="line">layout: post
-</span><span class="line">title: &quot;Title goes here&quot;
-</span><span class="line">date: 2014-08-30 14:44:16 +0800
-</span><span class="line">comments: true
-</span><span class="line">categories: [category 1, category 2]
-</span><span class="line">external-url: http://www.example.com
-</span><span class="line">---
-</span><span class="line">
-</span><span class="line">Blog contents goes here...
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<ul>
-  <li><code>{{% if post.external-url %}}</code> tests if the
-  front matter of a post contains <code>external-url</code> variable.</li>
-  <li><code>{{ post.external-url }}</code> returns the value of
-  <code>external-url</code> variable.</li>
-</ul>
-
-<h3 id="yaml-variables-in-configyml">YAML variables in <code>_config.yml</code></h3>
-
-<ul>
-  <li>I added a line <code>myVar: value</code> into <code>_config.yml</code>.</li>
-  <li>While configurating <code>source/_includes/article.html</code>, if I need to
-  access an variable in <code>_config.yml</code>, I have to use
-  <code>{{ site.myVar }}</code>.  You’ll get <em>nothing</em> if
-  you miss <code>site.</code>.</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>I assume that Ocotpress’s GitHub repository has been added to the
-list of remote repositories as <code>remotes/octopress</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <blockquote><p><del>Unfortunately, I *haven&#8217;t* find out how to include Octopress&#8217;s linklog feature into my Octopress blog.</del></p><footer><strong>Me</strong> <cite><a href="http://localhost:4000/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">九成人感眼睛疲倦 藍光加快退化</a></cite></footer></blockquote>
-      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/39293af" title="Unofficial linklog support in progress...">39293af</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e35fab7" title="Added unofficial linklog support to more pages">e35fab7</a>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p><a href="http://octopress.org/docs/blogging/linklog/">Writing a Linklog</a> in <em>Octopress Documentation</em>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:5">
-      <p>Ocotpress issue #<a href="https://github.com/imathis/octopress/issues/418" title="Allow linklog style posts">418</a>. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:6">
-
-      <p>For example,</p>
-
-      <ul>
-        <li><a href="http://drz.ac/blog/">DrZ.ac</a></li>
-        <li><a href="http://makarenko.me/07-17-2013-moving-to-linklog/">Moving to Linklog</a> in <em>Weblog Сергія Макаренка</em>.</li>
-      </ul>
-      <p><a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:7">
-      <p>Commit <a href="https://github.com/imathis/octopress/commit/1750830" title="Merge pull request #800 from mxmerz/linklog">1750830</a> at the tip of <code>linklog</code> branch. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:8">
-
-      <blockquote><p>@matrixagent sorry.  It&#8217;s killing us too.  The linklog feature is going to be theme based and right now we&#8217;re working on breaking out the theme from the release to distribute the development a little better.  It&#8217;s tricky to manage asset installation.</p><footer><strong>@octopress</strong> <cite><a href="https://alpha.app.net/octopress/post/14385019">alpha.app.net/octopress/post/&hellip;</a></cite></footer></blockquote>
-      <p><a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/08/30/the-daring-fireball-linked-list/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   

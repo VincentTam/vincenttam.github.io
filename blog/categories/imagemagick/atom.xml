@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Imagemagick | Blog 1]]></title>
+  <link href="http://vincenttam.github.io/blog/categories/imagemagick/atom.xml" rel="self"/>
+  <link href="http://vincenttam.github.io/"/>
+  <updated>2014-09-14T15:44:09+08:00</updated>
+  <id>http://vincenttam.github.io/</id>
+  <author>
+    <name><![CDATA[Vincent Tam]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Set Transparent Background Using ImageMagick &#9733;]]></title>
+      <link href="http://stackoverflow.com/a/11115408"/>
+    
+    <updated>2014-09-01T00:45:15+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick</id>
+    
+      <content type="html"><![CDATA[<p>I made use of the suggested command in an answer for a Stack Overflow
+question to remove the white background of my gravatar.</p>
+
+<p>If you need to do it using <abbr title="GNU Image Manipulation Program">GIMP</abbr>, you may refer to <a href="/blog/2014/04/27/gimp-transparent-background/" title="Make Images With Transparent Background Using GIMP, and More ...">here</a>.</p>
+
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Don't Kill a Fly With a Cannon—Console Creation of GIF Files]]></title>
+      <link href="http://vincenttam.github.io/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files/"/>
+    
+    <updated>2013-12-29T16:30:00+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files</id>
+    
+      <content type="html"><![CDATA[<p>As the saying goes, a picture is worth a thousand words. Some netizens
+believe that if a picture tells the truth.</p>
+
+<p>If you want to take a screenshot in GNU/Linux text mode, you may use
+<code>fbgrab</code> to get a <abbr title="Portable Network Graphics">PNG</abbr> file (<code>fbcat</code> gives you a <abbr title="Portable Pix Map">PPM</abbr> file).</p>
+
+<p>If you want to illustrate a process with a series of pictures, then
+you’ll probably need a <abbr title="Graphics Interchange Format">GIF</abbr> file. <abbr title="GNU Image Manipulation Program">GIMP</abbr> provides an easy way of creating
+<abbr title="Graphics Interchange Format">GIF</abbr> files by selecting menu items and clicking a few buttons, but for
+geeks who are used to <abbr title="Command Line Interfaces">CLI</abbr>, this is not the final answer for them.</p>
+
+<p>If your source <abbr title="Portable Network Graphics">PNG</abbr> files are named as <code>[name]%s.png</code>, then the right
+command is:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code class="UBMono">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 \
+[name]%s.png &quot; $a; done;) [result].gif
+# `-delay 10&#039; means that each image is displayed for 0.1s.
+# [name]: file name of the source <abbr title="Portable Network Graphics">PNG</abbr> files without the ordinal number.
+# `%s&#039;: the n-th <abbr title="Portable Network Graphics">PNG</abbr> file.
+# [result]: file name of the target <abbr title="Graphics Interchange Format">GIF</abbr> file.
+</code></pre>
+
+<p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things
+<em>won’t</em> work.</p>
+
+<p>If the <abbr title="Graphics Interchange Format">GIF</abbr> animation has not been finished and intermediate files need
+to be saved, <em>don’t</em> use the <abbr title="Graphics Interchange Format">GIF</abbr> format, use <abbr title="Magick Image File Format">MIFF</abbr> instead.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p><a href="http://unix.stackexchange.com/q/24014/">Creating a GIF animation from PNG files</a> on Unix &amp;
+Linux Stack Exchange <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p><a href="http://www.imagemagick.org/Usage/anim_basics/#gif_anim">GIF Animations and Animation Meta-data</a> in <em>Examples of
+ImageMagick Usage (Version 6)</em> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+</feed>

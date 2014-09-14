@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I issued the following command and then rebooted the machine. $ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
-&gt; linux-image &hellip;">
+  <meta name="description" content="Why? With detailed output from the terminal, other users can understand the
+problem better. This helps them come up with a solution to the
+problem. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -132,6 +133,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/14/record-linux-terminal/">Record Linux Terminal</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T11:52:09+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:52 am</span></time>
+        
+           | <a href="/blog/2014/09/14/record-linux-terminal/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/record-linux-terminal/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="why">Why?</h2>
+
+<p>With detailed output from the terminal, other users can understand the
+problem better.  This helps them come up with a solution to the
+problem.</p>
+
+<p>Why don’t we use <code>&gt;</code> and <code>&gt;&gt;</code> to capture the standard output?</p>
+
+<p>Using <code>screendump</code>, one can record the commands <em>and</em> their output at
+<em>one</em> time; using <code>[cmd] &gt; output.txt</code>, <code>output.txt</code> only consists of
+the output of <code>[cmd]</code>, but <em>not</em> what he/she has typed.  (i.e.
+<code>[cmd]</code>)  The commands are often complicated and more than one line in
+length—copying and pasting text from the terminal are thus more
+difficult.  Therefore, <code>screendump</code> is useful.</p>
+
+<p>Why don’t we use <code>fbgrab</code> or <code>fbcat</code> to get a screenshot of the
+terminal?</p>
+
+<p>The goal is to let other know what’s in the terminal.   A screenshot
+of the terminal is easy to make.  However, its file size is <em>much</em>
+greater than the screen capture made of text.  Bitmaps <em>don’t</em> look
+good when one zooms in on them with a great magnification.  Therefore,
+to achieve the same goal, one may use text instead of images.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/14/record-linux-terminal/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -719,73 +783,6 @@ Detexify is the answer for commonly used symbols.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T14:16:31+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:16 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/a-fake-function/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/07/a-fake-function/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/a-fake-function/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Half a year ago, when I heard the concept of <strong>well-defined
-functions</strong>, I <em>wasn’t</em> familiar with it.</p>
-
-<p>I’ve just worked out a problem, and got more idea about that concept.
-The problem should be quite easy.  It asks readers to show that if
-$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
-is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
-$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
-the wordings in the question, and attempted to prove that the binary
-structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
-isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
-composition of functions.  As a result, I let $\phi: \{\varphi_g
-\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
-The associativity, existence of identity element and existence of
-inverse of the binary structure can be easily verified.  By the very
-definition of $\phi$, it seems that its surjectivity is very obvious.
-I continued to write “injectivity of $\phi$ is also obvious.”</p>
-
-<p>\[
-\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
-  \implies \varphi_{g_1} = \varphi_{g_2}
-\]</p>
-
-<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
-double-headed one.  If I <em>couldn’t</em> do so, it means that
-$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
-g_2$.  I realised that I need to check whether $\phi$ was
-<em>well-defined</em>.  As a result, I wasted an hour on some equations.
-Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
-$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
-G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
-did was a waste of time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -820,6 +817,7 @@ did was a waste of time.</p>
 <li class='category'><a href='/blog/categories/git/'>git (9)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (3)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (2)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (11)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -845,6 +843,10 @@ did was a waste of time.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/09/14/record-linux-terminal/">Record Linux Terminal</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a>
       </li>
     
@@ -858,10 +860,6 @@ did was a waste of time.</p>
     
       <li class="post">
         <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a>
       </li>
     
   </ul>
