@@ -27,7 +27,7 @@ but it's *hard* to see.
 
 {% img fancybox noscr nopr /images/posts/FancyboxInline/scroll6.png 900 'Move the mouse to the right and click for the next image' 'fig6' %}
 
-{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll7.png 900 'Move the mouse to the right and click for the next image' 'fig7' %}
+{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll7.png 900 'Move the mouse to the right and click to replay the slideshow' 'fig7' %}
 
 Result
 ---

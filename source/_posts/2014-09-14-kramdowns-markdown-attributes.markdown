@@ -3,7 +3,7 @@ layout: post
 title: "Kramdown's Markdown Attributes"
 date: 2014-09-14 16:37:49 +0800
 comments: true
-categories: Kramdown
+categories: kramdown
 ---
 
 While writing a post about purging old Linux kernels, I made use of

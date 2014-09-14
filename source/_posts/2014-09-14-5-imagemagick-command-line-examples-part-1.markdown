@@ -29,7 +29,7 @@ message described in ImageMagick's examples.[^3].
     There's an image cropped with ImageMagick in "[Usage][pp2]" in
     *Record Linux Terminal*.
 
-    <pre class="cli"><code class="UBMono">$ convert tty1.png 512x225+0+0 src.png
+    <pre class="cli"><code class="UBMono">$ convert src.png 512x225+0+0 tty1.png
     </code></pre>
 
 [^3]:
