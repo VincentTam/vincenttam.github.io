@@ -80,4 +80,8 @@ keys.
 [so16906144]: http://stackoverflow.com/q/16906144
 [so7055393]: http://stackoverflow.com/q/7055393
 
-<!-- vim:se tw=70: -->
+*[CSS]: Cascading Style Sheets
+*[GIMP]: GNU Image Manipulation Program
+*[HTTP]: HyperText Transfer Protocol
+*[JPEG]: Joint Photographic Experts Group
+*[PNG]: Portable Network Graphics
