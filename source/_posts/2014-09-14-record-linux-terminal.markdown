@@ -33,7 +33,8 @@ to achieve the same goal, one may use text instead of images.[^1]
 
 <!-- more -->
 
-Usage ---
+Usage
+---
 
 Suppose you want to record your TTY1.
 

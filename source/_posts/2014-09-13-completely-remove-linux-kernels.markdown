@@ -79,9 +79,9 @@ packages anymore.[^2]
 ---
 [^1]: Click [here](#list1){:.cliwide} to view the terminal commands and output.
 
-<div id="list1" class="noscr">
-<p>The <strong>bolded</strong> lines represent the packages that are
-going to be completely removed.</p>
+<div id="list1" class="noscr" markdown="1">
+The **bold** lines represent the packages that are going to be
+completely removed.
 
 <pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
 ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
@@ -136,8 +136,8 @@ ii  util-<span class="grep">linux</span>                                        
 
 [^2]: Click [here](#list2){:.cliwide} to view the terminal commands and output.
 
-<div id="list2" class="noscr">
-<p>There's <em>no</em> lines beginning with <code>rc</code>.</p>
+<div id="list2" class="noscr" markdown="1">
+There's *no* lines beginning with `rc`.
 
 <pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
 ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
