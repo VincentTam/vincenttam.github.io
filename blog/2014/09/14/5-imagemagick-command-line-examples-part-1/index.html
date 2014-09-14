@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Interesting Linux Figures (1) - Blog 1</title>
+  <title>5 ImageMagick Command Line Examples–part 1 - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I saw an interesting picture about GNU/Linux in a post on Facebook
-page Open Source For You. As a GNU/Linux user, I strongly agree with the statement &hellip;">
+  <meta name="description" content="In the second example, the command only produces one image. In the
+past, without knowing the use of +[x-pos]+[y-pos], I got more
+than one image, and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ page Open Source For You. As a GNU/Linux user, I strongly agree with the stateme
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -136,7 +137,7 @@ page Open Source For You. As a GNU/Linux user, I strongly agree with the stateme
   <header>
     
       
-	<h1 class="entry-title">Interesting Linux Figures (1)</h1>
+	<h1 class="entry-title external"><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick Command Line Examples–part 1</a> &#9733;</h1>
       
     
     
@@ -146,7 +147,7 @@ page Open Source For You. As a GNU/Linux user, I strongly agree with the stateme
 
 
 
-<time class='entry-date' datetime='2014-06-25T01:26:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 am</span></time>
+<time class='entry-date' datetime='2014-09-14T17:58:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:58 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -157,16 +158,44 @@ page Open Source For You. As a GNU/Linux user, I strongly agree with the stateme
   </header>
 
 
-<div class="entry-content"><p>I saw an interesting picture about GNU/Linux in a post on Facebook
-page <em>Open Source For You</em>.</p>
+<div class="entry-content"><p>In the second example, the command only produces <em>one</em> image.  In the
+past, <em>without</em> knowing the use of <code>+[x-pos]+[y-pos]</code>, I got <em>more
+than one</em> image, and needed to delete them <em>except</em> the desired
+one.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<p><img src="/images/posts/LinuxFig1/LinuxIsComp.jpg" title="fig1" alt="A computer minus Linux equals zero." /></p>
+<p>When I wrote a post about <code>screendump</code>, I took a screenshot of TTY1 so
+as to prove that the text that followed the screenshot was <em>really</em>
+contents in TTY1.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  The width and height of the screenshot was
+1280 px and 1024 px respectively.  I then used my old way to crop it
+to an image with width 520 px and height 230 px, and got similar error
+message described in ImageMagick’s examples.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
 
-<p>As a GNU/Linux user, I <em>strongly</em> agree with the statement.
-Otherwise, if the current version of
-M<span class="tex2jax_ignore">$</span> Win* is so good, how can the
-company make <span class="tex2jax_ignore">$</span> from a newer
-version?</p>
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>In “<a href="/blog/2014/06/30/basic-use-of-aptitude/#imagemagick-commands-learnt">ImageMagick commands learnt</a>” in <em>Basic Use of
+Aptitude</em>, I got <em>four</em> images because I <em>didn’t</em> append <code>+0+0</code>
+after <code>640x512</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>There’s an image cropped with ImageMagick in “<a href="/blog/2014/09/14/record-linux-terminal/">Usage</a>” in
+<em>Record Linux Terminal</em>.</p>
+
+      <pre class="cli"><code class="UBMono">$ convert tty1.png 512x225+0+0 src.png
+</code></pre>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>In “<a href="http://www.imagemagick.org/Usage/crop/#crop_missed">The Missed Image (from a bad crop)</a>” in <em>Examples of
+ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -182,12 +211,12 @@ version?</p>
 
 
 
-<time class='entry-date' datetime='2014-06-25T01:26:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 am</span></time>
+<time class='entry-date' datetime='2014-09-14T17:58:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:58 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/imagemagick/'>imagemagick</a>
   
 </span>
 
@@ -196,7 +225,7 @@ version?</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/" >Tweet</a>
   
   
   
@@ -207,10 +236,8 @@ version?</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/21/export-pdf-to-svg/" title="Previous Post: Export PDF to SVG">&laquo; Export PDF to SVG</a>
+        <a class="basic-alignment left" href="/blog/2014/09/14/kramdowns-markdown-attributes/" title="Previous Post: Kramdown's Markdown Attributes">&laquo; Kramdown&#8217;s Markdown Attributes</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/06/30/basic-use-of-aptitude/" title="Next Post: Basic Use of Aptitude">Basic Use of Aptitude &raquo;</a>
       
     </p>
   </footer>
@@ -324,8 +351,8 @@ version?</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/';
         var disqus_script = 'embed.js';
       
     (function () {
