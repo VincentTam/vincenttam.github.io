@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-09-21T20:46:24+08:00</updated>
+  <updated>2014-10-01T22:18:14+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Sample $\rm \LaTeX$ Table]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/"/>
+    
+    <updated>2014-10-01T19:36:28+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table</id>
+    
+      <content type="html"><![CDATA[<h2 id="result">Result</h2>
+
+<p><img src="/images/posts/LaTeXTable/out.jpg" alt="result" /></p>
+
+<!-- more -->
+
+<h2 id="source-code">Source code</h2>
+
+<p><div><script src='https://gist.github.com/eb013fa73d62a5f5c917.js'></script>
+<noscript><pre><code>\documentclass[border=5pt]{standalone}
+\usepackage{fontspec}
+\begin{document}
+\begin{tabular}{lll}
+  \hline
+  \multicolumn{1}{||c}{Header 1} &amp;
+  \multicolumn{1}{||c||}{Header 2} &amp;
+  \multicolumn{1}{c||}{Header 3} \\ \hline
+  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
+  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
+  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
+  \noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 4} &amp;
+  \multicolumn{1}{||c||}{Header 5} &amp;
+  \multicolumn{1}{c||}{Header 6} \\ \hline
+  \multicolumn{1}{||l}{Cell 4} &amp;
+  \multicolumn{1}{||l||}{Cell 5} &amp;
+  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 7} &amp;
+  \multicolumn{1}{||c||}{Header 8} &amp;
+  \multicolumn{1}{c||}{Header 9} \\ \hline
+  \multicolumn{1}{||l}{Cell 7} &amp;
+  \multicolumn{1}{||l||}{Cell 8} &amp;
+  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
+  \cline{2-2}
+  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
+  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
+  \cline{2-2}
+\end{tabular}
+\end{document}</code></pre></noscript></div>
+</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Line 1: <em>Without</em> <code>border=5pt</code>, the grid line on the right will be
+truncated.<sup id="fnref:StandaloneBd"><a href="#fn:StandaloneBd" class="footnote">1</a></sup></p>
+
+<p>Lines 5–7: Using <code>\multicolumn{1}{c}</code> is the easiest way to centre
+<em>only</em> the heading that I know.</p>
+
+<p>Lines 8–10: By trial, I discovered that putting <code>p{3.5cm}</code> at line 3
+<em>doesn’t</em> help—the width of the middle column <em>wouldn’t</em> be the same
+as that of the other two columns.  The positions of the <code>|</code>s and
+<code>\multicolumn{1}{l}{Cell n}</code> are also worked out by repeated
+experiments, so that the double vertical grid lines separating the
+cells are properly aligned.</p>
+
+<p>Line 11: Actually, the double-rules can be made using <code>\hline\hline</code>.
+I <em>don’t</em> use this method because of the contents at the bottom of the
+table.  See lines 25–26 for details.</p>
+
+<p>Lines 25–26: <code>\cline{2-2}</code> is for a horizontal line above the second
+cell.  If I use <code>\hline\cline{2-2}</code>, the two lines will <em>coincide</em>.
+Therefore, I copied the command <code>\noalign{\smallskip}</code> from the
+section “Space between rows” in the Wikibook for $\rm
+\LaTeX$.<sup id="fnref:RowSep"><a href="#fn:RowSep" class="footnote">2</a></sup></p>
+
+<p>Lines 27–28: In order <em>not</em> to have grids at the corners of the last
+row, at left of the leading <code>&amp;</code>, there’s <em>no</em> non-blank characters.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:StandaloneBd">
+
+      <p><a href="http://texblog.org/2012/09/12/cropping-the-output-file-to-its-content-in-latex/"><em>Cropping the output file to its content in LaTeX</em></a> in
+texblog. <a href="#fnref:StandaloneBd" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:RowSep">
+
+      <p>LaTeX/Tables. (2014, September 2). <em>Wikibooks, The Free Textbook
+Project</em>. Retrieved 14:04, October 1, 2014 from
+<a href="http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642">http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642</a> <a href="#fnref:RowSep" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -318,103 +418,6 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
     </li>
     <li id="fn:4">
       <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Star of David in Pascal's Triangle]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/"/>
-    
-    <updated>2014-07-12T21:44:37+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle</id>
-    
-      <content type="html"><![CDATA[<p><img class="right" src="/images/posts/DavidStar/Nodes1.svg" width="100"></p>
-
-<p>Yesterday, I learnt drawing simple TikZ diagrams.</p>
-
-<p>In my opinion, defining nodes while connecting them will <em>not</em> look
-good.</p>
-
-<pre><code>\path[draw] (0, 0) node {A} -- (1,0) -- (1,1) node {B};
-</code></pre>
-
-<p>I define the nodes before connecting them, and the result is what I
-desire.</p>
-
-<p><img src="/images/posts/DavidStar/Nodes2.svg" width="100">
-<!-- The image overlapped with the code block. --></p>
-
-<p><figure class='code'><figcaption><span>Drawing basic TikZ diagrams</span><a href='http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\node</span> (A) at (0,0) <span class="nb">{</span>A<span class="nb">}</span>;
-</span><span class='line'><span class="k">\node</span> (B) at (1,1) <span class="nb">{</span>B<span class="nb">}</span>;
-</span><span class='line'><span class="k">\draw</span> (A) – (1,0) – (B);
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p><img class="center" src="/images/posts/DavidStar/DavidStar.svg" width="600"></p>
-
-<p>I <em>overlooked</em> the meaning of <strong>clipping</strong> in Meik Hellmund’s short
-TikZ tutorial.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  I constructed the diagram using the <code>edge</code>
-command.</p>
-
-<p><figure class='code'><figcaption><span> (DavidStar.tex)</span> <a href='/downloads/code/DavidStar.tex'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\node</span> (A) at (1,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'>  <span class="k">\node</span> (C) at (4,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (A);
-</span><span class='line'>  <span class="k">\node</span> (E) at (1,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (C)
-</span><span class='line'>                                                 edge (A);
-</span><span class='line'>  <span class="k">\node</span> (B) at (3,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'>  <span class="k">\node</span> (D) at (3,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span> edge (B);
-</span><span class='line'>  <span class="k">\node</span> (F) at (0,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (B)
-</span><span class='line'>                                             edge (D);
-</span><span class='line'>  <span class="k">\node</span> (G) at (2,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{n </span><span class="nv">\choose</span><span class="nb"> r}</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>Realising that $\displaystyle {n \choose k} = \frac{n!}{r! (n - r)!}$,
-one can easily see that</p>
-
-<p>\[
-\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
-  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
-\]</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>See <a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12">p.12</a> of the tutorial.</p>
-
-      <blockquote>
-        <p>“It is often better to define named nodes first and connect them
-later, since then the paths are clipped around the notes…”</p>
-      </blockquote>
-      <p><a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
