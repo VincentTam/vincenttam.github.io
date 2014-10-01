@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-01T22:18:14+08:00</updated>
+  <updated>2014-10-01T23:27:33+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,15 +15,94 @@
   
   <entry>
     
+      <title type="html"><![CDATA[IPA Symbols in $\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/"/>
+    
+    <updated>2014-10-01T22:28:49+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$</id>
+    
+      <content type="html"><![CDATA[<h2 id="target">Target</h2>
+
+<p><img src="http://vincenttam.github.io/images/posts/LaTeXIPA/out.jpg" alt="target" /></p>
+
+<!-- more -->
+
+<h2 id="failed-attempts">Failed attempts</h2>
+
+<ul>
+  <li>Googled “xelatex ipa symbols”</li>
+  <li>Tried the <code>tipa</code> package, and got the error “command sups already
+  defined”.<sup id="fnref:tipaFail"><a href="#fn:tipaFail" class="footnote">1</a></sup></li>
+</ul>
+
+<h2 id="source-code">Source code</h2>
+
+<p>I limited the above google search to academic sites <em>only</em><sup id="fnref:SiteEdu"><a href="#fn:SiteEdu" class="footnote">2</a></sup>,
+and I luckily found a blog post which inspired me to work out the
+following example.  (This link to the post is included in the
+footnotes.)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class="line"><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class="line">Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Line 2: For inserting characters with accents, for example, ‘é’ and
+‘ö’.  <em>Without</em> this line, those characters <em>won’t</em> be processed by
+the typesetting system.</p>
+
+<p>Line 3: For changing to a font that supports IPA symbols.  Here are
+the sources of inspirations.</p>
+
+<ul>
+  <li>Principal: <a href="http://www.phonologist.org/papers/becker_IPAandLaTeX.pdf"><em>Typesetting phonology papers</em></a> by Michael
+  Becker</li>
+  <li>Practical: <a href="http://tex.stackexchange.com/a/64846"><em>Using TIPA with fontspec</em></a> on $\rm
+  \TeX$–$\rm \LaTeX$ Stack Exchange</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tipaFail">
+
+      <p>I gave up trying <code>tipa</code> after reading
+<a href="http://sonny.cslu.ohsu.edu/~gormanky/blog/tex-tips-for-linguists/"><em>$\rm \TeX$ tips for linguists</em></a> by Kyle Gorman. <a href="#fnref:tipaFail" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:SiteEdu">
+
+      <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
       <title type="html"><![CDATA[A Sample $\rm \LaTeX$ Table]]></title>
       <link href="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/"/>
     
     <updated>2014-10-01T19:36:28+08:00</updated>
     <id>http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table</id>
     
-      <content type="html"><![CDATA[<h2 id="result">Result</h2>
+      <content type="html"><![CDATA[<h2 id="target">Target</h2>
 
-<p><img src="http://vincenttam.github.io/images/posts/LaTeXTable/out.jpg" alt="result" /></p>
+<p><img src="http://vincenttam.github.io/images/posts/LaTeXTable/out.jpg" alt="target" /></p>
 
 <!-- more -->
 
@@ -1587,82 +1666,6 @@ one—just add/set <code>encoding: UTF-8</code> in <code>_config.yml</code>.</p>
   <ol>
     <li id="fn:1">
       <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/f5847538b19e769b6fc05ef01bce3b8e88e3aa77/_config.yml#L53">f584753</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (1)]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/"/>
-    
-    <updated>2014-09-02T15:22:25+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>This Sunday, I tried to do something similar to what I did in
-May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
-I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
-that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
-easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2a/err.png" title="A compilation error" alt="Screenshot of problem" /></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I used the relevant part of the error message to search for websites
-describing similar/related problems.  Luckily, I found one in <em>Eaten
-by Grues</em>.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p>I manually created a batch file in the <em>same</em> folder of
-<code>python.exe</code>.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>python2.bat </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
-</span><span class="line">python %*
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The raison d’être of the trailing <code>%*</code> is explained in
-<a href="http://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/" title="Something About Win* Batch Files">one of my old posts</a>.</p>
-
-<p>Finally, the section <code>which: no python2 in (...)</code> <em>disappeard</em> after I
-locally generated the site again.</p>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctRuby2b/err.png" title="Rake can now detect Python2." alt="solved problem" /></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>See <a href="http://vincenttam.github.io/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in <em>Blog 1</em> for
-details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>“Downloads” in the official website of RubyInstaller for Windows.
-(<a href="http://rubyinstaller.org/downloads/">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See [Installing PortableJekyll][sol] in <em>Eaten by Grues</em> for
-details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>I suppose that Python is in the <code>PATH</code> variable. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

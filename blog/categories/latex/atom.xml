@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-01T22:18:14+08:00</updated>
+  <updated>2014-10-01T23:27:33+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,15 +15,94 @@
   
   <entry>
     
+      <title type="html"><![CDATA[IPA Symbols in $\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/"/>
+    
+    <updated>2014-10-01T22:28:49+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$</id>
+    
+      <content type="html"><![CDATA[<h2 id="target">Target</h2>
+
+<p><img src="/images/posts/LaTeXIPA/out.jpg" alt="target" /></p>
+
+<!-- more -->
+
+<h2 id="failed-attempts">Failed attempts</h2>
+
+<ul>
+  <li>Googled “xelatex ipa symbols”</li>
+  <li>Tried the <code>tipa</code> package, and got the error “command sups already
+  defined”.<sup id="fnref:tipaFail"><a href="#fn:tipaFail" class="footnote">1</a></sup></li>
+</ul>
+
+<h2 id="source-code">Source code</h2>
+
+<p>I limited the above google search to academic sites <em>only</em><sup id="fnref:SiteEdu"><a href="#fn:SiteEdu" class="footnote">2</a></sup>,
+and I luckily found a blog post which inspired me to work out the
+following example.  (This link to the post is included in the
+footnotes.)</p>
+
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="explanation">Explanation</h2>
+
+<p>Line 2: For inserting characters with accents, for example, ‘é’ and
+‘ö’.  <em>Without</em> this line, those characters <em>won’t</em> be processed by
+the typesetting system.</p>
+
+<p>Line 3: For changing to a font that supports IPA symbols.  Here are
+the sources of inspirations.</p>
+
+<ul>
+  <li>Principal: <a href="http://www.phonologist.org/papers/becker_IPAandLaTeX.pdf"><em>Typesetting phonology papers</em></a> by Michael
+  Becker</li>
+  <li>Practical: <a href="http://tex.stackexchange.com/a/64846"><em>Using TIPA with fontspec</em></a> on $\rm
+  \TeX$–$\rm \LaTeX$ Stack Exchange</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tipaFail">
+
+      <p>I gave up trying <code>tipa</code> after reading
+<a href="http://sonny.cslu.ohsu.edu/~gormanky/blog/tex-tips-for-linguists/"><em>$\rm \TeX$ tips for linguists</em></a> by Kyle Gorman. <a href="#fnref:tipaFail" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:SiteEdu">
+
+      <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
       <title type="html"><![CDATA[A Sample $\rm \LaTeX$ Table]]></title>
       <link href="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/"/>
     
     <updated>2014-10-01T19:36:28+08:00</updated>
     <id>http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table</id>
     
-      <content type="html"><![CDATA[<h2 id="result">Result</h2>
+      <content type="html"><![CDATA[<h2 id="target">Target</h2>
 
-<p><img src="/images/posts/LaTeXTable/out.jpg" alt="result" /></p>
+<p><img src="/images/posts/LaTeXTable/out.jpg" alt="target" /></p>
 
 <!-- more -->
 
@@ -372,56 +451,6 @@ Detexify is the answer for commonly used symbols.</p>
   </ol>
 </div>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/07/detexify-$-slash-slash-rm-slash-slash-latex$-handwritten-symbol-recogntion/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Avoid Using Ugly Bitmapped Computer Modern Fonts]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/"/>
-    
-    <updated>2014-08-02T14:22:20+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts</id>
-    
-      <content type="html"><![CDATA[<p>In a $\rm \LaTeX$ guide found on the website of George Mason
-University, it’s said that Computer Modern fonts can look ugly.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
-Like most Computer Modern users, I <em>didn’t</em> notice that until I wrote
-an article using $\rm \LaTeX$ last weekend.</p>
-
-<p>To illustrate the problem, I used a minimum example which I had posted
-on Gist.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  To simply matters, one may use
-<code>\pagenumbering{gobble}</code> to suppress page numbers.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p><img class="fancybox" src="/images/posts/CMvsLM/cmodern.png" width="800" title="‘Ugly bitmapped Computer Modern fonts’ ‘fig1’" ></p>
-
-<p>If one thinks that downloading the Blue Sky fonts from the American
-Mathematical Society is too troublesome, simply including the package
-<code>lmodern</code> will do.</p>
-
-<p><img class="fancybox" src="/images/posts/CMvsLM/lmodern.png" width="800" title="‘Improved outlook using Latin Modern fonts’ ‘fig2’" ></p>
-
-<p>P.S. I have learnt an ImageMagick command from a Stack Overflow
-question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
     
   </entry>
   

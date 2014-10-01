@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: In Stack Overflow question 12339415, it is suggested that clang is better. For its installation, refer to its another fan's blog. ">
+  <meta name="description" content="Changing environment variables in vimrc Refer to Vim Wiki's page on environment variables. The tips uses paths in *nix in the examples. However, for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -131,6 +131,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/13/writing-vims-output-to-files/">Writing Vim&#8217;s Output to Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-13T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+        
+           | <a href="/blog/2013/12/13/writing-vims-output-to-files/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/13/writing-vims-output-to-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Changing environment variables in vimrc</h3>
+
+<p>Refer to <a href="http://vim.wikia.com/wiki/Environment_variables">Vim Wiki&#8217;s page on environment variables</a>. The tips uses paths in <em>*nix in the examples. However, for Win*</em>, some inexperienced users don&#8217;t know whether slashes or backslashes should be used. In fact, backslashes should be used, and the string should be enclosed by a pair of single quote (I don&#8217;t know if double quotes work.) Then things should run. If you&#8217;re unlucky and receive a runtime error in the next time you start Vim, then it may be due to the missing space characters around the equal sign.</p>
+
+<h3>Writing external commands to files</h3>
+
+<p>It&#8217;s easy! (<code>:r ![command]</code> will do.)</p>
+
+<h3>Writing variables to files</h3>
+
+<p>Use the <code>=</code> register. First get into normal mode, then type the following commands.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="c">&quot;=sin(1)p</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The <code>p</code> have to be typed before any further changes of contents. Otherwise, it may not work. For details, see <a href="http://unix.stackexchange.com/questions/8101/how-to-insert-the-result-of-a-command-into-the-text-in-vim">Unix &amp; Linux Stack Exchange question 8101</a>.</p>
+
+<h3>Writing internal commands to files</h3>
+
+<p>A forum post has answered my doubt. I redirect interested readers to <a href="http://objectmix.com/editors/786190-how-redirect-vim-internal-command-output-current-buffer.html">here</a>.</p>
+
+<h3>Quick reference lists of some easy Vim commands</h3>
+
+<ul>
+    <li>
+    <a href="http://www.catswhocode.com/blog/100-vim-commands-every-programmer-should-know">100 Vim commands every programmers should know</a>
+    </li>
+    <li>
+    <a href="http://php.dzone.com/articles/130-essential-vim-commands">130+ Essential Vim Commands</a>
+    </li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -597,45 +664,6 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/11/06/this-weekends-work-on-vim/">This Weekend&#8217;s Work on Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-11-06T02:22:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:22 am</span></time>
-        
-           | <a href="/blog/2013/11/06/this-weekends-work-on-vim/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/11/06/this-weekends-work-on-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/11/06/this-weekends-work-on-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-    <li>Installed some useful Vim plugins, such as <a title="Vundle" href="http://github.com/gmarik/vundle">Vundle</a> (Vim plugins management tool), <a title="NERDTree" href="http://github.com/scrooloose/nerdtree">NERDTree</a> (file browser), <a title="Easymotion" href="http://github.com/Lokaltog/vim-easymotion">Easymotion</a>, <a title="Loremipsum" href="http://github.com/vim-scripts/loremipsum">Loremipsum</a> (random text generator), <a title="Vim-surround" href="http://github.com/tpope/vim-surround">Vim-surround</a> (surround text with brackets), <a title="Vim-snipmate" href="http://github.com/msanders/snipmate.vim">Vim-snipmate</a> (for autogenerated code), <a title="Vim-addon-mw-utils" href="http://github.com/marcweber/vim-addon-mw-utils">Vim-addon-mw-utils</a>, <a title="Tlib_vim" href="http://github.com/tomtom/tlib_vim">Tlib_vim</a> (dependency for Vim-snipmate), <a title="FuzzyFinder" href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a> (quick finding tool for files, etc) and <a title="L9" href="http://github.com/vim-scripts/L9">L9</a> (dependency for FuzzyFinder).</li>
-    <li>Do some custom insert mode keyboard mapping. (<a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">automatical completion of brackets</a>)</li>
-</ol>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/17">&larr; Older</a>
@@ -675,7 +703,7 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (3)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (11)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (12)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (13)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (23)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (9)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -699,6 +727,10 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/">IPA Symbols in $\rm \LaTeX$</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/">A Sample $\rm \LaTeX$ Table</a>
       </li>
     
@@ -712,10 +744,6 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
     
       <li class="post">
         <a href="/blog/2014/09/14/kramdowns-markdown-attributes/">Kramdown&#8217;s Markdown Attributes</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/14/record-linux-terminal/">Record Linux Terminal</a>
       </li>
     
   </ul>

@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Pappus&#8217;s Hexagon Theorem - Blog 1</title>
+  <title>IPA Symbols in $\rm \LaTeX$ - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Source Suppose that points $A,B$ and $C$ lie on the same straight line, and
-$D,E$ and $F$ lie on another one. Draw line segments
-$AE,BD,BF,CE,AF$ &hellip;">
+  <meta name="description" content="Target Failed attempts Googled “xelatex ipa symbols” Tried the tipa package, and got the error “command sups already defined”.1 Source code I limited &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ $AE,BD,BF,CE,AF$ &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -137,7 +135,7 @@ $AE,BD,BF,CE,AF$ &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Pappus&#8217;s Hexagon Theorem</h1>
+	<h1 class="entry-title">IPA Symbols in $\rm \LaTeX$</h1>
       
     
     
@@ -147,7 +145,7 @@ $AE,BD,BF,CE,AF$ &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-07-12T23:48:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:48 pm</span></time>
+<time class='entry-date' datetime='2014-10-01T22:28:49+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:28 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -158,193 +156,70 @@ $AE,BD,BF,CE,AF$ &hellip;">
   </header>
 
 
-<div class="entry-content"><p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm.svg" width="600" /><br />
-<small><a href="/downloads/code/PappusHexThm.tex">Source</a></small></p>
+<div class="entry-content"><h2 id="target">Target</h2>
 
-<p>Suppose that points $A,B$ and $C$ lie on the same straight line, and
-$D,E$ and $F$ lie on <em>another</em> one.  Draw line segments
-$AE,BD,BF,CE,AF$ and $CD$.<br />
-Let <span class="grp1">$P$</span> be the intersection point of $AE$
-and $BD$.<br />
-Let <span class="grp1">$Q$</span> be the intersection point of $AF$
-and $CD$.<br />
-Let <span class="grp1">$R$</span> be the intersection point of $BF$
-and $CE$.<br />
-Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
-are <em>collinear</em>.  (i.e.  The red dashed line and the red solid line
-are collinear.)</p>
+<p><img src="/images/posts/LaTeXIPA/out.jpg" alt="target" /></p>
 
 <!-- more -->
 
-<h2 id="discussion">Discussion</h2>
+<h2 id="failed-attempts">Failed attempts</h2>
 
-<p>To prove that three points are collinear, Menelaus’s Theorem is often
-useful.  To apply the theorem to this problem, (TL;DR;C image below)
-one needs to find a triangle such that <em>exactly</em> one of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> lies on
-the <em>line</em> formed by two vertices of the triangle, but <em>not</em> on the
-<em>segment</em> connecting those two vertices, while each of the remaining
-two points lies on a segment whose extension <em>doesn’t</em> contain any one
-of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.</p>
+<ul>
+  <li>Googled “xelatex ipa symbols”</li>
+  <li>Tried the <code>tipa</code> package, and got the error “command sups already
+  defined”.<sup id="fnref:tipaFail"><a href="#fn:tipaFail" class="footnote">1</a></sup></li>
+</ul>
 
-<p><img class="center" src="/images/posts/PappusHexThm/MenelausThm.svg" width="600" /><br />
-<small><a href="/downloads/code/MenelausThm.tex">Source</a></small></p>
+<h2 id="source-code">Source code</h2>
 
-<p>It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span> divide some segments internally.  However,
-<span class="grp1">$P$</span> <em>also</em> has such property.  How can one
-find a segment through <span class="grp1">$P$</span> such that <span class="grp1">$P$</span> <em>externally</em> divides the segment?</p>
+<p>I limited the above google search to academic sites <em>only</em><sup id="fnref:SiteEdu"><a href="#fn:SiteEdu" class="footnote">2</a></sup>,
+and I luckily found a blog post which inspired me to work out the
+following example.  (This link to the post is included in the
+footnotes.)</p>
 
-<p>The answer can be find out by a careful observation of the two
-segments that pass through <span class="grp1">$P$</span>.  Since we
-want a segment so that <span class="grp1">$P$</span> <em>externally</em>
-divides the segment, we need at least two points on a line through
-<span class="grp1">$P$</span>.  Moreover, those two points should be
-<em>on the same side of the line relative to <span class="grp1">$P$</span></em>.  This led us to define a <em>new</em> point.  Let
-<span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class="line"><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class="line">Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm1.svg" width="600" /><br />
-<small><a href="/downloads/code/PappusHexThm1.tex">Source</a></small></p>
+<h2 id="explanation">Explanation</h2>
 
-<p>Then the light blue triangle $\triangle B\color{blue}{S}F$ is what we
-need.</p>
+<p>Line 2: For inserting characters with accents, for example, ‘é’ and
+‘ö’.  <em>Without</em> this line, those characters <em>won’t</em> be processed by
+the typesetting system.</p>
 
-<h2 id="the-proof">The proof</h2>
+<p>Line 3: For changing to a font that supports IPA symbols.  Here are
+the sources of inspirations.</p>
 
-<p>Since I have been tired of drawing figures using TikZ and typing
-equations with $\rm \LaTeX$, I <em>don’t</em> want to illustrate or prove any
-one of the four cases of Co-side Theorem, on which this proof heavily
-depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>From the above figure, it’s clear that what we need to show is</p>
-
-<p>\[
-\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\]</p>
-
-<p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
-given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
-The tool that we’re going to use is Co-side Theorem.</p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &amp;=
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle CDF}}&#92;\<br />
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &amp;=
-      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
-  \end{split}
-\end{equation}</p>
-
-<p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
-the <span class="grp2">$S$</span>.  Moreover, dealing with length of
-segments is <em>easier</em> than their area because the former and the later
-are one-dimensional and two-dimensional quantities respectively.
-Therefore, we rearrange the area of the triangles to get</p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
-      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
-    &amp;= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}} &#92;\<br />
-    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}}
-  \end{split}
-\end{equation}</p>
-
-<p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
-Thus, we need to work out the area of the two coloured triangles in
-the figure below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
-AE\color{blue}{S}$)</p>
-
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm2.svg" width="600" /><br />
-<small><a href="/downloads/code/PappusHexThm2.tex">Source</a></small></p>
-
-<p>From equation <a href="#sub1">(2)</a>, observe that $AB/CB$ and $EF/DF$ are
-independent from each other.  Then, we need to relate the area of
-those two colored triangles to the ratios of segment lengths in
-<a href="#sub1">(2)</a>.</p>
-
-<p>I still use Co-side Theorem since I <em>can’t</em> think of another theorem
-to eliminate <span class="grp2">S</span>.  In order to use that
-theorem, one has to find another triangle and compare it with one of
-those two coloured triangles.  I’ve looked at the picture and the
-symbols to find out some clues.  Since the letter $C$ is present in
-both $AB/CB$ and $\triangle CD\color{blue}{S}$, $C$ <em>can’t</em> be the
-“common side” of $\triangle CD\color{blue}{S}$ and the triangle that
-we want.  Looking at $\triangle CD\color{blue}{S}$ again, it’s obvious
-that $D\color{blue}{S}$ is the “common side” because $D$,
-<span class="grp2">$S$</span> and $B$ are collinear.</p>
-
-<p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600" />
-<small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &amp;= \frac{CB}{BA}
-      \text{, or} &#92;\<br />
-    S_{\triangle CD\color{blue}{S}} &amp;= \frac{CB}{BA} \cdot
-      S_{\triangle AD\color{blue}{S}}
-  \end{split}
-\end{equation}</p>
-
-<p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
-Therefore, we’re almost done!</p>
-
-<p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600" />
-<small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{S_{\triangle AE\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &amp;= -\frac{EF}{FD}
-      \text{, or}&#92;\<br />
-      S_{\triangle AE\color{blue}{S}} &amp;= -\frac{EF}{FD} \cdot
-      S_{\triangle AD\color{blue}{S}}
-  \end{split}
-\end{equation}</p>
-
-<p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
-get</p>
-
-<p>\[
-\begin{split}
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-    \frac{F\color{red}{R}}{\color{red}{R}B}
-    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
-    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} &#92;\<br />
-    &amp;= -1
-\end{split}
-\]</p>
-
-<p>Hence, by Menelaus’s Theorem, we can conclude that
-<span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
-<em>collinear</em>, and prove Pappus’s Hexagon Theorem</p>
+<ul>
+  <li>Principal: <a href="http://www.phonologist.org/papers/becker_IPAandLaTeX.pdf"><em>Typesetting phonology papers</em></a> by Michael
+  Becker</li>
+  <li>Practical: <a href="http://tex.stackexchange.com/a/64846"><em>Using TIPA with fontspec</em></a> on $\rm
+  \TeX$–$\rm \LaTeX$ Stack Exchange</li>
+</ul>
 
 <hr />
 
 <div class="footnotes">
   <ol>
-    <li id="fn:1">
+    <li id="fn:tipaFail">
 
-      <p>Chou, S. C., Gao, X. S., &amp; Zhang, J. Z. (1993, June). <em>Automated
-production of traditional proofs for constructive geometry
-theorems</em>.  In Logic in Computer Science, 1993. LICS’93.,
-Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
-(<a href="http://www.researchgate.net/publication/226332702_Automated_production_of_traditional_proofs_for_theorems_in_Euclidean_geometry_I._The_Hilbert_intersection_point_theorems/file/60b7d51a5db85afdd3.pdf">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>I gave up trying <code>tipa</code> after reading
+<a href="http://sonny.cslu.ohsu.edu/~gormanky/blog/tex-tips-for-linguists/"><em>$\rm \TeX$ tips for linguists</em></a> by Kyle Gorman. <a href="#fnref:tipaFail" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:SiteEdu">
+
+      <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -363,12 +238,12 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
 
 
 
-<time class='entry-date' datetime='2014-07-12T23:48:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:48 pm</span></time>
+<time class='entry-date' datetime='2014-10-01T22:28:49+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:28 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/math/'>math</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -377,7 +252,7 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/" >Tweet</a>
   
   
   
@@ -388,10 +263,8 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/07/12/star-of-david-in-pascals-triangle/" title="Previous Post: Star of David in Pascal's Triangle">&laquo; Star of David in Pascal&#8217;s Triangle</a>
+        <a class="basic-alignment left" href="/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/" title="Previous Post: A Sample $\rm \LaTeX$ Table">&laquo; A Sample $\rm \LaTeX$ Table</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/07/13/evince-viewing-error/" title="Next Post: Evince Viewing Error">Evince Viewing Error &raquo;</a>
       
     </p>
   </footer>
@@ -505,8 +378,8 @@ Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/';
         var disqus_script = 'embed.js';
       
     (function () {
