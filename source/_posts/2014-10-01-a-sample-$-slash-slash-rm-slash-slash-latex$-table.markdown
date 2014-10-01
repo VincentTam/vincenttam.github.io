@@ -6,17 +6,20 @@ comments: true
 categories: LaTeX
 ---
 
-## Result
+Target
+---
 
-![result](/images/posts/LaTeXTable/out.jpg)
+![target](/images/posts/LaTeXTable/out.jpg)
 
 <!-- more -->
 
-## Source code
+Source code
+---
 
 {% gist eb013fa73d62a5f5c917 %}
 
-## Explanation
+Explanation
+---
 
 Line 1: *Without* `border=5pt`, the grid line on the right will be
 truncated.[^StandaloneBd]
