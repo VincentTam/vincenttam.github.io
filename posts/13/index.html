@@ -9,9 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="This post is nothing more than a link to a post on Ruby China,
-which recommends some Vim plugins1, and I’d like to use
-vim-easy-align rather than &hellip;">
+  <meta name="description" content="Three months ago, I gave Vundle a try, and it's much more convenient than pathogen.vim. With Zaadi's VIMRC configuration, Vundle can be set up within &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -133,6 +131,76 @@ vim-easy-align rather than &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-experience-of-using-vundle/">My Experience of Using Vundle</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T12:17:52+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 pm</span></time>
+        
+           | <a href="/blog/2014/02/01/my-experience-of-using-vundle/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/01/my-experience-of-using-vundle/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-experience-of-using-vundle/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Three months ago, I gave <a href="https://github.com/gmarik/vundle" title="Vundle">Vundle</a> a try, and it&#8217;s <em>much</em> more convenient than <a href="https://github.com/tpope/vim-pathogen" title="vim-pathogen">pathogen.vim</a>. With <a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/" title="Auto Installing Vundle From Your Vimrc">Zaadi&#8217;s VIMRC configuration</a>, Vundle can be set up within several minutes.</p>
+
+<p>I installed <a href="https://github.com/vim-scripts/FuzzyFinder" title="FuzzyFinder">FuzzyFinder</a> for opening files in other directories without leaving Vim. However, during the installation of the plugin, I carelessly forgot to download <a href="https://github.com/vim-scripts/L9" title="L9">L9</a> library first. Therefore, I put it into <code>$MYVIMRC</code>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>Bundle <span class="s1">&#39;L9&#39;</span> <span class="c">&quot; FuzzyFinder dependency</span>
+</span><span class='line'>Bundle <span class="s1">&#39;FuzzyFinder&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, I got the following error message.</p>
+
+<pre class="cli"><code class="UBMono"><span class="vimErr">$ vi
+Error detected while processing /home/owner/.vimrc:
+line   28:
+E116: Invalid arguments for function vundle#config#bundle
+line   30:
+E116: Invalid arguments for function vundle#config#bundle
+line   31:
+E116: Invalid arguments for function vundle#config#bundle
+line   32:
+E116: Invalid arguments for function vundle#config#bundle
+line   33:
+E116: Invalid arguments for function vundle#config#bundle
+line   39:
+E116: Invalid arguments for function vundle#config#bundle
+Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:
+line   13:
+***** L9 library must be installed! *****
+</span><span class="vimErrCont">Press ENTER or type command to continue</span>
+</code></pre>
+
+<p><code>:BundleList</code> doesn&#8217;t have L9, but <code>~/.vim/bundle</code> has the folder <code>L9</code>. The cause of the problem is the comment on the right of the <code>Bundle 'foo'</code> command.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -599,51 +667,6 @@ platforms that enable users to easily create questionnaire.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">My First Post Using UltraBlog.vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-12T00:22:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
-        
-           | <a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hello world! This is the <em>first</em> post I&#8217;ve ever written in UltraBlog.vim.</p>
-
-<p>I love writing with Vim for many reasons, such as it&#8217;s pointers, marks, macros, keyword completion, etc.</p>
-
-<p>I&#8217;ve tried VimRepress, but this plugin gives me a host of errors that I, as a mediocre GNU/Linux user, <strong>can&#8217;t</strong> understand. Hope UltraBlog works fine!</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/14">&larr; Older</a>
@@ -707,6 +730,10 @@ platforms that enable users to easily create questionnaire.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/10/02/what-are-good-file-naming-conventions/">What Are Good File Naming Conventions?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/">IPA Symbols in $\rm \LaTeX$</a>
       </li>
     
@@ -720,10 +747,6 @@ platforms that enable users to easily create questionnaire.</p>
     
       <li class="post">
         <a href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/">5 ImageMagick Command Line Examples–part 1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/09/14/kramdowns-markdown-attributes/">Kramdown&#8217;s Markdown Attributes</a>
       </li>
     
   </ul>
