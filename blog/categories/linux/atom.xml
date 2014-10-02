@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-02T01:42:27+08:00</updated>
+  <updated>2014-10-03T01:03:06+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -58,8 +58,7 @@ though it’s cropped, it still has thousands of bytes.  Nevertheless,
 if I show it using text, there’re only 337 bytes since the text only
 consists of 337 characters.</p>
 
-<pre class="cli"><code class="UBMono">
-Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
+<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
 
 owner-Inspiron-560s login: owner
 Password:
@@ -68,7 +67,7 @@ Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
 
  * Documentation:  https://help.ubuntu.com/
 
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
+owner@owner-Inspiron-560s:~$ cat &amp;gt; /dev/null
 This is tty1.
 owner@owner-Inspiron-560s:~$
 </code></pre>
@@ -79,16 +78,16 @@ examples save the time.</p>
 
 <h3 id="failed-commands">Failed commands</h3>
 
-<ol>
-  <li>Using <code>screendump</code> like <code>fbgrab</code> <em>doesn’t</em> work.</li>
-  <li>Just copying the suggested command <em>doesn’t</em> work either.</li>
-</ol>
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
+<pre class="cliUB"><code>owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
 usage: screendump [n]
 owner@owner-Inspiron-560s:~$ screendump 1
 couldn't read /dev/vcsa1
 </code></pre>
+
+<ol>
+  <li>Using <code>screendump</code> like <code>fbgrab</code> <em>doesn’t</em> work.</li>
+  <li>Just copying the suggested command <em>doesn’t</em> work either.</li>
+</ol>
 
 <h3 id="successful-examples">Successful examples</h3>
 
@@ -100,8 +99,7 @@ couldn't read /dev/vcsa1
 one needs to use <code>&lt;C-Page Up&gt;</code> to scroll up the screen.  The cursor
 will be at the bottom.</p>
 
-<pre class="cli"><code class="UBMono">Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-
+<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
 owner-Inspiron-560s login: owner
 Password:
 Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
@@ -193,7 +191,7 @@ Fundamentals</em> in Google Developers. <a href="#fnref:1" class="reversefootnot
 
 <p>I issued the following command and then rebooted the machine.</p>
 
-<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+<pre class="cliUB"><code>$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
 &gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
 &gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
 </code></pre>
@@ -416,10 +414,10 @@ messages.</p>
 <p>Last night, when I tried to write a new file <code>hello.cpp</code>, I got the
 following problem.</p>
 
-<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
+<pre class="cliUB"><code>"hello.cpp" 8L, 105C
 Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
  contains libclang?
-    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
+/usr/lib//libclang.so: cannot open shared object file: No such file or direc
 tory. To provide a path to libclang use Config.set_library_path() or Config.set_
 library_file().
 
@@ -442,7 +440,7 @@ name started with <code>x86</code>, and <em>no</em> file called <code>libclang.s
 sub-folder.  Looking at the issue <em>again</em> on GitHub, I found out how
 to make use of the information from both sites.</p>
 
-<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
+<pre class="cliUB"><code>[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
 </code></pre>
 
 <p>To avoid problems, I <em>didn’t</em> set Vim global variable

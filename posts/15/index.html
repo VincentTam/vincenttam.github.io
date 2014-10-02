@@ -635,13 +635,17 @@ geeks who are used to <abbr title="Command Line Interfaces">CLI</abbr>, this is 
 <p>If your source <abbr title="Portable Network Graphics">PNG</abbr> files are named as <code>[name]%s.png</code>, then the right
 command is:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<pre class="cli"><code class="UBMono">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 \
-[name]%s.png &quot; $a; done;) [result].gif
-# `-delay 10&#039; means that each image is displayed for 0.1s.
-# [name]: file name of the source <abbr title="Portable Network Graphics">PNG</abbr> files without the ordinal number.
-# `%s&#039;: the n-th <abbr title="Portable Network Graphics">PNG</abbr> file.
-# [result]: file name of the target <abbr title="Graphics Interchange Format">GIF</abbr> file.
+<pre class="cliUB"><code>$ convert $(for ((a=0; a&lt;700; a++)); do printf -- "-delay 10 \
+&gt; [name]%s.png" $a; done;) [result].gif
 </code></pre>
+
+<ul>
+  <li><code>-delay 10</code> means that each image is displayed for 0.1s.</li>
+  <li><code>[name]</code>: file name of the source <abbr title="Portable Network Graphics">PNG</abbr> files without the ordinal
+  number.</li>
+  <li><code>%s</code>: the n-th <abbr title="Portable Network Graphics">PNG</abbr> file.</li>
+  <li><code>[result]</code>: file name of the target <abbr title="Graphics Interchange Format">GIF</abbr> file.</li>
+</ul>
 
 <p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things
 <em>won’t</em> work.</p>

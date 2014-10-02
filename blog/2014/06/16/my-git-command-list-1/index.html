@@ -183,7 +183,7 @@ out after reading a Chinese blog post found in the first footnote.</p>
 
 <h2 id="initialize-repositories">Initialize repositories</h2>
 
-<pre class="cli"><code class="UBMono">$ git init
+<pre class="cliUB"><code>$ git init
 $ git init --bare
 </code></pre>
 
@@ -200,7 +200,8 @@ remote server.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 <p>From <a href="http://stackoverflow.com/a/14879452" title="Git push error '[remote rejected] master -&gt; master (branch is currently checked out)'">here</a>, I know that one can pass the <code>--bare</code> option
 to <code>git clone</code>.</p>
 
-<pre class="cli"><code class="UBMono">$ git clone --bare repo.old repo</code></pre>
+<pre class="cliUB"><code>$ git clone --bare repo.old repo
+</code></pre>
 
 <p>In the above command, <code>repo.old</code> is an old repository, and one creates
 a new bare repository <code>repo</code> from that old non-bare repository.</p>
@@ -210,7 +211,7 @@ a new bare repository <code>repo</code> from that old non-bare repository.</p>
 <p>There are basic commands: <code>git pull</code>, <code>git fetch</code> and <code>git merge</code>.
 Roughly speaking, the first one is the “sum” of the following two.</p>
 
-<pre class="cli"><code class="UBMono">$ git fetch           # fetch from origin/upstream
+<pre class="cliUB"><code>$ git fetch           # fetch from origin/upstream
 $ git fetch host      # fetch all branches from remote "host"
 $ git fetch host foo  # fetch branch "foo" from remote "host"
 </code></pre>
@@ -244,7 +245,7 @@ the commit to <code>git diff</code> will do.</p>
 <code>octoress/linklog</code> in <code>~/octopress</code>.  However, I <em>haven’t</em> fully
 understand this command.</p>
 
-<pre class="cli"><code class="UBMono">$ git diff origin/source source
+<pre class="cliUB"><code>$ git diff origin/source source
 fatal: ambiguous argument 'source': both revision and filename
 Use '--' to separate paths from revisions, like this:
 'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file&gt;...]'
@@ -268,9 +269,12 @@ post <a href="/blog/2014/08/07/double-hyphens-in-git-diff/"><em>Double Hyphens i
   <li><code>git rm</code></li>
 </ul>
 
-<pre class="cli"><code class="UBMono">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
+<p>See <a href="http://stackoverflow.com/a/572660">here</a> for the difference between <code>git add -A</code> and <code>git
+add .</code>.</p>
+
+<pre class="cliUB"><code>$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
 $ git add .                     # Add all modified/new files that are tracked
-$ git add -A                    # The `-A' flag stands for "all". See <a title="Difference between &quot;git add -A&quot; and &quot;git add .&quot;" href="http://stackoverflow.com/a/572660">here</a> for details.
+$ git add -A                    # The '-A' flag stands for "all"
 $ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
 $ git rm &lt;file&gt;                 # delete a file and record the action in Git
 </code></pre>
@@ -335,7 +339,7 @@ graph of my Git repository of this blog.</p>
 
 <p>There’s <a href="#gitk">a GUI way</a> to do so.</p>
 
-<pre class="cli"><code class="UBMono">$ git show    # Show the diff hunks of recent commits
+<pre class="cliUB"><code>$ git show    # Show the diff hunks of recent commits
 $ git log     # Show the commits without diff hunks
 $ git log -6  # Show the 6 most recent commits
 $ git log -p  # Show the commits with diff hunks
@@ -366,7 +370,7 @@ the above section.</p>
 
 <p><a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> is a great Vim plugin.</p>
 
-<pre><code>:Gst[atus]      # Show the `git status' on a horizontal split window
+<pre class="cliUB"><code>:Gst[atus]      # Show the `git status' on a horizontal split window
 :Git &lt;command&gt;  # Equivalent to `:!git &lt;command&gt;'
 :Glog           # Show the commit messages within Vim
 </code></pre>

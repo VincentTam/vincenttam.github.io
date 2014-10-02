@@ -173,7 +173,7 @@ important command and I regret this after wasting about two hours on
 
 <p>As a result, I just downloaded the DEB file from the DISLIN official
 website and use the GUI tool “Ubuntu Software Centre” to install the
-library. Then I directly copied the code from the book and tried to
+library.  Then I directly copied the code from the book and tried to
 compile the program .</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>first_graphics_prog.cpp </span></figcaption>
@@ -210,7 +210,7 @@ compile the program .</p>
 <p>However, the compiler gave me the message that I had used an
 “undefined reference to qplot”.</p>
 
-<p>I googled for two hours and found nothing that I can understand. I
+<p>I googled for two hours and found nothing that I can understand.  I
 even tried compiling the following sample code found in section 2.7 of
 <a href="http://www2.mps.mpg.de/dislin/contents.html">the official DISLIN online manual</a>.</p>
 
@@ -241,31 +241,40 @@ even tried compiling the following sample code found in section 2.7 of
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>I have <em>no</em> hope on published books because their authors would expect their students to do something easy—Use <a href="http://www.bloodshed.net/devcpp.html">Dev-C++</a> on M$ Win<em>, or *nix GUI IDE like <a href="http://www.eclipse.org">Eclipse</a>. However, some geeks *won’t</em> be satisfied because GUI buttons/objects hide the commands away from users. As a result, they <em>don’t</em> know what tasks are invoked by clicking the button/object. In other words, they <em>don’t</em> know what they are <em>actually</em> doing. Therefore, they have the motivation to find out the <em>real</em> command for the compilation of C++ programs that <code>#include "dislin.h"</code>.</p>
+<p>I have <em>no</em> hope on published books because their authors would expect
+their students to do something easy—Use <a href="http://www.bloodshed.net/devcpp.html">Dev-C++</a> on M$ Win*, or
+*nix GUI IDE like <a href="http://www.eclipse.org">Eclipse</a>.  However, some geeks <em>won’t</em> be
+satisfied because GUI buttons/objects hide the commands away from
+users.  As a result, they <em>don’t</em> know what tasks are invoked by
+clicking the button/object.  In other words, they <em>don’t</em> know what
+they are <em>actually</em> doing.  Therefore, they have the motivation to
+find out the <em>real</em> command for the compilation of C++ programs that
+<code>#include "dislin.h"</code>.</p>
 
 <p>Stack Overflow has <em>a few or no</em> questions on the compilation of C++
-programs that use DISLIN. The most relevant one that I managed to find
-is <a href="http://stackoverflow.com/q/19118465" title="Compiling dislin gfortran">question 19118465</a>. I glanced at the answers quickly.
-They have some commands like</p>
+programs that use DISLIN.  The most relevant one that I managed to
+find is <a href="http://stackoverflow.com/q/19118465" title="Compiling dislin gfortran">question 19118465</a>.  I glanced at the answers
+quickly.  They have some commands like</p>
 
 <pre class="cli"><code class="UBMono">$ gfortran EX11_1.f90 -o progrname <span class="UBHLCode">-ldislin</span> -I/path/to/DISLIN/modules
 </code></pre>
 
-<p>Then I guessed that I need the <code>-ldislin</code> flag as well. I <em>can’t</em>
+<p>Then I guessed that I need the <code>-ldislin</code> flag as well.  I <em>can’t</em>
 truly figure out the usage of <code>-l</code>, <code>-L</code> and <code>-I</code> flags by just
-looking at the man page of <code>g++</code>, so I just tried everything. I
+looking at the man page of <code>g++</code>, so I just tried everything.  I
 searched for some new pages, and returned to some web pages that I’ve
 <em>already visited</em>, and continued this <em>unproductive</em> process…</p>
 
 <p>I googled the websites and I saw the post on Linux for Research
-mentioned before. I looked at the command that begins with <code>g++</code> and
+mentioned before.  I looked at the command that begins with <code>g++</code> and
 tried to adapt it to my needs, but it simply <em>failed</em>.</p>
 
 <p>I thought that the official README maybe useful, so I browsed the
-contents in <code>/usr/local/dislin/README</code>. Some websites that teach users
-to install DISLIN from a gzip tarball contain code that manipulate the
-environment variables like <code>DISLIN</code>, <code>PATH</code> and <code>LD_LIBRARY_PATH</code>. But
-in the <code>README</code>, it’s clearly stated that I don’t need to do so.</p>
+contents in <code>/usr/local/dislin/README</code>.  Some websites that teach
+users to install DISLIN from a gzip tarball contain code that
+manipulate the environment variables like <code>DISLIN</code>, <code>PATH</code> and
+<code>LD_LIBRARY_PATH</code>.  But in the <code>README</code>, it’s clearly stated that I
+don’t need to do so.</p>
 
 <pre class="cli"><code class="UBMono">f) To make DISLIN available for general use, write the following com-
 mands to your .profile or to /etc/profile
@@ -281,7 +290,10 @@ export LD_LIBRARY_PATH
 is installed in the default directory '/usr/local/dislin'.</span>
 </code></pre>
 
-<p>I think that I <em>don’t</em> need to do the above settings, but I am <em>not</em> sure about that. Luckily, the following part that immediately follows the above section gave me some hint on what I, as a newcomer to DISLIN, can do.</p>
+<p>I think that I <em>don’t</em> need to do the above settings, but I am <em>not</em>
+sure about that.  Luckily, the following part that immediately follows
+the above section gave me some hint on what I, as a newcomer to
+DISLIN, can do.</p>
 
 <pre class="cli"><code class="UBMono">4.) Compiling, Linking and Running the Example Programs
 
@@ -295,11 +307,18 @@ is installed in the default directory '/usr/local/dislin'.</span>
 ...
 </code></pre>
 
-<p>Thus, I <em>really</em> went to <code>/usr/local/dislin/example</code> and compiled <code>exa_cpp.cpp</code> using <code>cpplink</code> with the <code>-a</code> flag. <em>It works! No complaints from <code>g++</code>!</em> It seemed that I could give <code>cpplink</code> a try, but it quickly turned out that my idea failed to work. <code>g++</code> either complained that <code>dislin.h</code> was <em>not</em> found, or there’s “undefined reference” to a DISLIN function.</p>
+<p>Thus, I <em>really</em> went to <code>/usr/local/dislin/example</code> and compiled
+<code>exa_cpp.cpp</code> using <code>cpplink</code> with the <code>-a</code> flag.  <em>It works! No
+complaints from <code>g++</code>!</em> It seemed that I could give <code>cpplink</code> a try,
+but it quickly turned out that my idea failed to work.  <code>g++</code> either
+complained that <code>dislin.h</code> was <em>not</em> found, or there’s “undefined
+reference” to a DISLIN function.</p>
 
-<p>After that, I returned to Google again, and was redirected to the <em>same</em> post on Linux for Research again. I glanced through the <em>same</em> command that started with <code>g++</code>.</p>
+<p>After that, I returned to Google again, and was redirected to the
+<em>same</em> post on Linux for Research again.  I glanced through the <em>same</em>
+command that started with <code>g++</code>.</p>
 
-<pre class="cli"><code class="UBMono">$ g++ test.cpp -lXt -ldislin -lm
+<pre class="cliUB"><code>$ g++ test.cpp -lXt -ldislin -lm
 </code></pre>
 
 <p>This time, I could read the sentence below the above command.</p>
@@ -308,9 +327,14 @@ is installed in the default directory '/usr/local/dislin'.</span>
     Don&#8217;t forget the `-lXt`
 </blockquote>
 
-<p>I finally realised that I had forgotten an important principle in programming: <em>Don’t</em> do too much at one time. At the very first stage, I need to get things done, though the approach is <em>not</em> elegant.</p>
+<p>I finally realised that I had forgotten an important principle in
+programming: <em>Don’t</em> do too much at one time.  At the very first
+stage, I need to get things done, though the approach is <em>not</em>
+elegant.</p>
 
-<p>With the above principle in my mind, I could merely compile a C++ program that made use of DISLIN by making the following changes in both the source file and the command that I issued.</p>
+<p>With the above principle in my mind, I could merely compile a C++
+program that made use of DISLIN by making the following changes in
+both the source file and the command that I issued.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample code </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -329,12 +353,12 @@ is installed in the default directory '/usr/local/dislin'.</span>
 <span class="line-number">14</span>
 </pre></td><td class="code"><pre><code class="cpp"><span class="line"><span class="c1">// Author: David Yevick</span>
 </span><span class="line"><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
-</span><span class="line"><span class="cp">#include &amp;lt;iostream&amp;gt;</span>
-</span><span class="line"><span class="cp">#include &amp;quot;/usr/local/dislin/dislin.h&amp;quot;</span>
+</span><span class="line"><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class="line"><span class="cp">#include &quot;/usr/local/dislin/dislin.h&quot;</span>
 </span><span class="line">
 </span><span class="line"><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span><span class="line">
-</span><span class="line"><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class="line"><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 </span><span class="line"><span class="p">{</span>
 </span><span class="line"><span class="c1">// Some code for defining variables</span>
 </span><span class="line"><span class="c1">// Omitted to avoid copyright problems</span>
@@ -345,14 +369,21 @@ is installed in the default directory '/usr/local/dislin'.</span>
 
 <p>In the terminal, I typed the following command.</p>
 
-<pre class="cli"><code class="UBMono">$ g++ foo.cpp -lXt -ldislin -lm
+<pre class="cliUB"><code>$ g++ foo.cpp -lXt -ldislin -lm
 </code></pre>
 
-<p><em>It works!</em> Critical readers will complain about the way that I include <code>dislin.h</code>. I’m not satisfied with this either. Another obvious missing part for those who want to customise the name of the output executable file is the <code>-o</code> flag. I <em>delibrately</em> did this so as to keep things <em>simple and clear</em>.</p>
+<p><em>It works!</em> Critical readers will complain about the way that I
+include <code>dislin.h</code>.  I’m not satisfied with this either.  Another
+obvious missing part for those who want to customise the name of the
+output executable file is the <code>-o</code> flag.  I <em>delibrately</em> did this so
+as to keep things <em>simple and clear</em>.</p>
 
-<p>After trying the <code>-l</code>, <code>-L</code> and <code>-I</code> flags of the command <code>g++</code>, I realised that the <code>-I</code> flag will do.</p>
+<p>After trying the <code>-l</code>, <code>-L</code> and <code>-I</code> flags of the command <code>g++</code>, I
+realised that the <code>-I</code> flag will do.</p>
 
-<p>However, when I tried to do the <em>same</em> task for another time, it surprisingly <em>failed</em>. Looking closely at the two versions, we can draw the following conclusion.</p>
+<p>However, when I tried to do the <em>same</em> task for another time, it
+surprisingly <em>failed</em>.  Looking closely at the two versions, we can
+draw the following conclusion.</p>
 
 <pre class="cli"><code class="UBMono"># `DISLIN' is a variable that represents the path of DISLIN.
 # In the default case, it is `/usr/local/dislin'.
@@ -360,10 +391,10 @@ $ g++ <span class="err">-lXt -ldislin -lm</span> -I$(DISLIN) foo.cpp -o foo.out 
 $ g++ foo.cpp -o foo.out <span class="UBHLCode">-lXt -ldislin -lm</span> -I$(DISLIN) # Correct!
 </code></pre>
 
-<p><img src="/images/posts/DISLIN/dislin_compile-140119.png" title="fig1" alt="message_from_g++" /></p>
+<p><img src="/images/posts/DISLIN/dislin_compile-140119.png" alt="message_from_g++" /></p>
 
-<p>I conclude this post with the fact that the flags <code>-g -Wall</code> can be put either
-before or after <code>foo.cpp</code>.</p>
+<p>I conclude this post with the fact that the flags <code>-g -Wall</code> can be
+put either before or after <code>foo.cpp</code>.</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 
