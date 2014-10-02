@@ -12,15 +12,15 @@ Problem
 Last night, when I tried to write a new file `hello.cpp`, I got the
 following problem.
 
-<pre class="cli"><code class="UBMono">"hello.cpp" 8L, 105C
-Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
- contains libclang?
-    /usr/lib//libclang.so: cannot open shared object file: No such file or direc
-tory. To provide a path to libclang use Config.set_library_path() or Config.set_
-library_file().
+    "hello.cpp" 8L, 105C
+    Loading libclang failed, completion won't be available. Are you sure '/usr/lib/'
+     contains libclang?
+	/usr/lib//libclang.so: cannot open shared object file: No such file or direc
+    tory. To provide a path to libclang use Config.set_library_path() or Config.set_
+    library_file().
 
-Press ENTER or type command to continue
-</code></pre>
+    Press ENTER or type command to continue
+{:.cliUB}
 
 <!-- more -->
 
@@ -39,8 +39,8 @@ name started with `x86`, and *no* file called `libclang.so.1` in each
 sub-folder.  Looking at the issue *again* on GitHub, I found out how
 to make use of the information from both sites.
 
-<pre class="cli"><code class="UBMono">[root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
-</code></pre>
+    [root@localhost /usr/lib/]# ln -s /usr/lib/llvm-3.4/lib/libclang.so .
+{:.cliUB}
 
 To avoid problems, I *didn't* set Vim global variable
 `clang_library_path`.

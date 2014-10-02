@@ -3,10 +3,7 @@ layout: post
 title: "Export PDF to SVG"
 date: 2014-06-21 14:23:50 +0800
 comments: true
-categories:
-- LaTeX
-- Linux
-- SVG
+categories: [LaTeX, Linux, SVG]
 ---
 
 I've drawn a figure in $\rm \LaTeX$ using the [TikZ].  However,
@@ -115,19 +112,20 @@ I remembered that the `--prefix=` option used while running
 folder, I realized that I should follow the advice of
 [an answer to an Ask Ubuntu question][AskUbuntu]
 
-<pre class="cli"><code class="UBMono">[owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
-[sudo] password for owner: 
-make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
-test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
-/usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
-make[1]: Nothing to be done for `install-data-am'.
-make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
-</code></pre>
+    [owner@localhost ~/pdf2svg-0.2.2]$ sudo make install
+    [sudo] password for owner: 
+    make[1]: Entering directory `/home/owner/pdf2svg-0.2.2'
+    test -z "/usr/local/bin" || /bin/mkdir -p "/usr/local/bin"
+    /usr/bin/install -c 'pdf2svg' '/usr/local/bin/pdf2svg'
+    make[1]: Nothing to be done for `install-data-am'.
+    make[1]: Leaving directory `/home/owner/pdf2svg-0.2.2'
+{:.cliUB}
 
 After installing `pdf2svg` from its source code, I can finally start
 using the tool.
 
     pdf2svg input.pdf output.svg
+{:.cliUB}
 
 [TikZ]: http://www.texample.net/tikz/ 
 [MathJax]: http://www.mathjax.org/

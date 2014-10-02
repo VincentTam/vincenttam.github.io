@@ -123,17 +123,18 @@ the `source` branch and the `master` branch, which is contained in
 
 I copied the four commands from [Robert Anderson's post][pull2branch].
 
-<pre class="cli"><code class="UBMono">$ cd octopress
-$ git pull origin source  # update the local `source' branch
-$ cd _deploy
-$ git pull origin master  # update the local `master' branch
-</code></pre>
+    $ cd octopress
+    $ git pull origin source  # update the local `source' branch
+    $ cd _deploy
+    $ git pull origin master  # update the local `master' branch
+{:.cliUB}
 
 ---
 [^1]: [在 Windows 使用 Octopress][OctopressInWin] in *不歸錄*.
 [^2]:
     The link is now *dead*.  See [his Markdown source][OctNewComp]
     file in GitHub instead.
+
 [^3]:
     I can now understand point 5 in Scott Cheng's post.  See my
     [newer post][np] for details.  (Last added on SEP 6, 2014)

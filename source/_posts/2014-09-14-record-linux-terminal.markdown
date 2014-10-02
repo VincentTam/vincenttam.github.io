@@ -45,20 +45,19 @@ though it's cropped, it still has thousands of bytes.  Nevertheless,
 if I show it using text, there're only 337 bytes since the text only
 consists of 337 characters.
 
-<pre class="cli"><code class="UBMono">
-Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
+    Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
 
-owner-Inspiron-560s login: owner
-Password:
-Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
-Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
+    owner-Inspiron-560s login: owner
+    Password:
+    Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
+    Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
 
- * Documentation:  https://help.ubuntu.com/
+     * Documentation:  https://help.ubuntu.com/
 
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
-This is tty1.
-owner@owner-Inspiron-560s:~$
-</code></pre>
+    owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
+    This is tty1.
+    owner@owner-Inspiron-560s:~$
+{:.cliUB}
 
 The above text is captured with `screendump`.  How to use
 `screendump`?  There's a manual page about this tool. The following
@@ -66,14 +65,14 @@ examples save the time.
 
 ### Failed commands
 
+    owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
+    usage: screendump [n]
+    owner@owner-Inspiron-560s:~$ screendump 1
+    couldn't read /dev/vcsa1
+{:.cliUB}
+
 1. Using `screendump` like `fbgrab` *doesn't* work.
 2. Just copying the suggested command *doesn't* work either.
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
-usage: screendump [n]
-owner@owner-Inspiron-560s:~$ screendump 1
-couldn't read /dev/vcsa1
-</code></pre>
 
 ### Successful examples
 
@@ -85,8 +84,8 @@ After one issued the command `screendump 1` with *root* privilege in
 one needs to use `<C-Page Up>` to scroll up the screen.  The cursor
 will be at the bottom.
 
-<pre class="cli"><code class="UBMono">Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-
+~~~
+Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
 owner-Inspiron-560s login: owner
 Password:
 Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
@@ -149,7 +148,8 @@ owner@owner-Inspiron-560s:~$
 
 
 owner@owner-Inspiron-560s:~$
-</code></pre>
+~~~
+{:.cliUB}
 
 ---
 [^1]:

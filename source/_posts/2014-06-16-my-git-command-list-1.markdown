@@ -34,9 +34,9 @@ out after reading a Chinese blog post found in the first footnote.
 Initialize repositories
 ---
 
-<pre class="cli"><code class="UBMono">$ git init
-$ git init --bare
-</code></pre>
+    $ git init
+    $ git init --bare
+{:.cliUB}
 
 For the first one, it's the usual command used for a repository which
 contains the source code.  For the second one, it can be used on a
@@ -52,7 +52,8 @@ See [*Pro Git* section 2.1][GitBook2.1].
 From [here][so2816369], I know that one can pass the `--bare` option
 to `git clone`.
 
-<pre class="cli"><code class="UBMono">$ git clone --bare repo.old repo</code></pre>
+    $ git clone --bare repo.old repo
+{:.cliUB}
 
 In the above command, `repo.old` is an old repository, and one creates
 a new bare repository `repo` from that old non-bare repository.
@@ -63,10 +64,10 @@ Get things from remote repositories
 There are basic commands: `git pull`, `git fetch` and `git merge`.
 Roughly speaking, the first one is the "sum" of the following two.
 
-<pre class="cli"><code class="UBMono">$ git fetch           # fetch from origin/upstream
-$ git fetch host      # fetch all branches from remote "host"
-$ git fetch host foo  # fetch branch "foo" from remote "host"
-</code></pre>
+    $ git fetch           # fetch from origin/upstream
+    $ git fetch host      # fetch all branches from remote "host"
+    $ git fetch host foo  # fetch branch "foo" from remote "host"
+{:.cliUB}
 
 Note: In the above codeblock, `pull` can be substituted by `pull`.
 
@@ -98,11 +99,11 @@ I found a page in the official reference. ([URL][GitRefGitDiff])  The
 `octoress/linklog` in `~/octopress`.  However, I *haven't* fully
 understand this command.
 
-<pre class="cli"><code class="UBMono">$ git diff origin/source source
-fatal: ambiguous argument 'source': both revision and filename
-Use '--' to separate paths from revisions, like this:
-'git &lt;command&gt; [&lt;revision&gt;...] -- [&lt;file>...]'
-</code></pre>
+    $ git diff origin/source source
+    fatal: ambiguous argument 'source': both revision and filename
+    Use '--' to separate paths from revisions, like this:
+    'git <command> [<revision>...] -- [<file>...]'
+{:.cliUB}
 
 ---
 (Added on AUG 07TH, 2014)
@@ -121,12 +122,15 @@ There are three basic commands:
 - `git mv`
 - `git rm`
 
-<pre class="cli"><code class="UBMono">$ git add &lt;file&gt;...             # Add &lt;file&gt; to the staging area
-$ git add .                     # Add all modified/new files that are tracked
-$ git add -A                    # The `-A' flag stands for "all". See <a title='Difference between "git add -A" and "git add ."' href="http://stackoverflow.com/a/572660">here</a> for details.
-$ git mv &lt;file&gt; &lt;new dir/path&gt;  # move the file and record the action in Git
-$ git rm &lt;file&gt;                 # delete a file and record the action in Git
-</code></pre>
+See [here][GitAdd] for the difference between `git add -A` and `git
+add .`.
+
+    $ git add <file>...             # Add <file> to the staging area
+    $ git add .                     # Add all modified/new files that are tracked
+    $ git add -A                    # The '-A' flag stands for "all"
+    $ git mv <file> <new dir/path>  # move the file and record the action in Git
+    $ git rm <file>                 # delete a file and record the action in Git
+{:.cliUB}
 
 I've read a simplified Chinese blog post which explained the
 difference between `git rm` and `rm`.  ([URL][(git )?rm])
@@ -190,11 +194,11 @@ Show the history
 
 There's [a GUI way](#gitk) to do so.
 
-<pre class="cli"><code class="UBMono">$ git show    # Show the diff hunks of recent commits
-$ git log     # Show the commits without diff hunks
-$ git log -6  # Show the 6 most recent commits
-$ git log -p  # Show the commits with diff hunks
-</code></pre>
+    $ git show    # Show the diff hunks of recent commits
+    $ git log     # Show the commits without diff hunks
+    $ git log -6  # Show the 6 most recent commits
+    $ git log -p  # Show the commits with diff hunks
+{:.cliUB}
 
 *Without* the `-p` flag, `git log` will show the user's name and
 email, time, SHA-1 hash, header and content of each commit, but *not*
@@ -225,6 +229,7 @@ the above section.
     :Gst[atus]      # Show the `git status' on a horizontal split window
     :Git <command>  # Equivalent to `:!git <command>'
     :Glog           # Show the commit messages within Vim
+{:.cliUB}
 
 I *don't* know the use of `:Glog`.
 
@@ -255,6 +260,7 @@ staging area.
 [so2816369]: http://stackoverflow.com/a/14879452 "Git push error '[remote rejected] master -> master (branch is currently checked out)'"
 [GitRefGitDiff]: http://git-scm.com/docs/git-diff#_examples "git-diff(1) Manual Page"
 [NewPost]: /blog/2014/08/07/double-hyphens-in-git-diff/
+[GitAdd]: http://stackoverflow.com/a/572660
 [(git )?rm]: http://yang3wei.github.io/blog/2013/02/03/git-rm-he-rm-de-qu-bie/ '"git rm" 和 "rm" 的区别'
 [PrevPost1]: /blog/2014/06/15/undo-an-amendment-to-a-git-commit/ "Undo an Amendment to a Git Commit"
 [fugitive.vim]: https://github.com/tpope/vim-fugitive "a Git wrapper in Vim"

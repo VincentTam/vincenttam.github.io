@@ -39,14 +39,14 @@ For GNU/Linux, type the command for installing Lynx.  For
 
 ### Ubuntu/Debian-based Distros
 
-<pre class="cli"><code class="UBMono">$ sudo apt-get install lynx
-</code></pre>
+    $ sudo apt-get install lynx
+{:.cliUB}
 
 ### Fedora
 
-<pre class="cli"><code>$ su
-# yum install lynx
-</code></pre>
+    $ su
+    # yum install lynx
+{:.cli}
 
 ### Microsoft Windows
 

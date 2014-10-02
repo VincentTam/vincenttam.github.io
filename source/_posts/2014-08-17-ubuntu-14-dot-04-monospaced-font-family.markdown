@@ -94,179 +94,179 @@ elegantly advices user to execute `sudo fc-cache -v` to update the
 font cache.[^4]  Actually, *without* the `-v` flag, the command still
 works.
 
-<pre class="cli"><code class="UBMono"># fc-cache
-/usr/share/fonts: skipping, existing cache is valid: 0 fonts, 8 dirs
-/usr/share/fonts/X11: skipping, existing cache is valid: 0 fonts, 4 dirs
-/usr/share/fonts/X11/Type1: skipping, existing cache is valid: 82 fonts, 0 dirs
-/usr/share/fonts/X11/encodings: skipping, existing cache is valid: 0 fonts, 1 di
-rs
-/usr/share/fonts/X11/encodings/large: skipping, existing cache is valid: 0 fonts
-, 0 dirs
-/usr/share/fonts/X11/misc: skipping, existing cache is valid: 59 fonts, 0 dirs
-/usr/share/fonts/X11/util: skipping, existing cache is valid: 0 fonts, 0 dirs
-/usr/share/fonts/cmap: skipping, existing cache is valid: 0 fonts, 5 dirs
-/usr/share/fonts/cmap/adobe-cns1: skipping, existing cache is valid: 0 fonts, 0 
-dirs
-/usr/share/fonts/cmap/adobe-gb1: skipping, existing cache is valid: 0 fonts, 0 d
-irs
-/usr/share/fonts/cmap/adobe-japan1: skipping, existing cache is valid: 0 fonts, 
-0 dirs
-/usr/share/fonts/cmap/adobe-japan2: skipping, existing cache is valid: 0 fonts, 
-0 dirs
-/usr/share/fonts/cmap/adobe-korea1: skipping, existing cache is valid: 0 fonts, 
-0 dirs
-/usr/share/fonts/eot: skipping, existing cache is valid: 0 fonts, 1 dirs
-/usr/share/fonts/eot/font-awesome: skipping, existing cache is valid: 0 fonts, 0
-dirs
-/usr/share/fonts/opentype: skipping, existing cache is valid: 0 fonts, 11 dirs
-/usr/share/fonts/opentype/cabin: skipping, existing cache is valid: 8 fonts, 0 d
-irs
-/usr/share/fonts/opentype/font-awesome: skipping, existing cache is valid: 1 fon
-ts, 0 dirs
-/usr/share/fonts/opentype/freefont: skipping, existing cache is valid: 12 fonts,
-0 dirs
-/usr/share/fonts/opentype/ipaexfont-gothic: skipping, existing cache is valid: 1
-fonts, 0 dirs
-/usr/share/fonts/opentype/ipaexfont-mincho: skipping, existing cache is valid: 1
-fonts, 0 dirs
-/usr/share/fonts/opentype/ipafont-gothic: skipping, existing cache is valid: 2 f
-onts, 0 dirs
-/usr/share/fonts/opentype/ipafont-mincho: skipping, existing cache is valid: 2 f
-onts, 0 dirs
-/usr/share/fonts/opentype/linux-libertine: skipping, existing cache is valid: 13
-fonts, 0 dirs
-/usr/share/fonts/opentype/lobster: skipping, existing cache is valid: 1 fonts, 0
-dirs
-/usr/share/fonts/opentype/lobstertwo: skipping, existing cache is valid: 4 fonts
-, 0 dirs
-/usr/share/fonts/opentype/stix: skipping, existing cache is valid: 29 fonts, 0 d
-irs
-/usr/share/fonts/svg: skipping, existing cache is valid: 0 fonts, 1 dirs
-/usr/share/fonts/svg/font-awesome: skipping, existing cache is valid: 0 fonts, 0
-dirs
-/usr/share/fonts/truetype: skipping, existing cache is valid: 2 fonts, 42 dirs
-/usr/share/fonts/truetype/abyssinica: skipping, existing cache is valid: 1 fonts
-, 0 dirs
-/usr/share/fonts/truetype/adf: skipping, existing cache is valid: 28 fonts, 0 di
-rs
-/usr/share/fonts/truetype/arphic: skipping, existing cache is valid: 8 fonts, 0 
-dirs
-/usr/share/fonts/truetype/artemisia: skipping, existing cache is valid: 4 fonts,
-0 dirs
-/usr/share/fonts/truetype/asana-math: skipping, existing cache is valid: 1 fonts
-, 0 dirs
-/usr/share/fonts/truetype/comfortaa: skipping, existing cache is valid: 3 fonts,
-0 dirs
-/usr/share/fonts/truetype/complutum: skipping, existing cache is valid: 1 fonts,
-0 dirs
-/usr/share/fonts/truetype/dejavu: skipping, existing cache is valid: 21 fonts, 0
-dirs
-/usr/share/fonts/truetype/didot: skipping, existing cache is valid: 4 fonts, 0 d
-irs
-/usr/share/fonts/truetype/droid: skipping, existing cache is valid: 18 fonts, 0 
-dirs
-/usr/share/fonts/truetype/font-awesome: skipping, existing cache is valid: 1 fon
-ts, 0 dirs
-/usr/share/fonts/truetype/freefont: skipping, existing cache is valid: 12 fonts,
-0 dirs
-/usr/share/fonts/truetype/gentium: skipping, existing cache is valid: 4 fonts, 0
-dirs
-/usr/share/fonts/truetype/gentium-basic: skipping, existing cache is valid: 8 fo
-nts, 0 dirs
-/usr/share/fonts/truetype/horai-umefont: skipping, existing cache is valid: 18 f
-onts, 0 dirs
-/usr/share/fonts/truetype/inconsolata: skipping, existing cache is valid: 1 font
-s, 0 dirs
-/usr/share/fonts/truetype/junicode: skipping, existing cache is valid: 4 fonts, 
-0 dirs
-/usr/share/fonts/truetype/kacst: skipping, existing cache is valid: 15 fonts, 0 
-dirs
-/usr/share/fonts/truetype/kacst-one: skipping, existing cache is valid: 2 fonts,
-0 dirs
-/usr/share/fonts/truetype/lao: skipping, existing cache is valid: 1 fonts, 0 dir
-s
-/usr/share/fonts/truetype/lato: skipping, existing cache is valid: 10 fonts, 0 d
-irs
-/usr/share/fonts/truetype/liberation: skipping, existing cache is valid: 16 font
-s, 0 dirs
-/usr/share/fonts/truetype/msttcorefonts: skipping, existing cache is valid: 60 f
-onts, 0 dirs
-/usr/share/fonts/truetype/nanum: skipping, existing cache is valid: 6 fonts, 0 d
-irs
-/usr/share/fonts/truetype/neohellenic: skipping, existing cache is valid: 4 font
-s, 0 dirs
-/usr/share/fonts/truetype/olga: skipping, existing cache is valid: 1 fonts, 0 di
-rs
-/usr/share/fonts/truetype/openoffice: skipping, existing cache is valid: 1 fonts
-, 0 dirs
-/usr/share/fonts/truetype/padauk: skipping, existing cache is valid: 4 fonts, 0 
-dirs
-/usr/share/fonts/truetype/sinhala: skipping, existing cache is valid: 1 fonts, 0
-dirs
-/usr/share/fonts/truetype/solomos: skipping, existing cache is valid: 1 fonts, 0
-dirs
-/usr/share/fonts/truetype/takao-gothic: skipping, existing cache is valid: 1 fon
-ts, 0 dirs
-/usr/share/fonts/truetype/tibetan-machine: skipping, existing cache is valid: 1 
-fonts, 0 dirs
-/usr/share/fonts/truetype/tlwg: skipping, existing cache is valid: 54 fonts, 0 d
-irs
-/usr/share/fonts/truetype/ttf-dejavu: skipping, existing cache is valid: 21 font
-s, 0 dirs
-/usr/share/fonts/truetype/ttf-indic-fonts-core: skipping, existing cache is vali
-d: 17 fonts, 0 dirs
-/usr/share/fonts/truetype/ttf-khmeros-core: skipping, existing cache is valid: 2
-fonts, 0 dirs
-/usr/share/fonts/truetype/ttf-liberation: skipping, existing cache is valid: 16 
-fonts, 0 dirs
-/usr/share/fonts/truetype/ttf-marvosym: skipping, existing cache is valid: 1 fon
-ts, 0 dirs
-/usr/share/fonts/truetype/ttf-punjabi-fonts: skipping, existing cache is valid: 
-2 fonts, 0 dirs
-/usr/share/fonts/truetype/ubuntu-font-family: skipping, existing cache is valid:
-13 fonts, 0 dirs
-/usr/share/fonts/truetype/unfonts-core: skipping, existing cache is valid: 12 fo
-nts, 0 dirs
-/usr/share/fonts/truetype/wqy: skipping, existing cache is valid: 5 fonts, 0 dir
-s
-/usr/share/fonts/type1: skipping, existing cache is valid: 0 fonts, 3 dirs
-/usr/share/fonts/type1/gsfonts: skipping, existing cache is valid: 35 fonts, 0 d
-irs
-/usr/share/fonts/type1/mathml: skipping, existing cache is valid: 1 fonts, 0 dir
-s
-/usr/share/fonts/type1/texlive-fonts-recommended: skipping, existing cache is va
-lid: 47 fonts, 0 dirs
-/usr/share/fonts/woff: skipping, existing cache is valid: 0 fonts, 1 dirs
-/usr/share/fonts/woff/font-awesome: skipping, existing cache is valid: 1 fonts, 
-0 dirs
-/usr/local/share/fonts: skipping, existing cache is valid: 0 fonts, 0 dirs
-/home/owner/.local/share/fonts: skipping, no such directory
-/home/owner/.fonts: skipping, existing cache is valid: 29 fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/lm: skipping, existing cache is valid: 72
-fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/lm-math: skipping, existing cache is vali
-d: 1 fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/tex-gyre: skipping, existing cache is val
-id: 33 fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/tex-gyre-math: skipping, existing cache i
-s valid: 2 fonts, 0 dirs
-/usr/share/fonts: caching, new cache contents: 0 fonts, 8 dirs
-/usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
-/home/owner/.local/share/fonts: skipping, no such directory
-/home/owner/.fonts: caching, new cache contents: 29 fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/lm: caching, new cache contents: 72 fonts
-, 0 dirs
-/usr/share/texmf/fonts/opentype/public/lm-math: caching, new cache contents: 1 f
-onts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/tex-gyre: caching, new cache contents: 33
-fonts, 0 dirs
-/usr/share/texmf/fonts/opentype/public/tex-gyre-math: caching, new cache content
-s: 2 fonts, 0 dirs
-/var/cache/fontconfig: cleaning cache directory
-/home/owner/.cache/fontconfig: cleaning cache directory
-/home/owner/.fontconfig: cleaning cache directory
-fc-cache: succeeded
-</code></pre>
+    # fc-cache
+    /usr/share/fonts: skipping, existing cache is valid: 0 fonts, 8 dirs
+    /usr/share/fonts/X11: skipping, existing cache is valid: 0 fonts, 4 dirs
+    /usr/share/fonts/X11/Type1: skipping, existing cache is valid: 82 fonts, 0 dirs
+    /usr/share/fonts/X11/encodings: skipping, existing cache is valid: 0 fonts, 1 di
+    rs
+    /usr/share/fonts/X11/encodings/large: skipping, existing cache is valid: 0 fonts
+    , 0 dirs
+    /usr/share/fonts/X11/misc: skipping, existing cache is valid: 59 fonts, 0 dirs
+    /usr/share/fonts/X11/util: skipping, existing cache is valid: 0 fonts, 0 dirs
+    /usr/share/fonts/cmap: skipping, existing cache is valid: 0 fonts, 5 dirs
+    /usr/share/fonts/cmap/adobe-cns1: skipping, existing cache is valid: 0 fonts, 0 
+    dirs
+    /usr/share/fonts/cmap/adobe-gb1: skipping, existing cache is valid: 0 fonts, 0 d
+    irs
+    /usr/share/fonts/cmap/adobe-japan1: skipping, existing cache is valid: 0 fonts, 
+    0 dirs
+    /usr/share/fonts/cmap/adobe-japan2: skipping, existing cache is valid: 0 fonts, 
+    0 dirs
+    /usr/share/fonts/cmap/adobe-korea1: skipping, existing cache is valid: 0 fonts, 
+    0 dirs
+    /usr/share/fonts/eot: skipping, existing cache is valid: 0 fonts, 1 dirs
+    /usr/share/fonts/eot/font-awesome: skipping, existing cache is valid: 0 fonts, 0
+    dirs
+    /usr/share/fonts/opentype: skipping, existing cache is valid: 0 fonts, 11 dirs
+    /usr/share/fonts/opentype/cabin: skipping, existing cache is valid: 8 fonts, 0 d
+    irs
+    /usr/share/fonts/opentype/font-awesome: skipping, existing cache is valid: 1 fon
+    ts, 0 dirs
+    /usr/share/fonts/opentype/freefont: skipping, existing cache is valid: 12 fonts,
+    0 dirs
+    /usr/share/fonts/opentype/ipaexfont-gothic: skipping, existing cache is valid: 1
+    fonts, 0 dirs
+    /usr/share/fonts/opentype/ipaexfont-mincho: skipping, existing cache is valid: 1
+    fonts, 0 dirs
+    /usr/share/fonts/opentype/ipafont-gothic: skipping, existing cache is valid: 2 f
+    onts, 0 dirs
+    /usr/share/fonts/opentype/ipafont-mincho: skipping, existing cache is valid: 2 f
+    onts, 0 dirs
+    /usr/share/fonts/opentype/linux-libertine: skipping, existing cache is valid: 13
+    fonts, 0 dirs
+    /usr/share/fonts/opentype/lobster: skipping, existing cache is valid: 1 fonts, 0
+    dirs
+    /usr/share/fonts/opentype/lobstertwo: skipping, existing cache is valid: 4 fonts
+    , 0 dirs
+    /usr/share/fonts/opentype/stix: skipping, existing cache is valid: 29 fonts, 0 d
+    irs
+    /usr/share/fonts/svg: skipping, existing cache is valid: 0 fonts, 1 dirs
+    /usr/share/fonts/svg/font-awesome: skipping, existing cache is valid: 0 fonts, 0
+    dirs
+    /usr/share/fonts/truetype: skipping, existing cache is valid: 2 fonts, 42 dirs
+    /usr/share/fonts/truetype/abyssinica: skipping, existing cache is valid: 1 fonts
+    , 0 dirs
+    /usr/share/fonts/truetype/adf: skipping, existing cache is valid: 28 fonts, 0 di
+    rs
+    /usr/share/fonts/truetype/arphic: skipping, existing cache is valid: 8 fonts, 0 
+    dirs
+    /usr/share/fonts/truetype/artemisia: skipping, existing cache is valid: 4 fonts,
+    0 dirs
+    /usr/share/fonts/truetype/asana-math: skipping, existing cache is valid: 1 fonts
+    , 0 dirs
+    /usr/share/fonts/truetype/comfortaa: skipping, existing cache is valid: 3 fonts,
+    0 dirs
+    /usr/share/fonts/truetype/complutum: skipping, existing cache is valid: 1 fonts,
+    0 dirs
+    /usr/share/fonts/truetype/dejavu: skipping, existing cache is valid: 21 fonts, 0
+    dirs
+    /usr/share/fonts/truetype/didot: skipping, existing cache is valid: 4 fonts, 0 d
+    irs
+    /usr/share/fonts/truetype/droid: skipping, existing cache is valid: 18 fonts, 0 
+    dirs
+    /usr/share/fonts/truetype/font-awesome: skipping, existing cache is valid: 1 fon
+    ts, 0 dirs
+    /usr/share/fonts/truetype/freefont: skipping, existing cache is valid: 12 fonts,
+    0 dirs
+    /usr/share/fonts/truetype/gentium: skipping, existing cache is valid: 4 fonts, 0
+    dirs
+    /usr/share/fonts/truetype/gentium-basic: skipping, existing cache is valid: 8 fo
+    nts, 0 dirs
+    /usr/share/fonts/truetype/horai-umefont: skipping, existing cache is valid: 18 f
+    onts, 0 dirs
+    /usr/share/fonts/truetype/inconsolata: skipping, existing cache is valid: 1 font
+    s, 0 dirs
+    /usr/share/fonts/truetype/junicode: skipping, existing cache is valid: 4 fonts, 
+    0 dirs
+    /usr/share/fonts/truetype/kacst: skipping, existing cache is valid: 15 fonts, 0 
+    dirs
+    /usr/share/fonts/truetype/kacst-one: skipping, existing cache is valid: 2 fonts,
+    0 dirs
+    /usr/share/fonts/truetype/lao: skipping, existing cache is valid: 1 fonts, 0 dir
+    s
+    /usr/share/fonts/truetype/lato: skipping, existing cache is valid: 10 fonts, 0 d
+    irs
+    /usr/share/fonts/truetype/liberation: skipping, existing cache is valid: 16 font
+    s, 0 dirs
+    /usr/share/fonts/truetype/msttcorefonts: skipping, existing cache is valid: 60 f
+    onts, 0 dirs
+    /usr/share/fonts/truetype/nanum: skipping, existing cache is valid: 6 fonts, 0 d
+    irs
+    /usr/share/fonts/truetype/neohellenic: skipping, existing cache is valid: 4 font
+    s, 0 dirs
+    /usr/share/fonts/truetype/olga: skipping, existing cache is valid: 1 fonts, 0 di
+    rs
+    /usr/share/fonts/truetype/openoffice: skipping, existing cache is valid: 1 fonts
+    , 0 dirs
+    /usr/share/fonts/truetype/padauk: skipping, existing cache is valid: 4 fonts, 0 
+    dirs
+    /usr/share/fonts/truetype/sinhala: skipping, existing cache is valid: 1 fonts, 0
+    dirs
+    /usr/share/fonts/truetype/solomos: skipping, existing cache is valid: 1 fonts, 0
+    dirs
+    /usr/share/fonts/truetype/takao-gothic: skipping, existing cache is valid: 1 fon
+    ts, 0 dirs
+    /usr/share/fonts/truetype/tibetan-machine: skipping, existing cache is valid: 1 
+    fonts, 0 dirs
+    /usr/share/fonts/truetype/tlwg: skipping, existing cache is valid: 54 fonts, 0 d
+    irs
+    /usr/share/fonts/truetype/ttf-dejavu: skipping, existing cache is valid: 21 font
+    s, 0 dirs
+    /usr/share/fonts/truetype/ttf-indic-fonts-core: skipping, existing cache is vali
+    d: 17 fonts, 0 dirs
+    /usr/share/fonts/truetype/ttf-khmeros-core: skipping, existing cache is valid: 2
+    fonts, 0 dirs
+    /usr/share/fonts/truetype/ttf-liberation: skipping, existing cache is valid: 16 
+    fonts, 0 dirs
+    /usr/share/fonts/truetype/ttf-marvosym: skipping, existing cache is valid: 1 fon
+    ts, 0 dirs
+    /usr/share/fonts/truetype/ttf-punjabi-fonts: skipping, existing cache is valid: 
+    2 fonts, 0 dirs
+    /usr/share/fonts/truetype/ubuntu-font-family: skipping, existing cache is valid:
+    13 fonts, 0 dirs
+    /usr/share/fonts/truetype/unfonts-core: skipping, existing cache is valid: 12 fo
+    nts, 0 dirs
+    /usr/share/fonts/truetype/wqy: skipping, existing cache is valid: 5 fonts, 0 dir
+    s
+    /usr/share/fonts/type1: skipping, existing cache is valid: 0 fonts, 3 dirs
+    /usr/share/fonts/type1/gsfonts: skipping, existing cache is valid: 35 fonts, 0 d
+    irs
+    /usr/share/fonts/type1/mathml: skipping, existing cache is valid: 1 fonts, 0 dir
+    s
+    /usr/share/fonts/type1/texlive-fonts-recommended: skipping, existing cache is va
+    lid: 47 fonts, 0 dirs
+    /usr/share/fonts/woff: skipping, existing cache is valid: 0 fonts, 1 dirs
+    /usr/share/fonts/woff/font-awesome: skipping, existing cache is valid: 1 fonts, 
+    0 dirs
+    /usr/local/share/fonts: skipping, existing cache is valid: 0 fonts, 0 dirs
+    /home/owner/.local/share/fonts: skipping, no such directory
+    /home/owner/.fonts: skipping, existing cache is valid: 29 fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/lm: skipping, existing cache is valid: 72
+    fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/lm-math: skipping, existing cache is vali
+    d: 1 fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/tex-gyre: skipping, existing cache is val
+    id: 33 fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/tex-gyre-math: skipping, existing cache i
+    s valid: 2 fonts, 0 dirs
+    /usr/share/fonts: caching, new cache contents: 0 fonts, 8 dirs
+    /usr/local/share/fonts: caching, new cache contents: 0 fonts, 0 dirs
+    /home/owner/.local/share/fonts: skipping, no such directory
+    /home/owner/.fonts: caching, new cache contents: 29 fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/lm: caching, new cache contents: 72 fonts
+    , 0 dirs
+    /usr/share/texmf/fonts/opentype/public/lm-math: caching, new cache contents: 1 f
+    onts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/tex-gyre: caching, new cache contents: 33
+    fonts, 0 dirs
+    /usr/share/texmf/fonts/opentype/public/tex-gyre-math: caching, new cache content
+    s: 2 fonts, 0 dirs
+    /var/cache/fontconfig: cleaning cache directory
+    /home/owner/.cache/fontconfig: cleaning cache directory
+    /home/owner/.fontconfig: cleaning cache directory
+    fc-cache: succeeded
+{:.cliUB}
 
 Now, `fc-match` returns me a fixed-width font.
 

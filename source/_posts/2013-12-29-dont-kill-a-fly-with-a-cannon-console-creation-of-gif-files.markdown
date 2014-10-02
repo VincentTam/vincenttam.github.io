@@ -21,13 +21,15 @@ geeks who are used to CLI, this is not the final answer for them.
 If your source PNG files are named as `[name]%s.png`, then the right
 command is:[^1]
 
-<pre class="cli"><code class="UBMono">$ convert $(for ((a=0; a&lt;700; a++)); do printf -- &quot;-delay 10 \
-[name]%s.png &quot; $a; done;) [result].gif
-# `-delay 10&#039; means that each image is displayed for 0.1s.
-# [name]: file name of the source PNG files without the ordinal number.
-# `%s&#039;: the n-th PNG file.
-# [result]: file name of the target GIF file.
-</code></pre>
+    $ convert $(for ((a=0; a<700; a++)); do printf -- "-delay 10 \
+    > [name]%s.png" $a; done;) [result].gif
+{:.cliUB}
+
+- `-delay 10` means that each image is displayed for 0.1s.
+- `[name]`: file name of the source PNG files without the ordinal
+    number.
+- `%s`: the n-th PNG file.
+- `[result]`: file name of the target GIF file.
 
 Without the whitespace between `png` and the ending `"`, things
 *won't* work.

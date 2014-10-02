@@ -35,35 +35,35 @@ site from the `source` branch cloned from the remote repository on
 [GitHub][github] on this Sunday, and the first Liquid exception
 occurred.  I remembered `rake` said something like this.[^1]
 
-<pre class="cli"><code>C:\github\vincenttam.github.io&gt;rake generate
-## Generating Site with Jekyll
-unchanged sass/print.scss
-identical source/stylesheets/screen.css 
-Configuration from C:/github/vincenttam.github.io/_config.yml
-Building site: source -&gt; public
-Liquid Exception: Pygments can't parse unknown language: tex. in 2014-03-16-latex-template-for-essays.markdown
-C:/github/vincenttam.github.io/plugins/pygments_code.rb:27:in `rescue in pygments'
-C:/github/vincenttam.github.io/plugins/pygments_code.rb:24:in `pygments'
-C:/github/vincenttam.github.io/plugins/pygments_code.rb:14:in `highlight'
-C:/github/vincenttam.github.io/plugins/code_block.rb:82:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/convertible.rb:79:in `do_layout'
-C:/github/vincenttam.github.io/plugins/post_filters.rb:167:in `do_layout'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/post.rb:195:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:200:in `block in render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `each'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:41:in `process'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/bin/jekyll:264:in `&lt;top (required)&gt;'
-C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `load'
-C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `&lt;main&gt;'
-Build Failed
-</code></pre>
+    C:\github\vincenttam.github.io>rake generate
+    ## Generating Site with Jekyll
+    unchanged sass/print.scss
+    identical source/stylesheets/screen.css 
+    Configuration from C:/github/vincenttam.github.io/_config.yml
+    Building site: source -> public
+    Liquid Exception: Pygments can't parse unknown language: tex. in 2014-03-16-latex-template-for-essays.markdown
+    C:/github/vincenttam.github.io/plugins/pygments_code.rb:27:in `rescue in pygments'
+    C:/github/vincenttam.github.io/plugins/pygments_code.rb:24:in `pygments'
+    C:/github/vincenttam.github.io/plugins/pygments_code.rb:14:in `highlight'
+    C:/github/vincenttam.github.io/plugins/code_block.rb:82:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/convertible.rb:79:in `do_layout'
+    C:/github/vincenttam.github.io/plugins/post_filters.rb:167:in `do_layout'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/post.rb:195:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:200:in `block in render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `each'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:41:in `process'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/bin/jekyll:264:in `<top (required)>'
+    C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `load'
+    C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `<main>'
+    Build Failed
+{:.cli}
 
 <!-- more -->
 
@@ -79,41 +79,41 @@ that I had forgotten to add Python into the `PATH`.  Following Sam
 Lin's answer, I got the *exact* problem as described in the code block
 in the Stack Overflow question.
 
-<pre class="cli"><code>C:\github\vincenttam.github.io&gt;rake generate
-## Generating Site with Jekyll
-unchanged sass/print.scss
-identical source/stylesheets/screen.css 
-Configuration from C:/github/vincenttam.github.io/_config.yml
-Building site: source -&gt; public
-Liquid Exception: No such file or directory - python
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/mentos.py in 2014-03-16-latex-template-for-essays.markdown
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:307:in `popen4'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:41:in `start'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:203: in `mentos'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:192: in `highlight'
-C:/github/vincenttam.github.io/plugins/pygments_code.rb:24:in `pygments'
-C:/github/vincenttam.github.io/plugins/pygments_code.rb:14:in `highlight'
-C:/github/vincenttam.github.io/plugins/code_block.rb:82:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/convertible.rb:79:in `do_layout'
-C:/github/vincenttam.github.io/plugins/post_filters.rb:167:in `do_layout'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/post.rb:195:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:200:in `block in render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:199:in `each'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:199:in `render'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:41:in `process'
-C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/bin/jekyll:264:in `&lt;top (required)&gt;'
-C:/Ruby193/bin/jekyll:23:in `load'
-C:/Ruby193/bin/jekyll:23:in `&lt;main&gt;'
-Build Failed
-</code></pre>
+    C:\github\vincenttam.github.io>rake generate
+    ## Generating Site with Jekyll
+    unchanged sass/print.scss
+    identical source/stylesheets/screen.css 
+    Configuration from C:/github/vincenttam.github.io/_config.yml
+    Building site: source -> public
+    Liquid Exception: No such file or directory - python
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/mentos.py in 2014-03-16-latex-template-for-essays.markdown
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:162:in `spawn'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/posix-spawn-0.3.6/lib/posix/spawn.rb:307:in `popen4'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:41:in `start'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:203: in `mentos'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/pygments.rb-0.3.7/lib/pygments/popen.rb:192: in `highlight'
+    C:/github/vincenttam.github.io/plugins/pygments_code.rb:24:in `pygments'
+    C:/github/vincenttam.github.io/plugins/pygments_code.rb:14:in `highlight'
+    C:/github/vincenttam.github.io/plugins/code_block.rb:82:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/convertible.rb:79:in `do_layout'
+    C:/github/vincenttam.github.io/plugins/post_filters.rb:167:in `do_layout'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/post.rb:195:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:200:in `block in render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:199:in `each'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:199:in `render'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/site.rb:41:in `process'
+    C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/bin/jekyll:264:in `<top (required)>'
+    C:/Ruby193/bin/jekyll:23:in `load'
+    C:/Ruby193/bin/jekyll:23:in `<main>'
+    Build Failed
+{:.cli}
 
 This time, it's *impossible* for me to find the solution in the above
 referenced Stack Overflow question.  I tried searching "liquid
@@ -155,7 +155,8 @@ about Liquid exception on Stack Overflow[^2] and finally fixed this
 glitch by [installing ImageMagick on Windows 7][imagemagick_win7] and
 including it in my `PATH` variable.
 
-<pre class="cli"><code class="UBMono">$ sudo apt-get install imagemagick</code></pre>
+    $ sudo apt-get install imagemagick
+{:.cliUB}
 
 ---
 [^1]:

@@ -11,10 +11,10 @@ Background
 
 I issued the following command and then rebooted the machine.
 
-<pre class="cli"><code class="UBMono">$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
-&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
-&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
-</code></pre>
+    $ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+    > linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+    > linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+{:.cliUB}
 
 Problem
 ---

@@ -14,32 +14,32 @@ Vim.
 Right after I issued the command `vi` on the terminal, I got the
 following error message.
 
-<pre class="cli"><code class="UBMono">$ vi
-Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
-line  253:
-Traceback (most recent call last):
-  File "&lt;string&gt;", line 7, in &lt;module&gt;
-  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/commands.py", line 8, in &lt;module&gt;
-    from db import *
-  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/db.py", line 181, in &lt;module&gt;
-    u.ub_echoerr(msg)
-  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/util.py", line 623, in ub_echoerr
-    vim.command(cmd)
-vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
-Press ENTER or type command to continue
-</code></pre>
+    $ vi
+    Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
+    line  253:
+    Traceback (most recent call last):
+      File "<string>", line 7, in <module>
+      File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/commands.py", line 8, in <module>
+	from db import *
+      File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/db.py", line 181, in <module>
+	u.ub_echoerr(msg)
+      File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/util.py", line 623, in ub_echoerr
+	vim.command(cmd)
+    vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
+    Press ENTER or type command to continue
+{:.cliUB}
 
 <!-- more -->
 
 Before entering the standard startup screen, I received another
 complaint from the editor.
 
-<pre class="cli"><code class="UBMono">Error detected while processing BufEnter Auto commands for "*":
-Traceback (most recent call last):
-  File "&lt;string&gt;", line 1, in &lt;module&gt;
-NameError: name '__ub_on_buffer_enter' is not defined
-Press ENTER or type command to continue
-</code></pre>
+    Error detected while processing BufEnter Auto commands for "*":
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+    NameError: name '__ub_on_buffer_enter' is not defined
+    Press ENTER or type command to continue
+{:.cliUB}
 
 I tried opening a file, and was blamed by the program again!
 

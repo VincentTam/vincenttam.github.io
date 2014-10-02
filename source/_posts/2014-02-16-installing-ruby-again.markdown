@@ -11,12 +11,12 @@ It seems that the installation of Ruby through rvm is *not* as easy as
 I think. The following two commands have failed.
 
     $ rvm pkg install iconv
-{: .cliUB}
+{:.cliUB}
 
 ![failure of installing iconv][fig1]
 
     $ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-{: .cliUB}
+{:.cliUB}
 
 ![failure of compiling ruby 1.9.2][fig2]
 

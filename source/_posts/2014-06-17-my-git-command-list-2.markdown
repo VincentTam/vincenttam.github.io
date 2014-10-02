@@ -54,18 +54,18 @@ I would like to
 
 I issued the following commands to do so.
 
-<pre class="cli"><code>$ git reflog		       # For checking purpose
-$ git reset --soft HEAD^       # Revert to the previous commit
-$ git log -3		       # For checking purpose
-$ git status		       # `&lt;post&gt;' should be in `... not staged for commit'
-$ less &lt;post&gt;		       # For checking purpose
-$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
-$ git checkout source	       # Go to the correct place for the commit
-$ git add &lt;post&gt;	       # Add back `&lt;post&gt;' to `source' branch
-$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
-$ git checkout wpcom-importer  # Go back to another branch for merging
-$ git merge source	       # Merge the changes back
-</code></pre>
+    $ git reflog                   # For checking purpose
+    $ git reset --soft HEAD^       # Revert to the previous commit
+    $ git log -3                   # For checking purpose
+    $ git status                   # `<post>' should be in `... not staged for commit'
+    $ less <post>                  # For checking purpose
+    $ git reset HEAD <post>        # Unstage `<post>' for commit
+    $ git checkout source          # Go to the correct place for the commit
+    $ git add <post>               # Add back `<post>' to `source' branch
+    $ git commit -am "<msg>"       # Do the commit on the correct branch
+    $ git checkout wpcom-importer  # Go back to another branch for merging
+    $ git merge source             # Merge the changes back
+{:.cliUB}
 
 * * *
 
@@ -80,13 +80,13 @@ the staging area here.
 [This list][GitCmdList] written in Chinese is a quick summary of Git
 commands.  I learnt the use of `git stash` commands from there.
 
-<pre class="cli"><code class="UBMono">$ git stash                      # save the uncommitted changes
-$ git stash list                 # show a list of stashes
-$ git stash show                 # inspect a list of stashes
-$ git stash pop                  # apply and discard the topmost stash
-$ git stash apply                # apply but don't discard the topmost stash
-$ git checkout source -- &lt;file&gt;  # copy the file from other branch
-</code></pre>
+    $ git stash                      # save the uncommitted changes
+    $ git stash list                 # show a list of stashes
+    $ git stash show                 # inspect a list of stashes
+    $ git stash pop                  # apply and discard the topmost stash
+    $ git stash apply                # apply but don't discard the topmost stash
+    $ git checkout source -- <file>  # copy the file from other branch
+{:.cliUB}
 
 In the last "merge" command, `--` avoids an ambiguity since `source`
 can be either the name of a branch or a folder in this case.  In
@@ -99,9 +99,9 @@ addition, this command *doesn't* affect the commit history.
 Here's more commands about reseting the working tree to previous
 versions.
 
-<pre class="cli"><code class="UBMono">$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
-$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
-</code></pre>
+    $ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+    $ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
+{:.cliUB}
 
 #### Difference between resetting and reverting things
 
@@ -127,6 +127,7 @@ See *Undo a merge or pull* and the following section in the manual of
 The SCM will say:
 
     Automatic merge failed; fix conflicts and then commit the result.
+{:.cliUB}
 
 Thus, the problematic merge *hasn't* been committed.  Simply running
 `git reset --hard` will solve the problem.

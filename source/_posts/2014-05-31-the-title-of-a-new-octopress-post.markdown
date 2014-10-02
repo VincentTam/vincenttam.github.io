@@ -9,8 +9,8 @@ categories: Octopress
 According to Octopress's official documentation, the command for
 generating a new post is like this.[^1]
 
-<pre class="cli"><code class="UBMono">$ rake new_post["title"]</code>
-</pre>
+    $ rake new_post["title"]
+{:.cliUB}
 
 How about including some symbols inside `title`?
 
@@ -27,9 +27,9 @@ Double quotation marks
 
 The following shell command works.
 
-<pre class="cli"><code class="UBMono">$ rake new_post['testing "double" quotes']
-# Creates source/_posts/2014-05-31-testing-double-quotes.markdown
-</code></pre>
+    $ rake new_post['testing "double" quotes']
+    # Creates source/_posts/2014-05-31-testing-double-quotes.markdown
+{:.cliUB}
 
 However, as I ran `rake generate`, I encountered an error.
 
@@ -103,8 +103,9 @@ some simple tricks will do.
 1. Pass a title with `'`, but *without* `"` and `!`.
     - For example
 
-<pre class="cli"><code class="UBMono">$ rake new_post["Don't use Internet Explorer"]
-# Creates source/_posts/2014-05-31-dont-use-internet-explorer.markdown</code></pre>
+    $ rake new_post["Don't use Internet Explorer"]
+    # Creates source/_posts/2014-05-31-dont-use-internet-explorer.markdown
+{:.cliUB}
 
 2. Add the things back to `title` in the header of the generated
 markdown file.

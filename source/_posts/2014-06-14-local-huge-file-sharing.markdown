@@ -3,10 +3,7 @@ layout: post
 title: "Local Huge File Sharing"
 date: 2014-06-14 13:38:56 +0800
 comments: true
-categories:
-- Git
-- Linux
-- M$ Win*
+categories: [Git, Linux, M$ Win*]
 ---
 
 Objective
@@ -78,7 +75,10 @@ Remarks: The above steps is for Windows 7 *only*.[^2]
 	Windows 7 laptop as my second one.
 2. Install openssh-server on Linux.[^3]
 
-    <pre class="cli"><code class="UBMono">$ sudo apt-get install openssh-server</code></pre>
+    ~~~
+    $ sudo apt-get install openssh-server
+    ~~~
+    {:.cliUB}
 
 3. Do some of the following settings on Linux.
 
@@ -111,7 +111,9 @@ learning.
 
 To sum up, issue the command for "2" right after "1".
 
-<pre class="cli"><code class="UBMono">$ sudo ifconfig eth0 192.168.1.1 ; sudo route add default gw 192.168.1.3 eth0</code></pre>
+    $ sudo ifconfig eth0 192.168.1.1
+    $ sudo route add default gw 192.168.1.3 eth0
+{:.cliUB}
 
 Output
 
@@ -164,9 +166,9 @@ check if the remote server is up.  For more details, such as the
 number of packets sent to the remote machine, check it elsewhere like
 the command's manpage or the Internet.
 
-<pre class="cli"><code class="UBMono">$ ping [host] # send some packets to `host'
-$ nmap [host] # detect which ports are open
-</code></pre>
+    $ ping [host] # send some packets to `host'
+    $ nmap [host] # detect which ports are open
+{:.cliUB}
 
 At first, I tried `ssh 192.168.1.1`, and was prompted to input my
 password.  Unfortunately, I *overlooked the user name*.  Even though I
@@ -197,15 +199,16 @@ According to [the official manual][GitMan], SSH paths are supported by
 the SCM.  For example, to copy a Git repository called `myproj` from a
 Linux machine, I can use the following command.
 
-<pre class="cli"><code class="UBMono">$ git clone ssh://owner@192.168.1.1/~/myproj</code></pre>
+    $ git clone ssh://owner@192.168.1.1/~/myproj
+{:.cliUB}
 
 One can perform a Git fetch more quickly after adding the SSH path of
 the Git repository on the "remote" machine into the list of remote
 repositories.
 
-<pre class="cli"><code class="UBMono">$ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
-$ git fetch ubuntu_desktop [branch]
-</code></pre>
+    $ git remote add ubuntu_desktop ssh://owner@192.168.1.1/~/myproj
+    $ git fetch ubuntu_desktop [branch]
+{:.cliUB}
 
 However, `git push` to remote machines will fail if the remote
 repository being "pushed" is non-bare.  Either setting up a bare

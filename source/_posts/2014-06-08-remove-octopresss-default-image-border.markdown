@@ -60,8 +60,8 @@ searched for files under the `sass/` folder that contains
 `flash-video`, after learning the command from
 [a question on StackExchange][StackExchange1987926].
 
-<pre class="cli"><code class="UBMono">$ grep -r flash-video ./sass
-</code></pre>
+    $ grep -r flash-video ./sass
+{:.cliUB}
 
 I observed that the mixin `shadow-box` was used in
 `sass/partials/_blog.scss`.[^1]  I performed another search, and found
