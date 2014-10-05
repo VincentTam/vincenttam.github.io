@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-03T01:03:06+08:00</updated>
+  <updated>2014-10-05T15:51:00+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Shellshock: Better 'Bash' Patches Now Available &#9733;]]></title>
+      <link href="http://www.zdnet.com/shellshock-better-bash-patches-now-available-7000034115/"/>
+    
+    <updated>2014-10-05T15:42:11+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available</id>
+    
+      <content type="html"><![CDATA[<p>Luckily, the Ubuntu updater has already fetched the lastest patch of the vunerable bash.</p>
+
+<pre class="cliUB"><code>owner@owner-Inspiron-560s:~$ env 'x=() { :;}; echo vulnerable' 'BASH_FUNC_x()=()
+ { :;}; echo vulnerable' bash -c "echo test"
+bash: warning: x: ignoring function definition attempt
+bash: error importing function definition for `BASH_FUNC_x'
+test
+
+owner@owner-Inspiron-560s:~$ cd /tmp; rm -f /tmp/echo; env 'x=() { (a)=&gt;\' bash 
+-c "echo date"; cat /tmp/echo
+date
+cat: /tmp/echo: No such file or directory
+owner@owner-Inspiron-560s:/tmp$ 
+</code></pre>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1606,49 +1632,6 @@ To git@github.com:vincenttam/vincenttam.github.io.git
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Commits With fugitive.vim on Windows]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/"/>
-    
-    <updated>2014-09-03T00:48:13+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
-provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
-<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
-
-<p>Then I tried running <code>git commit</code> in 
-<img class="nobd" src="http://vincenttam.github.io/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />,
-but it’s “aborting commit due to empty commit message”.</p>
-
-<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
-gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
-The <code>-w</code> flag in the commands for setting other editors as the default
-editor for Git is the key for the above quoted message.</p>
-
-<p>I tried to solve this problem by reading Vim’s offical manual about
-<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
-in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
-
-<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
-<code>:Gcommit</code> in Vim, and use
-<img class="nobd" src="http://vincenttam.github.io/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />.</p>
-
 ]]></content>
     
   </entry>
