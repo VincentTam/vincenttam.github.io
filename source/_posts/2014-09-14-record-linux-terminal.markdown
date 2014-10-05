@@ -54,7 +54,7 @@ consists of 337 characters.
 
      * Documentation:  https://help.ubuntu.com/
 
-    owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
+    owner@owner-Inspiron-560s:~$ cat > /dev/null
     This is tty1.
     owner@owner-Inspiron-560s:~$
 {:.cliUB}

@@ -34,13 +34,16 @@ installed in the system.
 Problem
 ---
 
-I've also installed Fedora 17 two years ago.[^2]  Nowadays, it's no
+I've also installed Fedora 17 two years ago.[^2]  Nowadays, it's *no*
 longer maintained by the package managers, who look after packages for
 newer versions of the GNU/Linux distribution.[^3]
+
+**How can one fix the bash on Fedora 17?**
 
 I searched "shellshock fedora" on Google, and have learnt more about
 the security hole in *Fedora Megazine*.[^4]
 
+<!-- more -->
 Solution
 ---
 
