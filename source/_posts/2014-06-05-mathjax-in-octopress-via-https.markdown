@@ -105,7 +105,7 @@ web designing, I could only understand two advices:
 
 {% img fancybox /images/posts/OctopressHTTPS/WebConsoleGoogleFonts.png 800 'Firefox web console' 'fig5' %}
 
-In lines 3–4 of the web console, I could see that Google Fonts were
+In lines 3–4 of the web console, I could see that Google Fonts were
 blocked.  I clicked "[**[Learn More]**][MixedContent]" and was brought
 to a page on MDN that I had already visited.  I clicked the link for
 fixing the website at the bottom *again*, learnt *nothing* new about

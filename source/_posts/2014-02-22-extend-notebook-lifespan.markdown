@@ -9,7 +9,7 @@ categories: hardware
 I've found some useful pages about maintaining one's notebook
 computer.
 
-* [5 Laptop Maintenance Tips To Extend Its Life Expectancy][makeuseof]
+* [5 Laptop Maintenance Tips To Extend Its Life Expectancy][makeuseof]
 * [Maximizing the lifespan of a laptop battery][computerworld]
 
 However, as a GNU/Linux user, I don't think I need an anti-virus.[^1]

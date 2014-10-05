@@ -64,7 +64,7 @@ shop for replacing the RAM.
 
 At noon, it was extremely hot, so I waited for a few hours and tried
 [setting up Octopress on my laptop][octopress_win7], which ran on
-Windows 7 because I would like to write something about
+Windows 7 because I would like to write something about
 [the recent Vim error caused by my outdated VIMRC][ub_update_err]
 before I forgot the cause and the solution of error.  I came across
 some errors with long and complicated error messages. As a user but
@@ -74,7 +74,7 @@ started to write posts/pages hosted on the *same* blog in Vim on
 *both* Ubuntu and Windows.  I will talk about that in greater detail
 soon.
 
-Ironically, in the afternoon, the technician took less than 30 minutes
+Ironically, in the afternoon, the technician took less than 30 minutes
 to remove the old RAM and install the new one.
 
 Lessons learnt

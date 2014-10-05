@@ -26,7 +26,7 @@ Sample code
 Explanation of code in "latex_sample.tex"
 ---
 
-For the one-inch margin, I have used the geometry package to do so. (line 2) The font size has been set to 12. (line 1) The 1.5 line spacing has been implemented. (lines 7–8)
+For the one-inch margin, I have used the geometry package to do so. (line 2) The font size has been set to 12. (line 1) The 1.5 line spacing has been implemented. (lines 7–8)
 
 The APA-style reference list was automatically generated using the biblatex package along with the biber backend. (lines 15–17,107)
 

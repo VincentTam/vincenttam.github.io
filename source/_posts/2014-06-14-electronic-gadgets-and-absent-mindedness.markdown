@@ -19,7 +19,7 @@ The Chinese article cited a news report in the *Daily Mail*.[^1]
 ---
 [^1]:
     Technology is turning us absent minded, researchers claim as it's
-    revealed one in 7 young adults suffer memory lapses in *the Daily
+    revealed one in 7 young adults suffer memory lapses in *the Daily
     Mail* by Fiona Macrae.  ([URL][dailymail])
 
 [dailymail]: http://www.dailymail.co.uk/sciencetech/article-2648971/Technology-turns-youths-absent-minded-researchers-warn-revealed-one-7-young-adults-suffer-memory-lapses.html

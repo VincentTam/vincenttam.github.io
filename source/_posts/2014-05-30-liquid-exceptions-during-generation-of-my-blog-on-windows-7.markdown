@@ -132,10 +132,10 @@ had not yet closed tabs for some related web pages, such as
 [*Setup Octopress On Windows7*][tut1].  I went over
 [*在 Windows 使用 Octopress–不歸錄*][tut2] written by Tony Jan again, and
 the saw the section *安裝 Python*, where I discovered the reason for
-this error: Python 3.3 is *not* well-supported by a component on which
+this error: Python 3.3 is *not* well-supported by a component on which
 Octopress depends.  I followed the advice in the last sentence in that
 section and avoided further configurations by changing the Python
-version from 3.3 to 2.7.  After downgrading Python, I believe that I
+version from 3.3 to 2.7.  After downgrading Python, I believe that I
 could quickly preview the results.  Nonetheless, I was shocked by
 `rake`'s output.
 

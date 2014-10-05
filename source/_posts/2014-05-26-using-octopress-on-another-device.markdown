@@ -7,9 +7,9 @@ categories: [M$ Win*, Octopress]
 ---
 
 Two days ago, my Linux desktop was down.  As a result, I had to use a
-laptop that ran on Windows 7 to browse the web.  I wasn't sure how
+laptop that ran on Windows 7 to browse the web.  I wasn't sure how
 long it'd take to fix the desktop, so I tried installing Octopress on
-Windows 7.
+Windows 7.
 
 I mainly followed [the tutorial on Simple Tutorial Blog][tut1].  If my
 blog consists merely of simple passages, the tutorial should have
@@ -20,7 +20,7 @@ have *no* knowledge in Ruby and Python programming, so I *don't* think
 that I can find out what's wrong like him.  Fortunately, I *didn't*
 encounter his error.
 
-However, when I was setting up Octopress on Windows 7, I've learned
+However, when I was setting up Octopress on Windows 7, I've learned
 something that I'd like to write it down.
 
 <!-- more -->
@@ -136,7 +136,7 @@ I copied the four commands from [Robert Anderson's post][pull2branch].
     file in GitHub instead.
 
 [^3]:
-    I can now understand point 5 in Scott Cheng's post.  See my
+    I can now understand point 5 in Scott Cheng's post.  See my
     [newer post][np] for details.  (Last added on SEP 6, 2014)
 
 [OctopressInWin]: http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/

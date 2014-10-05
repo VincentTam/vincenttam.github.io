@@ -47,15 +47,15 @@ Why do I post it *now*?  (TL;DR)
 ---
 
 I've solved the above problem last year and I would like to write this
-post.  However, I *hadn't* learnt how to set up Octopress on M$ Win\*
-7 when I set up this blogging system on Ubuntu 12.04 LTS.  Thus, I
-*didn't* knew the actual procedures until [my desktop crashed].  The
+post.  However, I *hadn't* learnt how to set up Octopress on M$
+Win\* 7 when I set up this blogging system on Ubuntu 12.04 LTS.  Thus,
+I *didn't* knew the actual procedures until [my desktop crashed].  The
 system failure has caused to seriously learn that.  I started from an
-easier target: setting up a *new* Octopress blog on M\$ Win\* 7.[^3].
+easier target: setting up a *new* Octopress blog on M\$ Win\* 7.[^3].
 After that, I cloned the remote repository of this blog on GitHub to
-M<span class="tex2jax_ignore">$</span> Win\* 7, and solved some
-technical problems before really deploying the site from M
-<span class="tex2jax_ignore">$</span> Win\* 7 to GitHub.[^4]
+M<span class="tex2jax_ignore">$</span> Win\* 7, and solved some
+technical problems before really deploying the site from M <span
+class="tex2jax_ignore">$</span> Win\* 7 to GitHub.[^4]
 
 Solution
 ---

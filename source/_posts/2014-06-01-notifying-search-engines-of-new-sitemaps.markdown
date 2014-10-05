@@ -10,7 +10,7 @@ After viewing [Sam Kuo's article on eavatar.com][tut1], I changed my
 `Rakefile` according to the instructions there.  However, I was unsure
 where the source code should be added.  Thus, I read
 [Larry Nung's working example][larrynung_rakefile], and knew that it
-should immediately follow line 29 of the file.  However, I updated
+should immediately follow line 29 of the file.  However, I updated
 Octopress's source code recently.[^1]  Therefore, the file looked
 *different* from Nung's one—in my own version of the file, I saw the
 following lines of code which caused me to think twice before really

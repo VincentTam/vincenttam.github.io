@@ -11,7 +11,7 @@ I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
 since it's easy to use.  According to the official demo[^1], with a
 CSL file[^2], which specifies the style to the citation, users are
 suppose to be able to create a document with a bibliography.  However,
-when I ran the following command in Vim on Ubuntu 12.04 LTS, pandoc
+when I ran the following command in Vim on Ubuntu 12.04 LTS, pandoc
 hanged.
 
     :!pandoc -s -S --biblio mybib.bib --csl foo.csl -t beamer %\

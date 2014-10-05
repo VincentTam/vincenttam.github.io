@@ -44,6 +44,7 @@ I searched "shellshock fedora" on Google, and have learnt more about
 the security hole in *Fedora Megazine*.[^4]
 
 <!-- more -->
+
 Solution
 ---
 

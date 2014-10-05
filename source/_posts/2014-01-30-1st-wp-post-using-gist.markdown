@@ -17,7 +17,7 @@ WordPress.com's built-in online code highlighter.  See my
 [Markdown] is easy to write.  <del>However, writing code with `code`
 tag (surrounded with `[]`) using UltraBlog in Vim *doesn't* work.  In
 order to post some code, one needs to
-[use 3 backticks][use3backticks].</del>  (I've found a way to use the
+[use 3 backticks][use3backticks].</del>  (I've found a way to use the
 built-in SyntaxHighlighter now because I've realised that a blank line
 in Markdown will be changed to a `<p>` tag in HTML.  Thus, *don't* put
 any blank lines right above and below the the `<code>` tags.)
@@ -41,13 +41,13 @@ this assertion.<del>
 
 {% img /images/posts/1stWPGist/ultrablog.png Screenshot of the "code list" in UltraBlog.vim %}
 
-<small>Figure 1: This is a screenshot of the "code list" in
+<small>Figure 1: This is a screenshot of the "code list" in
 UltraBlog.vim.  [Markdown quick reference][md_quick_ref] suggests the
-use of 3 backticks.</small>
+use of 3 backticks.</small>
 
 {% img fancybox /images/posts/1stWPGist/interpreted.png 800 'Screenshot of the interpreted code in WordPress.com online editor' 'fig1' %}
 
-<small>Figure 2: The above figure shows how the source code for the
+<small>Figure 2: The above figure shows how the source code for the
 "code list" (in lines 12–15 in UltraBlog.vim, see Figure 1) is
 interpreted.</small>
 

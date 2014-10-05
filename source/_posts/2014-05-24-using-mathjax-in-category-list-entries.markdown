@@ -20,7 +20,7 @@ About three weeks ago, I successfully changed the category "LaTeX" to
 "$\rm \LaTeX$".[^1]  By trial, I discovered that `$\rm \LaTeX$` should
 be input for "categories" at the head of the markdown source file of
 each Octopress post/page.  Then, previewing the rendered contents at
-port 4000 at locolhost, I could see the category "$\rm \LaTeX$"
+port 4000 at locolhost, I could see the category "$\rm \LaTeX$"
 rendered by MathJax at the bottom of each post/page.  Moreover, in the
 category list in the sidebar at the right-hand side, the item "$\rm
 \LaTeX$" was also correctly displayed.  However, as I clicked it, I

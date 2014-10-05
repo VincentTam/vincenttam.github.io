@@ -6,7 +6,7 @@ comments: true
 categories: Octopress
 ---
 
-I haven't learnt something about Octopress for 2 weeks.  I hope that I
+I haven't learnt something about Octopress for 2 weeks.  I hope that I
 can create a GitHub project page using Octopress successfully.
 
 I have seen a comment for a blog post which briefly describes the

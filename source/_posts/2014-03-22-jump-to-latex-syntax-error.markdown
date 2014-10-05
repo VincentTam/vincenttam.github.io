@@ -40,7 +40,7 @@ preamble.
 
 P.S. As I've said in my "[About](/about)" page, I mainly write in
 Markdown now, unless a teacher want me to submit homework with
-specific formatting requirements like 1 inch margin, 1.5 line spacing,
+specific formatting requirements like 1-inch margin, 1.5 line spacing,
 etc.  As you can see from the footer of this blog, this post is also
 written in Markdown.
 

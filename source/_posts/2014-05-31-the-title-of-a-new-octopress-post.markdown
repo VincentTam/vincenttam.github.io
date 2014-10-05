@@ -63,7 +63,7 @@ categories: Octopress
 Hello world!
 ```
 
-At line 3 of the faulty markdown file, escaping the `"` inside the
+At line 3 of the faulty markdown file, escaping the `"` inside the
 *outer* pair of double quotes with `\` can resolve the problem.
 
 <pre><code>title: "testing <span class="HLCode">\"</span>double<span class="HLCode">\"</span> quotes"</code></pre>

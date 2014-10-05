@@ -34,11 +34,11 @@ Reasons:
 - Fast data transfer: the bandwidth *isn't* limited by ISPs.
 
 Following [the instructions from *AN0NYM0U5*][2win7], one should be
-able to set up a "connection" between two Windows 7 computers.  I just
-highlight some important configurations to be done in Windows 7's
+able to set up a "connection" between two Windows 7 computers.  I just
+highlight some important configurations to be done in Windows 7's
 Network and Sharing Center.
 
-1. Connect the 2 machines through a LAN cable.
+1. Connect the 2 machines through a LAN cable.
 2. Ensure that the file access rights are properly set.
 3. Set the properties of the "**Local Area Connection**" →
 "**...IPv4**".
@@ -64,7 +64,7 @@ the other computer.
 ![Windows 7 IP settings][Win7SetIPScrShot]  
 <small>The IPv4 properties for the second computer.</small>
 
-Remarks: The above steps is for Windows 7 *only*.[^2]
+Remarks: The above steps is for Windows 7 *only*.[^2]
 
 **How about setting up a connection between Linux and Windows?**
 
@@ -72,7 +72,7 @@ Remarks: The above steps is for Windows 7 *only*.[^2]
 
 1. Do the above network configurations on Windows 7.
     - I will treat my Linux desktop as my first computer, and my
-	Windows 7 laptop as my second one.
+	Windows 7 laptop as my second one.
 2. Install openssh-server on Linux.[^3]
 
     ~~~

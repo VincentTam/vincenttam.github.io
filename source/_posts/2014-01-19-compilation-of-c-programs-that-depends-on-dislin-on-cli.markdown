@@ -15,7 +15,7 @@ Yevick in a book.[^book]
 <!-- more -->
 
 A DISLIN installation guide on Ubuntu was written more than six years
-ago, so I am a bit dubious that if steps 2 and 3 are still needed for
+ago, so I am a bit dubious that if steps 2 and 3 are still needed for
 the installation using a DEB file.[^blog1]  Therefore, I overlooked an
 important command and I regret this after wasting about two hours on
 [Google].
@@ -46,7 +46,7 @@ However, the compiler gave me the message that I had used an
 "undefined reference to qplot".
 
 I googled for two hours and found nothing that I can understand.  I
-even tried compiling the following sample code found in section 2.7 of
+even tried compiling the following sample code found in section 2.7 of
 [the official DISLIN online manual][dislin_man].
 
 {% codeblock Sample code lang:cpp %}

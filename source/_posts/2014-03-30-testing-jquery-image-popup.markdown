@@ -175,7 +175,7 @@ GitHub repo, I eventually have a clue on the two SCSS code blocks in
 Clapper's blog post about his Octopress image popup plugin.
 
 The *true* reason for my failure in creating the image popup window at
-the beginning is on line 20 of the code block below: it should be
+the beginning is on line 20 of the code block below: it should be
 `print` instead of `screen` since it's a user's custom Sass rule for
 the display on the web browser. (i.e. *screen*), and we want to *hide*
 the static picture, which is for printing.
