@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-10T00:09:34+08:00</updated>
+  <updated>2014-10-11T17:39:28+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Rake Preview on M$ Win*]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/10/11/rake-preview-on-m$-win-star/"/>
+    
+    <updated>2014-10-11T16:25:46+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/11/rake-preview-on-m$-win-star</id>
+    
+      <content type="html"><![CDATA[<p>When I’d written an Octopress post and previewed the result,
+auto-regeneration of the contents <em>weren’t</em> available.  In *nix, this
+should be enabled by running <code>rake preview</code>.  Therefore, I followed
+the instructions of the command prompt, and the useful function was
+then enabled.</p>
+
+<p><img src="/images/posts/RakePreviewMS/fig.jpg" alt="cmd prompt" class="fancybox" /></p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -407,69 +426,6 @@ details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
 
       <p>See <a href="http://docs.mathjax.org/en/latest/tex.html#tex-and-latex-math-delimiters">$\rm \TeX$ and $\rm \LaTeX$ math delimiters</a> in
 <em>MathJax Documentation</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
-    
-    <updated>2014-09-05T23:33:17+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
-    
-      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
-
-<ol>
-  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
-<em>Blog 1</em>.</li>
-  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-  <li>Understand item 5 of Scott Cheng’s post on setting up
-<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
-it in order to understand what it really means.  After running <code>rake
-setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
-branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
-remote the <em>only</em> branch there.  To avoid conflicts when I push my
-commits on <code>master</code> branch to my remote repository in GitHub, I ran
-some commands as shown below.</li>
-  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
-    <ul>
-      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
- branch shares, as shown in the graph, a common node with
- <code>source</code> branch.  This is <em>wrong</em>!</li>
-      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
- the remote repository to clear the mess.</li>
-      <li>In the new graph, those two branches <em>don’t</em> share a common node
- anymore.</li>
-    </ul>
-  </li>
-</ol>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
-Deleted remote branch origin/master (was e745caf).
-owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
-* <span class="GitBrName">master</span>
-[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
-To git@github.com:vincenttam/vincenttam.github.io.git
- - [deleted]         master
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

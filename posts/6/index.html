@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Evince Firefox Sumatra PDF SVG bad ok1 good good The Gist for the $\rm \LaTeX$ source code of the TikZ
-diagram This afternoon, while I was using &hellip;">
+  <meta name="description" content="I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.1 About two hours ago, while writing and previewing a
+post about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -132,6 +133,143 @@ diagram This afternoon, while I was using &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Avoid Using Ugly Bitmapped Computer Modern Fonts</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T14:22:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:22 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In a $\rm \LaTeX$ guide found on the website of George Mason
+University, it’s said that Computer Modern fonts can look ugly.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
+Like most Computer Modern users, I <em>didn’t</em> notice that until I wrote
+an article using $\rm \LaTeX$ last weekend.</p>
+
+<p>To illustrate the problem, I used a minimum example which I had posted
+on Gist.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  To simply matters, one may use
+<code>\pagenumbering{gobble}</code> to suppress page numbers.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/cmodern.png" width="800" title="Ugly bitmapped Computer Modern fonts" alt="fig1" /></p>
+
+<p>If one thinks that downloading the Blue Sky fonts from the American
+Mathematical Society is too troublesome, simply including the package
+<code>lmodern</code> will do.</p>
+
+<p><img class="fancybox" src="/images/posts/CMvsLM/lmodern.png" width="800" title="Improved outlook using Latin Modern fonts" alt="fig2" /></p>
+
+<p>P.S. I have learnt an ImageMagick command from a Stack Overflow
+question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -630,101 +768,6 @@ case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://lanyrd.com/2011/houcodecamp/sgwhy/">Stop Using Git Like Subversion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T15:22:11+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/06/20/stop-using-git-like-subversion/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/stop-using-git-like-subversion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I saw a sentence like “Git does SVN better than SVN does” long ago,
-but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
-double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
-to use it just like SVN, but to explore more powerful commands for
-branching.</p>
-
-<p>Reasons for using branches:</p>
-
-<ul>
-  <li>Working with multiple features</li>
-  <li>Sharing with others</li>
-  <li>Merging others work conveniently</li>
-</ul>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Enlarging a Rectangle Inside Another</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T14:28:14+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:28 pm</span></time>
-        
-           | <a href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>$\vect{I}$ is a generalized rectangle in $\reals^n$ with edges of
-length $l_i$.  $\vect{J} \subseteq \vect{I}$ is the main character
-here.  If the edges of $\vect{J}$ is allowed to coincide with those of
-$\vect{I}$, then the problem is trivial.</p>
-
-<p><strong>How about finding $\vect{J} \subseteq \interior \vect{I}$ such that
-$\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/20/enlarging-a-rectangle-inside-another/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -767,17 +810,17 @@ $\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
 <li class='category'><a href='/blog/categories/latex/'>latex (13)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (10)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (33)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (19)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (10)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -786,6 +829,14 @@ $\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Update Vim Plugins Managed by pathogen.vim</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/11/rake-preview-on-m$-win-star/">Rake Preview on M$ Win*</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Git Repositories in USB Drives on Windows</a>
@@ -797,14 +848,6 @@ $\volume \vect{I} - \volume \vect{J} &lt; \varepsilon$?</strong></p>
     
       <li class="post">
         <a href="/blog/2014/10/05/shellshock-better-bash-patches-now-available/">Shellshock: Better &#8216;Bash&#8217; Patches Now Available</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/02/what-are-good-file-naming-conventions/">What Are Good File Naming Conventions?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/">IPA Symbols in $\rm \LaTeX$</a>
       </li>
     
   </ul>

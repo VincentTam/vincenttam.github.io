@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Get drive letter If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their &hellip;">
+  <meta name="description" content="Taglist installation Taglist is a popular Vim plugin and it requires Ctags. c9s has given a detailed description of the installation of Ctags. I've &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -131,6 +131,133 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/links-to-good-posts/">Links to Good Posts</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T19:03:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:03 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/links-to-good-posts/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/links-to-good-posts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/links-to-good-posts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Taglist installation</h3>
+
+<p><a title="Taglist" href="http://github.com/vim-scripts/taglist.vim">Taglist</a> is a popular Vim plugin and it requires <a title="Exuberant Ctags" href="http://ctags.sourceforge.net/">Ctags</a>. c9s has given <a href="http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html">a detailed description of the installation of Ctags</a>. I&#8217;ve found out that putting the whole <code>ctags58</code> folder under the <code>C</code> drive and adding it to the <code>PATH</code> environment variable will do. You don&#8217;t need to copy <code>ctags.exe</code> under the <code>C</code> drive or <code>$VIMRUNTIME</code>.</p>
+
+<p>TheGeekStuff has <a href="http://vim.wikia.com/wiki/VimTip632">a web page</a> which described numerous powerful functions of Taglist.</p>
+
+<h3>Some VIMRC settings</h3>
+
+<p>I&#8217;ve learnt something about vim keyboard mappings by reading <a href="http://alexanderle.com/blog/2012/my-vimrc.html">Le&#8217;s post on customized VIMRC settings</a>.Using this knowledge, I can do something that I couldn&#8217;t do last month.</p>
+
+<h3>Automatic completion of unclosed braces/brackets</h3>
+
+<p>Unmatched brackets/braces are the cause of a host of syntax errors in source code. Some novices probably spend hours to find it out, and then say something that their high school teachers will never approve. <a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">A Vim Tips</a> contains a simple solution that enable users to get the job done. However, I&#8217;m not accustomed to its differences with Vim-$\rm \LaTeX$, so I decided to add the following lines of code into my VIMRC file:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">inoremap</span> <span class="p">(</span>      <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">(&lt;</span>CR<span class="p">&gt;</span>  <span class="p">(&lt;</span>CR<span class="p">&gt;)&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">((</span>     <span class="p">(</span>
+</span><span class='line'><span class="nb">inoremap</span> <span class="p">()</span>     <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> [      []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> [<span class="p">&lt;</span>CR<span class="p">&gt;</span>  [<span class="p">&lt;</span>CR<span class="p">&gt;</span>]<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> [[     [
+</span><span class='line'><span class="nb">inoremap</span> []     []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> {      {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class='line'><span class="nb">inoremap</span> {<span class="p">&lt;</span>CR<span class="p">&gt;</span>  {<span class="p">&lt;</span>CR<span class="p">&gt;</span>}<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class='line'><span class="nb">inoremap</span> {{     {
+</span><span class='line'><span class="nb">inoremap</span> {}     {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just like $\rm \LaTeX$-Suite.</p>
+
+<h3>New keyboard shortcuts of my gVim</h3>
+
+<p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for toggling NERDTree and Taglist respectively.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F3<span class="p">&gt;</span>   :NERDTreeToggle
+</span><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F12<span class="p">&gt;</span>  :TlistToggle
+</span></code></pre></td></tr></table></div></figure>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/vim-file-name-modifier/">Vim File Name Modifier</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T13:19:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:19 pm</span></time>
+        
+           | <a href="/blog/2013/12/11/vim-file-name-modifier/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/vim-file-name-modifier/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/vim-file-name-modifier/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in <code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is <code>extension-removal</code>. The list maybe too detailed, especially for users who don&#8217;t have much time to learn it. Bram Moolenaar, the father of Vim, once said that trying to learn all the things in his lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see habit 7). (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.) Fortunately, there&#8217;re some examples below the list. I found some useful in the following cases.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/vim-file-name-modifier/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -519,105 +646,6 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/apa-citing/">APA Citing</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T16:51:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:51 pm</span></time>
-        
-           | <a href="/blog/2013/08/16/apa-citing/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/08/16/apa-citing/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/apa-citing/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Typing in the APA reference list entries are tedious. Therefore, use the <code>biblatex-apa</code> package.</p>
-
-<a class="fancybox-media" href="//www.youtube.com/embed/ly8BlePO4ws">
-    <img src="/images/posts/APACiting/Video.png"
-    alt="Youtube video" />
-</a>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/apa-citing/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/edit-latex-equations-in-vim/">Edit $\rm \LaTeX$ Equations in Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T14:56:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:56 pm</span></time>
-        
-           | <a href="/blog/2013/08/16/edit-latex-equations-in-vim/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/edit-latex-equations-in-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>
-With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equations with Vim quickly without making syntax errors. (e.g. undefined control sequence caused by mismatched braces &#8216;{}&#8217;)
-</p>
-
-<a class="fancybox-media" href="//www.youtube.com/embed/y67t-05nFD0">
-    <img src="/images/posts/EditLaTeXEquations/Video.png"
-    alt="Youtube video" />
-</a>
-
-<p><strong>
-    Please view it fullscreen in HD. Sorry for the inconvenience
-    caused.
-</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/edit-latex-equations-in-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -660,17 +688,17 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/latex/'>latex (13)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (10)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (12)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (33)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (18)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (19)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (10)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -679,6 +707,14 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Update Vim Plugins Managed by pathogen.vim</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/11/rake-preview-on-m$-win-star/">Rake Preview on M$ Win*</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Git Repositories in USB Drives on Windows</a>
@@ -690,14 +726,6 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
     
       <li class="post">
         <a href="/blog/2014/10/05/shellshock-better-bash-patches-now-available/">Shellshock: Better &#8216;Bash&#8217; Patches Now Available</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/02/what-are-good-file-naming-conventions/">What Are Good File Naming Conventions?</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/">IPA Symbols in $\rm \LaTeX$</a>
       </li>
     
   </ul>
