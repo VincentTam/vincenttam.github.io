@@ -25,6 +25,8 @@ the point of asking the above question?
 *Without* stopping `ssh-agent.exe`, one *can't* pull Git repositories
 from the hard disk to the USB drive.
 
+<!-- more -->
+
 Solution
 ---
 
