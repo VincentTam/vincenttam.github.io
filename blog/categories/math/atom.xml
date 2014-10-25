@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-10-11T17:39:28+08:00</updated>
+  <updated>2014-10-25T23:06:52+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Understood Power Means Inequality for Integer Powers]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/"/>
+    
+    <updated>2014-10-25T18:02:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/10/25/understood-power-means-inequality-for-integer-powers</id>
+    
+      <content type="html"><![CDATA[<p>I’ve learnt the AM–GM–HM inequality when I was a secondary school
+student.</p>
+
+<p>\[
+  \frac{\sum_{i=1}^n x_i}{n} \ge \sqrt[n]{\prod_{i=1}^n x_i} \ge
+  \frac{n}{\sum_{i=1}^n x_i^{-1}}
+\]</p>
+
+<p>But I didn’t know how to generalise it to integer power $s$.  That is,
+if $k$ and $m$ are positive integers such that $k \le m$, then we have</p>
+
+<p>\[
+  \left( \frac{\sum_{i=1}^n x_i^k}{n} \right)^{\frac{1}{k}} \le
+  \left( \frac{\sum_{i=1}^n x_i^m}{n} \right)^{\frac{1}{m}}.
+\]</p>
+
+<p>I read the proof in Wikipedia, and got stuck in the first step.</p>
+
+<p>\[
+  \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k}}{\sum_{i=1}^{n}w_{i}x_{i}^
+  {k-1}} \le \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k+1}}{\sum_{i=1}^{n}
+  w_{i}x_{i}^{k}},
+\]</p>
+
+<p>I quickly realised that $w_i = 1/n$ in this case.  Even though I know
+that the above inequality is eqivalent to</p>
+
+<p>\[
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k} \right)^2 \le
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k-1} \right)
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k+1} \right),
+\]</p>
+
+<p>At the first glance, I didn’t know how to relate this to the famous
+Cauchy–Schwartz inequality.</p>
+
+<p>\[
+  \left( \sum_{i=1}^n a_{i}b_{i} \right)^2 \le
+  \left(\sum_{i=1}^n a_{i}^2\right)
+  \left(\sum_{i=1}^n b_{i}^2\right)
+\]</p>
+
+<p>Actually, setting $a_i = \sqrt{w_{i}x_{i}^{k-1}}$ and $b_i =
+\sqrt{w_{i}x_{i}^{k+1}}$ will do.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -265,208 +321,6 @@ Q.E.D.</p>
 <p>Remark: Quantifications similar to \eqref{eq2} can be found in
 <a href="https://en.wikipedia.org/wiki/Uniform_continuity#Local_continuity_versus_global_uniform_continuity">Wikipedia</a>’s entry for uniform continuity.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Pappus's Hexagon Theorem]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/"/>
-    
-    <updated>2014-07-12T23:48:36+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem</id>
-    
-      <content type="html"><![CDATA[<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm.svg" width="600"><br />
-<small><a href="/downloads/code/PappusHexThm.tex">Source</a></small></p>
-
-<p>Suppose that points $A,B$ and $C$ lie on the same straight line, and
-$D,E$ and $F$ lie on <em>another</em> one.  Draw line segments
-$AE,BD,BF,CE,AF$ and $CD$.<br />
-Let <span class="grp1">$P$</span> be the intersection point of $AE$
-and $BD$.<br />
-Let <span class="grp1">$Q$</span> be the intersection point of $AF$
-and $CD$.<br />
-Let <span class="grp1">$R$</span> be the intersection point of $BF$
-and $CE$.<br />
-Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
-are <em>collinear</em>.  (i.e.  The red dashed line and the red solid line
-are collinear.)</p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>To prove that three points are collinear, Menelaus’s Theorem is often
-useful.  To apply the theorem to this problem, (TL;DR;C image below)
-one needs to find a triangle such that <em>exactly</em> one of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> lies on
-the <em>line</em> formed by two vertices of the triangle, but <em>not</em> on the
-<em>segment</em> connecting those two vertices, while each of the remaining
-two points lies on a segment whose extension <em>doesn’t</em> contain any one
-of points <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>.</p>
-
-<p><img class="center" src="/images/posts/PappusHexThm/MenelausThm.svg" width="600"><br />
-<small><a href="/downloads/code/MenelausThm.tex">Source</a></small></p>
-
-<p>It is obvious that points <span class="grp1">$Q$</span> and <span class="grp1">$R$</span> divide some segments internally.  However,
-<span class="grp1">$P$</span> <em>also</em> has such property.  How can one
-find a segment through <span class="grp1">$P$</span> such that <span class="grp1">$P$</span> <em>externally</em> divides the segment?</p>
-
-<p>The answer can be find out by a careful observation of the two
-segments that pass through <span class="grp1">$P$</span>.  Since we
-want a segment so that <span class="grp1">$P$</span> <em>externally</em>
-divides the segment, we need at least two points on a line through
-<span class="grp1">$P$</span>.  Moreover, those two points should be
-<em>on the same side of the line relative to <span class="grp1">$P$</span></em>.  This led us to define a <em>new</em> point.  Let
-<span class="grp2">$S$</span> be the intersection of $AF$ and $BD$.</p>
-
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm1.svg" width="600"><br />
-<small><a href="/downloads/code/PappusHexThm1.tex">Source</a></small></p>
-
-<p>Then the light blue triangle $\triangle B\color{blue}{S}F$ is what we
-need.</p>
-
-<h2 id="the-proof">The proof</h2>
-
-<p>Since I have been tired of drawing figures using TikZ and typing
-equations with $\rm \LaTeX$, I <em>don’t</em> want to illustrate or prove any
-one of the four cases of Co-side Theorem, on which this proof heavily
-depends.  I refer readers to Zhang J. Z.’s work.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>From the above figure, it’s clear that what we need to show is</p>
-
-<p>\[
-\frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\]</p>
-
-<p id="coside1"><strong>The main idea of this proof is simple: reduce everything to what is
-given.</strong>  Thus, points <span class="grp1">$P,Q,R$</span> and <span class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span class="grp2">blue</span> points) should be eventually <em>eliminated</em>.
-The tool that we’re going to use is Co-side Theorem.</p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &amp;=
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle CDF}}&#92;\<br />
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &amp;=
-      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
-  \end{split}
-\end{equation}</p>
-
-<p id="sub1">On RHS of <a href="#coside1">(1)</a>, one can see that the <span class="grp1">red</span> points are gone, and we still need to remove
-the <span class="grp2">$S$</span>.  Moreover, dealing with length of
-segments is <em>easier</em> than their area because the former and the later
-are one-dimensional and two-dimensional quantities respectively.
-Therefore, we rearrange the area of the triangles to get</p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-      \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-      \frac{F\color{red}{R}}{\color{red}{R}B} &amp;=
-      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} &#92;\<br />
-    &amp;= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
-      \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}} &#92;\<br />
-    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-      \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AE\color{blue}{S}}}
-  \end{split}
-\end{equation}</p>
-
-<p>However, those two triangles in <a href="#sub1">(2)</a> have <em>no</em> common side.
-Thus, we need to work out the area of the two coloured triangles in
-the figure below.  (i.e. $\triangle CD\color{blue}{S}$ and $\triangle
-AE\color{blue}{S}$)</p>
-
-<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm2.svg" width="600"><br />
-<small><a href="/downloads/code/PappusHexThm2.tex">Source</a></small></p>
-
-<p>From equation <a href="#sub1">(2)</a>, observe that $AB/CB$ and $EF/DF$ are
-independent from each other.  Then, we need to relate the area of
-those two colored triangles to the ratios of segment lengths in
-<a href="#sub1">(2)</a>.</p>
-
-<p>I still use Co-side Theorem since I <em>can’t</em> think of another theorem
-to eliminate <span class="grp2">S</span>.  In order to use that
-theorem, one has to find another triangle and compare it with one of
-those two coloured triangles.  I’ve looked at the picture and the
-symbols to find out some clues.  Since the letter $C$ is present in
-both $AB/CB$ and $\triangle CD\color{blue}{S}$, $C$ <em>can’t</em> be the
-“common side” of $\triangle CD\color{blue}{S}$ and the triangle that
-we want.  Looking at $\triangle CD\color{blue}{S}$ again, it’s obvious
-that $D\color{blue}{S}$ is the “common side” because $D$,
-<span class="grp2">$S$</span> and $B$ are collinear.</p>
-
-<p id="coside2"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm3.svg" width="600">
-<small><a href="/downloads/code/PappusHexThm3.tex">Source</a></small></p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{S_{\triangle CD\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &amp;= \frac{CB}{BA}
-      \text{, or} &#92;\<br />
-    S_{\triangle CD\color{blue}{S}} &amp;= \frac{CB}{BA} \cdot
-      S_{\triangle AD\color{blue}{S}}
-  \end{split}
-\end{equation}</p>
-
-<p>The $CB/BA$ in <a href="#coside2">(3)</a> cancels the $AB/CB$ in <a href="#sub1">(2)</a>.
-Therefore, we’re almost done!</p>
-
-<p id="coside3"><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600">
-<small><a href="/downloads/code/PappusHexThm4.tex">Source</a></small></p>
-
-<p>\begin{equation}
-  \begin{split}
-    \frac{S_{\triangle AE\color{blue}{S}}}
-      {S_{\triangle AD\color{blue}{S}}} &amp;= -\frac{EF}{FD}
-      \text{, or}&#92;\<br />
-      S_{\triangle AE\color{blue}{S}} &amp;= -\frac{EF}{FD} \cdot
-      S_{\triangle AD\color{blue}{S}}
-  \end{split}
-\end{equation}</p>
-
-<p>Substituting <a href="#coside2">(3)</a> and <a href="#coside3">(4)</a> into <a href="#sub1">(2)</a>, we
-get</p>
-
-<p>\[
-\begin{split}
-  \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-    \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-    \frac{F\color{red}{R}}{\color{red}{R}B}
-    &amp;= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
-    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} &#92;\<br />
-    &amp;= -1
-\end{split}
-\]</p>
-
-<p>Hence, by Menelaus’s Theorem, we can conclude that
-<span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are
-<em>collinear</em>, and prove Pappus’s Hexagon Theorem</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Chou, S. C., Gao, X. S., &amp; Zhang, J. Z. (1993, June). <em>Automated
-production of traditional proofs for constructive geometry
-theorems</em>.  In Logic in Computer Science, 1993. LICS’93.,
-Proceedings of Eighth Annual IEEE Symposium on (pp. 48-56). IEEE.
-(<a href="http://www.researchgate.net/publication/226332702_Automated_production_of_traditional_proofs_for_theorems_in_Euclidean_geometry_I._The_Hilbert_intersection_point_theorems/file/60b7d51a5db85afdd3.pdf">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
