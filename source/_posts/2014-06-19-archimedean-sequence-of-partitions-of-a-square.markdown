@@ -10,12 +10,11 @@ Suppose $f: \vect{I} \to \reals^2$, where $\vect{I} = [0,1] \times
 [0,1]$,
 
 \\[
-f(x,y) = \left\\{
-  \begin{aligned}
-    0 &\text{ if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-    1 &\text{ if } (x,y) \in \vect{I} \land y < x,
-  \end{aligned}
-\right.
+f(x,y) =
+  \begin{cases}
+    0 &\text{if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
+    1 &\text{if } (x,y) \in \vect{I} \land y < x
+  \end{cases}
 \\]
 
 $P\_k := \\{0,1/k,\dots,1\\}, \vect{P}\_k := (P\_k,P\_k)$.
