@@ -84,16 +84,29 @@ posts.[^10]
 [imgpopup]: /blog/2014/03/30/testing-jquery-image-popup/
 [^2]: Refer to [*Octopress Category List*][CatList] for details.
 [CatList]: /blog/2014/04/27/octopress-category-list/
-[^3]: Refer to [*Fixing Broken URLs in the Catetory List*][CatListURL] for details.
+[^3]:
+    Refer to [*Fixing Broken URLs in the Catetory List*][CatListURL]
+    for details.
+
 [CatListURL]: /blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/
-[^4]: Refer to *My Settings for RSS [(1)][RSS1], [(2)][RSS2]* for details.
+[^4]:
+    Refer to *My Settings for RSS [(1)][RSS1], [(2)][RSS2]* for
+    details.
+
 [RSS1]: /blog/2014/06/10/my-settings-for-rss-1/
 [RSS2]: /blog/2014/06/11/my-settings-for-rss-2/
 [^5]: Refer to [*Zooming SVG in Web Browsers*][SVGZoom] for details.
-[^6]: Refer to [*Posting Code to Gist Efficiently*][VimGist] for details.
-[VimGist]: /blog/2014/02/01/posting-code-to-gist-efficiently/
+[^6]:
+    Refer to [*Posting Code to Gist Efficiently*][VimGist] for
+    details.
+
+[VimGist]: /blog/2014/01/30/posting-code-to-gist-efficiently/
 [SVGZoom]: /blog/2014/08/02/zooming-svg-in-web-browsers/
-[^7]: Caffrey, B. Aug 6, 2014. *Fixing Gist Embeds in Octopress*. Retrieved from <http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/>
+[^7]:
+    Caffrey, B. Aug 6, 2014. *Fixing Gist Embeds in Octopress*.
+    Retrieved from
+    <http://devspade.com/blog/2013/08/06/fixing-gist-embeds-in-octopress/>
+
 [^8]:
     For details, refer to
 
@@ -123,7 +136,10 @@ posts.[^10]
 [e5668de]: https://github.com/VincentTam/vincenttam.github.io/commit/e5668de
 [f687612]: https://github.com/VincentTam/vincenttam.github.io/commit/f687612
 [fc59e2a]: https://github.com/VincentTam/vincenttam.github.io/commit/fc59e2a
-[^10]: For a successful example, you may refer to a Gist in my [previous post][PrevPost].
+[^10]:
+    For a successful example, you may refer to a Gist in my
+    [previous post][PrevPost].
+
 [PrevPost]: /blog/2014/08/03/my-pandoc-template-1/#gist13584483 "My Pandoc Template (1)"
 [Gist]: https://gist.github.com
 [Jekyll]: http://jekyllrb.com/
