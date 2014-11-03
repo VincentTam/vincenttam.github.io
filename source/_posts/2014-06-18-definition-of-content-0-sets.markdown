@@ -23,7 +23,7 @@ myself what ideas should be introduced.
 <!-- more -->
 
 Unless otherwise specified, assume that $A \in \reals^n,\vect{x},
-\vect{x\_0},\vect{u},\vect{v} \in \reals^n,\vect{u}\_i \in \reals^n\,
+\vect{x}\_0,\vect{u},\vect{v} \in \reals^n,\vect{u}\_i \in \reals^n\,
 \forall\,i \in \naturals$.
 
 Norm
