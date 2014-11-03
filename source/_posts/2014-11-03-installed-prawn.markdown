@@ -15,25 +15,25 @@ generate PDF files, but failed.
     $ kramdown test.tex -o pdf > test.pdf
     /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/ke
     rnel_require.rb:55:in `require': cannot load such file -- prawn (LoadError)
-	        from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
+		from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
     s/core_ext/kernel_require.rb:55:in `require'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
     onverter/pdf.rb:10:in `<top (required)>'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
     ocument.rb:119:in `const_defined?'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
     ocument.rb:119:in `method_missing'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
     1:in `block in <top (required)>'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
     1:in `each'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+		from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
     1:in `<top (required)>'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `<main>'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
+		from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
+		from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `<main>'
+		from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
     val'
-	        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<
+		from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `<
     main>'
 {:.cliUB}
 
