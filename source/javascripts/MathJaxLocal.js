@@ -29,6 +29,7 @@ MathJax.Hub.Config({
       norm: ['\\lVert#1\\rVert', 1],
       normlr: ['\\left\\lVert#1\\right\\rVert', 1],
 
+      lcm: ['\\mathop{\\mathrm{lcm}}'],
       interior: ['\\mathop{\\mathrm{int}}'],
       exterior: ['\\mathop{\\mathrm{ext}}'],
       volume: ['\\mathop{\\mathrm{vol}}'],
