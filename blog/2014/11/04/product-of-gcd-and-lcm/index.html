@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Syntax in Octopress Blockquote Tag - Blog 1</title>
+  <title>Product of GCD and LCM - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem If I input Markdown code inside a
-{% blockquote %} tag, it won’t be parsed. How can the headings and hyperlinks inside the quoted text be &hellip;">
+  <meta name="description" content="In ProokWiki’s first proof, it has taken me some time to understand.
+I often write $d=\gcd(a,b)$, $a=a’d$, $b=b’d$ for some $a’,b’ \in
+\integers_{&gt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -136,7 +137,7 @@
   <header>
     
       
-	<h1 class="entry-title">Syntax in Octopress Blockquote Tag</h1>
+	<h1 class="entry-title external"><a href="https://proofwiki.org/wiki/Product_of_GCD_and_LCM">Product of GCD and LCM</a> &#9733;</h1>
       
     
     
@@ -146,7 +147,7 @@
 
 
 
-<time class='entry-date' datetime='2014-08-31T00:44:13+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:44 am</span></time>
+<time class='entry-date' datetime='2014-11-04T00:00:31+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -157,43 +158,41 @@
   </header>
 
 
-<div class="entry-content"><h2 id="problem">Problem</h2>
+<div class="entry-content"><p>In ProokWiki’s first proof, it has taken me some time to understand.
+I often write $d=\gcd(a,b)$, $a=a’d$, $b=b’d$ for some $a’,b’ \in
+\integers_{&gt;0}$, and $n$ as <em>any</em> common multiple of $a$ and $b$.
+Then $n=q_1 a=q_2 b$ for some $q_1,q_2 \in \integers$.  The letter
+$q$ connotes <em>quotient</em>.  To show that $\lcm(a,b) \times \gcd(a,b) =
+ab$, it suffices to show that</p>
 
-<p><img class="fancybox" src="/images/posts/OctBlockquote/err.png" width="800" title="Wrongly rendered contents" alt="Fig 1" /></p>
+<p>\begin{gather}
+  a \left | \frac{ab}{d} \right. \land 
+    b \left | \frac{ab}{d} \right. \label{eq:isLCM}&#92;\<br />
+  a|n \land b|n \implies\left.\frac{ab}{d}\right|n \label{eq:leastLCM}
+\end{gather}</p>
 
-<p>If I input Markdown code inside a
-<code>{% blockquote %}</code> tag, it <em>won’t</em> be parsed.</p>
+<p>Equations \eqref{eq:isLCM} and \eqref{eq:leastLCM} mean that “$ab/d$
+is <em>a</em> LCM of $a$ and $b$” and “$ab/d$ is the <em>least</em> LCM of $a$ and
+$b$” respectively.</p>
 
-<p><strong><em>How can the headings and hyperlinks inside the quoted text be
-displayed?</em></strong></p>
+<p>Equation \eqref{eq:isLCM} is very easy to check since $\displaystyle
+\frac{ab}{d} = a’b = ab’$.</p>
 
-<!-- more -->
+<p>By Bézout’s Identity, $ax+by=d$ for some $x,y \in \integers$.</p>
 
-<h2 id="solution">Solution</h2>
+<p>Since what we want is $\displaystyle \frac{ab}{d} (\dots) = n$, we
+multiply both sides of the above equation by $\displaystyle
+\frac{n}{d}$.</p>
 
-<p>That’s trivial.  Changing the Markdown code into HTML solves the
-problem.</p>
+<p>\[
+\begin{aligned}
+  \frac{axn+byn}{d}=n&#92;\<br />
+  \frac{axbq_2+byaq_1}{d}=n&#92;\<br />
+  \left( \frac{ab}{d} \right) (xq_2+yq_1) = n
+\end{aligned}
+\]</p>
 
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>A newline character <code>\n</code> in each
-<code>{% blockquote %}</code> tag <em>really</em> means a newline
-in the resulting blockquote.</li>
-  <li>Pullquotes can be used inside blockquote.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>See <a href="/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">常玩手機腦生鏽 14%青年無記性</a> in <em>Blog 1</em> for an working
-example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>Hence \eqref{eq:leastLCM} is proved.</p>
 </div>
 
 
@@ -209,12 +208,12 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
 
 
 
-<time class='entry-date' datetime='2014-08-31T00:44:13+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:44 am</span></time>
+<time class='entry-date' datetime='2014-11-04T00:00:31+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:00 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/math/'>math</a>
   
 </span>
 
@@ -223,7 +222,7 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/" >Tweet</a>
   
   
   
@@ -234,10 +233,8 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/30/the-daring-fireball-linked-list/" title="Previous Post: The Daring Fireball Linked List">&laquo; The Daring Fireball Linked List</a>
+        <a class="basic-alignment left" href="/blog/2014/11/03/installed-prawn/" title="Previous Post: Installed Prawn">&laquo; Installed Prawn</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/31/hotlinking-what-is-it-and-why-is-it-bad/" title="Next Post: Hotlinking: What Is It, And Why Is It Bad?">Hotlinking: What Is It, And Why Is It Bad? &raquo;</a>
       
     </p>
   </footer>
@@ -351,8 +348,8 @@ example. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/08/31/syntax-in-octopress-blockquote-tag/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/';
         var disqus_script = 'embed.js';
       
     (function () {

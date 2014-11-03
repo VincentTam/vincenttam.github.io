@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C/c++ | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-03T22:22:06+08:00</updated>
+  <updated>2014-11-04T00:12:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -39,22 +39,36 @@ website and use the GUI tool “Ubuntu Software Centre” to install the
 library.  Then I directly copied the code from the book and tried to
 compile the program .</p>
 
-<p>{% codeblock first_graphics_prog.cpp lang:cpp %}
-// Author: David Yevick
-// Source: A Short Course in Computational Science and Engineering
-#include <iostream>
-#include <dislin.h></dislin.h></iostream></p>
-
-<p>using namespace std;</p>
-
-<p>int main(int argc, const char *argv[])
-{
-    // Some code for defining variables
-    // Omitted to avoid copyright problems
-    // An example of using DISLIN methods
-    qplot(array1,array2,numOfPts);
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>first_graphics_prog.cpp </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;dislin.h&gt;&lt;/dislin.h&gt;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Some code for defining variables</span>
+</span><span class='line'>    <span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'>    <span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'>    <span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>However, the compiler gave me the message that I had used an
 “undefined reference to qplot”.</p>
@@ -63,20 +77,32 @@ compile the program .</p>
 even tried compiling the following sample code found in section 2.7 of
 <a href="http://www2.mps.mpg.de/dislin/contents.html">the official DISLIN online manual</a>.</p>
 
-<p>{% codeblock Sample code lang:cpp %}
-// Author: Helmut Michels
-// Source: DISLIN 10.4—A Data Plotting Library
-#include <iostream>
-#include &#8220;discpp.h&#8221;</iostream></p>
-
-<p>main()
-{
-    Dislin g;
-    g.disini ();
-    g.messag (“This is a test”, 100, 100);
-    g.disfin ();
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: Helmut Michels</span>
+</span><span class='line'><span class="c1">// Source: DISLIN 10.4—A Data Plotting Library</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;discpp.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Dislin</span> <span class="n">g</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disini</span> <span class="p">();</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">messag</span> <span class="p">(</span><span class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span><span class="err">”</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disfin</span> <span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I have <em>no</em> hope on published books because their authors would expect
 their students to do something easy—Use <a href="http://www.bloodshed.net/devcpp.html">Dev-C++</a> on M$ Win*, or
@@ -173,22 +199,36 @@ elegant.</p>
 program that made use of DISLIN by making the following changes in
 both the source file and the command that I issued.</p>
 
-<p>{% codeblock Sample code lang:cpp %}
-// Author: David Yevick
-// Source: A Short Course in Computational Science and Engineering
-#include <iostream>
-#include &#8220;/usr/local/dislin/dislin.h&#8221;</iostream></p>
-
-<p>using namespace std;</p>
-
-<p>int main(int argc, const char *argv[])
-{
-// Some code for defining variables
-// Omitted to avoid copyright problems
-// An example of using DISLIN methods
-qplot(array1,array2,numOfPts);
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;/usr/local/dislin/dislin.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="c1">// Some code for defining variables</span>
+</span><span class='line'><span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'><span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'><span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>In the terminal, I typed the following command.</p>
 
@@ -289,7 +329,7 @@ syntax errors in the source code and improve its readability.</p>
 
 <p>The following &#8220;hello world&#8221; procedure contains some <em>wrong</em> steps.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/inc_complete.gif 800 ‘Figure 1’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete.gif" width="800" title="‘Figure 1’ ‘fig1’" ></p>
 
 <ol>
     <li>Type <code>inc&lt;Tab&gt;</code>.</li>
@@ -307,7 +347,7 @@ syntax errors in the source code and improve its readability.</p>
 
 <p>This is just a <em>part</em> of correct steps. I leave the remaining parts of codes of this simple program into later sections.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/inc_complete_clang.gif 800 ‘Figure 2’ ‘fig2’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete_clang.gif" width="800" title="‘Figure 2’ ‘fig2’" ></p>
 
 <p>This time, after typing <code>#</code> at the beginning of the line, press <code>&lt;C-x&gt;&lt;C-u&gt;</code> to use the automatic completion list, and choose the <code># include</code> option with the <code>$`header'</code> surrounded by a <code>&lt;&gt;</code> block, <em>not</em> a double quote. Use <code>&lt;Alt-Tab&gt;</code> to select the inner <code>&lt;&gt;</code> block and type <code>io&lt;C-n&gt;</code> to use the built-in (<em>not</em> plugin) function to complete the code. (The <code>&lt;Alt-Tab&gt;</code> keystroke doesn&#8217;t work in GUI, since it means changing the window on focus.)</p>
 
@@ -322,9 +362,9 @@ syntax errors in the source code and improve its readability.</p>
 
 <p>Analysis: Finding an item from a menu requires coordination of our eyes and hands, while typing the code directly requires more memory. For a newbie, the former should be easier since he/she doesn&#8217;t waste time to recall his/her memory. For a geek, the later should be faster since the process has been repeated for many time. Luckily, being the second in the popup list, the problem of reaction time does not matter much if one looks at the list from the top to the bottom. Moreover, typing the code directly may lead to syntax errors. This problem can be overcome if one has the capability to read the error message from the compiler and to browse code quickly.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/using_complete.png 800 ‘Without clang_complete: word-by-word completion’ ‘fig3’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/using_complete.png" width="800" title="‘Without clang_complete: word-by-word completion’ ‘fig3’" ></p>
 
-<p>{% img fancybox /images/posts/ClangComplete/using_clang.gif 800 ‘With clang_complete: completion of the whole line’ ‘fig4’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/using_clang.gif" width="800" title="‘With clang_complete: completion of the whole line’ ‘fig4’" ></p>
 
 <p>The remaining parts of this post <em>doesn&#8217;t</em> make use of the clang_complete plugin.</p>
 
@@ -332,19 +372,19 @@ syntax errors in the source code and improve its readability.</p>
 
 <p>Just typing <code>main&lt;Tab&gt;</code> will do. That&#8217;s from vim-snippets.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/prog.gif 800 ‘Figure 5’ ‘fig5’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/prog.gif" width="800" title="‘Figure 5’ ‘fig5’" ></p>
 
 <h3>4. Greeting the world!</h3>
 
 <p>If you type <code>cout&lt;Tab&gt;</code>, you&#8217;ll get <code>std::cout&lt;&lt;&nbsp;&nbsp;&lt;&lt;std::endl;</code>, with the cursor located in between the two whitespace characters in the middle. Using a regular expression to delete the <code>std::</code> in front of <code>cout</code> and <code>endl</code>.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/cout.gif 800 ‘Figure 6’ ‘fig6’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/cout.gif" width="800" title="‘Figure 6’ ‘fig6’" ></p>
 
 <h3>5. Getting the indentation correct</h3>
 
 <p>Modifying the c.snippet file maybe a bit troublesome, and may bring strange consequences to the plugin. If you don&#8217;t have time to study the plugin, you may not like to bother it. Manually decreasing the indentation of the line <code>return 0;</code> each time is not likely to be an elegant solution for Vim Lovers. The actual way to fix the problem (using the command <code>gg=G</code> in the normal mode) is on p. 73 of the book Vi iMproved—Vim.<sup id="fnref-22-4"><a href="#fn-22-4" rel="footnote">4</a></sup></p>
 
-<p>{% img fancybox /images/posts/ClangComplete/cindent.gif 800 ‘Figure 7’ ‘fig7’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/cindent.gif" width="800" title="‘Figure 7’ ‘fig7’" ></p>
 
 <h3>6. Running the program</h3>
 
@@ -352,7 +392,7 @@ syntax errors in the source code and improve its readability.</p>
 
 <p>According to Henri Poincaré, a French mathematician, things are beautiful if they are simple. Repetition of facts build up our understanding. I end this post with a short and simple command that can be repeatedly used to compile .cpp source files with different file names. For more details about that, refer to my earlier post titled <em><a href="http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html">Fast Compilation and Execution of Source Code</a></em>.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/run.gif 800 ‘Figure 8’ ‘fig8’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/run.gif" width="800" title="‘Figure 8’ ‘fig8’" ></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 
@@ -415,7 +455,7 @@ syntax errors in the source code and improve its readability.</p>
 
 	<p>Note: For gVimPortable, do store files under the Data folder, but NOT the <code>$VIMRUNTIME</code> file. Otherwise the settings will be lost after upgrading gVimPortable.</p>
 
-	{% img /images/posts/OmniCpp/pathogen.png &#8216;fig1&#8217; &#8216;Vim plugins location using pathogen.vim&#8217; %}
+	<img src="/images/posts/OmniCpp/pathogen.png" title="fig1" alt="Vim plugins location using pathogen.vim">
 
 	<p><small>The folder for different plugins are separated (except the plugin management plugin itself).</small></p>
 	</li>
@@ -423,7 +463,7 @@ syntax errors in the source code and improve its readability.</p>
 	<li>
 	Typing <code>:h omnicppcomplete</code> in Vim normal mode gives up the help file for OmniCppComplete.
 
-	{% img /images/posts/OmniCpp/omnicpp.png &#8216;fig2&#8217; &#8216;Help for OmniCppComplete.txt&#8217; %}
+	<img src="/images/posts/OmniCpp/omnicpp.png" title="fig2" alt="Help for OmniCppComplete.txt">
 
 	<p><small>Typing <code>:h omnicppcomplete</code> gives you the corresponding help file.</small></p>
 	</li>
@@ -433,7 +473,7 @@ syntax errors in the source code and improve its readability.</p>
 
 	<p>Follow <a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">this page</a> for setting the PATH variable.</p>
 
-	{% img fancybox /images/posts/OmniCpp/ctags.png 800 &#8216;Set PATH variable&#8217; &#8216;fig1&#8217; %}
+	<img class="fancybox" src="/images/posts/OmniCpp/ctags.png" width="800" title="Set PATH variable" alt="fig1">
 
 	<p><small><code>C:\ctags58</code> should be in the <code>PATH</code> variable.</small></p>
 	</li>
@@ -458,21 +498,21 @@ syntax errors in the source code and improve its readability.</p>
 
     <p>At first, a commad prompt should be like this.</p>
 
-    {% img /images/posts/OmniCpp/cmd.png &#8216;fig4&#8217; &#8216;Command Prompt default starting display&#8217; %}
+    <img src="/images/posts/OmniCpp/cmd.png" title="fig4" alt="Command Prompt default starting display">
 
     <p><small>The current directory is <code>C:\Users\<span class="HLCode">Owner</span></code>.</small></p>
 
-    {% img /images/posts/OmniCpp/cmd2.png &#8216;fig5&#8217; &#8216;Change directory in Win* CMD&#8217; %}
+    <img src="/images/posts/OmniCpp/cmd2.png" title="fig5" alt="Change directory in Win* CMD">
 
     <p><small>Change the current directory to <code>C:\Users\<span class="HLCode">Owner</span>\.vim\tags</code>.</small></p>
 
     <p>The contents should be shown by typing <code>dir</code> (There&#8217;re so many files that I use the <code>/w</code> option to save space.)</p>
 
-    {% img /images/posts/OmniCpp/dir1.png &#8216;fig6&#8217; &#8216;w flag in dir command in Win* CMD&#8217; %}
+    <img src="/images/posts/OmniCpp/dir1.png" title="fig6" alt="w flag in dir command in Win* CMD">
 
     <p><small>The contents are in the right place, so we may proceed.</small></p>
 
-    {% img /images/posts/OmniCpp/ctags1.png &#8216;fig7&#8217; &#8216;Ctags in Win* CMD&#8217; %}
+    <img src="/images/posts/OmniCpp/ctags1.png" title="fig7" alt="Ctags in Win* CMD">
 
     <p><small>Get a list of ctags.</small></p>
 
@@ -492,11 +532,13 @@ syntax errors in the source code and improve its readability.</p>
 
     <p>Note: If you don&#8217;t add the additional tags in step 5, then the following lines should NOT be added.</p>
 
-{% codeblock lang:vim %}
-set tags+=~/.vim/tags/gl
-set tags+=~/.vim/tags/sdl
-set tags+=~/.vim/tags/qt4
-{% endcodeblock %}
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/gl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/sdl
+</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/qt4
+</span></code></pre></td></tr></table></div></figure>
 
     </li>
 </ol>
@@ -505,7 +547,7 @@ set tags+=~/.vim/tags/qt4
 
 <p>A picture can illustrate the feature well. Typing <code>std::</code>, you&#8217;ll get a popup list.</p>
 
-<pre><code>{% img /images/posts/OmniCpp/omni.png 'fig8' 'OmniCppComplete in GVim' %}
+<pre><code><img src="/images/posts/OmniCpp/omni.png" title="fig8" alt="OmniCppComplete in GVim">
 </code></pre>
 
 <h3>Incompatibility with clang_complete</h3>
@@ -516,15 +558,15 @@ set tags+=~/.vim/tags/qt4
 
 <p>However, in clang_complete, since the information is from the clang compiler, you need to give the syntax in the right position for the compiler so as to let the completion list to show up.</p>
 
-<p>{% img /images/posts/OmniCpp/ClangComplete1.png ‘fig9’ ‘missing iostream’ %}</p>
+<p><img src="/images/posts/OmniCpp/ClangComplete1.png" title="‘fig9’ ‘missing iostream’" ></p>
 
 <p><small>Missing <code>#include &lt;iostream&gt;</code>.</small></p>
 
-<p>{% img /images/posts/OmniCpp/std_err.png ‘fig10’ ‘wrong place for std::’ %}</p>
+<p><img src="/images/posts/OmniCpp/std_err.png" title="‘fig10’ ‘wrong place for std::’" ></p>
 
 <p><small>Still wrong position of the input</small></p>
 
-<p>{% img /images/posts/OmniCpp/ClangComplete2.png ‘fig11’ ‘clang_complete work for correct code’ %}</p>
+<p><img src="/images/posts/OmniCpp/ClangComplete2.png" title="‘fig11’ ‘clang_complete work for correct code’" ></p>
 
 <p><small>Right position</small></p>
 

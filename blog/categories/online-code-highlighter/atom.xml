@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Online Code Highlighter | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/online-code-highlighter/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-03T22:22:06+08:00</updated>
+  <updated>2014-11-04T00:12:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -42,8 +42,8 @@ in the RSS (category) feeds;<sup id="fnref:4"><a href="#fn:4" class="footnote">4
 basic pandoc template for generating a $\rm \LaTeX$ PDF file, I would
 like to include a <a href="https://gist.github.com">Gist</a> in my post.</p>
 
-<p>Some users will say that Octopress’s default fuctionality <code>{% raw %}{%
-include_code %}{% endraw %}</code> can highlight the code.</p>
+<p>Some users will say that Octopress’s default fuctionality <code>{%
+include_code %}</code> can highlight the code.</p>
 
 <p><strong><em>Why does one think of embedding a Gist in Octopress?</em></strong></p>
 
@@ -57,7 +57,7 @@ include_code %}{% endraw %}</code> can highlight the code.</p>
   when there’s a lot of contents.  (say, more than a hundred posts)</p>
   </li>
   <li>
-    <p>Embedded Gist: <code>{% raw %}{% gist gist_id [&lt;file&gt;] %}{% endraw %}</code> is
+    <p>Embedded Gist: <code>{% gist gist_id [&lt;file&gt;] %}</code> is
   responsible for embedding the code snippet for <code>&lt;file&gt;</code>—changing
   the contents of the Gist for <code>&lt;file&gt;</code> <em>doesn’t</em> change this piece
   of <a href="http://jekyllrb.com/">Jekyll</a> code.  Moreover, posting code to Gist is quite fast if
@@ -71,7 +71,7 @@ include_code %}{% endraw %}</code> can highlight the code.</p>
 sharing code, one will see that the line numbers <em>aren’t</em> in the right
 position.</p>
 
-<p>{% img /images/posts/FixGist/wrong.png ‘Gist #1’ ‘A Gist that does not look good’ %}</p>
+<p><img src="/images/posts/FixGist/wrong.png" title="‘Gist #1’ ‘A Gist that does not look good’" ></p>
 
 <!-- more -->
 
@@ -188,20 +188,23 @@ its previous version, it’s still troublesome.</p>
 Feed <abbr title="EXtensible Markup Language">XML</abbr> file for removing redundant images in Atom Feeds.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> To show
 how to change the files, I put some codeblocks in my post.</p>
 
-<p>{% codeblock Sample codeblock that contains Liquid code lang:xml /blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
-{% raw %}
-{% codeblock Change the <abbr title="EXtensible Markup Language">XML</abbr> file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}</p>
-<entry>
-  <!-- other elements -->
-  <content type="html">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]&gt;</content>
-</entry>
-<p>{% endcodeblock %}
-{% endraw %}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Sample codeblock that contains Liquid code</span><a href='/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>{% codeblock Change the <span class="nt">&lt;abbr</span> <span class="na">title=</span><span class="s">&quot;EXtensible Markup Language&quot;</span><span class="nt">&gt;</span>XML<span class="nt">&lt;/abbr&gt;</span> file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;entry&gt;</span>
+</span><span class='line'>  <span class="c">&lt;!-- other elements --&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class='line'><span class="nt">&lt;/entry&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>{% endcodeblock %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>However, I <em>couldn’t</em> generate the site.  I tried HTML encoding the
 contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
-<code>{% raw %}{% codeblock %}{% endraw %}</code> tag, but this approach also
+<code>{% codeblock %}</code> tag, but this approach also
 <em>failed</em>.</p>
 
 <!-- more -->
@@ -214,7 +217,7 @@ introducing his plugin, there’s a link that took readers to another
 post about how his use of Neiner’s
 <a href="http://fuelyourcoding.com/scripts/toc/">jQuery table of contents plugin</a> on Octopress.  I studied
 <a href="https://raw.githubusercontent.com/bmc/brizzled/master/source/_posts/2012-02-04-generating-a-table-of-contents-in-octopress.markdown">the markdown source of the post</a>, and saw that a
-<code>{% raw %}{% raw %}{% endraw %}</code> tag was used to surround the interior
+<code>{% raw %}</code> tag was used to surround the interior
 of the codeblock which contained Liquid code.</p>
 
 <hr />
@@ -253,10 +256,11 @@ built-in SyntaxHighlighter now because I’ve realised that a blank line
 in Markdown will be changed to a <code>&lt;p&gt;</code> tag in HTML.  Thus, <em>don’t</em> put
 any blank lines right above and below the the <code>&lt;code&gt;</code> tags.)</p>
 
-<p>{% codeblock lang:js %}
-element1 = document.getElementById(“foo”);
-element1.innerHTML = “Hello world!”;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">element1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="err">“</span><span class="nx">foo</span><span class="err">”</span><span class="p">);</span>
+</span><span class='line'><span class="nx">element1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="err">“</span><span class="nx">Hello</span> <span class="nx">world</span><span class="o">!</span><span class="err">”</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>There’s some shortcomings of the above method.  If you need to copy a
 list of source code, you’ll need to browse the source code, provided
@@ -270,13 +274,13 @@ element, such as the statement <code>#include &lt;iostream&gt;</code> in a C++ p
 <strong>doesn’t</strong> work with UltraBlog.</em>  <del>The above code list verifies
 this assertion.<del></del></del></p>
 
-<p>{% img /images/posts/1stWPGist/ultrablog.png Screenshot of the “code list” in UltraBlog.vim %}</p>
+<p><img src="/images/posts/1stWPGist/ultrablog.png" title="Screenshot of the “code list” in UltraBlog.vim" ></p>
 
 <p><small>Figure 1: This is a screenshot of the “code list” in
 UltraBlog.vim.  <a href="http://en.support.wordpress.com/markdown-quick-reference/" title="Markdown quick reference">Markdown quick reference</a> suggests the
 use of 3 backticks.</small></p>
 
-<p>{% img fancybox /images/posts/1stWPGist/interpreted.png 800 ‘Screenshot of the interpreted code in WordPress.com online editor’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/1stWPGist/interpreted.png" width="800" title="‘Screenshot of the interpreted code in WordPress.com online editor’ ‘fig1’" ></p>
 
 <p><small>Figure 2: The above figure shows how the source code for the
 “code list” (in lines 12–15 in UltraBlog.vim, see Figure 1) is
@@ -297,7 +301,18 @@ VIMRC file, but the plugin used by WordPress.com <em>can’t</em>.</p>
 <p>According to <a href="http://en.support.wordpress.com/gist/" title="WordPress's Gist Support">WordPress’s official support</a>, using Gist
 should be much easier. The following is the result.</p>
 
-<p>{% gist 8703067 %}</p>
+<p><div><script src='https://gist.github.com/8703067.js'></script>
+<noscript><pre><code>CXX = g++
+SRCS = foo.cpp
+
+default: $(SRCS:.cpp=.out)
+
+.cpp.out:
+	$(CXX) $&lt; -o $@
+
+clean:
+	rm -rf *.out</code></pre></noscript></div>
+</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 
@@ -321,26 +336,41 @@ should be much easier. The following is the result.</p>
 
 <p><a href="http://highlightjs.org/">highlight.js</a> has the support, while <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> <em>doesn&#8217;t</em>. For example, you want to attach the following Matlab code to your blog entry. SyntaxHighlight doesn&#8217;t have the Matlab support. For highlight.js, here&#8217;s the result.</p>
 
-<p>{% codeblock lang:matlab %}
-function [rr_array] = nest_fun(x,a)
-%function to find sets of polynormials.
-% a: set of constants, [A B C]
-% x: variables in array
-% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
-n = size(a);
-  for i = 1:n
-  A = a(i,1);B = a(i,2);C = a(i,3);
-  rr_array{1,i}=[‘A=’,num2str(A),’, B=’,…
-      num2str(B),’, C=’,num2str(C)];
-  rr_array{2,i}=polyx(x);
-　end
-  function r = polyx(xx)
-  　　r = A.<em>x.^2 + B.</em>x +C;
-  end
-end
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="c">%function to find sets of polynormials.</span>
+</span><span class='line'><span class="c">% a: set of constants, [A B C]</span>
+</span><span class='line'><span class="c">% x: variables in array</span>
+</span><span class='line'><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
+</span><span class='line'><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+</span><span class='line'>  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span>‘<span class="n">A</span><span class="p">=</span>’<span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span>’<span class="p">,</span> <span class="n">B</span><span class="p">=</span>’<span class="p">,</span>…
+</span><span class='line'>      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span>’<span class="p">,</span> <span class="n">C</span><span class="p">=</span>’<span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
+</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'>　<span class="k">end</span>
+</span><span class='line'><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="p">.</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
-<p>{% img /images/posts/CodeDisplay6/d8435-matlab_correct.png ‘fig1’ ‘result of highlight.js’ %}</p>
+<p><img src="/images/posts/CodeDisplay6/d8435-matlab_correct.png" title="‘fig1’ ‘result of highlight.js’" ></p>
 
 <p><small>highlight.js works on some computer(s).</small></p>
 
@@ -348,24 +378,39 @@ end
 
 <p>We just see how google-code-prettify works.</p>
 
-<p>{% codeblock lang:matlab %}
-function [rr_array] = nest_fun(x,a)
-%function to find sets of polynormials.
-% a: set of constants, [A B C]
-% x: variables in array
-% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
-n = size(a);
-  for i = 1:n
-  A = a(i,1);B = a(i,2);C = a(i,3);
-  rr_array{1,i}=[‘A=’,num2str(A),’, B=’,…
-      num2str(B),’, C=’,num2str(C)];
-  rr_array{2,i}=polyx(x);
-　end
-  function r = polyx(xx)
-  　　r = A.<em>x.^2 + B.</em>x +C;
-  end
-end
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="c">%function to find sets of polynormials.</span>
+</span><span class='line'><span class="c">% a: set of constants, [A B C]</span>
+</span><span class='line'><span class="c">% x: variables in array</span>
+</span><span class='line'><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
+</span><span class='line'><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+</span><span class='line'>  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span>‘<span class="n">A</span><span class="p">=</span>’<span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span>’<span class="p">,</span> <span class="n">B</span><span class="p">=</span>’<span class="p">,</span>…
+</span><span class='line'>      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span>’<span class="p">,</span> <span class="n">C</span><span class="p">=</span>’<span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
+</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class='line'>　<span class="k">end</span>
+</span><span class='line'><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
+</span><span class='line'><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="p">.</span><span class="o">&lt;</span><span class="n">em</span><span class="o">&gt;</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="p">.</span><span class="o">&lt;/</span><span class="n">em</span><span class="o">&gt;</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Code copied from <a href="http://bime-matlab.blogspot.hk/2006/10/66.html">Applications of Matlab in Engineering</a>.</p>
 
@@ -373,25 +418,41 @@ end
 
 <p>So when one embeds the above source code list using google-code-prettify, one would write</p>
 
-<p>{% codeblock lang:html %}
-&lt;pre class=&#8221;prettyprint lang-matlab&#8221;&gt;function [rr_array] = nest_fun(x,a)
-%function to find sets of polynormials.
-% a: set of constants, [A B C]
-% x: variables in array
-% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
-n = size(a);
-for i = 1:n
-A = a(i,1);B = a(i,2);C = a(i,3);
-rr_array{1,i}=[‘A=’,num2str(A),’, B=’,…
-num2str(B),’, C=’,num2str(C)];
-rr_array{2,i}=polyx(x);
-　end
-function r = polyx(xx)
-　　r = A.<em>x.^2 + B.</em>x +C;
-end
-end
-&lt;/pre&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>pre class=&quot;prettyprint lang-matlab&quot;<span class="ni">&amp;gt;</span>function [rr_array] = nest_fun(x,a)
+</span><span class='line'>%function to find sets of polynormials.
+</span><span class='line'>% a: set of constants, [A B C]
+</span><span class='line'>% x: variables in array
+</span><span class='line'>% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
+</span><span class='line'>n = size(a);
+</span><span class='line'>for i = 1:n
+</span><span class='line'>A = a(i,1);B = a(i,2);C = a(i,3);
+</span><span class='line'>rr_array{1,i}=[‘A=’,num2str(A),’, B=’,…
+</span><span class='line'>num2str(B),’, C=’,num2str(C)];
+</span><span class='line'>rr_array{2,i}=polyx(x);
+</span><span class='line'>　end
+</span><span class='line'>function r = polyx(xx)
+</span><span class='line'>　　r = A.<span class="nt">&lt;em&gt;</span>x.^2 + B.<span class="nt">&lt;/em&gt;</span>x +C;
+</span><span class='line'>end
+</span><span class='line'>end
+</span><span class='line'><span class="ni">&amp;lt;</span>/pre<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Let&#8217;s go back to the topic.</p>
 
@@ -399,37 +460,49 @@ end
 
 <p>The SyntaxHighlighter code for embedding Java:</p>
 
-<p>{% codeblock lang:html %}
-&lt;pre class=&#8221;brush: java&#8221;&gt;public class Hello {
-public static void main(String args[]) {
-System.out.println(“Hello world!”);
-}
-}&lt;/pre&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>pre class=&quot;brush: java&quot;<span class="ni">&amp;gt;</span>public class Hello {
+</span><span class='line'>public static void main(String args[]) {
+</span><span class='line'>System.out.println(“Hello world!”);
+</span><span class='line'>}
+</span><span class='line'>}<span class="ni">&amp;lt;</span>/pre<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>As the language in determined by <code>brush: html</code>, there&#8217;s <em>no</em> multiple language feature in SyntaxHighlighter.</p>
 
 <h3>highlight.js</h3>
 
-<p>{% codeblock lang:html %}
-&lt;pre class=&#8221;brush: java&#8221;&gt;public class Hello {
-    public static void main(String args[]) {
-	System.out.println(“Hello world!”);
-    }
-}&lt;/pre&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>pre class=&quot;brush: java&quot;<span class="ni">&amp;gt;</span>public class Hello {
+</span><span class='line'>    public static void main(String args[]) {
+</span><span class='line'>	System.out.println(“Hello world!”);
+</span><span class='line'>    }
+</span><span class='line'>}<span class="ni">&amp;lt;</span>/pre<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>So highlight.js can display multiple languages at one container.</p>
 
 <h3>google-code-prettify</h3>
 
-<p>{% codeblock lang:html %}
-&lt;pre class=&#8221;brush: java&#8221;&gt;public class Hello {
-    public static void main(String args[]) {
-	System.out.println(“Hello world!”);
-    }
-}&lt;/pre&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>pre class=&quot;brush: java&quot;<span class="ni">&amp;gt;</span>public class Hello {
+</span><span class='line'>    public static void main(String args[]) {
+</span><span class='line'>	System.out.println(“Hello world!”);
+</span><span class='line'>    }
+</span><span class='line'>}<span class="ni">&amp;lt;</span>/pre<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>So the result of google-code-prettify is similar to that of SyntaxHighlighter.</p>
 
@@ -439,32 +512,54 @@ System.out.println(“Hello world!”);
 
 <p>In order to embed multilingual source code in a list, highlight.js is what you need, but if you insist on using google-code-prettify, here&#8217;s some sample code.</p>
 
-<p>{% codeblock %}
-&lt;pre class=&#8221;prettyprint&#8221;&gt;public class Hello {
-    // Java code sample
-	public static void main(String args[]) {
-	    System.out.println(“Hello world!”);
-	}
-    }</p>
-
-<pre><code>&lt;!-- CSS code--&gt;
-.sidebar #sidebar, .ss{
- margin-top: 12px !important;
- overflow-y: scroll !important;
-}
-
-# C++ code
-#include 
-using namespace std;
-
-int main(void)
-{
-    cout &lt;&lt; &amp;quot;Hello world!&amp;quot; &lt;&lt; endl;
-    return 0;
-}
-</code></pre>
-<p>&lt;/pre&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;pre class="prettyprint"&gt;public class Hello {
+</span><span class='line'>    // Java code sample
+</span><span class='line'>	public static void main(String args[]) {
+</span><span class='line'>	    System.out.println(“Hello world!”);
+</span><span class='line'>	}
+</span><span class='line'>    }&lt;/p>
+</span><span class='line'>
+</span><span class='line'>&lt;pre>&lt;code>&lt;!-- CSS code--&gt;
+</span><span class='line'>.sidebar #sidebar, .ss{
+</span><span class='line'> margin-top: 12px !important;
+</span><span class='line'> overflow-y: scroll !important;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'># C++ code
+</span><span class='line'>#include 
+</span><span class='line'>using namespace std;
+</span><span class='line'>
+</span><span class='line'>int main(void)
+</span><span class='line'>{
+</span><span class='line'>    cout &lt;&lt; &amp;quot;Hello world!&amp;quot; &lt;&lt; endl;
+</span><span class='line'>    return 0;
+</span><span class='line'>}
+</span><span class='line'>&lt;/code>&lt;/pre>
+</span><span class='line'>&lt;p>&lt;/pre&gt;</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
     
   </entry>
@@ -492,57 +587,87 @@ int main(void)
 
 <h3>highlight.js:</h3>
 
-<p>{% codeblock lang:make %}
-hello: hello.c
-	gcc -o hello hello.c
-clean:
-	rm -f hello
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="nf">hello</span><span class="o">:</span> <span class="m">hello.c</span>
+</span><span class='line'>	gcc -o hello hello.c
+</span><span class='line'><span class="nf">clean</span><span class="o">:</span>
+</span><span class='line'>	rm -f hello
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Maybe my <code>makefile</code> is too simple that it lacks some typical features for the automatic language recognition of highlight.js. Let&#8217;s see the sample code copied from <a href="http://highlightjs.org/static/test.html">the official demo</a>.</p>
 
-<p>{% codeblock lang:make %}
-# Makefile</p>
-
-<p>BUILDDIR      = _build
-EXTRAS       ?= $(BUILDDIR)/extras</p>
-
-<p>.PHONY: main clean</p>
-
-<p>main:
-	@echo “Building main facility…”
-	build_main $(BUILDDIR)</p>
-
-<p>clean:
-	rm -rf $(BUILDDIR)/*
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="c"># Makefile&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;p&gt;</span><span class="nv">BUILDDIR</span>      <span class="o">=</span> _build
+</span><span class='line'><span class="nv">EXTRAS</span>       <span class="o">?=</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/extras&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;.PHONY</span><span class="o">:</span> <span class="m">main clean&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;main</span><span class="o">:</span>
+</span><span class='line'>	@echo “Building main facility…”
+</span><span class='line'>	build_main <span class="k">$(</span>BUILDDIR<span class="k">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;clean</span><span class="o">:</span>
+</span><span class='line'>	rm -rf <span class="k">$(</span>BUILDDIR<span class="k">)</span>/*
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3>google-code-prettify</h3>
 
-<p>{% codeblock lang:make %}
-hello: hello.c
-	gcc -o hello hello.c
-clean:
-	rm -f hello
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="nf">hello</span><span class="o">:</span> <span class="m">hello.c</span>
+</span><span class='line'>	gcc -o hello hello.c
+</span><span class='line'><span class="nf">clean</span><span class="o">:</span>
+</span><span class='line'>	rm -f hello
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Let&#8217;s see a <em>real</em> one.</p>
 
-<p>{% codeblock lang:make %}
-# Makefile</p>
-
-<p>BUILDDIR      = _build
-EXTRAS       ?= $(BUILDDIR)/extras</p>
-
-<p>.PHONY: main clean</p>
-
-<p>main:
-	@echo “Building main facility…”
-	build_main $(BUILDDIR)</p>
-
-<p>clean:
-	rm -rf $(BUILDDIR)/*
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='make'><span class='line'><span class="c"># Makefile&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">&lt;p&gt;</span><span class="nv">BUILDDIR</span>      <span class="o">=</span> _build
+</span><span class='line'><span class="nv">EXTRAS</span>       <span class="o">?=</span> <span class="k">$(</span>BUILDDIR<span class="k">)</span>/extras&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;.PHONY</span><span class="o">:</span> <span class="m">main clean&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;main</span><span class="o">:</span>
+</span><span class='line'>	@echo “Building main facility…”
+</span><span class='line'>	build_main <span class="k">$(</span>BUILDDIR<span class="k">)</span>&lt;/p&gt;
+</span><span class='line'>
+</span><span class='line'><span class="nf">&lt;p&gt;clean</span><span class="o">:</span>
+</span><span class='line'>	rm -rf <span class="k">$(</span>BUILDDIR<span class="k">)</span>/*
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Unluckily, I <em>can&#8217;t</em> figure out the way to include a tab, instead of whitespaces, for makefiles. Anyways, one who use makefiles will know that after running <code>make</code> on the first day.</p>
 

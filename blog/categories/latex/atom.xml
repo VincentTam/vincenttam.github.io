@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-03T22:22:06+08:00</updated>
+  <updated>2014-11-04T00:12:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -33,25 +33,35 @@
 
 <p><img src="/images/posts/TypesetAccents/problem.jpg" alt="failed" /></p>
 
-<p>{% codeblock A failed attempt lang:tex %}
-\documentclass[12pt]{standalone}
-\begin{document}
-I went to café yesterday.
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A failed attempt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>I went to café yesterday.
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="method">Method</h2>
 
 <p>Add the <code>babel</code> package.</p>
 
-<p>{% codeblock A minimum working example lang:tex %}
-\documentclass[12pt]{standalone}
-\usepackage{fontspec}
-\usepackage[french]{babel}
-\begin{document}
-I went to café yesterday.
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[french]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>I went to café yesterday.
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
     
   </entry>
@@ -85,14 +95,20 @@ and I luckily found a blog post which inspired me to work out the
 following example.  (This link to the post is included in the
 footnotes.)</p>
 
-<p>{% codeblock A minimum working example lang:tex %}
-\documentclass[border=5pt]{standalone}
-\usepackage{fontspec}
-\newfontfamily{\LL}{Linux Libertine O}
-\begin{document}
-Examples of nasal vowels: {\LL /ɑ̃/, /ɛ̃/, /ɔ̃/}
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="explanation">Explanation</h2>
 
@@ -145,7 +161,40 @@ the sources of inspirations.</p>
 
 <h2 id="source-code">Source code</h2>
 
-<p>{% gist eb013fa73d62a5f5c917 %}</p>
+<p><div><script src='https://gist.github.com/eb013fa73d62a5f5c917.js'></script>
+<noscript><pre><code>\documentclass[border=5pt]{standalone}
+\usepackage{fontspec}
+\begin{document}
+\begin{tabular}{lll}
+  \hline
+  \multicolumn{1}{||c}{Header 1} &amp;
+  \multicolumn{1}{||c||}{Header 2} &amp;
+  \multicolumn{1}{c||}{Header 3} \\ \hline
+  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
+  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
+  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
+  \noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 4} &amp;
+  \multicolumn{1}{||c||}{Header 5} &amp;
+  \multicolumn{1}{c||}{Header 6} \\ \hline
+  \multicolumn{1}{||l}{Cell 4} &amp;
+  \multicolumn{1}{||l||}{Cell 5} &amp;
+  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 7} &amp;
+  \multicolumn{1}{||c||}{Header 8} &amp;
+  \multicolumn{1}{c||}{Header 9} \\ \hline
+  \multicolumn{1}{||l}{Cell 7} &amp;
+  \multicolumn{1}{||l||}{Cell 8} &amp;
+  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
+  \cline{2-2}
+  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
+  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
+  \cline{2-2}
+\end{tabular}
+\end{document}</code></pre></noscript></div>
+</p>
 
 <h2 id="explanation">Explanation</h2>
 
@@ -240,9 +289,9 @@ of the binary relation symbols there’s a whitespace character.</p>
 
 <h3 id="visual-effects-in-a-page-for-a-single-post">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/post.png ‘LaTeX code seen in post’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/post.png" title="‘LaTeX code seen in post’ ‘fig1’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 \begin{aligned}
 d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
@@ -252,13 +301,13 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
 =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/collection.png ‘LaTeX code seen in index page’ ‘fig2’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/collection.png" title="‘LaTeX code seen in index page’ ‘fig2’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 \begin{aligned}
 d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
@@ -268,7 +317,7 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
 =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
 </code>
-{% endraw %}</p>
+</p>
 
 <p>It <em>doesn’t</em> matter much in block equations.</p>
 
@@ -297,9 +346,9 @@ f(x,y) =
 
 <h3 id="visual-effects-in-a-page-for-a-single-post-1">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/cases3.png ‘LaTeX code seen in post’ ‘fig3’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases3.png" title="‘LaTeX code seen in post’ ‘fig3’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 f(x,y) =
   \begin{cases}
@@ -307,13 +356,13 @@ f(x,y) =
     1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
   \end{cases}
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page-1">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/cases2.png ‘LaTeX code seen in index page’ ‘fig4’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases2.png" title="‘LaTeX code seen in index page’ ‘fig4’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 f(x,y) =
   \begin{cases}
@@ -321,7 +370,7 @@ f(x,y) =
     1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
   \end{cases}
 </code>
-{% endraw %}</p>
+</p>
 
 <h2 id="solution">Solution</h2>
 
@@ -353,9 +402,9 @@ f(x,y) = \left\\{
 
 <h3 id="visual-effects-in-a-page-for-a-single-post-2">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/aligned3.png ‘LaTeX code seen in post’ ‘fig5’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned3.png" title="‘LaTeX code seen in post’ ‘fig5’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 f(x,y) = \left\{
   \begin{aligned}
@@ -364,13 +413,13 @@ f(x,y) = \left\{
   \end{aligned}
 \right.
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page-2">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/aligned2.png ‘LaTeX code seen in index page’ ‘fig6’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned2.png" title="‘LaTeX code seen in index page’ ‘fig6’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 f(x,y) = \left\{
   \begin{aligned}
@@ -379,7 +428,7 @@ f(x,y) = \left\{
   \end{aligned}
 \right.
 </code>
-{% endraw %}</p>
+</p>
 
 <p>‘0’ and ‘1’ in the above example are aligned.  Though in pages for
 each individual posts, the whitespace character preceeding ‘1’ still
