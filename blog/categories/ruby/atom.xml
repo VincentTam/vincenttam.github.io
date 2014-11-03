@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-01T13:17:48+08:00</updated>
+  <updated>2014-11-03T12:48:13+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Installed Prawn]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/03/installed-prawn/"/>
+    
+    <updated>2014-11-03T12:21:34+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/03/installed-prawn</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>This noon, I tried to use the <a href="http://kramdown.gettalong.org/documentation.html#usage">kramdown</a> command line utility to
+generate PDF files, but failed.</p>
+
+<pre class="cliUB"><code>$ kramdown test.tex -o pdf &gt; test.pdf
+/home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/ke
+rnel_require.rb:55:in `require': cannot load such file -- prawn (LoadError)
+        from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
+s/core_ext/kernel_require.rb:55:in `require'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
+onverter/pdf.rb:10:in `&lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+ocument.rb:119:in `const_defined?'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+ocument.rb:119:in `method_missing'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `block in &lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `each'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `&lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `&lt;main&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
+val'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;
+main&gt;'
+</code></pre>
+
+<!-- more -->
+
+<h2 id="attempt">Attempt</h2>
+
+<p>I searched Google for “kramdown pdf”, and find
+<a href="http://stackoverflow.com/a/4377892" title="How to generate PDF from markdown using pure ruby">this question</a> useful.  It linked to a page introducing
+<a href="http://prawn.majesticseacreature.com/">Prawn</a>.</p>
+
+<p>I used the testing code there to figure out that the above problem had
+arised because I <em>didn’t</em> install the Ruby gem.</p>
+
+<pre class="cliUB"><code>$ gem install prawn
+Fetching: ttfunk-1.4.0.gem (100%)
+Successfully installed ttfunk-1.4.0
+Fetching: pdf-core-0.4.0.gem (100%)
+Successfully installed pdf-core-0.4.0
+Fetching: prawn-1.3.0.gem (100%)
+
+  ********************************************
+
+
+  A lot has changed recently in Prawn.
+
+  Please read the changelog for details:
+
+  https://github.com/prawnpdf/prawn/wiki/CHANGELOG
+
+
+  ********************************************
+
+Successfully installed prawn-1.3.0
+3 gems installed
+</code></pre>
+
+<p>But I still <em>can’t</em> run the sample code correctly.  Finally, I use
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -769,39 +848,6 @@ variable to the last line of the method, and finally solved the problem.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Installing Ruby Again!]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/02/16/installing-ruby-again/"/>
-    
-    <updated>2014-02-16T17:32:23+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/02/16/installing-ruby-again</id>
-    
-      <content type="html"><![CDATA[<p>It seems that the installation of Ruby through rvm is <em>not</em> as easy as
-I think. The following two commands have failed.</p>
-
-<pre class="cliUB"><code>$ rvm pkg install iconv
-</code></pre>
-
-<p><img src="/images/posts/RubyInstall2/rvm_install_iconv.png" alt="failure of installing iconv" /></p>
-
-<pre class="cliUB"><code>$ rvm install 1.9.2 -C --with-openssl-dir=$HOME/.rvm/usr,--with-iconv-dir=$HOME/.rvm/usr
-</code></pre>
-
-<p><img src="/images/posts/RubyInstall2/rvm_install_ruby1.png" alt="failure of compiling ruby 1.9.2" /></p>
-
-<p>The <a href="http://www.lennu.net/2012/05/11/octopress-installation-in-ubuntu-12-dot-04-with-rsync/">Octopress official documentation</a> as well as
-<a href="http://whbzju.github.io/blog/2013/02/02/octopress-peizhi/">a Chinese page</a> have those commands. Luckily,
-<a href="https://gist.github.com/aahan/5226975">Krish&#8217;s approach</a> works on my computer.</p>
-
-<p>I created this post to see if this affects <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
 ]]></content>
     
   </entry>

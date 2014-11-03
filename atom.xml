@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-01T13:17:48+08:00</updated>
+  <updated>2014-11-03T12:48:13+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Installed Prawn]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/03/installed-prawn/"/>
+    
+    <updated>2014-11-03T12:21:34+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/03/installed-prawn</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>This noon, I tried to use the <a href="http://kramdown.gettalong.org/documentation.html#usage">kramdown</a> command line utility to
+generate PDF files, but failed.</p>
+
+<pre class="cliUB"><code>$ kramdown test.tex -o pdf &gt; test.pdf
+/home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/ke
+rnel_require.rb:55:in `require': cannot load such file -- prawn (LoadError)
+        from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
+s/core_ext/kernel_require.rb:55:in `require'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
+onverter/pdf.rb:10:in `&lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+ocument.rb:119:in `const_defined?'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
+ocument.rb:119:in `method_missing'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `block in &lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `each'
+        from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
+1:in `&lt;top (required)&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `&lt;main&gt;'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
+val'
+        from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;
+main&gt;'
+</code></pre>
+
+<!-- more -->
+
+<h2 id="attempt">Attempt</h2>
+
+<p>I searched Google for “kramdown pdf”, and find
+<a href="http://stackoverflow.com/a/4377892" title="How to generate PDF from markdown using pure ruby">this question</a> useful.  It linked to a page introducing
+<a href="http://prawn.majesticseacreature.com/">Prawn</a>.</p>
+
+<p>I used the testing code there to figure out that the above problem had
+arised because I <em>didn’t</em> install the Ruby gem.</p>
+
+<pre class="cliUB"><code>$ gem install prawn
+Fetching: ttfunk-1.4.0.gem (100%)
+Successfully installed ttfunk-1.4.0
+Fetching: pdf-core-0.4.0.gem (100%)
+Successfully installed pdf-core-0.4.0
+Fetching: prawn-1.3.0.gem (100%)
+
+  ********************************************
+
+
+  A lot has changed recently in Prawn.
+
+  Please read the changelog for details:
+
+  https://github.com/prawnpdf/prawn/wiki/CHANGELOG
+
+
+  ********************************************
+
+Successfully installed prawn-1.3.0
+3 gems installed
+</code></pre>
+
+<p>But I still <em>can’t</em> run the sample code correctly.  Finally, I use
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1736,259 +1815,6 @@ Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a
     </li>
     <li id="fn:2">
       <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Another Way of Writing Piecewise Functions]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions/"/>
-    
-    <updated>2014-09-08T18:38:29+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I changed my way of writing block equations for <abbr title="Rich Site Summary">RSS</abbr>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, in
-my old post about the Contraction Mapping Principles, there’s an
-inequality on the rate of convergence of a point in a complete metric
-space to the unique fixed point of the Lipschitz mapping with a
-Lipschitz constant strictly less than one.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>\[
-\begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
-=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) &#92;\<br />
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
-\end{aligned}
-\]</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
-</span><span class="line">\begin{aligned}
-</span><span class="line">d(x^\*,x\_n) =&amp; d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
-</span><span class="line">=&amp; \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
-</span><span class="line">\le&amp; \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
-</span><span class="line">  \text{(by \eqref{eq:finite_err})} \\\\\\\\
-</span><span class="line">=&amp; \frac{q^n}{1 - q} d(x\_1,x\_0)
-</span><span class="line">\end{aligned}
-</span><span class="line">\\]
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Starting from the second line in the above block equation, at the left
-of the binary relation symbols there’s a whitespace character.</p>
-
-<!-- more -->
-
-<h3 id="visual-effects-in-a-page-for-a-single-post">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/post.png" title="LaTeX code seen in post" alt="fig1" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line">d(x<span class="nb">^</span>*,x<span class="nb">_</span>n) =<span class="nb">&amp;</span> d<span class="k">\left</span>( <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> x<span class="nb">_</span>k,x<span class="nb">_</span>n<span class="k">\right</span>) <span class="k">\\</span><span class="err">\</span>
-</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> d(x<span class="nb">_</span>k,x<span class="nb">_</span>n) <span class="k">\\</span><span class="err">\</span>
-</span><span class="line"><span class="k">\le</span><span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0) <span class="k">\qquad</span>
-</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>(by <span class="k">\eqref</span><span class="nb">{</span>eq:finite<span class="nb">_</span>err<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span><span class="err">\</span>
-</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0)
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/collection.png" title="LaTeX code seen in index page" alt="fig2" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line">d(x<span class="nb">^</span>*,x<span class="nb">_</span>n) =<span class="nb">&amp;</span> d<span class="k">\left</span>( <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> x<span class="nb">_</span>k,x<span class="nb">_</span>n<span class="k">\right</span>) <span class="k">\\</span>
-</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> d(x<span class="nb">_</span>k,x<span class="nb">_</span>n) <span class="k">\\</span>
-</span><span class="line"><span class="k">\le</span><span class="nb">&amp;</span> <span class="k">\lim</span><span class="nb">_{</span>k <span class="k">\to</span> <span class="k">\infty</span><span class="nb">}</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0) <span class="k">\qquad</span>
-</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>(by <span class="k">\eqref</span><span class="nb">{</span>eq:finite<span class="nb">_</span>err<span class="nb">}</span>)<span class="nb">}</span> <span class="k">\\</span>
-</span><span class="line">=<span class="nb">&amp;</span> <span class="k">\frac</span><span class="nb">{</span>q<span class="nb">^</span>n<span class="nb">}{</span>1 - q<span class="nb">}</span> d(x<span class="nb">_</span>1,x<span class="nb">_</span>0)
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>It <em>doesn’t</em> matter much in block equations.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>However, it <em>does</em> matter if I have to define a piecewise function.
-Take one defined in one of my old posts as an example.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p>\[
-f(x,y) =
-  \begin{cases}
-    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
-    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-  \end{cases}
-\]</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
-</span><span class="line">f(x,y) =
-</span><span class="line">  \begin{cases}
-</span><span class="line">    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-</span><span class="line">    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-</span><span class="line">  \end{cases}
-</span><span class="line">\\]
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="visual-effects-in-a-page-for-a-single-post-1">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/cases3.png" title="LaTeX code seen in post" alt="fig3" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) =
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>cases<span class="nb">}</span>
-</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span><span class="err">\</span>
-</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>cases<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-1">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/cases2.png" title="LaTeX code seen in index page" alt="fig4" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) =
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>cases<span class="nb">}</span>
-</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span>
-</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span>if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>cases<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="solution">Solution</h2>
-
-<p>After I observed that the two equations, which are aligned by the
-<code>aligned</code> environment, at the bottom of the post cited in footnote #3,
-I used the $\rm \LaTeX$ commands <code>\left\\{</code> and <code>\right.</code> in the
-Markdown source file for posts to construct the left curly brace
-<em>only</em>.</p>
-
-<p>\[
-f(x,y) = \left\{
-  \begin{aligned}
-    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
-    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-  \end{aligned}
-\right.
-\]</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
-</span><span class="line">f(x,y) = \left\\{
-</span><span class="line">  \begin{aligned}
-</span><span class="line">    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-</span><span class="line">    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-</span><span class="line">  \end{aligned}
-</span><span class="line">\right.
-</span><span class="line">\\]
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="visual-effects-in-a-page-for-a-single-post-2">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/aligned3.png" title="LaTeX code seen in post" alt="fig5" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen in an individual post</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) = <span class="k">\left\{</span>
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span><span class="err">\</span>
-</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x,
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line"><span class="k">\right</span>.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-2">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/MathJaxDisplay2/aligned2.png" title="LaTeX code seen in index page" alt="fig6" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code as seen under &#8220;/posts/&#8221; or the index page</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line">f(x,y) = <span class="k">\left\{</span>
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line">    0 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y <span class="k">\ge</span> x<span class="k">\\</span>
-</span><span class="line">    1 <span class="nb">&amp;</span><span class="k">\text</span><span class="nb">{</span> if <span class="nb">}</span> (x,y) <span class="k">\in</span> <span class="k">\vect</span><span class="nb">{</span>I<span class="nb">}</span> <span class="k">\land</span> y &lt; x,
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>aligned<span class="nb">}</span>
-</span><span class="line"><span class="k">\right</span>.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>‘0’ and ‘1’ in the above example are aligned.  Though in pages for
-each individual posts, the whitespace character preceeding ‘1’ still
-exists, it <em>isn’t</em> visible unless it’s highlighted.  I’m quite
-satified with this alternative method of typesetting piecewise
-functions.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/">MathJax and RSS</a> in <em>Blog 1</em> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>See <a href="http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/">Error Bound of the Fixed Point of Contraction Mappings</a>
-in <em>Blog 1</em> for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/">Archimedean Sequence of Partitions of a Square</a> in <em>Blog
-1</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

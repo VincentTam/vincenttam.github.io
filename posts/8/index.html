@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem When I was writing my previous post, I typed three $ in
-one single paragraph. Although I’d tried adding \ in front of
-$1, part of the words &hellip;">
+  <meta name="description" content="If you want to select some lines of text and search for a word to
+replace in Vim, many users will do it like this: Use v to do the selection. Press &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -133,6 +132,66 @@ $1, part of the words &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/">Search and Replace in Vim&#8217;s Visual Mode</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T22:45:43+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:45 pm</span></time>
+        
+           | <a href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/16/search-and-replace-in-vims-visual-mode/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to select some lines of text and search for a word to
+replace in Vim, many users will do it like this:</p>
+
+<ol>
+  <li>Use <code>v</code> to do the selection.</li>
+  <li>Press <code>:</code> to start inputting an editor command.</li>
+  <li>Use <code>s/&lt;pat&gt;/&lt;text&gt;/g</code> to search and replace text.</li>
+</ol>
+
+<p>Observation: <code>:'&lt;,'&gt;s</code> “applies to whole lines”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How about an arbitrary visual selection?</strong></p>
+
+<p>According to a Vim tips found in the footnote, the answer is quite
+simple—insert the <code>\%V</code> atom at the beginning of the search pattern.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Search and replace in a visual selection—<a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection">Vim Tips Wiki</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -620,68 +679,6 @@ while the second one has more detailed explanation.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Include Liquid Code Inside Octopress Codeblocks</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-12T13:58:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:58 pm</span></time>
-        
-           | <a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last night, I wrote a post on editing a Ruby plugin file and an Atom
-Feed <abbr title="EXtensible Markup Language">XML</abbr> file for removing redundant images in Atom Feeds.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> To show
-how to change the files, I put some codeblocks in my post.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample codeblock that contains Liquid code</span><a href="/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line">{% codeblock Change the <abbr title="EXtensible Markup Language">XML</abbr> file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}
-</span><span class="line"><span class="nt">&lt;entry&gt;</span>
-</span><span class="line">  <span class="c">&lt;!-- other elements --&gt;</span>
-</span><span class="line">  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]&gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class="line"><span class="nt">&lt;/entry&gt;</span>
-</span><span class="line">{% endcodeblock %}
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>However, I <em>couldn’t</em> generate the site.  I tried HTML encoding the
-contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
-<code>{% codeblock %}</code> tag, but this approach also
-<em>failed</em>.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -730,7 +727,7 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
 <li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (6)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -743,6 +740,10 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/11/03/installed-prawn/">Installed Prawn</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/10/26/typeset-acute-accents/">Typeset Acute Accents</a>
@@ -758,10 +759,6 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
     
       <li class="post">
         <a href="/blog/2014/10/11/rake-preview-on-m$-win-star/">Rake Preview on M$ Win*</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Git Repositories in USB Drives on Windows</a>
       </li>
     
   </ul>
