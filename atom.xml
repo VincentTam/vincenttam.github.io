@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-04T00:12:05+08:00</updated>
+  <updated>2014-11-08T18:20:28+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Limit Superior and Limit Inferior]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior/"/>
+    
+    <updated>2014-11-08T17:18:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>For sequences of numbers, <em>limit inferior</em> and <em>limit superior</em> are
+defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge n\}\}$
+and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$
+respectively; for sequences of sets, they are defined as
+$\displaystyle \bigcup_{n=1}^{\infty}
+\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
+\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$
+respectively.</p>
+
+<p><strong>Why are they consistent?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>It suffices to find a relation between &#8216;&lt;&#8217; and &#8216;⊆&#8217;: $\{x \le
+a\} \subseteq \{x \le b\} \iff a \le b$.</p>
+
+<p>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x
+\le \sup A\}$.</p>
+
+<p><em>Proof</em>:</p>
+
+<p>\[
+  \begin{aligned}
+    &amp; x \in \bigcup_{a \in A} \{x \le a\} &#92;\<br />
+    \iff&amp; x \le a \;\forall a \in A &#92;\<br />
+    \iff&amp; x \text{ is a lower bound of } A &#92;\<br />
+    \iff&amp; x \le \inf A
+    \end{aligned}
+\]</p>
+
+<p>The last step is due to the defintion of infimum (<em>greatest</em> lower
+bound).</p>
+
+<p>With the above claim, one has</p>
+
+<p>\[
+  \begin{aligned}
+    &amp; \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty}
+      \{x \le a_k\} &#92;\<br />
+    =&amp; \bigcap_{n=1}^{\infty}
+      \bigcup_{a \in \{a_k:k \ge n\}}\{x \le a\} &#92;\<br />
+    =&amp; \bigcap_{n=1}^{\infty}
+      \{ x \le \sup \{a_k:k \ge n\}\} &#92;\<br />
+    =&amp; \{x \le \inf\sup \{a_k:k \ge n\}\}
+  \end{aligned}
+\]</p>
+
+<p>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le
+\inf\sup \{a_k:k \ge n\}$ and $\displaystyle
+\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} \{x \le
+a_k\} \subseteq \bigcap_{n=1}^{\infty}
+\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in
+common. </p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1779,56 +1848,6 @@ Copying non-tried blocks...
 <p>Unluckily, I <em>can’t</em> to anything about the horizontal scrollbar at the
 bottom.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Custom JavaScripts in the Head of Octopress Pages]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/"/>
-    
-    <updated>2014-09-12T21:51:59+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages</id>
-    
-      <content type="html"><![CDATA[<p>When I set up <em>Blog 1</em> for MathJax and fancybox, I included some
-custom code in <code>source/_includes/custom/head.html</code>.  I moved them to
-<code>source/javascripts/MathJaxLocal.js</code> and
-<code>source/javascripts/FancyBoxLocal.js</code> because I <em>don’t</em> like
-JavaScript code inside HTML files.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>In the past, I put those code in <code>source/_includes/custom/head.html</code>
-because of Felix Chern’s post.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  However, there’s another better
-way.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  Why is it better?  It saves thousands of lines of code.
-Apart from that, it’s a way to separate the behaviour of a document
-from the contents.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-<p><img class="fancybox" src="http://vincenttam.github.io/images/posts/OctHead/MasterPull.png" width="900" title="Statistics on the changes" alt="git-diff --stat" /></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/697d086" title="Moved javascript code from a HTML file">697d086</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/d6d3633" title="Added two new posts, and updated MathJax equations">d6d3633</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>See <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/"><em>Writing Math Equations on Octopress</em></a> in Carpe Diem. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="http://drz.ac/2013/01/03/blogging-with-math/"><em>Blogging With Math: Octopress, MathJax, and Pandoc</em></a> in
-DrZ.ac. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-
-      <p>See
-<a href="http://www.w3.org/2001/tag/doc/contentPresentation-26.html"><em>Separation of semantic and presentational markup, to the extent possible, is architecturally sound</em></a>
-in W3C. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

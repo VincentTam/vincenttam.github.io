@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="The last post about pandoc was written four months ago. Last week,
-I slightly changed the pandoc template default.latex on
-jgm/pandoc-templates so &hellip;">
+  <meta name="description" content="Background Octopress’s default plugins for including code snippets/blocks enable
+users to share code. This is good for open source technologies. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -133,6 +132,97 @@ jgm/pandoc-templates so &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Fixing Embedded Gists in Octopress</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-05T20:18:53+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:18 pm</span></time>
+        
+           | <a href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Octopress’s default plugins for including code snippets/blocks enable
+users to share code.  This is good for open source technologies.
+<em>Without</em> intelligent and generous users of open source tools, I
+<em>won’t</em> be able to</p>
+
+<ol>
+  <li>show images which can be enlarged with a click;<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
+  <li>display a category list of Octopress posts;<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
+  <li>find out how to include contents rendered by Mathjax (e.g. $\rm
+\LaTeX$) in the category list;<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></li>
+  <li>figure out a way to remove the line numbers and repeating figures
+in the RSS (category) feeds;<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></li>
+  <li>embed SVG images that support zooming, panning and dragging.<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup></li>
+</ol>
+
+<p>While I was writing <a href="/blog/2014/08/03/my-pandoc-template-1/#gist13584483" title="My Pandoc Template (1)">my previous post</a>, which was about a
+basic pandoc template for generating a $\rm \LaTeX$ PDF file, I would
+like to include a <a href="https://gist.github.com">Gist</a> in my post.</p>
+
+<p>Some users will say that Octopress’s default fuctionality <code>{%
+include_code %}</code> can highlight the code.</p>
+
+<p><strong><em>Why does one think of embedding a Gist in Octopress?</em></strong></p>
+
+<h2 id="rationale">Rationale</h2>
+
+<p>To easily modify the embedded code block.</p>
+
+<ul>
+  <li>
+    <p>Octopress’s default plugins: <code>rake generate</code> is slow, especially
+  when there’s a lot of contents.  (say, more than a hundred posts)</p>
+  </li>
+  <li>
+    <p>Embedded Gist: <code>{% gist gist_id [&lt;file&gt;] %}</code> is
+  responsible for embedding the code snippet for <code>&lt;file&gt;</code>—changing
+  the contents of the Gist for <code>&lt;file&gt;</code> <em>doesn’t</em> change this piece
+  of <a href="http://jekyllrb.com/">Jekyll</a> code.  Moreover, posting code to Gist is quite fast if
+  you have <a href="https://github.com/mattn/gist-vim" title="Vim script for Gist">Gist.vim</a> plugin installed in Vim.<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup></p>
+  </li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>However, if one uses Gist instead of Octopress’s default plugins for
+sharing code, one will see that the line numbers <em>aren’t</em> in the right
+position.</p>
+
+<p><img src="/images/posts/FixGist/wrong.png" title="Gist #1" alt="A Gist that does not look good" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -839,54 +929,6 @@ later, since then the paths are clipped around the notes…”</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/30/basic-use-of-aptitude/">Basic Use of Aptitude</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-30T09:02:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:02 am</span></time>
-        
-           | <a href="/blog/2014/06/30/basic-use-of-aptitude/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/30/basic-use-of-aptitude/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="why-use-aptitude">Why use Aptitude?</h2>
-
-<p>I tried upgrading the Linux kernel on Ubuntu using <code>apt-get</code>, but it
-<em>failed</em>.</p>
-
-<p><img src="/images/posts/Aptitude/GnomeTerm.png" title="fig:gnome-term" alt="apt-get cannot upgrade kernel" /></p>
-
-<p><strong>How can I upgrade the Linux kernel?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/30/basic-use-of-aptitude/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -930,7 +972,7 @@ later, since then the paths are clipped around the notes…”</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (14)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (15)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -950,6 +992,10 @@ later, since then the paths are clipped around the notes…”</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/08/limit-superior-and-limit-inferior/">Limit Superior and Limit Inferior</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/04/product-of-gcd-and-lcm/">Product of GCD and LCM</a>
       </li>
     
@@ -963,10 +1009,6 @@ later, since then the paths are clipped around the notes…”</p>
     
       <li class="post">
         <a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Understood Power Means Inequality for Integer Powers</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Update Vim Plugins Managed by pathogen.vim</a>
       </li>
     
   </ul>

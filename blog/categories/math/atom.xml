@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-04T00:12:05+08:00</updated>
+  <updated>2014-11-08T18:20:28+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Limit Superior and Limit Inferior]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior/"/>
+    
+    <updated>2014-11-08T17:18:17+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>For sequences of numbers, <em>limit inferior</em> and <em>limit superior</em> are
+defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge n\}\}$
+and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$
+respectively; for sequences of sets, they are defined as
+$\displaystyle \bigcup_{n=1}^{\infty}
+\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
+\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$
+respectively.</p>
+
+<p><strong>Why are they consistent?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>It suffices to find a relation between &#8216;&lt;&#8217; and &#8216;⊆&#8217;: $\{x \le
+a\} \subseteq \{x \le b\} \iff a \le b$.</p>
+
+<p>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x
+\le \sup A\}$.</p>
+
+<p><em>Proof</em>:</p>
+
+<p>\[
+  \begin{aligned}
+    &amp; x \in \bigcup_{a \in A} \{x \le a\} &#92;\<br />
+    \iff&amp; x \le a \;\forall a \in A &#92;\<br />
+    \iff&amp; x \text{ is a lower bound of } A &#92;\<br />
+    \iff&amp; x \le \inf A
+    \end{aligned}
+\]</p>
+
+<p>The last step is due to the defintion of infimum (<em>greatest</em> lower
+bound).</p>
+
+<p>With the above claim, one has</p>
+
+<p>\[
+  \begin{aligned}
+    &amp; \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty}
+      \{x \le a_k\} &#92;\<br />
+    =&amp; \bigcap_{n=1}^{\infty}
+      \bigcup_{a \in \{a_k:k \ge n\}}\{x \le a\} &#92;\<br />
+    =&amp; \bigcap_{n=1}^{\infty}
+      \{ x \le \sup \{a_k:k \ge n\}\} &#92;\<br />
+    =&amp; \{x \le \inf\sup \{a_k:k \ge n\}\}
+  \end{aligned}
+\]</p>
+
+<p>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le
+\inf\sup \{a_k:k \ge n\}$ and $\displaystyle
+\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} \{x \le
+a_k\} \subseteq \bigcap_{n=1}^{\infty}
+\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in
+common. </p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -249,87 +318,6 @@ conclude that $BA = I$, and vice versa.</p>
   <ol>
     <li id="fn:1">
       <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Error Bound of the Fixed Point of Contraction Mappings]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/"/>
-    
-    <updated>2014-08-11T01:32:23+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings</id>
-    
-      <content type="html"><![CDATA[<p>This afternoon, I read the proof of Banach fixed-point theorem in
-<em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
-
-<p>\begin{equation}
-  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
-  \label{eq:inf_err}
-\end{equation}</p>
-
-<p>In the proofs for the lemmas, I could only find something like $x_k$
-inside the brackets, but <em>not</em> $x^*$.  Thus, I <em>couldn’t</em> figure out
-how one can derive inequality \eqref{eq:inf_err} from an inequality
-derived in the proof of Lemma 2.</p>
-
-<p>\begin{equation}
-  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
-  \text{ where } m &gt; n.
-  \label{eq:finite_err}
-\end{equation}</p>
-
-<p>I googled for some notes, and found one which told me to take the
-limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
-\infty$.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> After looking at Corollary 2.4 in the PDF file in
-footnote #2 for a while, I know what I’ve missed.</p>
-
-<p>If $\left\{ p_k \right\}$ converges to $p$,</p>
-
-<p>\begin{equation}
-  \lim_{k \to \infty} d(p_k,q) = d(p,q)
-    = d\left(\lim_{k \to \infty} p_k,q \right)
-  \label{eq:dist_limit}
-\end{equation}</p>
-
-<p>That’s why I wrote the <a href="/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
-
-<p>With equation \eqref{eq:dist_limit}, I can now derive
-\eqref{eq:inf_err} from \eqref{eq:finite_err}.</p>
-
-<p>$\displaystyle \because \lim_{k \to \infty} x_k = x_*$</p>
-
-<p>\[
-\begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
-=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-  \text{(by \eqref{eq:finite_err})} &#92;\<br />
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
-\end{aligned}
-\]</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Banach fixed-point theorem.  (2014, July 15).  In <em>Wikipedia, The
-Free Encyclopedia</em>.  Retrieved 17:34, August 10, 2014, from
-<a href="http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697">http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>Conrad, K.  (2014).  The contraction mapping theorem.  <em>Expository
-paper.  University of Connecticut, College of Liberal Arts and
-Sciences, Department of Mathematics</em>.  Retrieved August 10,2014,
-from
-<a href="http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf">http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
