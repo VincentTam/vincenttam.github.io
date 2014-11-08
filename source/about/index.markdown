@@ -6,7 +6,8 @@ sharing: false
 footer: false
 ---
 
-## Introduction
+Introduction
+---
 
 1. A [GNU/Linux][GNU/Linux] user.
 2. Have used [LibreOffice][LibreOffice] for homework.
@@ -31,7 +32,8 @@ myself.
 
 [^markdown]: Finally, I've found out that writing in [Markdown][Markdown] is **much easier**.
 
-## My Old Blogs
+My Old Blogs
+---
 
 Before blogging using Octopress, I tried WordPress and Blogger.
 
@@ -55,14 +57,16 @@ Finally, I use [Octopress][Octopress].
 [Git]: http://git-scm.com/
 [Octopress]: http://octopress.org/
 
-## My Videos
+My Videos
+---
 
 I have made only two, and they're on YouTube.
 
 1. [Efficient LaTeX Editing with Vim](http://youtu.be/y67t-05nFD0)
 2. [Easy Citing in APA Style with Vim-LaTeX](http://youtu.be/ly8BlePO4ws)
 
-## My Project Pages
+My Project Pages
+---
 
 <del>
 Using Octopress to create **both** a blog and a GitHub project page
@@ -90,7 +94,9 @@ branch and a GitHub project page built with Jekyll Bootstrap in the
 
 [^not_it_student]: I reused the words from [my WordPress blog](http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/).
 
-## My Math Notes
+My Math Notes
+---
+
 As the server on which I put my notes is going to close down, I put it
 here.
 
@@ -99,13 +105,12 @@ here.
 - Derivation of Vendermonde Determinant: [PDF][vendermonde],
   [source][vendermonde_src]
 
+I use some [custom macros][mymacros] as shorthand.
+
 [ODE]: /downloads/var_of_param.pdf
 [ODE_src]: /about/ode_src.html
 [ncr]: /downloads/diagram.pdf
 [ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
 [vendermonde]: /downloads/vendermonde_det.pdf
 [vendermonde_src]: /about/src-of-ven-det.html
-
-----
-
-<!-- vim:set tw=70 wrap spell: -->
+[mymacros]: /about/mymacros.html
