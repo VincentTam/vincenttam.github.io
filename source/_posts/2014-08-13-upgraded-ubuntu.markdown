@@ -31,8 +31,8 @@ more *interesting* than technical problems.
 ---
 (Last edited on AUG 17, 2014)
 
-I have now worked out a solution to this problem.  Refer to [*Ubuntu
-14.04 Monospaced Font Family*][rp] for details.
+I have now worked out a solution to this problem.  Refer to
+[*Ubuntu 14.04 Monospaced Font Family*][rp] for details.
 
 [Ubuntu]: http://www.ubuntu.com "A popular Linux distro"
 [tty1]: /images/posts/UbuntuDistUpgrade2/tty1.png
