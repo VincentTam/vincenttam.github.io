@@ -9,8 +9,11 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I suddenly found that the Gravatar in my GitHub user profile had
-disappeared. Failed attempt I then went to GitHub to upload the icon. I &hellip;">
+  <meta name="description" content="Problem I tried following the instructions in MathJax’s official Wiki for
+using a local configuration file.1 1
+2
+3
+&lt;script type=&quot;text/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +129,67 @@ disappeared. Failed attempt I then went to GitHub to upload the icon. I &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/11/09/mathjax-local-configuration-file/">MathJax Local Configuration File</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-09T01:06:46+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:06 am</span></time>
+        
+           | <a href="/blog/2014/11/09/mathjax-local-configuration-file/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/11/09/mathjax-local-configuration-file/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>I tried following the instructions in MathJax’s official Wiki for
+using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">1</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</span><span class="line">   <span class="na">src=</span><span class="s">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Things seems worked, but undersirably <em>slow</em>.</p>
+
+<p><img src="/images/posts/MathJaxLocalConfigSlow/slow1.png" alt="loading time graph" class="fancybox" /></p>
+
+<p><img src="/images/posts/MathJaxLocalConfigSlow/slow2.png" alt="loading time graph" class="fancybox" /></p>
+
+<p>It took about <em>16 seconds</em> for loading the math.  <strong>How can they load
+quicker with a local configuration file</strong>, like <a href="http://drz.ac">http://drz.ac</a>?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/11/09/mathjax-local-configuration-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -652,64 +716,6 @@ from the hard disk to the USB drive.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/10/05/fixing-shellshock-on-fedora-17/">Fixing Shellshock on Fedora 17</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-05T16:58:54+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:58 pm</span></time>
-        
-           | <a href="/blog/2014/10/05/fixing-shellshock-on-fedora-17/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/10/05/fixing-shellshock-on-fedora-17/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/10/05/fixing-shellshock-on-fedora-17/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<blockquote><p>A serious bug has been found affecting Linux and Mac OS X software, which security researchers claim could be bigger than Heartbleed.<br />&#8230;<br />Dubbed Shellshock, or the Bash Bug, the security vulnerability is officially known as CVE-2014-6271 and affects the Bash command processor which is used in most Linux distributions, in Apple&#8217;s Mac OS X, and the Apache web server software, among others.<br />&#8230;<br /><strong>Which systems are affected?</strong></p><p>Servers, <strong>home computers</strong>, and embedded devices are all vulnerable.</p><p>Users running Linux and Mac OS X on their PCs are at risk, but it is thought that the most likely target will be web servers running the Apache web server software.</p><p>And this is a big problem, especially when you consider that up to 60% of the web servers out there use this software.</p><p>Apache uses Bash to run background applications which process data from users, such as information inputted to online forms. If an attacker was able to exploit this vulnerability by making a web request which included exploit code, they would theoretically be able to launch widespread attacks on visitors to that website.</p><p>Ian Pratt, co-founder at Bromium told IBTimes UK: &#8220;It&#8217;s going to impact large numbers of internet-facing linux/unix/OS X systems as bash has been around for many years and is frequently used as the &#8216;glue&#8217; to connect software components used in building applications. Vulnerable network-facing applications can easily be remotely exploited to allow an attacker to gain access to the system.&#8221;</p><footer><strong>David Gilbert</strong> <cite><a href="http://goo.gl/K0eyxH">What Is Shellshock? The OS X and Linux Bash Bug That Could Be Bigger Than Heartbleed</a></cite></footer></blockquote>
-
-<p>In response to this bug, I’ve just checked if the bash on my Ubuntu
-desktop is safe.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Actually, the necessary updates have been
-installed in the system.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I’ve also installed Fedora 17 two years ago.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Nowadays, it’s <em>no</em>
-longer maintained by the package managers, who look after packages for
-newer versions of the GNU/Linux distribution.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p><strong>How can one fix the bash on Fedora 17?</strong></p>
-
-<p>I searched “shellshock fedora” on Google, and have learnt more about
-the security hole in <em>Fedora Megazine</em>.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/05/fixing-shellshock-on-fedora-17/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -752,7 +758,7 @@ the security hole in <em>Fedora Megazine</em>.<sup id="fnref:4"><a href="#fn:4" 
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (15)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (9)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (10)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -771,6 +777,10 @@ the security hole in <em>Fedora Megazine</em>.<sup id="fnref:4"><a href="#fn:4" 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/11/09/mathjax-local-configuration-file/">MathJax Local Configuration File</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/08/my-github-avatar-is-gone/">My GitHub Avatar Is Gone!</a>
       </li>
     
@@ -784,10 +794,6 @@ the security hole in <em>Fedora Megazine</em>.<sup id="fnref:4"><a href="#fn:4" 
     
       <li class="post">
         <a href="/blog/2014/11/03/installed-prawn/">Installed Prawn</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/10/26/typeset-acute-accents/">Typeset Acute Accents</a>
       </li>
     
   </ul>
