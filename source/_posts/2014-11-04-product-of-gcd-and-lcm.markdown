@@ -7,7 +7,7 @@ categories: math
 external-url: https://proofwiki.org/wiki/Product_of_GCD_and_LCM
 ---
 
-In ProokWiki's first proof, it has taken me some time to understand.
+In ProofWiki's first proof, it has taken me some time to understand.
 I often write $d=\gcd(a,b)$, $a=a'd$, $b=b'd$ for some $a',b' \in
 \integers\_{>0}$, and $n$ as *any* common multiple of $a$ and $b$.
 Then $n=q\_1 a=q\_2 b$ for some $q\_1,q\_2 \in \integers$.  The letter
