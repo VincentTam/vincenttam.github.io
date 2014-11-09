@@ -14,7 +14,7 @@ Introduction
 3. Some differences in the appearance of documents across M\$ and
 \*nix.
 4. Use $\rm \LaTeX$ & HTML for consistency.[^markdown]
-5. Use [Vim] for efficient editing of source code.[^myvimmacros]
+5. Use [Vim] for efficient editing of source code.
 6. Acquired knowledge in these areas.
 7. Forgotten some of them since I'm *not* a student in IT.
 8. Realised the need for writing down the code.
@@ -29,15 +29,27 @@ myself.
     Finally, I've found out that writing in [Markdown][Markdown] is
     **much easier**.
 
-[^myvimmacros]:
-    I use some custom Vim macros as shorthand.  You may view them
-    [here][myvimmacros].
-
 [GNU/Linux]: https://www.gnu.org/gnu/linux-and-gnu.en.html
 [LibreOffice]: https://www.libreoffice.org/
 [Vim]: http://www.vim.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
+
+Useful sites:
+---
+
+- [Custom $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
+- [Custom Vim macros][myvimmacros]: I use some custom Vim macros as
+    shorthand.
+- [Pandoc syntax reference][pandoc]
+- [Kramdown quick reference][kramdown_quickref]
+- [HTML symbols entities][html_symb]: for writing some special symbols
+    like '&sub;' and '&notin;'.
+
+[mymacros]: /about/mymacros.html
 [myvimmacros]: /about/myvimmacros.html
+[kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
+[html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
+[pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
 
 My Math Notes
 ---
@@ -50,15 +62,12 @@ here.
 - Derivation of Vendermonde Determinant: [PDF][vendermonde],
   [source][vendermonde_src]
 
-I use some [custom macros][mymacros] as shorthand.
-
 [ODE]: /downloads/var_of_param.pdf
 [ODE_src]: /about/ode_src.html
 [ncr]: /downloads/diagram.pdf
 [ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
 [vendermonde]: /downloads/vendermonde_det.pdf
 [vendermonde_src]: /about/src-of-ven-det.html
-[mymacros]: /about/mymacros.html
 
 My Old Blogs
 ---

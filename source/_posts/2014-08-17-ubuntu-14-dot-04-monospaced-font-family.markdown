@@ -59,7 +59,7 @@ int main(){<br />
 {% endcodeblock %}
 
 {% codeblock The HTML source code for testing "Courier New" font family lang:html http://www.cnblogs.com/youxia/p/linux004.html %}
-<span style="font-family: monospace; font-size: 12pt;">
+<span style="font-family: courier new; font-size: 12pt;">
 #include &lt;stdio.h&gt;<br />
 int main(){<br />
 &nbsp;&nbsp;&nbsp;&nbsp;return 0;//觀察下面的代碼了解monospace是否等於Courier New<br />

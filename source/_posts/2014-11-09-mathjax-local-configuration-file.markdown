@@ -4,14 +4,13 @@ title: "MathJax Local Configuration File"
 date: 2014-11-09 01:06:46 +0800
 comments: true
 categories: MathJax
-published: false
 ---
 
 Problem
 ---
 
 I tried following the instructions in MathJax's official Wiki for
-using a local configuration file.
+using a local configuration file.[^mathjax_doc]
 
 {% codeblock lang:html %}
 <script type="text/javascript"
@@ -26,6 +25,64 @@ Things seems worked, but undersirably *slow*.
 ![loading time graph](/images/posts/MathJaxLocalConfigSlow/slow2.png){:.fancybox}
 
 It took about *16 seconds* for loading the math.  **How can they load
-quicker with a local configuration file**, like <http://drz.ar>?
+quicker with a local configuration file**, like <http://drz.ac>?
 
 <!-- more -->
+
+Cause
+---
+
+I googled "mathjax local config long", and found a message from
+[this page][src] extremely useful.
+
+{% blockquote Davide P. Cervone http://goo.gl/WzV2w3 Re: Local configuration file processing is extremly slow (~15 sec) %}
+<p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");
+</code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p>
+{% endblockquote %}
+
+Failed attempts
+---
+
+I tried using relative paths in `source/_includes/custom/head.html`
+, `{% raw %}{{ root_url }}{% endraw %}` in the `<script>` tag that
+calls MathJax with a local configuration file and in the local
+configuration file `source/javascripts/MathJaxLocal.js`.  Since this
+blog has more than 200 pages, it took about a minute for regeneration
+of contents after each slight modification in the code.
+
+Conclusion
+---
+
+I typed full paths manually for the above `<script>` tag in the custom
+head of a page and the local configuration file.  To avoid loading
+"insecure contents", I used full URLs instead of
+`{% raw %}{{ site.url }}{% endraw %}` since the URL of this site
+*doesn't* start with "https" in `_config.yml`.[^https][^config_yml]
+Then the equations should load quickly.
+
+![loading time graph](/images/posts/MathJaxLocalConfigSlow/ok.png){:.fancybox}
+
+Lessons learnt
+---
+
+If I could do the same job again, I'd first change the local
+configuration file and upload it to GitHub, so that I could test it in
+a local HTML file `file:///path/to/test_mathjax.html`
+
+{% include_code A local testing page for using the MathJax macros test_mathjax.html %}
+
+---
+[^mathjax_doc]:
+    [Using a local configuration file with the CDN][mathjax_doc] in
+    *MathJax Documentation*.
+
+[^https]:
+    Refer to [*MathJax in Octopress via HTTPS*][pp] in Blog 1 for
+    details.
+
+[^config_yml]: `_config.yml` at commit [71ff4fb].
+
+[mathjax_doc]: http://docs.mathjax.org/en/latest/configuration.html#using-a-local-configuration-file-with-the-cdn
+[src]: https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ
+[pp]: /blog/2014/06/05/mathjax-in-octopress-via-https/
+[71ff4fb]: https://github.com/VincentTam/vincenttam.github.io/blob/71ff4fb/_config.yml
