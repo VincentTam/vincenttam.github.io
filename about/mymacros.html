@@ -37,7 +37,7 @@ the local configuration file &hellip;">
 
 <!-- mathjax config similar to drz.ac -->
 <script type="text/javascript"
-src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js">
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js">
 </script>
 
 <!-- START COPYING HERE -->
@@ -141,11 +141,117 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLor
 <a href="/javascripts/MathJaxLocal.js">the local configuration file</a> <code>MathJaxLocal.js</code> and
 adapted it for <code>mymacros.sty</code>.</p>
 
-<h2 id="results">Results</h2>
+<h2 id="sample-output">Sample output</h2>
 
 <p><img src="/images/posts/mymacros/sample.jpg" alt="sample" /></p>
 
-<h2 id="code">Code</h2>
+<h2 id="using-the-macros">Using the macros</h2>
+
+<p>Since I want <em>both</em> the simplicity of Markdown syntax and the
+convenience of using Vim-$\rm \LaTeX$, I use <code>.tex</code> as the file
+extension of the pandoc document.  If you mind the <em>wrong</em> syntax
+highlighting, you may use <code>.mkd</code> or whatever way you want.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My sample pandoc document </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+</pre></td><td class="code"><pre><code class="yaml"><span class="line"><span class="nn">---</span>
+</span><span class="line"><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Write Efficiently in Markdown!</span>
+</span><span class="line"><span class="l-Scalar-Plain">author</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Vincent Tam</span>
+</span><span class="line"><span class="l-Scalar-Plain">date</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">\today</span>
+</span><span class="line"><span class="l-Scalar-Plain">geometry</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">margin=1in</span>
+</span><span class="line"><span class="l-Scalar-Plain">header-includes</span><span class="p-Indicator">:</span>
+</span><span class="line"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">\usepackage{mymacros}</span>
+</span><span class="line"><span class="nn">---</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Section 1: sample code block</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">Use the *following* command to generate a PDF file.</span>
+</span><span class="line">
+</span><span class="line">    <span class="l-Scalar-Plain">$ pandoc -f markdown+yaml_metadata_block foo.tex -o foo.pdf</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">The file extension `.tex` is for using Vim-\LaTeX.</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">## Subsection 1.1</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sample math</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">Suppose that $\vect{x} \ne \zeros \in \complex^n, \rationals^n, \integers^n,</span>
+</span><span class="line"><span class="l-Scalar-Plain">\naturals^n$.  Then we have</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">(@foo) $$\int_{0}^{1} 1 \ud x = \abs{1} =</span>
+</span><span class="line"><span class="l-Scalar-Plain">\normlr{\frac{\vect{x}}{\norm{\vect{x}}}}.$$</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Section 2: sample list</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">One can refer to (@foo).  Here&#39;s a numbered list.</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">1. Sample link to pandoc&#39;s [markdown syntax][pandoc_markdown]</span>
+</span><span class="line"><span class="l-Scalar-Plain">2. Sample link to my blog</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;https://vincenttam.github.io&gt;</span>
+</span><span class="line">    <span class="l-Scalar-Plain">- Sample item</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">my introduction is under `/about`.</span>
+</span><span class="line">    <span class="l-Scalar-Plain">- Sample item</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">the blog archive is under `/archive`.</span>
+</span><span class="line"><span class="l-Scalar-Plain">3. Sample item.</span>
+</span><span class="line">
+</span><span class="line"><span class="c1"># Section 3: sample picture</span>
+</span><span class="line">
+</span><span class="line"><span class="l-Scalar-Plain">It&#39;s **not** so easy to insert pictures in \LaTeX, while it&#39;s *simple* in</span>
+</span><span class="line"><span class="l-Scalar-Plain">Markdown.</span>
+</span><span class="line">
+</span><span class="line"><span class="kt">!</span><span class="p-Indicator">[</span><span class="nv">Title</span><span class="p-Indicator">]</span><span class="l-Scalar-Plain">(fig1.png)</span>
+</span><span class="line">
+</span><span class="line"><span class="p-Indicator">[</span><span class="nv">pandoc_markdown</span><span class="p-Indicator">]:</span> <span class="l-Scalar-Plain">http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here’s <a href="/downloads/foo.pdf">the sample output PDF file</a> and
+<a href="/images/posts/mymacros/fig1.png">the picture used</a> in the document.  I refered to the
+following pages while writing the above example.</p>
+
+<ol>
+  <li>Pandoc <a href="http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html">markdown syntax</a></li>
+  <li>Using YAML metadata block as header.<sup id="fnref:yaml_metadata_block"><a href="#fn:yaml_metadata_block" class="footnote">1</a></sup></li>
+  <li>Adding numbered equations in pandoc.<sup id="fnref:pandoc_num_eq"><a href="#fn:pandoc_num_eq" class="footnote">2</a></sup></li>
+</ol>
+
+<h2 id="source-code-for-the-macros">Source code for the macros</h2>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My custom macros  (mymacros.sty)</span> <a href="/downloads/code/mymacros/mymacros.sty">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -229,32 +335,30 @@ adapted it for <code>mymacros.sty</code>.</p>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>The use of the <code>varwidth</code> option before the <code>standalone</code> class is for
+line breaks and the displayed equation at the first line in the sample
+output.<sup id="fnref:varwidth"><a href="#fn:varwidth" class="footnote">3</a></sup>  Loading the <code>amsfonts</code> packages avoid an
+“undefined control sequence error”.<sup id="fnref:amsfonts"><a href="#fn:amsfonts" class="footnote">4</a></sup></p>
 
-  
-    <footer>
-      <p class="meta">
-        
-        
+<hr />
 
-
-
-
-<time class='entry-date' datetime='2014-11-08T19:39:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:39 pm</span></time>
-        
-      </p>
-      
-        <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/about/mymacros.html" data-via="" data-counturl="http://vincenttam.github.io/about/mymacros.html" >Tweet</a>
-  
-  
-  
-    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
-  
+<div class="footnotes">
+  <ol>
+    <li id="fn:yaml_metadata_block">
+      <p>See <a href="http://tex.stackexchange.com/q/139139" title="Adding headers and footers using Pandoc">this page</a> for details. <a href="#fnref:yaml_metadata_block" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pandoc_num_eq">
+      <p>See <a href="http://tex.stackexchange.com/q/111868" title="Pandoc: How can I get numbered LaTeX equations to show up in both PDF and HTML output">this page</a> for details. <a href="#fnref:pandoc_num_eq" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:varwidth">
+      <p>See <a href="http://tex.stackexchange.com/a/82736" title="\documentclass[convert]{standalone} ignores linebreak">this page</a> for details. <a href="#fnref:varwidth" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:amsfonts">
+      <p>See <a href="http://tex.stackexchange.com/a/38771" title="\mathbb{Z} yields undefined control sequence error">this page</a> for details. <a href="#fnref:amsfonts" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
 </div>
 
-      
-    </footer>
   
 </article>
 
