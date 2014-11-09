@@ -11,10 +11,10 @@ Introduction
 
 1. A [GNU/Linux][GNU/Linux] user.
 2. Have used [LibreOffice][LibreOffice] for homework.
-3. Some differences in the appearance of documents across M$ and
+3. Some differences in the appearance of documents across M\$ and
 \*nix.
-4. Use $\rm \LaTeX$ & HTML for consistency[^markdown].
-5. Use [Vim][Vim] for efficient editing of source code.
+4. Use $\rm \LaTeX$ & HTML for consistency.[^markdown]
+5. Use [Vim] for efficient editing of source code.[^myvimmacros]
 6. Acquired knowledge in these areas.
 7. Forgotten some of them since I'm *not* a student in IT.
 8. Realised the need for writing down the code.
@@ -25,12 +25,40 @@ searched after years.
 I have *no* money to hire any IT support person, so I have to support
 myself.
 
+[^markdown]:
+    Finally, I've found out that writing in [Markdown][Markdown] is
+    **much easier**.
+
+[^myvimmacros]:
+    I use some custom Vim macros as shorthand.  You may view them
+    [here][myvimmacros].
+
 [GNU/Linux]: https://www.gnu.org/gnu/linux-and-gnu.en.html
 [LibreOffice]: https://www.libreoffice.org/
 [Vim]: http://www.vim.org/
 [Markdown]: http://daringfireball.net/projects/markdown/
+[myvimmacros]: /about/myvimmacros.html
 
-[^markdown]: Finally, I've found out that writing in [Markdown][Markdown] is **much easier**.
+My Math Notes
+---
+
+As the server on which I put my notes is going to close down, I put it
+here.
+
+- Variation of parameters: [PDF][ODE], [source][ODE_src]
+- My thoughts on ${_nC_r}$: [PDF][ncr], [source][ncr_src]
+- Derivation of Vendermonde Determinant: [PDF][vendermonde],
+  [source][vendermonde_src]
+
+I use some [custom macros][mymacros] as shorthand.
+
+[ODE]: /downloads/var_of_param.pdf
+[ODE_src]: /about/ode_src.html
+[ncr]: /downloads/diagram.pdf
+[ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
+[vendermonde]: /downloads/vendermonde_det.pdf
+[vendermonde_src]: /about/src-of-ven-det.html
+[mymacros]: /about/mymacros.html
 
 My Old Blogs
 ---
@@ -92,25 +120,6 @@ A testing repository which contains program code in the `master`
 branch and a GitHub project page built with Jekyll Bootstrap in the
 `gh-pages` branch.
 
-[^not_it_student]: I reused the words from [my WordPress blog](http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/).
-
-My Math Notes
 ---
-
-As the server on which I put my notes is going to close down, I put it
-here.
-
-- Variation of parameters: [PDF][ODE], [source][ODE_src]
-- My thoughts on ${_nC_r}$: [PDF][ncr], [source][ncr_src]
-- Derivation of Vendermonde Determinant: [PDF][vendermonde],
-  [source][vendermonde_src]
-
-I use some [custom macros][mymacros] as shorthand.
-
-[ODE]: /downloads/var_of_param.pdf
-[ODE_src]: /about/ode_src.html
-[ncr]: /downloads/diagram.pdf
-[ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
-[vendermonde]: /downloads/vendermonde_det.pdf
-[vendermonde_src]: /about/src-of-ven-det.html
-[mymacros]: /about/mymacros.html
+[^not_it_student]: I reused the words from [my WordPress blog][wp_pp].
+[wp_pp]: http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/

@@ -19,8 +19,8 @@ and $CD$.
 Let <span class="grp1">$R$</span> be the intersection point of $BF$
 and $CE$.  
 Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
-are *collinear*.  (i.e.  The red dashed line and the red solid line
-are collinear.)
+are *collinear*.  (i.e.  The <span class="grp1">red dashed line</span>
+and the <span class="grp1">red solid line</span> are collinear.)
 
 <!-- more -->
 
