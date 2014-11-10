@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-10T02:00:38+08:00</updated>
+  <updated>2014-11-10T17:45:36+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,127 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Composition of Limits]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/08/composition-of-limits/"/>
+    
+    <updated>2014-11-08T21:27:29+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/08/composition-of-limits</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Let $\mathcal{U}$ and $\mathcal{V}$ be open subsets of $\reals^n$
+and $\reals^m$ respectively, $f:\mathcal{V} \to \reals^k$ and
+$g:\mathcal{U} \to \reals^m$ be functions such that
+$g(\mathcal{U}) \subseteq \mathcal{V}$, and $\vect{x_0} \in
+\mathcal{U}, \vect{y_0} \in \mathcal{V}$, and $\vect{z_0}
+\in \reals^k$ be points such that $\displaystyle
+\lim_{\vect{x} \to \vect{x_0}} g(\vect{x}) = \vect{y_0}$
+and $\displaystyle \lim_{\vect{y} \to \vect{y_0}}
+f(\vect{y}) = \vect{z_0}$.</p>
+
+<p><strong>Is it possible that</strong> $\displaystyle \lim_{\vect{x} \to
+\vect{x_0}} f(g(\vect{x})) \ne \vect{z_0}$<strong>?</strong></p>
+
+<!-- more -->
+
+<h2 id="intuition">&#8220;Intuition&#8221;</h2>
+
+<ol>
+  <li>Since $\displaystyle \lim_{\vect{x} \to \vect{x_0}}
+g(\vect{x}) = \vect{y_0}$, as $\vect{x}$ is &#8220;sufficiently
+near to $\vect{x_0}$&#8221;, $\vect{y} = g(\vect{x})$ is &#8220;very
+close&#8221; to $\vect{y_0}$.</li>
+  <li>Since $\displaystyle \lim_{\vect{y} \to \vect{y_0}}
+f(\vect{y}) = \vect{z_0}$, as $\vect{y}$ is &#8220;sufficiently
+near to $\vect{y_0}$&#8221;, $\vect{z} = f(\vect{y})$ is &#8220;very
+close&#8221; to $\vect{z_0}$.</li>
+</ol>
+
+<p>Combining (1) and (2), as $\vect{x}$ is &#8220;sufficiently near to
+$\vect{x_0}$&#8221;, $\vect{z} = f(\vect{y})$ is &#8220;very close&#8221; to
+$\vect{z_0}$, thus one expects $\displaystyle \lim_{\vect{x}
+\to \vect{x_0}} f(g(\vect{x})) = \vect{z_0}$.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>It <em>isn&#8217;t</em> hard to copy the standard $\epsilon$-$\delta$ arguments
+from elementary math analysis and calculus books. When one looks at
+the &#8220;for all&#8221; and &#8220;there exists&#8221; for the <em>first</em> few times, the
+logic seems complicated. After some time, one gets used to it, recites
+it and simply <em>repeats</em> it. However, those standard arguments usually
+consist of something like &#8220;if $0 &lt; \norm{\vect{x} -
+\vect{x_0}} &lt; \delta$, then $\norm{g(\vect{x}) -
+\vect{y_0}} &lt; \epsilon$&#8221;.  For a long sentence, it&#8217;s possible
+that one overlooks the conditions and gets stuck.</p>
+
+<h2 id="use-another-notations">Use another notations</h2>
+
+<p>Note: see <a href="/blog/2014/06/18/definition-of-content-0-sets/#some-basic-definitions" title="Definition of Content 0 Sets">here</a> for the definition of open ball
+$\mathcal{B}_r(\vect{x_0})$.</p>
+
+<p>Let $\epsilon &gt; 0$.</p>
+
+<p>$\because \displaystyle \lim_{\vect{y} \to \vect{y_0}}
+f(\vect{y}) = \vect{z_0}$</p>
+
+<p>(a) $\therefore \exists\,\delta&#8217; &gt; 0 \text{ such that }
+f(\mathcal{B}_{\delta&#8217;}
+(\vect{y_0})\setminus\left\{\vect{y_0}\right\}) \subseteq
+\mathcal{B}_\epsilon (\vect{z_0})$</p>
+
+<p>Use another given limit.</p>
+
+<p>$\because \displaystyle \lim_{\vect{x} \to \vect{x_0}}
+g(\vect{x}) = \vect{y_0}$</p>
+
+<p>(b) $\therefore \exists\,\delta &gt; 0 \text{ such that }
+g(\mathcal{B}_\delta
+(\vect{x_0})\setminus\left\{\vect{x_0}\right\}) \subseteq
+\mathcal{B}_{\delta&#8217;} (\vect{y_0})$</p>
+
+<p>Since this question deals with $f \circ g$, we apply $f$ to (b).</p>
+
+<p>$f(g(\mathcal{B}_\delta
+(\vect{x_0})\setminus\left\{\vect{x_0}\right\}))
+\subseteq f(\mathcal{B}_{\delta&#8217;} (\vect{y_0}))
+\color{red}{\subseteq \mathcal{B}_\epsilon (\vect{z_0})?}$</p>
+
+<p>To answer the above <span class="grp1">question</span>, we look at
+(a).</p>
+
+<p>$f(\mathcal{B}_{\delta&#8217;}
+(\vect{y_0})\setminus\left\{\vect{y_0}\right\}) \subseteq
+\mathcal{B}_\epsilon (\vect{z_0})$</p>
+
+<p>Thus, the key of this problem is whether the point $\vect{y_0}$ is
+in $\mathcal{B}_\epsilon (\vect{z_0})$, and whehter such
+$\vect{y_0}$ <em>exists</em>.</p>
+
+<p>Since we want $\displaystyle \lim_{\vect{x} \to \vect{x_0}}
+f(g(\vect{x})) \ne \vect{z_0}$, we want
+$f(g(\mathcal{B}_\delta
+(\vect{x_0})\setminus\left\{\vect{x_0}\right\}))
+\nsubseteq \mathcal{B}_\epsilon (\vect{z_0})$, i.e.
+$\color{blue}{\vect{y_0} \notin \mathcal{B}_\epsilon
+(\vect{z_0})}$.</p>
+
+<p>Moreover, to ensure the <em>existence</em> of such points, one needs
+$\color{blue}{\forall\,\delta &gt; 0, g^{-1}
+(\left\{\vect{y_0}\right\}) \cap \mathcal{B}_\delta
+(\vect{x_0}) \ne \varnothing}$.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>With the above <span class="grp2">two additional conditions</span>,
+one has $\displaystyle \lim_{\vect{x} \to \vect{x_0}}
+f(g(\vect{x})) \ne \vect{z_0}$.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -225,102 +346,6 @@ Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
 $\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
 G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
 did was a waste of time.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Weaker Group Axioms]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/"/>
-    
-    <updated>2014-09-06T11:12:06+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms</id>
-    
-      <content type="html"><![CDATA[<p>The following axioms seem to be weaker.</p>
-
-<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
-
-<dl>
-  <dt>Associativity</dt>
-  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
-  <dt>Existence of <em>left</em> identity</dt>
-  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
-  <dt>Existence of <em>left</em> inverse</dt>
-  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
-e$</dd>
-</dl>
-
-<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
-
-<!-- more -->
-
-<p><em>Proof</em></p>
-
-<dl>
-  <dt>Existence of inverse</dt>
-  <dd>We try to show that a left inverse of a group element is <em>also</em> a
-right inverse of the group element.
-
-    <p>$\forall a \in G,$
-\[
-\begin{split}
-a * a^{-1} &amp;= e * (a * a^{-1}) &amp;\qquad \text{(existence of left
-identity)}&#92;\<br />
-&amp;= ((a^{-1})^{-1} * a^{-1}) * (a * a^{-1}) &amp;\qquad \text{(existence
-of left identity of $a^{-1}$)}&#92;\<br />
-&amp;= (((a^{-1})^{-1} * a^{-1}) * a) * a^{-1} &amp;\qquad
-\text{(associativity)}&#92;\<br />
-&amp;= ((a^{-1})^{-1} * (a^{-1} * a)) * a^{-1} &amp;\qquad
-\text{(associativity)}&#92;\<br />
-&amp;= ((a^{-1})^{-1} * e) * a^{-1} &amp;&#92;\<br />
-&amp;= (a^{-1})^{-1} * (e * a^{-1}) &amp;\qquad
-\text{(associativity)}&#92;\<br />
-&amp;= (a^{-1})^{-1} * a^{-1} &amp;&#92;\<br />
-&amp;= e &amp;
-\end{split}
-\]
-∴$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a * a^{-1} =
-e = a^{-1} * a.$</p>
-  </dd>
-  <dt>Existence of identity</dt>
-  <dd>Similarly, we try to show that a left identity is <em>also</em> a right
-identity.
-
-    <p>$\forall a \in G,$
-\[
-\begin{split}
-a * e &amp;= a * (a^{-1} * a) &amp;\qquad \text{(existence of inverse of
-$a$)}&#92;\<br />
-&amp;= (a * a^{-1}) * a &amp;\qquad \text{(associativity)}&#92;\<br />
-&amp;= e * a &amp;&#92;\<br />
-&amp;= a&amp;
-\end{split}
-\]
-∴$\exists e \in G \text{ s.t. } \forall a \in G, a * e = e * a =
-a$.</p>
-  </dd>
-</dl>
-
-<h2 id="an-application-in-secondary-school-mathematics">An application in secondary school mathematics</h2>
-
-<p>In high school, to show that $B \in M_{n \times n}(\reals)$ is an
-inverse of $A \in M_{n \times n}(\reals)$<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, one is taught to show
-<em>both</em> $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
-general.</p>
-
-<p>Taking $G = \GL(n,\reals)$ and regard $*$ as matrix multiplication,
-one can just show that $AB = I$ by direct calculation and then
-conclude that $BA = I$, and vice versa.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>To be more general, $\reals$ can be replaced with $\fields$. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

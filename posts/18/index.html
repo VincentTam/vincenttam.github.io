@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Vim fans will be delighted and amazed for knowing this the first time: Vimperator is the plugin for Vim-like behaviour on Firefox. It's the original &hellip;">
+  <meta name="description" content="Get drive letter If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -125,6 +125,77 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/something-about-win-batch-files/">Something About Win* Batch Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T11:10:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>11:10 am</span></time>
+        
+           | <a href="/blog/2013/12/11/something-about-win-batch-files/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/something-about-win-batch-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Get drive letter</h3>
+
+<p>If you run portable devices from a USB stick, sometimes you need to refer to other files that is in the same USB drive. Their relative position is stable, but the drive letter is not. Thus, referring to those files by absolute path doesn&#8217;t work, unless you do the tedious modifications every time.</p>
+
+<ul>
+    <li>Method 1: <code>set var=%cd:~0,3%</code></li>
+    <li>Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></li>
+</ul>
+
+<h3>Alias on Win*</h3>
+
+<p>If you&#8217;re familiar with *nix and use M\$-DOS, you may unconsciously type the <code>ls</code> command in DOS; or if you have a portable version of a software and you need to launch it by command, you will discover the difference between the name of the programs—one has <code>portable</code> at the end while the other one doesn&#8217;t.</p>
+
+<p>Copy and paste the following lines of code into any text editor.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class='line'>[command] %*
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Save the whole file as <code>[alias].bat</code> and put the file under any folder found on <code>PATH</code> environment variable.</p>
+
+<p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
+
+<p>Note: <code>%</code> <em>in Win*</em> is the same as <code>$*</code> in *nix.<sup id="fnref-43-1"><a href="#fn-43-1" rel="footnote">1</a></sup></p>
+
+<div class="footnotes">
+<hr />
+<ol>
+
+<li id="fn-43-1">
+<a href="http://windowsitpro.com/windows-server/how-can-i-output-all-batch-files-arguments">How can I output all of a batch file&#8217;s arguments?</a>&#160;<a href="#fnref-43-1" rev="footnote">&#8617;</a>
+</li>
+
+</ol></div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -541,56 +612,9 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/testing-mathjax/">Testing MathJax</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T14:00:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:00 pm</span></time>
-        
-           | <a href="/blog/2013/08/16/testing-mathjax/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/08/16/testing-mathjax/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/testing-mathjax/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following the instructions <a href="http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html">here</a>, MathJax works on Blogpost.</p>
-
-<p>I typed</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="s">$</span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">-</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">=</span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nv">\theta</span><span class="s">$</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>and here&#8217;s the result: $\cos^2\theta-\sin^2\theta=\cos 2\theta$</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/testing-mathjax/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/19">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -631,7 +655,7 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (15)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (16)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (10)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (34)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -659,15 +683,15 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
       </li>
     
       <li class="post">
+        <a href="/blog/2014/11/08/composition-of-limits/">Composition of Limits</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/08/limit-superior-and-limit-inferior/">Limit Superior and Limit Inferior</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/11/04/product-of-gcd-and-lcm/">Product of GCD and LCM</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/03/installed-prawn/">Installed Prawn</a>
       </li>
     
   </ul>
