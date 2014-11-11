@@ -83,6 +83,9 @@ g(\\mathcal\{B}\_\\delta
 (\\vect\{x\_0})\\setminus\\left\\\{\\vect\{x\_0}\\right\\}) \\subseteq
 \\mathcal\{B}\_\{\\delta\'} (\\vect\{y\_0})$
 
+![fig1](/images/posts/LimitComposition/limG.svg)  
+[Source](/downloads/code/limG.tex)
+
 Since this question deals with $f \\circ g$, we apply $f$ to (b).
 
 $f(g(\\mathcal\{B}\_\\delta
