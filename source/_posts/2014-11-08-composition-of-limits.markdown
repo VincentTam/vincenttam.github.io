@@ -70,6 +70,9 @@ f(\\mathcal\{B}\_\{\\delta\'}
 (\\vect\{y\_0})\\setminus\\left\\\{\\vect\{y\_0}\\right\\}) \\subseteq
 \\mathcal\{B}\_\\epsilon (\\vect\{z\_0})$
 
+![fig1](/images/posts/LimitComposition/limF.svg)  
+[Source](/downloads/code/limF.tex)
+
 Use another given limit.
 
 $\\because \\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x\_0}}
