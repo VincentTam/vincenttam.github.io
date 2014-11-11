@@ -9,16 +9,17 @@
   \draw [fill=lightgray] (o1) circle (1);
   \draw [fill=white] (o1) circle (1pt)
   node [below] {$\vect{y}_0$}; % label on top
-  \draw[<->] (o1) -- ++(60:1) node[pos=.5,below] {$\epsilon$};
+  \draw[<->] (o1) -- ++(60:1) node[pos=.3,above] {$\delta'$};
   \path (o1) ++(270:1) node [below]
   {$\mathcal{B}_{\delta'} (\vect{y}_0) \setminus \left\{ \vect{y}_0 \right\}$};
   \draw (o2) circle (1.5);
-  \path (o2) ++(270:1.5) node [below]
-  {$\mathcal{B}_{\epsilon} (\vect{z}_0) \setminus \left\{ \vect{z}_0 \right\}$};
+  \path (o2) ++(270:1.5) node [below] {$\mathcal{B}_{\epsilon} (\vect{z}_0)$};
   \pgfmathsetseed{3}
   \draw[fill=lightgray] plot [smooth cycle, samples=8,domain={1:8}]
-  (\x*360/8+5*rnd:0.3cm+0.6cm*rnd) node [above] {$f(\mathcal{B}_{\delta'}
+  (\x*360/8+5*rnd:0.3cm+0.6cm*rnd) node [above left]
+  {\tiny $f(\mathcal{B}_{\delta'}
   (\vect{y_0})\setminus\left\{\vect{y_0}\right\})$};
+  \draw[<->] (o2) -- ++(330:1.5) node[pos=.7,above] {$\epsilon$};
   \draw [fill] (o2) circle (1pt) node [below] {$\vect{z}_0$}; % label on top
 \end{tikzpicture}
 \end{document}
