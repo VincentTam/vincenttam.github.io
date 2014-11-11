@@ -70,7 +70,7 @@ f(\\mathcal\{B}\_\{\\delta\'}
 (\\vect\{y\_0})\\setminus\\left\\\{\\vect\{y\_0}\\right\\}) \\subseteq
 \\mathcal\{B}\_\\epsilon (\\vect\{z\_0})$
 
-![fig1](/images/posts/LimitComposition/limF.svg)  
+{% img fancybox center /images/posts/LimitComposition/limF.svg 750 'fig1' 'fig1' %}  
 [Source](/downloads/code/limF.tex)
 
 Use another given limit.
@@ -83,7 +83,7 @@ g(\\mathcal\{B}\_\\delta
 (\\vect\{x\_0})\\setminus\\left\\\{\\vect\{x\_0}\\right\\}) \\subseteq
 \\mathcal\{B}\_\{\\delta\'} (\\vect\{y\_0})$
 
-![fig1](/images/posts/LimitComposition/limG.svg)  
+{% img fancybox center /images/posts/LimitComposition/limG.svg 750 'fig2' 'fig2' %}  
 [Source](/downloads/code/limG.tex)
 
 Since this question deals with $f \\circ g$, we apply $f$ to (b).
