@@ -299,6 +299,6 @@ really fix the problem.
 [src_code2]: /images/posts/Ubuntu1404Mono/FFViewSrc.png
 [GNOMETer]: /images/posts/Ubuntu1404Mono/GnomeTerminal.png
 [fontfamily]: http://www.cnblogs.com/youxia/p/linux004.html
-[src_code3]: /images/posts/Ubuntu1404Mono/FFViewSrc2.png
-[src_code4]: /images/posts/Ubuntu1404Mono/ChromeViewSrc2.png
+[src_code3]: /images/posts/Ubuntu1404Mono/ChromeViewSrc2.png
+[src_code4]: /images/posts/Ubuntu1404Mono/FFViewSrc2.png
 [sol1]: http://goo.gl/tKCOA1 "修改ubuntu 14.04 中文版的默認中文字體"
