@@ -15,7 +15,7 @@ SVG graphics to illustrate the ideas.
 <small>An example illustrating the difficulty of enlarging an SVG
 graphics for ordinary users.  The image is borrowed from the post
 about proving Pappus's Hexagon Theorem.  
-[$\rm \LaTeX$ Source code](/downloads/code/PappusHexThm4.tex)</small>
+[$\rm \LaTeX$ Source code](/downloads/code/pappus/PappusHexThm4.tex)</small>
 
 **How can one enlarge SVG images *only* within web browsers?**
 

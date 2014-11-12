@@ -71,7 +71,7 @@ f(\\mathcal\{B}\_\{\\delta\'}
 \\mathcal\{B}\_\\epsilon (\\vect\{z\_0})$
 
 {% img center /images/posts/LimitComposition/limF.svg 750 'fig1' 'fig1' %}  
-[Source](/downloads/code/limF.tex)
+[Source](/downloads/code/LimitComposition/limF.tex)
 
 Use another given limit.
 
@@ -84,7 +84,7 @@ g(\\mathcal\{B}\_\\delta
 \\mathcal\{B}\_\{\\delta\'} (\\vect\{y\_0})$
 
 {% img center /images/posts/LimitComposition/limG.svg 750 'fig2' 'fig2' %}  
-[Source](/downloads/code/limG.tex)
+[Source](/downloads/code/LimitComposition/limG.tex)
 
 Since this question deals with $f \\circ g$, we apply $f$ to (b).
 
@@ -116,6 +116,9 @@ Moreover, to ensure the *existence* of such points, one needs
 $\\color\{blue}\{\\forall\\,\\delta > 0, g^\{-1}
 (\\left\\\{\\vect\{y\_0}\\right\\}) \\cap \\mathcal\{B}\_\\delta
 (\\vect\{x\_0}) \\ne \\varnothing}$.
+
+{% img center /images/posts/LimitComposition/y0.svg 750 'fig3' 'fig3' %}  
+[Source](/downloads/code/LimitComposition/y0.tex)
 
 Conclusion
 ---

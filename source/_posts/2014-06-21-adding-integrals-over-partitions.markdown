@@ -47,6 +47,6 @@ Understanding $\vect{P}^\*\_k (\vect{J})$
 
 $\vect{P}^\*\_k (\vect{J})$ is a refinement of $\vect{J}$.
 
-[Partition1Src]: /downloads/code/partition1.tex
-[Partition2Src]: /downloads/code/partition2.tex
-[Partition3Src]: /downloads/code/partition3.tex
+[Partition1Src]: /downloads/code/Fitz479/partition1.tex
+[Partition2Src]: /downloads/code/Fitz479/partition2.tex
+[Partition3Src]: /downloads/code/Fitz479/partition3.tex
