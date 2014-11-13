@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T17:57:07+08:00</updated>
+  <updated>2014-11-13T19:14:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Load Multiple External JavaScripts]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts/"/>
+    
+    <updated>2014-11-13T18:08:30+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>Same as the one in <a href="/blog/2014/06/12/my-css-settiings-for-printing-1/"><em>My CSS Settiings for Printing (1)</em></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Having written a post on loading MathJax with a local configuration
+file, I previewed the print layout, saw that the font size was too
+<em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="‘too small words’ ‘fig1’" ></p>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>It <em>didn’t</em> take me long to identify the reason for the small font
+size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="‘too long line’ ‘fig2’" ></p>
+
+<h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
+
+<p>One may adjust the zooming factor to “100%” to get a normal font size.
+However, this <em>isn’t</em> user-friendly.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="‘get font size’ ‘fig3’" ></p>
+
+<p>Moreover, this causes the right half of the line of HTML code to flow
+out of the page.</p>
+
+<h2 id="is-this-problem-browser-specific">Is this problem browser-specific?</h2>
+
+<p>I’ll illustrate this problem with one more picture.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="‘print preview in Chrome’ ‘fig4’" ></p>
+
+<p>From the above screenshot, one can expect that this problem exists in
+<em>every</em> web browser.</p>
+
+<h2 id="learn-from-past-experience">Learn from past experience</h2>
+
+<p>It took at least a minute for the system to regenerate the contents
+during a preview.  Therefore, I tested things <em>locally</em> before doing
+any <em>real</em> modifications to the source code.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/sol.jpg" width="750" title="‘a successful local test’ ‘fig5’" ></p>
+
+<h2 id="solution">Solution</h2>
+
+<p><figure class='code'><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class='line'><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
+</span><span class='line'><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
+URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
+the source file responsible for loading external JavaScripts (i.e.
+<code>source/_includes/custom/head.html</code>), there’s no <code>&lt;head&gt;</code> tag, so one
+may simply break a line without indentation.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp2">
+
+      <p>Refer to <a href="/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -325,107 +422,6 @@ in <em>Blog 1</em> for details. <a href="#fnref:2" class="reversefootnote">&#861
 
       <p>See <a href="/blog/2014/09/07/mathjax-and-rss/">Archimedean Sequence of Partitions of a Square</a> in <em>Blog
 1</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MathJax and RSS]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/"/>
-    
-    <updated>2014-09-07T22:31:11+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>In the past, I used double dollar signs <code>$$</code> to enclose block
-equations.  As a result, readers <em>couldn’t</em> see them in <a href="https://www.mozilla.org/firefox/">Firefox</a>.</p>
-
-<p><img class="fancybox /images/posts/MathJaxDisplay/old.png 900 ‘No block equation in <abbr title=Rich Site" src="Summary">RSS</abbr>’&#8221; title=&#8221;‘old’&#8221; ></p>
-
-<p><strong>How can these missing parts be put back to the <abbr title="Rich Site Summary">RSS</abbr> feeds?</strong></p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>I <em>didn’t</em> know how to use</p>
-
-<ol>
-  <li>typeset curly brackets <code>{}</code> using MathJax <em>without</em> using <code>$$</code> to
-surround the brackets.  If only one <code>$</code> was used, then it would fail.
-For example, <code>$\{a_k\}$</code> <em>wouldn’t</em> work.</li>
-  <li>inline display mode for summation, limit, etc.</li>
-  <li><code>\[</code> and <code>\]</code> to surround block equations in Octopress.</li>
-</ol>
-
-<p>Now, I know that <a href="http://kramdown.gettalong.org/">kramdown</a> parses the Markdown source code for a post
-<em>before</em> <a href="http://www.mathjax.org/">MathJax</a> does.  Therefore, to mean a backslash ‘\’, one
-needs to “double the effort”.  (i.e. use <code>\\{a_k\\}</code> for $\{a_k\}$)
-Moreover, I have to use backslash ‘\’ to escape askterisks <code>*</code> and
-underscores <code>_</code>.</p>
-
-<p>Before I upgraded to Ruby 2 and updated my Octopress source code<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
-<code>$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$</code> <em>didn’t</em> work.
-Now, I can insert inline display equations like
-$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$.</p>
-
-<p>With reference to an example on the MathJax <abbr title="Content Delivery Network">CDN</abbr>, I’ve learnt to use
-<code>begin{equation}</code> just like what $\rm \LaTeX$ users do.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  When
-using it, there’s <em>no</em> need to use <code>$$</code> to surround it.</p>
-
-<p>Viewing <a href="http://drz.ac/javascripts/MathJaxLocal.js"><code>MathJaxLocal.js</code></a> on <em>DrZ.ac</em>, I know why I <em>couldn’t</em>
-use <code>\[</code> for a block equation—I <em>didn’t</em> add it to the corresponding
-list of delimiters in <code>displayMath</code>.  Actually, at that line, the
-whitespace character between two square brackets <code>[</code> <em>aren’t</em>
-necessary.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p>While editing a multi-line block equation in a post about the
-Contraction Mapping Principle, I encountered a technical problem:
-there’s <em>no</em> newline character in the equation.  I could just see
-<em>one very long line</em>.  To see how the code was interpreted, I made a
-screenshot of Firefox before MathJax loaded.</p>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay/trial.png" title="‘MathJax code processed by kramdown’ ‘interpreted MathJax code’" ></p>
-
-<p>It was evident that putting four backslashes at the end of lines for a
-line break <em>wasn’t</em> enough.  Therefore, I put <em>two more</em> backslashes
-there.  This time, the page for an individual post was OK, but the
-contents in the blog index page and those under folder <code>/posts/</code>
-<em>wasn’t</em>.  I viewed the “$\rm \TeX$ Commands” from the popup menu, and
-saw that in the page for an individual post, <em>two</em> backslashes were
-found; at <code>/posts/*</code> and the blog index page, <em>only one</em> backslash was
-found.</p>
-
-<p>By trial, I finally used <em>eight</em> backslashes in the Markdown source
-files for a post for a line break.</p>
-
-<h2 id="result">Result</h2>
-
-<p><img class="fancybox /images/posts/MathJaxDisplay/new.png 900 ‘Block equation in <abbr title=Rich Site" src="Summary">RSS</abbr>’&#8221; title=&#8221;‘new’&#8221; ></p>
-
-<p>The source code for a block equation can now be seen in <abbr title="Rich Site Summary">RSS</abbr> feeds.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/">Updated Octopress Source Code</a> in <em>Blog 1</em> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>View the source of <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> for
-details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="http://docs.mathjax.org/en/latest/tex.html#tex-and-latex-math-delimiters">$\rm \TeX$ and $\rm \LaTeX$ math delimiters</a> in
-<em>MathJax Documentation</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

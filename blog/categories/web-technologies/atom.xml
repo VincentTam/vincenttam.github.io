@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T17:57:07+08:00</updated>
+  <updated>2014-11-13T19:14:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Load Multiple External JavaScripts]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts/"/>
+    
+    <updated>2014-11-13T18:08:30+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>Same as the one in <a href="/blog/2014/06/12/my-css-settiings-for-printing-1/"><em>My CSS Settiings for Printing (1)</em></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Having written a post on loading MathJax with a local configuration
+file, I previewed the print layout, saw that the font size was too
+<em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="‘too small words’ ‘fig1’" ></p>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>It <em>didn’t</em> take me long to identify the reason for the small font
+size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="‘too long line’ ‘fig2’" ></p>
+
+<h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
+
+<p>One may adjust the zooming factor to “100%” to get a normal font size.
+However, this <em>isn’t</em> user-friendly.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="‘get font size’ ‘fig3’" ></p>
+
+<p>Moreover, this causes the right half of the line of HTML code to flow
+out of the page.</p>
+
+<h2 id="is-this-problem-browser-specific">Is this problem browser-specific?</h2>
+
+<p>I’ll illustrate this problem with one more picture.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="‘print preview in Chrome’ ‘fig4’" ></p>
+
+<p>From the above screenshot, one can expect that this problem exists in
+<em>every</em> web browser.</p>
+
+<h2 id="learn-from-past-experience">Learn from past experience</h2>
+
+<p>It took at least a minute for the system to regenerate the contents
+during a preview.  Therefore, I tested things <em>locally</em> before doing
+any <em>real</em> modifications to the source code.</p>
+
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/sol.jpg" width="750" title="‘a successful local test’ ‘fig5’" ></p>
+
+<h2 id="solution">Solution</h2>
+
+<p><figure class='code'><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class='line'><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
+</span><span class='line'><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
+URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
+the source file responsible for loading external JavaScripts (i.e.
+<code>source/_includes/custom/head.html</code>), there’s no <code>&lt;head&gt;</code> tag, so one
+may simply break a line without indentation.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp2">
+
+      <p>Refer to <a href="/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -426,321 +523,6 @@ Blog.</p>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <!-- vim:se tw=70: -->
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Testing jQuery Image Popup]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/03/30/testing-jquery-image-popup/"/>
-    
-    <updated>2014-03-30T01:50:50+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/03/30/testing-jquery-image-popup</id>
-    
-      <content type="html"><![CDATA[<p>What’s below is a small picture.  The words inside the screenshot
-<em>can’t</em> be displayed.  Users may right-click on the picture and select
-“View Image”, if there’s a script that enables a magnified image to
-show up right after a user has clicked on the image, it’ll be <em>more
-convenient</em> for the user.</p>
-
-<p><img class="fancybox" src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" title="‘My Big Image’ ‘fig1’" ></p>
-
-<p>I tried following <a href="http://goo.gl/5qCaj">Clapper’s guide</a>, but as I generate
-the site using <code>rake</code>, I got two errors. The first one was about CSS,
-while the second one was about one of the two required Ruby gems.
-(Namely, <a href="http://goo.gl/qeN28">mini_magick</a> and <a href="http://goo.gl/0oZy6">Erubis</a>.)</p>
-
-<!-- more -->
-
-<p>For the first error, I got something like <code>Undefined mixin
-'centered'</code>, and so I googled <code>octopress "Undefined mixin
-'centered'"</code>.  Using this query string, no match was returned.
-Instead, Google performed a similar search using a query string
-<em>without the double quotes</em>.  Among the search results, I found an
-article also written by Clapper.<sup id="fnref:toc"><a href="#fn:toc" class="footnote">1</a></sup>  I’ve known that I also need to
-download <code>sass/custom/_mixins.scss</code>
-<a href="http://goo.gl/qvYPRI">from his GitHub repo</a>.</p>
-
-<p>For the second error, I’ve realised that I forgot to include those
-gems in <code>Gemfile</code>, because I lacked knowledge in Ruby, and the guide
-didn’t mention that.  In fact, adding the following two lines into
-<code>Gemfile</code> solved the problem.</p>
-
-<pre><code>gem 'mini_magick'
-gem 'erubis'
-</code></pre>
-
-<p><del>I don’t know why.  The plugin doesn’t work, but</del> I can get
-jQuery working here.  The following script from Clapper doesn’t work
-for me.</p>
-
-<p><figure class='code'><figcaption><span>jQuery on the Google CDN</span><a href='http://goo.gl/hOF4mR'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  <span class="c1">// Revert jQuery&#39;s &#39;$&#39; alias, to avoid clashes with ender.js. NOTE:</span>
-</span><span class='line'>  <span class="c1">// Use</span>
-</span><span class='line'>  <span class="c1">// jQuery(...), instead of $(...) from here on.</span>
-</span><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>The <code>noConflict</code> method disabled my button for hiding the sidebar on
-the right hand side.  <del>Anyways, I gave up trying this
-plugin.</del>  Before trying <del>it again</del> more things, I think
-I should have more knowledge in jQuery first.</p>
-
-<p>To get things work, I played some <em>dirty and little</em> tricks on
-<code>plugins/img_popup.html.erb</code>.  Since some features of Octopress’s
-codeblock are <em>not</em> working<sup id="fnref:no_start_num"><a href="#fn:no_start_num" class="footnote">2</a></sup>, I just manually include
-part of the code.</p>
-
-<p><figure class='code'><figcaption><span>My adaptations of the plugin</span><a href='http://goo.gl/53fIEZ'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class='js+erb'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
-</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
-</span><span class='line'>    <span class="nx">autoOpen</span><span class="o">:</span>  <span class="kc">false</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">modal</span><span class="o">:</span>     <span class="kc">true</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">draggable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">minWidth</span><span class="o">:</span>  <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">full_width</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;,</span>
-</span><span class='line'>    <span class="nx">minHeight</span><span class="o">:</span> <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">full_height</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;,</span>
-</span><span class='line'>    <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%</span> <span class="k">if</span> <span class="nx">title</span> <span class="o">-%&amp;</span><span class="nx">gt</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">title</span><span class="o">:</span>     <span class="err">“</span><span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">title</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">,</span>
-</span><span class='line'>    <span class="o">&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%</span> <span class="nx">end</span> <span class="o">-%&amp;</span><span class="nx">gt</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">show</span><span class="o">:</span>      <span class="err">‘</span><span class="nx">scale</span><span class="err">’</span><span class="p">,</span>
-</span><span class='line'>    <span class="nx">hide</span><span class="o">:</span>      <span class="err">‘</span><span class="nx">scale</span><span class="err">’</span>
-</span><span class='line'>  <span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="err">“#</span><span class="nx">image</span><span class="o">-</span><span class="nx">dialog</span><span class="o">-&amp;</span><span class="nx">lt</span><span class="p">;</span><span class="o">%=</span> <span class="nx">id</span> <span class="o">%&amp;</span><span class="nx">gt</span><span class="p">;</span><span class="err">”</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="err">‘</span><span class="nx">open</span><span class="err">’</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">});</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>What I’ve actually done in the above code block is to replace <code>jQuery</code>
-with <code>$</code>.  At that time, if I ran <code>rake generate</code>, Octopress let me
-pass.  However, when I locally previewed the result, clicking on the
-picture <em>couldn’t</em> trigger a popup window showing a larger picture.</p>
-
-<p>I tried comparing the generated HTML source code of my site and that
-of Clapper’s site unproductively.  I decided to give up, and wrote a
-paragraph on this.  Then I removed the related files and sections of
-code.  Since I was running <code>rake preview</code>, I pressed <code>&lt;F5&gt;</code> and
-expected to see a <em>static</em> picture.  I was surprised to see <em>two</em>
-pictures.  The lower one was a static picture that I had seen for
-numerous times during this test.  The uppper one is smaller, and as I
-clicked on it, a popup window showed up.  This result amazed me.  As a
-result, I decided to grab back the files from Clapper’s GitHub repo,
-and studied his Sass settings.</p>
-
-<p>I re-worked the whole thing again, and tried adapting Clapper’s Sass
-rules to mine, but I <em>couldn’t</em> manage to create the popup window
-again.  Then I tried to reduce the complexity of the relations of the
-SCSS files by reducing the amount of files.  I appended the following
-lines of code to <code>sass/screen.scss</code>. (You may refer to
-<a href="http://goo.gl/BNqlL7">my original file</a>.)</p>
-
-<p><figure class='code'><figcaption><span>My <em>temporary</em> <code>sass/screen.scss</code> </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="err">“</span><span class="n">compass</span><span class="err">”</span><span class="p">;</span>
-</span><span class='line'><span class="k">@include</span><span class="nd"> global-reset</span><span class="p">;</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">colors</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">fonts</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">layout</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">base</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">partials</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">plugins</span><span class="o">/&lt;</span><span class="nt">em</span><span class="o">&gt;*/&lt;/</span><span class="nt">em</span><span class="o">&gt;</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">styles</span><span class="err">”</span><span class="o">;</span>
-</span><span class='line'><span class="o">/*</span> <span class="nt">I</span> <span class="nt">appended</span> <span class="nt">the</span> <span class="nt">following</span> <span class="nt">lines</span><span class="nc">.</span> <span class="o">*/</span>
-</span><span class='line'><span class="o">@</span><span class="nt">import</span> <span class="err">“</span><span class="nt">custom</span><span class="o">/</span><span class="nt">mixins</span><span class="err">”</span><span class="o">;&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.caption</span> <span class="p">{</span>
-</span><span class='line'>    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
-</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
-</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
-</span><span class='line'>    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$base2</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">60</span><span class="kt">%</span><span class="p">);</span>
-</span><span class='line'>    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
-</span><span class='line'>    <span class="nc">.caption</span> <span class="p">{</span>
-</span><span class='line'>	<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.screen</span> <span class="p">{</span>
-</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.illustration</span> <span class="p">{</span>
-</span><span class='line'>        <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>I did something strange: <em>while <code>rake preview</code> was running</em>, in my
-<code>sass/screen.scss</code>, I commented the line <code>@import custom/mixins</code>.  One
-would expect I got error due to the line <code>@include centered(100%)</code>.
-Although the Solarized theme was gone, the image popup window was
-<em>back</em>.  Without changing other lines of code, I repeated the process
-for a few times, and discovered that if <code>@import custom/mixins</code> was
-<em>gone</em>, then the popup window was <em>back</em>.  It was important for me
-<em>not to stop the <code>rake preview</code> command</em>. Otherwise, the command <code>rake
-generate</code> would <em>fail</em> me.  I wondered how these two lines could
-coexist.  I finally noticed that the <code>screen</code> class was <em>hidden</em> due
-to <code>display: none;</code>!  I commented that line and imported
-<code>sass/custom/_mixins.scss</code>, then the two images are <em>back</em>!</p>
-
-<p>This time, in order to find out useful information such as the class
-name and the id of relevant HTML elements, I used Firefox to quickly
-inspect the code.  Finally, I found out that for pictures that
-<em>couldn’t</em> trigger a popup window, it was inside a <code>&lt;div&gt;</code> container
-of classes <code>illustration</code> and <code>print</code>, and there’s <em>another</em> image in
-<em>another</em> <code>&lt;div&gt;</code> container of classes <code>imgpopup</code> and <code>screen</code>.
-However, it didn’t show up because of the line <code>display: none;</code> inside
-the <code>screen</code> class.  Looking at Clapper’s Sass settings again on his
-GitHub repo, I eventually have a clue on the two SCSS code blocks in
-Clapper’s blog post about his Octopress image popup plugin.</p>
-
-<p>The <em>true</em> reason for my failure in creating the image popup window at
-the beginning is on line 20 of the code block below: it should be
-<code>print</code> instead of <code>screen</code> since it’s a user’s custom Sass rule for
-the display on the web browser. (i.e. <em>screen</em>), and we want to <em>hide</em>
-the static picture, which is for printing.</p>
-
-<p><figure class='code'><figcaption><span>Correct <code>sass/custom/_screen.scss</code></span><a href='http://goo.gl/Vw52BS'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="nc">.caption</span> <span class="p">{</span>
-</span><span class='line'>    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
-</span><span class='line'>    <span class="na">font-size</span><span class="o">:</span> <span class="mi">80</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
-</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
-</span><span class='line'>    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
-</span><span class='line'>    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">80</span><span class="kt">%</span><span class="p">);</span>
-</span><span class='line'>    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">pre</span><span class="o">&gt;&lt;</span><span class="nt">code</span><span class="o">&gt;</span><span class="nc">.caption</span> <span class="p">{</span>
-</span><span class='line'><span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span> <span class="p">}</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="nt">code</span><span class="o">&gt;&lt;/</span><span class="nt">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nc">.print</span> <span class="p">{</span> <span class="c1">// It should be &lt;em&gt;print&lt;/em&gt;, instead of &lt;em&gt;screen&lt;/em&gt;.</span>
-</span><span class='line'>    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>In Clapper’s guide, the SCSS code block below the above one should be
-included in <code>sass/custom/_print.scss</code>.  Then, a new file
-<code>sass/print.scss</code> is created.</p>
-
-<p><figure class='code'><figcaption><span><code>sass/screen.scss</code> </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='scss'><span class='line'><span class="k">@import</span> <span class="err">“</span><span class="n">custom</span><span class="o">/</span><span class="n">print</span><span class="err">”</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<hr />
-
-<!-- vim:set tw=70:wrap: -->
-<div class="footnotes">
-  <ol>
-    <li id="fn:toc">
-      <p><a href="http://goo.gl/hOF4mR">http://goo.gl/hOF4mR</a> <a href="#fnref:toc" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:no_start_num">
-      <p><a href="http://goo.gl/o5IeWk">http://goo.gl/o5IeWk</a> <a href="#fnref:no_start_num" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

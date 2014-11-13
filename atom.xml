@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T17:57:07+08:00</updated>
+  <updated>2014-11-13T19:14:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Load Multiple External JavaScripts]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts/"/>
+    
+    <updated>2014-11-13T18:08:30+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>Same as the one in <a href="http://vincenttam.github.io/blog/2014/06/12/my-css-settiings-for-printing-1/"><em>My CSS Settiings for Printing (1)</em></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Having written a post on loading MathJax with a local configuration
+file, I previewed the print layout, saw that the font size was too
+<em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="too small words" alt="fig1" /></p>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>It <em>didn’t</em> take me long to identify the reason for the small font
+size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="too long line" alt="fig2" /></p>
+
+<h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
+
+<p>One may adjust the zooming factor to “100%” to get a normal font size.
+However, this <em>isn’t</em> user-friendly.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="get font size" alt="fig3" /></p>
+
+<p>Moreover, this causes the right half of the line of HTML code to flow
+out of the page.</p>
+
+<h2 id="is-this-problem-browser-specific">Is this problem browser-specific?</h2>
+
+<p>I’ll illustrate this problem with one more picture.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="print preview in Chrome" alt="fig4" /></p>
+
+<p>From the above screenshot, one can expect that this problem exists in
+<em>every</em> web browser.</p>
+
+<h2 id="learn-from-past-experience">Learn from past experience</h2>
+
+<p>It took at least a minute for the system to regenerate the contents
+during a preview.  Therefore, I tested things <em>locally</em> before doing
+any <em>real</em> modifications to the source code.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/sol.jpg" width="750" title="a successful local test" alt="fig5" /></p>
+
+<h2 id="solution">Solution</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line">	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
+</span><span class="line"><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class="line"><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
+</span><span class="line"><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
+URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
+the source file responsible for loading external JavaScripts (i.e.
+<code>source/_includes/custom/head.html</code>), there’s no <code>&lt;head&gt;</code> tag, so one
+may simply break a line without indentation.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp2">
+
+      <p>Refer to <a href="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1768,172 +1861,6 @@ solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup
     </li>
     <li id="fn:2">
       <p><a href="http://kramdown.gettalong.org/syntax.html#html-blocks">HTML Blocks</a> in <em>kramdown Syntax</em>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Record Linux Terminal]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal/"/>
-    
-    <updated>2014-09-14T11:52:09+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal</id>
-    
-      <content type="html"><![CDATA[<h2 id="why">Why?</h2>
-
-<p>With detailed output from the terminal, other users can understand the
-problem better.  This helps them come up with a solution to the
-problem.</p>
-
-<p>Why don’t we use <code>&gt;</code> and <code>&gt;&gt;</code> to capture the standard output?</p>
-
-<p>Using <code>screendump</code>, one can record the commands <em>and</em> their output at
-<em>one</em> time; using <code>[cmd] &gt; output.txt</code>, <code>output.txt</code> only consists of
-the output of <code>[cmd]</code>, but <em>not</em> what he/she has typed.  (i.e.
-<code>[cmd]</code>)  The commands are often complicated and more than one line in
-length—copying and pasting text from the terminal are thus more
-difficult.  Therefore, <code>screendump</code> is useful.</p>
-
-<p>Why don’t we use <code>fbgrab</code> or <code>fbcat</code> to get a screenshot of the
-terminal?</p>
-
-<p>The goal is to let other know what’s in the terminal.   A screenshot
-of the terminal is easy to make.  However, its file size is <em>much</em>
-greater than the screen capture made of text.  Bitmaps <em>don’t</em> look
-good when one zooms in on them with a great magnification.  Therefore,
-to achieve the same goal, one may use text instead of images.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<h2 id="usage">Usage</h2>
-
-<p>Suppose you want to record your TTY1.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/Screendump/tty1.png" title="Screenshot of TTY 1 taken with fbgrab" alt="tty1" /></p>
-
-<p>The above screenshot is taken using <code>fbgrab -c 1 tty1.png</code>.  Even
-though it’s cropped, it still has thousands of bytes.  Nevertheless,
-if I show it using text, there’re only 337 bytes since the text only
-consists of 337 characters.</p>
-
-<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-
-owner-Inspiron-560s login: owner
-Password:
-Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
-Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
-
- * Documentation:  https://help.ubuntu.com/
-
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
-This is tty1.
-owner@owner-Inspiron-560s:~$
-</code></pre>
-
-<p>The above text is captured with <code>screendump</code>.  How to use
-<code>screendump</code>?  There’s a manual page about this tool. The following
-examples save the time.</p>
-
-<h3 id="failed-commands">Failed commands</h3>
-
-<pre class="cliUB"><code>owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
-usage: screendump [n]
-owner@owner-Inspiron-560s:~$ screendump 1
-couldn't read /dev/vcsa1
-</code></pre>
-
-<ol>
-  <li>Using <code>screendump</code> like <code>fbgrab</code> <em>doesn’t</em> work.</li>
-  <li>Just copying the suggested command <em>doesn’t</em> work either.</li>
-</ol>
-
-<h3 id="successful-examples">Successful examples</h3>
-
-<p>Suppose that each of TTY1-6 has 64 rows and 160 columns.</p>
-
-<p>After one issued the command <code>screendump 1</code> with <em>root</em> privilege in
-<em>another</em> <abbr title="TeleTYpewriter">TTY</abbr>, the <em>whole</em> TTY1 is printed on the <abbr title="TeleTYpewriter">TTY</abbr> that invoked
-<code>screendump</code>.  Since TTY1 has 64 rows, to view the first line of TTY1,
-one needs to use <code>&lt;C-Page Up&gt;</code> to scroll up the screen.  The cursor
-will be at the bottom.</p>
-
-<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-owner-Inspiron-560s login: owner
-Password:
-Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
-Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
-
- * Documentation:  https://help.ubuntu.com/
-
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
-This is tty1.
-owner@owner-Inspiron-560s:~$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-owner@owner-Inspiron-560s:~$
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization#eliminating-and-replacing-images">Eliminating the replacing images</a> in <em>Web
-Fundamentals</em> in Google Developers. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
