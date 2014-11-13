@@ -70,7 +70,7 @@ f(\\mathcal\{B}\_\{\\delta\'}
 (\\vect\{y}\_0)\\setminus\\left\\\{\\vect\{y}\_0\\right\\}) \\subseteq
 \\mathcal\{B}\_\\epsilon (\\vect\{z}\_0)$
 
-{% img center /images/posts/LimitComposition/limF.svg 750 'fig1' 'fig1' %}  
+{% img center /images/posts/LimitComposition/limF.svg 750 'fig1' 'fig1' %}
 [Source](/downloads/code/LimitComposition/limF.tex)
 
 Use another given limit.
@@ -83,7 +83,7 @@ g(\\mathcal\{B}\_\\delta
 (\\vect\{x}\_0)\\setminus\\left\\\{\\vect\{x}\_0\\right\\}) \\subseteq
 \\mathcal\{B}\_\{\\delta\'} (\\vect\{y}\_0)$
 
-{% img center /images/posts/LimitComposition/limG.svg 750 'fig2' 'fig2' %}  
+{% img center /images/posts/LimitComposition/limG.svg 750 'fig2' 'fig2' %}
 [Source](/downloads/code/LimitComposition/limG.tex)
 
 Since this question deals with $f \\circ g$, we apply $f$ to (b).
@@ -117,8 +117,18 @@ $\\color\{blue}\{\\forall\\,\\delta > 0, g^\{-1}
 (\\left\\\{\\vect\{y}\_0\\right\\}) \\cap \\mathcal\{B}\_\\delta
 (\\vect\{x}\_0) \\ne \\varnothing}$.
 
-{% img center /images/posts/LimitComposition/y0.svg 750 'fig3' 'fig3' %}  
+{% img center /images/posts/LimitComposition/y0.svg 750 'fig3' 'fig3' %}
 [Source](/downloads/code/LimitComposition/y0.tex)
+
+Note: I use a <span class="grp2">blue sector</span> centred at
+$\\vect\{x}\_0$ to represent the <span class="grp2">second additional
+condition</span> because
+
+1. no matter how small the radius $\\delta$ of $\\mathcal\{B}\_\\delta
+(\\vect\{x}\_0)$ is, you *can't* get rid of the <span
+class="grp2">blue region</span>.
+2. I *don't* know how to draw a random region which "touches" but
+excludes $\\vect\{x}\_0$.
 
 Conclusion
 ---
@@ -127,4 +137,16 @@ With the above <span class="grp2">two additional conditions</span>,
 one has $\\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x}\_0}
 f(g(\\vect\{x})) \\ne \\vect\{z}\_0$.
 
+Some off-topic remarks
+---
+
+While drawing these three figures with [Ti*k*Z], I found out the
+difference between a node and a coordinate.  For the former, it
+requires some node text, though one may use `{}` for that.  For the
+later, one *can't* add `{labels}` like the former.  Defining the point
+(-6,0) as a node with labelling text, I *can't* draw a sector
+"touching" but excluding (-6,0).  Therefore, I have to define it as a
+coordinate.
+
 [pp]: /blog/2014/06/18/definition-of-content-0-sets/#some-basic-definitions "Definition of Content 0 Sets"
+[Ti*k*Z]: http://www.texample.net/tikz/
