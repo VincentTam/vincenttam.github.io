@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T19:14:42+08:00</updated>
+  <updated>2014-11-13T19:30:07+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -59,7 +59,7 @@ quicker with a local configuration file</strong>, like <a href="http://drz.ac">h
 <p>I googled “mathjax local config long”, and found a message from
 <a href="https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ">this page</a> extremely useful.</p>
 
-<p><blockquote><p></p><br/><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><br/><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");<br/></code></pre><br/><p>at the bottom of your font configuration file and that should take care of it for you.</p><br/><p></p><footer><strong>Davide P. Cervone</strong> <cite><a href='http://goo.gl/WzV2w3'>Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote></p>
+<p><blockquote><p></p><br/><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><br/><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre><br/><p>at the bottom of your font configuration file and that should take care of it for you.</p><br/><p></p><footer><strong>Davide P. Cervone</strong> <cite><a href='http://goo.gl/WzV2w3'>Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote></p>
 
 <h2 id="failed-attempts">Failed attempts</h2>
 
@@ -152,13 +152,19 @@ a local HTML file <code>file:///path/to/test_mathjax.html</code></p>
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
 <span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;html&gt;</span>
 </span><span class='line'><span class="nt">&lt;head&gt;</span>
 </span><span class='line'>	<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>
 </span><span class='line'>	<span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
 </span><span class='line'>	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span>
-</span><span class='line'>	<span class="na">src=</span><span class="s">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>	<span class="na">src=</span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class='line'><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
+</span><span class='line'><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
 </span><span class='line'><span class="nt">&lt;/head&gt;</span>
 </span><span class='line'><span class="nt">&lt;body&gt;</span>
 </span><span class='line'>
