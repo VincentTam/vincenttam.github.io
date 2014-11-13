@@ -48,8 +48,7 @@ I googled "mathjax local config long", and found a message from
 [this page][src] extremely useful.
 
 {% blockquote Davide P. Cervone http://goo.gl/WzV2w3 Re: Local configuration file processing is extremely slow (~15 sec) %}
-<p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");
-</code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p>
+<p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p>
 {% endblockquote %}
 
 Failed attempts
