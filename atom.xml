@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T16:35:16+08:00</updated>
+  <updated>2014-11-13T17:06:28+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -21,10 +21,21 @@
     <updated>2014-11-09T01:06:46+08:00</updated>
     <id>http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file</id>
     
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Before I changed the HTML syntax for embedding MathJax with a local
+configuration file, I often encountered error while viewing the math
+rendered by MathJax.<sup id="fnref:12d38c1"><a href="#fn:12d38c1" class="footnote">1</a></sup>  The custom commands defined in the
+local configuration file sometimes <em>wouldn’t</em> be converted to
+mathematical expressions in a post while browsing the page for the
+first time.  Though refreshing the page can get the math shown, it’s
+quite troublesome.  Therefore, I searched for a better way in the
+official manual.</p>
+
+<h2 id="problem">Problem</h2>
 
 <p>I tried following the instructions in MathJax’s official Wiki for
-using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">1</a></sup></p>
+using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">2</a></sup></p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -34,7 +45,7 @@ using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathja
 </span><span class="line"><span class="nt">&lt;/script&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Things seems worked, but undersirably <em>slow</em>.</p>
+<p>Things seems worked, but undesirably <em>slow</em>.</p>
 
 <p><img src="http://vincenttam.github.io/images/posts/MathJaxLocalConfigSlow/slow1.png" alt="loading time graph" class="fancybox" /></p>
 
@@ -50,7 +61,7 @@ quicker with a local configuration file</strong>, like <a href="http://drz.ac">h
 <p>I googled “mathjax local config long”, and found a message from
 <a href="https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ">this page</a> extremely useful.</p>
 
-<blockquote><p><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");<br /></code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p></p><footer><strong>Davide P. Cervone</strong> <cite><a href="http://goo.gl/WzV2w3">Re: Local Configuration File Processing Is Extremly Slow (~15 Sec)</a></cite></footer></blockquote>
+<blockquote><p><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");<br /></code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p></p><footer><strong>Davide P. Cervone</strong> <cite><a href="http://goo.gl/WzV2w3">Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote>
 
 <h2 id="failed-attempts">Failed attempts</h2>
 
@@ -67,7 +78,7 @@ of contents after each slight modification in the code.</p>
 head of a page and the local configuration file.  To avoid loading
 “insecure contents”, I used full URLs instead of
 <code>{{ site.url }}</code> since the URL of this site
-<em>doesn’t</em> start with “https” in <code>_config.yml</code>.<sup id="fnref:https"><a href="#fn:https" class="footnote">2</a></sup><sup id="fnref:config_yml"><a href="#fn:config_yml" class="footnote">3</a></sup>
+<em>doesn’t</em> start with “https” in <code>_config.yml</code>.<sup id="fnref:https"><a href="#fn:https" class="footnote">3</a></sup><sup id="fnref:config_yml"><a href="#fn:config_yml" class="footnote">4</a></sup>
 Then the equations should load quickly.</p>
 
 <p><img src="http://vincenttam.github.io/images/posts/MathJaxLocalConfigSlow/ok.png" alt="loading time graph" class="fancybox" /></p>
@@ -213,6 +224,9 @@ a local HTML file <code>file:///path/to/test_mathjax.html</code></p>
 
 <div class="footnotes">
   <ol>
+    <li id="fn:12d38c1">
+      <p>Refer to commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/12d38c1#diff-0">12d38c1</a>. <a href="#fnref:12d38c1" class="reversefootnote">&#8617;</a></p>
+    </li>
     <li id="fn:mathjax_doc">
 
       <p><a href="http://docs.mathjax.org/en/latest/configuration.html#using-a-local-configuration-file-with-the-cdn">Using a local configuration file with the CDN</a> in
