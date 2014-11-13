@@ -26,7 +26,9 @@ using a local configuration file.[^mathjax_doc]
 
 {% codeblock lang:html %}
 <script type="text/javascript"
-   src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,/javascripts/MathJaxLocal.js">
+	src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,
+	/javascripts/MathJaxLocal.js
+">
 </script>
 {% endcodeblock %}
 
