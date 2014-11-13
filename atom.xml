@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-11-13T19:44:55+08:00</updated>
+  <updated>2014-11-14T00:20:14+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,103 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Plot Polar Coordinates Graphs]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/11/13/plot-polar-coordinates-graphs/"/>
+    
+    <updated>2014-11-13T23:23:04+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/11/13/plot-polar-coordinates-graphs</id>
+    
+      <content type="html"><![CDATA[<p>Googling “tikz tutorial”, one can find several useful PDF documents
+which are easy to follow, such as the first two results.</p>
+
+<ol>
+  <li><a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf"><em>PGF/TikZ - Graphics for</em> $\rm \LaTeX$ <em>—A tutorial</em></a> by
+Meik Hellmund</li>
+  <li><a href="http://cremeronline.com/LaTeX/minimaltikz.pdf"><em>A very minimal introduction to TikZ</em></a> by Jacques Crémer</li>
+</ol>
+
+<p>The second PDF document covers plotting graphs in rectangular
+coordinates.  <strong>How about polar coordinates?</strong></p>
+
+<p>It’s easy to find a solution online, but understanding the code and
+adapting them according to your needs are <em>much</em> harder.  One has to
+make use of “cs”, which stands for “coordinate system”.  If one is too
+lazy to read more webpages, then one may use the code below.</p>
+
+<p>When I drew figures with <a href="http://www.texample.net/tikz/">Ti<em>k</em>Z</a> a recent post on limits of composite
+functions on $\reals^n$, I found a way to construct random region with
+Ti<em>k</em>Z in a $\rm \TeX$–$\rm \LaTeX$ Stack Exchange
+question.<sup id="fnref:rand_region"><a href="#fn:rand_region" class="footnote">1</a></sup>  This inspired me to come up with the
+following graph.</p>
+
+<h2 id="output">Output</h2>
+
+<p><img class="center" src="http://vincenttam.github.io/images/posts/TikZPolar/graph.svg" width="750" title="fig1" alt="polar plot" /></p>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>The $\rm \LaTeX$ source code for the above graph  (TikZPolar.tex)</span> <a href="http://vincenttam.github.io/downloads/code/TikZPolar.tex">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line">  <span class="c">% drawing grid lines</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>1,...,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (0,0) circle (<span class="k">\r</span>);<span class="nb">}</span>
+</span><span class="line">  <span class="k">\draw</span> (-6.5,0) -- (6.5,0);
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\theta</span> in <span class="nb">{</span>15,30,...,165<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (<span class="k">\theta</span>:6.5) -- (<span class="k">\theta</span>+180:6.5);<span class="nb">}</span>
+</span><span class="line">  <span class="c">% labelling them</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
+</span><span class="line">    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line">  <span class="nb">}</span>
+</span><span class="line">  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
+</span><span class="line">  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
+</span><span class="line">  plot (<span class="k">\x</span>:<span class="nb">{</span>5-sin(3*<span class="k">\x</span>)<span class="nb">}</span>);
+</span><span class="line">  <span class="k">\node</span> at (270:8) <span class="nb">{</span>The graph of <span class="s">$</span><span class="nb">r </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="o">(</span><span class="m">3</span><span class="nv">\theta</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>I got the idea of for loop in TikZ from
+  <a href="http://stuff.mit.edu/afs/athena/contrib/tex-contrib/beamer/pgf-1.01/doc/generic/pgf/version-for-tex4ht/en/pgfmanualse15.html"><em>TikZ and PGF Manual</em></a>.</li>
+  <li>I learnt the syntax for plotting functions from the PDF in item (2).</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:rand_region">
+
+      <p>Refer to <a href="http://tex.stackexchange.com/a/60707"><em>TikZ: Arbitrary shapes and filling?</em></a> for
+details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1787,94 +1884,6 @@ ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&
   </ol>
 </div>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Kramdown's Markdown Attributes]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/14/kramdowns-markdown-attributes/"/>
-    
-    <updated>2014-09-14T16:37:49+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/14/kramdowns-markdown-attributes</id>
-    
-      <content type="html"><![CDATA[<p>While writing a post about purging old Linux kernels, I made use of
-<a href="http://fancyapps.com/fancybox/">fancybox</a>’s plugin to show a popup window which contains some <abbr title="HyperText Markup Language">HTML</abbr>
-elements.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Original container for popup contents</span><a href="http://goo.gl/rdMWNf">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;strong&gt;</span>bolded<span class="nt">&lt;/strong&gt;</span> lines represent the packages that are
-</span><span class="line">going to be completely removed.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>There&#39;s <span class="nt">&lt;em&gt;</span>no<span class="nt">&lt;/em&gt;</span> lines beginning with <span class="nt">&lt;code&gt;</span>rc<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I tried writing Markdown code inside these <code>&lt;div&gt;</code> containers, but the
-Markdown code <em>failed</em> to be changed to <abbr title="HyperText Markup Language">HTML</abbr>.  As a result, <em>not</em>
-being familiar with much of the Markdown syntax specified by
-<a href="http://kramdown.gettalong.org/" title="fast, pure-Ruby Markdown-superset converter">kramdown</a>, I simply write <abbr title="HyperText Markup Language">HTML</abbr> inside these <code>&lt;div&gt;</code> elements.</p>
-
-<p>Fancybox is great, but if I need to give up Markdown, then what’s the
-point of overcoming so many technical problems related to Octopress?
-<em>Without</em> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and <a href="http://www.vim.org"><abbr title="VIsual editor, iMproved">Vim</abbr></a>, blogging will be <em>incredibly</em>
-difficult for me.  For the former, when compared with <abbr title="HyperText Markup Language">HTML</abbr>, it’s much
-easier to read and write; for the latter, it offers an efficient text
-editing experience.</p>
-
-<p>Therefore, this afternoon, I browsed <em>kramdown Syntax</em> in kramdown’s
-official website, and found out that the <code>markdown="1"</code> attribute can
-solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Current container for popup contents</span><a href="http://goo.gl/53zo2d">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">The **bolded** lines represent the packages that are going to be
-</span><span class="line">completely removed.
-</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">There&#39;s *no* lines beginning with `rc`.
-</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/"><em>Completely Remove Linux Kernels</em></a> in Blog 1. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p><a href="http://kramdown.gettalong.org/syntax.html#html-blocks">HTML Blocks</a> in <em>kramdown Syntax</em>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
     
   </entry>
   
