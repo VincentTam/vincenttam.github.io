@@ -109,7 +109,7 @@ f(g(\\vect\{x})) \\ne \\vect\{z\_0}$, we want
 $f(g(\\mathcal\{B}\_\\delta
 (\\vect\{x\_0})\\setminus\\left\\\{\\vect\{x\_0}\\right\\}))
 \\nsubseteq \\mathcal\{B}\_\\epsilon (\\vect\{z\_0})$, i.e.
-$\\color\{blue}\{\\vect\{y\_0} \\notin \\mathcal\{B}\_\\epsilon
+$\\color\{blue}\{f(\\vect\{y\_0}) \\notin \\mathcal\{B}\_\\epsilon
 (\\vect\{z\_0})}$.
 
 Moreover, to ensure the *existence* of such points, one needs
