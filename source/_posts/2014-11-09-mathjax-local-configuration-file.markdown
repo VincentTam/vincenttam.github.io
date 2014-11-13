@@ -6,6 +6,18 @@ comments: true
 categories: MathJax
 ---
 
+Motivation
+---
+
+Before I changed the HTML syntax for embedding MathJax with a local
+configuration file, I often encountered error while viewing the math
+rendered by MathJax.[^12d38c1]  The custom commands defined in the
+local configuration file sometimes *wouldn't* be converted to
+mathematical expressions in a post while browsing the page for the
+first time.  Though refreshing the page can get the math shown, it's
+quite troublesome.  Therefore, I searched for a better way in the
+official manual.
+
 Problem
 ---
 
@@ -18,7 +30,7 @@ using a local configuration file.[^mathjax_doc]
 </script>
 {% endcodeblock %}
 
-Things seems worked, but undersirably *slow*.
+Things seems worked, but undesirably *slow*.
 
 ![loading time graph](/images/posts/MathJaxLocalConfigSlow/slow1.png){:.fancybox}
 
@@ -35,7 +47,7 @@ Cause
 I googled "mathjax local config long", and found a message from
 [this page][src] extremely useful.
 
-{% blockquote Davide P. Cervone http://goo.gl/WzV2w3 Re: Local configuration file processing is extremly slow (~15 sec) %}
+{% blockquote Davide P. Cervone http://goo.gl/WzV2w3 Re: Local configuration file processing is extremely slow (~15 sec) %}
 <p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");
 </code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p>
 {% endblockquote %}
@@ -72,6 +84,7 @@ a local HTML file `file:///path/to/test_mathjax.html`
 {% include_code A local testing page for using the MathJax macros test_mathjax.html %}
 
 ---
+[^12d38c1]: Refer to commit [12d38c1].
 [^mathjax_doc]:
     [Using a local configuration file with the CDN][mathjax_doc] in
     *MathJax Documentation*.
@@ -82,6 +95,7 @@ a local HTML file `file:///path/to/test_mathjax.html`
 
 [^config_yml]: `_config.yml` at commit [71ff4fb].
 
+[12d38c1]: https://github.com/VincentTam/vincenttam.github.io/commit/12d38c1#diff-0
 [mathjax_doc]: http://docs.mathjax.org/en/latest/configuration.html#using-a-local-configuration-file-with-the-cdn
 [src]: https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ
 [pp]: /blog/2014/06/05/mathjax-in-octopress-via-https/
