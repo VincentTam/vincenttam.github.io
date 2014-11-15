@@ -164,11 +164,12 @@ my mind since I was F.3.</p>
 
 <p>Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
 \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}}
-\quad\forall\,n \in \naturals$.  Show that $\displaystyle
-\lim_{n \to \infty} M_n (a_1,\dots,a_k) = \max\left\{
-a_i \mid i = 1,\dots,k \right\}$ and $\displaystyle \lim_{n
-\to -\infty} M_n = \min\left\{ a_i \mid i = 1,\dots,k
-\right\}$.</p>
+\quad\forall\,n \in \naturals$, and $a_i &gt; 0\quad\forall\,i =
+1,\dots,k$.<br />
+Show that $\displaystyle \lim_{n \to \infty} M_n
+(a_1,\dots,a_k) = \max\left\{ a_i \mid i = 1,\dots,k
+\right\}$ and $\displaystyle \lim_{n \to -\infty} M_n =
+\min\left\{ a_i \mid i = 1,\dots,k \right\}$.</p>
 
 <p><em>Proof</em>:</p>
 
@@ -180,25 +181,23 @@ It’s a good exercise on the definition of limits, the binomial
 expansion and elementary properties of inequalities.)</p>
 
 <p>Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note
-that</p>
-
-<p>\[
+that
+\[
 \frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}}
 \le \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
 \sqrt[n]{\frac{kM^n}{k}} = M
-\]</p>
-
-<p>Therefore, taking limit as $n \to \infty$ and applying the Squeeze
-Theorem, one has $\displaystyle \lim_{n \to \infty} M_n
-(a_1,\dots,a_k) = M = \max\left\{ a_i \mid i = 1,\dots,k
-\right\}$.</p>
-
-<p>I wrote similar arguments for the case $n \to -\infty$, but after I
+\]
+Therefore, taking limit as $n \to \infty$ and applying the Squeeze
+Theorem, one has
+\[
+\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{
+a_i \mid i = 1,\dots,k \right\}.
+\]
+I wrote similar arguments for the case $n \to -\infty$, but after I
 read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
 
-<p>Replace $a_i$’s with $1/a_i$’s.  Then</p>
-
-<p>\[
+<p>Replace $a_i$’s with $1/a_i$’s.  Then
+\[
 \begin{aligned}
 \lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
 \left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
@@ -210,9 +209,8 @@ a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
 a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
 \mid i = 1,\dots,k \right\}
 \end{aligned}
-\]</p>
-
-<p>Hence, $\displaystyle \lim_{n \to -\infty} M_n
+\]
+Hence, $\displaystyle \lim_{n \to -\infty} M_n
 (a_1,\dots,a_k) = \lim_{n \to -\infty}
 \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} = \min\left\{
 a_i \mid i = 1,\dots,k \right\}$.</p>
@@ -309,7 +307,7 @@ following graph.</p>
 </span><span class="line">  <span class="c">% labelling them</span>
 </span><span class="line">  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
 </span><span class="line">  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
-</span><span class="line">    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="nb">^</span><span class="nv">\circ</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line">    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="s">$</span><span class="nb">}</span>;
 </span><span class="line">  <span class="nb">}</span>
 </span><span class="line">  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
 </span><span class="line">  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
