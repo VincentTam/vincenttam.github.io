@@ -14,11 +14,12 @@ my mind since I was F.3.
 
 Suppose that $\\displaystyle M\_n (a\_1,\\dots,a\_k) :=
 \\sqrt\[n\]\{\\frac\{\\sum\_\{i=1}^\{k} a\_i^n}\{k}}
-\\quad\\forall\\,n \\in \\naturals$.  Show that $\\displaystyle
-\\lim\_\{n \\to \\infty} M\_n (a\_1,\\dots,a\_k) = \\max\\left\\\{
-a\_i \\mid i = 1,\\dots,k \\right\\}$ and $\\displaystyle \\lim\_\{n
-\\to -\\infty} M\_n = \\min\\left\\\{ a\_i \\mid i = 1,\\dots,k
-\\right\\}$.
+\\quad\\forall\\,n \\in \\naturals$, and $a\_i > 0\\quad\\forall\\,i =
+1,\\dots,k$.  
+Show that $\\displaystyle \\lim\_\{n \\to \\infty} M\_n
+(a\_1,\\dots,a\_k) = \\max\\left\\\{ a\_i \\mid i = 1,\\dots,k
+\\right\\}$ and $\\displaystyle \\lim\_\{n \\to -\\infty} M\_n =
+\\min\\left\\\{ a\_i \\mid i = 1,\\dots,k \\right\\}$.
 
 *Proof*\:
 
@@ -31,23 +32,21 @@ expansion and elementary properties of inequalities.)
 
 Let $M := \\max\\left\\\{ a\_i \\mid i = 1,\\dots,k \\right\\}$.  Note
 that
-
 \\\[
 \\frac\{M}\{k^\{\\frac\{1}\{n}}} = \\sqrt\[n\]\{\\frac\{M^n}\{k}}
 \\le \\sqrt\[n\]\{\\frac\{\\sum\_\{i=1}^\{k} a\_i^n}\{k}} \\le
 \\sqrt\[n\]\{\\frac\{kM^n}\{k}} = M
 \\\]
-
 Therefore, taking limit as $n \\to \\infty$ and applying the Squeeze
-Theorem, one has $\\displaystyle \\lim\_\{n \\to \\infty} M\_n
-(a\_1,\\dots,a\_k) = M = \\max\\left\\\{ a\_i \\mid i = 1,\\dots,k
-\\right\\}$.
-
+Theorem, one has
+\\\[
+\\lim\_\{n \\to \\infty} M\_n (a\_1,\\dots,a\_k) = M = \\max\\left\\\{
+a\_i \\mid i = 1,\\dots,k \\right\\}.
+\\\]
 I wrote similar arguments for the case $n \\to -\\infty$, but after I
 read Wikipedia, I've learnt a quicker way to finish the question.
 
 Replace $a\_i$'s with $1/a\_i$'s.  Then
-
 \\\[
 \\begin\{aligned}
 \\lim\_\{n \\to \\infty} \\sqrt\[n\]\{\\frac\{\\sum\_\{i=1}^\{k}
@@ -61,7 +60,6 @@ a\_i^\{-n}}\{k} \\right)^\{-\\frac\{1}\{n}} &= \\min\\left\\\{ a\_i
 \\mid i = 1,\\dots,k \\right\\}
 \\end\{aligned}
 \\\]
-
 Hence, $\\displaystyle \\lim\_\{n \\to -\\infty} M\_n
 (a\_1,\\dots,a\_k) = \\lim\_\{n \\to -\\infty}
 \\sqrt\[n\]\{\\frac\{\\sum\_\{i=1}^\{k} a\_i^n}\{k}} = \\min\\left\\\{
