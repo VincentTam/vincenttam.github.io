@@ -48,6 +48,8 @@ locally generated the site again.
 {% img fancybox /images/posts/OctRuby2b/err.png 'Rake can now detect Python2.' 'solved problem' %}
 
 ---
+(Last edited on NOV 24, 2014)
+
 [^1]:
     See [Using Octopress on Another Device][pp1] in *Blog 1* for
     details.
@@ -57,8 +59,10 @@ locally generated the site again.
     ([URL][ruby4win])
 
 [^3]:
-    See [Installing PortableJekyll][sol] in *Eaten by Grues* for
-    details.
+    See *Installing PortableJekyll* in Eaten by Grues for details.
+    (When I wrote this post in September, the URL was
+    http://eatenbygrues.com/journal/installing-portable-jekyll but the
+    link is now *dead*.)
 
 [^4]: I suppose that Python is in the `PATH` variable.
 
