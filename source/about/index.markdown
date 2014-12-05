@@ -38,7 +38,7 @@ Useful sites:
 ---
 
 - [Custom $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
-- [Custom Vim macros][myvimmacros]: I use some custom Vim macros as
+- [Custom Vim registers][myvimreg]: I use some custom Vim registers as
     shorthand.
 - [Pandoc syntax reference][pandoc]
 - [Kramdown quick reference][kramdown_quickref]
@@ -46,7 +46,7 @@ Useful sites:
     like '&sub;' and '&notin;'.
 
 [mymacros]: /about/mymacros.html
-[myvimmacros]: /about/myvimmacros.html
+[myvimreg]: /about/myvimreg.html
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
