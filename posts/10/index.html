@@ -9,7 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Reason for the upgrade This Sunday, I opened VLC to watch video, and ran into a “potential PulseAudio version problem”. My clumsy way to fix the &hellip;">
+  <meta name="description" content="Note: I	don’t use Clapper’s image popup plugin anymore,
+so the settings below are now gone. Background Using the following plugin, I finished &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -125,6 +126,115 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/11/my-settings-for-rss-2/">My Settings for RSS (2)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-11T21:08:01+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:08 pm</span></time>
+        
+           | <a href="/blog/2014/06/11/my-settings-for-rss-2/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/11/my-settings-for-rss-2/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/11/my-settings-for-rss-2/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Note: I	<em>don’t</em> use <a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/" title="A Simple Octopress Image Popup Plugin">Clapper’s image popup plugin</a> anymore,
+so the settings below are now gone.</p>
+
+<h2 id="background">Background</h2>
+
+<p>Using the following plugin, I finished removing the repeating figures
+in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Erv Walter&#8217;s plugin with my modifications</span><a href="http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">module</span> <span class="nn">CustomLiquidFilters</span>
+</span><span class="line">  <span class="k">def</span> <span class="nf">remove_linenumbers</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+</span><span class="line">    <span class="n">input</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\&lt;td\ class=&quot;gutter&quot;\&gt;.+?\&lt;\/td\&gt;/m</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line">
+</span><span class="line">  <span class="no">RegexMap</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class="line">    <span class="sr">/\&lt;div\ class=&quot;caption&quot;\&gt;Click the image for a larger view.\&lt;\/div\&gt;/</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="sr">/\&lt;div\ id=&quot;image-dialog-\d+&quot;.*?\&gt;.+?\&lt;\/div\&gt;/m</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="sr">/\&lt;div\ class=&quot;illustration\ print&quot;\&gt;.+?\&lt;\/div\&gt;/m</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">def</span> <span class="nf">remove_bigfig</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+</span><span class="line">    <span class="no">RegexMap</span><span class="o">.</span><span class="n">each_pair</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">input</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)}</span>
+</span><span class="line">    <span class="n">input</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span><span class="line">
+</span><span class="line"><span class="ss">Liquid</span><span class="p">:</span><span class="ss">:Template</span><span class="o">.</span><span class="n">register_filter</span> <span class="no">CustomLiquidFilters</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How about category Atom Feeds?</strong></p>
+
+<p>It took me some time a find out that the file needed to be changed was
+<code>source/_includes/custom/category_feed.xml</code>.  In that file, I tried to
+do the same modification like what I had already did in
+<code>source/atom.xml</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My initial attempt to solve the problem in category feed page</span><a href="/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;entry&gt;</span>
+</span><span class="line">  <span class="c">&lt;!-- other elements --&gt;</span>
+</span><span class="line">  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class="line"><span class="nt">&lt;/entry&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then I generated the site <em>without</em> getting any errors.  However, when
+I was previewing one of my category Atom Feeds, I found out that the
+above changes to the XML had did <em>nothing</em>—the popup images still
+appeared <em>twice</em>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/11/my-settings-for-rss-2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -643,59 +753,6 @@ include a code block in a list item.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/04/resolving-jekylls-yaml-exception/">Resolving Jekyll&#8217;s YAML Exception</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-04T21:06:23+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:06 pm</span></time>
-        
-           | <a href="/blog/2014/06/04/resolving-jekylls-yaml-exception/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/04/resolving-jekylls-yaml-exception/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/04/resolving-jekylls-yaml-exception/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<ol>
-  <li>Created a new Octopress post with <code>rake</code> in Windows 7’s Git Bash.</li>
-  <li>Wrote the post using gVim.</li>
-  <li>
-    <p>Ran <code>rake generate</code>, and got an YAML exception:</p>
-
-    <pre class="cli">YAML Exception reading [filename].markdown: invalid byte sequence in UTF-8</pre>
-  </li>
-</ol>
-
-<p><img class="center" src="/images/posts/YAMLException/yaml_exception.png" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/04/resolving-jekylls-yaml-exception/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -739,7 +796,7 @@ include a code block in a list item.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (25)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (17)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (10)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (35)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -759,6 +816,10 @@ include a code block in a list item.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/09/a-group-of-689-elements/">A Group of 689 Elements</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/11/14/power-means-with-infinite-exponents/">Power Means With Infinite Exponents</a>
       </li>
     
@@ -772,10 +833,6 @@ include a code block in a list item.</p>
     
       <li class="post">
         <a href="/blog/2014/11/09/mathjax-local-configuration-file/">MathJax Local Configuration File</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/08/my-github-avatar-is-gone/">My GitHub Avatar Is Gone!</a>
       </li>
     
   </ul>
