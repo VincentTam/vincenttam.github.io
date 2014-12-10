@@ -78,7 +78,7 @@ Result
 The source code for a block equation can now be seen in RSS feeds.
 
 ---
-[^1]: See [Updated Octopress Source Code][pp] in *Blog 1* for details.
+[^1]: See [*Updated Octopress Source Code*][pp] in Blog 1 for details.
 [^2]:
     View the source of [*A Test of Equation Numbering*][OfficalEg] for
     details.
