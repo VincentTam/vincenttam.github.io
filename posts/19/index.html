@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Installed some useful Vim plugins, such as Vundle (Vim plugins management tool), NERDTree (file browser), Easymotion, Loremipsum (random text &hellip;">
+  <meta name="description" content="This midnight, I tried to compile my $\rm \LaTeX$ document with a so-called "bibliography", which contains a URL. The link should be in typewriter &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -125,6 +125,45 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
+        
+           | <a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a so-called &#8220;bibliography&#8221;, which contains a URL. The link should be in typewriter font after using the command <code>\urlstyle{tt}</code> under adding the <code>url</code> package to the preamble. I googled for almost 2 hours, but the blog posts suggested that using this method should work. I even tried to copy some minimum working examples from the web to test if they work. They really worked and so I&#8217;m puzzled. Ten&nbsp;minutes ago, I just find out what&#8217;s going wrong: the <code>url</code> package should never go before the several lines in the preamble that are responsible for adding an APA-style bibliography.<br />
+The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code>Biber</code>. Whenever the AUX file exists, <code>\ll</code> won&#8217;t execute <code>Biber</code>, causing the resulting PDF file to have no change in the bibliography.</p>
+
+<p>I hope I can use less time to figure out any mistake next time.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -450,8 +489,8 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/linux/'>linux (26)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (10)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (35)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (36)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -469,6 +508,10 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (1)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/10/print-actual-sized-images/">Print Actual Sized Images</a>
       </li>
     
@@ -482,10 +525,6 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
     
       <li class="post">
         <a href="/blog/2014/11/13/plot-polar-coordinates-graphs/">Plot Polar Coordinates Graphs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/11/13/load-multiple-external-javascripts/">Load Multiple External JavaScripts</a>
       </li>
     
   </ul>
