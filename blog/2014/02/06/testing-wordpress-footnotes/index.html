@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: This post won't make sense here. Refer to the original post. I tried to embed footnotes using UltraBlog. Maybe I've done too much things. Let &hellip;">
+  <meta name="description" content="Note: This post won’t make sense here. Refer to the
+original post. I tried to embed footnotes using UltraBlog. Maybe I’ve done too much
+things. Let &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -150,44 +152,61 @@
   </header>
 
 
-<div class="entry-content"><p><em>Note: This post won&#8217;t make sense here. Refer to the <a href="http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/">original post</a>.</em></p>
+<div class="entry-content"><p><em>Note: This post won’t make sense here. Refer to the
+<a href="http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/">original post</a>.</em></p>
 
 <!-- more -->
 
-<p>I tried to embed footnotes using UltraBlog. Maybe I&#8217;ve done too much things. Let me list them here.<br />
-1. On the dashboard, go to &#8220;Settings&#8221;, &#8220;Writing&#8221; and check the box for using Markdown.<br />
-2. Try using UltraBlog.vim to write some footnotes by editing an existing post found by <code>:UBList</code>.<br />
-3. Send the finished post to WordPress.com and view the results, and find out that it fails.</p>
+<p>I tried to embed footnotes using UltraBlog. Maybe I’ve done too much
+things. Let me list them here.  </p>
 
-<p>It involves several technologies. UltraBlog. Therefore, it&#8217;s unrealistic to rely on Google search engine to get the answer.</p>
+<ol>
+  <li>On the dashboard, go to “Settings”, “Writing” and check the box for
+using Markdown.  </li>
+  <li>Try using UltraBlog.vim to write some footnotes by editing an
+existing post found by <code>:UBList</code>.  </li>
+  <li>Send the finished post to WordPress.com and view the results, and
+find out that it fails.</li>
+</ol>
 
-<p>In order to quickly find out the cause of such error, I used the online editor to create a minimum working example of a post containing a footnote. Then I used UltraBlog to download that post. In gVim, I could see that the filetype is <code>html</code>, instead of <code>markdown</code>. I tried to change it to <code>markdown</code> and update the draft. However, the string <code>^1</code> enclosed in middle brackets <em>wasn&#8217;t</em> interpreted. When I switch the filetype back to <code>html</code>, then things just work again. Just like the text below. I copied them from <a href="http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html">the official pandoc markdown syntax guide</a>.</p>
+<p>It involves several technologies. UltraBlog. Therefore, it’s
+unrealistic to rely on Google search engine to get the answer.</p>
+
+<p>In order to quickly find out the cause of such error, I used the
+online editor to create a minimum working example of a post containing
+a footnote. Then I used UltraBlog to download that post. In gVim, I
+could see that the filetype is <code>html</code>, instead of <code>markdown</code>. I tried
+to change it to <code>markdown</code> and update the draft. However, the string
+<code>^1</code> enclosed in middle brackets <em>wasn’t</em> interpreted. When I switch
+the filetype back to <code>html</code>, then things just work again. Just like
+the text below. I copied them from
+<a href="http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html">the official pandoc markdown syntax guide</a>.</p>
 
 <blockquote>
-  Here is a footnote reference,<sup id="fnref-503-1"><a href="#fn-503-1" rel="footnote">1</a></sup> and another.<sup id="fnref-503-longnote"><a href="#fn-503-longnote" rel="footnote">2</a></sup>
+  <p>Here is a footnote reference,<sup id="fnref:fn1"><a href="#fn:fn1" class="footnote">1</a></sup> and another.<sup id="fnref:fn2"><a href="#fn:fn2" class="footnote">2</a></sup></p>
 </blockquote>
 
-<p>As I can see from the above block quote, the string <code>^longnote</code> inside a pair of middle brackets will be changed to numbers. In order to let you see it, I post a screenshot of my gVim here.</p>
+<p>As I can see from the above block quote, the string <code>^longnote</code> inside a
+pair of middle brackets will be changed to numbers. In order to let you
+see it, I post a screenshot of my gVim here.</p>
 
-<img class="fancybox" src="/images/posts/WPFn/MyGVim.png" width="800" title="screenshot of my gVim" alt="fig1">
-
-<p>Note: Remember to <code>:se ft=html</code> before <code>:UBSend</code></p>
+<p><img class="fancybox center" src="/images/posts/WPFn/MyGVim.png" width="800" title="screenshot of my gVim" alt="fig1" /><br />
+Note: Remember to <code>:se ft=html</code> before <code>:UBSend</code></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 
-<div class="footnotes">
 <hr />
-<ol>
 
-    <li id="fn-503-1">
-    Here is the footnote.&#160;<a href="#fnref-503-1" rev="footnote">&#8617;</a>
+<div class="footnotes">
+  <ol>
+    <li id="fn:fn1">
+      <p>Here is the footnote. <a href="#fnref:fn1" class="reversefootnote">&#8617;</a></p>
     </li>
-
-    <li id="fn-503-longnote">
-    Here&#8217;s one with multiple blocks.&#160;<a href="#fnref-503-longnote" rev="footnote">&#8617;</a>
+    <li id="fn:fn2">
+      <p>Here’s one with multiple blocks. <a href="#fnref:fn2" class="reversefootnote">&#8617;</a></p>
     </li>
-
-</ol></div>
+  </ol>
+</div>
 </div>
 
 
