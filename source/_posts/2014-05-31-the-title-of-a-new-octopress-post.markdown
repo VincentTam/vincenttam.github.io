@@ -122,5 +122,3 @@ markdown file.
 
 [my_desktop_crashed]: /blog/2014/05/27/my-desktop-crashed/
 [DontIE]: /blog/2014/05/31/internet-explorer-a-security-risk-use-firefox-or-chrome/
-
-<!-- vim:se tw=70: -->
