@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-09T22:09:40+08:00</updated>
+  <updated>2014-12-10T14:45:16+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,79 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Print Actual Sized Images]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/10/print-actual-sized-images/"/>
+    
+    <updated>2014-12-10T10:12:23+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/10/print-actual-sized-images</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>A month ago, I wanted to print a picture.  However, I <em>didn’t</em> know
+how to use GUI programs like LibreOffice or GIMP to print images with
+their actual size.  I know that this can be easily done in M$
+Paint.<sup id="fnref:mspaint"><a href="#fn:mspaint" class="footnote">1</a></sup></p>
+
+<p>Nonetheless, as a free software supporter, I should refuse using
+proprietary softwares and seek free alternatives.</p>
+
+<!-- more -->
+
+<h2 id="my-approach">My Approach</h2>
+
+<p>I finally used the <code>lpr</code> command to print the picture because
+<em>commands won’t change like buttons in GUI programs</em>.</p>
+
+<ul>
+  <li><code>lpr foo.png</code>: print <code>foo.png</code> with the default page size, and the
+  picture will fit the page.</li>
+  <li>
+    <p><code>lpr --natural-scale=nn%</code>: It took me an hour to find out this
+  option is the true answer to my question.  I googled “print actual
+  size of picture linux” and entered a page in a knowledge
+  base.<sup id="fnref:kb"><a href="#fn:kb" class="footnote">2</a></sup>  Actually, the contents are the <em>same</em> as those in
+  <code>http://localhost:631</code>.  I <em>don’t</em> know why the section “Image
+  Options” <em>can’t</em> be found in the <abbr title="Common Unix Printing System">CUPS</abbr> manual.</p>
+
+    <p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LprActualSize/cups.png" width="750" title="CUPS Mannual" alt="cups man" /></p>
+  </li>
+  <li>One can use <code>lpoptions -l</code> for viewing the list of the default
+  printer settings, and one may modify it through the <abbr title="Common Unix Printing System">CUPS</abbr>’s web
+  interface.  For example, one may use the option <code>-o
+  Resolution=Photo</code>.  Note that it’s <em>case sensitive</em>.</li>
+</ul>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p><abbr title="pixels per inch">PPI</abbr> and <abbr title="dots per inch">DPI</abbr> are <em>different</em>.  The former is about the printer and is
+independent of the picture, while the later is for controlling the
+printing size of the picture.<sup id="fnref:dpippi"><a href="#fn:dpippi" class="footnote">3</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:mspaint">
+      <p>See <a href="http://www.sevenforums.com/music-pictures-video/200235-actual-print-size-when-printing-picures.html" title="Windows 7: Actual print size when printing picures">this forum post</a> for details. <a href="#fnref:mspaint" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:kb">
+
+      <p>See <a href="http://www.eecs.utk.edu/resources/it/kb/printing/linux-command-line">Command-Line Printing in Linux</a> in the IT Knowledge Base
+of the University of Tennessee System. <a href="#fnref:kb" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:dpippi">
+
+      <p>See <a href="http://99designs.com/designer-blog/2013/02/26/ppi-vs-dpi-whats-the-difference/"><em>PPI vs. DPI: what’s the difference?</em></a> by Alex Bigman
+in 99designs. <a href="#fnref:dpippi" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1771,105 +1844,6 @@ the sources of inspirations.</p>
     <li id="fn:SiteEdu">
 
       <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Sample $\rm \LaTeX$ Table]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/"/>
-    
-    <updated>2014-10-01T19:36:28+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table</id>
-    
-      <content type="html"><![CDATA[<h2 id="target">Target</h2>
-
-<p><img src="http://vincenttam.github.io/images/posts/LaTeXTable/out.jpg" alt="target" /></p>
-
-<!-- more -->
-
-<h2 id="source-code">Source code</h2>
-
-<div><script src="https://gist.github.com/eb013fa73d62a5f5c917.js"></script>
-<noscript><pre><code>\documentclass[border=5pt]{standalone}
-\usepackage{fontspec}
-\begin{document}
-\begin{tabular}{lll}
-  \hline
-  \multicolumn{1}{||c}{Header 1} &amp;
-  \multicolumn{1}{||c||}{Header 2} &amp;
-  \multicolumn{1}{c||}{Header 3} \\ \hline
-  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
-  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
-  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
-  \noalign{\smallskip}
-  \hline
-  \multicolumn{1}{||c}{Header 4} &amp;
-  \multicolumn{1}{||c||}{Header 5} &amp;
-  \multicolumn{1}{c||}{Header 6} \\ \hline
-  \multicolumn{1}{||l}{Cell 4} &amp;
-  \multicolumn{1}{||l||}{Cell 5} &amp;
-  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
-  \hline
-  \multicolumn{1}{||c}{Header 7} &amp;
-  \multicolumn{1}{||c||}{Header 8} &amp;
-  \multicolumn{1}{c||}{Header 9} \\ \hline
-  \multicolumn{1}{||l}{Cell 7} &amp;
-  \multicolumn{1}{||l||}{Cell 8} &amp;
-  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
-  \cline{2-2}
-  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
-  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
-  \cline{2-2}
-\end{tabular}
-\end{document}</code></pre></noscript></div>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>Line 1: <em>Without</em> <code>border=5pt</code>, the grid line on the right will be
-truncated.<sup id="fnref:StandaloneBd"><a href="#fn:StandaloneBd" class="footnote">1</a></sup></p>
-
-<p>Lines 5–7: Using <code>\multicolumn{1}{c}</code> is the easiest way to centre
-<em>only</em> the heading that I know.</p>
-
-<p>Lines 8–10: By trial, I discovered that putting <code>p{3.5cm}</code> at line 3
-<em>doesn’t</em> help—the width of the middle column <em>wouldn’t</em> be the same
-as that of the other two columns.  The positions of the <code>|</code>s and
-<code>\multicolumn{1}{l}{Cell n}</code> are also worked out by repeated
-experiments, so that the double vertical grid lines separating the
-cells are properly aligned.</p>
-
-<p>Line 11: Actually, the double-rules can be made using <code>\hline\hline</code>.
-I <em>don’t</em> use this method because of the contents at the bottom of the
-table.  See lines 25–26 for details.</p>
-
-<p>Lines 25–26: <code>\cline{2-2}</code> is for a horizontal line above the second
-cell.  If I use <code>\hline\cline{2-2}</code>, the two lines will <em>coincide</em>.
-Therefore, I copied the command <code>\noalign{\smallskip}</code> from the
-section “Space between rows” in the Wikibook for $\rm
-\LaTeX$.<sup id="fnref:RowSep"><a href="#fn:RowSep" class="footnote">2</a></sup></p>
-
-<p>Lines 27–28: In order <em>not</em> to have grids at the corners of the last
-row, at left of the leading <code>&amp;</code>, there’s <em>no</em> non-blank characters.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:StandaloneBd">
-
-      <p><a href="http://texblog.org/2012/09/12/cropping-the-output-file-to-its-content-in-latex/"><em>Cropping the output file to its content in LaTeX</em></a> in
-texblog. <a href="#fnref:StandaloneBd" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:RowSep">
-
-      <p>LaTeX/Tables. (2014, September 2). <em>Wikibooks, The Free Textbook
-Project</em>. Retrieved 14:04, October 1, 2014 from
-<a href="http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642">http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642</a> <a href="#fnref:RowSep" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
