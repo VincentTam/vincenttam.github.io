@@ -193,14 +193,15 @@ satified with this alternative method of typesetting piecewise
 functions.
 
 ---
-[^1]: See [MathJax and RSS][pp1] in *Blog 1* for details.
+[^1]: See [*MathJax and RSS*][pp1] in Blog 1 for details.
 [^2]:
-    See [Error Bound of the Fixed Point of Contraction Mappings][pp2]
-    in *Blog 1* for details.
+    See
+    [*Error Bound of the Fixed Point of Contraction Mappings*][pp2] in
+    Blog 1 for details.
 
 [^3]:
-    See [Archimedean Sequence of Partitions of a Square][pp1] in *Blog
-    1* for details.
+    See [*Archimedean Sequence of Partitions of a Square*][pp3] in
+    Blog 1 for details.
 
 [pp1]: /blog/2014/09/07/mathjax-and-rss/
 [pp2]: /blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/
