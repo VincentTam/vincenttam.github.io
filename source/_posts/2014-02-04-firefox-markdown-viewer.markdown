@@ -10,7 +10,7 @@ This morning, I've found a Firefox Add-on called
 [Markdown Viewer][addon].  As its name suggests, it's a Firefox plugin
 that enables users to view Markdown documents.  The screenshot
 provided on the home page of the add-on illustrates that it works on
-M\\$ Win\*.  How about GNU/Linux? I clicked the button and installed
+M\$ Win\*.  How about GNU/Linux? I clicked the button and installed
 the plugin.  After that, I used `:restart` in Vimperator to see what
 happened if I used Firefox to view a local Markdown file with
 extension name `.md`.
