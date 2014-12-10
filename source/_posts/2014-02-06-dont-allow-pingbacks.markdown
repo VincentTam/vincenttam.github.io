@@ -27,7 +27,7 @@ Posted via [UltraBlog.vim][end].
 
 ---
 [^src]:
-    Dan Harrison's post on WP Doctors at
+    The link for Dan Harrison's post on WP Doctors at
     http://www.wpdoctors.co.uk/with-wordpress-whats-a-pingback-should-i-approve-them
     is now *dead*.
 
