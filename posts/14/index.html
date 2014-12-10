@@ -367,21 +367,34 @@ is now <em>dead</em>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve written <a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/" title="Using Vim Keystrokes in Web Browser">a post about Vimperator</a>, and also <a href="/blog/2013/12/23/vi-key-bindings-in-emacs/" title="Vi Key Bindings in Emacs">another one about Viper</a>. However, I&#8217;ve <em>never</em> seen web pages that introduce the following Vimperator insert mode commands written by fans of Vim or Vimperator.</p>
+  <div class="entry-content"><p>I’ve written <a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/" title="Using Vim Keystrokes in Web Browser">a post about Vimperator</a>, and also
+<a href="/blog/2013/12/23/vi-key-bindings-in-emacs/" title="Vi Key Bindings in Emacs">another one about Viper</a>.  However, I’ve <em>never</em> seen web pages
+that introduce the following Vimperator insert mode commands written
+by fans of Vim or Vimperator.</p>
 
 <ul>
-    <li>Typing <code>&lt;C-a&gt;</code> moves the cursor to the beginning of the line.</li>
-    <li>Typing <code>&lt;C-e&gt;</code> moves the cursor to the end of the line.</li>
-    <li>Typing <code>&lt;C-k&gt;</code> removes the characters <em>after</em> the cursor.</li>
+  <li>Typing <code>&lt;C-a&gt;</code> moves the cursor to the beginning of the line.</li>
+  <li>Typing <code>&lt;C-e&gt;</code> moves the cursor to the end of the line.</li>
+  <li>Typing <code>&lt;C-k&gt;</code> removes the characters <em>after</em> the cursor.</li>
 </ul>
 
 <p>They behave <em>exactly</em> like the keyboard commands in GNU Emacs!</p>
 
-<p>In my opinion, they&#8217;re just behaving like the commands used in a *nix terminal. Anyways, I&#8217;ve learnt some new commands, no matter where they&#8217;re used. For a Vim user, it <em>won&#8217;t</em> hurt to take the official tutorial of Emacs since they can applied once you&#8217;re in an Info page. For example, if you want to scroll down by one screen in an Info document, you can issue the command <code>&lt;C-v&gt;</code>. To reverse the change, you can type <code>&lt;M-v&gt;</code>.</p>
+<p>In my opinion, they’re just behaving like the commands used in a *nix
+terminal.  Anyways, I’ve learnt some new commands, no matter where
+they’re used.  For a Vim user, it <em>won’t</em> hurt to take the official
+tutorial of Emacs since they can applied once you’re in an Info page.
+For example, if you want to scroll down by one screen in an Info
+document, you can issue the command <code>&lt;C-v&gt;</code>.  To reverse the change,
+you can type <code>&lt;M-v&gt;</code>.</p>
 
-<p>I end this post with <code>&lt;C-j&gt;</code>, though its behaviour in Emacs differs from the behaviour in Vimperator. It&#8217;s just another way for using the search engine: moving the cursor to the search box at the top right-hand corner.</p>
+<p>I end this post with <code>&lt;C-j&gt;</code>, though its behaviour in Emacs differs
+from the behaviour in Vimperator.  It’s just another way for using the
+search engine: moving the cursor to the search box at the top
+right-hand corner.</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
 </div>
   
   
@@ -515,37 +528,53 @@ UltraBlog.vim since it’s <em>better</em> than WordPress.</p>
   </header>
 
 
-  <div class="entry-content"><p>This morning, I&#8217;ve found a Firefox Add-on called <a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>. As its name suggests, it&#8217;s a Firefox plugin that enables users to view Markdown documents. The screenshot provided on the home page of the add-on illustrates that it works on M\$ Win*. How about GNU/Linux? I clicked the button and installed the plugin. After that, I used <code>:restart</code> in Vimperator to see what happened if I used Firefox to view a local Markdown file with extension name <code>.md</code>.</p>
+  <div class="entry-content"><p>This morning, I’ve found a Firefox Add-on called
+<a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>.  As its name suggests, it’s a Firefox plugin
+that enables users to view Markdown documents.  The screenshot
+provided on the home page of the add-on illustrates that it works on
+M$ Win*.  How about GNU/Linux? I clicked the button and installed
+the plugin.  After that, I used <code>:restart</code> in Vimperator to see what
+happened if I used Firefox to view a local Markdown file with
+extension name <code>.md</code>.</p>
 
-<p>It turned out that nothing happened! With Lai&#8217;s review titled <em>Work on Linux</em>, I figured out what to do. After looking at his suggested code for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it and it worked. Critical readers will then ask about the way to include multiple file extensions.</p>
+<p>It turned out that nothing happened! With Lai’s review titled <em>Work on
+Linux</em>, I figured out what to do.  After looking at his suggested code
+for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it
+and it worked.  Critical readers will then ask about the way to
+include multiple file extensions.</p>
 
-<p>Browsing the code with <code>#</code> in the RDF file helps. Here&#8217;s what my results.</p>
+<p>Browsing the code with <code>#</code> in the RDF file helps.  Here’s what my
+results.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
-</span><span class='line'><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
-</span><span class='line'><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
-</span><span class='line'><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class='line'><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
-</span><span class='line'><span class="nt">&lt;/RDF:Description&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
+</span><span class="line"><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
+</span><span class="line"><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
+</span><span class="line"><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;/RDF:Description&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than one</em> extension name for a Markdown file. However, a GNU/Linux user should <strong>never</strong> use <code>.md</code>.</p>
+<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than
+one</em> extension name for a Markdown file.  However, a GNU/Linux user
+should <em>never</em> use <code>.md</code>.</p>
 
-<p>Finally, combining Lai&#8217;s and Cas&#8217; posts, I&#8217;ve come up with <a href="https://gist.github.com/VincentTam/8800268">a Gist.</a></p>
+<p>Finally, combining Lai’s and Cas’s posts, I’ve come up with
+<a href="https://gist.github.com/VincentTam/8800268">a Gist</a>.</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
 </div>
   
   
