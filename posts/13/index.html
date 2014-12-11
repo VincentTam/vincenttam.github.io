@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="This post is written in response to a question of
-one of my video. Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly. To
-show you how &hellip;">
+  <meta name="description" content="What’s below is a small picture. The words inside the screenshot
+can’t be displayed. Users may right-click on the picture and select
+“View Image”, if &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -127,6 +127,58 @@ show you how &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/03/30/testing-jquery-image-popup/">Testing jQuery Image Popup</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-30T01:50:50+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:50 am</span></time>
+        
+           | <a href="/blog/2014/03/30/testing-jquery-image-popup/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/03/30/testing-jquery-image-popup/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/03/30/testing-jquery-image-popup/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>What’s below is a small picture.  The words inside the screenshot
+<em>can’t</em> be displayed.  Users may right-click on the picture and select
+“View Image”, if there’s a script that enables a magnified image to
+show up right after a user has clicked on the image, it’ll be <em>more
+convenient</em> for the user.</p>
+
+<p><img class="fancybox" src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" title="My Big Image" alt="fig1" /></p>
+
+<p>I tried following <a href="http://goo.gl/5qCaj">Clapper’s guide</a>, but as I generate
+the site using <code>rake</code>, I got two errors. The first one was about CSS,
+while the second one was about one of the two required Ruby gems.
+(Namely, <a href="http://goo.gl/qeN28">mini_magick</a> and <a href="http://goo.gl/0oZy6">Erubis</a>.)</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/03/30/testing-jquery-image-popup/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -683,87 +735,6 @@ from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Including a Bibliography in Pandoc Markdown on Ubuntu 12.04 LTS</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-23T18:16:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>6:16 pm</span></time>
-        
-           | <a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
-since it’s easy to use.  According to the official demo<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, with a
-<abbr title="Citation Style Language">CSL</abbr> file<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, which specifies the style to the citation, users are
-suppose to be able to create a document with a bibliography.  However,
-when I ran the following command in Vim on Ubuntu 12.04 LTS, pandoc
-hanged.</p>
-
-<pre><code>:!pandoc -s -S --biblio mybib.bib --csl foo.csl -t beamer %\
--V theme:Berlin -o %&lt;.pdf
-</code></pre>
-
-<p>I admit that it’s <em>too</em> complicated.  I tested several things:</p>
-
-<ol>
-  <li>$\rm \LaTeX$ Beamer class</li>
-  <li>Bibliography</li>
-</ol>
-
-<p>To figure out which part of the command is wrong, I tried to remove
-the part related to item 1.  Issuing a simple command for item 2, the
-usage of one of the <abbr title="Central Processing Unit">CPU</abbr> in my computer rose to almost 100%, and
-remained high with small fluctuations.</p>
-
-<pre><code>:!pandoc -s -S --biblio biblio.bib -o %&lt;.html
-</code></pre>
-
-<p>This issue is indeed one faced by the community of Ubuntu users, so I
-can find official advices on GitHub.  Eventually, the last comment on
-the page has solved my problem.  I think installing
-<code>libghc-citeproc-hs-data</code> is quicker than installing the latest
-(1.9.4.2-2) version of the DEB file for pandoc.</p>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://johnmacfarlane.net/pandoc/demos.html">Pandoc demos item 24 (Markdown citations)</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p><a href="https://github.com/citation-style-language/styles">CSL’s official repository on GitHub</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/14">&larr; Older</a>
@@ -805,7 +776,7 @@ the page has solved my problem.  I think installing
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (27)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (28)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -827,6 +798,10 @@ the page has solved my problem.  I think installing
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/11/go-green-save-green-with-linux/">Go Green, Save Green With Linux</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu/">Creating $\rm \LaTeX$ Résumés on Ubuntu</a>
       </li>
     
@@ -840,10 +815,6 @@ the page has solved my problem.  I think installing
     
       <li class="post">
         <a href="/blog/2014/12/10/print-actual-sized-images/">Print Actual Sized Images</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/09/a-group-of-689-elements/">A Group of 689 Elements</a>
       </li>
     
   </ul>

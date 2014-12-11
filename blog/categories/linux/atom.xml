@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-11T20:08:31+08:00</updated>
+  <updated>2014-12-11T23:20:05+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Go Green, Save Green With Linux &#9733;]]></title>
+      <link href="http://www.linuxjournal.com/magazine/go-green-save-green-linux"/>
+    
+    <updated>2014-12-11T22:50:08+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/11/go-green-save-green-with-linux</id>
+    
+      <content type="html"><![CDATA[<p>I read this article one year ago.  Though it’s written six years ago,
+I still think that the part about M$ Win* is true.</p>
+
+<p><blockquote><p>Avoid e-waste by avoiding Windows Vista—a 2007 study by Softchoice Corporation and amplified by Greenpeace stated that “50% of all PCs are below Windows Vista’s basic system requirements” and “94% are not ready for Windows Vista Premium edition”.  A similar study by the British government found that Linux users need to upgrade their hardware only half as often as Windows users.</p><footer><strong>James Gray</strong> <cite><a href='http://goo.gl/pjJyNl'>Go Green, Save Green With Linux</a></cite></footer></blockquote></p>
+
+<p>I hope that there’ll be more GNU/Linux laptops available for sale, so
+that I <em>don’t</em> have to face strange problems on M$ Win*.<sup id="fnref:problem"><a href="#fn:problem" class="footnote">1</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:problem">
+
+      <p>For example, I <em>can’t</em> set up Octopress on M$ Win* easily, and
+got some errors described in
+<a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/"><em>Testing Octopress and Ruby 2.0 on Windows 7 (1)</em></a> and
+<a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/"><em>(2)</em></a> <a href="#fnref:problem" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/12/11/go-green-save-green-with-linux/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -375,172 +408,6 @@ cat: /tmp/echo: No such file or directory
 owner@owner-Inspiron-560s:/tmp$ 
 </code></pre>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Record Linux Terminal]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal/"/>
-    
-    <updated>2014-09-14T11:52:09+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/14/record-linux-terminal</id>
-    
-      <content type="html"><![CDATA[<h2 id="why">Why?</h2>
-
-<p>With detailed output from the terminal, other users can understand the
-problem better.  This helps them come up with a solution to the
-problem.</p>
-
-<p>Why don’t we use <code>&gt;</code> and <code>&gt;&gt;</code> to capture the standard output?</p>
-
-<p>Using <code>screendump</code>, one can record the commands <em>and</em> their output at
-<em>one</em> time; using <code>[cmd] &gt; output.txt</code>, <code>output.txt</code> only consists of
-the output of <code>[cmd]</code>, but <em>not</em> what he/she has typed.  (i.e.
-<code>[cmd]</code>)  The commands are often complicated and more than one line in
-length—copying and pasting text from the terminal are thus more
-difficult.  Therefore, <code>screendump</code> is useful.</p>
-
-<p>Why don’t we use <code>fbgrab</code> or <code>fbcat</code> to get a screenshot of the
-terminal?</p>
-
-<p>The goal is to let other know what’s in the terminal.   A screenshot
-of the terminal is easy to make.  However, its file size is <em>much</em>
-greater than the screen capture made of text.  Bitmaps <em>don’t</em> look
-good when one zooms in on them with a great magnification.  Therefore,
-to achieve the same goal, one may use text instead of images.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<h2 id="usage">Usage</h2>
-
-<p>Suppose you want to record your TTY1.</p>
-
-<p><img class="/images/posts/Screendump/tty1.png ‘Screenshot of <abbr" src="title="TeleTYpewriter">TTY</abbr>&#8221; width=&#8221;1&#8221; title=&#8221;taken with fbgrab’ ‘tty1’&#8221; ></p>
-
-<p>The above screenshot is taken using <code>fbgrab -c 1 tty1.png</code>.  Even
-though it’s cropped, it still has thousands of bytes.  Nevertheless,
-if I show it using text, there’re only 337 bytes since the text only
-consists of 337 characters.</p>
-
-<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-
-owner-Inspiron-560s login: owner
-Password:
-Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
-Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
-
- * Documentation:  https://help.ubuntu.com/
-
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
-This is tty1.
-owner@owner-Inspiron-560s:~$
-</code></pre>
-
-<p>The above text is captured with <code>screendump</code>.  How to use
-<code>screendump</code>?  There’s a manual page about this tool. The following
-examples save the time.</p>
-
-<h3 id="failed-commands">Failed commands</h3>
-
-<pre class="cliUB"><code>owner@owner-Inspiron-560s:~$ screendump 1 tty1.png
-usage: screendump [n]
-owner@owner-Inspiron-560s:~$ screendump 1
-couldn't read /dev/vcsa1
-</code></pre>
-
-<ol>
-  <li>Using <code>screendump</code> like <code>fbgrab</code> <em>doesn’t</em> work.</li>
-  <li>Just copying the suggested command <em>doesn’t</em> work either.</li>
-</ol>
-
-<h3 id="successful-examples">Successful examples</h3>
-
-<p>Suppose that each of TTY1-6 has 64 rows and 160 columns.</p>
-
-<p>After one issued the command <code>screendump 1</code> with <em>root</em> privilege in
-<em>another</em> <abbr title="TeleTYpewriter">TTY</abbr>, the <em>whole</em> TTY1 is printed on the <abbr title="TeleTYpewriter">TTY</abbr> that invoked
-<code>screendump</code>.  Since TTY1 has 64 rows, to view the first line of TTY1,
-one needs to use <code>&lt;C-Page Up&gt;</code> to scroll up the screen.  The cursor
-will be at the bottom.</p>
-
-<pre class="cliUB"><code>Ubuntu 14.04.1 LTS owner-Inspiron-560s tty1
-owner-Inspiron-560s login: owner
-Password:
-Last login: Sat Sep 13 13:04:04 HKT 2014 on tty2
-Welcome to Ubuntu 14.04.1 LTS (GNU/Linux 3.13.0-35-generic i686)
-
- * Documentation:  https://help.ubuntu.com/
-
-owner@owner-Inspiron-560s:~$ cat &gt; /dev/null
-This is tty1.
-owner@owner-Inspiron-560s:~$
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-owner@owner-Inspiron-560s:~$
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization#eliminating-and-replacing-images">Eliminating the replacing images</a> in <em>Web
-Fundamentals</em> in Google Developers. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
     
   </entry>
   
