@@ -100,14 +100,15 @@ square brackets*  This time, there's an apostrophe inside the title,
 so we *can't* use `'` to surround `!`.  To create such kind of posts,
 some simple tricks will do.
 
-1. Pass a title with `'`, but *without* `"` and `!`.
-    - For example
+- Pass a title with `'`, but *without* `"` and `!`.
 
-    $ rake new_post["Don't use Internet Explorer"]
-    # Creates source/_posts/2014-05-31-dont-use-internet-explorer.markdown
+~~~~~
+$ rake new_post["Don't use Internet Explorer"]
+# Creates source/_posts/2014-05-31-dont-use-internet-explorer.markdown
+~~~~~
 {:.cliUB}
 
-2. Add the things back to `title` in the header of the generated
+- Add the things back to `title` in the header of the generated
 markdown file.
     - For example, change `title: "Don't use Internet Explorer"` into
 	`title: "Don't use Internet Explorer!"`
