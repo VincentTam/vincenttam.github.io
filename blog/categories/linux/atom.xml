@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-11T19:15:37+08:00</updated>
+  <updated>2014-12-11T20:08:31+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Creating $\rm \LaTeX$ Résumés on Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu/"/>
+    
+    <updated>2014-12-11T19:31:23+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I created a résumé using <a href="http://miktex.org">Mik$\rm \TeX$</a>.  Simply copy any
+sample document of the “res” class and compile it.  Things will run
+smoothly in Mik$\rm \TeX$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox center" src="/images/posts/LaTeXResume/err.png" width="800" title="‘Figure 1’ ‘err’" ></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I glanced through the section “<a href="https://help.ubuntu.com/community/LaTeX#Installing_packages_manually">Installing packages manually</a>” in
+Ubuntu’s <em>Community Help Wiki</em>, and issued the following commands,
+after having <code>res.cls</code> <a href="http://www.ctan.org/pkg/res" title="res -- A résumé class">downloaded from CTAN</a>.</p>
+
+<pre class="cliUB"><code>$ mkdir -p ~/texmf/res
+$ mv res.cls ~/texmf/res/
+$ texhash ~/texmf
+texhash: Updating /home/owner/texmf/ls-R... 
+texhash: Done.
+</code></pre>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -502,199 +537,6 @@ owner@owner-Inspiron-560s:~$
 
       <p><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization#eliminating-and-replacing-images">Eliminating the replacing images</a> in <em>Web
 Fundamentals</em> in Google Developers. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Completely Remove Linux Kernels]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/"/>
-    
-    <updated>2014-09-13T23:24:51+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I issued the following command and then rebooted the machine.</p>
-
-<pre class="cliUB"><code>$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
-&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
-&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p><strong>How can that package disappear from the list?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Use <code>purge</code> instead of <code>remove</code> in the above command.</p>
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pa
-e</span>
-[sudo] password for owner:
-The following packages will be REMOVED:
-  linux-image-3.2.0-67-generic-pae{p}
-0 packages upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
-Need to get 0 B of archives. After unpacking 0 B will be used.
-Do you want to continue? [Y/n/?] Y
-(Reading database ... 349931 files and directories currently installed.)
-Removing linux-image-3.2.0-67-generic-pae (3.2.0-67.101) ...
-Purging configuration files for linux-image-3.2.0-67-generic-pae (3.2.0-67.101) 
-...
-Examining /etc/kernel/postrm.d .
-run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.2.0-67-generic-pae /
-boot/vmlinuz-3.2.0-67-generic-pae
-run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.2.0-67-generic-pae /
-boot/vmlinuz-3.2.0-67-generic-pae
-owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic l
-inux-image-extra-3.13.0-33-generic</span>
-The following packages will be REMOVED:
-  linux-image-3.13.0-33-generic{p} linux-image-extra-3.13.0-33-generic{p}
-0 packages upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
-Need to get 0 B of archives. After unpacking 0 B will be used.
-Do you want to continue? [Y/n/?] Y
-(Reading database ... 349931 files and directories currently installed.)
-Removing linux-image-3.13.0-33-generic (3.13.0-33.58) ...
-Purging configuration files for linux-image-3.13.0-33-generic (3.13.0-33.58) ...
-Examining /etc/kernel/postrm.d .
-run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
-t/vmlinuz-3.13.0-33-generic
-run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
-/vmlinuz-3.13.0-33-generic
-Removing linux-image-extra-3.13.0-33-generic (3.13.0-33.58) ...
-Purging configuration files for linux-image-extra-3.13.0-33-generic (3.13.0-33.5
-8) ...
-Examining /etc/kernel/postrm.d .
-run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.13.0-33-generic /boo
-t/vmlinuz-3.13.0-33-generic
-run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.13.0-33-generic /boot
-/vmlinuz-3.13.0-33-generic
-</code></pre>
-
-<p>After running the above two commands, the above three removed Linux
-kernel images with status <code>rc</code> <em>shouldn’t</em> be seen in the list of
-packages anymore.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<hr />
-
-<div id="list1" class="noscr">
-  <p>The <strong>bold</strong> lines represent the packages that are going to be
-completely removed.</p>
-
-  <pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
-ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
-ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
-ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
-raries
-ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
-ibrary
-ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
-ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
-ders
-ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
-ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
-version 3.13.0
-ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
-.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
-version 3.13.0
-ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
-.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
-ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
-<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.13.0-33-generic                         3.13.0-33.58                                        i386         Linux kernel image for version 3.13.0
-on 32 bit x86 SMP</span>
-ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
-on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
-on 32 bit x86 SMP
-<span class="UBHLCode">rc  <span class="grep">linux</span>-image-3.2.0-67-generic-pae                      3.2.0-67.101                                        i386         Linux kernel image for version 3.2.0
-on 32 bit x86 SMP</span>
-<span class="UBHLCode">rc  <span class="grep">linux</span>-image-extra-3.13.0-33-generic                   3.13.0-33.58                                        i386         Linux kernel extra modules for versio
-n 3.13.0 on 32 bit x86 SMP</span>
-ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
-n 3.13.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
-n 3.13.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
-ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
-ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
-ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
-ystems
-ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
-TP) Client
-ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
-ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
-les)
-ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
-S floppies
-ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
-</code></pre>
-</div>
-
-<div id="list2" class="noscr">
-  <p>There’s <em>no</em> lines beginning with <code>rc</code>.</p>
-
-  <pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
-ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
-ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
-ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
-raries
-ii  libv4lconvert0:i386                                   1.0.1-1                                             i386         Video4<span class="grep">linux</span> frame format conversion l
-ibrary
-ii  <span class="grep">linux</span>-firmware                                        1.127.5                                             all          Firmware for Linux kernel drivers
-ii  <span class="grep">linux</span>-generic                                         3.13.0.35.42                                        i386         Complete Generic Linux kernel and hea
-ders
-ii  <span class="grep">linux</span>-generic-pae                                     3.13.0.35.42                                        i386         Transitional package.
-ii  <span class="grep">linux</span>-headers-3.13.0-34                               3.13.0-34.60                                        all          Header files related to Linux kernel
-version 3.13.0
-ii  <span class="grep">linux</span>-headers-3.13.0-34-generic                       3.13.0-34.60                                        i386         Linux kernel headers for version 3.13
-.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-headers-3.13.0-35                               3.13.0-35.62                                        all          Header files related to Linux kernel
-version 3.13.0
-ii  <span class="grep">linux</span>-headers-3.13.0-35-generic                       3.13.0-35.62                                        i386         Linux kernel headers for version 3.13
-.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-headers-generic                                 3.13.0.35.42                                        i386         Generic Linux kernel headers
-ii  <span class="grep">linux</span>-headers-generic-pae                             3.13.0.35.42                                        i386         Transitional package
-ii  <span class="grep">linux</span>-image-3.13.0-34-generic                         3.13.0-34.60                                        i386         Linux kernel image for version 3.13.0
- on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-3.13.0-35-generic                         3.13.0-35.62                                        i386         Linux kernel image for version 3.13.0
- on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-extra-3.13.0-34-generic                   3.13.0-34.60                                        i386         Linux kernel extra modules for versio
-n 3.13.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-extra-3.13.0-35-generic                   3.13.0-35.62                                        i386         Linux kernel extra modules for versio
-n 3.13.0 on 32 bit x86 SMP
-ii  <span class="grep">linux</span>-image-generic                                   3.13.0.35.42                                        i386         Generic Linux kernel image
-ii  <span class="grep">linux</span>-image-generic-pae                               3.13.0.35.42                                        i386         Transitional package
-ii  <span class="grep">linux</span>-libc-dev:i386                                   3.13.0-35.62                                        i386         Linux Kernel Headers for development
-ii  <span class="grep">linux</span>-sound-base                                      1.0.25+dfsg-0ubuntu4                                all          base package for ALSA and OSS sound s
-ystems
-ii  pptp-<span class="grep">linux</span>                                            1.7.2-7                                             i386         Point-to-Point Tunneling Protocol (PP
-TP) Client
-ii  sys<span class="grep">linux</span>                                              3:4.05+dfsg-6+deb8u1                                i386         collection of boot loaders
-ii  sys<span class="grep">linux</span>-common                                       3:4.05+dfsg-6+deb8u1                                all          collection of boot loaders (common fi
-les)
-ii  sys<span class="grep">linux</span>-legacy                                       2:3.63+dfsg-2ubuntu5                                i386         Bootloader for Linux/i386 using MS-DO
-S floppies
-ii  util-<span class="grep">linux</span>                                            2.20.1-5.1ubuntu20.1                                i386         Miscellaneous system utilities
-</code></pre>
-</div>
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Click <a href="#list1" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Click <a href="#list2" class="cliwide">here</a> to view the terminal commands and output. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-11T19:15:37+08:00</updated>
+  <updated>2014-12-11T20:08:31+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Creating $\rm \LaTeX$ Résumés on Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu/"/>
+    
+    <updated>2014-12-11T19:31:23+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I created a résumé using <a href="http://miktex.org">Mik$\rm \TeX$</a>.  Simply copy any
+sample document of the “res” class and compile it.  Things will run
+smoothly in Mik$\rm \TeX$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LaTeXResume/err.png" width="800" title="Figure 1" alt="err" /></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I glanced through the section “<a href="https://help.ubuntu.com/community/LaTeX#Installing_packages_manually">Installing packages manually</a>” in
+Ubuntu’s <em>Community Help Wiki</em>, and issued the following commands,
+after having <code>res.cls</code> <a href="http://www.ctan.org/pkg/res" title="res -- A résumé class">downloaded from CTAN</a>.</p>
+
+<pre class="cliUB"><code>$ mkdir -p ~/texmf/res
+$ mv res.cls ~/texmf/res/
+$ texhash ~/texmf
+texhash: Updating /home/owner/texmf/ls-R... 
+texhash: Done.
+</code></pre>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1855,32 +1890,6 @@ OS Wiki</em>. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
   </ol>
 </div>
 ]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Shellshock: Better 'Bash' Patches Now Available &#9733;]]></title>
-      <link href="http://www.zdnet.com/shellshock-better-bash-patches-now-available-7000034115/"/>
-    
-    <updated>2014-10-05T15:42:11+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available</id>
-    
-      <content type="html"><![CDATA[<p>Luckily, the Ubuntu updater has already fetched the lastest patch of the vunerable bash.</p>
-
-<pre class="cliUB"><code>owner@owner-Inspiron-560s:~$ env 'x=() { :;}; echo vulnerable' 'BASH_FUNC_x()=()
- { :;}; echo vulnerable' bash -c "echo test"
-bash: warning: x: ignoring function definition attempt
-bash: error importing function definition for `BASH_FUNC_x'
-test
-
-owner@owner-Inspiron-560s:~$ cd /tmp; rm -f /tmp/echo; env 'x=() { (a)=&gt;\' bash 
--c "echo date"; cat /tmp/echo
-date
-cat: /tmp/echo: No such file or directory
-owner@owner-Inspiron-560s:/tmp$ 
-</code></pre>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   
