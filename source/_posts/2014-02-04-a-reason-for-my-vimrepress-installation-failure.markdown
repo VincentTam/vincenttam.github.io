@@ -43,6 +43,6 @@ Posted via [UltraBlog.vim][end].
 ---
 [^pp]: Refer to [*My First Post Using UltraBlog.vim*][pp] for details.
 
-[pp]: /blog/2014/01/12/my-first-post-using-ultrablog-vim.html
+[pp]: /blog/2014/01/12/my-first-post-using-ultrablog-vim/
 [vim-instant-markdown]: https://github.com/suan/vim-instant-markdown
 [end]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
