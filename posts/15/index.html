@@ -211,19 +211,84 @@ and the default ruler.</p>
   </header>
 
 
-  <div class="entry-content"><p>To quote another one&#8217;s words, one can paraphrase the words. For some reason(s), (Perhaps being too lazy, or want to accurately reflect another one&#8217;s words.) one would like to directly quote what another one has said.</p>
+  <div class="entry-content"><p>To quote another one’s words, one can paraphrase the words.  For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s words.) one would like to directly quote what another
+one has said.</p>
 
-<p>To show the difference in $\rm \LaTeX$, I&#8217;ve made <a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>. It&#8217;s now on Google Docs.</p>
+<p>To show the difference in $\rm \LaTeX$, I’ve made
+<a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>.  It’s now on Google Docs.</p>
 
-<p>I created the above PDF document using <code>quote.tex</code>. (Refer to the Gist below.)</p>
+<p>I created the above PDF document using <code>quote.tex</code>.</p>
 
-<p>For many computer users who <em>aren&#8217;t</em> familiar with $\rm \LaTeX$&#8217;s syntax but HTML&#8217;s, they should find <a href="http://daringfireball.net/projects/markdown" title="Markdown">Markdown</a> easy to write, and <a href="http://johnmacfarlane.net/pandoc/" title="Pandoc">pandoc</a> easy to use.</p>
+<div><script src="https://gist.github.com/8703633.js?file=quote.tex"></script>
+<noscript><pre><code>%        File: quote.tex
+%     Created: Mon Apr 29 07:00 PM 2013 H
+% Last Change: Mon Apr 29 07:00 PM 2013 H
+%
+\documentclass[a4paper]{article}
+\usepackage{parskip}
+\author{Somobody Here}
+\title{Sample Draft Paper No. 1}
+\date{\today}
+\setlength{\parindent}{1.5em}
+\begin{document}
+\maketitle
 
-<pre class="cli"><code class="UBMono">$ pandoc -s <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> foo.markdown foo.tex</code></pre>
+Some paragraphs. After that go to~a quote. Some paragraphs.\footnote{Wells Abcd, Wealth of family} After that go to~a quote. Some paragraphs, after that go to~a quote. Some paragraphs.\footnotemark[1] After that go to~a quote.
 
-<p>The result is shown in <code>quote.markdown</code>. (Refer to <a href="https://gist.github.com/VincentTam/8703633">my Gist</a>.)</p>
+\begin{quote}
+  Some long sentence. In a capitalist society, the separation of capital, land and property is unavoidable, but harmful to workers.
+\end{quote}
+\begin{quotation}
+  Some long long sentences. So we can see the difference of two environments. Moreover, compile it and keep calm. see the result and go to have a rest after long hours facing computer.
+\end{quotation}
+
+I&#39;ve got enough hours of exposure to the screen. Testings are tedious jobs but are required.\footnote{some text here} They are the most direct way of getting answers from ``computer stuff&#39;&#39;.
+
+Some sentences.
+\end{document}
+
+</code></pre></noscript></div>
+
+<p>For many computer users who <em>aren’t</em> familiar with $\rm \LaTeX$’s
+syntax but HTML’s, they should find <a href="http://daringfireball.net/projects/markdown">Markdown</a> easy to write, and
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a> easy to use.</p>
+
+<pre class="cli"><code class="UBMono">$ pandoc -s \
+&gt; <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> \
+&gt; foo.markdown foo.tex</code></pre>
+
+<p>The result is shown in <code>quote.markdown</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.markdown"></script>
+<noscript><pre><code>% Sample Draft Paper No. 1
+% Somobody Here
+% 
+
+Some paragraphs. After that go to a quote. Some paragraphs.[^1] After
+that go to a quote. Some paragraphs, after that go to a quote. Some
+paragraphs.[1] After that go to a quote.
+
+&gt; Some long sentence. In a capitalist society, the separation of
+&gt; capital, land and property is unavoidable, but harmful to workers.
+
+&gt; Some long long sentences. So we can see the difference of two
+&gt; environments. Moreover, compile it and keep calm. see the result and
+&gt; go to have a rest after long hours facing computer.
+
+I’ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.[^2] They are the most direct way of getting
+answers from “computer stuff”.
+
+Some sentences.
+
+[^1]: Wells Abcd, Wealth of family
+
+[^2]: some text here</code></pre></noscript></div>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
 </div>
   
   
