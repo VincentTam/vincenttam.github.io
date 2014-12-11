@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-11T10:13:45+08:00</updated>
+  <updated>2014-12-11T18:47:35+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Cheat in an Online Quiz]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/"/>
+    
+    <updated>2014-12-11T18:14:44+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I saw <a href="http://www.kejifalanxi.com/en/category/quiz">an online quiz on France Technology</a>.  I <em>didn’t</em> know
+the answers, but wanted to give the <em>right</em> response.</p>
+
+<!-- more -->
+
+<h2 id="how">How?</h2>
+
+<p>First, view the HTML source code of the web page for the quiz and find
+the relevant part.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of the source code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div&gt;&lt;h3&gt;</span>1.In which year was the first French technical exhibition
+</span><span class="line">held in China?<span class="nt">&lt;/h3&gt;&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span>  <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>A.1492 <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>B.1954<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>C.1964 <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>D.2014<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="na">class=</span><span class="s">&quot;submit&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s quite obvious that ‘C’ is the answer.</p>
+
+<p>If one wants to know what will happen after clicking the “Submit”
+button, one may search for this word in the HTML source code.  In this
+case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>What does the &#8220;Submit&#8221; button do? </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.submit&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">	<span class="nx">$this</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">	<span class="nx">value</span><span class="o">=</span><span class="nx">$this</span><span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;input:radio:checked&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
+</span><span class="line">	<span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>
+</span><span class="line">	    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Congratulations! right answer~&quot;</span><span class="p">);</span>
+</span><span class="line">	<span class="p">}</span><span class="k">else</span><span class="p">{</span>
+</span><span class="line">	    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;OOPS, wrong answer~&quot;</span><span class="p">);</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Finally, one can conclude that if the radio button has the value
+<em>one</em>, then it is certainly the answer.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1804,38 +1881,6 @@ cat: /tmp/echo: No such file or directory
 owner@owner-Inspiron-560s:/tmp$ 
 </code></pre>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/10/05/shellshock-better-bash-patches-now-available/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[What Are Good File Naming Conventions? &#9733;]]></title>
-      <link href="http://oregonstate.edu/cws/training/faq/what-are-good-file-naming-conventions"/>
-    
-    <updated>2014-10-02T00:50:18+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/10/02/what-are-good-file-naming-conventions</id>
-    
-      <content type="html"><![CDATA[<p>Computer users often use the whitespace character for file names.
-Actually, this will create problems in the Command Prompt or the
-Terminal.</p>
-
-<p>Moreover, I’ve seen file names with Chinese characters.  Since those
-characters <em>aren’t</em> alphnumeric, there will be a great trouble in
-viewing them in a file browser.  How can one distinguish the different
-folders named in Chinese in the following figure?</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/FileName/tty1.jpg" alt="tty1" /></p>
-
-<p>A GUI user can argue that this is not a problem since he/she has ways
-to tell the difference between those folders with a Chinese name.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/FileName/GnomeTerminal.jpg" alt="gui" /></p>
-
-<p>However, it’s possible that the computer <em>doesn’t</em> have a good Chinese
-support, so one <em>can’t</em> view Chinese characters properly in GUI.
-Similarly, in order to avoid troubles, characters like ‘é’ and ‘ï’
-<em>shouldn’t</em> be used in a file name.</p>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/10/02/what-are-good-file-naming-conventions/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   
