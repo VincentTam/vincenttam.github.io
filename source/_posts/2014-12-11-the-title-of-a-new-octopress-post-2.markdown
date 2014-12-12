@@ -31,4 +31,6 @@ with '\\'.
     [*International Space Station Attacked by "Virus Epidemics"*][pp]
     for details.
 
+[pp]: /blog/2014/12/11/international-space-station-attacked-by-virus-epidemics/
+
 *[ISS]: International Space Station

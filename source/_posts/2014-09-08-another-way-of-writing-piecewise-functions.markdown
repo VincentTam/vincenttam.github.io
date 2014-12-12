@@ -81,6 +81,13 @@ Problem
 However, it *does* matter if I have to define a piecewise function.
 Take one defined in one of my old posts as an example.[^3]
 
+---
+(Added on DEC 12TH, 2014)
+
+Note: As you can see from the above piecewise function, the problem is
+now *gone*.
+---
+
 \\[
 f(x,y) =
   \begin{cases}
