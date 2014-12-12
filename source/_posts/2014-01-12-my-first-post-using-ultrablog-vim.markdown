@@ -3,7 +3,6 @@ layout: post
 title: My First Post Using UltraBlog.vim
 date: 2014-01-12 00:22:13 +0800
 categories: UltraBlog.vim
-published: true
 comments: true
 ---
 
