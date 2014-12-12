@@ -46,6 +46,14 @@ until the contents are correctly displayed.
 9. Copy the kramdown code and paste it under the YAML header in the
 Markdown source file for an Octopress post.
 
+Therefore, I often excute the following editor commands in [Vim].
+
+    :" returns the relative path of the file the current buffer
+    :echo expand('%')
+    :!kramdown % > %<.html
+    :sp %<.html
+{: .cliUB}
+
 ---
 [^underscore]:
     See [*Mathjax, Kramdown and Octopress*][underscore] by Lucy Park.
@@ -60,3 +68,4 @@ Markdown source file for an Octopress post.
 [pp]: https://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/index.html#method
 [jekyll]: http://jekyllrb.com
 [pandoc]: http://johnmacfarlane.net/pandoc
+[Vim]: http://www.vim.org
