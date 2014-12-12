@@ -18,6 +18,8 @@ Problem
 
 {% img fancybox center /images/posts/LaTeXResume/err.png 800 'Figure 1' 'err' %}
 
+<!-- more -->
+
 Solution
 ---
 
@@ -31,6 +33,17 @@ after having `res.cls` [downloaded from CTAN][down_file].
     texhash: Updating /home/owner/texmf/ls-R... 
     texhash: Done.
 {:.cliUB}
+
+Another problem experienced
+---
+
+I used Git to manage `res2.tex` on both \*nix and M\$ Win\*.
+Sometimes, I used public computers which *didn't* have Git and Vim.
+As a result, I edit the $\rm \LaTeX$ résumé with M\$ Notepad.  I know
+that the \*nix newline character *won't* break a line in M\$ Notepad.
+However, I *didn't* expect that the '^M' character would give an extra
+horizontal space in the resulting PDF document compiled by $\rm
+\LaTeX$.
 
 [MikTeX]: http://miktex.org
 [doc]: https://help.ubuntu.com/community/LaTeX#Installing_packages_manually
