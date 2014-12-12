@@ -20,7 +20,7 @@ How?
 First, view the HTML source code of the web page for the quiz and find
 the relevant part.
 
-{% codeblock Part of the source code lang:html %}
+{% codeblock Part of the source code for the quiz lang:html http://goo.gl/cy3GYD %}
 <div><h3>1.In which year was the first French technical exhibition
 held in China?</h3></div>
 <input type="radio"  name="d1">A.1492 <br />
@@ -37,7 +37,7 @@ If one wants to know what will happen after clicking the "Submit"
 button, one may search for this word in the HTML source code.  In this
 case, one finds a [jQuery] function.
 
-{% codeblock What does the "Submit" button do? lang:js %}
+{% codeblock What does the "Submit" button do? lang:js http://goo.gl/cy3GYD %}
 $(document).ready(function(){
   $(".submit").click(function(){
 	$this=$(this);
