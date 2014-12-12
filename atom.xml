@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-12T21:24:14+08:00</updated>
+  <updated>2014-12-12T22:59:50+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[How to Stop Auto Indenting? &#9733;]]></title>
+      <link href="http://vim.wikia.com/wiki/How_to_stop_auto_indenting"/>
+    
+    <updated>2014-12-12T22:31:11+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting</id>
+    
+      <content type="html"><![CDATA[<p>After reading this guide, I created a file
+<code>$HOME/vimfiles/indent/html.vim</code> with only one line.</p>
+
+<pre><code>let b:did_indent = 1
+</code></pre>
+
+<p>In the past, I would <code>:setlocal noautoident nosmartindent</code> before
+pasting anything into a <a href="http://www.vim.org">Vim</a> buffer.  However, as I paste the
+<a href="http://jquery.com">jQuery</a> code from a website while I was writing a recent post, the
+code was <em>still</em> wrongly indented.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>  After reading the last
+section of the tip, I now know to use <code>:set paste</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/"><em>Cheat in an Online Quiz</em></a> in Blog 1 for the copied
+<a href="http://jquery.com">jQuery</a> function. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -376,8 +411,7 @@ the answers, but wanted to give the <em>right</em> response.</p>
 <p>First, view the HTML source code of the web page for the quiz and find
 the relevant part.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of the source code </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of the source code for the quiz</span><a href="http://goo.gl/cy3GYD">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -401,8 +435,7 @@ the relevant part.</p>
 button, one may search for this word in the HTML source code.  In this
 case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>What does the &#8220;Submit&#8221; button do? </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>What does the &#8220;Submit&#8221; button do?</span><a href="http://goo.gl/cy3GYD">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -1493,59 +1526,6 @@ Successfully installed prawn-1.3.0
 <p>But I still <em>can’t</em> run the sample code correctly.  Finally, I use
 <a href="http://johnmacfarlane.net/pandoc/">pandoc</a>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Typeset Acute Accents]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/10/26/typeset-acute-accents/"/>
-    
-    <updated>2014-10-26T00:13:27+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/10/26/typeset-acute-accents</id>
-    
-      <content type="html"><![CDATA[<h2 id="target">Target</h2>
-
-<p>Typeset ‘é’ with in $\rm \LaTeX$.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/TypesetAccents/target.jpg" alt="target" /></p>
-
-<!-- more -->
-
-<h2 id="problem">Problem</h2>
-
-<p><img src="http://vincenttam.github.io/images/posts/TypesetAccents/problem.jpg" alt="failed" /></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A failed attempt </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line">I went to café yesterday.
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="method">Method</h2>
-
-<p>Add the <code>babel</code> package.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[french]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line">I went to café yesterday.
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
 ]]></content>
     
   </entry>
