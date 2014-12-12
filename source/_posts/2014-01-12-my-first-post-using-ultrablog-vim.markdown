@@ -6,6 +6,11 @@ categories: UltraBlog.vim
 comments: true
 ---
 
+*Note: This post won't make sense here. Refer to the
+[original post][op].*
+
+<!-- more -->
+
 Hello world! This is the *first* post I've ever written in
 UltraBlog.vim.
 
@@ -15,8 +20,6 @@ marks, macros, keyword completion, etc.
 I've tried [VimRepress], but this plugin gives me a host of errors
 that I, as a mediocre GNU/Linux user, *can't* understand. Hope
 UltraBlog works fine!
-
-<!-- more -->
 
 Markdown
 ---
@@ -44,5 +47,6 @@ documentation to do a bit of modification in order to get things work.
 
 Posted via [UltraBlog.vim].
 
+[op]: https://blogueun.wordpress.com/2014/01/12/my-first-post-using-ultrablog-vim/
 [VimRepress]: http://www.vim.org/scripts/script.php?script_id=3510
 [UltraBlog.vim]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
