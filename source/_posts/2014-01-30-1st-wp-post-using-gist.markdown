@@ -3,7 +3,6 @@ layout: post
 title: My First WordPress Post using Gist
 date: 2014-01-30 16:25:03 +0800
 categories: [online code highlighter, UltraBlog.vim]
-published: true
 comments: true
 ---
 
