@@ -86,6 +86,7 @@ Take one defined in one of my old posts as an example.[^3]
 
 Note: As you can see from the above piecewise function, the problem is
 now *gone*.
+
 ---
 
 \\[
