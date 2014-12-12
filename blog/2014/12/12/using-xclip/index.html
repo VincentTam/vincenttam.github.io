@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Using gVim on Windows to Create Pandoc Slides - Blog 1</title>
+  <title>Using Xclip - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="At night on 25/02/14, I tried to open gVim and use the command mode to
-issue system commands, so that I can use pandoc to create $\rm \LaTeX$
-Beamer &hellip;">
+  <meta name="description" content="Background I always use commands for different tasks. Then I need a command line
+utility for copying command output into clipboard so as to quickly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ Beamer &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/03/15/using-gvim-on-windows-to-create-pandoc-slides">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/12/12/using-xclip">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -131,7 +130,7 @@ Beamer &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Using gVim on Windows to Create Pandoc Slides</h1>
+	<h1 class="entry-title">Using Xclip</h1>
       
     
     
@@ -141,7 +140,7 @@ Beamer &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-03-15T12:49:05+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:49 pm</span></time>
+<time class='entry-date' datetime='2014-12-12T17:21:12+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -152,20 +151,52 @@ Beamer &hellip;">
   </header>
 
 
-<div class="entry-content"><p>At night on 25/02/14, I tried to open gVim and use the command mode to
-issue system commands, so that I can use pandoc to create $\rm \LaTeX$
-Beamer slides.  However, with the correct command, gVim went wrong and
-in the resulting PDF file, all lines in the source markdown files were
-concatenated into one single line.  I hadn’t encountered such error
-last time.</p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<p>With the <em>same</em> command, I managed to get back my $\rm \LaTeX$ Beamer
-slides.  As a Vim lover, I’d like to try to do things <em>within</em> the
-editor.  Therefore, I changed to the project directory and start gVim
-through the command prompt.  Then I used <code>q:</code> to find the
-corresponding <code>pandoc</code> command, and re-ran it.  Job done!</p>
+<p>I always use commands for different tasks.  Then I need a command line
+utility for copying command output into clipboard so as to quickly
+finish typing the command.  Luckily, it’s very easy to install xclip
+on Ubuntu.  I believe that on other GNU/Linux distributions, the
+installation <em>won’t</em> be too difficult.</p>
 
-<!-- vim:set tw=70:wrap: -->
+<p>Although it’s convenient to use xclip, I experienced two problems
+while using it on *nix GUI.</p>
+
+<h2 id="problem-1">Problem 1</h2>
+
+<p>Suppose that you want to capture the output of a command, and pipe it
+to another command.  However, the output often consists of a trailing
+newline character.  As a result, I sometimes executed commands
+incorrectly and carelessly.  <strong>How can one get rid of it?</strong></p>
+
+<h2 id="problem-2">Problem 2</h2>
+
+<p>Before this Wednesday morning, I <em>didn’t</em> know how to use xclip with
+other options.  Therefore, when I wanted to retrieve to contents in
+the clipboard, the <em>only</em> two ways that I knew were to use the utility
+with the <code>-o</code> flag to obtain the <strong>o</strong>utput, and to use the middle
+click of the mouse.  However, from problem one, I <em>couldn’t</em> chop off
+the newline character at the end of the clipped text.  Moreover, if
+one only needs <em>part</em> of the text in the clipboard, it would be quite
+troublesome to pipe the output of <code>xclip -o</code> to other text editing
+commands like <code>sed</code> and <code>awk</code>.  If one can use a keyboard shortcut for
+pasting text in a terminal emulator like Gnome Terminal (e.g.
+<code>&lt;C-v&gt;</code>), then one can also use <code>&lt;C-b&gt;</code>, <code>&lt;Alt-d&gt;</code>, etc. For example,
+if there’re three words in the clipboard, and I only need the last
+two, then combining the use of these keyboard shortcuts will enable
+one to type strings quickly and accurately.  <strong>Is there such a
+keyboard shortcut?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I found two Stack Overflow quesitons extremely useful for improving my
+skills in xclip.</p>
+
+<ol>
+  <li><a href="http://stackoverflow.com/a/12524320">Bash: Strip trailing linebreak from output</a></li>
+  <li><a href="http://stackoverflow.com/a/4208191">Pipe to/from Clipboard</a></li>
+</ol>
+
 </div>
 
 
@@ -181,12 +212,12 @@ corresponding <code>pandoc</code> command, and re-ran it.  Job done!</p>
 
 
 
-<time class='entry-date' datetime='2014-03-15T12:49:05+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:49 pm</span></time>
+<time class='entry-date' datetime='2014-12-12T17:21:12+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/m$-win-star/'>m$ win*</a>, <a class='category' href='/blog/categories/pandoc/'>pandoc</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>
   
 </span>
 
@@ -195,7 +226,7 @@ corresponding <code>pandoc</code> command, and re-ran it.  Job done!</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/03/15/using-gvim-on-windows-to-create-pandoc-slides/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/03/15/using-gvim-on-windows-to-create-pandoc-slides/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/12/12/using-xclip/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/12/12/using-xclip/" >Tweet</a>
   
   
   
@@ -206,10 +237,8 @@ corresponding <code>pandoc</code> command, and re-ran it.  Job done!</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/02/a-vim-lover-page/" title="Previous Post: A Vim Lover Page">&laquo; A Vim Lover Page</a>
+        <a class="basic-alignment left" href="/blog/2014/12/12/octopress-search-error/" title="Previous Post: Octopress Search Error">&laquo; Octopress Search Error</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/15/complicated-pandoc-commands/" title="Next Post: Complicated Pandoc Commands">Complicated Pandoc Commands &raquo;</a>
       
     </p>
   </footer>
@@ -323,8 +352,8 @@ corresponding <code>pandoc</code> command, and re-ran it.  Job done!</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/03/15/using-gvim-on-windows-to-create-pandoc-slides/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/03/15/using-gvim-on-windows-to-create-pandoc-slides/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/12/12/using-xclip/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/12/12/using-xclip/';
         var disqus_script = 'embed.js';
       
     (function () {

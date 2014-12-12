@@ -9,8 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: I	don’t use Clapper’s image popup plugin anymore,
-so the settings below are now gone. Objective To set up a user-friendly RSS feeds layout. &hellip;">
+  <meta name="description" content="Reason for the upgrade This Sunday, I opened VLC to watch video, and ran into a “potential PulseAudio version problem”. My clumsy way to fix the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +125,60 @@ so the settings below are now gone. Objective To set up a user-friendly RSS feed
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/11/upgrade-pulseaudio-in-ubuntu-12-dot-04/">Upgrade PulseAudio in Ubuntu 12.04</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-11T20:22:51+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:22 pm</span></time>
+        
+           | <a href="/blog/2014/06/11/upgrade-pulseaudio-in-ubuntu-12-dot-04/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/11/upgrade-pulseaudio-in-ubuntu-12-dot-04/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/11/upgrade-pulseaudio-in-ubuntu-12-dot-04/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="reason-for-the-upgrade">Reason for the upgrade</h2>
+
+<p>This Sunday, I opened <a href="https://www.videolan.org/vlc/" title="VLC media player">VLC</a> to watch video, and ran into a “potential PulseAudio version problem”.</p>
+
+<p><img src="/images/posts/PulseAudioUpgrade/errors.png" alt="VLC error dialog showing a PulseAudio version problem" /></p>
+
+<h2 id="my-clumsy-way-to-fix-the-issue">My clumsy way to fix the issue</h2>
+
+<p>Among the sites found with Google, I can only understand the instructions from <a href="http://askubuntu.com/a/289380" title="How to upgrade pulseaudio">a question on Ask Ubuntu</a>.</p>
+
+<p>I typed in the command word-by-word like this.</p>
+
+<pre class="cliUB"><code>$ sudo add-apt-repository ppa:ubuntu:audio-dev/ppa
+</code></pre>
+
+<p>Then I got an error.  I read <a href="https://launchpad.net/~ubuntu-audio-dev/+archive/ppa">Ubuntu Audio Development Team’s PPA</a> on Launchpad to remind myself the command for adding PPAs.  I saw that I <em>didn’t</em> include <code>/ppa</code> at the end, so I added it back and ran the command again.  However, it <em>failed</em> again.</p>
+
+<p>Finally, I discovered that I had made a silly mistake in the command in the command: the <code>:</code> between <code>ubuntu</code> and <code>audio</code> should be <code>-</code>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -643,63 +696,6 @@ include a code block in a list item.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/04/omit-forward-slashes-on-www/">Omit Forward Slashes on WWW</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-04T19:01:28+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:01 pm</span></time>
-        
-           | <a href="/blog/2014/06/04/omit-forward-slashes-on-www/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/06/04/omit-forward-slashes-on-www/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/04/omit-forward-slashes-on-www/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This Sunday, I saw a piece of news which was written in 2009, but I
-think that many Internet users <em>don’t</em> know about its main idea.</p>
-
-<blockquote><p>&#8230;the address could have worked perfectly well without the two extra<br />unnecessary keystrokes.</p><footer><strong>Niall Firth</strong> <cite><a href="http://www.dailymail.co.uk/sciencetech/article-1220286/Sir-Tim-Berners-Lee-admits-forward-slashes-web-address-mistake.html">Sir Tim Berners-Lee Admits the Forward Slashes in Every Web Address &#8216;Were a Mistake&#8217;</a></cite></footer></blockquote>
-
-<p>Although it is a piece of old news, it is quite exciting to me.  It is
-likely that some netizens who usually use a modern browser, which
-automatically fills up the type of protocol used on the left-hand side
-of the three ‘w’s in the input URL<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, find this information useless.
-However, I sometimes need to specify the communication protocol in the
-URL (say, changing HTTP to HTTPS) for browsing some web contents.</p>
-
-<hr />
-
-<!-- vim:se tw=70: -->
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://www.telegraph.co.uk/technology/news/6321463/Sir-Tim-Berners-Lee-admits-forward-slashes-on-World-Wide-Web-were-a-mistake.html" title="Sir Tim Berners-Lee admits forward slashes on World Wide Web 'were a mistake'–The Telegraph">A similar news report from <em>the Telegraph</em></a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -741,7 +737,7 @@ URL (say, changing HTTP to HTTPS) for browsing some web contents.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (29)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (30)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -763,6 +759,10 @@ URL (say, changing HTTP to HTTPS) for browsing some web contents.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/12/using-xclip/">Using Xclip</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/12/octopress-search-error/">Octopress Search Error</a>
       </li>
     
@@ -776,10 +776,6 @@ URL (say, changing HTTP to HTTPS) for browsing some web contents.</p>
     
       <li class="post">
         <a href="/blog/2014/12/11/go-green-save-green-with-linux/">Go Green, Save Green With Linux</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu/">Creating $\rm \LaTeX$ Résumés on Ubuntu</a>
       </li>
     
   </ul>
