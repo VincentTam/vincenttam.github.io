@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I suspect that after I write the blog with UltraBlog in Vim and editing the contents with the online editor, the changes done using the online editor &hellip;">
+  <meta name="description" content="I suspect that after I write the blog with UltraBlog in Vim and
+editing the contents with the online editor, the changes done using
+the online editor &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -150,47 +152,69 @@
   </header>
 
 
-<div class="entry-content"><p>I suspect that after I write the blog with UltraBlog in Vim and editing the contents with the online editor, the changes done using the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
+<div class="entry-content"><p>I suspect that after I write the blog with UltraBlog in Vim and
+editing the contents with the online editor, the changes done using
+the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
 
-<p>Let&#8217;s see how it works. (Typed on <a href="http://wordpress.com">WordPress.com</a>.)</p>
+<p>Let’s see how it works. (Typed on <a href="http://wordpress.com">WordPress.com</a>.)</p>
 
 <!-- more -->
 
-<p>When I reopened the <em>same</em> post in Vim, I realised that the second paragraph is gone! I <em>was</em> disappointed for a while, and googled &#8220;ultrablog update database&#8221;. However, there are too few websites about UltraBlog.vim. Its ineffective to use Google to solve this problem.</p>
+<p>When I reopened the <em>same</em> post in Vim, I realised that the second
+paragraph is gone! I <em>was</em> disappointed for a while, and googled
+“ultrablog update database”. However, there are too few websites about
+UltraBlog.vim. Its ineffective to use Google to solve this problem.</p>
 
-<img class="fancybox" src="/images/posts/UBWPEdit/posted_via_ultrablog.png" title="screenshot of the first Google search result" alt="fig1">
+<p><img class="fancybox" src="/images/posts/UBWPEdit/posted_via_ultrablog.png" title="Screenshot of the first Google search result" alt="fig1" /></p>
 
-<p>From the above figure, it seems that there&#8217;s 544 search results that contain the <em>entire</em> string &#8220;posted via ultrablog.vim&#8221;.</p>
+<p>From the above figure, it seems that there’s 544 search results that
+contain the <em>entire</em> string “posted via ultrablog.vim”.</p>
 
-<img class="fancybox" src="/images/posts/UBWPEdit/posted_via_ultrablog3.png" title="screenshot of the last Google search result" alt="fig2">
+<p><img class="fancybox" src="/images/posts/UBWPEdit/posted_via_ultrablog3.png" title="screenshot of the last Google search result" alt="fig2" /></p>
 
-<p>However, I go to the third page and find out that hundreds of search results have been omitted.</p>
+<p>However, I go to the third page and find out that hundreds of search
+results have been omitted.</p>
 
-<p>The above two screenshots show that the number of users of UltraBlog.vim is <em>not</em> as many as other free softwares, libraries or plugins. One may need to wait for the adoption of this plugin by more Vim users before being able to find a forum post on problems using this plugin, provided that he/she doesn&#8217;t start a new thread on the plugin.</p>
+<p>The above two screenshots show that the number of users of
+UltraBlog.vim is <em>not</em> as many as other free softwares, libraries or
+plugins. One may need to wait for the adoption of this plugin by more
+Vim users before being able to find a forum post on problems using
+this plugin, provided that he/she doesn’t start a new thread on the
+plugin.</p>
 
-<p>Although there&#8217;s only a few UltraBlog.vim users, it&#8217;s still an incredibly excellent blogging plugin.</p>
+<p>Although there’s only a few UltraBlog.vim users, it’s still an
+incredibly excellent blogging plugin.</p>
 
-<p>How can I solve my doubts about updating the local database with the remote one?</p>
+<p>How can I solve my doubts about updating the local database with the
+remote one?</p>
 
-<p>When Google <em>doesn&#8217;t</em> work, then it&#8217;s sensible for one to go for the official documentation. Geeks will find it informative, but I, as a mediocre <a href="https://www.gnu.org/gnu/gnu-users-never-heard-of-gnu.html"><em>GNU/Linux</em></a> user, often find it hard to retrieve information from manuals.</p>
+<p>When Google <em>doesn’t</em> work, then it’s sensible for one to go for the
+official documentation. Geeks will find it informative, but I, as a
+mediocre <a href="https://www.gnu.org/gnu/gnu-users-never-heard-of-gnu.ht l"><em>GNU/Linux</em></a> user, often find it hard to retrieve
+information from manuals.</p>
 
-<p>For example, I searched UltraBlog&#8217;s official documentation for &#8220;sync&#8221;, but failed. Luckily, in the help for the command <code>:UBList</code> (in <code>UltraBlog.txt</code>), I&#8217;ve found something useful:</p>
+<p>For example, I searched UltraBlog’s official documentation for “sync”,
+but failed. Luckily, in the help for the command <code>:UBList</code> (in
+<code>UltraBlog.txt</code>), I’ve found something useful:</p>
 
-<pre class="cli"><code class="UBMono">:UBList post remote 50
+<pre class="cli"><code>:UBList post remote 50
 
 This command lists the latest 50 posts in the blog.
 
-Pressing the ENTER key in a remote post list will open the post under 
-cursor and save it to the local database if it is not in it, otherwise, 
-the local copy will be opened instead of the remote one. This enables 
+Pressing the ENTER key in a remote post list will open the post under
+cursor and save it to the local database if it is not in it, otherwise,
+the local copy will be opened instead of the remote one. This enables
 users to modify markdown source and update the remote post.
 
 The remote post list doesn't support paging.
 </code></pre>
 
-<p>This solves the problem: I just delete my local copy before downloading the remote copy if the local copy is older than the remote copy.</p>
+<p>This solves the problem: I just delete my local copy before
+downloading the remote copy if the local copy is older than the remote
+copy.</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
 </div>
 
 
@@ -220,7 +244,7 @@ The remote post list doesn't support paging.
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/" >Tweet</a>
   
   
   
@@ -283,7 +307,7 @@ The remote post list doesn't support paging.
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (37)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (38)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -301,6 +325,10 @@ The remote post list doesn't support paging.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/12/octopress-search-error/">Octopress Search Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/11/the-title-of-a-new-octopress-post-2/">The Title of a New Octopress Post (2)</a>
       </li>
     
@@ -314,10 +342,6 @@ The remote post list doesn't support paging.
     
       <li class="post">
         <a href="/blog/2014/12/11/creating-$-slash-slash-rm-slash-slash-latex$-resumes-on-ubuntu/">Creating $\rm \LaTeX$ Résumés on Ubuntu</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/cheat-in-an-online-quiz/">Cheat in an Online Quiz</a>
       </li>
     
   </ul>
@@ -348,8 +372,8 @@ The remote post list doesn't support paging.
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/01/19/ultrablog-wordpress-edit/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/';
         var disqus_script = 'embed.js';
       
     (function () {

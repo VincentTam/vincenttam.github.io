@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-12T11:23:56+08:00</updated>
+  <updated>2014-12-12T15:44:27+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,142 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress Search Error]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/12/octopress-search-error/"/>
+    
+    <updated>2014-12-12T12:52:12+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/12/octopress-search-error</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I used the search box in the navigation bar to search for pages in
+this blog.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/err1.png" width="800" title="‘Searched with the search box for pages in this blog’ ‘err1’" ></p>
+
+<p>It had been working well, but a month ago, the box searched for
+webpages <em>other</em> than those in this blog.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/err2.png" width="800" title="‘Custion search failed’ ‘err2’" ></p>
+
+<p><strong>How to limit the search to pages within this site only</strong>?</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I read the generated HTML code for the search box, and compared the
+difference between a version of an HTML file in November, and another
+version in early October.  However, I <em>couldn’t</em> find out the reason.</p>
+
+<h2 id="a-temporary-fix">A temporary “fix”</h2>
+
+<h3 id="local-re-generation-and-preview-of-site-contents-on-nix">Local re-generation and preview of site contents on *nix</h3>
+
+<p>I noticed that the custom search failed after I had uploaded a Git
+commit which had been written on M$ Win* 7.<sup id="fnref:befd4a7"><a href="#fn:befd4a7" class="footnote">1</a></sup>  Therefore,
+when I was using my *nix desktop, I re-generated this site and
+previewed it.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/temp_fix1.png" width="800" title="‘Locally generated site on Ubuntu’ ‘temp_fix1’" ></p>
+
+<p>I saw that The search box worked fine this time.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/temp_fix2.png" width="800" title="‘The problem was gone!’ ‘temp_fix2’" ></p>
+
+<p>Then, I <em>didn’t</em> hesitate to deploy this site to GitHub
+Pages.<sup id="fnref:2e56754"><a href="#fn:2e56754" class="footnote">2</a></sup></p>
+
+<h3 id="confirmed-the-fix">Confirmed the “fix”</h3>
+
+<p>I browsed this blog on GitHub Pages to make sure that the problem had
+been “fixed”.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/temp_fix3.png" width="800" title="‘Test the fix on GitHub Pages’ ‘temp_fix3’" ><br />
+<img class="fancybox center" src="/images/posts/OctSearchErr/temp_fix4.png" width="800" title="‘The problem was really gone!’ ‘temp_fix4’" ></p>
+
+<h3 id="failed-to-find-the-cause">Failed to find the cause</h3>
+
+<p>I guessed that this was due to the difference between *nix and M$
+Win*, after failing to find any clue from comparing the source code
+in different versions.</p>
+
+<h2 id="problem-appeared-again">Problem appeared again</h2>
+
+<p>I generated this site again on M$ Win* since I had updated a
+page.<sup id="fnref:6ea49e8"><a href="#fn:6ea49e8" class="footnote">3</a></sup> <sup id="fnref:31c066a"><a href="#fn:31c066a" class="footnote">4</a></sup>  Then the search box <em>couldn’t</em> limit the
+search to pages within this blog.</p>
+
+<h2 id="repeating-the-fix">Repeating the “fix”</h2>
+
+<p>Three days ago, after pulling the recent commits from the remote
+repository of this blog on GitHub, I wrote another post on Ubuntu, and
+locally generated this site before publishing the post.<sup id="fnref:af4f216"><a href="#fn:af4f216" class="footnote">5</a></sup>
+Unluckily, the search box still <em>failed</em> to work.</p>
+
+<p>Moreover, I <em>couldn’t</em> understand why the custom search <em>failed</em> in
+Mozilla Firefox and Google Chrome, but <em>worked</em> in M$ Internet
+Explorer.</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="fix-the-problem">Fix the problem</h3>
+
+<p>I found the page <a href="https://cuit.columbia.edu/add-search-box"><em>Add a Search Box</em></a> from the Columbia
+University.  I followed the steps for limiting the search by
+site.<sup id="fnref:35955df"><a href="#fn:35955df" class="footnote">6</a></sup>  <em>Without</em> the line <code>&lt;input type="hidden" name="as_dt"
+value="i"/&gt;</code> in <code>source/_includes/navigation.html</code>, the search box
+still work fine.</p>
+
+<p><img class="fancybox center" src="/images/posts/OctSearchErr/sol1.png" width="800" title="‘Locally generated site on Ubuntu’ ‘sol1’" ><br />
+<img class="fancybox center" src="/images/posts/OctSearchErr/sol2.png" width="800" title="‘The search box can finally limit the search by site.’ ‘sol2’" ></p>
+
+<h3 id="test-the-fix">Test the fix</h3>
+
+<p>In the past, I used <code>rake preview</code> to detect any errors.  As the
+number of posts and pages grew, this method has become <em>inefficient</em>.</p>
+
+<p>While testing the instructions in this guide, I put the HTML code for
+the custom search box in an HTML file, and viewed the effects in
+Firefox.  The URL variable <code>ei</code> was still there, but the custom search
+was restricted to this site <em>only</em>.</p>
+
+<p>After solving this problem, I discovered another solution in the pull
+requests of Octopress.<sup id="fnref:alt_sol"><a href="#fn:alt_sol" class="footnote">7</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:befd4a7">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/befd4a7">befd4a7</a> on the <code>source</code> branch for details. <a href="#fnref:befd4a7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2e56754">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/2e56754">2e56754</a> on the <code>master</code> branch for details. <a href="#fnref:2e56754" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6ea49e8">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/6ea49e8">6ea49e8</a> on the <code>source</code> branch for details. <a href="#fnref:6ea49e8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:31c066a">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/31c066a">31c066a</a> on the <code>master</code> branch for details. <a href="#fnref:31c066a" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:af4f216">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/af4f216">af4f216</a> on the <code>source</code> branch for details. <a href="#fnref:af4f216" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:35955df">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/35955df">35955df</a> on the <code>source</code> branch for details. <a href="#fnref:35955df" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:alt_sol">
+      <p>See <a href="https://github.com/imathis/octopress/pull/1681">Octopress issue 1681</a> for details. <a href="#fnref:alt_sol" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -232,56 +368,6 @@ the instructions of the command prompt, and the useful function was
 then enabled.</p>
 
 <p><img src="/images/posts/RakePreviewMS/fig.jpg" alt="cmd prompt" class="fancybox" /></p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Custom JavaScripts in the Head of Octopress Pages]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/"/>
-    
-    <updated>2014-09-12T21:51:59+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages</id>
-    
-      <content type="html"><![CDATA[<p>When I set up <em>Blog 1</em> for MathJax and fancybox, I included some
-custom code in <code>source/_includes/custom/head.html</code>.  I moved them to
-<code>source/javascripts/MathJaxLocal.js</code> and
-<code>source/javascripts/FancyBoxLocal.js</code> because I <em>don’t</em> like
-JavaScript code inside HTML files.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>In the past, I put those code in <code>source/_includes/custom/head.html</code>
-because of Felix Chern’s post.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  However, there’s another better
-way.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  Why is it better?  It saves thousands of lines of code.
-Apart from that, it’s a way to separate the behaviour of a document
-from the contents.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-<p><img class="fancybox" src="/images/posts/OctHead/MasterPull.png" width="900" title="‘Statistics on the changes’ ‘git-diff –stat’" ></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/697d086" title="Moved javascript code from a HTML file">697d086</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/d6d3633" title="Added two new posts, and updated MathJax equations">d6d3633</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>See <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/"><em>Writing Math Equations on Octopress</em></a> in Carpe Diem. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="http://drz.ac/2013/01/03/blogging-with-math/"><em>Blogging With Math: Octopress, MathJax, and Pandoc</em></a> in
-DrZ.ac. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-
-      <p>See
-<a href="http://www.w3.org/2001/tag/doc/contentPresentation-26.html"><em>Separation of semantic and presentational markup, to the extent possible, is architecturally sound</em></a>
-in W3C. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
