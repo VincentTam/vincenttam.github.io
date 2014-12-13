@@ -74,6 +74,10 @@ Overflow.
     Therefore, I changed the rules so that they would only be invoked
     when one quickly typed any one of these characters *twice*.
 
+    Remarks: On Ubuntu 14.04 LTS, I have the *same* experience.  Thus,
+    I just copied the whole autocommand group to
+    [my VIMRC there][2379ba7].
+
 [LaTeX-Suite]: http://vim-latex.sourceforge.net
 [pp1]: /blog/2013/12/11/links-to-good-posts/
 [vim_user_man]: http://vimdoc.sourceforge.net/htmldoc/usr_40.html#40.3
@@ -84,3 +88,4 @@ Overflow.
 [Vim]: http://www.vim.org
 [so8826323]: http://stackoverflow.com/a/8826323
 [vim_hard]: http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
+[2379ba7]: https://gist.github.com/vincenttam/2379ba75d6ad703a3786
