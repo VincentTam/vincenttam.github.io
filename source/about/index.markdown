@@ -55,11 +55,10 @@ My custom settings
 - [My $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
 - [My Vim registers][myvimreg]: I use some custom Vim registers as
     shorthand.
-- My VIMRC ([on M\$ Win\* 7][vimrc_ms])
+- <del>My VIMRC (on M\$ Win\* 7)</del>
 
 [mymacros]: /about/mymacros.html
 [myvimreg]: /about/myvimreg.html
-[vimrc_ms]: https://gist.github.com/VincentTam/46cfc7da126fb9477ed9
 
 My Math Notes
 ---

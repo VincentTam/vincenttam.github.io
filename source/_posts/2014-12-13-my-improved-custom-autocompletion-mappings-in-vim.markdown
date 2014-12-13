@@ -66,7 +66,7 @@ Overflow.
     shorter mappings.
 
 [^vimrc_ms]:
-    View my VIMRC on M\$ Win\* 7 at commit [5bf494e].
+    <del>View my VIMRC on M\$ Win\* 7 at commit 5bf494e.</del>
 
     This morning, I tried to write similar keyboard shortcuts for
     '\'', '\"' and '\`' at lines 62--63 and 67.  However, typing two
@@ -84,4 +84,3 @@ Overflow.
 [Vim]: http://www.vim.org
 [so8826323]: http://stackoverflow.com/a/8826323
 [vim_hard]: http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
-[5bf494e]: http://goo.gl/Vx2G5X
