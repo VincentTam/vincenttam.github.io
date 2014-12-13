@@ -20,14 +20,14 @@ directly quote his words here.
 
 This can be explained in this way: it's unproductive to use a mouse
 for text editing. [A relevant question on Stack Overflow][so1088387]
-was answered by many users. Mark Rushakoff finds Vim's keyboard
+was answered by many users. Mark Rushakoff finds [Vim]'s keyboard
 commands *"almost priceless"* since your fingers don't have to leave
 the keyboard and grab the mouse. Jeremy Smyth describes this as the
-"biggest gain" of using Vim or Emacs.
+"biggest gain" of using [Vim] or Emacs.
 
 As suggested by Aknow::Work's words above, we can use [Gist.vim] so
-that we can make use of the advantages of Vim while writing code, and
-post the code onto [Gist] quickly.
+that we can make use of the advantages of [Vim] while writing code,
+and post the code onto [Gist] quickly.
 
 Except the official `README.mkd`, there's
 [a tutorial on ServerWatch][tut] for [Gist.vim] newbies. This article
@@ -39,6 +39,7 @@ Posted via [UltraBlog.vim][end].
 [GitHub]: https://github.com
 [src]: http://aknow-work.blogspot.hk/2013/04/programmer-code-gist-vim.html
 [so1088387]: http://stackoverflow.com/q/1088387 "Vim vs Mouse"
+[Vim]: http://www.vim.org
 [Gist.vim]: https://github.com/mattn/gist-vim
 [tut]: http://www.serverwatch.com/tutorials/article.php/3931076/Get-More-Out-of-Git-Use-Gist-With-Vim.htm "Gist Tutorial"
 [end]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
