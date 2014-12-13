@@ -65,7 +65,14 @@ Overflow.
     [*Working With Vim’s Autocommand Groups*][pp2] in Blog 1 for the
     shorter mappings.
 
-[^vimrc_ms]: View my VIMRC on M\$ Win\* 7 at commit [5bf494e].
+[^vimrc_ms]:
+    View my VIMRC on M\$ Win\* 7 at commit [5bf494e].
+
+    This morning, I tried to write similar keyboard shortcuts for
+    '\'', '\"' and '\`' at lines 62--63 and 67.  However, typing two
+    '\"'s quickly on M\$ Win\* 7, GVim *duplicated* my input.
+    Therefore, I changed the rules so that they would only be invoked
+    when one quickly typed any one of these characters *twice*.
 
 [LaTeX-Suite]: http://vim-latex.sourceforge.net
 [pp1]: /blog/2013/12/11/links-to-good-posts/
