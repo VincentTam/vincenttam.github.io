@@ -60,7 +60,7 @@ My custom settings
 
 [mymacros]: /about/mymacros.html
 [myvimreg]: /about/myvimreg.html
-[vimrc_ub]: https://gist.github.com/vincenttam/2379ba75d6ad703a3786
+[vimrc_ub]: https://gist.github.com/VincentTam/2379ba75d6ad703a3786
 
 My Math Notes
 ---

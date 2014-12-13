@@ -88,4 +88,4 @@ Overflow.
 [Vim]: http://www.vim.org
 [so8826323]: http://stackoverflow.com/a/8826323
 [vim_hard]: http://learnvimscriptthehardway.stevelosh.com/chapters/14.html
-[2379ba7]: https://gist.github.com/vincenttam/2379ba75d6ad703a3786
+[2379ba7]: https://gist.github.com/VincentTam/2379ba75d6ad703a3786
