@@ -52,7 +52,7 @@ au BufLeave *.tex set nospell
 aug END
 {% endcodeblock %}
 
-At line 87, I initially tried using a whitespace character to separate
+At line 2, I initially tried using a whitespace character to separate
 the two extension names. After that, I tried to edit an HTML file with
 the command `:e testing.html`, but the autocompletion didn't work. For
 the command `:e testing.htm`, Vim threw me an error. It took me a
