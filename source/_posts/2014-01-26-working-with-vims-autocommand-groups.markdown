@@ -100,10 +100,22 @@ au Filetype tex setlocal spell
 aug END
 {% endcodeblock %}
 
+---
+(Added on DEC 13, 2014)
+
+These custom mappings will interfere with those of
+[$\rm \LaTeX$-Suite][LaTeX-Suite] if one typed `:so foo.tex` in a
+buffer in which an HTML file is opened.  Now, I have
+[improved my mappings][np].
+
+---
+
 Posted via [UltraBlog.vim][end].
 
 [pp]: /blog/2013/12/11/links-to-good-posts/
 [Vim-Snippets]: http://github.com/honza/vim-Snippets
 [Vim]: http://www.vim.org
 [Vim-surround]: http://github.com/tpope/vim-surround
+[LaTeX-Suite]: http://vim-latex.sourceforge.net
+[np]: /blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/ "My Improved Custom Autocompletion Mappings in Vim"
 [end]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
