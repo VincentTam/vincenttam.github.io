@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-12T22:59:50+08:00</updated>
+  <updated>2014-12-13T17:45:18+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,74 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (2)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/"/>
+    
+    <updated>2014-12-13T11:06:59+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>In the <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">previous post</a> in this series, I’ve listed a number of
+steps and included a group of <a href="http://www.vim.org">Vim</a> editor commands for screening out
+<a href="http://kramdown.gettalong.org">kramdown</a> syntax errors.  This is useful for [Octopress] posts with
+ordinary contents.  However, if one wants to write some math equations
+using <a href="http://www.mathjax.org">MathJax</a>, then one will encounter great difficulties.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<!-- more -->
+
+<p>Even though the <a href="http://kramdown.gettalong.org">kramdown</a> command line utility enables users to
+instantly convert code across different formats, and a web browser
+enables them to notice any syntax error, these tools just help them to
+find the mistakes, but <em>not</em> the solution.  In the cited post in the
+<a href="#fn:pp1">first footnote</a>, I spent <em>hours</em> to realise that <em>exactly
+eight ‘\s’</em> were needed to break the current line in <a href="http://www.mathjax.org">MathJax</a>.
+After that, I feel that using eight ‘\s’ and adding a ‘\’ before a
+‘_’ in <a href="http://www.mathjax.org">MathJax</a> equations interrupt my thinking.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Reading <a href="/blog/2014/09/13/completely-remove-linux-kernels/" title="Completely Remove Linux Kernels">an old post on removing Linux kernels on Ubuntu</a>, I
+remembered that the <code>markdown</code> attribute in <code>&lt;div markdown="1"&gt;</code>
+enabled <a href="http://kramdown.gettalong.org">kramdown</a> to interpret the Markdown code within the <code>&lt;div&gt;</code>
+block.  Therefore, I tried to surround the HTML code for an inline
+math expression with a <code>&lt;span&gt;</code> tag.  Unluckily, unlike <code>&lt;div&gt;</code>
+blocks, the surrounded code was <em>still</em> interpreted by <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
+
+<p>After that, I read the syntax documentation.  It claimed that setting
+<code>markdown="0"</code> disabled parsing of contents inside the tag <em>except</em>
+for <code>&lt;span&gt;</code> tags.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">2</a></sup>  Though the manual says that it’s
+<em>impossible</em>, I still inserted it into the <code>&lt;span&gt;</code> tag which
+surrounded the code for the <a href="http://www.mathjax.org">MathJax</a> math expression, because it
+<em>didn’t</em> take much time to see the result: the inline <a href="http://www.mathjax.org">MathJax</a>
+expression could be <em>successfully</em> displayed.<sup id="fnref:pp3"><a href="#fn:pp3" class="footnote">3</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+      <p>For example, it’s troublesome to <a href="/blog/2014/09/07/mathjax-and-rss/" title="MathJax and RSS">start a new line</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:doc">
+
+      <p>See the first bullet point of the section “HTML Spans” in
+<a href="http://kramdown.gettalong.org/syntax.html#html-spans">kramdown’s syntax documentation</a>. <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp3">
+
+      <p>See <a href="/blog/2014/12/09/a-group-of-689-elements/"><em>A Group of 689 Elements</em></a> and
+<a href="https://github.com/vincenttam/vincenttam.github.io/commit/af4f216">its source code</a> in Blog 1 at commit af4f216 for a
+working example. <a href="#fnref:pp3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -80,7 +148,7 @@ Markdown source file for an Octopress post.</li>
     </li>
     <li id="fn:8backslash">
 
-      <p>See <a href="https://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
+      <p>See <a href="/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -577,107 +645,6 @@ Blog 1 for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
 
       <p>See <a href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/"><em>Archimedean Sequence of Partitions of a Square</em></a> in
 Blog 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MathJax and RSS]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/"/>
-    
-    <updated>2014-09-07T22:31:11+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>In the past, I used double dollar signs <code>$$</code> to enclose block
-equations.  As a result, readers <em>couldn’t</em> see them in <a href="https://www.mozilla.org/firefox/">Firefox</a>.</p>
-
-<p><img class="fancybox /images/posts/MathJaxDisplay/old.png 900 ‘No block equation in <abbr title=Rich Site" src="Summary">RSS</abbr>’&#8221; title=&#8221;‘old’&#8221; ></p>
-
-<p><strong>How can these missing parts be put back to the <abbr title="Rich Site Summary">RSS</abbr> feeds?</strong></p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>I <em>didn’t</em> know how to use</p>
-
-<ol>
-  <li>typeset curly brackets <code>{}</code> using MathJax <em>without</em> using <code>$$</code> to
-surround the brackets.  If only one <code>$</code> was used, then it would fail.
-For example, <code>$\{a_k\}$</code> <em>wouldn’t</em> work.</li>
-  <li>inline display mode for summation, limit, etc.</li>
-  <li><code>\[</code> and <code>\]</code> to surround block equations in Octopress.</li>
-</ol>
-
-<p>Now, I know that <a href="http://kramdown.gettalong.org/">kramdown</a> parses the Markdown source code for a post
-<em>before</em> <a href="http://www.mathjax.org/">MathJax</a> does.  Therefore, to mean a backslash ‘\’, one
-needs to “double the effort”.  (i.e. use <code>\\{a_k\\}</code> for $\{a_k\}$)
-Moreover, I have to use backslash ‘\’ to escape askterisks <code>*</code> and
-underscores <code>_</code>.</p>
-
-<p>Before I upgraded to Ruby 2 and updated my Octopress source code<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
-<code>$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$</code> <em>didn’t</em> work.
-Now, I can insert inline display equations like
-$\displaystyle \lim_{k \to \infty} \frac{1}{k} = 0$.</p>
-
-<p>With reference to an example on the MathJax <abbr title="Content Delivery Network">CDN</abbr>, I’ve learnt to use
-<code>begin{equation}</code> just like what $\rm \LaTeX$ users do.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  When
-using it, there’s <em>no</em> need to use <code>$$</code> to surround it.</p>
-
-<p>Viewing <a href="http://drz.ac/javascripts/MathJaxLocal.js"><code>MathJaxLocal.js</code></a> on <em>DrZ.ac</em>, I know why I <em>couldn’t</em>
-use <code>\[</code> for a block equation—I <em>didn’t</em> add it to the corresponding
-list of delimiters in <code>displayMath</code>.  Actually, at that line, the
-whitespace character between two square brackets <code>[</code> <em>aren’t</em>
-necessary.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p>While editing a multi-line block equation in a post about the
-Contraction Mapping Principle, I encountered a technical problem:
-there’s <em>no</em> newline character in the equation.  I could just see
-<em>one very long line</em>.  To see how the code was interpreted, I made a
-screenshot of Firefox before MathJax loaded.</p>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay/trial.png" title="‘MathJax code processed by kramdown’ ‘interpreted MathJax code’" ></p>
-
-<p>It was evident that putting four backslashes at the end of lines for a
-line break <em>wasn’t</em> enough.  Therefore, I put <em>two more</em> backslashes
-there.  This time, the page for an individual post was OK, but the
-contents in the blog index page and those under folder <code>/posts/</code>
-<em>wasn’t</em>.  I viewed the “$\rm \TeX$ Commands” from the popup menu, and
-saw that in the page for an individual post, <em>two</em> backslashes were
-found; at <code>/posts/*</code> and the blog index page, <em>only one</em> backslash was
-found.</p>
-
-<p>By trial, I finally used <em>eight</em> backslashes in the Markdown source
-files for a post for a line break.</p>
-
-<h2 id="result">Result</h2>
-
-<p><img class="fancybox /images/posts/MathJaxDisplay/new.png 900 ‘Block equation in <abbr title=Rich Site" src="Summary">RSS</abbr>’&#8221; title=&#8221;‘new’&#8221; ></p>
-
-<p>The source code for a block equation can now be seen in <abbr title="Rich Site Summary">RSS</abbr> feeds.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> in Blog 1 for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>View the source of <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> for
-details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="http://docs.mathjax.org/en/latest/tex.html#tex-and-latex-math-delimiters">$\rm \TeX$ and $\rm \LaTeX$ math delimiters</a> in
-<em>MathJax Documentation</em> for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

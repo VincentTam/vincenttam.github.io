@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-12T22:59:50+08:00</updated>
+  <updated>2014-12-13T17:45:18+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,215 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Compressed Git Repository for This Site]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/compressed-git-repository-for-this-site/"/>
+    
+    <updated>2014-12-13T16:39:09+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/compressed-git-repository-for-this-site</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I’ve uploaded nearly 200 blog posts to this blog.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>As there’re more and more pages here, the execution speed of the
+command <code>git status</code> gradually <em>decreased</em>.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/GitGc/gui.png" width="800" title="Git GUI" alt="git gui" /></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I ran the command <code>git gc</code> in Git Bash on M$ Win* 7.</p>
+
+<pre class="cli"><code>Welcome to Git (version 1.9.4-preview20140929)
+
+
+Run 'git help git' to display the help index.
+Run 'git help <command />' to display help for specific commands.
+
+<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">~</span>
+$ cd /c/github/vincenttam.github.io/
+
+<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ git gc
+Counting objects: 8116, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3621/3621), done.
+Writing objects: 100% (8116/8116), done.
+Total 8116 (delta 4603), reused 7360 (delta 4064)
+Removing duplicate objects: 100% (256/256), done.
+
+<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$
+</code></pre>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Improved Custom Autocompletion Mappings in Vim]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/"/>
+    
+    <updated>2014-12-13T14:40:44+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Inspired by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>, I added some
+autocompletion mappings in my VIMRC last year.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Three months
+later, I saw the word “FileType” in <a href="http://vimdoc.sourceforge.net/htmldoc/usr_40.html#40.3">Vim’s User Manual</a>,
+and shortened these autocommand a little bit.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup>  In my opinion,
+it’s incredibly amazing since I can type text at the speed of thought.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>If I’ve finished editing an HTML file and open another $\rm \LaTeX$
+file, then my insert mode mappings will interfere with those defined
+by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>.  <strong>How can I restrict my custom
+mappings to the current working buffer only?</strong></p>
+
+<!-- more -->
+
+<p>Since I <em>didn’t</em> know how to describe this problem in words in
+February, I spent <em>hours</em> searching for webpages on <a href="http://www.google.com">Google</a>, but got
+<em>nothing</em>.  At that time, I had focus on my homework and exams, so I
+put this problem aside.  As a <a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> user, I adjust my
+wants according to what I know and what I can do, after accepting the
+fact that M$ Off* has <em>no</em> known plan to support the free operating
+system.</p>
+
+<p>Last night, when I wrote a
+<a href="http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/" title="How to Stop Auto Indenting?">recent linklog about Vim’s auto indenting</a>, I did some
+configurations on <a href="http://www.vim.org">Vim</a>.  This reminded me of hte problem of setting
+up autocompletion for brackets.  After writing over 150 blog posts in
+<a href="http://www.vim.org">Vim</a>, I realise the inconvenience <em>without</em> these keyboard shortcuts
+for autocompletion in the insert mode.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>First, I glanced through the codeblocks in the cited posts in the
+<a href="#fn:pp1">first two footnotes</a>.  After that, I googled “autocmd
+group”, and found two sites very useful.</p>
+
+<ol>
+  <li>
+    <p><a href="http://stackoverflow.com/a/8826323"><em>Vim inoremap for specific filetypes</em></a> on Stack
+Overflow.</p>
+
+    <p><code>&lt;buffer&gt;</code> is the missing part of the autocommands.</p>
+  </li>
+  <li>
+    <p><a href="http://learnvimscriptthehardway.stevelosh.com/chapters/14.html"><em>Autocommand Groups</em></a> on <em>Learn Vimscript the Hard Way</em>.</p>
+
+    <p><code>au!</code> avoids <a href="http://www.vim.org">Vim</a> to slow down after running <code>:so $MYVIMRC</code>.
+ Therefore, I also added <code>!</code> after the function <code>MyDiff</code> in my
+ VIMRC on M$ Win* 7.<sup id="fnref:vimrc_ms"><a href="#fn:vimrc_ms" class="footnote">3</a></sup></p>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+      <p>See <a href="http://vincenttam.github.io/blog/2013/12/11/links-to-good-posts/"><em>Links to Good Posts</em></a> in Blog 1 for the mappings. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp2">
+
+      <p>See the bottom part of
+<a href="http://vincenttam.github.io/blog/2014/01/26/working-with-vims-autocommand-groups/"><em>Working With Vim’s Autocommand Groups</em></a> in Blog 1 for the
+shorter mappings. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vimrc_ms">
+
+      <p>View my VIMRC on M$ Win* 7 at commit <a href="http://goo.gl/Vx2G5X">5bf494e</a>.</p>
+
+      <p>This morning, I tried to write similar keyboard shortcuts for
+‘&#8217;’, ‘&#8221;’ and ‘`’ at lines 62–63 and 67.  However, typing two
+‘&#8221;’s quickly on M$ Win* 7, GVim <em>duplicated</em> my input.
+Therefore, I changed the rules so that they would only be invoked
+when one quickly typed any one of these characters <em>twice</em>. <a href="#fnref:vimrc_ms" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (2)]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/"/>
+    
+    <updated>2014-12-13T11:06:59+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>In the <a href="http://vincenttam.github.io/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">previous post</a> in this series, I’ve listed a number of
+steps and included a group of <a href="http://www.vim.org">Vim</a> editor commands for screening out
+<a href="http://kramdown.gettalong.org">kramdown</a> syntax errors.  This is useful for [Octopress] posts with
+ordinary contents.  However, if one wants to write some math equations
+using <a href="http://www.mathjax.org">MathJax</a>, then one will encounter great difficulties.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<!-- more -->
+
+<p>Even though the <a href="http://kramdown.gettalong.org">kramdown</a> command line utility enables users to
+instantly convert code across different formats, and a web browser
+enables them to notice any syntax error, these tools just help them to
+find the mistakes, but <em>not</em> the solution.  In the cited post in the
+<a href="#fn:pp1">first footnote</a>, I spent <em>hours</em> to realise that <em>exactly
+eight ‘\s’</em> were needed to break the current line in <a href="http://www.mathjax.org">MathJax</a>.
+After that, I feel that using eight ‘\s’ and adding a ‘\’ before a
+‘_’ in <a href="http://www.mathjax.org">MathJax</a> equations interrupt my thinking.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Reading <a href="http://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/" title="Completely Remove Linux Kernels">an old post on removing Linux kernels on Ubuntu</a>, I
+remembered that the <code>markdown</code> attribute in <code>&lt;div markdown="1"&gt;</code>
+enabled <a href="http://kramdown.gettalong.org">kramdown</a> to interpret the Markdown code within the <code>&lt;div&gt;</code>
+block.  Therefore, I tried to surround the HTML code for an inline
+math expression with a <code>&lt;span&gt;</code> tag.  Unluckily, unlike <code>&lt;div&gt;</code>
+blocks, the surrounded code was <em>still</em> interpreted by <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
+
+<p>After that, I read the syntax documentation.  It claimed that setting
+<code>markdown="0"</code> disabled parsing of contents inside the tag <em>except</em>
+for <code>&lt;span&gt;</code> tags.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">2</a></sup>  Though the manual says that it’s
+<em>impossible</em>, I still inserted it into the <code>&lt;span&gt;</code> tag which
+surrounded the code for the <a href="http://www.mathjax.org">MathJax</a> math expression, because it
+<em>didn’t</em> take much time to see the result: the inline <a href="http://www.mathjax.org">MathJax</a>
+expression could be <em>successfully</em> displayed.<sup id="fnref:pp3"><a href="#fn:pp3" class="footnote">3</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+      <p>For example, it’s troublesome to <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/" title="MathJax and RSS">start a new line</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:doc">
+
+      <p>See the first bullet point of the section “HTML Spans” in
+<a href="http://kramdown.gettalong.org/syntax.html#html-spans">kramdown’s syntax documentation</a>. <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp3">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/12/09/a-group-of-689-elements/"><em>A Group of 689 Elements</em></a> and
+<a href="https://github.com/vincenttam/vincenttam.github.io/commit/af4f216">its source code</a> in Blog 1 at commit af4f216 for a
+working example. <a href="#fnref:pp3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -533,7 +742,7 @@ Markdown source file for an Octopress post.</li>
     </li>
     <li id="fn:8backslash">
 
-      <p>See <a href="https://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
+      <p>See <a href="http://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -1330,201 +1539,6 @@ later, one <em>can’t</em> add <code>{labels}</code> like the former.  Defining
 (-6,0) as a node with labelling text, I <em>can’t</em> draw a sector
 “touching” but excluding (-6,0).  Therefore, I have to define it as a
 coordinate.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Limit Superior and Limit Inferior]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior/"/>
-    
-    <updated>2014-11-08T17:18:17+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>For sequences of numbers, <em>limit inferior</em> and <em>limit superior</em> are
-defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge n\}\}$
-and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$
-respectively; for sequences of sets, they are defined as
-$\displaystyle \bigcup_{n=1}^{\infty}
-\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
-\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$
-respectively.</p>
-
-<p><strong>Why are they consistent?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>It suffices to find a relation between &#8216;&lt;&#8217; and &#8216;⊆&#8217;: $\{x \le
-a\} \subseteq \{x \le b\} \iff a \le b$.</p>
-
-<p>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x
-\le \sup A\}$.</p>
-
-<p><em>Proof</em>:</p>
-
-<p>\[
-  \begin{aligned}
-    &amp; x \in \bigcup_{a \in A} \{x \le a\} &#92;\<br />
-    \iff&amp; x \le a \;\forall a \in A &#92;\<br />
-    \iff&amp; x \text{ is a lower bound of } A &#92;\<br />
-    \iff&amp; x \le \inf A
-    \end{aligned}
-\]</p>
-
-<p>The last step is due to the defintion of infimum (<em>greatest</em> lower
-bound).</p>
-
-<p>With the above claim, one has</p>
-
-<p>\[
-  \begin{aligned}
-    &amp; \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty}
-      \{x \le a_k\} &#92;\<br />
-    =&amp; \bigcap_{n=1}^{\infty}
-      \bigcup_{a \in \{a_k:k \ge n\}}\{x \le a\} &#92;\<br />
-    =&amp; \bigcap_{n=1}^{\infty}
-      \{ x \le \sup \{a_k:k \ge n\}\} &#92;\<br />
-    =&amp; \{x \le \inf\sup \{a_k:k \ge n\}\}
-  \end{aligned}
-\]</p>
-
-<p>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le
-\inf\sup \{a_k:k \ge n\}$ and $\displaystyle
-\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} \{x \le
-a_k\} \subseteq \bigcap_{n=1}^{\infty}
-\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in
-common. </p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Product of GCD and LCM &#9733;]]></title>
-      <link href="https://proofwiki.org/wiki/Product_of_GCD_and_LCM"/>
-    
-    <updated>2014-11-04T00:00:31+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm</id>
-    
-      <content type="html"><![CDATA[<p>In ProofWiki’s first proof, it has taken me some time to understand.
-I often write $d=\gcd(a,b)$, $a=a’d$, $b=b’d$ for some $a’,b’ \in
-\integers_{&gt;0}$, and $n$ as <em>any</em> common multiple of $a$ and $b$.
-Then $n=q_1 a=q_2 b$ for some $q_1,q_2 \in \integers$.  The letter
-$q$ connotes <em>quotient</em>.  To show that $\lcm(a,b) \times \gcd(a,b) =
-ab$, it suffices to show that</p>
-
-<p>\begin{gather}
-  a \left | \frac{ab}{d} \right. \land 
-    b \left | \frac{ab}{d} \right. \label{eq:isLCM}&#92;\<br />
-  a|n \land b|n \implies\left.\frac{ab}{d}\right|n \label{eq:leastLCM}
-\end{gather}</p>
-
-<p>Equations \eqref{eq:isLCM} and \eqref{eq:leastLCM} mean that “$ab/d$
-is <em>a</em> LCM of $a$ and $b$” and “$ab/d$ is the <em>least</em> LCM of $a$ and
-$b$” respectively.</p>
-
-<p>Equation \eqref{eq:isLCM} is very easy to check since $\displaystyle
-\frac{ab}{d} = a’b = ab’$.</p>
-
-<p>By Bézout’s Identity, $ax+by=d$ for some $x,y \in \integers$.</p>
-
-<p>Since what we want is $\displaystyle \frac{ab}{d} (\dots) = n$, we
-multiply both sides of the above equation by $\displaystyle
-\frac{n}{d}$.</p>
-
-<p>\[
-\begin{aligned}
-  \frac{axn+byn}{d}=n&#92;\<br />
-  \frac{axbq_2+byaq_1}{d}=n&#92;\<br />
-  \left( \frac{ab}{d} \right) (xq_2+yq_1) = n
-\end{aligned}
-\]</p>
-
-<p>Hence \eqref{eq:leastLCM} is proved.</p>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Installed Prawn]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/03/installed-prawn/"/>
-    
-    <updated>2014-11-03T12:21:34+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/03/installed-prawn</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>This noon, I tried to use the <a href="http://kramdown.gettalong.org/documentation.html#usage">kramdown</a> command line utility to
-generate PDF files, but failed.</p>
-
-<pre class="cliUB"><code>$ kramdown test.tex -o pdf &gt; test.pdf
-/home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/ke
-rnel_require.rb:55:in `require': cannot load such file -- prawn (LoadError)
-	from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
-s/core_ext/kernel_require.rb:55:in `require'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
-onverter/pdf.rb:10:in `&lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
-ocument.rb:119:in `const_defined?'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
-ocument.rb:119:in `method_missing'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `block in &lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `each'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `&lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `&lt;main&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
-val'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;
-main&gt;'
-</code></pre>
-
-<!-- more -->
-
-<h2 id="attempt">Attempt</h2>
-
-<p>I searched Google for “kramdown pdf”, and find
-<a href="http://stackoverflow.com/a/4377892" title="How to generate PDF from markdown using pure ruby">this question</a> useful.  It linked to a page introducing
-<a href="http://prawn.majesticseacreature.com/">Prawn</a>.</p>
-
-<p>I used the testing code there to figure out that the above problem had
-arised because I <em>didn’t</em> install the Ruby gem.</p>
-
-<pre class="cliUB"><code>$ gem install prawn
-Fetching: ttfunk-1.4.0.gem (100%)
-Successfully installed ttfunk-1.4.0
-Fetching: pdf-core-0.4.0.gem (100%)
-Successfully installed pdf-core-0.4.0
-Fetching: prawn-1.3.0.gem (100%)
-
-  ********************************************
-
-
-  A lot has changed recently in Prawn.
-
-  Please read the changelog for details:
-
-  https://github.com/prawnpdf/prawn/wiki/CHANGELOG
-
-
-  ********************************************
-
-Successfully installed prawn-1.3.0
-3 gems installed
-</code></pre>
-
-<p>But I still <em>can’t</em> run the sample code correctly.  Finally, I use
-<a href="http://johnmacfarlane.net/pandoc/">pandoc</a>.</p>
 
 ]]></content>
     

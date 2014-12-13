@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Taglist installation Taglist is a popular Vim plugin and it requires Ctags. c9s has given a detailed description of the installation of Ctags. I've &hellip;">
+  <meta name="description" content="Taglist installation Taglist is a popular Vim plugin and it requires Ctags. c9s has
+given a detailed description of the installation of Ctags.
+I’ve &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -150,57 +152,84 @@
   </header>
 
 
-<div class="entry-content"><h3>Taglist installation</h3>
+<div class="entry-content"><h2 id="taglist-installation">Taglist installation</h2>
 
-<p><a title="Taglist" href="http://github.com/vim-scripts/taglist.vim">Taglist</a> is a popular Vim plugin and it requires <a title="Exuberant Ctags" href="http://ctags.sourceforge.net/">Ctags</a>. c9s has given <a href="http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html">a detailed description of the installation of Ctags</a>. I&#8217;ve found out that putting the whole <code>ctags58</code> folder under the <code>C</code> drive and adding it to the <code>PATH</code> environment variable will do. You don&#8217;t need to copy <code>ctags.exe</code> under the <code>C</code> drive or <code>$VIMRUNTIME</code>.</p>
+<p><a href="http://github.com/vim-scripts/taglist.vim">Taglist</a> is a popular Vim plugin and it requires <a href="http://ctags.sourceforge.net/" title="Exuberant Ctags">Ctags</a>.  c9s has
+given <a href="http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html">a detailed description of the installation of Ctags</a>.
+I’ve found out that putting the whole <code>ctags58</code> folder under the <code>C</code>
+drive and adding it to the <code>PATH</code> environment variable will do.  You
+don’t need to copy <code>ctags.exe</code> under the <code>C</code> drive or <code>$VIMRUNTIME</code>.</p>
 
-<p>TheGeekStuff has <a href="http://vim.wikia.com/wiki/VimTip632">a web page</a> which described numerous powerful functions of Taglist.</p>
+<p>TheGeekStuff has <a href="http://goo.gl/BG2lh" title="Ctags and Taglist: Convert Vim Editor to Beautiful Source Code Browser for Any Programming Language">a web page</a> which described numerous
+powerful functions of Taglist.</p>
 
-<h3>Some VIMRC settings</h3>
+<h2 id="some-vimrc-settings">Some VIMRC settings</h2>
 
-<p>I&#8217;ve learnt something about vim keyboard mappings by reading <a href="http://alexanderle.com/blog/2012/my-vimrc.html">Le&#8217;s post on customized VIMRC settings</a>.Using this knowledge, I can do something that I couldn&#8217;t do last month.</p>
+<p>I’ve learnt something about vim keyboard mappings by reading
+<a href="http://alexanderle.com/blog/2012/my-vimrc.html">Le’s post on customized VIMRC settings</a>.  Using this
+knowledge, I can do something that I couldn’t do last month.</p>
 
-<h3>Automatic completion of unclosed braces/brackets</h3>
+<h2 id="automatic-completion-of-unclosed-bracesbrackets">Automatic completion of unclosed braces/brackets</h2>
 
-<p>Unmatched brackets/braces are the cause of a host of syntax errors in source code. Some novices probably spend hours to find it out, and then say something that their high school teachers will never approve. <a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">A Vim Tips</a> contains a simple solution that enable users to get the job done. However, I&#8217;m not accustomed to its differences with Vim-$\rm \LaTeX$, so I decided to add the following lines of code into my VIMRC file:</p>
+<p>Unmatched brackets/braces are the cause of a host of syntax errors in
+source code.  Some novices probably spend hours to find it out, and
+then say something that their high school teachers will never approve.
+<a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">Tips 630 in Vim Tips Wiki</a> contains a simple solution
+that enable users to get the job done.  However, I’m not accustomed to
+its differences with Vim-$\rm \LaTeX$, so I decided to add the
+following lines of code into my VIMRC file:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">inoremap</span> <span class="p">(</span>      <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span><span class='line'><span class="nb">inoremap</span> <span class="p">(&lt;</span>CR<span class="p">&gt;</span>  <span class="p">(&lt;</span>CR<span class="p">&gt;)&lt;</span>Esc<span class="p">&gt;</span>O
-</span><span class='line'><span class="nb">inoremap</span> <span class="p">((</span>     <span class="p">(</span>
-</span><span class='line'><span class="nb">inoremap</span> <span class="p">()</span>     <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span><span class='line'><span class="nb">inoremap</span> [      []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span><span class='line'><span class="nb">inoremap</span> [<span class="p">&lt;</span>CR<span class="p">&gt;</span>  [<span class="p">&lt;</span>CR<span class="p">&gt;</span>]<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
-</span><span class='line'><span class="nb">inoremap</span> [[     [
-</span><span class='line'><span class="nb">inoremap</span> []     []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span><span class='line'><span class="nb">inoremap</span> {      {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span><span class='line'><span class="nb">inoremap</span> {<span class="p">&lt;</span>CR<span class="p">&gt;</span>  {<span class="p">&lt;</span>CR<span class="p">&gt;</span>}<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
-</span><span class='line'><span class="nb">inoremap</span> {{     {
-</span><span class='line'><span class="nb">inoremap</span> {}     {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="nb">inoremap</span> <span class="p">(</span>      <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> <span class="p">(&lt;</span>CR<span class="p">&gt;</span>  <span class="p">(&lt;</span>CR<span class="p">&gt;)&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class="line"><span class="nb">inoremap</span> <span class="p">((</span>     <span class="p">(</span>
+</span><span class="line"><span class="nb">inoremap</span> <span class="p">()</span>     <span class="p">()&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> [      []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> [<span class="p">&lt;</span>CR<span class="p">&gt;</span>  [<span class="p">&lt;</span>CR<span class="p">&gt;</span>]<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class="line"><span class="nb">inoremap</span> [[     [
+</span><span class="line"><span class="nb">inoremap</span> []     []<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> {      {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> {<span class="p">&lt;</span>CR<span class="p">&gt;</span>  {<span class="p">&lt;</span>CR<span class="p">&gt;</span>}<span class="p">&lt;</span>Esc<span class="p">&gt;</span>O
+</span><span class="line"><span class="nb">inoremap</span> {{     {
+</span><span class="line"><span class="nb">inoremap</span> {}     {}<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just like $\rm \LaTeX$-Suite.</p>
+<p>After the user types <code>&lt;C-j&gt;</code>, the cursor will jump to the position of
+the placeholder <code>&lt;++&gt;</code> and the whole placeholder will disappear, just
+like $\rm \LaTeX$-Suite.</p>
 
-<h3>New keyboard shortcuts of my gVim</h3>
+<hr />
+<p>(Added on DEC 13, 2014)</p>
 
-<p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for toggling NERDTree and Taglist respectively.</p>
+<p>These custom mappings will interfere with those of
+<a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a> if one typed <code>:so foo.tex</code> in a
+buffer in which an HTML file is opened.  Now, I have
+<a href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/" title="My Improved Custom Autocompletion Mappings in Vim">improved my mappings</a>.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F3<span class="p">&gt;</span>   :NERDTreeToggle
-</span><span class='line'><span class="nb">nnoremap</span> <span class="p">&lt;</span>F12<span class="p">&gt;</span>  :TlistToggle
-</span></code></pre></td></tr></table></div></figure>
+<hr />
+
+<h2 id="new-keyboard-shortcuts-of-my-gvim">New keyboard shortcuts of my gVim</h2>
+
+<p>Finally, I decided to use <code>&lt;F3&gt;</code> and <code>&lt;F12&gt;</code> in normal mode for
+toggling <a href="https://github.com/scrooloose/nerdtree">NERDTree</a> and <a href="http://github.com/vim-scripts/taglist.vim">Taglist</a> respectively.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="nb">nnoremap</span> <span class="p">&lt;</span>F3<span class="p">&gt;</span>   :NERDTreeToggle
+</span><span class="line"><span class="nb">nnoremap</span> <span class="p">&lt;</span>F12<span class="p">&gt;</span>  :TlistToggle
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 </div>
 
 
@@ -281,7 +310,7 @@
 <li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (10)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (11)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (3)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -292,15 +321,15 @@
 <li class='category'><a href='/blog/categories/linux/'>linux (30)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (38)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (39)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (20)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (21)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (11)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -311,23 +340,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/13/compressed-git-repository-for-this-site/">Compressed Git Repository for This Site</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/">My Improved Custom Autocompletion Mappings in Vim</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/12/how-to-stop-auto-indenting/">How to Stop Auto Indenting?</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/using-xclip/">Using Xclip</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/octopress-search-error/">Octopress Search Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/the-title-of-a-new-octopress-post-2/">The Title of a New Octopress Post (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/international-space-station-attacked-by-virus-epidemics/">International Space Station Attacked by &#8220;Virus Epidemics&#8221;</a>
       </li>
     
   </ul>

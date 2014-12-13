@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Motivation In the past, I used double dollar signs $$ to enclose block
-equations. As a result, readers couldn’t see them in Firefox. How can these &hellip;">
+  <meta name="description" content="When I set up Blog 1 for MathJax and fancybox, I included some
+custom code in source/_includes/custom/head.html. I moved them to
+source/javascripts/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -126,6 +127,217 @@ equations. As a result, readers couldn’t see them in Firefox. How can these &h
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-12T21:51:59+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:51 pm</span></time>
+        
+           | <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I set up <em>Blog 1</em> for MathJax and fancybox, I included some
+custom code in <code>source/_includes/custom/head.html</code>.  I moved them to
+<code>source/javascripts/MathJaxLocal.js</code> and
+<code>source/javascripts/FancyBoxLocal.js</code> because I <em>don’t</em> like
+JavaScript code inside HTML files.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>In the past, I put those code in <code>source/_includes/custom/head.html</code>
+because of Felix Chern’s post.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  However, there’s another better
+way.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  Why is it better?  It saves thousands of lines of code.
+Apart from that, it’s a way to separate the behaviour of a document
+from the contents.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/OctHead/MasterPull.png" width="900" title="Statistics on the changes" alt="git-diff --stat" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/697d086" title="Moved javascript code from a HTML file">697d086</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/d6d3633" title="Added two new posts, and updated MathJax equations">d6d3633</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>See <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/"><em>Writing Math Equations on Octopress</em></a> in Carpe Diem. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See <a href="http://drz.ac/2013/01/03/blogging-with-math/"><em>Blogging With Math: Octopress, MathJax, and Pandoc</em></a> in
+DrZ.ac. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p>See
+<a href="http://www.w3.org/2001/tag/doc/contentPresentation-26.html"><em>Separation of semantic and presentational markup, to the extent possible, is architecturally sound</em></a>
+in W3C. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-10T16:27:02+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This afternoon, I found that when I preview the print layout of the
+posts in <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>, some Mathjax block equations enclosed with
+<code>\begin{equation}</code> <em>weren’t</em> displayed properly.  I think it should be
+due to my settings in <code>sass/custom/_print.scss</code> because the contents
+in Mathjax’s official demo can be rendered properly in the print
+preview.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, I deleted some obsolete lines of code in that
+SCSS file .<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Actually, since it takes time for loading MathJax, if
+I open the print preview before the block equations are ready, then I
+will see the source code of those equations.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Refer to <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> in MathJax
+Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Another Way of Writing Piecewise Functions</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-08T18:38:29+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:38 pm</span></time>
+        
+           | <a href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I changed my way of writing block equations for <abbr title="Rich Site Summary">RSS</abbr>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, in
+my old post about the Contraction Mapping Principles, there’s an
+inequality on the rate of convergence of a point in a complete metric
+space to the unique fixed point of the Lipschitz mapping with a
+Lipschitz constant strictly less than one.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>\[
+\begin{aligned}
+d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
+=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
+\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) &#92;\<br />
+=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+\end{aligned}
+\]</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">\\[
+</span><span class="line">\begin{aligned}
+</span><span class="line">d(x^\*,x\_n) =&amp; d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
+</span><span class="line">=&amp; \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
+</span><span class="line">\le&amp; \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
+</span><span class="line">  \text{(by \eqref{eq:finite_err})} \\\\\\\\
+</span><span class="line">=&amp; \frac{q^n}{1 - q} d(x\_1,x\_0)
+</span><span class="line">\end{aligned}
+</span><span class="line">\\]
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Starting from the second line in the above block equation, at the left
+of the binary relation symbols there’s a whitespace character.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/08/another-way-of-writing-piecewise-functions/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -543,142 +755,6 @@ in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T23:39:57+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>11:39 pm</span></time>
-        
-           | <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="/images/posts/OctRuby2b/err.png" title="A compilation error" alt="solved problem" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T15:22:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>This Sunday, I tried to do something similar to what I did in
-May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
-I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
-that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
-easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="/images/posts/OctRuby2a/err.png" title="A compilation error" alt="Screenshot of problem" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://stackoverflow.com/a/11115408">Set Transparent Background Using ImageMagick</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-01T00:45:15+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:45 am</span></time>
-        
-           | <a href="/blog/2014/09/01/set-transparent-background-using-imagemagick/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/01/set-transparent-background-using-imagemagick/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/01/set-transparent-background-using-imagemagick/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I made use of the suggested command in an answer for a Stack Overflow
-question to remove the white background of my gravatar.</p>
-
-<p>If you need to do it using <abbr title="GNU Image Manipulation Program">GIMP</abbr>, you may refer to <a href="/blog/2014/04/27/gimp-transparent-background/" title="Make Images With Transparent Background Using GIMP, and More ...">here</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -712,7 +788,7 @@ question to remove the white background of my gravatar.</p>
 <li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (10)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (11)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (3)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -723,15 +799,15 @@ question to remove the white background of my gravatar.</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (30)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (11)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (18)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (11)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (38)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (39)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (20)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (21)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (11)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -742,23 +818,23 @@ question to remove the white background of my gravatar.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/12/13/compressed-git-repository-for-this-site/">Compressed Git Repository for This Site</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/">My Improved Custom Autocompletion Mappings in Vim</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/12/12/how-to-stop-auto-indenting/">How to Stop Auto Indenting?</a>
       </li>
     
       <li class="post">
         <a href="/blog/2014/12/12/using-xclip/">Using Xclip</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/octopress-search-error/">Octopress Search Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/the-title-of-a-new-octopress-post-2/">The Title of a New Octopress Post (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/11/international-space-station-attacked-by-virus-epidemics/">International Space Station Attacked by &#8220;Virus Epidemics&#8221;</a>
       </li>
     
   </ul>
