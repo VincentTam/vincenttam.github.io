@@ -41,10 +41,13 @@ Useful sites:
 - [Kramdown quick reference][kramdown_quickref]
 - [HTML symbols entities][html_symb]: for writing some special symbols
     like '&sub;' and '&notin;'.
+- [Javascript Regular Expressions][js_regex] in Mozilla Developer
+    Network
 
+[pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
-[pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
+[js_regex]: http://goo.gl/2jLPH
 
 My custom settings
 ---
