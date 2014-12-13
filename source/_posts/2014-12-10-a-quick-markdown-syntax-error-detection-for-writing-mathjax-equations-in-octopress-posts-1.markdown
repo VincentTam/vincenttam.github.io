@@ -65,7 +65,7 @@ Therefore, I often excute the following editor commands in [Vim].
 [MathJax]: http://www.mathjax.org
 [kramdown]: http://kramdown.gettalong.org
 [underscore]: http://www.lucypark.kr/blog/2013/02/25/mathjax-kramdown-and-octopress/index.html#escape-markdown-syntax
-[pp]: https://vincenttam.github.io/blog/2014/09/07/mathjax-and-rss/index.html#method
+[pp]: /blog/2014/09/07/mathjax-and-rss/index.html#method
 [jekyll]: http://jekyllrb.com
 [pandoc]: http://johnmacfarlane.net/pandoc
 [Vim]: http://www.vim.org
