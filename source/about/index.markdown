@@ -37,19 +37,26 @@ myself.
 Useful sites:
 ---
 
-- [Custom $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
-- [Custom Vim registers][myvimreg]: I use some custom Vim registers as
-    shorthand.
 - [Pandoc syntax reference][pandoc]
 - [Kramdown quick reference][kramdown_quickref]
 - [HTML symbols entities][html_symb]: for writing some special symbols
     like '&sub;' and '&notin;'.
 
-[mymacros]: /about/mymacros.html
-[myvimreg]: /about/myvimreg.html
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
+
+My custom settings
+---
+
+- [My $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
+- [My Vim registers][myvimreg]: I use some custom Vim registers as
+    shorthand.
+- My VIMRC ([on M\$ Win\* 7][vimrc_ms])
+
+[mymacros]: /about/mymacros.html
+[myvimreg]: /about/myvimreg.html
+[vimrc_ms]: https://gist.github.com/VincentTam/46cfc7da126fb9477ed9
 
 My Math Notes
 ---
