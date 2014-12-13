@@ -57,9 +57,10 @@ expression could be *successfully* displayed.[^pp3]
 
 [pp]: /blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/
 [Vim]: http://www.vim.org
-[Octopress]: http://octopress.org
+[kramdown]: http://kramdown.gettalong.org
 [MathJax]: http://www.mathjax.org
 [pp1]: /blog/2014/09/07/mathjax-and-rss/ "MathJax and RSS"
 [pp2]: /blog/2014/09/13/completely-remove-linux-kernels/ "Completely Remove Linux Kernels"
 [doc]: http://kramdown.gettalong.org/syntax.html#html-spans
+[pp3]: /blog/2014/12/09/a-group-of-689-elements/
 [af4f216]: https://github.com/vincenttam/vincenttam.github.io/commit/af4f216
