@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-13T17:45:18+08:00</updated>
+  <updated>2014-12-13T18:37:22+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Changed My FancyBoxLocal.js]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js/"/>
+    
+    <updated>2014-12-13T18:09:31+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I’ve been using fancyBox for image popup since August.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I would like to have large screenshots which belongs to the <code>fancybox</code>
+CSS class <em>centre-aligned</em>.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Refer to <code>source/javascripts/FancyBoxLocal.js</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/460b575">460b575</a> for
+details.</p>
+
+<p>I successfully worked out another solution using <a href="http://www.w3schools.com/js/">JavaScript</a> regular
+expressions.  However, after looking at <a href="http://jquery.com">jQuery</a>’s <code>removeClass()</code>
+method in it’s <a href="https://api.jquery.com/removeclass/">API documentation</a>, I dediced to start it all
+over again using <a href="http://jquery.com">jQuery</a> due to the simplicity of this approach.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>In [Vim]’s search pattern, <code>\&gt;</code> denotes the end of a word.  It took me
+a while to find out its counterpart in <a href="http://www.w3schools.com/js/">JavaScript</a> — <code>\b</code>.  The
+character ‘b’ stands for “boundary”.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+      <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> for details. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -325,103 +373,6 @@ Markdown source file for an Octopress post.</li>
     <li id="fn:8backslash">
 
       <p>See <a href="/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Load Multiple External JavaScripts]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts/"/>
-    
-    <updated>2014-11-13T18:08:30+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>Same as the one in <a href="/blog/2014/06/12/my-css-settiings-for-printing-1/"><em>My CSS Settiings for Printing (1)</em></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Having written a post on loading MathJax with a local configuration
-file, I previewed the print layout, saw that the font size was too
-<em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
-
-<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="‘too small words’ ‘fig1’" ></p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>It <em>didn’t</em> take me long to identify the reason for the small font
-size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
-
-<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="‘too long line’ ‘fig2’" ></p>
-
-<h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
-
-<p>One may adjust the zooming factor to “100%” to get a normal font size.
-However, this <em>isn’t</em> user-friendly.</p>
-
-<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="‘get font size’ ‘fig3’" ></p>
-
-<p>Moreover, this causes the right half of the line of HTML code to flow
-out of the page.</p>
-
-<h2 id="is-this-problem-browser-specific">Is this problem browser-specific?</h2>
-
-<p>I’ll illustrate this problem with one more picture.</p>
-
-<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="‘print preview in Chrome’ ‘fig4’" ></p>
-
-<p>From the above screenshot, one can expect that this problem exists in
-<em>every</em> web browser.</p>
-
-<h2 id="learn-from-past-experience">Learn from past experience</h2>
-
-<p>It took at least a minute for the system to regenerate the contents
-during a preview.  Therefore, I tested things <em>locally</em> before doing
-any <em>real</em> modifications to the source code.</p>
-
-<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/sol.jpg" width="750" title="‘a successful local test’ ‘fig5’" ></p>
-
-<h2 id="solution">Solution</h2>
-
-<p><figure class='code'><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'>	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
-</span><span class='line'><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
-</span><span class='line'><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
-</span><span class='line'><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
-URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
-the source file responsible for loading external JavaScripts (i.e.
-<code>source/_includes/custom/head.html</code>), there’s no <code>&lt;head&gt;</code> tag, so one
-may simply break a line without indentation.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp2">
-
-      <p>Refer to <a href="/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
