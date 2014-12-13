@@ -5,8 +5,8 @@ $(document).ready(function() {
       var img = $(this);
       var title = img.attr("title");
       var classes = img.attr("class");
-      img.removeAttr("class");
-      img.wrap('<a href="'+this.src+'" class="' + classes + '" rel="gallery'+_i+'" />');
+      img.removeClass("fancybox");
+      img.wrap('<a href="'+this.src+'" class="fancybox" rel="gallery'+_i+'" />');
       if (title != "")
     {
       img.parent().attr("title", title);
