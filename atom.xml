@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-13T18:37:22+08:00</updated>
+  <updated>2014-12-14T00:23:48+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Edit Gist Descriptions With Gist.vim]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/13/edit-gist-descriptions-with-gist-dot-vim/"/>
+    
+    <updated>2014-12-13T23:58:28+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/13/edit-gist-descriptions-with-gist-dot-vim</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="https://github.com/mattn/gist-vim">Gist.vim</a> to post code to <a href="https://gist.github.com">Gist</a> directly in a <a href="http://www.vim.org">Vim</a> buffer for
+efficiency.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In the manual of <a href="https://github.com/mattn/gist-vim">Gist.vim</a>, it’s said that after opening the Gist
+buffer in <a href="http://www.vim.org">Vim</a>, one can add/change the description of a <a href="https://gist.github.com">Gist</a> with
+<code>:Gist -e -s something</code>.  To add a description for a <a href="https://gist.github.com">Gist</a>, I typed
+<code>:Gist -s foo bar ...</code> in a buffer for the particular <a href="https://gist.github.com">Gist</a> — I
+tried to use it like <code>:!echo foo bar</code> — and what I got in the list
+of my Gists was <em>just</em> the last word.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>After one encounters such a problem, he/she will be likely to solve
+the problem within seconds: use a double quote to surround the whole
+description.</p>
+
+<p>When I was in doubt of the words in the manual, I used simple examples
+for testing, so I could quickly see the output and get the concepts
+written in the documentation.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp">
+
+      <p>See <a href="http://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/"><em>Posting Code to Gist Efficiently</em></a> in Blog 1 for the
+reasons of installing <a href="https://github.com/mattn/gist-vim">Gist.vim</a>. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -188,13 +235,17 @@ shorter mappings. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:vimrc_ms">
 
-      <p>View my VIMRC on M$ Win* 7 at commit <a href="http://goo.gl/Vx2G5X">5bf494e</a>.</p>
+      <p><del>View my VIMRC on M$ Win* 7 at commit 5bf494e.</del></p>
 
       <p>This morning, I tried to write similar keyboard shortcuts for
 ‘&#8217;’, ‘&#8221;’ and ‘`’ at lines 62–63 and 67.  However, typing two
 ‘&#8221;’s quickly on M$ Win* 7, GVim <em>duplicated</em> my input.
 Therefore, I changed the rules so that they would only be invoked
-when one quickly typed any one of these characters <em>twice</em>. <a href="#fnref:vimrc_ms" class="reversefootnote">&#8617;</a></p>
+when one quickly typed any one of these characters <em>twice</em>.</p>
+
+      <p>Remarks: On Ubuntu 14.04 LTS, I have the <em>same</em> experience.  Thus,
+I just copied the whole autocommand group to
+<a href="https://gist.github.com/VincentTam/2379ba75d6ad703a3786">my VIMRC there</a>. <a href="#fnref:vimrc_ms" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -1398,45 +1449,6 @@ details. <a href="#fnref:https" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My GitHub Avatar Is Gone!]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/08/my-github-avatar-is-gone/"/>
-    
-    <updated>2014-11-08T22:20:40+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/08/my-github-avatar-is-gone</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I suddenly found that the Gravatar in my GitHub user profile had
-disappeared.</p>
-
-<h2 id="failed-attempt">Failed attempt</h2>
-
-<p>I then went to GitHub to upload the icon.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/GitHubIconUploadFailed/err.png" alt="screen" class="fancybox" /></p>
-
-<p>I googled the <span class="grp1">red error message</span>, and read the
-last reply in <a href="https://twitter.com/github/status/448179270062710784">this thread</a>.  Then, I had taken the above
-screenshot and started a new post on this issue.</p>
-
-<h2 id="result">Result</h2>
-
-<p>Before I finished this post, the Gravatar was back again.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>As <em>not</em> being a student/worker in IT, I <em>shouldn’t</em> spend much time
-on developing tools and finding a good solution to a strange problem.
-Instead, I should use others’ tools to save time and tolerate some
-faults, as long as I get the job done.  Developers will work on the
-code to improve things later.</p>
-
 ]]></content>
     
   </entry>
