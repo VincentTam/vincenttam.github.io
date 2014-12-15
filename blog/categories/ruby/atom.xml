@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-15T18:06:37+08:00</updated>
+  <updated>2014-12-15T18:40:56+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -169,14 +169,14 @@ and some categories like “$\rm \LaTeX$-Suite” <em>weren’t</em> displayed
 properly.  Moreover, the link for some categories like “C/C++” was
 <em>dead</em> in <a href="http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/">Watson’s Category List Plugin</a>.</p>
 
-<p><img class="fancybox" src="/images/posts/CatList/CatList404.png" width="800" title="‘Dead links in category list’ ‘fig1’" ></p>
+<p>{% img fancybox /images/posts/CatList/CatList404.png 800 ‘Dead links in category list’ ‘fig1’ %}</p>
 
 <p>Unlike two months ago<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I now think that it’s better for me to find
 out why the catergory list <em>failed</em> to generate a correct URL for a
 category page, but the default links for category pages in the blog
 archive are <em>right</em>.</p>
 
-<p><img class="fancybox" src="/images/posts/CatList/CatListURL.png" width="800" title="‘Correct links in blog archive’ ‘fig2’" ></p>
+<p>{% img fancybox /images/posts/CatList/CatListURL.png 800 ‘Correct links in blog archive’ ‘fig2’ %}</p>
 
 <p>I certainly know the precise location of the part of
 <code>plugins/category_list_tag.rb</code> that has generated the <em>erroneous</em>
@@ -228,7 +228,9 @@ method that generated <code>category_url</code> should be changed like this:</p>
 
       <p>Last month, I used a specfic way to get things work.</p>
 
-      <p><blockquote><p>As I am not going to spend most of my time to study IT, I aimed at merely changing “LaTeX” to “$\rm \LaTeX$”.</p><footer><strong>Me</strong> <cite><a href='https://vincenttam.github.io/blog/2014/05/24/using-mathjax-in-category-list-entries/'>Using MathJax in Category List Entries</a></cite></footer></blockquote> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>{% blockquote Me https://vincenttam.github.io/blog/2014/05/24/using-mathjax-in-category-list-entries/ Using MathJax in Category List Entries %}
+As I am not going to spend most of my time to study IT, I aimed at merely changing “LaTeX” to “$\rm \LaTeX$”.
+{% endblockquote %} <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -252,43 +254,26 @@ so the settings below are now gone.</p>
 <p>Using the following plugin, I finished removing the repeating figures
 in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<p><figure class='code'><figcaption><span>Erv Walter’s plugin with my modifications</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">CustomLiquidFilters</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">remove_linenumbers</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;lt;td\ class=”gutter”&amp;gt;.+?&amp;lt;\/td&amp;gt;/m</span><span class="p">,</span> <span class="err">‘</span> <span class="err">‘</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;RegexMap = {</span>
-</span><span class='line'><span class="sr">    /</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">div</span><span class="p">\</span> <span class="n">class</span><span class="o">=</span><span class="err">”</span><span class="n">caption</span><span class="err">”</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Click</span> <span class="n">the</span> <span class="n">image</span> <span class="k">for</span> <span class="n">a</span> <span class="n">larger</span> <span class="n">view</span><span class="o">.</span><span class="n">&amp;lt</span><span class="p">;\</span><span class="o">/</span><span class="n">div</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">/</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ id=”image-dialog-\d+”.*?&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ class=”illustration\ print”&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>  <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;def remove_bigfig(input)</span>
-</span><span class='line'><span class="sr">    RegexMap.each_pair {|k,v| input.gsub!(k, v)}</span>
-</span><span class='line'><span class="sr">    input</span>
-</span><span class='line'><span class="sr">  end</span>
-</span><span class='line'><span class="sr">end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="ss">Liquid</span><span class="p">:</span><span class="ss">:Template</span><span class="o">.</span><span class="n">register_filter</span> <span class="no">CustomLiquidFilters</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Erv Walter’s plugin with my modifications lang:ruby http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed %}
+module CustomLiquidFilters
+  def remove_linenumbers(input)
+    input.gsub(/&lt;td\ class=”gutter”&gt;.+?&lt;\/td&gt;/m, ‘ ‘)
+  end</p>
+
+<p>RegexMap = {
+    /&lt;div\ class=”caption”&gt;Click the image for a larger view.&lt;\/div&gt;/ =&gt; ‘’,
+    /&lt;div\ id=”image-dialog-\d+”.*?&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+    /&lt;div\ class=”illustration\ print”&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+  }</p>
+
+<p>def remove_bigfig(input)
+    RegexMap.each_pair {|k,v| input.gsub!(k, v)}
+    input
+  end
+end</p>
+
+<p>Liquid::Template.register_filter CustomLiquidFilters
+{% endcodeblock %}</p>
 
 <h2 id="problem">Problem</h2>
 
@@ -299,19 +284,14 @@ in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></
 do the same modification like what I had already did in
 <code>source/atom.xml</code>.</p>
 
-<p><figure class='code'><figcaption><span>My initial attempt to solve the problem in category feed page</span><a href='/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;entry&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!-- other elements --&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class='line'><span class="nt">&lt;/entry&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock My initial attempt to solve the problem in category feed page lang:xml /blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
+{% raw %}</p>
+<entry>
+  <!-- other elements -->
+  <content type="html">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]&gt;</content>
+</entry>
+<p>{% endraw %}
+{% endcodeblock %}</p>
 
 <p>Then I generated the site <em>without</em> getting any errors.  However, when
 I was previewing one of my category Atom Feeds, I found out that the
@@ -342,16 +322,14 @@ see what’s going on inside Octopress by getting the standard output.
 <em>Not</em> going take an online tutorial about using Ruby debugger, I used
 the most primitive way of debugging.</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="n">input</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:ruby %}
+def debug(input)
+  puts input
+end
+{% endcodeblock %}</p>
 
 <p>I recorded the output into a file and then browsed through it.  I
-found the <code>imgpopup ...</code> inside the file.
+found the <code>{% raw %}imgpopup ...{% endraw %}</code> inside the file.
 I also viewed the source code of <code>cdata_escape</code> so that I knew what
 the function did: HTML encode the only argument.  I compared the
 output before and after <code>cdata_escape</code>, and <em>couldn’t</em> see any
@@ -436,39 +414,27 @@ ago.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 <p>As can be seen from Clapper’s RSS feed page, each popup image appears
 <em>three</em> times.</p>
 
-<p><img class="fancybox" src="/images/posts/RSS1/3img.png" width="800" title="‘Clapper RSS’ ‘fig1’" ></p>
+<p>{% img fancybox /images/posts/RSS1/3img.png 800 ‘Clapper RSS’ ‘fig1’ %}</p>
 
 <!-- more -->
 
 <p>The HTML code provides some information about this problem.</p>
 
-<p><figure class='code'><figcaption><span>Source code of his RSS page in Firefox’s Inspector</span><a href='http://brizzled.clapper.org/feed.atom'>His Atom Feed </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="ni">&amp;lt;</span>div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;imgpopup screen&quot; xml:base=&quot;http://brizzled.clapper.org/feed.atom&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'>  <span class="ni">&amp;lt;</span>div class=&quot;caption&quot;<span class="ni">&amp;gt;</span>Click the image for a larger view.<span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;image-4&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;240&quot;</span> <span class="na">height=</span><span class="s">&quot;183&quot;</span> <span class="na">alt=</span><span class="s">&quot;Click me.&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/a&gt;</span>
-</span><span class='line'>    <span class="ni">&amp;lt;</span>div id=&quot;image-dialog-4&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'>      <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;610&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>      <span class="nt">&lt;br</span> <span class="na">clear=</span><span class="s">&quot;all&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'>  <span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>div xmlns=&quot;http://www.w3.org/1999/xhtml&quot; class=&quot;illustration print&quot; xml:base=&quot;http://brizzled.clapper.org/feed.atom&quot;<span class="ni">&amp;gt;</span>
-</span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;610&quot;</span> <span class="na">src=</span><span class="s">&quot;http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg&quot;</span> <span class="nt">/&gt;</span>
-</span><span class='line'><span class="ni">&amp;lt;</span>/div<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Source code of his RSS page in Firefox’s Inspector lang:html http://brizzled.clapper.org/feed.atom His Atom Feed %}
+&lt;div xmlns=&#8221;http://www.w3.org/1999/xhtml&#8221; class=&#8221;imgpopup screen&#8221; xml:base=&#8221;http://brizzled.clapper.org/feed.atom&#8221;&gt;
+  &lt;div class=&#8221;caption&#8221;&gt;Click the image for a larger view.&lt;/div&gt;
+    <a id="image-4">
+      <img width="240" height="183" alt="Click me." src="http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg" />
+    </a>
+    &lt;div id=&#8221;image-dialog-4&#8221;&gt;
+      <img width="800" height="610" src="http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg" />
+      <br clear="all" />
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div xmlns=&#8221;http://www.w3.org/1999/xhtml&#8221; class=&#8221;illustration print&#8221; xml:base=&#8221;http://brizzled.clapper.org/feed.atom&#8221;&gt;
+  <img width="800" height="610" src="http://brizzled.clapper.org/images/2012-02-05-a-simple-octopress-image-popup-plugin/six-twenty-six.jpg" />
+&lt;/div&gt;
+{% endcodeblock %}</p>
 
 <h2 id="failed-approach-change-the-css">Failed approach: change the CSS</h2>
 
@@ -486,21 +452,15 @@ also failed.</p>
 visited</a> when I inserted some Ruby code into my <code>Rakefile</code> to
 submit new sitemaps.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 
-<p><figure class='code'><figcaption><span>Erv Walter’s plugin to remove line numbers in Atom Feed</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">CustomLiquidFilters</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">remove_linenumbers</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;lt;td\ class=”gutter”&amp;gt;.+?&amp;lt;\/td&amp;gt;/m</span><span class="p">,</span> <span class="err">‘</span> <span class="err">‘</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;Liquid::Template.register_filter CustomLiquidFilters</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Erv Walter’s plugin to remove line numbers in Atom Feed lang:ruby http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed %}
+module CustomLiquidFilters
+  def remove_linenumbers(input)
+    input.gsub(/&lt;td\ class=”gutter”&gt;.+?&lt;\/td&gt;/m, ‘ ‘)
+  end
+end</p>
+
+<p>Liquid::Template.register_filter CustomLiquidFilters
+{% endcodeblock %}</p>
 
 <h3 id="some-ruby-regular-expressions-learnt-tldr">Some Ruby regular expressions learnt (TL;DR)</h3>
 
@@ -540,30 +500,19 @@ Ruby’s regular expression syntax.</p>
   </li>
 </ol>
 
-<p><figure class='code'><figcaption><span>Some simple Ruby methods on regular expressions </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">str</span> <span class="o">=</span> <span class="err">“</span><span class="n">hello</span><span class="err">”</span><span class="p">;</span> <span class="kp">nil</span> <span class="c1"># Supress stdout</span>
-</span><span class='line'><span class="n">pat</span> <span class="o">=</span> <span class="sr">/\w+/</span><span class="p">;</span> <span class="kp">nil</span>
-</span><span class='line'><span class="n">pat</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>     <span class="c1"># =&amp;gt; “hello”</span>
-</span><span class='line'><span class="n">pat</span> <span class="o">=</span> <span class="sr">/\w+?/</span><span class="p">;</span>
-</span><span class='line'><span class="n">path</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">str</span><span class="p">)</span>    <span class="c1"># =&amp;gt; “h”&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="n">pat</span> <span class="o">=</span> <span class="sr">/[eo]/</span>
-</span><span class='line'><span class="n">map</span> <span class="o">=</span> <span class="p">{</span>            <span class="c1"># Same as the official example</span>
-</span><span class='line'>  <span class="err">‘</span><span class="n">e</span><span class="err">’</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘</span><span class="mi">3</span><span class="err">’</span><span class="p">,</span>      <span class="c1"># except ‘o’ is NOT mapped</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="n">str</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="n">map</span><span class="p">)</span>  <span class="c1"># =&amp;gt; “h3ll”</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Some simple Ruby methods on regular expressions lang:ruby %}
+str = “hello”; nil # Supress stdout
+pat = /\w+/; nil
+pat.match(str)     # =&gt; “hello”
+pat = /\w+?/;
+path.match(str)    # =&gt; “h”</p>
+
+<p>pat = /[eo]/
+map = {            # Same as the official example
+  ‘e’ =&gt; ‘3’,      # except ‘o’ is NOT mapped
+}
+str.gsub(pat,map)  # =&gt; “h3ll”
+{% endcodeblock %}</p>
 
 <h3 id="my-interpretation-of-the-code-of-the-above-plugin">My interpretation of the code of the above plugin</h3>
 
@@ -612,30 +561,7 @@ some time to figure out that variable <code>map</code> is actually a <em>Hash</e
 test my method first.  To avoid seeing broken things while previewing
 the site, I <em>didn’t</em> directly modify <code>plugins/custom_filter.rb</code>.</p>
 
-<p><figure class='code'><figcaption><span>‘My testing Ruby scripts’ (ri20min.rb)</span> <a href='/downloads/code/ri20min.rb'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
-</span><span class='line'><span class="c1"># encoding: utf-8</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">input</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="no">ARGV</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">)</span>
-</span><span class='line'><span class="no">RegexMap</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="sr">/\&lt;div\ class=&quot;caption&quot;\&gt;Click the image for a larger view.\&lt;\/div\&gt;/</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/\&lt;div\ id=&quot;image-dialog-\d+&quot;.*?\&gt;.+?\&lt;\/div\&gt;/m</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/\&lt;div\ class=&quot;illustration\ print&quot;\&gt;.+?\&lt;\/div\&gt;/m</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="no">RegexMap</span><span class="o">.</span><span class="n">each_pair</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="o">|</span> <span class="n">input</span><span class="o">.</span><span class="n">gsub!</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)}</span>
-</span><span class='line'><span class="nb">puts</span> <span class="n">input</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code ‘My testing Ruby scripts’ ri20min.rb %}</p>
 
 <p>I <em>didn’t</em> have much time to study Ruby’s File I/O, so I just direct
 the standard output to a file.  Thus, within the Vim buffer that held
@@ -666,44 +592,30 @@ Therefore, I added a method in module <code>CustomLiquidFilters</code> in
 <p>I learnt to use method <code>each_pair</code> in Hash class from an answer to
 <a href="http://stackoverflow.com/a/13556720" title="Using many instances of 'gsub' in Ruby">another Stack Overflow question about <code>gsub</code></a>.</p>
 
-<p><figure class='code'><figcaption><span>My first custom filter </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">remove_bigfig</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>  <span class="no">RegexMap</span> <span class="o">=</span> <span class="p">{</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ class=”caption”&amp;gt;Click the image for a larger view.&amp;lt;\/div&amp;gt;/</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ id=”image-dialog-\d+”.*?&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ class=”illustration\ print”&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>  <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;RegexMap.each_pair {|k,v| input.gsub!(k, v)}</span>
-</span><span class='line'><span class="sr">end</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock My first custom filter lang:ruby %}
+def remove_bigfig(input)
+  RegexMap = {
+    /&lt;div\ class=”caption”&gt;Click the image for a larger view.&lt;\/div&gt;/ =&gt; ‘’,
+    /&lt;div\ id=”image-dialog-\d+”.*?&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+    /&lt;div\ class=”illustration\ print”&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+  }</p>
+
+<p>RegexMap.each_pair {|k,v| input.gsub!(k, v)}
+end
+{% endcodeblock %}</p>
 
 <p>Moreover, similar to Walter’s modification to his <code>source/atom.xml</code>,
 to test my newly written code, I also needed to change it a little
 bit.</p>
 
-<p><figure class='code'><figcaption><span>Change the XML file as well</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;entry&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!-- other elements --&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class='line'><span class="nt">&lt;/entry&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Change the XML file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}
+{% raw %}</p>
+<entry>
+  <!-- other elements -->
+  <content type="html">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]&gt;</content>
+</entry>
+<p>{% endraw %}
+{% endcodeblock %}</p>
 
 <p><del><small>Due to my limited knowledge in Jekyll, I <em>can’t</em> find a
 way to escape the Liquid command inside an Octopress
