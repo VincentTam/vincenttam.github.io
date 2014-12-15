@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-15T18:40:56+08:00</updated>
+  <updated>2014-12-15T18:55:02+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -79,7 +79,7 @@ character ‘b’ stands for “boundary”.</p>
 file, I previewed the print layout, saw that the font size was too
 <em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
 
-<p>{% img fancybox center /images/posts/LoadMultExtJS/problem1.jpg 750 ‘too small words’ ‘fig1’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="‘too small words’ ‘fig1’" ></p>
 
 <!-- more -->
 
@@ -88,14 +88,14 @@ file, I previewed the print layout, saw that the font size was too
 <p>It <em>didn’t</em> take me long to identify the reason for the small font
 size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
 
-<p>{% img fancybox center /images/posts/LoadMultExtJS/problem2.jpg 750 ‘too long line’ ‘fig2’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="‘too long line’ ‘fig2’" ></p>
 
 <h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
 
 <p>One may adjust the zooming factor to “100%” to get a normal font size.
 However, this <em>isn’t</em> user-friendly.</p>
 
-<p>{% img fancybox center /images/posts/LoadMultExtJS/problem3.jpg 750 ‘get font size’ ‘fig3’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="‘get font size’ ‘fig3’" ></p>
 
 <p>Moreover, this causes the right half of the line of HTML code to flow
 out of the page.</p>
@@ -104,7 +104,7 @@ out of the page.</p>
 
 <p>I’ll illustrate this problem with one more picture.</p>
 
-<p>{% img fancybox center /images/posts/LoadMultExtJS/problem4.jpg 750 ‘print preview in Chrome’ ‘fig4’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="‘print preview in Chrome’ ‘fig4’" ></p>
 
 <p>From the above screenshot, one can expect that this problem exists in
 <em>every</em> web browser.</p>
@@ -115,18 +115,28 @@ out of the page.</p>
 during a preview.  Therefore, I tested things <em>locally</em> before doing
 any <em>real</em> modifications to the source code.</p>
 
-<p>{% img fancybox center /images/posts/LoadMultExtJS/sol.jpg 750 ‘a successful local test’ ‘fig5’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LoadMultExtJS/sol.jpg" width="750" title="‘a successful local test’ ‘fig5’" ></p>
 
 <h2 id="solution">Solution</h2>
 
-<p>{% codeblock A working script tag for embedding MathJax with a local configuration file lang:html %}</p>
-<head>
-	<script type="text/javascript" charset="utf-8" src="
-	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,
-	https://vincenttam.github.io/javascripts/MathJaxLocal.js
-	"></script>
-</head>
-<p>{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'>	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class='line'><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
+</span><span class='line'><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
 URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
@@ -164,19 +174,19 @@ in <a href="/blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/"><em>GN
 <code>&lt;pre&gt;</code> tag which is very wide.  There’s a scrollbar at the bottom,
 but it’s <em>hard</em> to see.</p>
 
-<p>{% img fancybox /images/posts/FancyboxInline/scroll1.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/FancyboxInline/scroll1.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig1’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll2.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig2’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll2.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig2’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll3.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig3’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll3.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig3’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll4.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig4’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll4.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig4’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll5.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig5’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll5.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig5’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll6.png 900 ‘Move the mouse to the right and click for the next image’ ‘fig6’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll6.png" width="900" title="‘Move the mouse to the right and click for the next image’ ‘fig6’" ></p>
 
-<p>{% img fancybox noscr nopr /images/posts/FancyboxInline/scroll7.png 900 ‘Move the mouse to the right and click to replay the slideshow’ ‘fig7’ %}</p>
+<p><img class="fancybox noscr nopr" src="/images/posts/FancyboxInline/scroll7.png" width="900" title="‘Move the mouse to the right and click to replay the slideshow’ ‘fig7’" ></p>
 
 <h2 id="result">Result</h2>
 
@@ -300,7 +310,7 @@ Detexify is the answer for commonly used symbols.</p>
       <content type="html"><![CDATA[<p>In my post about proving Pappus’s Hexagon Theorem<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I inserted some
 SVG graphics to illustrate the ideas.</p>
 
-<p>{% img center /images/posts/PappusHexThm/PappusHexThm4.svg 600 %}<br />
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600"><br />
 <small>An example illustrating the difficulty of enlarging an SVG
 graphics for ordinary users.  The image is borrowed from the post
 about proving Pappus’s Hexagon Theorem.<br />

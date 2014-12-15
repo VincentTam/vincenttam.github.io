@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: This post won't make sense here. Refer to the original post. One of my earlier posts suggests that SyntaxHighlight supports only one language &hellip;">
+  <meta name="description" content="Note: This post won’t make sense here. Refer to the
+original post. One of my earlier posts suggests that SyntaxHighlight supports
+only one language &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -150,236 +152,255 @@
   </header>
 
 
-<div class="entry-content"><p><em>Note: This post won&#8217;t make sense here. Refer to the <a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html">original post</a>.</em></p>
+<div class="entry-content"><p><em>Note: This post won’t make sense here.  Refer to the
+<a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html">original post</a>.</em></p>
 
 <!-- more -->
 
-<p><a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html">One of my earlier posts</a> suggests that <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlight</a> supports <em>only one</em> language in a <code>pre</code> tag <em>without</em> proof. Before embedding a source code list to show this, I&#8217;ll make more assertions and then verify them.</p>
+<p><a href="http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html">One of my earlier posts</a> suggests that <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlight</a> supports
+<em>only one</em> language in a <code>pre</code> tag <em>without</em> proof.  Before embedding
+a source code list to show this, I’ll make more assertions and then
+verify them.</p>
 
-<p><a href="http://highlightjs.org/">highlight.js</a> has the support, while <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> <em>doesn&#8217;t</em>. For example, you want to attach the following Matlab code to your blog entry. SyntaxHighlight doesn&#8217;t have the Matlab support. For highlight.js, here&#8217;s the result.</p>
+<p><a href="http://highlightjs.org/">highlight.js</a> has the support, while <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a>
+<em>doesn’t</em>.  For example, you want to attach the following Matlab code
+to your blog entry.  <a href="http://alexgorbatchev.com/SyntaxHighlighter">SyntaxHighlight</a> doesn’t have the Matlab
+support.  For <a href="http://highlightjs.org/">highlight.js</a>, here’s the result.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
-</span><span class='line'><span class="c">%function to find sets of polynormials.</span>
-</span><span class='line'><span class="c">% a: set of constants, [A B C]</span>
-</span><span class='line'><span class="c">% x: variables in array</span>
-</span><span class='line'><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
-</span><span class='line'><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-</span><span class='line'>  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span><span class="s">&#39;A=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="s">&#39;, B=&#39;</span><span class="p">,</span><span class="c">...</span>
-</span><span class='line'>      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s">&#39;, C=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
-</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span><span class='line'>　<span class="k">end</span>
-</span><span class='line'><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
-</span><span class='line'><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="o">.*</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="o">.*</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="matlab"><span class="line"><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="c">%function to find sets of polynormials.</span>
+</span><span class="line"><span class="c">% a: set of constants, [A B C]</span>
+</span><span class="line"><span class="c">% x: variables in array</span>
+</span><span class="line"><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
+</span><span class="line"><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span class="line">  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+</span><span class="line">  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class="line">  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span><span class="s">&#39;A=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="s">&#39;, B=&#39;</span><span class="p">,</span><span class="c">...</span>
+</span><span class="line">      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s">&#39;, C=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
+</span><span class="line">  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class="line">　<span class="k">end</span>
+</span><span class="line"><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="o">.*</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="o">.*</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<img src="/images/posts/CodeDisplay6/d8435-matlab_correct.png" title="fig1" alt="result of highlight.js">
+<p><img src="/images/posts/CodeDisplay6/d8435-matlab_correct.png" title="highlight.js works on some computer(s)" alt="result of highlight.js" /></p>
 
-<p><small>highlight.js works on some computer(s).</small></p>
+<p>When I was writing the post, <a href="http://highlightjs.org/">highlight.js</a> didn’t worked right, but
+as I gave up trying it and view this post on the next day, things just
+go fine.</p>
 
-<p>When I was writing the post, highlight.js didn&#8217;t worked right, but as I gave up trying it and view this post on the next day, things just go fine.</p>
+<p>We just see how <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> works.</p>
 
-<p>We just see how google-code-prettify works.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='matlab'><span class='line'><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
-</span><span class='line'><span class="c">%function to find sets of polynormials.</span>
-</span><span class='line'><span class="c">% a: set of constants, [A B C]</span>
-</span><span class='line'><span class="c">% x: variables in array</span>
-</span><span class='line'><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
-</span><span class='line'><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
-</span><span class='line'>  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
-</span><span class='line'>  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span><span class="s">&#39;A=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="s">&#39;, B=&#39;</span><span class="p">,</span><span class="c">...</span>
-</span><span class='line'>      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s">&#39;, C=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
-</span><span class='line'>  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span><span class='line'>　<span class="k">end</span>
-</span><span class='line'><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
-</span><span class='line'><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="o">.*</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="o">.*</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="matlab"><span class="line"><span class="k">function</span><span class="w"> </span>[rr_array] <span class="p">=</span><span class="w"> </span><span class="nf">nest_fun</span><span class="p">(</span>x,a<span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="c">%function to find sets of polynormials.</span>
+</span><span class="line"><span class="c">% a: set of constants, [A B C]</span>
+</span><span class="line"><span class="c">% x: variables in array</span>
+</span><span class="line"><span class="c">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])</span>
+</span><span class="line"><span class="n">n</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+</span><span class="line">  <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+</span><span class="line">  <span class="n">A</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span><span class="n">B</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span><span class="n">C</span> <span class="p">=</span> <span class="n">a</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+</span><span class="line">  <span class="n">rr_array</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="nb">i</span><span class="p">}=[</span><span class="s">&#39;A=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="s">&#39;, B=&#39;</span><span class="p">,</span><span class="c">...</span>
+</span><span class="line">      <span class="n">num2str</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="s">&#39;, C=&#39;</span><span class="p">,</span><span class="n">num2str</span><span class="p">(</span><span class="n">C</span><span class="p">)];</span>
+</span><span class="line">  <span class="n">rr_array</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="nb">i</span><span class="p">}=</span><span class="n">polyx</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+</span><span class="line">　<span class="k">end</span>
+</span><span class="line"><span class="k">  function</span><span class="w"> </span>r <span class="p">=</span><span class="w"> </span><span class="nf">polyx</span><span class="p">(</span>xx<span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">  </span>　　<span class="n">r</span> <span class="p">=</span> <span class="n">A</span><span class="o">.*</span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">B</span><span class="o">.*</span><span class="n">x</span> <span class="o">+</span><span class="n">C</span><span class="p">;</span>
+</span><span class="line">  <span class="k">end</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <p>Code copied from <a href="http://bime-matlab.blogspot.hk/2006/10/66.html">Applications of Matlab in Engineering</a>.</p>
 
-<p>Note: In <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">the official README</a>, it&#8217;s said that we specify the <code>lang-*</code> class by its file extension (i.e. <code>m</code>), but in the page that display the source code of lang-matlab.js on Google Code, it points to <a href="https://github.com/amroamroamro/prettify-matlab">the author&#8217;s Github repository</a>, which has a README file. According to that file, the HTML tag should be <code>&lt;pre class=&quot;prettyprint lang-<span class="HLCode">matlab</span>"&gt;</code>, instead of <code>&lt;pre class=&quot;prettyprint lang-<span class="err">m</span>"&gt;</code>.</p>
+<p>Note: In <a href="http://google-code-prettify.googlecode.com/svn/trunk/README.html">the official README</a>, it’s said that we
+specify the <code>lang-*</code> class by its file extension (i.e. <code>m</code>), but in
+the page that display the source code of lang-matlab.js on Google
+Code, it points to <a href="https://github.com/amroamroamro/prettify-matlab">the author’s Github repository</a>,
+which has a README file.  According to that file, the HTML tag should
+be <code>&lt;pre class="prettyprint lang-matlab"&gt;</code>, instead of <code>&lt;pre
+class="prettyprint lang-m"&gt;</code>.</p>
 
-<p>So when one embeds the above source code list using google-code-prettify, one would write</p>
+<p>So when one embeds the above source code list using
+<a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a>, one would write</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;prettyprint lang-matlab&quot;</span><span class="nt">&gt;</span>function [rr_array] = nest_fun(x,a)
-</span><span class='line'>%function to find sets of polynormials.
-</span><span class='line'>% a: set of constants, [A B C]
-</span><span class='line'>% x: variables in array
-</span><span class='line'>% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
-</span><span class='line'>n = size(a);
-</span><span class='line'>for i = 1:n
-</span><span class='line'>A = a(i,1);B = a(i,2);C = a(i,3);
-</span><span class='line'>rr_array{1,i}=[&#39;A=&#39;,num2str(A),&#39;, B=&#39;,...
-</span><span class='line'>num2str(B),&#39;, C=&#39;,num2str(C)];
-</span><span class='line'>rr_array{2,i}=polyx(x);
-</span><span class='line'>　end
-</span><span class='line'>function r = polyx(xx)
-</span><span class='line'>　　r = A.*x.^2 + B.*x +C;
-</span><span class='line'>end
-</span><span class='line'>end
-</span><span class='line'><span class="nt">&lt;/pre&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;prettyprint lang-matlab&quot;</span><span class="nt">&gt;</span>function [rr_array] = nest_fun(x,a)
+</span><span class="line">%function to find sets of polynormials.
+</span><span class="line">% a: set of constants, [A B C]
+</span><span class="line">% x: variables in array
+</span><span class="line">% Example: rr=nest_fun(2:10,[1 2 4;2 4 8])
+</span><span class="line">n = size(a);
+</span><span class="line">for i = 1:n
+</span><span class="line">A = a(i,1);B = a(i,2);C = a(i,3);
+</span><span class="line">rr_array{1,i}=[&#39;A=&#39;,num2str(A),&#39;, B=&#39;,...
+</span><span class="line">num2str(B),&#39;, C=&#39;,num2str(C)];
+</span><span class="line">rr_array{2,i}=polyx(x);
+</span><span class="line">　end
+</span><span class="line">function r = polyx(xx)
+</span><span class="line">　　r = A.*x.^2 + B.*x +C;
+</span><span class="line">end
+</span><span class="line">end
+</span><span class="line"><span class="nt">&lt;/pre&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Let&#8217;s go back to the topic.</p>
+<p>Let’s go back to the topic.</p>
 
-<h3>SyntaxHighlighter</h3>
+<h2 id="syntaxhighlighter">SyntaxHighlighter</h2>
 
 <p>The SyntaxHighlighter code for embedding Java:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
-</span><span class='line'>public static void main(String args[]) {
-</span><span class='line'>System.out.println(&quot;Hello world!&quot;);
-</span><span class='line'>}
-</span><span class='line'>}<span class="nt">&lt;/pre&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
+</span><span class="line">public static void main(String args[]) {
+</span><span class="line">System.out.println(&quot;Hello world!&quot;);
+</span><span class="line">}
+</span><span class="line">}<span class="nt">&lt;/pre&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>As the language in determined by <code>brush: html</code>, there&#8217;s <em>no</em> multiple language feature in SyntaxHighlighter.</p>
+<p>As the language in determined by <code>brush: html</code>, there’s <em>no</em> multiple
+language feature in SyntaxHighlighter.</p>
 
-<h3>highlight.js</h3>
+<h2 id="highlightjs">highlight.js</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
-</span><span class='line'>    public static void main(String args[]) {
-</span><span class='line'>	System.out.println(&quot;Hello world!&quot;);
-</span><span class='line'>    }
-</span><span class='line'>}<span class="nt">&lt;/pre&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
+</span><span class="line">    public static void main(String args[]) {
+</span><span class="line">	System.out.println(&quot;Hello world!&quot;);
+</span><span class="line">    }
+</span><span class="line">}<span class="nt">&lt;/pre&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>So highlight.js can display multiple languages at one container.</p>
+<p>So <a href="http://highlightjs.org/">highlight.js</a> can display multiple languages at one container.</p>
 
-<h3>google-code-prettify</h3>
+<h2 id="google-code-prettify">google-code-prettify</h2>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
-</span><span class='line'>    public static void main(String args[]) {
-</span><span class='line'>	System.out.println(&quot;Hello world!&quot;);
-</span><span class='line'>    }
-</span><span class='line'>}<span class="nt">&lt;/pre&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">&quot;brush: java&quot;</span><span class="nt">&gt;</span>public class Hello {
+</span><span class="line">    public static void main(String args[]) {
+</span><span class="line">	System.out.println(&quot;Hello world!&quot;);
+</span><span class="line">    }
+</span><span class="line">}<span class="nt">&lt;/pre&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>So the result of google-code-prettify is similar to that of SyntaxHighlighter.</p>
+<p>So the result of <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a> is similar to that of
+SyntaxHighlighter.</p>
 
-<h3>Further results of highlight.js</h3>
+<h2 id="further-results-of-highlightjs">Further results of highlight.js</h2>
 
-<p>We end this essay with more results in highlight.js.</p>
+<p>We end this essay with more results in <a href="http://highlightjs.org/">highlight.js</a>.</p>
 
-<p>In order to embed multilingual source code in a list, highlight.js is what you need, but if you insist on using google-code-prettify, here&#8217;s some sample code.</p>
+<p>In order to embed multilingual source code in a list, <a href="http://highlightjs.org/">highlight.js</a>
+is what you need, but if you insist on using <a href="http://code.google.com/p/google-code-prettify/">google-code-prettify</a>,
+here’s some sample code.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;pre class="prettyprint">public class Hello {
-</span><span class='line'>    // Java code sample
-</span><span class='line'>	public static void main(String args[]) {
-</span><span class='line'>	    System.out.println("Hello world!");
-</span><span class='line'>	}
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    &lt;!-- CSS code-->
-</span><span class='line'>    .sidebar #sidebar, .ss{
-</span><span class='line'>     margin-top: 12px !important;
-</span><span class='line'>     overflow-y: scroll !important;
-</span><span class='line'>    }
-</span><span class='line'>
-</span><span class='line'>    # C++ code
-</span><span class='line'>    #include 
-</span><span class='line'>    using namespace std;
-</span><span class='line'>
-</span><span class='line'>    int main(void)
-</span><span class='line'>    {
-</span><span class='line'>        cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; endl;
-</span><span class='line'>        return 0;
-</span><span class='line'>    }
-</span><span class='line'>&lt;/pre></span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">&lt;pre class="prettyprint"&gt;public class Hello {
+</span><span class="line">    // Java code sample
+</span><span class="line">	public static void main(String args[]) {
+</span><span class="line">	    System.out.println("Hello world!");
+</span><span class="line">	}
+</span><span class="line">    }
+</span><span class="line">
+</span><span class="line">    &lt;!-- CSS code--&gt;
+</span><span class="line">    .sidebar #sidebar, .ss{
+</span><span class="line">     margin-top: 12px !important;
+</span><span class="line">     overflow-y: scroll !important;
+</span><span class="line">    }
+</span><span class="line">
+</span><span class="line">    # C++ code
+</span><span class="line">    #include 
+</span><span class="line">    using namespace std;
+</span><span class="line">
+</span><span class="line">    int main(void)
+</span><span class="line">    {
+</span><span class="line">        cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; endl;
+</span><span class="line">        return 0;
+</span><span class="line">    }
+</span><span class="line">&lt;/pre&gt;</span></code></pre></td></tr></table></div></figure></notextile></div>
+
 </div>
 
 

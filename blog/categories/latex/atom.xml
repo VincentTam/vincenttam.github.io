@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-15T18:40:56+08:00</updated>
+  <updated>2014-12-15T18:55:02+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -29,7 +29,7 @@ smoothly in Mik$\rm \TeX$.</p>
 
 <h2 id="problem">Problem</h2>
 
-<p>{% img fancybox center /images/posts/LaTeXResume/err.png 800 ‘Figure 1’ ‘err’ %}</p>
+<p><img class="fancybox center" src="/images/posts/LaTeXResume/err.png" width="800" title="‘Figure 1’ ‘err’" ></p>
 
 <!-- more -->
 
@@ -93,11 +93,48 @@ following graph.</p>
 
 <h2 id="output">Output</h2>
 
-<p>{% img center /images/posts/TikZPolar/graph.svg 750 ‘fig1’ ‘polar plot’ %}</p>
+<p><img class="center" src="/images/posts/TikZPolar/graph.svg" width="750" title="‘fig1’ ‘polar plot’" ></p>
 
 <h2 id="source-code">Source code</h2>
 
-<p>{% include_code The $\rm \LaTeX$ source code for the above graph lang:tex TikZPolar.tex %}</p>
+<p><figure class='code'><figcaption><span>The $\rm \LaTeX$ source code for the above graph  (TikZPolar.tex)</span> <a href='/downloads/code/TikZPolar.tex'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'>  <span class="c">% drawing grid lines</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>1,...,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (0,0) circle (<span class="k">\r</span>);<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\draw</span> (-6.5,0) -- (6.5,0);
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\theta</span> in <span class="nb">{</span>15,30,...,165<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (<span class="k">\theta</span>:6.5) -- (<span class="k">\theta</span>+180:6.5);<span class="nb">}</span>
+</span><span class='line'>  <span class="c">% labelling them</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
+</span><span class='line'>    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="nb">^</span><span class="nv">\circ</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'>  <span class="nb">}</span>
+</span><span class='line'>  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
+</span><span class='line'>  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
+</span><span class='line'>  plot (<span class="k">\x</span>:<span class="nb">{</span>5-sin(3*<span class="k">\x</span>)<span class="nb">}</span>);
+</span><span class='line'>  <span class="k">\node</span> at (270:8) <span class="nb">{</span>The graph of <span class="s">$</span><span class="nb">r </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="o">(</span><span class="m">3</span><span class="nv">\theta</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>I got the idea of for loop in TikZ from
@@ -140,25 +177,35 @@ details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
 
 <p><img src="/images/posts/TypesetAccents/problem.jpg" alt="failed" /></p>
 
-<p>{% codeblock A failed attempt lang:tex %}
-\documentclass[12pt]{standalone}
-\begin{document}
-I went to café yesterday.
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A failed attempt </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>I went to café yesterday.
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="method">Method</h2>
 
 <p>Add the <code>babel</code> package.</p>
 
-<p>{% codeblock A minimum working example lang:tex %}
-\documentclass[12pt]{standalone}
-\usepackage{fontspec}
-\usepackage[french]{babel}
-\begin{document}
-I went to café yesterday.
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[french]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>I went to café yesterday.
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
     
   </entry>
@@ -192,14 +239,20 @@ and I luckily found a blog post which inspired me to work out the
 following example.  (This link to the post is included in the
 footnotes.)</p>
 
-<p>{% codeblock A minimum working example lang:tex %}
-\documentclass[border=5pt]{standalone}
-\usepackage{fontspec}
-\newfontfamily{\LL}{Linux Libertine O}
-\begin{document}
-Examples of nasal vowels: {\LL /ɑ̃/, /ɛ̃/, /ɔ̃/}
-\end{document}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'>Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="explanation">Explanation</h2>
 
@@ -252,7 +305,40 @@ the sources of inspirations.</p>
 
 <h2 id="source-code">Source code</h2>
 
-<p>{% gist eb013fa73d62a5f5c917 %}</p>
+<p><div><script src='https://gist.github.com/eb013fa73d62a5f5c917.js'></script>
+<noscript><pre><code>\documentclass[border=5pt]{standalone}
+\usepackage{fontspec}
+\begin{document}
+\begin{tabular}{lll}
+  \hline
+  \multicolumn{1}{||c}{Header 1} &amp;
+  \multicolumn{1}{||c||}{Header 2} &amp;
+  \multicolumn{1}{c||}{Header 3} \\ \hline
+  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
+  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
+  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
+  \noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 4} &amp;
+  \multicolumn{1}{||c||}{Header 5} &amp;
+  \multicolumn{1}{c||}{Header 6} \\ \hline
+  \multicolumn{1}{||l}{Cell 4} &amp;
+  \multicolumn{1}{||l||}{Cell 5} &amp;
+  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 7} &amp;
+  \multicolumn{1}{||c||}{Header 8} &amp;
+  \multicolumn{1}{c||}{Header 9} \\ \hline
+  \multicolumn{1}{||l}{Cell 7} &amp;
+  \multicolumn{1}{||l||}{Cell 8} &amp;
+  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
+  \cline{2-2}
+  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
+  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
+  \cline{2-2}
+\end{tabular}
+\end{document}</code></pre></noscript></div>
+</p>
 
 <h2 id="explanation">Explanation</h2>
 
