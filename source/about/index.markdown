@@ -55,12 +55,13 @@ My custom settings
 - [My $\rm \LaTeX$ macros][mymacros]: I use them as shorthand.
 - [My Vim registers][myvimreg]: I use some custom Vim registers as
     shorthand.
-- My VIMRCs (<del>on M\$ Win\* 7 and </del>on
+- My VIMRCs (on [M\$ Win\* 7][vimrc_ms] and on
     [Ubuntu 14.04 LTS][vimrc_ub])
 - [My bash aliases][myalias]
 
 [mymacros]: /about/mymacros.html
 [myvimreg]: /about/myvimreg.html
+[vimrc_ms]: https://gist.github.com/VincentTam/abc1cbd2b2181ad69165
 [vimrc_ub]: https://gist.github.com/VincentTam/2379ba75d6ad703a3786
 [myalias]:  https://gist.github.com/VincentTam/31442af28f1509728469
 
