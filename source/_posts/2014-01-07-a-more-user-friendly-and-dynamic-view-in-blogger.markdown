@@ -18,7 +18,7 @@ The dynamic view template in Blogger can already switch its modes
 according to the users' needs.  The containers in "flipcard" and
 "mosaic" views can be enlarged by a click on them.  However, the
 default "sidebar" view still has its supporters, despite its
-inadequacies.
+inadequacies.[^supp_sidebar]
 
 Last Saturday, I changed the template from a dark one to a dynamic one
 withe sidebar.  However, when I'd like to scroll down to my earlier
@@ -41,4 +41,10 @@ copy the code from him for your reference.
 Note: Later, I found out that *without* the scrollbar, the sidebar is
 still scrollable.
 
+---
+[^supp_sidebar]:
+    [*Scrollbar for Sidebar Posts in Blogger Dynamic Views*][src] by
+    Yoga.
+
 [np]: /blog/2014/01/08/testing-online-code-syntax-highlighters-for-blogs-4-giving-up-using-bloggers-dynamic-view/
+[src]: http://www.southernspeakers.net/2012/09/scrollbar-for-sidebar-posts-in-blogger.html
