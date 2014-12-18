@@ -9,19 +9,19 @@ comments: true
 Taglist installation
 ---
 
-[Taglist] is a popular Vim plugin and it requires [Ctags].  c9s has
+[Taglist] is a popular [Vim] plugin and it requires [Ctags].  c9s has
 given [a detailed description of the installation of Ctags][c9s].
 I've found out that putting the whole `ctags58` folder under the `C`
 drive and adding it to the `PATH` environment variable will do.  You
 don't need to copy `ctags.exe` under the `C` drive or `$VIMRUNTIME`.
 
 TheGeekStuff has [a web page][thegeekstuff] which described numerous
-powerful functions of Taglist.
+powerful functions of [Taglist].
 
 Some VIMRC settings
 ---
 
-I've learnt something about vim keyboard mappings by reading
+I've learnt something about [Vim] keyboard mappings by reading
 [Le's post on customized VIMRC settings][le_vimrc].  Using this
 knowledge, I can do something that I couldn't do last month.
 
@@ -67,7 +67,7 @@ buffer in which an HTML file is opened.  Now, I have
 
 ---
 
-New keyboard shortcuts of my gVim
+New keyboard shortcuts of my GVim
 ---
 
 Finally, I decided to use `<F3>` and `<F12>` in normal mode for
@@ -79,6 +79,7 @@ nnoremap <F3>   :NERDTreeToggle
 nnoremap <F12>  :TlistToggle
 {% endcodeblock %}
 
+[Vim]: http://www.vim.org
 [Taglist]: http://github.com/vim-scripts/taglist.vim
 [Ctags]: http://ctags.sourceforge.net/ "Exuberant Ctags"
 [c9s]: http://c9s.blogspot.hk/2007/07/setting-up-ctags-gvim-in-windows.html
