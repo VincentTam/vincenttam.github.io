@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C/c++ | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-18T10:43:17+08:00</updated>
+  <updated>2014-12-18T14:58:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -309,114 +309,210 @@ syntax errors in the source code and improve its readability.</p>
     <updated>2013-12-30T01:52:00+08:00</updated>
     <id>http://vincenttam.github.io/blog/2013/12/30/c-hello-world-using-clang_complete-and-vim</id>
     
-      <content type="html"><![CDATA[<p>Many posts on the advantages of <a href="https://github.com/Rip-Rip/clang_complete">clang&#095;complete</a> have already been posted. For example, there&#8217;s <a href="http://www.zwiener.org/vimautocomplete.html#sec2">a demonstration of the plugin</a> on Mac. If you can understand Chinese (or you have a translator that <em>truly</em> understands it), you may even look at more sites, such as <a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">Chen&#8217;s post</a>.</p>
+      <content type="html"><![CDATA[<p>Many posts on the advantages of <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> have already been
+posted.  For example, there’s <a href="http://www.zwiener.org/vimautocomplete.html#sec2">a demonstration of the plugin</a> on
+Mac.  If you can understand Chinese (or you have a translator that
+<em>truly</em> understands it), you may even look at more sites, such as
+<a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">Chen’s post</a>.</p>
 
 <!-- more -->
 
-<p>The authors of the above posts are likely to work in the IT sector. For new comers of programming, they may like to start from zero. On which platform can they start from? I&#8217;d recommend popular *nix distributions (e.g. Debian-based/Fedora-based ones) due to their package managing tools like APT or YUM. For a M\$ Vis* Stu* like code completion on Vim, clang_complete is the right answer, but it is often hard to install on M\$ Win*<sup id="fnref-22-1"><a href="#fn-22-1" rel="footnote">1</a></sup>, but the installation is incredibly easy on *nix.<sup id="fnref-22-2"><a href="#fn-22-2" rel="footnote">2</a></sup></p>
+<p>The authors of the above posts are likely to work in the IT sector.
+For new comers of programming, they may like to start from zero.  On
+which platform can they start from? I’d recommend popular *nix
+distributions (e.g.  Debian-based/Fedora-based ones) due to their
+package managing tools like <a href="http://wiki.debian.org/Apt">APT</a> or <a href="http://yum.baseurl.org">YUM</a>.  For a M$ Vis* Stu*
+like code completion on <a href="http://www.vim.org">Vim</a>, <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> is the right answer,
+but it is often hard to install on M$ Win*, but the installation is
+incredibly easy on *nix.<sup id="fnref:inst_ms"><a href="#fn:inst_ms" class="footnote">1</a></sup><sup id="fnref:inst_nix"><a href="#fn:inst_nix" class="footnote">2</a></sup></p>
 
-<p>Many writers of posts on clang_complete installation stopped writing further after completing the whole installation and configuration of the plugin, and I haven&#8217;t seen any post that uses &#8220;hello world&#8221; as an example. This is alright since many users of Vim are experienced programmers who would like to demonstrate some advanced features of the editor with the additional plugin (e.g. jumping between Ctags), and a simple <code>hello.cpp</code> can&#8217;t be used for that. Moreover, many teachers would teach programming on M\$ Win*, and even if a *nix desktop is used, the work is most likely done using an IDE on GUI (Emacs is a text editor and IDE that runs on command line.) &#8230; The concept of modal editing may be too hard for newbies to accept it, and you need to get several commands right before entering any text into a buffer. The steep learning curve might frighten learners away from Vim&#8230; Some computer users believe in the myth that Vim and Emacs are too old and nobody use them.</p>
+<p>Many writers of posts on <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> installation stopped
+writing further after completing the whole installation and
+configuration of the plugin, and I haven’t seen any post that uses
+“hello world” as an example.  This is alright since many users of
+<a href="http://www.vim.org">Vim</a> are experienced programmers who would like to demonstrate some
+advanced features of the editor with the additional plugin (e.g.
+jumping between ctags), and a simple <code>hello.cpp</code> can’t be used for
+that.  Moreover, many teachers would teach programming on M$ Win*,
+and even if a *nix desktop is used, the work is most likely done
+using an IDE on GUI  (<a href="http://www.gnu.org/software/emacs">Emacs</a> is a text editor and IDE that runs on
+command line.)  …  The concept of modal editing may be too hard for
+newbies to accept it, and you need to get several commands right
+before entering any text into a buffer.  The steep learning curve
+might frighten learners away from <a href="http://www.vim.org">Vim</a>…  Some computer users
+believe in the myth that <a href="http://www.vim.org">Vim</a> and <a href="http://www.gnu.org/software/emacs">Emacs</a> are too old and nobody use
+them.</p>
 
-<p>Anyways, the mixed use of both the built-in omni-complete function of Vim (invoked by <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code>) and the popup menu of clang_complete (invoked by <code>&lt;C-x&gt;&lt;C-u&gt;</code>)to write a &#8220;hello world&#8221; program is a productive way of doing the job. However, due to the limitations of human mind, we can remember very few unfamiliar things at a time. This is not the case in storage devices. They can capture every word that come out of our mind, though many physical means of storage of information are subject to aging, especially those in the past&#8230; Luckily, information technology allows words, and even fonts, to be replicated efficiently and almost identically. This has brought the human race a variety of new subjects, such as web *ng, and has extended our old knowledge into many fields, such as typography&#8230; In addition, the advancement of technology enables us to capture visible images and copy it rapidly, and I&#8217;ve recorded my experience of &#8220;hello world&#8221; using clang_complete with Vim on a series of screenshots.</p>
+<p>Anyways, the mixed use of both the built-in omni-complete function of
+<a href="http://www.vim.org">Vim</a> (invoked by <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code>) and the popup menu of
+<a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> (invoked by <code>&lt;C-x&gt;&lt;C-u&gt;</code>) to write a “hello world”
+program is a productive way of doing the job.  However, due to the
+limitations of human mind, we can remember very few unfamiliar things
+at a time.  This is not the case in storage devices.  They can capture
+every word that come out of our mind, though many physical means of
+storage of information are subject to aging, especially those in the
+past…  Luckily, information technology allows words, and even fonts,
+to be replicated efficiently and almost identically.  This has brought
+the human race a variety of new subjects, such as web *ng, and has
+extended our old knowledge into many fields, such as typography…  In
+addition, the advancement of technology enables us to capture visible
+images and copy it rapidly, and I’ve recorded my experience of “hello
+world” using <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> with <a href="http://www.vim.org">Vim</a> on a series of screenshots.</p>
 
-<p>In addition to adding Wu&#8217;s custom vimrc configuration for clang_complete<sup id="fnref-22-3"><a href="#fn-22-3" rel="footnote">3</a></sup>, I&#8217;ve also installed vim-snipmate and vim-snippets for more auto-complete mappings.</p>
+<p>In addition to adding Wu’s custom VIMRC configuration for
+<a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>, I’ve also installed <a href="https://github.com/garbas/vim-snipmate">vim-snipmate</a> and
+<a href="https://github.com/honza/vim-snippets">vim-snippets</a> for more auto-complete mappings.<sup id="fnref:wu"><a href="#fn:wu" class="footnote">3</a></sup></p>
 
-<p>Before actually beginning the steps for writing a &#8220;hello world&#8221;, we should know that we <em>won&#8217;t</em> learn anything from successes. It&#8217;s <em>failures</em> that help us reflect on the mistakes in our understand of theories. Therefore, I&#8217;ll <em>deliberately</em> find something wrong, and elaborate on that using some ideas. In other words, that&#8217;s &#8220;to blow water&#8221; in Cantonese.</p>
+<p>Before actually beginning the steps for writing a “hello world”, we
+should know that we <em>won’t</em> learn anything from successes.  It’s
+<em>failures</em> that help us reflect on the mistakes in our understand of
+theories.  Therefore, I’ll <em>deliberately</em> find something wrong, and
+elaborate on that using some ideas.  In other words, that’s “to blow
+water” in Cantonese.</p>
 
-<h3>1. Comparison between clang_complete and the editor&#8217;s built-in completion in typing <code>#include&lt;iostream&gt;</code></h3>
+<h2 id="comparison-between-clangcomplete-and-the-editors-built-in-completion-in-typing-includeiostream">Ⅰ. Comparison between clang_complete and the editor’s built-in completion in typing <code>#include&lt;iostream&gt;</code></h2>
 
-<h4>1.1 The editor&#8217;s built-in completion</h4>
+<h3 id="the-editors-built-in-completion">Ⅰ.1 The editor’s built-in completion</h3>
 
-<p>The following &#8220;hello world&#8221; procedure contains some <em>wrong</em> steps.</p>
+<p>The following “hello world” procedure contains some <em>wrong</em> steps.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete.gif" width="800" title="‘Figure 1’ ‘fig1’" ></p>
 
 <ol>
-    <li>Type <code>inc&lt;Tab&gt;</code>.</li>
-    <li>Vim-snippet completes the code, with <code>stdio.h</code> as default. The file name of the included file is selected so that you can input something else.</li>
-    <li>Since <code>cout</code> is used later, we need to <code>#include&lt;iostream&gt;</code>. First type <code>io</code> to override the default input.</li>
-    <li>Type <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code> to get a completion list.</li>
-    <li>Select <code>iostream</code> (without &#8216;s&#8217;).</li>
-    <li>Continue typing the whole program, and compile it.</li>
-    <li>The source code fails!</li>
+  <li>Type <code>inc&lt;Tab&gt;</code>.</li>
+  <li><a href="https://github.com/honza/vim-snippets">Vim-snippets</a> complete the code, with <code>stdio.h</code> as default.  The
+file name of the included file is selected so that you can input
+something else.</li>
+  <li>Since <code>cout</code> is used later, we need to <code>#include&lt;iostream&gt;</code>.
+First type <code>io</code> to override the default input.</li>
+  <li>Type <code>&lt;C-n&gt;</code> or <code>&lt;C-p&gt;</code> to get a completion list.</li>
+  <li>Select <code>iostream</code> (without ‘s’).</li>
+  <li>Continue typing the whole program, and compile it.</li>
+  <li>The source code fails!</li>
 </ol>
 
-<p>Obviously, there&#8217;s a syntax error at the line <code>#include&lt;iostream&gt;</code>. Thinking about the auto-completion function again, one will notice that the correct step is to press <code>&lt;Esc&gt;</code> after step 1, and use <code>ci&lt;</code> to clear the code inside the <code>&lt;&gt;</code> block, that&#8217;s a good try, but I personally think that the steps can be more beautiful.</p>
+<p>Obviously, there’s a syntax error at the line <code>#include&lt;iostream&gt;</code>.
+Thinking about the auto-completion function again, one will notice
+that the correct step is to press <code>&lt;Esc&gt;</code> after step 1, and use <code>ci&lt;</code>
+to clear the code inside the <code>&lt;&gt;</code> block, that’s a good try, but I
+personally think that the steps can be more beautiful.</p>
 
-<h4>1.2 clang_complete&#8217;s solution</h4>
+<h3 id="clangcompletes-solution">Ⅰ.2 clang_complete’s solution</h3>
 
-<p>This is just a <em>part</em> of correct steps. I leave the remaining parts of codes of this simple program into later sections.</p>
+<p>This is just a <em>part</em> of correct steps.  I leave the remaining parts
+of codes of this simple program into later sections.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/inc_complete_clang.gif" width="800" title="‘Figure 2’ ‘fig2’" ></p>
 
-<p>This time, after typing <code>#</code> at the beginning of the line, press <code>&lt;C-x&gt;&lt;C-u&gt;</code> to use the automatic completion list, and choose the <code># include</code> option with the <code>$`header'</code> surrounded by a <code>&lt;&gt;</code> block, <em>not</em> a double quote. Use <code>&lt;Alt-Tab&gt;</code> to select the inner <code>&lt;&gt;</code> block and type <code>io&lt;C-n&gt;</code> to use the built-in (<em>not</em> plugin) function to complete the code. (The <code>&lt;Alt-Tab&gt;</code> keystroke doesn&#8217;t work in GUI, since it means changing the window on focus.)</p>
+<p>This time, after typing <code>#</code> at the beginning of the line, press
+<code>&lt;C-x&gt;&lt;C-u&gt;</code> to use the automatic completion list, and choose the <code>#
+include</code> option with the <code>$`header'</code> surrounded by a <code>&lt;&gt;</code> block,
+<em>not</em> a double quote.  Use <code>&lt;Alt-Tab&gt;</code> to select the inner <code>&lt;&gt;</code> block
+and type <code>io&lt;C-n&gt;</code> to use the built-in (<em>not</em> plugin) function to
+complete the code. (The <code>&lt;Alt-Tab&gt;</code> keystroke doesn’t work in GUI,
+since it means changing the window on focus.)</p>
 
-<p>Note: In this method, <code>stdio.h</code> needs to be included. Otherwise, the built-in insert completion popup menu containing <code>iostream</code> will not be shown.</p>
+<p>Note: In this method, <code>stdio.h</code> needs to be included.  Otherwise, the
+built-in insert completion popup menu containing <code>iostream</code> will not
+be shown.</p>
 
-<h3>2. Completion of <code>using namespace std;</code></h3>
+<h2 id="completion-of-using-namespace-std">Ⅱ. Completion of <code>using namespace std;</code></h2>
 
 <ol>
-    <li>Without clang_complete: Directly type in everything, or use <code>&lt;C-n&gt;</code> for <em>word-by-word completion</em>.</li>
-    <li>With clang_complete:  The completion menu can complete the whole line.</li>
+  <li>Without <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>: Directly type in everything, or use
+<code>&lt;C-n&gt;</code> for <em>word-by-word completion</em>.</li>
+  <li>With <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>: The completion menu can complete the whole
+line.</li>
 </ol>
 
-<p>Analysis: Finding an item from a menu requires coordination of our eyes and hands, while typing the code directly requires more memory. For a newbie, the former should be easier since he/she doesn&#8217;t waste time to recall his/her memory. For a geek, the later should be faster since the process has been repeated for many time. Luckily, being the second in the popup list, the problem of reaction time does not matter much if one looks at the list from the top to the bottom. Moreover, typing the code directly may lead to syntax errors. This problem can be overcome if one has the capability to read the error message from the compiler and to browse code quickly.</p>
+<p>Analysis: Finding an item from a menu requires coordination of our
+eyes and hands, while typing the code directly requires more memory.
+For a newbie, the former should be easier since he/she doesn’t waste
+time to recall his/her memory.  For a geek, the later should be faster
+since the process has been repeated for many time.  Luckily, being the
+second in the popup list, the problem of reaction time does not matter
+much if one looks at the list from the top to the bottom.  Moreover,
+typing the code directly may lead to syntax errors.  This problem can
+be overcome if one has the capability to read the error message from
+the compiler and to browse code quickly.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/using_complete.png" width="800" title="‘Without clang_complete: word-by-word completion’ ‘fig3’" ></p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/using_clang.gif" width="800" title="‘With clang_complete: completion of the whole line’ ‘fig4’" ></p>
 
-<p>The remaining parts of this post <em>doesn&#8217;t</em> make use of the clang_complete plugin.</p>
+<p>The remaining parts of this post <em>doesn’t</em> make use of the
+<a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> plugin.</p>
 
-<h3>3. The main method</h3>
+<h2 id="the-main-method">Ⅲ. The main method</h2>
 
-<p>Just typing <code>main&lt;Tab&gt;</code> will do. That&#8217;s from vim-snippets.</p>
+<p>Just typing <code>main&lt;Tab&gt;</code> will do.  That’s from <a href="https://github.com/honza/vim-snippets">vim-snippets</a>.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/prog.gif" width="800" title="‘Figure 5’ ‘fig5’" ></p>
 
-<h3>4. Greeting the world!</h3>
+<h2 id="greeting-the-world">Ⅳ. Greeting the world!</h2>
 
-<p>If you type <code>cout&lt;Tab&gt;</code>, you&#8217;ll get <code>std::cout&lt;&lt;&nbsp;&nbsp;&lt;&lt;std::endl;</code>, with the cursor located in between the two whitespace characters in the middle. Using a regular expression to delete the <code>std::</code> in front of <code>cout</code> and <code>endl</code>.</p>
+<p>If you type <code>cout&lt;Tab&gt;</code>, you’ll get <code>std::cout&lt;&lt;  &lt;&lt;std::endl;</code>, with
+the cursor located in between the two whitespace characters in the
+middle.  Using a regular expression to delete the <code>std::</code> in front of
+<code>cout</code> and <code>endl</code>.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/cout.gif" width="800" title="‘Figure 6’ ‘fig6’" ></p>
 
-<h3>5. Getting the indentation correct</h3>
+<h2 id="getting-the-indentation-correct">Ⅴ. Getting the indentation correct</h2>
 
-<p>Modifying the c.snippet file maybe a bit troublesome, and may bring strange consequences to the plugin. If you don&#8217;t have time to study the plugin, you may not like to bother it. Manually decreasing the indentation of the line <code>return 0;</code> each time is not likely to be an elegant solution for Vim Lovers. The actual way to fix the problem (using the command <code>gg=G</code> in the normal mode) is on p. 73 of the book Vi iMproved—Vim.<sup id="fnref-22-4"><a href="#fn-22-4" rel="footnote">4</a></sup></p>
+<p>Modifying the c.snippet file maybe a bit troublesome, and may bring
+strange consequences to the plugin.  If you don’t have time to study
+the plugin, you may not like to bother it.  Manually decreasing the
+indentation of the line <code>return 0;</code> each time is not likely to be an
+elegant solution for <a href="http://www.vim.org">Vim</a> Lovers.  The actual way to fix the problem
+is using the command <code>gg=G</code> in the normal mode.<sup id="fnref:vim_book"><a href="#fn:vim_book" class="footnote">4</a></sup></p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/cindent.gif" width="800" title="‘Figure 7’ ‘fig7’" ></p>
 
-<h3>6. Running the program</h3>
+<h2 id="running-the-program">Ⅵ. Running the program</h2>
 
-<p>For some newbies, it might be too much for them to digest if I discuss more on the creation of a sample makefile, which automatically executes more complicated compiling commands with a simple <code>make</code> command, searching &#8220;makefile tutorial&#8221; on the web will do. If you don&#8217;t like the clang compiler, just substitute <code>clang++</code> with <code>g++</code>.</p>
+<p>For some newbies, it might be too much for them to digest if I discuss
+more on the creation of a sample makefile, which automatically
+executes more complicated compiling commands with a simple <code>make</code>
+command, searching “makefile tutorial” on the web will do.  If you
+don’t like the clang compiler, just substitute <code>clang++</code> with <code>g++</code>.</p>
 
-<p>According to Henri Poincaré, a French mathematician, things are beautiful if they are simple. Repetition of facts build up our understanding. I end this post with a short and simple command that can be repeatedly used to compile .cpp source files with different file names. For more details about that, refer to my earlier post titled <em><a href="http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html">Fast Compilation and Execution of Source Code</a></em>.</p>
+<p>According to Henri Poincaré, a French mathematician, things are
+beautiful if they are simple.  Repetition of facts build up our
+understanding.  I end this post with a short and simple command that
+can be repeatedly used to compile CPP source files with different file
+names.  For more details about that, refer to my earlier post titled
+<a href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/"><em>Fast Compilation and Execution of Source Code</em></a>.</p>
 
 <p><img class="fancybox" src="/images/posts/ClangComplete/run.gif" width="800" title="‘Figure 8’ ‘fig8’" ></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 
-<div class="footnotes">
 <hr />
-<ol>
 
-<li id="fn-22-1">
-<a href="http://blog.chinaunix.net/uid-53564-id-3558537.html">http://blog.chinaunix.net/uid-53564-id-3558537.html</a>&#160;<a href="#fnref-22-1" rev="footnote">&#8617;</a>
-</li>
+<div class="footnotes">
+  <ol>
+    <li id="fn:inst_ms">
 
-<li id="fn-22-2">
-<a href="http://changyy.pixnet.net/blog/post/31706673-%5Bvim%5D-using-clang_complete-plugin-@-ubuntu-12.04">http://changyy.pixnet.net/blog/post/31706673-%5Bvim%5D-using-clang_complete-plugin-@-ubuntu-12.04</a>&#160;<a href="#fnref-22-2" rev="footnote">&#8617;</a>
-</li>
+      <p><a href="http://blog.chinaunix.net/uid-53564-id-3558537.html"><em>在win/gvim中以DLL方式使用clang_complete</em></a> by slimzhao in
+ChinaUnix. <a href="#fnref:inst_ms" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:inst_nix">
 
-<li id="fn-22-3">
-<a href="http://blog.wuwon.id.au/2011/10/vim-plugin-for-navigating-c-with.html">http://blog.wuwon.id.au/2011/10/vim-plugin-for-navigating-c-with.html</a>&#160;<a href="#fnref-22-3" rev="footnote">&#8617;</a>
-</li>
+      <p><a href="http://changyy.pixnet.net/blog/post/31706673-%5Bvim%5D-using-clang_complete-plugin-@-ubuntu-12.04"><em>[VIM] using clang_complete plugin @ Ubuntu 12.04</em></a> by
+Yaun-Yi Chang in 第二十四個夏天後. <a href="#fnref:inst_nix" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:wu">
 
-<li id="fn-22-4">
-<a href="ftp://ftp.vim.org/pub/vim/doc/book/vimbook-OPL.pdf">ftp://ftp.vim.org/pub/vim/doc/book/vimbook-OPL.pdf</a>&#160;<a href="#fnref-22-4" rev="footnote">&#8617;</a>
-</li>
+      <p><a href="http://blog.wuwon.id.au/2011/10/vim-plugin-for-navigating-c-with.html"><em>A Vim plugin for navigating C++ with libclang</em></a> by Kevin Wu
+Won in A Small Matter of Programming. <a href="#fnref:wu" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vim_book">
 
-</ol></div>
+      <p><a href="ftp://ftp.vim.org/pub/vim/doc/book/vimbook-OPL.pdf"><em>Vi iMproved—Vim</em></a> p.73 by Steve Oualline. <a href="#fnref:vim_book" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 ]]></content>
     
   </entry>
