@@ -6,7 +6,7 @@ categories: MathJax
 comments: true
 ---
 
-Following the instructions [here][src], MathJax works on Blogger.
+Following the instructions [here][src], [MathJax] works on Blogger.
 
 I typed
 
@@ -37,11 +37,12 @@ verbatim", we have
 \]
 </div>
 
-on [$\rm \TeX$ Commands available in MathJax][mathjax_cmd].
-Nevertheless, it only works in display mode.
+according to [*$\rm \TeX$ Commands available in MathJax*][mathjax_cmd]
+by Dr. Carol JVF Burns.  Nevertheless, it only works in display
+mode.[^lastmod141219]
 
 Finally, let's get some equations numbered, just like
-[an example on MathJax][eq_no_eg].
+[an example on the MathJax CDN][eq_no_eg].
 
 <div>
 \[
@@ -51,6 +52,10 @@ Finally, let's get some equations numbered, just like
 \]
 </div>
 
+---
+[^lastmod141219]: Last edited on DEC 19TH, 2014.
+
 [src]: http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html "MathJax in Blogger (II)"
+[MathJax]: http://www.mathjax.org
 [mathjax_cmd]: http://www.onemathematicalcat.org/MathJaxDocumentation/TeXSyntax.htm
 [eq_no_eg]: http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html
