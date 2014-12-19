@@ -2,7 +2,7 @@
 layout: post
 title: Using Vim Keystrokes in Web Browser
 date: 2013-12-11 04:01:00 +08:00
-categories: web technologies
+categories: [web technologies]
 comments: true
 ---
 
