@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="With the Vim-$\rm \LaTeX$ plugin, it's possible to edit $\rm \LaTeX$ equations with Vim quickly without making syntax errors. (e.g. undefined &hellip;">
+  <meta name="description" content="With [Vim-$\rm \LaTeX$][vim-latex], it's possible to edit $\rm \LaTeX$
+equations with Vim quickly without making syntax errors. (e.g.
+undefined &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
@@ -150,123 +152,98 @@
   </header>
 
 
-<div class="entry-content"><p>
-With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equations with Vim quickly without making syntax errors. (e.g. undefined control sequence caused by mismatched braces &#8216;{}&#8217;)
-</p>
+<div class="entry-content">With [Vim-$\rm \LaTeX$][vim-latex], it&#8217;s possible to edit $\rm \LaTeX$
+equations with Vim quickly without making syntax errors.  (e.g.
+undefined control sequence caused by mismatched braces &#8216;{}&#8217;)
 
-<a class="fancybox-media" href="//www.youtube.com/embed/y67t-05nFD0">
-    <img src="/images/posts/EditLaTeXEquations/Video.png"
-    alt="Youtube video" />
-</a>
-
-<p><strong>
-    Please view it fullscreen in HD. Sorry for the inconvenience
-    caused.
-</strong></p>
+[![YouTube video][video_pic]{:.center}][video]{:.fancybox-media}  
+Please view it fullscreen in *HD*.  Sorry for the inconvenience
+caused.  
+For the sample files, please click the above &#8220;YouTube&#8221; button.
 
 <!-- more -->
 
-<p>For the sample files, please click the above &#8220;Youtube&#8221; button.</p>
+Why use [Vim]?  Please refer to [my post on Vim][pp].
 
-<p>
-Why use Vim? Please refer to
-<a href="/blog/2013/08/16/why-vim/">my post on Vim</a>.
-</p>
+For a quick startup guide, see the [official tutorial][off_tut].  If
+you&#8217;ve learnt those keyboard mappings, here&#8217;s [a quick review][rev] of
+some commands.  For detailed list of all keyboard shortcuts and
+customizations (e.g. custom compile rule: use `pdflatex` instead of
+`latex` and `dvipdfm`), you can refer to [the user manual][man].
 
-<p>
-For a quick startup guide, see the
-<a href="http://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/">official tutorial</a>.
-If you&#8217;ve learnt those keyboard mappings, here&#8217;s
-<a href="http://www.cheat-sheets.org/saved-copy/vimlatexqrc.pdf">a quick review</a>
-of some commands. For detailed list of all keyboard shortcuts and
-customizations (e.g. custom compile rule: use <code>pdflatex</code>
-instead of <code>latex</code> and <code>dvipdfm</code>), you can refer
-to
-<a href="http://vim-latex.sourceforge.net/documentation/latex-suite.html">the user manual</a>.
-</p>
+There&#8217;re many blog entries about how to install $\rm \LaTeX$ on [Vim]
+on \*nix and M\$ Win\*.  Searching &#8220;vim latex&#8221; gives you millions of
+search results.  Summarizing the articles, the three major components
+are:
 
-<p>
-There&#8217;re many blog entries about how to install $\rm \LaTeX$ on
-Vim/GVim on UNIX/Linux and M\$. Searching &#8220;vim latex&#8221; gives you
-millions of search results. Summarizing the articles, the three major
-components are:
-</p>
+1.  Editor
+    * [Vim] (found on *almost every distribution of \*nix*)
+    * GVim (on GUI of any platform)
 
-<ol>
-    <li>Editor
-    <ul>
-        <li>
-	Vim (found on <em>almost every distribution of *nix</em>)
-	</li>
-        <li>GVim (on GUI of any platform)</li>
-    </ul>
-    </li>
-    <li>$\rm \LaTeX$
-    <ul>
-        <li>$\rm \TeX$Live (found in package manager on *nix)</li>
-        <li>Mik$\rm \TeX$ (have a $\rm \LaTeX$ package manager)</li>
-    </ul>
-    </li>
-    <li>Vim plugin for writing $\rm \LaTeX$: Latex-Suite</li>
-</ol>
+2.  $\rm \LaTeX$
+    * [$\rm \TeX$Live][texlive] (found in package manager on \*nix)
+    * [Mik$\rm \TeX$][miktex] (have a $\rm \LaTeX$ package manager)
 
-<p>
-For *nix, you may find some GUI tools for installing packages.
+3.  [Vim] plugin for writing $\rm \LaTeX$: [Latex-Suite][vim-latex]
+
+For \*nix, you may find some GUI tools for installing packages.
 (especially in some popular distributions)
-</p>
 
 <img class="fancybox" src="/images/posts/EditLaTeXEquations/SoftwareCenter.png" title="Software Centre in Ubuntu 12.04 LTS" alt="fig1">
 
 <img class="fancybox" src="/images/posts/EditLaTeXEquations/FedoraSoftwareMgr.png" title="PackageKit in Fedora 17" alt="fig2">
 
-<p>
 You can also type the install commands for these packages on the
-terminal. For example:
-</p>
+terminal.
 
-<ol>
-    <li>Ubuntu
+For [Ubuntu]:
 
-    <pre class="cli"><code class="UBMono"># Also include `vim-gnome' if you'd like to install GVim.
-$ sudo apt get install vim-gnome vim-latexsuite texlive</code></pre>
-    </li>
-    <li>Fedora
-    <pre class="cli"><code># Also include `vim-X11' if you'd like to install GVim.
-[root@localhost]# yum install vim-latex latex</code></pre>
-    </li>
-</ol>
+    # Also include `vim-gnome&#8217; if you&#8217;d like to install GVim.
+    $ sudo apt get install vim-gnome vim-latexsuite texlive
+{: .cliUB}
 
-<p>Unlike M\$, the dependencies will be automatically resolved.</p>
+For [Fedora]:
 
-<p>
-For M\$, the installation procedures for GVim (portable), Vim-$\rm
-\LaTeX$ and Mik$\rm \TeX$ (portable) are as followed:
-</p>
+    # Also include `vim-X11&#8217; if you&#8217;d like to install GVim.
+    [root@localhost]# yum install vim-latex latex
+{: .cli}
 
-<ol>
-    <li>
-    Go to the official websites of GVim and Mik$\rm \TeX$ (or
-    equivalent packages) and download the packages.
-    </li>
-    <li>
-    Put Mik$\rm \TeX$ portable and GVim portable to any folder you
-    like
-    <ul>
-        <li>e.g. <code>C:\Temp</code></li>
-        <li>DON&#8217;T put them under <code>C:\Program Files</code></li>
-    </ul>
-    </li>
-    <li>Download Vim-$\rm \LaTeX$ from SourceForge</li>
-    <li>
-    Follow the steps
-    <a href="http://vim-latex.sourceforge.net/index.php?subject=download&amp;title=Download">here</a>
-    </li>
-</ol>
+Unlike M\$ Win\*, the dependencies will be automatically resolved.
 
-<p>
-Remarks: The installation of Vim-$\rm \LaTeX$ (items 3 and 4) is the
-same for portable and non-portable versions of GVim.
-</p>
+For M\$ Win\*, the installation procedures for GVim
+([portable][g_port]), [Vim-$\rm \LaTeX$][vim-latex] and
+[Mik$\rm \TeX$][miktex] ([portable][m_port]) are as followed:
+
+1.  Go to the official websites of GVim and [Mik$\rm \TeX$][miktex]
+    (or equivalent packages) and download the packages; or
+
+    Put [Mik$\rm \TeX$ portable][m_port] and [GVim portable][g_port]
+    to any folder you like.
+
+    - e.g. `C:\Temp`
+    - *Don&#8217;t* put them under `C:\Program Files`.
+
+2.  Download [Vim-$\rm \LaTeX$][vim-latex] from SourceForge.
+3.  Follow the steps [here][more_steps].
+
+Remarks: The installation of [Vim-$\rm \LaTeX$][vim-latex] (items 3
+and 4) is the same for portable and non-portable versions of GVim.
+
+[vim-latex]: http://vim-latex.sourceforge.net
+[video_pic]: /images/posts/EditLaTeXEquations/Video.png
+[video]: //www.youtube.com/embed/y67t-05nFD0
+[Vim]: http://www.vim.org
+[pp]: /blog/2013/08/16/why-vim/ &#8220;Why Vim&#8221;
+[off_tut]: http://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/
+[rev]: http://www.cheat-sheets.org/saved-copy/vimlatexqrc.pdf
+[man]: http://vim-latex.sourceforge.net/documentation/latex-suite.html
+[texlive]: https://www.tug.org/texlive
+[miktex]: http://miktex.org
+[Ubuntu]: http://www.ubuntu.com
+[Fedora]: https://getfedora.org
+[g_port]: http://portablegvim.sourceforge.net
+[m_port]: http://miktex.org/portable
+[more_steps]: http://vim-latex.sourceforge.net/index.php?subject=download&amp;title=Download
 </div>
 
 
@@ -296,7 +273,7 @@ same for portable and non-portable versions of GVim.
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/" >Tweet</a>
   
   
   
@@ -424,8 +401,8 @@ same for portable and non-portable versions of GVim.
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/';
         var disqus_script = 'embed.js';
       
     (function () {
