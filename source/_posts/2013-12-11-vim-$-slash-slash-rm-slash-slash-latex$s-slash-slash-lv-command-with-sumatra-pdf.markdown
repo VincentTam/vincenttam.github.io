@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Vim-$\rm \LaTeX$'s \lv command with Sumatra PDF
+title: "Vim-$\\rm \\LaTeX$'s \\lv command with Sumatra PDF"
 date: 2013-12-11 02:07:00 +08:00
 categories: [LaTeX-Suite, M$ Win*, Vim]
 comments: true
