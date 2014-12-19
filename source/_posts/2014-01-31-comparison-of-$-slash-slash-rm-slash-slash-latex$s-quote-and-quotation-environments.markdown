@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Comparison of $\rm \LaTeX$'s "quote" and "quotation" Environments
+title: "Comparison of $\\rm \\LaTeX$'s \"quote\" and \"quotation\" Environments"
 date: 2014-01-31 00:25:10 +0800
 categories: LaTeX
 comments: true
