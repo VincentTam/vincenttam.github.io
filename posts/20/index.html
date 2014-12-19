@@ -291,7 +291,7 @@ since it may still work with some good design and functions.</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</a></h1>
+	<h1 class="entry-title"><a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bib$-slash-slash-rm-slash-slash-latex$-in-apa-style/">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</a></h1>
       
     
     
@@ -303,19 +303,33 @@ since it may still work with some good design and functions.</p>
 
 <time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
         
-           | <a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/">Comments</a>
+           | <a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bib$-slash-slash-rm-slash-slash-latex$-in-apa-style/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bib$-slash-slash-rm-slash-slash-latex$-in-apa-style/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bibrm-latex-in-apa-style/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-bib$-slash-slash-rm-slash-slash-latex$-in-apa-style/" title="Permalink">&infin;</a>
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a so-called &#8220;bibliography&#8221;, which contains a URL. The link should be in typewriter font after using the command <code>\urlstyle{tt}</code> under adding the <code>url</code> package to the preamble. I googled for almost 2 hours, but the blog posts suggested that using this method should work. I even tried to copy some minimum working examples from the web to test if they work. They really worked and so I&#8217;m puzzled. Ten&nbsp;minutes ago, I just find out what&#8217;s going wrong: the <code>url</code> package should never go before the several lines in the preamble that are responsible for adding an APA-style bibliography.<br />
-The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code>Biber</code>. Whenever the AUX file exists, <code>\ll</code> won&#8217;t execute <code>Biber</code>, causing the resulting PDF file to have no change in the bibliography.</p>
+  <div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL.  The link should be in
+typewriter font after using the command <code>\urlstyle{tt}</code> under adding
+the <code>url</code> package to the preamble.  I googled for almost 2 hours, but
+the blog posts suggested that using this method should work.  I even
+tried to copy some minimum working examples from the web to test if
+they work.  They really worked and so I’m puzzled.  Ten minutes ago, I
+just find out what’s going wrong: the <code>url</code> package should never go
+before the several lines in the preamble that are responsible for
+adding an APA-style bibliography.</p>
+
+<p>The <code>\ll</code> command in <a href="http://vim-latex.sourceforge.net/">Vim-$\rm \LaTeX$</a> seems not doing
+well with <a href="http://sourceforge.net/projects/biblatex-biber/" title="BibTeX replacement for biblatex">Biber</a>.  Whenever the AUX file exists, <code>\ll</code> won’t execute
+<code>biber</code>, causing the resulting PDF file to have no change in the
+bibliography.</p>
 
 <p>I hope I can use less time to figure out any mistake next time.</p>
+
 </div>
   
   
@@ -352,9 +366,24 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 
 
   <div class="entry-content"><ol>
-    <li>Installed some useful Vim plugins, such as <a title="Vundle" href="http://github.com/gmarik/vundle">Vundle</a> (Vim plugins management tool), <a title="NERDTree" href="http://github.com/scrooloose/nerdtree">NERDTree</a> (file browser), <a title="Easymotion" href="http://github.com/Lokaltog/vim-easymotion">Easymotion</a>, <a title="Loremipsum" href="http://github.com/vim-scripts/loremipsum">Loremipsum</a> (random text generator), <a title="Vim-surround" href="http://github.com/tpope/vim-surround">Vim-surround</a> (surround text with brackets), <a title="Vim-snipmate" href="http://github.com/msanders/snipmate.vim">Vim-snipmate</a> (for autogenerated code), <a title="Vim-addon-mw-utils" href="http://github.com/marcweber/vim-addon-mw-utils">Vim-addon-mw-utils</a>, <a title="Tlib_vim" href="http://github.com/tomtom/tlib_vim">Tlib_vim</a> (dependency for Vim-snipmate), <a title="FuzzyFinder" href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a> (quick finding tool for files, etc) and <a title="L9" href="http://github.com/vim-scripts/L9">L9</a> (dependency for FuzzyFinder).</li>
-    <li>Do some custom insert mode keyboard mapping. (<a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">automatical completion of brackets</a>)</li>
+  <li>Installed some useful <a href="http://www.vim.org">Vim</a> plugins, such as
+    <ul>
+      <li><a href="http://github.com/gmarik/vundle">Vundle</a>: (<a href="http://www.vim.org">Vim</a> plugins management tool).</li>
+      <li><a href="http://github.com/scrooloose/nerdtree">NERDTree</a>: (file browser).</li>
+      <li><a href="http://github.com/Lokaltog/vim-easymotion">EasyMotion</a></li>
+      <li><a href="http://github.com/vim-scripts/loremipsum">Loremipsum</a>: (random text generator).</li>
+      <li><a href="http://github.com/tpope/vim-surround">surround.vim</a>: (surround text with brackets).</li>
+      <li><a href="http://github.com/msanders/snipmate.vim">SnipMate</a>: (for autogenerated code).</li>
+      <li><a href="http://github.com/marcweber/vim-addon-mw-utils">Vim-addon-mw-utils</a></li>
+      <li><a href="http://github.com/tomtom/tlib_vim">Tlib_vim</a>: (dependency for <a href="http://github.com/msanders/snipmate.vim">SnipMate</a>).</li>
+      <li><a href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a>: (quick finding tool for files, etc).</li>
+      <li><a href="http://github.com/vim-scripts/L9">L9</a>: (dependency for <a href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a>).</li>
+    </ul>
+  </li>
+  <li>Do some custom insert mode keyboard mapping.
+(<a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">automatical completion of brackets</a>)</li>
 </ol>
+
 </div>
   
   
@@ -369,7 +398,7 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2013/10/18/a-bug-in-vim-rm-latex/">A Bug in Vim-$\rm \LaTeX$</a></h1>
+	<h1 class="entry-title"><a href="/blog/2013/10/18/a-bug-in-vim-$-slash-slash-rm-slash-slash-latex$/">A Bug in Vim-$\rm \LaTeX$</a></h1>
       
     
     
@@ -381,34 +410,40 @@ The <code>\ll</code> command in Vim-$\rm \LaTeX$ seems not doing well with <code
 
 <time class='entry-date' datetime='2013-10-18T22:26:00+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:26 pm</span></time>
         
-           | <a href="/blog/2013/10/18/a-bug-in-vim-rm-latex/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2013/10/18/a-bug-in-vim-rm-latex/">Comments</a>
+           | <a href="/blog/2013/10/18/a-bug-in-vim-$-slash-slash-rm-slash-slash-latex$/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/10/18/a-bug-in-vim-$-slash-slash-rm-slash-slash-latex$/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2013/10/18/a-bug-in-vim-rm-latex/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2013/10/18/a-bug-in-vim-$-slash-slash-rm-slash-slash-latex$/" title="Permalink">&infin;</a>
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>It&#8217;s a small syntax error, and can be easily fixed with the addition of a space character. I found it from <a href="http://www.mail-archive.com/vim-latex-devel@lists.sourceforge.net/msg00083.html">a Google search result</a>. (I&#8217;ve forgotten the query string.)</p>
+  <div class="entry-content"><p>It’s a small syntax error, and can be easily fixed with the addition
+of a space character.  I found it from
+<a href="http://www.mail-archive.com/vim-latex-devel@lists.sourceforge.net/msg00083.html">a Google search result</a>.  (I’ve forgotten the query
+string.)</p>
 
 <p>This shows to good things of free and open source software:</p>
 
 <ul>
-    <li>Find bugs quickly through effective communication between users and developers</li>
-    <li>Fix bugs quickly through hands-on configuration of source code</li>
+  <li>Find bugs quickly through effective communication between users and
+  developers.</li>
+  <li>Fix bugs quickly through hands-on configuration of source code.</li>
 </ul>
 
-<p>From the <a href="http://github.com/vim-scripts/">Vim plugins on the GitHub</a>, you&#8217;ll discover even more good points of FLOSS:</p>
+<p>From the <a href="http://github.com/vim-scripts/">Vim plugins on the GitHub</a>, you’ll discover
+even more good points of <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software#FLOSS">FLOSS</a>:</p>
 
 <ul>
-    <li>Everyone can tune the software to adapt to his/her needs.</li>
-    <li>Everyone can share and contribute their changes.</li>
+  <li>Everyone can tune the software to adapt to his/her needs.</li>
+  <li>Everyone can share and contribute their changes.</li>
 </ul>
 
-<p><em>and more &#8230;</em></p>
+<p><em>and more …</em></p>
 
-<p>The more the FLOSS developers, the better our free software!</p>
+<p>The more the <a href="https://en.wikipedia.org/wiki/Free_and_open-source_software#FLOSS">FLOSS</a> developers, the better our free software!</p>
+
 </div>
   
   
@@ -584,15 +619,15 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
   </header>
 
 
-  <div class="entry-content"><p>Following the instructions <a href="http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html">here</a>, MathJax works on Blogpost.</p>
+  <div class="entry-content"><p>Following the instructions <a href="http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html" title="MathJax in Blogger (II)">here</a>, <a href="http://www.mathjax.org">MathJax</a> works on Blogger.</p>
 
 <p>I typed</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="s">$</span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">-</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">=</span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nv">\theta</span><span class="s">$</span>
-</span></code></pre></td></tr></table></div></figure>
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="s">$</span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">-</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">=</span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nv">\theta</span><span class="s">$</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>and here&#8217;s the result: $\cos^2\theta-\sin^2\theta=\cos 2\theta$</p>
+<p>and here’s the result: $\cos^2\theta-\sin^2\theta=\cos 2\theta$</p>
 
 </div>
   
@@ -653,12 +688,10 @@ With the Vim-$\rm \LaTeX$ plugin, it&#8217;s possible to edit $\rm \LaTeX$ equat
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (7)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (4)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/technologies/'>technologies (1)</a> <a href='/blog/categories/technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (3)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (23)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web/'>web (1)</a> <a href='/blog/categories/web/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (11)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (12)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
