@@ -16,9 +16,8 @@ In my previous post titled
 `makefile`.  After I've been familiar with [SyntaxHighlighter], I
 changed the code of the `makefile` so that the new tool is used.
 However, as I've written in [my earlier post][pp2],
-[SyntaxHighlighter] has *no* makefile support[^lose1], while
-[highlight.js][^win2] and [google-code-prettify][^win3] have that
-feature.
+[SyntaxHighlighter] has *no* makefile support, while [highlight.js]
+and [google-code-prettify] have that feature.[^lose1][^win2][^win3]
 
 {% blockquote Réné Descartes (1596--1650) %}
 I think, therefore I am.
@@ -99,7 +98,7 @@ that after running `make` on the first day.
     <http://google-code-prettify.googlecode.com/svn/trunk/README.html>
 
 [orig_post]: http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters.html
-[pp1]: http://blogue-un.blogspot.hk/2013/12/fast-compilation-and-execution-of.html
+[pp1]: /blog/2013/12/11/fast-compilation-and-execution-of-source-code/
 [SyntaxHighlighter]: http://alexgorbatchev.com/SyntaxHighlighter/
 [pp2]: http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html
 [highlight.js]: http://highlightjs.org/
