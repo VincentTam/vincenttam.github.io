@@ -3,7 +3,7 @@ layout: post
 title: "Plot Polar Coordinates Graphs"
 date: 2014-11-13 23:23:04 +0800
 comments: true
-categories: LaTeX
+categories: [LaTeX, template]
 ---
 
 Googling "tikz tutorial", one can find several useful PDF documents
