@@ -35,7 +35,7 @@ Add the PPA for [Git].
      The most current stable version of Git for Ubuntu.
 
     For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
-     More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
+      More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
     Press [ENTER] to continue or Ctrl-C to cancel adding it
 
     gpg: keyring `/tmp/tmplo3t2ozz/secring.gpg' created
