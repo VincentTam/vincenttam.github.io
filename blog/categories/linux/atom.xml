@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-19T15:05:07+08:00</updated>
+  <updated>2014-12-21T02:26:15+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[An Up-to-date Git on Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu/"/>
+    
+    <updated>2014-12-21T01:03:49+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Tonight, I read the most recent blog article on
+<a href="https://github.com/blog">GitHub’s blog</a>.<sup id="fnref:post"><a href="#fn:post" class="footnote">1</a></sup>  It says that the version of Git Bash
+on my M$ Win* 7 is <em>unsafe</em>.  Moreover, it is claimed that
+<a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> computers <em>aren’t</em> affected since they’re case
+sensitive.  At first, I believed that I <em>didn’t</em> need to upgrade my
+<a href="http://git-scm.com/">Git</a>.  However, after I clicked the link for the announcement of Git
+v2.2.1, I checked the version of the <a href="http://git-scm.com/">Git</a> on <a href="http://www.ubuntu.com">Ubuntu</a>, and found out
+that it <em>wasn’t</em> the newest one.  The following paragraph convinced me
+to get this update on my Ubuntu desktop.</p>
+
+<p><blockquote><p>Even though the issue may not affect Linux users, if you are a hosting service whose users may fetch from your service to Windows or Mac OS X machines, you are strongly encouraged to update to protect such users who use existing versions of Git.</p><footer><strong>Junio C Hamano</strong> <cite><a href='http://article.gmane.org/gmane.linux.kernel/1853266'>[ANNOUNCE] Git v2.2.1 (and Updates to Older Maintenance Tracks)</a></cite></footer></blockquote></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Add the <abbr title="Personal Package Archive">PPA</abbr> for <a href="http://git-scm.com/">Git</a>.</p>
+
+<pre class="cliUB"><code>$ sudo add-apt-repository ppa:git-core/ppa
+[sudo] password for owner:
+ The most current stable version of Git for Ubuntu.
+
+For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
+ More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
+Press [ENTER] to continue or Ctrl-C to cancel adding it
+
+gpg: keyring `/tmp/tmplo3t2ozz/secring.gpg' created
+gpg: keyring `/tmp/tmplo3t2ozz/pubring.gpg' created
+gpg: requesting key E1DF1F24 from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmplo3t2ozz/trustdb.gpg: trustdb created
+gpg: key E1DF1F24: public key "Launchpad PPA for Ubuntu Git Maintainers" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+</code></pre>
+
+<p>Update the package information and upgrade the file.</p>
+
+<pre class="cliUB"><code>$ sudo apt-get upgrade
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  git git-core git-man gitk
+4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,604 kB of archives.
+After this operation, 1,528 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main gitk all 1:2.2.1-0ppa2~ubuntu14.04.1 [704 kB]
+Get:2 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git i386 1:2.2.1-0ppa2~ubuntu14.04.1 [3,601 kB]
+Get:3 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-man all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,298 kB]
+Get:4 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-core all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,412 B]
+Fetched 5,604 kB in 23s (240 kB/s)
+(Reading database ... 380182 files and directories currently installed.)
+Preparing to unpack .../gitk_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking gitk (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git_1%3a2.2.1-0ppa2~ubuntu14.04.1_i386.deb ...
+Unpacking git (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git-man_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking git-man (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git-core_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking git-core (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up git-man (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up git (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up gitk (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up git-core (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+</code></pre>
+
+<p>Now, I’ve the newest stable release of <a href="http://git-scm.com/">Git</a>.</p>
+
+<pre class="cliUB"><code>$ git --version
+git version 2.2.1
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:post">
+
+      <p><a href="http://article.gmane.org/gmane.linux.kernel/1853266"><em>Vulnerability announced: update your Git clients</em></a> by
+Vicent Marti. <a href="#fnref:post" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -176,79 +277,6 @@ However, I <em>didn’t</em> expect that the ‘^M’ character would give an ex
 horizontal space in the resulting PDF document compiled by $\rm
 \LaTeX$.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Print Actual Sized Images]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/10/print-actual-sized-images/"/>
-    
-    <updated>2014-12-10T10:12:23+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/10/print-actual-sized-images</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>A month ago, I wanted to print a picture.  However, I <em>didn’t</em> know
-how to use GUI programs like LibreOffice or GIMP to print images with
-their actual size.  I know that this can be easily done in M$
-Paint.<sup id="fnref:mspaint"><a href="#fn:mspaint" class="footnote">1</a></sup></p>
-
-<p>Nonetheless, as a free software supporter, I should refuse using
-proprietary softwares and seek free alternatives.</p>
-
-<!-- more -->
-
-<h2 id="my-approach">My Approach</h2>
-
-<p>I finally used the <code>lpr</code> command to print the picture because
-<em>commands won’t change like buttons in GUI programs</em>.</p>
-
-<ul>
-  <li><code>lpr foo.png</code>: print <code>foo.png</code> with the default page size, and the
-  picture will fit the page.</li>
-  <li>
-    <p><code>lpr --natural-scale=nn%</code>: It took me an hour to find out this
-  option is the true answer to my question.  I googled “print actual
-  size of picture linux” and entered a page in a knowledge
-  base.<sup id="fnref:kb"><a href="#fn:kb" class="footnote">2</a></sup>  Actually, the contents are the <em>same</em> as those in
-  <code>http://localhost:631</code>.  I <em>don’t</em> know why the section “Image
-  Options” <em>can’t</em> be found in the <abbr title="Common Unix Printing System">CUPS</abbr> manual.</p>
-
-    <p><img class="fancybox center /images/posts/LprActualSize/cups.png 750 ‘<abbr title=Common Unix Printing" src="System">CUPS</abbr>&#8221; title=&#8221;Mannual’ ‘cups man’&#8221; ></p>
-  </li>
-  <li>One can use <code>lpoptions -l</code> for viewing the list of the default
-  printer settings, and one may modify it through the <abbr title="Common Unix Printing System">CUPS</abbr>’s web
-  interface.  For example, one may use the option <code>-o
-  Resolution=Photo</code>.  Note that it’s <em>case sensitive</em>.</li>
-</ul>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p><abbr title="pixels per inch">PPI</abbr> and <abbr title="dots per inch">DPI</abbr> are <em>different</em>.  The former is about the printer and is
-independent of the picture, while the later is for controlling the
-printing size of the picture.<sup id="fnref:dpippi"><a href="#fn:dpippi" class="footnote">3</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:mspaint">
-      <p>See <a href="http://www.sevenforums.com/music-pictures-video/200235-actual-print-size-when-printing-picures.html" title="Windows 7: Actual print size when printing picures">this forum post</a> for details. <a href="#fnref:mspaint" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:kb">
-
-      <p>See <a href="http://www.eecs.utk.edu/resources/it/kb/printing/linux-command-line">Command-Line Printing in Linux</a> in the IT Knowledge Base
-of the University of Tennessee System. <a href="#fnref:kb" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:dpippi">
-
-      <p>See <a href="http://99designs.com/designer-blog/2013/02/26/ppi-vs-dpi-whats-the-difference/"><em>PPI vs. DPI: what’s the difference?</em></a> by Alex Bigman
-in 99designs. <a href="#fnref:dpippi" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-19T15:05:07+08:00</updated>
+  <updated>2014-12-21T02:26:15+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,107 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[An Up-to-date Git on Ubuntu]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu/"/>
+    
+    <updated>2014-12-21T01:03:49+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Tonight, I read the most recent blog article on
+<a href="https://github.com/blog">GitHub’s blog</a>.<sup id="fnref:post"><a href="#fn:post" class="footnote">1</a></sup>  It says that the version of Git Bash
+on my M$ Win* 7 is <em>unsafe</em>.  Moreover, it is claimed that
+<a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> computers <em>aren’t</em> affected since they’re case
+sensitive.  At first, I believed that I <em>didn’t</em> need to upgrade my
+<a href="http://git-scm.com/">Git</a>.  However, after I clicked the link for the announcement of Git
+v2.2.1, I checked the version of the <a href="http://git-scm.com/">Git</a> on <a href="http://www.ubuntu.com">Ubuntu</a>, and found out
+that it <em>wasn’t</em> the newest one.  The following paragraph convinced me
+to get this update on my Ubuntu desktop.</p>
+
+<blockquote><p>Even though the issue may not affect Linux users, if you are a hosting service whose users may fetch from your service to Windows or Mac OS X machines, you are strongly encouraged to update to protect such users who use existing versions of Git.</p><footer><strong>Junio C Hamano</strong> <cite><a href="http://article.gmane.org/gmane.linux.kernel/1853266">[ANNOUNCE] Git v2.2.1 (and Updates to Older Maintenance Tracks)</a></cite></footer></blockquote>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Add the <abbr title="Personal Package Archive">PPA</abbr> for <a href="http://git-scm.com/">Git</a>.</p>
+
+<pre class="cliUB"><code>$ sudo add-apt-repository ppa:git-core/ppa
+[sudo] password for owner:
+ The most current stable version of Git for Ubuntu.
+
+For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
+ More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
+Press [ENTER] to continue or Ctrl-C to cancel adding it
+
+gpg: keyring `/tmp/tmplo3t2ozz/secring.gpg' created
+gpg: keyring `/tmp/tmplo3t2ozz/pubring.gpg' created
+gpg: requesting key E1DF1F24 from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmplo3t2ozz/trustdb.gpg: trustdb created
+gpg: key E1DF1F24: public key "Launchpad PPA for Ubuntu Git Maintainers" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+</code></pre>
+
+<p>Update the package information and upgrade the file.</p>
+
+<pre class="cliUB"><code>$ sudo apt-get upgrade
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Calculating upgrade... Done
+The following packages will be upgraded:
+  git git-core git-man gitk
+4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Need to get 5,604 kB of archives.
+After this operation, 1,528 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main gitk all 1:2.2.1-0ppa2~ubuntu14.04.1 [704 kB]
+Get:2 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git i386 1:2.2.1-0ppa2~ubuntu14.04.1 [3,601 kB]
+Get:3 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-man all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,298 kB]
+Get:4 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-core all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,412 B]
+Fetched 5,604 kB in 23s (240 kB/s)
+(Reading database ... 380182 files and directories currently installed.)
+Preparing to unpack .../gitk_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking gitk (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git_1%3a2.2.1-0ppa2~ubuntu14.04.1_i386.deb ...
+Unpacking git (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git-man_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking git-man (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Preparing to unpack .../git-core_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
+Unpacking git-core (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up git-man (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up git (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up gitk (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+Setting up git-core (1:2.2.1-0ppa2~ubuntu14.04.1) ...
+</code></pre>
+
+<p>Now, I’ve the newest stable release of <a href="http://git-scm.com/">Git</a>.</p>
+
+<pre class="cliUB"><code>$ git --version
+git version 2.2.1
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:post">
+
+      <p><a href="http://article.gmane.org/gmane.linux.kernel/1853266"><em>Vulnerability announced: update your Git clients</em></a> by
+Vicent Marti. <a href="#fnref:post" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1203,249 +1304,6 @@ may simply break a line without indentation.</p>
     <li id="fn:pp2">
 
       <p>Refer to <a href="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MathJax Local Configuration File]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/"/>
-    
-    <updated>2014-11-09T01:06:46+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>Before I changed the HTML syntax for embedding MathJax with a local
-configuration file, I often encountered error while viewing the math
-rendered by MathJax.<sup id="fnref:12d38c1"><a href="#fn:12d38c1" class="footnote">1</a></sup>  The custom commands defined in the
-local configuration file sometimes <em>wouldn’t</em> be converted to
-mathematical expressions in a post while browsing the page for the
-first time.  Though refreshing the page can get the math shown, it’s
-quite troublesome.  Therefore, I searched for a better way in the
-official manual.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried following the instructions in MathJax’s official Wiki for
-using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">2</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
-</span><span class="line">	<span class="na">src=</span><span class="s">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,</span>
-</span><span class="line"><span class="s">	/javascripts/MathJaxLocal.js</span>
-</span><span class="line"><span class="s">&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Things seems worked, but undesirably <em>slow</em>.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/MathJaxLocalConfigSlow/slow1.png" alt="loading time graph" class="fancybox" /></p>
-
-<p><img src="http://vincenttam.github.io/images/posts/MathJaxLocalConfigSlow/slow2.png" alt="loading time graph" class="fancybox" /></p>
-
-<p>It took about <em>16 seconds</em> for loading the math.  <strong>How can they load
-quicker with a local configuration file</strong>, like <a href="http://drz.ac">http://drz.ac</a>?</p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>I googled “mathjax local config long”, and found a message from
-<a href="https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ">this page</a> extremely useful.</p>
-
-<blockquote><p><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre><p>at the bottom of your font configuration file and that should take care of it for you.</p></p><footer><strong>Davide P. Cervone</strong> <cite><a href="http://goo.gl/WzV2w3">Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote>
-
-<h2 id="failed-attempts">Failed attempts</h2>
-
-<p>I tried using relative paths in <code>source/_includes/custom/head.html</code>
-, <code>{{ root_url }}</code> in the <code>&lt;script&gt;</code> tag that
-calls MathJax with a local configuration file and in the local
-configuration file <code>source/javascripts/MathJaxLocal.js</code>.  Since this
-blog has more than 200 pages, it took about a minute for regeneration
-of contents after each slight modification in the code.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I typed full paths manually for the above <code>&lt;script&gt;</code> tag in the custom
-head of a page and the local configuration file.  To avoid loading
-“insecure contents”, I used full URLs instead of
-<code>{{ site.url }}</code> since the URL of this site
-<em>doesn’t</em> start with “https” in <code>_config.yml</code>.<sup id="fnref:https"><a href="#fn:https" class="footnote">3</a></sup><sup id="fnref:config_yml"><a href="#fn:config_yml" class="footnote">4</a></sup>
-Then the equations should load quickly.</p>
-
-<p><img src="http://vincenttam.github.io/images/posts/MathJaxLocalConfigSlow/ok.png" alt="loading time graph" class="fancybox" /></p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>If I could do the same job again, I’d first change the local
-configuration file and upload it to GitHub, so that I could test it in
-a local HTML file <code>file:///path/to/test_mathjax.html</code></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A local testing page for using the MathJax macros (test_mathjax.html)</span> <a href="http://vincenttam.github.io/downloads/code/test_mathjax.html">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
-</span><span class="line"><span class="nt">&lt;head&gt;</span>
-</span><span class="line">	<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span> <span class="nt">/&gt;</span>
-</span><span class="line">
-</span><span class="line">	<span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
-</span><span class="line">	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span>
-</span><span class="line">	<span class="na">src=</span><span class="s">&quot;</span>
-</span><span class="line"><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
-</span><span class="line"><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
-</span><span class="line"><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;/head&gt;</span>
-</span><span class="line"><span class="nt">&lt;body&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>This page is for testing MathJax in my blog.  I wrote some custom
-</span><span class="line">shorthand like $\zeros \in \reals^n$.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;h2&gt;</span>Problem<span class="nt">&lt;/h2&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>For sequences of numbers, <span class="nt">&lt;em&gt;</span>limit inferior<span class="nt">&lt;/em&gt;</span> and <span class="nt">&lt;em&gt;</span>limit
-</span><span class="line">superior<span class="nt">&lt;/em&gt;</span> are defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge
-</span><span class="line">n\}\}$ and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$ respectively;
-</span><span class="line">for sequences of sets, they are defined as $\displaystyle
-</span><span class="line">\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
-</span><span class="line">\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$ respectively.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;&lt;strong&gt;</span>Why are they consistent?<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;h2&gt;</span>Discussion<span class="nt">&lt;/h2&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>It suffices to find a relation between &#39;<span class="ni">&amp;lt;</span>&#39; and &#39;<span class="ni">&amp;sube;</span>&#39;: $\{x
-</span><span class="line">\le a\} \subseteq \{x \le b\} \iff a \le b$.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x \le \sup
-</span><span class="line">A\}$.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;&lt;em&gt;</span>Proof<span class="nt">&lt;/em&gt;</span>:<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line">\[
-</span><span class="line">  \begin{aligned}
-</span><span class="line">    <span class="err">&amp;</span> x \in \bigcup_{a \in A} \{x \le a\} \\
-</span><span class="line">    \iff<span class="err">&amp;</span> x \le a \;\forall a \in A \\
-</span><span class="line">    \iff<span class="err">&amp;</span> x \text{ is a lower bound of } A \\
-</span><span class="line">    \iff<span class="err">&amp;</span> x \le \inf A
-</span><span class="line">  \end{aligned}
-</span><span class="line">\]
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>The last step is due to the defintion of infimum (<span class="nt">&lt;em&gt;</span>greatest<span class="nt">&lt;/em&gt;</span>
-</span><span class="line">lower bound).<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line">With the above claim, one has
-</span><span class="line">
-</span><span class="line">\[
-</span><span class="line">  \begin{aligned}
-</span><span class="line">    <span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{x \le a_k\} \\
-</span><span class="line">    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{a \in \{a_k:k \ge n\}} \{x \le a\} \\
-</span><span class="line">    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \{ x \le \sup \{a_k:k \ge n\}\} \\
-</span><span class="line">    =<span class="err">&amp;</span> \{x \le \inf\sup \{a_k:k \ge n\}\}
-</span><span class="line">  \end{aligned}
-</span><span class="line">\]
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le \inf\sup
-</span><span class="line">\{a_k:k \ge n\}$ and $\displaystyle \bigcup_{n=1}^{\infty}
-</span><span class="line">\bigcap_{k=n}^{\infty} \{x \le a_k\} \subseteq \bigcap_{n=1}^{\infty}
-</span><span class="line">\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in common.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:12d38c1">
-      <p>Refer to commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/12d38c1#diff-0">12d38c1</a>. <a href="#fnref:12d38c1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:mathjax_doc">
-
-      <p><a href="http://docs.mathjax.org/en/latest/configuration.html#using-a-local-configuration-file-with-the-cdn">Using a local configuration file with the CDN</a> in
-<em>MathJax Documentation</em>. <a href="#fnref:mathjax_doc" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:https">
-
-      <p>Refer to <a href="http://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/"><em>MathJax in Octopress via HTTPS</em></a> in Blog 1 for
-details. <a href="#fnref:https" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:config_yml">
-      <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/71ff4fb/_config.yml">71ff4fb</a>. <a href="#fnref:config_yml" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
