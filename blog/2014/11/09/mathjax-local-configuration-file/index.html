@@ -21,32 +21,16 @@ configuration file, I often encountered error while viewing the math &hellip;">
   
   <link rel="canonical" href="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file">
   <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!-- Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href='//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' rel='stylesheet' type='text/css'>
-
-<!-- Printing rules -->
+  <!-- Printing rules -->
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
-
-<!-- START COPYING HERE -->
-<link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
-<!--[if lt IE 9]>
-  <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.ie.css">
-<![endif]-->
-<!-- END COPYING HERE -->
 
 <!-- Blog Ownership Verification for Bing Webmaster -->
 <meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
-
-<!-- table css -->
-<link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
@@ -84,15 +68,6 @@ configuration file, I often encountered error while viewing the math &hellip;">
   
     <h2>Random Talk on Random Thoughts</h2>
   
-
-  <!-- TOP RIGHT RIBBON: START COPYING HERE -->
-  <div class="github-fork-ribbon-wrapper right">
-    <div class="github-fork-ribbon">
-      <a href="https://github.com/VincentTam">Fork me on GitHub</a>
-    </div>
-  </div>
-  <!-- TOP RIGHT RIBBON: END COPYING HERE -->
-
 </hgroup>
 
 </header>
@@ -569,20 +544,67 @@ details. <a href="#fnref:https" class="reversefootnote">&#8617;</a></p>
 
 
 
-<!-- Defer loadlong of JavaScripts -->
+<!-- Defer loading of JavaScripts -->
 <script type="text/javascript" charset="utf-8">
 function downloadJSAtOnload() {
-  var element = document.createElement("script");
-  element.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js";
-  element.type = "text/javascript";
-  document.body.appendChild(element);
+  <!-- MathJax -->
+  var mjscript = document.createElement("script");
+  mjscript.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js";
+  mjscript.type = "text/javascript";
+  document.body.appendChild(mjscript);
 }
 
-if (window.addEventListener)
+if (window.addEventListener) {
   window.addEventListener("load", downloadJSAtOnload, false);
-else if (window.attachEvent)
+} else if (window.attachEvent) {
   window.attachEvent("onload", downloadJSAtOnload);
-  else window.onload = downloadJSAtOnload;
+} else {
+  window.onload = downloadJSAtOnload;
+}
+
+var cb = function() {
+  var h = document.getElementsByTagName('head')[0];
+
+  <!-- Fonts from Google's Web font directory at http://google.com/webfonts -->
+  var font1 = document.createElement("link");
+  font1.href = "//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic";
+  font1.rel = "stylesheet";
+  font1.type = "text/css";
+  h.parentNode.insertBefore(font1, h);
+
+  var font2 = document.createElement("link");
+  font2.href = "//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic";
+  font2.rel = "stylesheet";
+  font2.type = "text/css";
+  h.parentNode.insertBefore(font2, h);
+
+  var fontub = document.createElement("link");
+  fontub.href = "//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700";
+  fontub.rel = "stylesheet";
+  fontub.type = "text/css";
+  h.parentNode.insertBefore(fontub, h);
+
+  <!-- screen.css -->
+  var l = document.createElement("link");
+  l.href = "/stylesheets/screen.css";
+  l.media = "screen, projection";
+  l.rel = "stylesheet";
+  l.type = "text/css";
+  h.parentNode.insertBefore(l, h);
+
+  <!-- table css -->
+  var tcss = document.createElement("link");
+  tcss.href = "/stylesheets/data-table.css";
+  tcss.media = "screen, projection";
+  tcss.rel = "stylesheet";
+  tcss.type = "text/css";
+  h.parentNode.insertBefore(tcss, h);
+};
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(cb);
+else window.addEventListener('load', cb);
 </script>
 
 
