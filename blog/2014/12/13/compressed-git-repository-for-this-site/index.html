@@ -35,11 +35,6 @@ command git &hellip;">
 <!-- Printing rules -->
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 
-<!-- mathjax config similar to drz.ac -->
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js">
-</script>
-
 <!-- START COPYING HERE -->
 <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
 <!--[if lt IE 9]>
@@ -166,7 +161,7 @@ command <code>git status</code> gradually <em>decreased</em>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p>I ran the command <code>git gc</code> in Git Bash on M$ Win* 7.</p>
+<p>I ran the command <code>git gc</code> in <a href="http://msysgit.github.io/#bash">Git Bash</a> on M$ Win* 7.</p>
 
 <pre class="cli"><code>Welcome to Git (version 1.9.4-preview20140929)
 
@@ -189,6 +184,29 @@ Removing duplicate objects: 100% (256/256), done.
 <span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
 $
 </code></pre>
+
+<hr />
+<p>(Added on Dec 21, 2014)</p>
+
+<p>I also compressed the local repositories on <a href="http://www.ubuntu.com">Ubuntu</a>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress]$ git gc
+Counting objects: 14057, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (7403/7403), done.
+Writing objects: 100% (14057/14057), done.
+Total 14057 (delta 7553), reused 11466 (delta 5741)
+Checking connectivity: 49889, done.
+[owner@localhost ~/octopress]$ cd _deploy/
+[owner@localhost ~/octopress/_deploy]$ git gc
+Counting objects: 48241, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (16913/16913), done.
+Writing objects: 100% (48241/48241), done.
+Total 48241 (delta 23195), reused 38708 (delta 18503)
+Removing duplicate objects: 100% (256/256), done.
+</code></pre>
+
 </div>
 
 
@@ -292,7 +310,6 @@ $
 
   </ul>
 </section>
-<!-- vim:set sw=2:wrap: -->
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
@@ -334,8 +351,6 @@ $
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
 <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
-
-<!-- vim:se sw=2 -->
 
 </footer>
   
@@ -383,6 +398,22 @@ $
 
 
 
+
+<!-- Defer loadlong of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+function downloadJSAtOnload() {
+  var element = document.createElement("script");
+  element.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js";
+  element.type = "text/javascript";
+  document.body.appendChild(element);
+}
+
+if (window.addEventListener)
+  window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+  window.attachEvent("onload", downloadJSAtOnload);
+  else window.onload = downloadJSAtOnload;
+</script>
 
 
 </body>

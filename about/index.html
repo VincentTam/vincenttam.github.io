@@ -35,11 +35,6 @@
 <!-- Printing rules -->
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 
-<!-- mathjax config similar to drz.ac -->
-<script type="text/javascript"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js">
-</script>
-
 <!-- START COPYING HERE -->
 <link rel="stylesheet" href="/stylesheets/gh-fork-ribbon.css">
 <!--[if lt IE 9]>
@@ -309,7 +304,6 @@ branch and a GitHub project page built with Jekyll Bootstrap in the
 
   </ul>
 </section>
-<!-- vim:set sw=2:wrap: -->
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
@@ -352,8 +346,6 @@ branch and a GitHub project page built with Jekyll Bootstrap in the
 <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
-<!-- vim:se sw=2 -->
-
 </footer>
   
 
@@ -384,6 +376,22 @@ branch and a GitHub project page built with Jekyll Bootstrap in the
 
 
 
+
+<!-- Defer loadlong of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+function downloadJSAtOnload() {
+  var element = document.createElement("script");
+  element.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js";
+  element.type = "text/javascript";
+  document.body.appendChild(element);
+}
+
+if (window.addEventListener)
+  window.addEventListener("load", downloadJSAtOnload, false);
+else if (window.attachEvent)
+  window.attachEvent("onload", downloadJSAtOnload);
+  else window.onload = downloadJSAtOnload;
+</script>
 
 
 </body>
