@@ -110,6 +110,11 @@ After solving this problem, I discovered another solution in the pull
 requests of Octopress.[^alt_sol]
 
 ---
+(Added on Dec 21, 2014)
+
+Now, the problem has been *fixed*.[^514ed5e]
+
+---
 [^befd4a7]: See commit [befd4a7] on the `source` branch for details.
 [^2e56754]: See commit [2e56754] on the `master` branch for details.
 [^6ea49e8]: See commit [6ea49e8] on the `source` branch for details.
@@ -117,6 +122,9 @@ requests of Octopress.[^alt_sol]
 [^af4f216]: See commit [af4f216] on the `source` branch for details.
 [^35955df]: See commit [35955df] on the `source` branch for details.
 [^alt_sol]: See [Octopress issue 1681][alt_sol] for details.
+[^514ed5e]:
+    See commit [514ed5e] on the `master` branch of Octopress's
+    repository on GitHub.
 
 [befd4a7]: https://github.com/VincentTam/vincenttam.github.io/commit/befd4a7
 [2e56754]: https://github.com/VincentTam/vincenttam.github.io/commit/2e56754
@@ -126,3 +134,4 @@ requests of Octopress.[^alt_sol]
 [guide]: https://cuit.columbia.edu/add-search-box
 [35955df]: https://github.com/VincentTam/vincenttam.github.io/commit/35955df
 [alt_sol]: https://github.com/imathis/octopress/pull/1681
+[514ed5e]: https://github.com/imathis/octopress/commit/514ed5e
