@@ -24,7 +24,7 @@ command `git status` gradually *decreased*.
 Solution
 ---
 
-I ran the command `git gc` in Git Bash on M\$ Win\* 7.
+I ran the command `git gc` in [Git Bash] on M\$ Win\* 7.
 
 <pre class="cli"><code>Welcome to Git (version 1.9.4-preview20140929)
 
@@ -47,3 +47,29 @@ Removing duplicate objects: 100% (256/256), done.
 <span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
 $
 </code></pre>
+
+---
+(Added on Dec 21, 2014)
+
+
+I also compressed the local repositories on [Ubuntu].
+
+    [owner@localhost ~/octopress]$ git gc
+    Counting objects: 14057, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (7403/7403), done.
+    Writing objects: 100% (14057/14057), done.
+    Total 14057 (delta 7553), reused 11466 (delta 5741)
+    Checking connectivity: 49889, done.
+    [owner@localhost ~/octopress]$ cd _deploy/
+    [owner@localhost ~/octopress/_deploy]$ git gc
+    Counting objects: 48241, done.
+    Delta compression using up to 2 threads.
+    Compressing objects: 100% (16913/16913), done.
+    Writing objects: 100% (48241/48241), done.
+    Total 48241 (delta 23195), reused 38708 (delta 18503)
+    Removing duplicate objects: 100% (256/256), done.
+{:.cliUB}
+
+[Git Bash]: http://msysgit.github.io/#bash
+[Ubuntu]: http://www.ubuntu.com
