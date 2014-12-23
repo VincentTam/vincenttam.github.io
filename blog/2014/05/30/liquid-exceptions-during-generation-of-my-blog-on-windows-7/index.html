@@ -23,7 +23,6 @@ that the computer &hellip;">
   <link rel="canonical" href="http://vincenttam.github.io/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <!-- Printing rules -->
 <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 
@@ -461,31 +460,6 @@ including it in my <code>PATH</code> variable.</p>
 
 <!-- Defer loading of JavaScripts -->
 <script type="text/javascript" charset="utf-8">
-function downloadJSAtOnload() {
-  // MathJax
-  var mjscript = document.createElement("script");
-  mjscript.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js";
-  mjscript.type = "text/javascript";
-  document.body.appendChild(mjscript);
-
-  // Default JavaScripts
-  var modernizr = document.createElement("script");
-  modernizr.src = "/javascripts/modernizr-2.0.js";
-  document.body.appendChild(modernizr);
-  var octjs = document.createElement("script");
-  octjs.src = "/javascripts/octopress.js";
-  octjs.type = "text/javascript";
-  document.body.appendChild(octjs);
-}
-
-if (window.addEventListener) {
-  window.addEventListener("load", downloadJSAtOnload, false);
-} else if (window.attachEvent) {
-  window.attachEvent("onload", downloadJSAtOnload);
-} else {
-  window.onload = downloadJSAtOnload;
-}
-
 (function() {
     function getScript(url,success){
         var script=document.createElement('script');
@@ -503,14 +477,65 @@ if (window.addEventListener) {
         head.appendChild(script);
     }
 
-getScript("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",function(){
-    getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {});
-    getScript("/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5", function() {});
-    getScript("/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6", function() {});
-    getScript("/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7", function() {});
-    getScript("/javascripts/FancyBoxLocal.js", function() {});
-});
+    getScript("/javascripts/modernizr-2.0.js",function() {});
+    getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js",function() {});
 
+    // testing fallback copy
+    //getScript("/wrong/path/jquery.min.js",function(){
+    // Google hosted jquery and fancyBox JavaScripts
+    getScript("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",function(){
+      getScript("/javascripts/octopress.js",function() {});
+      getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {
+	getScript("/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5", function() {
+	  getScript("/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6", function() {
+	    getScript("/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7", function() {
+	      getScript("/javascripts/FancyBoxLocal.js", function() {});
+	      });
+	    });
+	  });
+	});
+      });
+
+    // jquery fallback local copy and fancyBox JavaScripts
+    window.onload = function() {
+      if (typeof jQuery == "undefined") {
+	var jqri = document.createElement("script");
+	jqri.src = "/javascripts/libs/jquery.min.js";
+	jqri.type = "text/javascript";
+	document.body.appendChild(jqri);
+	jqri. onload = function () {
+	  var fbjs = document.createElement("script");
+	  fbjs.src = "/fancybox/source/jquery.fancybox.pack.js?v=2.1.5";
+	  fbjs.type = "text/javascript";
+	  document.body.appendChild(fbjs);
+	  var fbbtnjs = document.createElement("script");
+	  fbbtnjs.src = "/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5";
+	  fbbtnjs.type = "text/javascript";
+	  document.body.appendChild(fbbtnjs);
+	  var fbmedjs = document.createElement("script");
+	  fbmedjs.src = "/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6";
+	  fbmedjs.type = "text/javascript";
+	  document.body.appendChild(fbmedjs);
+	  var fbthmjs = document.createElement("script");
+	  fbthmjs.src = "/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7";
+	  fbthmjs.type = "text/javascript";
+	  document.body.appendChild(fbthmjs);
+	  fbjs.onload = function () {
+	    fbbtnjs.onload = function () {
+	      fbmedjs.onload = function () {
+		fbthmjs.onload = function () {
+		  alert('helo');
+		  var fblocjs = document.createElement("script");
+		  fblocjs.src = "/javascripts/FancyBoxLocal.js";
+		  fblocjs.type = "text/javascript";
+		  document.body.appendChild(fblocjs);
+		}
+	      }
+	    }
+	  }
+	}
+      }
+    }
 })();
 
 var cb = function() {
