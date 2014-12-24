@@ -382,10 +382,8 @@ line where the modified file is shown.</p>
       getScript("/javascripts/octopress.js",function() {});
       getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {
 	getScript("/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5", function() {
-	  getScript("/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6", function() {
-	    getScript("/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7", function() {
-	      getScript("/javascripts/FancyBoxLocal.js", function() {});
-	      });
+	  getScript("/fancybox/source/helpers/fbmedthm.js", function() {
+	    getScript("/javascripts/FancyBoxLocal.js", function() {});
 	    });
 	  });
 	});
@@ -407,24 +405,18 @@ line where the modified file is shown.</p>
 	  fbbtnjs.src = "/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5";
 	  fbbtnjs.type = "text/javascript";
 	  document.body.appendChild(fbbtnjs);
-	  var fbmedjs = document.createElement("script");
-	  fbmedjs.src = "/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6";
-	  fbmedjs.type = "text/javascript";
-	  document.body.appendChild(fbmedjs);
-	  var fbthmjs = document.createElement("script");
-	  fbthmjs.src = "/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7";
-	  fbthmjs.type = "text/javascript";
-	  document.body.appendChild(fbthmjs);
+	  var fbthmmedjs = document.createElement("script");
+	  fbthmmedjs.src = "/fancybox/source/helpers/fbmedthm.js";
+	  fbthmmedjs.type = "text/javascript";
+	  document.body.appendChild(fbthmmedjs);
 	  fbjs.onload = function () {
 	    fbbtnjs.onload = function () {
-	      fbmedjs.onload = function () {
-		fbthmjs.onload = function () {
-		  alert('helo');
-		  var fblocjs = document.createElement("script");
-		  fblocjs.src = "/javascripts/FancyBoxLocal.js";
-		  fblocjs.type = "text/javascript";
-		  document.body.appendChild(fblocjs);
-		}
+	      fbthmmedjs.onload = function () {
+		alert('helo');
+		var fblocjs = document.createElement("script");
+		fblocjs.src = "/javascripts/FancyBoxLocal.js";
+		fblocjs.type = "text/javascript";
+		document.body.appendChild(fblocjs);
 	      }
 	    }
 	  }
