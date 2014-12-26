@@ -265,7 +265,7 @@ Lessons learnt
 [MozSupp]: http://mzl.la/13jCUSU "How does content that isn't secure affect my safety?"
 [MozEnggBlog]: https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/ "Mixed Content Blocking Enabled in Firefox 23!"
 [MixedActiveContent]: https://developer.mozilla.org/docs/Security/MixedContent#Mixed_active_content
-[LaTeXTemplateForEssays]: /blog/2014/03/16/$-slash-slash-rm-slash-slash-latex$-template-for-essays/ "LaTeX Template for Essays"
+[LaTeXTemplateForEssays]: /blog/2014/03/16/latex-template-for-essays/ "LaTeX Template for Essays"
 [FixMixedContent]: https://developer.mozilla.org/docs/Security/MixedContent/fix_website_with_mixed_content
 [Aurora]: http://www.mozilla.org/en-US/firefox/aurora/ "latest Aurora"
 [MixedContent]: https://developer.mozilla.org/docs/Security/MixedContent
