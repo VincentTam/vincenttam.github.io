@@ -10,7 +10,7 @@ footer: false
 The registers are for writing math in $\rm \LaTeX$, Octopress posts,
 HTML, etc.
 
-{% codeblock The list of my Vim macros %}
+{% codeblock The list of my Vim macros lang:html %}
 "b   \mathbf
 "c   \mathcal
 "e   \exists
