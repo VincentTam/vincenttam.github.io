@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>IPA Symbols in $\rm \LaTeX$ - Blog 1</title>
+  <title>Jump to $\rm \LaTeX$ Syntax Error - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Target Failed attempts Googled “xelatex ipa symbols” Tried the tipa package, and got the error “command sups already defined”.1 Source code I limited &hellip;">
+  <meta name="description" content="This post is written in response to a question of
+one of my video. Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly. To
+show you how &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <!-- Printing rules -->
@@ -80,7 +82,7 @@
   <header>
     
       
-	<h1 class="entry-title">IPA Symbols in $\rm \LaTeX$</h1>
+	<h1 class="entry-title">Jump to $\rm \LaTeX$ Syntax Error</h1>
       
     
     
@@ -90,7 +92,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-01T22:28:49+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:28 pm</span></time>
+<time class='entry-date' datetime='2014-03-22T17:23:19+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:23 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -101,73 +103,47 @@
   </header>
 
 
-<div class="entry-content"><h2 id="target">Target</h2>
+<div class="entry-content"><p><strong>This post is written in response to a question of
+<a href="http://youtu.be/y67t-05nFD0">one of my video</a>.</strong></p>
 
-<p><img src="/images/posts/LaTeXIPA/out.jpg" alt="target" /></p>
+<p>Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
+show you how, I use a GIF “animation”, instead of a video, so that the
+file size is much smaller.</p>
 
-<!-- more -->
+<p><img class="fancybox" src="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif" width="800" title="A GIF animation showing Vim-LaTeX quickfix window" alt="fig1" /></p>
 
-<h2 id="failed-attempts">Failed attempts</h2>
+<p>Explanation:</p>
 
-<ul>
-  <li>Googled “xelatex ipa symbols”</li>
-  <li>Tried the <code>tipa</code> package, and got the error “command sups already
-  defined”.<sup id="fnref:tipaFail"><a href="#fn:tipaFail" class="footnote">1</a></sup></li>
-</ul>
-
-<h2 id="source-code">Source code</h2>
-
-<p>I limited the above google search to academic sites <em>only</em><sup id="fnref:SiteEdu"><a href="#fn:SiteEdu" class="footnote">2</a></sup>,
-and I luckily found a blog post which inspired me to work out the
-following example.  (This link to the post is included in the
-footnotes.)</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line">Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>Line 2: For inserting characters with accents, for example, ‘é’ and
-‘ö’.  <em>Without</em> this line, those characters <em>won’t</em> be processed by
-the typesetting system.</p>
-
-<p>Line 3: For changing to a font that supports IPA symbols.  Here are
-the sources of inspirations.</p>
+<p>Error message: The <code>equation*</code> environment is “undefined”.<br />
+Cause of error: I forget to include the <code>amsmath</code> package in the
+preamble.</p>
 
 <ul>
-  <li>Principal: <a href="http://www.phonologist.org/papers/becker_IPAandLaTeX.pdf"><em>Typesetting phonology papers</em></a> by Michael
-  Becker</li>
-  <li>Practical: <a href="http://tex.stackexchange.com/a/64846"><em>Using TIPA with fontspec</em></a> on $\rm
-  \TeX$–$\rm \LaTeX$ Stack Exchange</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err1.png">Figure 1</a>: Compilation error occurs,
+so a quickfix window pops up.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err2.png">Figure 2</a>: I typed <code>j</code> to move the
+cursor down in the quickfix window by one line, and the window below
+showing the log file automatically scrolled down. </li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err3.png">Figure 3</a>: I typed <code>k</code> to go up one
+line, so the situation goes back to Figure 1.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err4.png">Figure 4</a>: I typed <code>&lt;Enter&gt;</code> to jump
+to the “error location”. (line 6)</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err5.png">Figure 5</a>: I typed <code>&lt;C-w&gt; j</code> to go
+back to the quickfix window, and the situation goes back to Figure 1
+again.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err6.png">Figure 6</a>: I typed <code>j</code> again, and
+the situation goes back to Figure 2.</li>
+  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err7.png">Figure 7</a>: I typed <code>&lt;Enter&gt;</code> again
+to jump to <em>another</em> “error location”.</li>
 </ul>
 
-<hr />
+<p>P.S. As I’ve said in my “<a href="/about">About</a>” page, I mainly write in
+Markdown now, unless a teacher want me to submit homework with
+specific formatting requirements like 1-inch margin, 1.5 line spacing,
+etc.  As you can see from the footer of this blog, this post is also
+written in Markdown.</p>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:tipaFail">
-
-      <p>I gave up trying <code>tipa</code> after reading
-<a href="http://sonny.cslu.ohsu.edu/~gormanky/blog/tex-tips-for-linguists/"><em>$\rm \TeX$ tips for linguists</em></a> by Kyle Gorman. <a href="#fnref:tipaFail" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:SiteEdu">
-
-      <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<!-- vim:set tw=70:wrap: -->
 </div>
 
 
@@ -183,12 +159,12 @@ the sources of inspirations.</p>
 
 
 
-<time class='entry-date' datetime='2014-10-01T22:28:49+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>10:28 pm</span></time>
+<time class='entry-date' datetime='2014-03-22T17:23:19+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:23 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>latex</a>
+    <a class='category' href='/blog/categories/latex-suite/'>latex-suite</a>
   
 </span>
 
@@ -197,7 +173,7 @@ the sources of inspirations.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/" >Tweet</a>
   
   
   
@@ -208,10 +184,10 @@ the sources of inspirations.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/" title="Previous Post: A Sample $\rm \LaTeX$ Table">&laquo; A Sample $\rm \LaTeX$ Table</a>
+        <a class="basic-alignment left" href="/blog/2014/03/16/latex-template-for-essays/" title="Previous Post: $\rm \LaTeX$ Template for Essays">&laquo; $\rm \LaTeX$ Template for Essays</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/10/02/what-are-good-file-naming-conventions/" title="Next Post: What are good file naming conventions?">What are good file naming conventions? &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/03/30/testing-jquery-image-popup/" title="Next Post: Testing jQuery Image Popup">Testing jQuery Image Popup &raquo;</a>
       
     </p>
   </footer>
@@ -321,8 +297,8 @@ the sources of inspirations.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/';
         var disqus_script = 'embed.js';
       
     (function () {

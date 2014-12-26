@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Jump to $\rm \LaTeX$ Syntax Error - Blog 1</title>
+  <title>Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="This post is written in response to a question of
-one of my video. Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly. To
-show you how &hellip;">
+  <meta name="description" content="This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL. The link should be in
+typewriter &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ show you how &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/03/22/jump-to-$-slash-slash-rm-slash-slash-latex$-syntax-error">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <!-- Printing rules -->
@@ -82,7 +82,7 @@ show you how &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Jump to $\rm \LaTeX$ Syntax Error</h1>
+	<h1 class="entry-title">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</h1>
       
     
     
@@ -92,7 +92,7 @@ show you how &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-03-22T17:23:19+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:23 pm</span></time>
+<time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -103,47 +103,24 @@ show you how &hellip;">
   </header>
 
 
-<div class="entry-content"><p><strong>This post is written in response to a question of
-<a href="http://youtu.be/y67t-05nFD0">one of my video</a>.</strong></p>
+<div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL.  The link should be in
+typewriter font after using the command <code>\urlstyle{tt}</code> under adding
+the <code>url</code> package to the preamble.  I googled for almost 2 hours, but
+the blog posts suggested that using this method should work.  I even
+tried to copy some minimum working examples from the web to test if
+they work.  They really worked and so I’m puzzled.  Ten minutes ago, I
+just find out what’s going wrong: the <code>url</code> package should never go
+before the several lines in the preamble that are responsible for
+adding an APA-style bibliography.</p>
 
-<p>Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
-show you how, I use a GIF “animation”, instead of a video, so that the
-file size is much smaller.</p>
+<p>The <code>\ll</code> command in <a href="http://vim-latex.sourceforge.net/">Vim-$\rm \LaTeX$</a> seems not doing
+well with <a href="http://sourceforge.net/projects/biblatex-biber/" title="BibTeX replacement for biblatex">Biber</a>.  Whenever the AUX file exists, <code>\ll</code> won’t execute
+<code>biber</code>, causing the resulting PDF file to have no change in the
+bibliography.</p>
 
-<p><img class="fancybox" src="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif" width="800" title="A GIF animation showing Vim-LaTeX quickfix window" alt="fig1" /></p>
+<p>I hope I can use less time to figure out any mistake next time.</p>
 
-<p>Explanation:</p>
-
-<p>Error message: The <code>equation*</code> environment is “undefined”.<br />
-Cause of error: I forget to include the <code>amsmath</code> package in the
-preamble.</p>
-
-<ul>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err1.png">Figure 1</a>: Compilation error occurs,
-so a quickfix window pops up.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err2.png">Figure 2</a>: I typed <code>j</code> to move the
-cursor down in the quickfix window by one line, and the window below
-showing the log file automatically scrolled down. </li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err3.png">Figure 3</a>: I typed <code>k</code> to go up one
-line, so the situation goes back to Figure 1.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err4.png">Figure 4</a>: I typed <code>&lt;Enter&gt;</code> to jump
-to the “error location”. (line 6)</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err5.png">Figure 5</a>: I typed <code>&lt;C-w&gt; j</code> to go
-back to the quickfix window, and the situation goes back to Figure 1
-again.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err6.png">Figure 6</a>: I typed <code>j</code> again, and
-the situation goes back to Figure 2.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err7.png">Figure 7</a>: I typed <code>&lt;Enter&gt;</code> again
-to jump to <em>another</em> “error location”.</li>
-</ul>
-
-<p>P.S. As I’ve said in my “<a href="/about">About</a>” page, I mainly write in
-Markdown now, unless a teacher want me to submit homework with
-specific formatting requirements like 1-inch margin, 1.5 line spacing,
-etc.  As you can see from the footer of this blog, this post is also
-written in Markdown.</p>
-
-<!-- vim:set tw=70:wrap: -->
 </div>
 
 
@@ -159,12 +136,12 @@ written in Markdown.</p>
 
 
 
-<time class='entry-date' datetime='2014-03-22T17:23:19+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:23 pm</span></time>
+<time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex-suite/'>latex-suite</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -173,7 +150,7 @@ written in Markdown.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/03/22/jump-to-$-slash-slash-rm-slash-slash-latex$-syntax-error/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/03/22/jump-to-$-slash-slash-rm-slash-slash-latex$-syntax-error/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/" >Tweet</a>
   
   
   
@@ -184,10 +161,10 @@ written in Markdown.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/03/16/$-slash-slash-rm-slash-slash-latex$-template-for-essays/" title="Previous Post: $\rm \LaTeX$ Template for Essays">&laquo; $\rm \LaTeX$ Template for Essays</a>
+        <a class="basic-alignment left" href="/blog/2013/11/06/this-weekends-work-on-vim/" title="Previous Post: This Weekend's Work on Vim">&laquo; This Weekend&#8217;s Work on Vim</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/03/30/testing-jquery-image-popup/" title="Next Post: Testing jQuery Image Popup">Testing jQuery Image Popup &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2013/12/11/vim-latexs-slash-slash-lv-command-with-sumatra-pdf/" title="Next Post: Vim-$\rm \LaTeX$'s \lv command with Sumatra PDF">Vim-$\rm \LaTeX$&#8217;s \lv command with Sumatra PDF &raquo;</a>
       
     </p>
   </footer>
@@ -297,8 +274,8 @@ written in Markdown.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/03/22/jump-to-$-slash-slash-rm-slash-slash-latex$-syntax-error/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/03/22/jump-to-$-slash-slash-rm-slash-slash-latex$-syntax-error/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/';
         var disqus_script = 'embed.js';
       
     (function () {

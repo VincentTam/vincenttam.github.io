@@ -5,14 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>A Sample $\rm \LaTeX$ Table - Blog 1</title>
+  <title>Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Target Source code \documentclass[border=5pt]{standalone}
-\usepackage{fontspec}
-\begin{document}
-\begin{tabular}{lll} \hline \multicolumn{1}{||c}{ &hellip;">
+  <meta name="description" content="Searching symbols in
+CTAN’s Comprehensive $\rm \LaTeX$ Symbol List is
+time-consuming. For example, when I was writing my
+previous post about groups, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <!-- Printing rules -->
@@ -83,7 +83,7 @@
   <header>
     
       
-	<h1 class="entry-title">A Sample $\rm \LaTeX$ Table</h1>
+	<h1 class="entry-title external"><a href="http://detexify.kirelabs.org/classify.html">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a> &#9733;</h1>
       
     
     
@@ -93,7 +93,7 @@
 
 
 
-<time class='entry-date' datetime='2014-10-01T19:36:28+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:36 pm</span></time>
+<time class='entry-date' datetime='2014-09-07T17:07:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:07 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -104,90 +104,21 @@
   </header>
 
 
-<div class="entry-content"><h2 id="target">Target</h2>
-
-<p><img src="/images/posts/LaTeXTable/out.jpg" alt="target" /></p>
-
-<!-- more -->
-
-<h2 id="source-code">Source code</h2>
-
-<div><script src="https://gist.github.com/eb013fa73d62a5f5c917.js"></script>
-<noscript><pre><code>\documentclass[border=5pt]{standalone}
-\usepackage{fontspec}
-\begin{document}
-\begin{tabular}{lll}
-  \hline
-  \multicolumn{1}{||c}{Header 1} &amp;
-  \multicolumn{1}{||c||}{Header 2} &amp;
-  \multicolumn{1}{c||}{Header 3} \\ \hline
-  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
-  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
-  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
-  \noalign{\smallskip}
-  \hline
-  \multicolumn{1}{||c}{Header 4} &amp;
-  \multicolumn{1}{||c||}{Header 5} &amp;
-  \multicolumn{1}{c||}{Header 6} \\ \hline
-  \multicolumn{1}{||l}{Cell 4} &amp;
-  \multicolumn{1}{||l||}{Cell 5} &amp;
-  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
-  \hline
-  \multicolumn{1}{||c}{Header 7} &amp;
-  \multicolumn{1}{||c||}{Header 8} &amp;
-  \multicolumn{1}{c||}{Header 9} \\ \hline
-  \multicolumn{1}{||l}{Cell 7} &amp;
-  \multicolumn{1}{||l||}{Cell 8} &amp;
-  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
-  \cline{2-2}
-  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
-  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
-  \cline{2-2}
-\end{tabular}
-\end{document}</code></pre></noscript></div>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>Line 1: <em>Without</em> <code>border=5pt</code>, the grid line on the right will be
-truncated.<sup id="fnref:StandaloneBd"><a href="#fn:StandaloneBd" class="footnote">1</a></sup></p>
-
-<p>Lines 5–7: Using <code>\multicolumn{1}{c}</code> is the easiest way to centre
-<em>only</em> the heading that I know.</p>
-
-<p>Lines 8–10: By trial, I discovered that putting <code>p{3.5cm}</code> at line 3
-<em>doesn’t</em> help—the width of the middle column <em>wouldn’t</em> be the same
-as that of the other two columns.  The positions of the <code>|</code>s and
-<code>\multicolumn{1}{l}{Cell n}</code> are also worked out by repeated
-experiments, so that the double vertical grid lines separating the
-cells are properly aligned.</p>
-
-<p>Line 11: Actually, the double-rules can be made using <code>\hline\hline</code>.
-I <em>don’t</em> use this method because of the contents at the bottom of the
-table.  See lines 25–26 for details.</p>
-
-<p>Lines 25–26: <code>\cline{2-2}</code> is for a horizontal line above the second
-cell.  If I use <code>\hline\cline{2-2}</code>, the two lines will <em>coincide</em>.
-Therefore, I copied the command <code>\noalign{\smallskip}</code> from the
-section “Space between rows” in the Wikibook for $\rm
-\LaTeX$.<sup id="fnref:RowSep"><a href="#fn:RowSep" class="footnote">2</a></sup></p>
-
-<p>Lines 27–28: In order <em>not</em> to have grids at the corners of the last
-row, at left of the leading <code>&amp;</code>, there’s <em>no</em> non-blank characters.</p>
+<div class="entry-content"><p>Searching symbols in
+<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
+time-consuming.  For example, when I was writing my
+<a href="/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
+‘$\circ$’ symbol for composition of two functions.  At first, I typed
+<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
+‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
+Detexify is the answer for commonly used symbols.</p>
 
 <hr />
 
 <div class="footnotes">
   <ol>
-    <li id="fn:StandaloneBd">
-
-      <p><a href="http://texblog.org/2012/09/12/cropping-the-output-file-to-its-content-in-latex/"><em>Cropping the output file to its content in LaTeX</em></a> in
-texblog. <a href="#fnref:StandaloneBd" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:RowSep">
-
-      <p>LaTeX/Tables. (2014, September 2). <em>Wikibooks, The Free Textbook
-Project</em>. Retrieved 14:04, October 1, 2014 from
-<a href="http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642">http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642</a> <a href="#fnref:RowSep" class="reversefootnote">&#8617;</a></p>
+    <li id="fn:1">
+      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -206,12 +137,12 @@ Project</em>. Retrieved 14:04, October 1, 2014 from
 
 
 
-<time class='entry-date' datetime='2014-10-01T19:36:28+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:36 pm</span></time>
+<time class='entry-date' datetime='2014-09-07T17:07:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:07 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>latex</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>, <a class='category' href='/blog/categories/web-technologies/'>web technologies</a>
   
 </span>
 
@@ -220,7 +151,7 @@ Project</em>. Retrieved 14:04, October 1, 2014 from
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/" >Tweet</a>
   
   
   
@@ -231,10 +162,10 @@ Project</em>. Retrieved 14:04, October 1, 2014 from
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/09/14/non-breaking-spaces/" title="Previous Post: Non-breaking Spaces">&laquo; Non-breaking Spaces</a>
+        <a class="basic-alignment left" href="/blog/2014/09/07/a-fake-function/" title="Previous Post: A Fake Function">&laquo; A Fake Function</a>
       
       
-        <a class="basic-alignment right" href="/blog/2014/10/01/ipa-symbols-in-$-slash-slash-rm-slash-slash-latex$/" title="Next Post: IPA Symbols in $\rm \LaTeX$">IPA Symbols in $\rm \LaTeX$ &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/09/07/the-greek-alphabet-in-latex/" title="Next Post: The Greek Alphabet in $\rm \LaTeX$">The Greek Alphabet in $\rm \LaTeX$ &raquo;</a>
       
     </p>
   </footer>
@@ -344,8 +275,8 @@ Project</em>. Retrieved 14:04, October 1, 2014 from
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/10/01/a-sample-$-slash-slash-rm-slash-slash-latex$-table/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/';
         var disqus_script = 'embed.js';
       
     (function () {

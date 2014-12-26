@@ -5,13 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Edit $\rm \LaTeX$ Equations in Vim - Blog 1</title>
+  <title>A Sample $\rm \LaTeX$ Table - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="With Vim-$\rm \LaTeX$, it’s possible to edit $\rm \LaTeX$
-equations with Vim quickly without making syntax errors. (e.g.
-undefined control sequence &hellip;">
+  <meta name="description" content="Target Source code \documentclass[border=5pt]{standalone}
+\usepackage{fontspec}
+\begin{document}
+\begin{tabular}{lll} \hline \multicolumn{1}{||c}{ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +21,7 @@ undefined control sequence &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/10/01/a-sample-latex-table">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <!-- Printing rules -->
@@ -82,7 +83,7 @@ undefined control sequence &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Edit $\rm \LaTeX$ Equations in Vim</h1>
+	<h1 class="entry-title">A Sample $\rm \LaTeX$ Table</h1>
       
     
     
@@ -92,7 +93,7 @@ undefined control sequence &hellip;">
 
 
 
-<time class='entry-date' datetime='2013-08-16T14:56:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:56 pm</span></time>
+<time class='entry-date' datetime='2014-10-01T19:36:28+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:36 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -103,94 +104,93 @@ undefined control sequence &hellip;">
   </header>
 
 
-<div class="entry-content"><p>With <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a>, it’s possible to edit $\rm \LaTeX$
-equations with Vim quickly without making syntax errors.  (e.g.
-undefined control sequence caused by mismatched braces ‘{}’)</p>
+<div class="entry-content"><h2 id="target">Target</h2>
 
-<p><a href="//www.youtube.com/embed/y67t-05nFD0" class="fancybox-media"><img src="/images/posts/EditLaTeXEquations/Video.png" alt="YouTube video" class="center" /></a><br />
-Please view it fullscreen in <em>HD</em>.  Sorry for the inconvenience
-caused.<br />
-For the sample files, please click the above “YouTube” button.</p>
+<p><img src="/images/posts/LaTeXTable/out.jpg" alt="target" /></p>
 
 <!-- more -->
 
-<p>Why use <a href="http://www.vim.org">Vim</a>?  Please refer to <a href="/blog/2013/08/16/why-vim/" title="Why Vim">my post on Vim</a>.</p>
+<h2 id="source-code">Source code</h2>
 
-<p>For a quick startup guide, see the <a href="http://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/">official tutorial</a>.  If
-you’ve learnt those keyboard mappings, here’s <a href="http://www.cheat-sheets.org/saved-copy/vimlatexqrc.pdf">a quick review</a> of
-some commands.  For detailed list of all keyboard shortcuts and
-customizations (e.g. custom compile rule: use <code>pdflatex</code> instead of
-<code>latex</code> and <code>dvipdfm</code>), you can refer to <a href="http://vim-latex.sourceforge.net/documentation/latex-suite.html">the user manual</a>.</p>
+<div><script src="https://gist.github.com/eb013fa73d62a5f5c917.js"></script>
+<noscript><pre><code>\documentclass[border=5pt]{standalone}
+\usepackage{fontspec}
+\begin{document}
+\begin{tabular}{lll}
+  \hline
+  \multicolumn{1}{||c}{Header 1} &amp;
+  \multicolumn{1}{||c||}{Header 2} &amp;
+  \multicolumn{1}{c||}{Header 3} \\ \hline
+  \multicolumn{1}{||p{3.5cm}}{Cell 1} &amp;
+  \multicolumn{1}{||p{3.5cm}||}{Cell 1} &amp;
+  \multicolumn{1}{p{3.5cm}||}{Cell 1} \\ \hline
+  \noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 4} &amp;
+  \multicolumn{1}{||c||}{Header 5} &amp;
+  \multicolumn{1}{c||}{Header 6} \\ \hline
+  \multicolumn{1}{||l}{Cell 4} &amp;
+  \multicolumn{1}{||l||}{Cell 5} &amp;
+  \multicolumn{1}{l||}{Cell 6} \\ \hline\noalign{\smallskip}
+  \hline
+  \multicolumn{1}{||c}{Header 7} &amp;
+  \multicolumn{1}{||c||}{Header 8} &amp;
+  \multicolumn{1}{c||}{Header 9} \\ \hline
+  \multicolumn{1}{||l}{Cell 7} &amp;
+  \multicolumn{1}{||l||}{Cell 8} &amp;
+  \multicolumn{1}{l||}{Cell 9} \\ \hline\noalign{\smallskip}
+  \cline{2-2}
+  &amp; \multicolumn{1}{||c||}{Header 10} &amp; \\ \cline{2-2}
+  &amp; \multicolumn{1}{||l||}{Cell 10} &amp; \\
+  \cline{2-2}
+\end{tabular}
+\end{document}</code></pre></noscript></div>
 
-<p>There’re many blog entries about how to install $\rm \LaTeX$ on <a href="http://www.vim.org">Vim</a>
-on *nix and M$ Win*.  Searching “vim latex” gives you millions of
-search results.  Summarizing the articles, the three major components
-are:</p>
+<h2 id="explanation">Explanation</h2>
 
-<ol>
-  <li>Editor
-    <ul>
-      <li><a href="http://www.vim.org">Vim</a> (found on <em>almost every distribution of *nix</em>)</li>
-      <li>GVim (on GUI of any platform)</li>
-    </ul>
-  </li>
-  <li>$\rm \LaTeX$
-    <ul>
-      <li><a href="https://www.tug.org/texlive">$\rm \TeX$Live</a> (found in package manager on *nix)</li>
-      <li><a href="http://miktex.org">Mik$\rm \TeX$</a> (have a $\rm \LaTeX$ package manager)</li>
-    </ul>
-  </li>
-  <li><a href="http://www.vim.org">Vim</a> plugin for writing $\rm \LaTeX$: <a href="http://vim-latex.sourceforge.net">Latex-Suite</a></li>
-</ol>
+<p>Line 1: <em>Without</em> <code>border=5pt</code>, the grid line on the right will be
+truncated.<sup id="fnref:StandaloneBd"><a href="#fn:StandaloneBd" class="footnote">1</a></sup></p>
 
-<p>For *nix, you may find some GUI tools for installing packages.
-(especially in some popular distributions)</p>
+<p>Lines 5–7: Using <code>\multicolumn{1}{c}</code> is the easiest way to centre
+<em>only</em> the heading that I know.</p>
 
-<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/SoftwareCenter.png" title="Software Centre in Ubuntu 12.04 LTS" alt="fig1" /></p>
+<p>Lines 8–10: By trial, I discovered that putting <code>p{3.5cm}</code> at line 3
+<em>doesn’t</em> help—the width of the middle column <em>wouldn’t</em> be the same
+as that of the other two columns.  The positions of the <code>|</code>s and
+<code>\multicolumn{1}{l}{Cell n}</code> are also worked out by repeated
+experiments, so that the double vertical grid lines separating the
+cells are properly aligned.</p>
 
-<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/FedoraSoftwareMgr.png" title="PackageKit in Fedora 17" alt="fig2" /></p>
+<p>Line 11: Actually, the double-rules can be made using <code>\hline\hline</code>.
+I <em>don’t</em> use this method because of the contents at the bottom of the
+table.  See lines 25–26 for details.</p>
 
-<p>You can also type the install commands for these packages on the
-terminal.</p>
+<p>Lines 25–26: <code>\cline{2-2}</code> is for a horizontal line above the second
+cell.  If I use <code>\hline\cline{2-2}</code>, the two lines will <em>coincide</em>.
+Therefore, I copied the command <code>\noalign{\smallskip}</code> from the
+section “Space between rows” in the Wikibook for $\rm
+\LaTeX$.<sup id="fnref:RowSep"><a href="#fn:RowSep" class="footnote">2</a></sup></p>
 
-<p>For <a href="http://www.ubuntu.com">Ubuntu</a>:</p>
+<p>Lines 27–28: In order <em>not</em> to have grids at the corners of the last
+row, at left of the leading <code>&amp;</code>, there’s <em>no</em> non-blank characters.</p>
 
-<pre class="cliUB"><code># Also include `vim-gnome' if you'd like to install GVim.
-$ sudo apt get install vim-gnome vim-latexsuite texlive
-</code></pre>
+<hr />
 
-<p>For <a href="https://getfedora.org">Fedora</a>:</p>
+<div class="footnotes">
+  <ol>
+    <li id="fn:StandaloneBd">
 
-<pre class="cli"><code># Also include `vim-X11' if you'd like to install GVim.
-[root@localhost]# yum install vim-latex latex
-</code></pre>
+      <p><a href="http://texblog.org/2012/09/12/cropping-the-output-file-to-its-content-in-latex/"><em>Cropping the output file to its content in LaTeX</em></a> in
+texblog. <a href="#fnref:StandaloneBd" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:RowSep">
 
-<p>Unlike M$ Win*, the dependencies will be automatically resolved.</p>
-
-<p>For M$ Win*, the installation procedures for GVim
-(<a href="http://portablegvim.sourceforge.net">portable</a>), <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> and
-<a href="http://miktex.org">Mik$\rm \TeX$</a> (<a href="http://miktex.org/portable">portable</a>) are as followed:</p>
-
-<ol>
-  <li>
-    <p>Go to the official websites of GVim and <a href="http://miktex.org">Mik$\rm \TeX$</a>
-(or equivalent packages) and download the packages; or</p>
-
-    <p>Put <a href="http://miktex.org/portable">Mik$\rm \TeX$ portable</a> and <a href="http://portablegvim.sourceforge.net">GVim portable</a>
-to any folder you like.</p>
-
-    <ul>
-      <li>e.g. <code>C:\Temp</code></li>
-      <li><em>Don’t</em> put them under <code>C:\Program Files</code>.</li>
-    </ul>
-  </li>
-  <li>Download <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> from SourceForge.</li>
-  <li>Follow the steps <a href="http://vim-latex.sourceforge.net/index.php?subject=download&amp;title=Download">here</a>.</li>
-</ol>
-
-<p>Remarks: The installation of <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> (items 3
-and 4) is the same for portable and non-portable versions of GVim.</p>
-
+      <p>LaTeX/Tables. (2014, September 2). <em>Wikibooks, The Free Textbook
+Project</em>. Retrieved 14:04, October 1, 2014 from
+<a href="http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642">http://en.wikibooks.org/w/index.php?title=LaTeX/Tables&amp;oldid=2696642</a> <a href="#fnref:RowSep" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -206,12 +206,12 @@ and 4) is the same for portable and non-portable versions of GVim.</p>
 
 
 
-<time class='entry-date' datetime='2013-08-16T14:56:00+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:56 pm</span></time>
+<time class='entry-date' datetime='2014-10-01T19:36:28+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:36 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex-suite/'>latex-suite</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>
   
 </span>
 
@@ -220,7 +220,7 @@ and 4) is the same for portable and non-portable versions of GVim.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/10/01/a-sample-latex-table/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/10/01/a-sample-latex-table/" >Tweet</a>
   
   
   
@@ -231,10 +231,10 @@ and 4) is the same for portable and non-portable versions of GVim.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/16/testing-mathjax/" title="Previous Post: Testing MathJax">&laquo; Testing MathJax</a>
+        <a class="basic-alignment left" href="/blog/2014/09/14/non-breaking-spaces/" title="Previous Post: Non-breaking Spaces">&laquo; Non-breaking Spaces</a>
       
       
-        <a class="basic-alignment right" href="/blog/2013/08/16/apa-citing/" title="Next Post: APA Citing">APA Citing &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2014/10/01/ipa-symbols-in-latex/" title="Next Post: IPA Symbols in $\rm \LaTeX$">IPA Symbols in $\rm \LaTeX$ &raquo;</a>
       
     </p>
   </footer>
@@ -344,8 +344,8 @@ and 4) is the same for portable and non-portable versions of GVim.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2013/08/16/edit-$-slash-slash-rm-slash-slash-latex$-equations-in-vim/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/10/01/a-sample-latex-table/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2014/10/01/a-sample-latex-table/';
         var disqus_script = 'embed.js';
       
     (function () {
