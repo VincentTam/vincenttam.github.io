@@ -374,10 +374,8 @@ GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     getScript("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",function(){
       getScript("/javascripts/octopress.js",function() {});
       getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {
-	getScript("/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5", function() {
-	  getScript("/fancybox/source/helpers/fbmedthm.js", function() {
-	    getScript("/javascripts/FancyBoxLocal.js", function() {});
-	    });
+	getScript("/fancybox/source/helpers/all.js", function() {
+	  getScript("/javascripts/FancyBoxLocal.js", function() {});
 	  });
 	});
       });
@@ -394,23 +392,16 @@ GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
 	  fbjs.src = "/fancybox/source/jquery.fancybox.pack.js?v=2.1.5";
 	  fbjs.type = "text/javascript";
 	  document.body.appendChild(fbjs);
-	  var fbbtnjs = document.createElement("script");
-	  fbbtnjs.src = "/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5";
-	  fbbtnjs.type = "text/javascript";
-	  document.body.appendChild(fbbtnjs);
-	  var fbthmmedjs = document.createElement("script");
-	  fbthmmedjs.src = "/fancybox/source/helpers/fbmedthm.js";
-	  fbthmmedjs.type = "text/javascript";
-	  document.body.appendChild(fbthmmedjs);
+	  var fball = document.createElement("script");
+	  fball.src = "./octopress/source/fancybox/source/helpers/all.js";
+	  fball.type = "text/javascript";
+	  document.body.appendChild(fball);
 	  fbjs.onload = function () {
-	    fbbtnjs.onload = function () {
-	      fbthmmedjs.onload = function () {
-		alert('helo');
-		var fblocjs = document.createElement("script");
-		fblocjs.src = "/javascripts/FancyBoxLocal.js";
-		fblocjs.type = "text/javascript";
-		document.body.appendChild(fblocjs);
-	      }
+	    fball.onload = function () {
+	      var fblocjs = document.createElement("script");
+	      fblocjs.src = "/javascripts/FancyBoxLocal.js";
+	      fblocjs.type = "text/javascript";
+	      document.body.appendChild(fblocjs);
 	    }
 	  }
 	}
