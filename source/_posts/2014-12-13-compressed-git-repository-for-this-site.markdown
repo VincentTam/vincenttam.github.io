@@ -17,7 +17,11 @@ Problem
 As there're more and more pages here, the execution speed of the
 command `git status` gradually *decreased*.
 
-{% img fancybox center /images/posts/GitGc/gui.png 'Git GUI' 'git gui' %}
+<picture class="fancybox" title="Git GUI">
+  <source srcset="/images/posts/GitGc/gui.png" media="(min-width: 800px)"></source> 
+  <img alt="git gui prompt" src="/images/posts/GitGc/gui_s.png" />
+</picture>
+{:.fancybox}
 
 <!-- more -->
 
