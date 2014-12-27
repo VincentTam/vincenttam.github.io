@@ -17,7 +17,7 @@ Problem
 As there're more and more pages here, the execution speed of the
 command `git status` gradually *decreased*.
 
-{% img fancybox center /images/posts/GitGc/gui.png 'Git GUI' 'git gui' %}
+{% img fancybox center /images/posts/GitGc/gui.png 800 'Git GUI' 'git gui' %}
 
 <!-- more -->
 
