@@ -12,12 +12,12 @@ Problem
 I used the search box in the navigation bar to search for pages in
 this blog.
 
-{% img fancybox center /images/posts/OctSearchErr/err1.png 800 'Searched with the search box for pages in this blog' 'err1' %}
+{% img fancybox center /images/posts/OctSearchErr/err1.png 'Searched with the search box for pages in this blog' 'err1' %}
 
 It had been working well, but a month ago, the box searched for
 webpages *other* than those in this blog.
 
-{% img fancybox center /images/posts/OctSearchErr/err2.png 800 'Custion search failed' 'err2' %}
+{% img fancybox center /images/posts/OctSearchErr/err2.png 'Custion search failed' 'err2' %}
 
 **How to limit the search to pages within this site only**?
 
