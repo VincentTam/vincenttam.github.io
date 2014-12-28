@@ -21,7 +21,6 @@ command `git status` gradually *decreased*.
   <source srcset="/images/posts/GitGc/gui.png" media="(min-width: 800px)"></source> 
   <img alt="git gui prompt" src="/images/posts/GitGc/gui_s.png" />
 </picture>
-{:.fancybox}
 
 <!-- more -->
 

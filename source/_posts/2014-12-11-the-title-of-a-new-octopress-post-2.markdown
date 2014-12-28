@@ -23,7 +23,11 @@ Solution
 The following picture illustrates what should be done: escape the ','
 with '\\'.
 
-[![MinGW command window][fig]][fig_big]{:.fancybox}
+<picture class="fancybox" title="MinGW command window">
+  <source srcset="/images/posts/OctPostTitle2/cmd_big.png" media="(min-width: 840px)"></source> 
+  <source srcset="/images/posts/OctPostTitle2/cmd.png" media="(min-width: 620px)"></source> 
+  <img alt="git gui prompt" src="/images/posts/OctPostTitle2/cmd_s.png" />
+</picture>
 
 ---
 [^pp]:
@@ -32,7 +36,5 @@ with '\\'.
     for details.
 
 [pp]: /blog/2014/12/11/international-space-station-attacked-by-virus-epidemics/
-[fig]: /images/posts/OctPostTitle2/cmd.png
-[fig_big]: /images/posts/OctPostTitle2/cmd_big.png "MinGW command window"
 
 *[ISS]: International Space Station
