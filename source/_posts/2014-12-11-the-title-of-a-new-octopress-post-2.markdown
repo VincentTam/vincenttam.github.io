@@ -26,7 +26,7 @@ with '\\'.
 <picture class="fancybox" title="MinGW command window">
   <source srcset="/images/posts/OctPostTitle2/cmd_big.png" media="(min-width: 840px)"></source> 
   <source srcset="/images/posts/OctPostTitle2/cmd.png" media="(min-width: 620px)"></source> 
-  <img alt="git gui prompt" src="/images/posts/OctPostTitle2/cmd_s.png" />
+  <img alt="MinGW command window" src="/images/posts/OctPostTitle2/cmd_s.png" />
 </picture>
 
 ---
