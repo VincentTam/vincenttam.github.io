@@ -20,7 +20,7 @@ this blog.
 It had been working well, but a month ago, the box searched for
 webpages *other* than those in this blog.
 
-<picture class="fancybox center" title="Custion search failed">
+<picture class="fancybox center" title="Custom search failed">
   <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)"></source> 
   <img alt="err2" src="/images/posts/OctSearchErr/err2_s.png" />
 </picture>
