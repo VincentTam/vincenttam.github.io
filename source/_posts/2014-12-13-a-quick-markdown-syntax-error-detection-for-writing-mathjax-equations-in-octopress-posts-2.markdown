@@ -22,8 +22,8 @@ instantly convert code across different formats, and a web browser
 enables them to notice any syntax error, these tools just help them to
 find the mistakes, but *not* the solution.  In the cited post in the
 [first footnote](#fn:pp1), I spent *hours* to realise that *exactly
-eight '\\s'* were needed to break the current line in [MathJax].
-After that, I feel that using eight '\\s' and adding a '\\' before a
+eight '\\'s* were needed to break the current line in [MathJax].
+After that, I feel that using eight '\\'s and adding a '\\' before a
 '\_' in [MathJax] equations interrupt my thinking.
 
 Solution
