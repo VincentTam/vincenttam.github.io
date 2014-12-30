@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-30T22:51:23+08:00</updated>
+  <updated>2014-12-31T00:48:12+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,85 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Read an Alternative Proof of the Extreme Value Theorem Using Tagged Partitions]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/30/read-an-alternative-proof-of-the-extreme-value-theorem-using-tagged-partitions/"/>
+    
+    <updated>2014-12-30T23:30:22+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/30/read-an-alternative-proof-of-the-extreme-value-theorem-using-tagged-partitions</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Last Saturday, I read an article on using gauges defined on a close
+and bounded interval $I$ (i.e. strictly postive functions over $I$)
+and tagged partitions to prove the Extreme Value Theorem.<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup>
+Though the full text is <em>not</em> free, one can preview the first page, on
+which an attractive introduction is found.</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>In ordinary proofs of the Extreme Value Theorem, one makes use of the
+fact that continuous functions defined on $I$ are bounded, which is
+proved by the Bolzano–Weierstrass Theorem, which has to be proved by
+either the Monotone Convergence Theorem or the Nested Interval
+Theorem.  A student who prepares for an exam in math analysis will
+revise the lengthy proofs of these theorems.</p>
+
+<p>However, the alternative proof of the Extreme Value Theorem is just a
+proof by contradiction making use of basic properties of $\delta$-fine
+partitions and the fact that continuous functions defined on $I$ are
+bounded, which is proved by basic properties of $\delta$-fine
+partitions only.</p>
+
+<!-- more -->
+
+<p>Once one accepts that for any gauge $\delta$ on $I$, $I$ is
+$\delta$-fine, one can start reading the proof.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In the author’s proof, it’s said that if $f$ is a continuous function
+defined on $I$, <span class="myeqn">$K:=\sup\{f(x):x\in
+I\}$</span>, and $\forall t\in I, \exists a(t),\delta(t)&gt;0$ such that
+$|x-t|&lt;\delta(t)$ and $x\in I$, then $f(x)&lt;K-a(t)$.</p>
+
+<p>Spending too much time on
+<a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/">boosting the PageSpeed of the homepage of this blog</a>, I
+forgot a result obtained from an elementary exercise on continuous
+functions, and was stuck at this point.</p>
+
+<p>I tried writing inequalities for two hours, but I got <em>nothing</em>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I looked at the graph, and solved the problem quickly by setting
+$\epsilon:=K-f(t)-a(t)$. If $|x-t|&lt;\delta(t)$ and $x\in I$,</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+f(x)-f(t)\le|f(x)-f(t)|&lt;&amp;\epsilon=K-f(t)-a(t)&#92;
+f(x)&lt;&amp;K-a(t)
+\end{aligned}
+\]
+</div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+
+      <p>Gordon, R. A. (1998). The use of tagged partitions in elementary
+real analysis. <em>American Mathematical Monthly</em>, 107–117. <a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -328,53 +407,6 @@ a_k\} \subseteq \bigcap_{n=1}^{\infty}
 \bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in
 common. </p>
 ]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Product of GCD and LCM &#9733;]]></title>
-      <link href="https://proofwiki.org/wiki/Product_of_GCD_and_LCM"/>
-    
-    <updated>2014-11-04T00:00:31+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm</id>
-    
-      <content type="html"><![CDATA[<p>In ProofWiki’s first proof, it has taken me some time to understand.
-I often write $d=\gcd(a,b)$, $a=a’d$, $b=b’d$ for some $a’,b’ \in
-\integers_{&gt;0}$, and $n$ as <em>any</em> common multiple of $a$ and $b$.
-Then $n=q_1 a=q_2 b$ for some $q_1,q_2 \in \integers$.  The letter
-$q$ connotes <em>quotient</em>.  To show that $\lcm(a,b) \times \gcd(a,b) =
-ab$, it suffices to show that</p>
-
-<p>\begin{gather}
-  a \left | \frac{ab}{d} \right. \land 
-    b \left | \frac{ab}{d} \right. \label{eq:isLCM}&#92;\<br />
-  a|n \land b|n \implies\left.\frac{ab}{d}\right|n \label{eq:leastLCM}
-\end{gather}</p>
-
-<p>Equations \eqref{eq:isLCM} and \eqref{eq:leastLCM} mean that “$ab/d$
-is <em>a</em> LCM of $a$ and $b$” and “$ab/d$ is the <em>least</em> LCM of $a$ and
-$b$” respectively.</p>
-
-<p>Equation \eqref{eq:isLCM} is very easy to check since $\displaystyle
-\frac{ab}{d} = a’b = ab’$.</p>
-
-<p>By Bézout’s Identity, $ax+by=d$ for some $x,y \in \integers$.</p>
-
-<p>Since what we want is $\displaystyle \frac{ab}{d} (\dots) = n$, we
-multiply both sides of the above equation by $\displaystyle
-\frac{n}{d}$.</p>
-
-<p>\[
-\begin{aligned}
-  \frac{axn+byn}{d}=n&#92;\<br />
-  \frac{axbq_2+byaq_1}{d}=n&#92;\<br />
-  \left( \frac{ab}{d} \right) (xq_2+yq_1) = n
-\end{aligned}
-\]</p>
-
-<p>Hence \eqref{eq:leastLCM} is proved.</p>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/11/04/product-of-gcd-and-lcm/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   
