@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-31T00:48:12+08:00</updated>
+  <updated>2014-12-31T01:28:06+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Read a Proof About the Transitivity of Characteristic Subgroups]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/"/>
+    
+    <updated>2014-12-31T00:52:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups</id>
+    
+      <content type="html"><![CDATA[<p>On the day before yesterday, I read a proof about the transitivity of
+characteristic subgroups.  The proof <em>shouldn’t</em> be too difficult.
+The key step is just to create a restriction automorphism.</p>
+
+<p>Suppose $K\le H\le G$, and $f\in \Aut(G)$.  Then $f(H)=H$.  Define the
+restriction of $f$ on $H$ as $g:H\to H$ such that $g(h)=f(h)\forall h
+\in H$.  Clearly, $g\in \Aut(H)$.</p>
+
+<p>I <em>couldn’t</em> understand why $g(K)=K$.  I googled “strongly normal
+transitivity”, but <em>couldn’t</em> find anything relevant.  I changed the
+words, and find <a href="https://www.proofwiki.org/wiki/Definition:Characteristic_Subgroup">the proof on ProofWiki</a>.  Then I realised why I
+got stuck: when I wrote the definition of characteristic subgroup
+symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -71,7 +97,7 @@ $\epsilon:=K-f(t)-a(t)$. If $|x-t|&lt;\delta(t)$ and $x\in I$,</p>
 <div class="myeqn">
 \[
 \begin{aligned}
-f(x)-f(t)\le|f(x)-f(t)|&lt;&amp;\epsilon=K-f(t)-a(t)&#92;
+f(x)-f(t)\le|f(x)-f(t)|&lt;&amp;\epsilon=K-f(t)-a(t)&#92;&#92;
 f(x)&lt;&amp;K-a(t)
 \end{aligned}
 \]
@@ -337,75 +363,6 @@ later, one <em>can’t</em> add <code>{labels}</code> like the former.  Defining
 “touching” but excluding (-6,0).  Therefore, I have to define it as a
 coordinate.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Limit Superior and Limit Inferior]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior/"/>
-    
-    <updated>2014-11-08T17:18:17+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/08/limit-superior-and-limit-inferior</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>For sequences of numbers, <em>limit inferior</em> and <em>limit superior</em> are
-defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge n\}\}$
-and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$
-respectively; for sequences of sets, they are defined as
-$\displaystyle \bigcup_{n=1}^{\infty}
-\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
-\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$
-respectively.</p>
-
-<p><strong>Why are they consistent?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>It suffices to find a relation between &#8216;&lt;&#8217; and &#8216;⊆&#8217;: $\{x \le
-a\} \subseteq \{x \le b\} \iff a \le b$.</p>
-
-<p>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x
-\le \sup A\}$.</p>
-
-<p><em>Proof</em>:</p>
-
-<p>\[
-  \begin{aligned}
-    &amp; x \in \bigcup_{a \in A} \{x \le a\} &#92;\<br />
-    \iff&amp; x \le a \;\forall a \in A &#92;\<br />
-    \iff&amp; x \text{ is a lower bound of } A &#92;\<br />
-    \iff&amp; x \le \inf A
-    \end{aligned}
-\]</p>
-
-<p>The last step is due to the defintion of infimum (<em>greatest</em> lower
-bound).</p>
-
-<p>With the above claim, one has</p>
-
-<p>\[
-  \begin{aligned}
-    &amp; \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty}
-      \{x \le a_k\} &#92;\<br />
-    =&amp; \bigcap_{n=1}^{\infty}
-      \bigcup_{a \in \{a_k:k \ge n\}}\{x \le a\} &#92;\<br />
-    =&amp; \bigcap_{n=1}^{\infty}
-      \{ x \le \sup \{a_k:k \ge n\}\} &#92;\<br />
-    =&amp; \{x \le \inf\sup \{a_k:k \ge n\}\}
-  \end{aligned}
-\]</p>
-
-<p>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le
-\inf\sup \{a_k:k \ge n\}$ and $\displaystyle
-\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} \{x \le
-a_k\} \subseteq \bigcap_{n=1}^{\infty}
-\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in
-common. </p>
 ]]></content>
     
   </entry>
