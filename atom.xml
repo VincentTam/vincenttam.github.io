@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-29T00:01:14+08:00</updated>
+  <updated>2014-12-30T22:51:23+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,779 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress, PageSpeed, jQuery and fancyBox]]></title>
+      <link href="http://vincenttam.github.io/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"/>
+    
+    <updated>2014-12-29T16:17:52+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To improve the <a href="https://developers.google.com/speed/pagespeed/">Google PageSpeed</a> scores of this site.</p>
+
+<h2 id="background">Background</h2>
+
+<p>I use <a href="http://www.mathjax.org">MathJax</a> and <a href="http://fancyapps.com/fancybox/">fancyBox</a> for displaying math equations and
+images respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>As shown in the following two pictures, the <a href="https://developers.google.com/speed/pagespeed/">PageSpeed</a> scores of the
+homepage of this blog for “Mobile” and “Desktop” were very <em>low</em>.</p>
+
+<picture class="fancybox center" title="PageSpeed score for &quot;Mobile&quot;">
+  <source srcset="/images/posts/PageSpeed/m_score1.png" media="(min-width: 980px)" />
+  <img alt="pagespeed score mobile" src="http://vincenttam.github.io/images/posts/PageSpeed/m_score1_s.png" />
+</picture>
+
+<picture class="fancybox center" title="PageSpeed score for &quot;Desktop&quot;">
+  <source srcset="/images/posts/PageSpeed/d_score1.png" media="(min-width: 650px)" />
+  <img alt="pagespeed score desktop" src="http://vincenttam.github.io/images/posts/PageSpeed/d_score1_s.png" />
+</picture>
+
+<h2 id="solution">Solution</h2>
+
+<p>I followed the advice of Google Developers, and deferred loading of
+JavaScripts.</p>
+
+<h3 id="results">Results</h3>
+
+<p>After a week’s work, the PageSpeed has risen.</p>
+
+<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/PageSpeed/m_score3.png" title="PageSpeed score for Mobile" alt="mobile pagespeed score" /></p>
+
+<picture class="fancybox center" title="PageSpeed score for &quot;Desktop&quot;">
+  <source srcset="/images/posts/PageSpeed/d_score3.png" media="(min-width: 360px)" />
+  <img alt="pagespeed score desktop" src="http://vincenttam.github.io/images/posts/PageSpeed/d_score3_s.png" />
+</picture>
+
+<!-- more -->
+
+<h3 id="html-headers">HTML Headers</h3>
+
+<p>I removed render-blocking JavaScripts and stylesheets in the HTML
+Headers.</p>
+
+<ol>
+  <li>Deleted all <code>&lt;script&gt;</code> and <code>&lt;link rel="stylesheet" ... /&gt;</code> tags in
+<code>source/_includes/custom/head.html</code>, <em>except</em> <code>&lt;link
+src="http://vincenttam.github.io/stylesheets/print.css" ... /&gt;</code>.</li>
+  <li>Deleted the lines which loads <a href="http://jquery.com">jQuery</a>, <a href="http://modernizr.com">Modernizr</a>,
+<code>/javascripts/octopress.js</code> and <code>/stylesheets/screen.css</code>.</li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Lines to be removed from the default HTML head </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/stylesheets/screen.css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen,</span>
+</span><span class="line"><span class="s">projection&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/javascripts/modernizr-2.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">&#39;%3Cscript</span>
+</span><span class="line"><span class="s1">src=&quot;/javascripts/libs/jquery.min.js&quot;%3E%3C/script%3E&#39;</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/javascripts/octopress.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="combine-and-compress-fancybox-javascripts">Combine and compress fancyBox JavaScripts</h3>
+
+<p>I used the online JavaScript compressor at <a href="http://jscompress.com">http://jscompress.com</a>.
+First, I clicked the “Upload Javascript Files” tabbed pane.  After
+that, uploaded the three JavaScripts for fancyBox helpers:<sup id="fnref:nowheel"><a href="#fn:nowheel" class="footnote">1</a></sup></p>
+
+<ol>
+  <li><code>/fancybox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5</code></li>
+  <li><code>/fancybox/source/helpers/jquery.fancybox-media.js?v=1.0.6</code></li>
+  <li><code>/fancybox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7</code></li>
+</ol>
+
+<p>I then downloaded the compressed output.</p>
+
+<h3 id="after-the-html-footer">After the HTML footer</h3>
+
+<p>To load the scripts, especially Google hosted jQuery (or a local copy
+of it in case that the remote library <em>can’t</em> load) and <a href="http://fancyapps.com/fancybox/">fancyBox</a>,
+and the stylesheets after the contents in the <code>&lt;body&gt;</code> tag has been
+loaded, I added the following lines to
+<code>source/_includes/custom/after_footer.html</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Defer loading of JavaScripts and stylesheets </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+<span class="line-number">98</span>
+<span class="line-number">99</span>
+<span class="line-number">100</span>
+<span class="line-number">101</span>
+<span class="line-number">102</span>
+<span class="line-number">103</span>
+<span class="line-number">104</span>
+<span class="line-number">105</span>
+<span class="line-number">106</span>
+<span class="line-number">107</span>
+<span class="line-number">108</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="c1">// For loading JavaScripts</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class="line">	<span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class="line">	<span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class="line">	<span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class="line">	<span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class="line">	<span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">	<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">	    <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class="line">	    <span class="nx">success</span><span class="p">();</span>
+</span><span class="line">	    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">	    <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">	<span class="p">};</span>
+</span><span class="line">	<span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// Any scripts independent of jQuery</span>
+</span><span class="line">    <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;/javascripts/modernizr-2.0.js&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line">    <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="o">+</span>
+</span><span class="line">    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// Google hosted jquery and fancyBox JavaScripts</span>
+</span><span class="line">    <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;/javascripts/octopress.js&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line">      <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;/fancybox/source/jquery.fancybox.pack.js?v=2.1.5&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">	<span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;/fancybox/source/helpers/all.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">	  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;/javascripts/FancyBoxLocal.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line">	  <span class="p">});</span>
+</span><span class="line">	<span class="p">});</span>
+</span><span class="line">      <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">    <span class="c1">// jquery fallback local copy and fancyBox JavaScripts</span>
+</span><span class="line">    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">jQuery</span> <span class="o">==</span> <span class="s2">&quot;undefined&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">	<span class="kd">var</span> <span class="nx">jqri</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
+</span><span class="line">	<span class="nx">jqri</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;/javascripts/libs/jquery.min.js&quot;</span><span class="p">;</span>
+</span><span class="line">	<span class="nx">jqri</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
+</span><span class="line">	<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">jqri</span><span class="p">);</span>
+</span><span class="line">	<span class="nx">jqri</span><span class="p">.</span> <span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="line">	  <span class="kd">var</span> <span class="nx">fbjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
+</span><span class="line">	  <span class="nx">fbjs</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;/fancybox/source/jquery.fancybox.pack.js?v=2.1.5&quot;</span><span class="p">;</span>
+</span><span class="line">	  <span class="nx">fbjs</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
+</span><span class="line">	  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fbjs</span><span class="p">);</span>
+</span><span class="line">	  <span class="kd">var</span> <span class="nx">fball</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
+</span><span class="line">	  <span class="nx">fball</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;./octopress/source/fancybox/source/helpers/all.js&quot;</span><span class="p">;</span>
+</span><span class="line">	  <span class="nx">fball</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
+</span><span class="line">	  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fball</span><span class="p">);</span>
+</span><span class="line">	  <span class="nx">fbjs</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="line">	    <span class="nx">fball</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class="line">	      <span class="kd">var</span> <span class="nx">fblocjs</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
+</span><span class="line">	      <span class="nx">fblocjs</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;/javascripts/FancyBoxLocal.js&quot;</span><span class="p">;</span>
+</span><span class="line">	      <span class="nx">fblocjs</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/javascript&quot;</span><span class="p">;</span>
+</span><span class="line">	      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fblocjs</span><span class="p">);</span>
+</span><span class="line">	    <span class="p">}</span>
+</span><span class="line">	  <span class="p">}</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">})();</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// For loading CSS files</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">cb</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// Fonts from Google&#39;s Web font directory</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">font1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">font1</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">font1</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">font1</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/css&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">h</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">font1</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="kd">var</span> <span class="nx">font2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">font2</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">font2</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">font2</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/css&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">h</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">font2</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// any other external CSS</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// CSS files for FancyBox</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">fbcss</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">fbcss</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;/fancybox/source/jquery.fancybox.css?v=2.1.5&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbcss</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbcss</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/css&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbcss</span><span class="p">.</span><span class="nx">media</span> <span class="o">=</span> <span class="s2">&quot;screen, projection&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fbcss</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">fbbtncss</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">fbbtncss</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbbtncss</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbbtncss</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/css&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbbtncss</span><span class="p">.</span><span class="nx">media</span> <span class="o">=</span> <span class="s2">&quot;screen, projection&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fbbtncss</span><span class="p">);</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">fbthmcss</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;link&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">fbthmcss</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s2">&quot;/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbthmcss</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s2">&quot;stylesheet&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbthmcss</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s2">&quot;text/css&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">fbthmcss</span><span class="p">.</span><span class="nx">media</span> <span class="o">=</span> <span class="s2">&quot;screen, projection&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">fbthmcss</span><span class="p">);</span>
+</span><span class="line"><span class="p">};</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">var</span> <span class="nx">raf</span> <span class="o">=</span> <span class="nx">requestAnimationFrame</span> <span class="o">||</span> <span class="nx">mozRequestAnimationFrame</span> <span class="o">||</span>
+</span><span class="line"><span class="err"> </span> <span class="err"> </span> <span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span> <span class="nx">msRequestAnimationFrame</span><span class="p">;</span>
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nx">raf</span><span class="p">)</span> <span class="nx">raf</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+</span><span class="line"><span class="k">else</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="improve-user-experience">Improve user experience</h3>
+
+<p>Google PageSpeed Insights said that my homepage was too <em>wide</em> for
+mobile devices whose width were 320 px.  Therefore, I’ve tried
+preparing different pictures for windows of different width by
+<code>&lt;picutre&gt;</code> tags with <code>&lt;source srcset=...&gt;</code> inside.  Although this
+pure HTML 5 approach is now supported in Google Chrome <em>only</em>, I find
+this method simple and beautiful.<sup id="fnref:pic_elt"><a href="#fn:pic_elt" class="footnote">2</a></sup>  Due to its elegance, I
+believe that this feature will soon be implemented in all major
+browsers, such as Mozilla Firefox.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of pages/posts contents </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;picture</span> <span class="na">class=</span><span class="s">&quot;fancybox center&quot;</span> <span class="na">title=</span><span class="s">&quot;Custom search failed&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">&quot;/images/big.png&quot;</span> <span class="na">media=</span><span class="s">&quot;(min-width: 880px)&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line">  <span class="c">&lt;!-- a fallback for browsers that don&#39;t support the source tag --&gt;</span>
+</span><span class="line">  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">&quot;alt text&quot;</span> <span class="na">src=</span><span class="s">&quot;/images/small.png&quot;</span> <span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;/picture&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The simplest way to avoid getting the message “Optimize images” in a
+PageSpeed test is to optimize the images.  <a href="http://optipng.sourceforge.net/">OptiPNG</a> can be used for
+this.  Before compressing the images, I issued the following command
+to create a diminished image of width 300 px of the original image.</p>
+
+<pre class="cliUB"><code>$ optipng big.png
+$ convert big.png -resize 300 small.png
+$ optipng small.png
+</code></pre>
+
+<p>How to enable fancyBox for <code>&lt;picture&gt;</code> elements?  I did a bit of
+“guided coding” — I copied Erv Walter’s function and changed a few
+lines.<sup id="fnref:erv"><a href="#fn:erv" class="footnote">3</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of my &#8220;/javascripts/FancyBoxLocal.js&#8221; </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.entry-content&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">){</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">_i</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;img.fancybox&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="c1">// Erv Walter&#39;s function ...</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;picture.fancybox&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">picture</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">picture</span><span class="p">.</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">);</span>
+</span><span class="line">      <span class="nx">picture</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;fancybox&quot;</span><span class="p">);</span>
+</span><span class="line">      <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">picture</span><span class="p">.</span><span class="nx">children</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;srcset&quot;</span><span class="p">);</span>
+</span><span class="line">      <span class="nx">picture</span><span class="p">.</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">&#39;&lt;a href=&quot;&#39;</span><span class="o">+</span><span class="nx">url</span><span class="o">+</span><span class="s1">&#39;&quot; class=&quot;fancybox&quot; rel=&quot;galleryp&#39;</span><span class="o">+</span><span class="nx">_i</span><span class="o">+</span><span class="s1">&#39;&quot; /&gt;&#39;</span><span class="p">);</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span><span class="nx">title</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">	<span class="nx">picture</span><span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="nx">title</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// settings found on fancyBox&#39;s homepage ...</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>View the file at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/29d86dd">29d86dd</a> for a working example.</p>
+
+<p>Lastly, to ensure that the contents <em>wouldn’t</em> fall outside the
+viewport on the screen of mobile devices, I embedded an inline CSS.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;style&gt;article</span> <span class="nt">img</span> <span class="p">{</span><span class="k">max-width</span><span class="o">:</span><span class="m">100%</span><span class="p">;}</span><span class="nt">&lt;/style&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Though this <em>wasn’t</em> good, it enabled me to get rid of the above
+message about image optimization in a PageSpeed test.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="my-first-way-to-load-javascripts-from-a-script">My first way to load JavaScripts from a script</h3>
+
+<p>Due to my homework and exams in early December and my <em>limited
+knowledge</em> on JavaScripts, I <em>didn’t</em> have time to understand the
+section “Defer loading of JavaScript” in
+<a href="https://developers.google.com/speed/docs/insights/BlockingJS">a suggestion page on Google Developers</a>.  On Dec 20,
+2014, I found an article on feedthebot useful.<sup id="fnref:feedthebot"><a href="#fn:feedthebot" class="footnote">4</a></sup>  I copied
+the codeblock and changed <code>defer.js</code> to other files.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="kd">function</span> <span class="nx">downloadJSAtOnload</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">element</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;defer.js&quot;</span><span class="p">;</span>
+</span><span class="line">  <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="nx">downloadJSAtOnload</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</span><span class="line"><span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span>
+</span><span class="line">  <span class="nb">window</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">(</span><span class="s2">&quot;onload&quot;</span><span class="p">,</span> <span class="nx">downloadJSAtOnload</span><span class="p">);</span>
+</span><span class="line"><span class="k">else</span> <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">downloadJSAtOnload</span><span class="p">;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>In M$ I.E., one has to use <code>window.attachEvent</code> instead of
+<code>window.addEventListener</code>.  The last line acts as a fallback for old
+browsers.</p>
+
+<p>This works for MathJax.  However, for fancyBox, which depends on
+jQuery, strange things happened, and I got trapped for two days.  I
+had wrote a function which worked in Google Chrome, but when I opened
+Mozilla Firefox to test the results, <em>no</em> box popped out and I was
+taken to a page containing merely the picture.  I was puzzled and made
+a Git commit.<sup id="fnref:e7e6743"><a href="#fn:e7e6743" class="footnote">5</a></sup></p>
+
+<h3 id="my-second-way-to-load-javascripts-from-a-script">My second way to load JavaScripts from a script</h3>
+
+<p>I googled “defer jquery fancybox”, and found a question on Stack
+Overflow.<sup id="fnref:so16647050"><a href="#fn:so16647050" class="footnote">6</a></sup>  I made use of Jamed Donnelly’s functions, and
+had successfully made a popped up image, which meant that the loading
+of JavaScripts for fancyBox had been deferred.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Just before the closing body tag </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class="line">	<span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class="line">	<span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class="line">	<span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class="line">	<span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class="line">	<span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">	<span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span>
+</span><span class="line">	  <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">	    <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class="line">	    <span class="nx">success</span><span class="p">();</span>
+</span><span class="line">	    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">	    <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">	<span class="p">}</span>
+</span><span class="line">	<span class="p">};</span>
+</span><span class="line">	<span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;jquery-1.8.3.min.js&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">    <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;jquery.fancybox-1.3.4/fancybox/jquery.fancybox-1.3.4.pack.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line">    <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;myCustomScript.js&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{});</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">})();</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A separate file &#8220;myCustomScript.js&#8221; </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.example3&quot;</span><span class="p">).</span><span class="nx">fancybox</span><span class="p">({</span>
+</span><span class="line">	<span class="s1">&#39;transitionIn&#39;</span>  <span class="o">:</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span>
+</span><span class="line">	<span class="s1">&#39;transitionOut&#39;</span> <span class="o">:</span> <span class="s1">&#39;none&#39;</span>
+</span><span class="line">    <span class="p">});</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Nonetheless, the image title and the close icon were <em>missing</em>.</p>
+
+<h3 id="view-loaded-resources-and-the-timeline">View loaded resources and the timeline</h3>
+
+<p>I had tried using “Network” in the developer toolbar in both Google
+Chromium and Mozilla Firefox to view the time taken for loading the
+scripts and CSS files.  I contrasted the timelines of working sites
+and my failed trials, and then made changes to the above script before
+the <code>&lt;/body&gt;</code> tag.</p>
+
+<h3 id="test-javascript-functions-using-the-web-console">Test Javascript functions using the web console</h3>
+
+<p>While testing the script in
+<code>source/_includes/custom/after_footer.html</code>, the scripts often
+<em>failed</em> to work.  The error console in web browsers spotted out the
+missing brackets and other syntax errors.  Moreover, it told me
+whether jQuery had been loaded if I typed <code>typeof jQuery</code>.</p>
+
+<h3 id="access-the-children-of-an-html-element-with-jquery">Access the children of an HTML element with jQuery</h3>
+
+<p>While writing the anonymous function in
+<code>/javascripts/FancyBoxLocal.js</code>, I tried to extract the URL of the
+<code>&lt;source&gt;</code> element inside a <code>&lt;picture&gt;</code> element.  In the web console,
+if <code>typeof jQuery</code> returns <code>"function"</code>,
+<code>$('picture').children('source').length</code> returns a non-negative
+integer.  If the integer returned is positive,
+<code>$('picture').children('source')[0].srcset</code> returns
+<code>"/images/foo.png"</code> and <code>"undefined"</code> in Google Chromium and Mozilla
+Firefox respectively.</p>
+
+<p>I played with the example on W3Schools about the <code>children()</code> method
+in jQuery.<sup id="fnref:w3sch"><a href="#fn:w3sch" class="footnote">7</a></sup>  After re-writing the code and seeing the result
+repeatedly, I’ve learnt to use the <code>eq(n)</code> and <code>attr(source)</code> methods
+to access the <code>n</code>-th element and the <code>source</code> attribute.</p>
+
+<h3 id="load-css-files-from-a-script">Load CSS files from a script</h3>
+
+<p>Google Developers has already provided a script for doing
+so.<sup id="fnref:goo_dev_css"><a href="#fn:goo_dev_css" class="footnote">8</a></sup>  At first, I <em>didn’t</em> understand it and I tried
+injecting a <code>&lt;link&gt;</code> element inside the <code>downloadJSAtOnload()</code> method.
+Unluckily, this method <em>failed</em>.  <em>Without</em> <code>/stylesheets/screen.css</code>,
+the Solarized theme <em>disappeared</em>, and was “replaced by a
+black-and-white theme”.  After that, I re-read Google’s page on CSS
+delivery optimization, and extracted the script which grabbed external
+stylesheets.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script&gt;</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">cb</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">l</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;link&#39;</span><span class="p">);</span> <span class="nx">l</span><span class="p">.</span><span class="nx">rel</span> <span class="o">=</span> <span class="s1">&#39;stylesheet&#39;</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">l</span><span class="p">.</span><span class="nx">href</span> <span class="o">=</span> <span class="s1">&#39;small.css&#39;</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">h</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="nx">h</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">l</span><span class="p">,</span> <span class="nx">h</span><span class="p">);</span>
+</span><span class="line">  <span class="p">};</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">raf</span> <span class="o">=</span> <span class="nx">requestAnimationFrame</span> <span class="o">||</span> <span class="nx">mozRequestAnimationFrame</span> <span class="o">||</span>
+</span><span class="line">      <span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span> <span class="nx">msRequestAnimationFrame</span><span class="p">;</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="nx">raf</span><span class="p">)</span> <span class="nx">raf</span><span class="p">(</span><span class="nx">cb</span><span class="p">);</span>
+</span><span class="line">  <span class="k">else</span> <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span> <span class="nx">cb</span><span class="p">);</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>From “Network” in the web developer toolbar, in an up-to-date version
+of modern browsers, this anonymous function which loads external CSS
+files should be executed <em>before</em> <code>script.onload</code> and <code>window.onload</code>.</p>
+
+<p>In addition, unlike Javascripts, I <em>don’t</em> use something like
+<code>stylesheet.onload</code>.  Simply put the relative path or URL of the
+external CSS files inside the anonymous function will do.</p>
+
+<p>After I grabbed the stylesheets before the external Javascripts
+loaded, the missing components of the pop up window were <em>still</em>
+missing.  It took me half an hour to figure out that <code>l.rel =
+'stylesheet'</code> <em>couldn’t</em> be omitted.  I then pushed commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/1d40cea">1d40cea</a>
+to GitHub and claimed that I’d found a way for both Google Chrome and
+Mozilla Firefox.</p>
+
+<p>The next day, I tested it with M$ I.E., and older versions of Google
+Chrome and Mozilla Firefox.  In older versions, my configurations had
+<em>failed</em>, but they worked fine in the recent ones.  For example, the
+method of loading external Javascripts in a non-render-blocking manner
+as suggested by Google Developers <em>didn’t</em> work in Mozilla Firefox 14,
+which <em>didn’t</em> support <code>requestAnimationFrame</code>.  Though
+<code>mozRequestAnimationFrame</code> was supported, if they’re put together, the
+whole thing would collapse.  Since I’m <em>not</em> a web
+designer/programmer, I <em>won’t</em> consider fixing this problem since</p>
+
+<ul>
+  <li>the old versions of browsers will be eventually upgraded, and more
+  importantly,</li>
+  <li>I’ve other (non-technical) problems to solve.</li>
+</ul>
+
+<h3 id="onload-and-createelement">Onload and createElement()</h3>
+
+<p>I’ve read a question on Stack Overflow, and understood that even
+though a <code>&lt;script&gt;</code> element with the <code>src='/javascripts/foo.js'</code>
+attribute had been created by the <code>createElement()</code> function, the
+functions defined in the external script <code>/javascripts/foo.js</code> could
+be <em>unusable</em> if one <em>doesn’t</em> make proper use of <code>script.onload</code>.</p>
+
+<h3 id="a-fallback-for-google-hosted-jquery">A fallback for Google hosted jQuery</h3>
+
+<p>In my opinion, this is the <em>most</em> difficult part, which has taken me a
+<em>whole</em> day.</p>
+
+<p>I observed that loading <em>both</em> the local and remote copy of jQuery was
+<em>incorrect</em>.  Since jQuery is relatively <em>large</em>, leaving this problem
+unsolved is like leaving a black dot on a whiteboard.</p>
+
+<p>One <em>can’t</em> simply remove the local copy of jQuery since Google is
+<em>blocked</em> in some regions.<sup id="fnref:news"><a href="#fn:news" class="footnote">9</a></sup>  There’re some political reasons
+behind.  Unlike Zigang Xiao’s blog, I’m <em>not</em> going to write any
+articles on politics.<sup id="fnref:po"><a href="#fn:po" class="footnote">10</a></sup>  I’ll just seek a <em>technical</em> solution to
+this <em>political</em> problem.</p>
+
+<p>This problem is <em>extremely difficult</em> for me since I’m <em>not</em> a student
+of IT, and there’s <em>no</em> direct solution from the Internet.  Inside and
+outside the function triggered by an <code>onload</code> event, code <em>aren’t</em>
+executed sequencially, but <em>in parallel</em>.  Therefore, if I put <code>if
+(typeof jQuery == 'undefined')</code> after <code>getScript(...)</code>, then even
+though the Google hosted jQuery library can be downloaded, the if
+statement returns <em>true</em>.  Google Chromium and Mozilla Firefox showed
+<em>different</em> results for the <em>same</em> JavaScript.  This increased the
+difficulty of the task.</p>
+
+<p>While coming up with a solution, I looked at
+<code>source/_includes/head.html</code>, and found the following line.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">&#39;%3Cscript</span>
+</span><span class="line"><span class="s1">src=&quot;./javascripts/libs/jquery.min.js&quot;%3E%3C/script%3E&#39;</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><em>Not</em> being familiar with JavaScript syntax, I searched for the
+meaning of the <code>unescape()</code> function and that of the ‘.’ in front of
+<code>/javascripts/...</code>.  After viewing a question on Stack Overflow, I
+decided to create the <a href="https://github.com/imathis/octopress/pull/1699/" title="Fix the way of loading the local copy of jQuery">pull request #1699</a> of Octopress.
+Luckily, it was accepted and merged into the <code>master</code> branch of
+Octopress.</p>
+
+<p>After doing some off-topic stuff, I curiously reproduced the error
+described in the first subsection of this section, and figured out a
+way to fix this error.  During the process, I’ve learnt the dependence
+of difference scripts  Therefore, the correct sequence should be</p>
+
+<ol>
+  <li>Load <code>jquery.min.js</code>.</li>
+  <li>Load <code>octopress.js</code> and <code>/fancybox/source/jquery.fancybox.js</code>.</li>
+  <li>Load <code>/fancybox/source/helpers/jquery.fancybox-*.js</code>.</li>
+  <li>Load <code>FancyBoxLocal.js</code>.</li>
+</ol>
+
+<p>For example, <code>appendChild(octopress)</code> should be <em>inside</em>
+<code>jquery.onload = function() {...}</code>.</p>
+
+<p>Finally, using “Network” in the web developer toolbar in Google
+Chromium, I observed that <em>before</em> the <code>window.onload</code> event, the
+<code>getScript(...)</code> method had already got the scripts.  I combined the
+two ways, and solved the problem.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:nowheel">
+
+      <p>I <em>didn’t</em> use the mousewheel plugin.  If one uses a mouse click
+to get the popped up window, then he/she can also view the
+next/previous picture with a click. <a href="#fnref:nowheel" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pic_elt">
+
+      <p>See, for example,
+<a href="http://www.html5rocks.com/en/tutorials/responsive/picture-element/"><em>Built-in Browser Support for Responsive Images</em></a> by Pearl
+Chen on HTML 5 Rocks, for an introduction to the <code>&lt;picture&gt;</code>
+element. <a href="#fnref:pic_elt" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:erv">
+
+      <p>See <a href="http://www.ewal.net/2012/09/08/octopress-customizations/"><em>Octopress Customizations</em></a> <a href="#fnref:erv" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:feedthebot">
+
+      <p><a href="http://www.feedthebot.com/pagespeed/defer-loading-javascript.html"><em>Defer Loading Javascript</em></a> by Patrick Sexton on
+feedthebot. <a href="#fnref:feedthebot" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:e7e6743">
+      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e7e6743">e7e6743</a> for details. <a href="#fnref:e7e6743" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:so16647050">
+
+      <p>See <a href="http://stackoverflow.com/q/16647050"><em>How to defer javascript</em></a> on Stack Overflow for
+the function. <a href="#fnref:so16647050" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:w3sch">
+
+      <p>The online example is available at
+<a href="http://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_children2">http://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_children2</a> <a href="#fnref:w3sch" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:goo_dev_css">
+
+      <p>See <a href="https://developers.google.com/speed/docs/insights/OptimizeCSSDelivery"><em>Optimize CSS delivery</em></a> on Google Developers
+for details. <a href="#fnref:goo_dev_css" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:news">
+
+      <p><a href="http://techcrunch.com/2010/04/19/google-censorship/"><em>Google Is Blocked In 25 Of The 100 Countries They Offer Products In</em></a>
+by MG Siegler on TechCrunch. <a href="#fnref:news" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:po">
+      <p><a href="http://blog.ivansiu.com/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/"><em>精英主義與投票考試</em></a> by Zigang Xiao. <a href="#fnref:po" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -555,15 +1328,15 @@ skills in xclip.</p>
 this blog.</p>
 
 <picture class="fancybox center" title="Searched with the search box for pages in this blog">
-  <source srcset="/images/posts/OctSearchErr/err1.png" media="(min-width: 880px)" /> 
+  <source srcset="/images/posts/OctSearchErr/err1.png" media="(min-width: 880px)" />
   <img alt="err1" src="http://vincenttam.github.io/images/posts/OctSearchErr/err1_s.png" />
 </picture>
 
 <p>It had been working well, but a month ago, the box searched for
 webpages <em>other</em> than those in this blog.</p>
 
-<picture class="fancybox center" title="Custion search failed">
-  <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)" /> 
+<picture class="fancybox center" title="Custom search failed">
+  <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)" />
   <img alt="err2" src="http://vincenttam.github.io/images/posts/OctSearchErr/err2_s.png" />
 </picture>
 
@@ -718,7 +1491,7 @@ with ‘\’.</p>
 <picture class="fancybox" title="MinGW command window">
   <source srcset="/images/posts/OctPostTitle2/cmd_big.png" media="(min-width: 840px)" /> 
   <source srcset="/images/posts/OctPostTitle2/cmd.png" media="(min-width: 620px)" /> 
-  <img alt="git gui prompt" src="http://vincenttam.github.io/images/posts/OctPostTitle2/cmd_s.png" />
+  <img alt="MinGW command window" src="http://vincenttam.github.io/images/posts/OctPostTitle2/cmd_s.png" />
 </picture>
 
 <hr />
@@ -1257,99 +2030,6 @@ following graph.</p>
 
       <p>Refer to <a href="http://tex.stackexchange.com/a/60707"><em>TikZ: Arbitrary shapes and filling?</em></a> for
 details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Load Multiple External JavaScripts]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts/"/>
-    
-    <updated>2014-11-13T18:08:30+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/11/13/load-multiple-external-javascripts</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>Same as the one in <a href="http://vincenttam.github.io/blog/2014/06/12/my-css-settiings-for-printing-1/"><em>My CSS Settiings for Printing (1)</em></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Having written a post on loading MathJax with a local configuration
-file, I previewed the print layout, saw that the font size was too
-<em>small</em>.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup></p>
-
-<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem1.jpg" width="750" title="too small words" alt="fig1" /></p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>It <em>didn’t</em> take me long to identify the reason for the small font
-size.  When I wrote that post, I <em>didn’t</em> aware of this problem.</p>
-
-<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem2.jpg" width="750" title="too long line" alt="fig2" /></p>
-
-<h2 id="a-way-to-get-bigger-fonts">A “way” to get bigger fonts</h2>
-
-<p>One may adjust the zooming factor to “100%” to get a normal font size.
-However, this <em>isn’t</em> user-friendly.</p>
-
-<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem3.jpg" width="750" title="get font size" alt="fig3" /></p>
-
-<p>Moreover, this causes the right half of the line of HTML code to flow
-out of the page.</p>
-
-<h2 id="is-this-problem-browser-specific">Is this problem browser-specific?</h2>
-
-<p>I’ll illustrate this problem with one more picture.</p>
-
-<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/problem4.jpg" width="750" title="print preview in Chrome" alt="fig4" /></p>
-
-<p>From the above screenshot, one can expect that this problem exists in
-<em>every</em> web browser.</p>
-
-<h2 id="learn-from-past-experience">Learn from past experience</h2>
-
-<p>It took at least a minute for the system to regenerate the contents
-during a preview.  Therefore, I tested things <em>locally</em> before doing
-any <em>real</em> modifications to the source code.</p>
-
-<p><img class="fancybox center" src="http://vincenttam.github.io/images/posts/LoadMultExtJS/sol.jpg" width="750" title="a successful local test" alt="fig5" /></p>
-
-<h2 id="solution">Solution</h2>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A working script tag for embedding MathJax with a local configuration file </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;head&gt;</span>
-</span><span class="line">	<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
-</span><span class="line"><span class="s">	https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
-</span><span class="line"><span class="s">	https://vincenttam.github.io/javascripts/MathJaxLocal.js</span>
-</span><span class="line"><span class="s">	&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;/head&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>By trial, I found that one <em>couldn’t</em> use whitespaces to indent the
-URLs — tabs (i.e. ‘\t’) should be used in this case.  Luckily, in
-the source file responsible for loading external JavaScripts (i.e.
-<code>source/_includes/custom/head.html</code>), there’s no <code>&lt;head&gt;</code> tag, so one
-may simply break a line without indentation.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp2">
-
-      <p>Refer to <a href="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/"><em>MathJax Local Configuration File</em></a> for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
