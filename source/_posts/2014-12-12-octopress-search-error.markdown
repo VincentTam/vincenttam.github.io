@@ -13,7 +13,7 @@ I used the search box in the navigation bar to search for pages in
 this blog.
 
 <picture class="fancybox center" title="Searched with the search box for pages in this blog">
-  <source srcset="/images/posts/OctSearchErr/err1.png" media="(min-width: 880px)"></source> 
+  <source srcset="/images/posts/OctSearchErr/err1.png" media="(min-width: 880px)"></source>
   <img alt="err1" src="/images/posts/OctSearchErr/err1_s.png" />
 </picture>
 
@@ -21,7 +21,7 @@ It had been working well, but a month ago, the box searched for
 webpages *other* than those in this blog.
 
 <picture class="fancybox center" title="Custom search failed">
-  <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)"></source> 
+  <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)"></source>
   <img alt="err2" src="/images/posts/OctSearchErr/err2_s.png" />
 </picture>
 
