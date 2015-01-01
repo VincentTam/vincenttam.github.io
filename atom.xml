@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2014-12-31T01:28:06+08:00</updated>
+  <updated>2015-01-02T00:10:57+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,112 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Push to USB]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb/"/>
+    
+    <updated>2015-01-01T22:51:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<ol>
+  <li>I created a bare Git repository in my USB stick on GUI.</li>
+  <li>I pushed some Git commits to the bare repository in the USB.</li>
+</ol>
+
+<p>The commands for the above steps <em>shouldn’t</em> be difficult.  In step 2,
+if one sets the upstream repository to the bare repository in the USB,
+the command to be issued is even easier: just <code>git push</code> will do, and
+the remote and branch names can be omitted.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I worked on Linux text mode instead of GUI.  After committing the
+changes, I tried pushing them into the bare Git repository in the USB.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+[owner@localhost ~/MATH2220]$ sudo mount -t vfat /dev/sdf1 \
+&gt; /media/owner/08F1-B181/
+[owner@localhost ~/MATH2220]$ git push
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: error: insufficient permission for adding an object to repository databa
+se objects
+remote: fatal: failed to write object
+error: unpack failed: unpack-objects abnormal exit
+To /media/owner/08F1-B181/MATH2220/MATH2220.git
+ ! [remote rejected] master -&gt; master (unpacker error)
+error: failed to push some refs to '/media/owner/08F1-B181/MATH2220/MATH2220.git
+'
+</code></pre>
+
+<p><strong>How can I push commits into the USB?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “git push usb rejected” for a similar problem, and “linux
+text mode git” for a Git tutorial on CLI, but I <em>couldn’t</em> find what I
+wanted.  I observed that this <em>wasn’t</em> a problem of Git, but a problem
+about file permissions on *nix.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ ll /media/owner/
+total 12
+drwxr-x---+ 3 root root 4096 Jan  1 21:40 ./
+drwxr-xr-x  4 root root 4096 Aug 13 02:09 ../
+drwxr-xr-x  2 root root 4096 Jan  1 21:40 08F1-B181/
+</code></pre>
+
+<p>Then I changed the search words, and finally found a page on SUSE
+Communities.<sup id="fnref:suse"><a href="#fn:suse" class="footnote">1</a></sup>  I read the commands and their descriptions, and
+eventually solved the problem.</p>
+
+<p>After I had unmounted the USB drive, I typed the command for mounting
+the USB stick again.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ sudo umount /media/owner/08F1-B181/
+[owner@localhost ~/MATH2220]$ sudo mount -t vfat -o uid=owner,gid=owner\
+&gt; /dev/sdf1 /media/owner/08F1-B181/
+[owner@localhost ~/MATH2220]$ git push
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+To /media/owner/08F1-B181/MATH2220/MATH2220.git
+   9e8e53e..4fa36c7  master -&gt; master
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>One can specify the owner and the user group of the VFAT filesystem to
+be mounted with <code>-o uid=foo,gid=bar</code> for USB devices.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:suse">
+
+      <p><a href="https://www.suse.com/communities/conversations/manually-mounting-a-usb-flash-drive-in-linux/"><em>Manually Mount a USB Flash Drive in Linux</em></a> by
+coolguys-suse on SUSE Communities. <a href="#fnref:suse" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -852,7 +958,7 @@ element. <a href="#fnref:pic_elt" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:erv">
 
-      <p>See <a href="http://www.ewal.net/2012/09/08/octopress-customizations/"><em>Octopress Customizations</em></a> <a href="#fnref:erv" class="reversefootnote">&#8617;</a></p>
+      <p>See <a href="http://www.ewal.net/2012/09/08/octopress-customizations/"><em>Octopress Customizations</em></a> by Erv Walter on ewal.net. <a href="#fnref:erv" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:feedthebot">
 
@@ -1943,34 +2049,6 @@ in 99designs. <a href="#fnref:dpippi" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Group of 689 Elements]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/09/a-group-of-689-elements/"/>
-    
-    <updated>2014-12-09T15:29:09+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/09/a-group-of-689-elements</id>
-    
-      <content type="html"><![CDATA[<p>A month ago, I took a test and was asked whether “a group of 689
-elements is closed under the group operation”.  The question is
-<em>trivial</em>, but one can discover another question: <strong>Does such a group
-exists?</strong></p>
-
-<p>In order to “proceed with with my work”, I <em>temporarily accepted</em> the
-existence fo swuch a group during the test.  However, even though I
-got the question right and earned some marks for that, I <em>didn’t</em>
-think that this is <em>true</em> mathematics.  To say that one <em>knows</em> this
-quoted statement, one has to follow the <em>“international standard”</em> of
-a group and make <em>rigourous arguements</em> from the <em>“basic laws”</em> to
-prove the existence of such a group.</p>
-
-<p>Thinking that the group of 689 elements <em>isn’t</em> useful, I put that
-problem aside.  After a fortnight, I came up with an answer: <span class="myeqn">$\mathbb{Z}_{13} \times \mathbb{Z}_{53}
-\cong \mathbb{Z}_{689}$</span>.</p>
 ]]></content>
     
   </entry>
