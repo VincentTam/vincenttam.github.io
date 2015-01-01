@@ -526,7 +526,7 @@ two ways, and solved the problem.
     element.
 
 [^erv]:
-    See [*Octopress Customizations*][erv]
+    See [*Octopress Customizations*][erv] by Erv Walter on ewal.net.
 
 [^feedthebot]:
     [*Defer Loading Javascript*][feedthebot] by Patrick Sexton on
