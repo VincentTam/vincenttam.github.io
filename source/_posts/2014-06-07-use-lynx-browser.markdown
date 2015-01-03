@@ -107,5 +107,3 @@ How to save the pages?
 
 *[GUI]: Graphical User Interface
 *[SEOs]: Search Engine Optimizers
-
-<!-- vim:se tw=70: -->
