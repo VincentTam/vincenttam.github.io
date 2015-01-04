@@ -92,5 +92,3 @@ better printing experience.
 [OctopressDocImg]: http://octopress.org/docs/plugins/image-tag/ "Image Tag"
 [StackExchange1987926]: http://stackoverflow.com/questions/1987926/ "How do I grep recursively?"
 [StackExchange7115959]: http://stackoverflow.com/questions/7115959/ "Adding !important using a Compass Mixin"
-
-<!-- vim:se tw=70: -->
