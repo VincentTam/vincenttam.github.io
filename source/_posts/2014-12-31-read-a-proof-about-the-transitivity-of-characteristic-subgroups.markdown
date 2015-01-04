@@ -16,7 +16,7 @@ restriction of $f$ on $H$ as $g:H\to H$ such that $g(h)=f(h)\forall h
 
 I *couldn't* understand why $g(K)=K$.  I googled "strongly normal
 transitivity", but *couldn't* find anything relevant.  I changed the
-words, and find [the proof on ProofWiki][pf].  Then I realised why I
+words, and found [the proof on ProofWiki][pf].  Then I realised why I
 got stuck: when I wrote the definition of characteristic subgroup
 symbolically, I *didn't* pay enough attention to '∀'.
 
