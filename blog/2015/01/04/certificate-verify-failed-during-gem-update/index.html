@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>I/O Errors During Removal of Old Kernels - Blog 1</title>
+  <title>Certificate Verify Failed During Gem Update - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I encountered some block I/O errors while deleting old Linux kernels. As the error messages were just after the line Found Fedora ..., I &hellip;">
+  <meta name="description" content="Background I pull the Git commits from the origin of this blog to Git Bash on
+M$ Win*. The Gemfile has changed due to commit fbc3c0b. Problem I ran &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -78,7 +79,7 @@
   <header>
     
       
-	<h1 class="entry-title">I/O Errors During Removal of Old Kernels</h1>
+	<h1 class="entry-title">Certificate Verify Failed During Gem Update</h1>
       
     
     
@@ -88,7 +89,7 @@
 
 
 
-<time class='entry-date' datetime='2014-09-13T23:14:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:14 pm</span></time>
+<time class='entry-date' datetime='2015-01-04T22:41:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:41 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -99,23 +100,260 @@
   </header>
 
 
-<div class="entry-content"><h2 id="problem">Problem</h2>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+<p>I pull the Git commits from the <code>origin</code> of this blog to Git Bash on
+M$ Win*.  The <code>Gemfile</code> has changed due to commit <a href="https://github.com/imathis/octopress/commit/fbc3c0b">fbc3c0b</a>.</p>
 
-<p><img class="fancybox" src="/images/posts/RmOldKer/err.png" width="900" title="Received errors in tty1" alt="error messages" /></p>
+<h2 id="problem">Problem</h2>
+
+<p>I ran <code>bundle install</code> according to the official documentation, and
+got an <em>unexpected error</em>.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ bundle install
+DL is deprecated, please use Fiddle
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+<span class="err">Bundler could not find compatible versions for gem "sass":
+  In snapshot (Gemfile.lock):
+    sass (3.2.19)
+
+  In Gemfile:
+    compass (~&gt; 1.0.1) x64-mingw32 depends on
+      sass (&lt; 3.5, &gt;= 3.3.13) x64-mingw32</span>
+
+Running `&lt;span class=""HLCode"&gt;bundle update` will rebuild your snapshot from scratch, using only
+the gems in your Gemfile, which may resolve the conflict.
+</code></pre>
+
+<p><em>Without</em> updated gems, even though everything in the <code>source</code> folder
+is <em>correct</em>, one <em>can’t</em> generate an Octopress blog.  <strong>How can one
+get the gems updated?</strong></p>
 
 <!-- more -->
 
-<p>As the error messages were just after the line <code>Found Fedora ...</code>, I
-booted into Fedora 17 out of curiousity.</p>
+<p>I then tried to follow the suggestion, but received <em>another</em> error.</p>
 
-<h2 id="cause">Cause</h2>
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+Owner@OWNER-PC /c/github/vincenttam.github.io (source)
+$ bundle update
+DL is deprecated, please use Fiddle
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
 
-<p>In Fedora’s file manager, I found the reason for the above error
+<span class="err">Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read
+server certificate B: certificate verify failed (https://rubygems.org/gems/rake-
+10.4.2.gem)
+An error occurred while installing rake (10.4.2), and Bundler cannot continue.
+Make sure that `<span class="HLCode">gem install rake -v '10.4.2'</span>` succeeds before bundling.</span>
+</code></pre>
+
+<p>I ran the <strong>command in bold</strong> in the above message, and got <em>similar</em>
 messages.</p>
 
-<p><img class="fancybox" src="/images/posts/RmOldKer/cause.png" width="900" title="Cause of the above error" alt="Fedora file manager" /></p>
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ gem install rake -v '10.4.2'
+<span class="err">ERROR:  Could not find a valid gem 'rake' (= 10.4.2), here is why:
+          Unable to download data from https://rubygems.org/ - SSL_connect retur
+ned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (
+https://rubygems.org/specs.4.8.gz)</span>
+</code></pre>
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “windows unable to download data from https //rubygems.org/
+- ssl_connect returned=1”, and clicked on the
+<a href="https://stackoverflow.com/q/19150017" title="SSL Error When installing rubygems, Unable to pull data ...">first Stack Overflow question that I saw</a>.  I quickly
+skimmed through the first answer of this question, and read the last
+section “Windows note”, which referred interested readers to two
+places:</p>
+
+<ol>
+  <li>RubyInstaller issue <a href="https://github.com/oneclick/rubyinstaller/issues/249" title="Change OpenSSL certificates path">249</a> on GitHub,</li>
+  <li>The second answer of this question.</li>
+</ol>
+
+<p>I clicked the first webpage, and quickly jumped to
+<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" title="SSL upgrades on rubygems.org and RubyInstaller versions">Luis Lavena’s response</a> to the issue.  Unlike the previous
+webpages, I read every word from the beginning to the third section
+this time, and read the Stack Overflow question again, before deciding
+what to be done.</p>
+
+<p>I followed the instructions in the third section, instead of manually
+downloading and inserting it back to the folder which the command
+<code>gem which rubygems</code> returned.</p>
+
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ gem install --local ~/Downloads/rubygems-update-2.0.15.gem
+Successfully installed rubygems-update-2.0.15
+Parsing documentation for rubygems-update-2.0.15
+Installing ri documentation for rubygems-update-2.0.15
+1 gem installed
+
+<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ update_rubygems --no-ri --no-rdoc
+RubyGems 2.0.15 installed
+
+=== 2.0.14 / 2013-11-12
+
+Bug fixes:
+
+* Restore concurrent requires following the fix for ruby bug #8374.  Pull
+  request #637 and issue #640 by Charles Nutter.
+* Gem::Specification::remove_spec no longer checks for existence of the spec
+  to be removed.  Issue #698 by Tiago Macedo.
+* Restored wildcard handling when installing gems.  Issue #697 by Chuck Remes.
+* Added DigiCert High Assurance EV Root CA certificate for the cloudfront.net
+  certificate change.
+* The Gem::RemoteFetcher tests now choose the test server port more reliably.
+  Pull Request #706 by akr.
+
+
+------------------------------------------------------------------------------
+
+RubyGems installed the following executables:
+        c:/Ruby200-x64/bin/gem
+
+<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ gem uninstall rubygems-update -x
+Removing update_rubygems
+Successfully uninstalled rubygems-update-2.0.15
+</code></pre>
+
+<p>Then I ran <code>bundle install</code> <em>again</em>, and I still got the <em>same</em> error
+shown at the very beginning of the post.  However, I <em>could</em> update the
+gems.</p>
+
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ bundle update
+DL is deprecated, please use Fiddle
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+<span class="HLCode">Installing rake 10.4.2 (was 10.3.2)</span>
+Using RedCloth 4.2.9
+Using blankslate 2.1.2.4
+Installing hitimes 1.2.2
+Installing timers 4.0.1 (was 1.1.0)
+Installing celluloid 0.16.0 (was 0.15.2)
+Installing chunky_png 1.3.3 (was 1.3.1)
+Using fast-stemmer 1.0.2
+Installing classifier-reborn 2.0.3 (was 2.0.1)
+Using coffee-script-source 1.8.0
+Installing execjs 2.2.2 (was 2.2.1)
+Using coffee-script 2.3.0
+Using colorator 0.1
+Installing multi_json 1.10.1
+Installing sass 3.4.9 (was 3.2.19)
+Installing compass-core 1.0.1
+Installing compass-import-once 1.0.5
+Using rb-fsevent 0.9.4
+Installing ffi 1.9.6 (was 1.9.3)
+Using rb-inotify 0.9.5
+Installing compass 1.0.1 (was 0.12.7)
+Using tilt 1.4.1
+Installing haml 4.0.6 (was 4.0.5)
+Installing jekyll-coffeescript 1.0.1 (was 1.0.0)
+Using jekyll-gist 1.1.0
+Installing jekyll-paginate 1.1.0 (was 1.0.0)
+Installing jekyll-sass-converter 1.3.0 (was 1.2.0)
+Installing listen 2.8.4 (was 2.7.9)
+Installing jekyll-watch 1.2.0 (was 1.1.0)
+Installing kramdown 1.5.0 (was 1.4.1)
+Using liquid 2.6.1
+Installing mercenary 0.3.5 (was 0.3.4)
+Using posix-spawn 0.3.9
+Using yajl-ruby 1.1.0
+Using pygments.rb 0.6.0
+Installing redcarpet 3.2.2 (was 3.1.2)
+Installing safe_yaml 1.0.4 (was 1.0.3)
+Using parslet 1.5.0
+Installing toml 0.1.2 (was 0.1.1)
+Installing jekyll 2.5.3 (was 2.3.0)
+Installing jekyll-sitemap 0.7.0 (was 0.5.1)
+Installing octopress-hooks 2.2.3 (was 2.2.1)
+Installing octopress-date-format 2.0.2 (was 2.0.1)
+Installing rack 1.6.0 (was 1.5.2)
+Using rack-protection 1.5.3
+Using rubypants 0.2.0
+Using sass-globbing 1.0.0
+Using sinatra 1.4.5
+Using stringex 1.4.0
+Using wdm 0.1.0
+Using bundler 1.7.2
+<span class="HLCode">Your bundle is updated!</span>
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>To save space in the hard disk, I removed the old versions of gems
+with a short and simple command.</p>
+
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ gem cleanup
+Cleaning up installed gems...
+Attempting to uninstall rake-10.3.2
+Successfully uninstalled rake-10.3.2
+Attempting to uninstall rack-1.5.2
+Successfully uninstalled rack-1.5.2
+Attempting to uninstall octopress-date-format-2.0.1
+Successfully uninstalled octopress-date-format-2.0.1
+Attempting to uninstall octopress-hooks-2.2.1
+Successfully uninstalled octopress-hooks-2.2.1
+Attempting to uninstall jekyll-sitemap-0.5.1
+Successfully uninstalled jekyll-sitemap-0.5.1
+Attempting to uninstall jekyll-2.3.0
+Successfully uninstalled jekyll-2.3.0
+Attempting to uninstall jekyll-watch-1.1.0
+Successfully uninstalled jekyll-watch-1.1.0
+Attempting to uninstall listen-2.7.9
+Successfully uninstalled listen-2.7.9
+Attempting to uninstall jekyll-sass-converter-1.2.0
+Successfully uninstalled jekyll-sass-converter-1.2.0
+Attempting to uninstall jekyll-coffeescript-1.0.0
+Successfully uninstalled jekyll-coffeescript-1.0.0
+Attempting to uninstall jekyll-paginate-1.0.0
+Successfully uninstalled jekyll-paginate-1.0.0
+Attempting to uninstall toml-0.1.1
+Successfully uninstalled toml-0.1.1
+Attempting to uninstall redcarpet-3.1.2
+Successfully uninstalled redcarpet-3.1.2
+Attempting to uninstall safe_yaml-1.0.3
+Successfully uninstalled safe_yaml-1.0.3
+Attempting to uninstall mercenary-0.3.4
+Successfully uninstalled mercenary-0.3.4
+Attempting to uninstall kramdown-1.4.1
+Successfully uninstalled kramdown-1.4.1
+Attempting to uninstall haml-4.0.5
+Successfully uninstalled haml-4.0.5
+Attempting to uninstall ffi-1.9.3-x64-mingw32
+Successfully uninstalled ffi-1.9.3-x64-mingw32
+Attempting to uninstall execjs-2.2.1
+Successfully uninstalled execjs-2.2.1
+Attempting to uninstall compass-0.12.7
+Successfully uninstalled compass-0.12.7
+Attempting to uninstall classifier-reborn-2.0.1
+Successfully uninstalled classifier-reborn-2.0.1
+Attempting to uninstall chunky_png-1.3.1
+Successfully uninstalled chunky_png-1.3.1
+Attempting to uninstall celluloid-0.15.2
+Successfully uninstalled celluloid-0.15.2
+Attempting to uninstall timers-1.1.0
+Successfully uninstalled timers-1.1.0
+Attempting to uninstall sass-3.2.19
+Successfully uninstalled sass-3.2.19
+<span class="HLCode">Clean Up Complete</span>
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:doc">
+      <p><a href="http://octopress.org/docs/updating/">Updating Octopress</a> in <em>Octopress Documentation</em>. <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -131,12 +369,12 @@ messages.</p>
 
 
 
-<time class='entry-date' datetime='2014-09-13T23:14:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:14 pm</span></time>
+<time class='entry-date' datetime='2015-01-04T22:41:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:41 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/m$-win-star/'>m$ win*</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
   
 </span>
 
@@ -145,7 +383,7 @@ messages.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/" >Tweet</a>
   
   
   
@@ -156,10 +394,8 @@ messages.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/09/13/test-embedded-fancybox-inline-element/" title="Previous Post: Test Embedded Fancybox Inline Element">&laquo; Test Embedded Fancybox Inline Element</a>
+        <a class="basic-alignment left" href="/blog/2015/01/03/use-lynx-browser-2-access-shell/" title="Previous Post: Use Lynx Browser (2): Access Shell">&laquo; Use Lynx Browser (2): Access Shell</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/09/13/completely-remove-linux-kernels/" title="Next Post: Completely Remove Linux Kernels">Completely Remove Linux Kernels &raquo;</a>
       
     </p>
   </footer>
@@ -269,8 +505,8 @@ messages.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/';
         var disqus_script = 'embed.js';
       
     (function () {
