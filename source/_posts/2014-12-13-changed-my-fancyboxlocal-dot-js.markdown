@@ -44,4 +44,5 @@ character 'b' stands for "boundary".
 [460b575]: https://github.com/VincentTam/vincenttam.github.io/commit/460b575
 [JavaScript]: http://www.w3schools.com/js/
 [jQuery]: http://jquery.com
+[Vim]: http://www.vim.org
 [doc]: https://api.jquery.com/removeclass/
