@@ -31,7 +31,7 @@ Resolving dependencies...
     compass (~> 1.0.1) x64-mingw32 depends on
       sass (< 3.5, >= 3.3.13) x64-mingw32</span>
 
-Running `<span class=""HLCode">bundle update</span>` will rebuild your snapshot from scratch, using only
+Running `<span class="HLCode">bundle update</span>` will rebuild your snapshot from scratch, using only
 the gems in your Gemfile, which may resolve the conflict.
 </code></pre>
 
@@ -88,8 +88,8 @@ this time, and read the Stack Overflow question again, before deciding
 what to be done.
 
 I followed the instructions in the third section, instead of manually
-downloading and inserting it back to the folder which the command
-`gem which rubygems` returned.
+downloading and inserting the PEM file back to the folder which the
+command `gem which rubygems` returned.
 
 <pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
 $ gem install --local ~/Downloads/rubygems-update-2.0.15.gem
