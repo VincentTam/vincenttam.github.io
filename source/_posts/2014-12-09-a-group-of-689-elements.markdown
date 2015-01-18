@@ -6,20 +6,14 @@ comments: true
 categories: math
 ---
 
-A month ago, I took a test and was asked whether "a group of 689
-elements is closed under the group operation".  The question is
-*trivial*, but one can discover another question: **Does such a group
-exists?**
+I've just read a statement which asserts that a subring isomorphic to
+$\integers$ or $\integers_n$ can be found in any ring $R$ with unity.
+The proof which is based on a ring homomorphism $\phi:\integers\to R$
+defined by $\phi(m)=m\cdot 1$ *isn't* difficult to read.
 
-In order to "proceed with with my work", I *temporarily accepted* the
-existence fo swuch a group during the test.  However, even though I
-got the question right and earned some marks for that, I *didn't*
-think that this is *true* mathematics.  To say that one *knows* this
-quoted statement, one has to follow the *"international standard"* of
-a group and make *rigourous arguements* from the *"basic laws"* to
-prove the existence of such a group.
-
-Thinking that the group of 689 elements *isn't* useful, I put that
-problem aside.  After a fortnight, I came up with an answer: <span
-class="myeqn" markdown="0">$\mathbb{Z}_{13} \times \mathbb{Z}_{53}
-\cong \mathbb{Z}_{689}$</span>.
+I used fifteen minutes to think of why one needs a *subring* inside
+the ring $R$ with unity, instead of $R$.  After I've come up with
+<span class="myeqn"
+markdown="0">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
+\in \integers, b \in\integers_{\ge 0} \right\}$</span>, I start this
+post.
