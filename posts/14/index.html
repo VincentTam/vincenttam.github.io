@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Blogs Accessible anywhere anytime, as long as an Internet connection is available. Multiple concurrent users: it can be viewed by multiple readers &hellip;">
+  <meta name="description" content="Background The crash of my computer in the last weekend motivated me to think
+about using Octopress on Windows 7. It is an irony
+that the computer &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +76,100 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/">Liquid Exceptions During Generation of My Blog on Windows 7</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-30T22:09:24+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:09 pm</span></time>
+        
+           | <a href="/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>The crash of my computer in the last weekend motivated me to think
+about <a href="/blog/2014/05/26/using-octopress-on-another-device/">using Octopress on Windows 7</a>.  It is an irony
+that the computer had been fixed <em>before</em> I could finally build the
+site with <code>rake generate</code> and start writing posts for this blog on
+Windows 7.</p>
+
+<h2 id="problems">Problems</h2>
+
+<p>Provided that a blogger have some experience in using computers, the
+setup should be easy for his/her who wish to start a <em>new</em> Octopress
+blog on Windows and post simple contents like text, pictures, videos,
+etc.</p>
+
+<p>However, I would post something more complicated, such as code blocks
+with syntax highlighting.  Having spent time experimenting with code
+and commands, I don’t want to forget them and it’s better to write
+them down.  <a href="/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/">I prefer a blog over a paper notebook.</a></p>
+
+<p>Before writing anything new, I tested if I could locally build the
+site from the <code>source</code> branch cloned from the remote repository on
+<a href="https://github.com">GitHub</a> on this Sunday, and the first Liquid exception
+occurred.  I remembered <code>rake</code> said something like this.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code>C:\github\vincenttam.github.io&gt;rake generate
+## Generating Site with Jekyll
+unchanged sass/print.scss
+identical source/stylesheets/screen.css 
+Configuration from C:/github/vincenttam.github.io/_config.yml
+Building site: source -&gt; public
+Liquid Exception: Pygments can't parse unknown language: tex. in 2014-03-16-latex-template-for-essays.markdown
+C:/github/vincenttam.github.io/plugins/pygments_code.rb:27:in `rescue in pygments'
+C:/github/vincenttam.github.io/plugins/pygments_code.rb:24:in `pygments'
+C:/github/vincenttam.github.io/plugins/pygments_code.rb:14:in `highlight'
+C:/github/vincenttam.github.io/plugins/code_block.rb:82:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:94:in `block in render_all'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `collect'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:92:in `render_all'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/block.rb:82:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:124:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/liquid-2.3.0/lib/liquid/template.rb:132:in `render!'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.0/lib/jekyll/convertible.rb:79:in `do_layout'
+C:/github/vincenttam.github.io/plugins/post_filters.rb:167:in `do_layout'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/post.rb:195:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:200:in `block in render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `each'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:199:in `render'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/lib/jekyll/site.rb:41:in `process'
+C:/Ruby193/lib/ruby/gems/1.9.1/gems/jekyll-0.12.1/bin/jekyll:264:in `&lt;top (required)&gt;'
+C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `load'
+C:/Ruby193/lib/ruby/gems/1.9.1/bin/jekyll:23:in `&lt;main&gt;'
+Build Failed
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/30/liquid-exceptions-during-generation-of-my-blog-on-windows-7/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -649,82 +745,6 @@ while the second one was about one of the two required Ruby gems.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/03/22/jump-to-latex-syntax-error/">Jump to $\rm \LaTeX$ Syntax Error</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-03-22T17:23:19+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:23 pm</span></time>
-        
-           | <a href="/blog/2014/03/22/jump-to-latex-syntax-error/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/03/22/jump-to-latex-syntax-error/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/03/22/jump-to-latex-syntax-error/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>This post is written in response to a question of
-<a href="http://youtu.be/y67t-05nFD0">one of my video</a>.</strong></p>
-
-<p>Vim-$\rm \LaTeX$ enables users to jump to a syntax error quickly.  To
-show you how, I use a GIF “animation”, instead of a video, so that the
-file size is much smaller.</p>
-
-<p><img class="fancybox" src="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err.gif" width="800" title="A GIF animation showing Vim-LaTeX quickfix window" alt="fig1" /></p>
-
-<p>Explanation:</p>
-
-<p>Error message: The <code>equation*</code> environment is “undefined”.<br />
-Cause of error: I forget to include the <code>amsmath</code> package in the
-preamble.</p>
-
-<ul>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err1.png">Figure 1</a>: Compilation error occurs,
-so a quickfix window pops up.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err2.png">Figure 2</a>: I typed <code>j</code> to move the
-cursor down in the quickfix window by one line, and the window below
-showing the log file automatically scrolled down. </li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err3.png">Figure 3</a>: I typed <code>k</code> to go up one
-line, so the situation goes back to Figure 1.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err4.png">Figure 4</a>: I typed <code>&lt;Enter&gt;</code> to jump
-to the “error location”. (line 6)</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err5.png">Figure 5</a>: I typed <code>&lt;C-w&gt; j</code> to go
-back to the quickfix window, and the situation goes back to Figure 1
-again.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err6.png">Figure 6</a>: I typed <code>j</code> again, and
-the situation goes back to Figure 2.</li>
-  <li><a href="/images/posts/Jump2LaTeXSyntaxErr/vim-latex-err7.png">Figure 7</a>: I typed <code>&lt;Enter&gt;</code> again
-to jump to <em>another</em> “error location”.</li>
-</ul>
-
-<p>P.S. As I’ve said in my “<a href="/about">About</a>” page, I mainly write in
-Markdown now, unless a teacher want me to submit homework with
-specific formatting requirements like 1-inch margin, 1.5 line spacing,
-etc.  As you can see from the footer of this blog, this post is also
-written in Markdown.</p>
-
-<!-- vim:set tw=70:wrap: -->
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/15">&larr; Older</a>
@@ -767,7 +787,7 @@ written in Markdown.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (33)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (14)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (20)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (21)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (41)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -786,6 +806,10 @@ written in Markdown.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/01/18/subring-of-ring-with-unity/">Subring of Ring With Unity</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/01/12/got-a-win-star-blue-screen/">Got a Win* Blue Screen</a>
       </li>
     
@@ -799,10 +823,6 @@ written in Markdown.</p>
     
       <li class="post">
         <a href="/blog/2015/01/01/git-push-to-usb/">Git Push to USB</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/">Read a Proof About the Transitivity of Characteristic Subgroups</a>
       </li>
     
   </ul>
