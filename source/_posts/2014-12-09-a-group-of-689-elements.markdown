@@ -20,6 +20,6 @@ a group and make *rigourous arguements* from the *"basic laws"* to
 prove the existence of such a group.
 
 Thinking that the group of 689 elements *isn't* useful, I put that
-problem aside.  After a fortnight, I came up with an answer: <span
-class="myeqn" markdown="0">$\mathbb{Z}_{13} \times \mathbb{Z}_{53}
-\cong \mathbb{Z}_{689}$</span>.
+problem aside.  After a fortnight, I came up with an answer:
+<span class="myeqn" markdown="0">$\integers_{13} \times \integers_{53}
+\cong \integers_{689}$</span>.
