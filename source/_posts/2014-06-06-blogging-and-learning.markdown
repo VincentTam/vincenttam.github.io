@@ -17,5 +17,3 @@ squeeze some time to write what I've learnt.
 
 [Might]: http://matt.might.net/articles/how-to-blog-as-an-academic/
 "6 blog tips for busy academics"
-
-<!-- vim:se tw=70: -->
