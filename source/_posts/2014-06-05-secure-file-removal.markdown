@@ -3,9 +3,7 @@ layout: post
 title: "Secure File Removal"
 date: 2014-06-05 13:11:44 +0800
 comments: true
-categories: 
-- information security
-- Linux
+categories: [information security, Linux]
 ---
 
 GNU's `shred` utility
@@ -122,5 +120,3 @@ something strange happens, one may refer to
 [CryptswapHibernate]: https://help.ubuntu.com/community/EnableHibernateWithEncryptedSwap "EnableHibernateWithEncryptedSwap - Ubuntu Community Help Wiki"
 [FixBrokenEncryptedSwap]: http://my-linux-installation-files.blogspot.hk/2012/09/fixing-broken-encrypted-swap-partition.html "Fixing Broken Encrypted Swap Partition"
 [SDelete]: http://go.ask-leo.com/sdelete "SDelete v1.61"
-
-<!-- vim:se tw=70: -->
