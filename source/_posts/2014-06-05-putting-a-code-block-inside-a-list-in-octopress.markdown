@@ -18,5 +18,3 @@ include a code block in a list item.
 [PrevPost]: /blog/2014/06/04/resolving-jekylls-yaml-exception/ "Resolving Jekyll's YAML Exception"
 [StdMDSyntax]: http://daringfireball.net/projects/markdown/syntax#precode "Standard Markdown syntax for code blocks"
 [OctopressIssue488]: https://github.com/imathis/octopress/issues/488 "not support ordered lists(markdown) with code blocks"
-
-<!-- vim:se tw=70 sw=2: -->
