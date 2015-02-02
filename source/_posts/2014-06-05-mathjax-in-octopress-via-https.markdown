@@ -288,5 +288,3 @@ Lessons learnt
 *[MITM]: man-in-the-middle 
 *[URL]: Uniform Resource Locator
 *[PDF]: Portable Document Format
-
-<!-- vim:se tw=70: -->
