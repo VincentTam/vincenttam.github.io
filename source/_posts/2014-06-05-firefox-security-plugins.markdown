@@ -24,5 +24,3 @@ scripts that "betray" them, possibly to authoritarian governments.
 [Adblock Plus]: https://adblockplus.org/ "Adblock Plus"
 
 [NoScript]: http://noscript.net/ "NoScript"
-
-<!-- vim:se tw=70: -->
