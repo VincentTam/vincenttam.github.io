@@ -36,5 +36,3 @@ Thus, the editor command `:se fenc=utf8 | wq` will do.
 
 [StackOverflow6374756]: http://stackoverflow.com/questions/6374756/why-do-i-get-an-invalid-byte-sequence-in-utf-8-error-reading-a-text-file "Why do I get an “Invalid Byte Sequence in UTF-8” error reading a text file?"
 [JekyllIssue836]: https://github.com/jekyll/jekyll/issues/836 "Error after upgrading to Ruby 1.9.3"
-
-<!-- vim:se tw=70 sw=2: -->
