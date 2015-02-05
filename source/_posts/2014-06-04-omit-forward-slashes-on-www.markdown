@@ -24,5 +24,3 @@ URL (say, changing HTTP to HTTPS) for browsing some web contents.
 ---
 [^1]: [A similar news report from *the Telegraph*][Telegraph]
 [Telegraph]: http://www.telegraph.co.uk/technology/news/6321463/Sir-Tim-Berners-Lee-admits-forward-slashes-on-World-Wide-Web-were-a-mistake.html "Sir Tim Berners-Lee admits forward slashes on World Wide Web 'were a mistake'–The Telegraph"
-
-<!-- vim:se tw=70: -->
