@@ -32,5 +32,3 @@ above section of code.
 
 [tut1]: http://blog.eavatar.com/post/2013/06/octopress-ping-search-engines/
 [larrynung_rakefile]: https://github.com/larrynung/larrynung.github.io/blob/de3c947/Rakefile
-
-<!-- vim:se tw=70: -->
