@@ -177,5 +177,3 @@ including it in my `PATH` variable.
 [tut1]: http://www.techelex.org/setup-octopress-on-windows7/
 [tut2]: http://tonytonyjan.net/2012/03/01/install-octopress-on-windows/
 [imagemagick_win7]: http://www.imagemagick.org/script/binary-releases.php#windows
-
-<!-- vim:se tw=70: -->
