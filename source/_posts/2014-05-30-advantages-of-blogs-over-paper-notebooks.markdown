@@ -60,5 +60,3 @@ information.
 
 [^1]: [Internet Security Expert Says No Such Thing As][no_sec]
 [no_sec]: http://www.abc.net.au/news/2014-05-12/internet-security-expert-says-no-such-thing-as/5445830
-
-<!-- vim:se tw=70: -->
