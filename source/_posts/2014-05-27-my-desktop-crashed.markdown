@@ -91,5 +91,3 @@ Lessons learnt
 [beep_doc]: http://support.dell.com/support/systemsinfo/document.aspx?~file=/systems/inspd530/en/om/html/trouble.htm#wp1085300
 [octopress_win7]: /blog/2014/05/26/using-octopress-on-another-device/
 [ub_update_err]: /blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/
-
-<!-- vim:se tw=70: -->
