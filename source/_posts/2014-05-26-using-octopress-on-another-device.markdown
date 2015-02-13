@@ -155,4 +155,3 @@ I copied the four commands from [Robert Anderson's post][pull2branch].
 [np]: /blog/2014/09/05/fixing-this-repos-network-graph/ "Fixing This Repo's Network Graph"
 
 *[SCM]: Source Code Management
-<!-- vim:se tw=70: -->
