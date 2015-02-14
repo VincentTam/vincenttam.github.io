@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I suddenly found that the Gravatar in my GitHub user profile had
-disappeared. Failed attempt I then went to GitHub to upload the icon. I &hellip;">
+  <meta name="description" content="Motivation Before I changed the HTML syntax for embedding MathJax with a local
+configuration file, I often encountered error while viewing the math &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,82 @@ disappeared. Failed attempt I then went to GitHub to upload the icon. I &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/11/09/mathjax-local-configuration-file/">MathJax Local Configuration File</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-09T01:06:46+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:06 am</span></time>
+        
+           | <a href="/blog/2014/11/09/mathjax-local-configuration-file/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/11/09/mathjax-local-configuration-file/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>Before I changed the HTML syntax for embedding MathJax with a local
+configuration file, I often encountered error while viewing the math
+rendered by MathJax.<sup id="fnref:12d38c1"><a href="#fn:12d38c1" class="footnote">1</a></sup>  The custom commands defined in the
+local configuration file sometimes <em>wouldn’t</em> be converted to
+mathematical expressions in a post while browsing the page for the
+first time.  Though refreshing the page can get the math shown, it’s
+quite troublesome.  Therefore, I searched for a better way in the
+official manual.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried following the instructions in MathJax’s official Wiki for
+using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">2</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span>
+</span><span class="line">	<span class="na">src=</span><span class="s">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML,</span>
+</span><span class="line"><span class="s">	/javascripts/MathJaxLocal.js</span>
+</span><span class="line"><span class="s">&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Things seems worked, but undesirably <em>slow</em>.</p>
+
+<p><img src="/images/posts/MathJaxLocalConfigSlow/slow1.png" alt="loading time graph" class="fancybox" /></p>
+
+<p><img src="/images/posts/MathJaxLocalConfigSlow/slow2.png" alt="loading time graph" class="fancybox" /></p>
+
+<p>It took about <em>16 seconds</em> for loading the math.  <strong>How can they load
+quicker with a local configuration file</strong>, like <a href="http://drz.ac">http://drz.ac</a>?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/11/09/mathjax-local-configuration-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -599,62 +675,6 @@ then enabled.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Git Repositories in USB Drives on Windows</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-09T22:59:24+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:59 pm</span></time>
-        
-           | <a href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p><img src="/images/posts/MSysGitUSB/problem.jpg" alt="git bash" /></p>
-
-<p><strong>How to access my USB drive (F:/) in Git Bash?</strong></p>
-
-<p>I had tried closing all instances of Git Bash and re-opening them
-again.<sup id="fnref:reopen"><a href="#fn:reopen" class="footnote">1</a></sup>  However, it <em>didn’t</em> worked.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>If users can use Git command line utilities in <code>cmd.exe</code>, then what’s
-the point of asking the above question?</p>
-
-<p><em>Without</em> stopping <code>ssh-agent.exe</code>, one <em>can’t</em> pull Git repositories
-from the hard disk to the USB drive.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -696,11 +716,11 @@ from the hard disk to the USB drive.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (33)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (34)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (14)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (21)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (41)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (42)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -717,6 +737,10 @@ from the hard disk to the USB drive.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/14/use-tmux-for-previewing-posts/">Use Tmux for Previewing Posts</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/14/tried-range-based-for-loop/">Tried Range-based for Loop</a>
       </li>
     
@@ -730,10 +754,6 @@ from the hard disk to the USB drive.</p>
     
       <li class="post">
         <a href="/blog/2015/01/04/certificate-verify-failed-during-gem-update/">Certificate Verify Failed During Gem Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/03/use-lynx-browser-2-access-shell/">Use Lynx Browser (2): Access Shell</a>
       </li>
     
   </ul>
