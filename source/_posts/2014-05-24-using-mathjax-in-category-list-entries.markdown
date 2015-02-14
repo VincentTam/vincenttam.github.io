@@ -73,4 +73,3 @@ end
 [CatList]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/
 
 [commit_hist]: https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7#diff-1
-<!-- vim:se tw=70: -->
