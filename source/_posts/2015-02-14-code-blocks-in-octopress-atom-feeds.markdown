@@ -12,7 +12,7 @@ Problem
 After I re-generated this site, it is *possible* that the code blocks
 and the *pictures* in the RSS feeds are *gone*.
 
-{% codeblock WRONG version of C/C++ category feed lang:html http://goo.gl/un4ivV View Raw %}
+{% codeblock WRONG version of C/C++ category feed lang:html http://goo.gl/buBrps View Raw %}
 {% raw %}
 <p>{% codeblock first_graphics_prog.cpp lang:cpp %}
 // Author: David Yevick
@@ -52,7 +52,7 @@ Re-generate the site *again*, and wait for luck so that the above
 [a correct one](#right_code){:.cliwide}.
 
 <div id="right_code" class="noscr" markdown="1">
-{% codeblock Correct version of C/C++ category feed lang:html http://goo.gl/bqgy3I View Raw %}
+{% codeblock Correct version of C/C++ category feed lang:html http://goo.gl/YuA1Y9 View Raw %}
 <p><figure class='code'><figcaption><span>Sample code </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
