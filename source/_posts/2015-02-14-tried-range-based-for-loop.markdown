@@ -3,7 +3,7 @@ layout: post
 title: "Tried Range-based For Loop"
 date: 2015-02-14 12:42:21 +0800
 comments: true
-categories: C++
+categories: C/C++
 ---
 
 Problem
