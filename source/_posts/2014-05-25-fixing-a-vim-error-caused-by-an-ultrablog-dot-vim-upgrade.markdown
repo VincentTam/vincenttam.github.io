@@ -102,5 +102,3 @@ refer to [my about page][about].
 [vundle]: https://github.com/gmarik/Vundle.vim
 [ub]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
 [about]: /about#my-old-blogs
-
-<!-- vim:se tw=70: -->
