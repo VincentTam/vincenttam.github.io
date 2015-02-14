@@ -57,10 +57,11 @@ while the '^' is in yellow.  This helps users to see what's wrong.
 ---
 [^eg]:
     [c++ Range based for-loop on array passed to non-main function][p]
-    on Stack Overflow
+    on Stack Overflow.
 
 [^sol]:
     [Error: Range-based 'for' loops are not allowed in C++98 mode][s]
+    on Stack Overflow.
 
 [p]: http://stackoverflow.com/a/26182985
 [clang++]: http://clang.llvm.org/ "Another C++ compiler"
