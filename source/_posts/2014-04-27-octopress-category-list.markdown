@@ -36,5 +36,3 @@ categories.
 [94c7d97]: https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d97/source/blog/categories/index.markdown
 [old_cat_list]: http://vigodome.com/blog/categories/
 [new_cat_list]: http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/
-
-<!-- vim:se tw=70: -->
