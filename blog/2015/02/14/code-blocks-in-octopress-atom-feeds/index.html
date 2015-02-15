@@ -156,6 +156,36 @@ already <em>published</em>.</p>
 <em>incorrect</em> HTML code will be finally transformed to
 <a href="#right_code" class="cliwide">a correct one</a>.</p>
 
+<p>Then one can deploy it to the Internet.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>As I am <em>not</em> an IT student nor staff, I <em>don’t</em> know the reason.
+Therefore, what I can do <em>doesn’t</em> differ much from the above “fix”:
+check if the locally generated HTML source code for
+<code>/blog/category/foo/atom.xml</code> is OK.</p>
+
+<pre class="cliUB"><code>$ diff -u public/blog/categories/latex/atom.xml _deploy/blog/categories/latex/at
+om.xml
+--- public/blog/categories/latex/atom.xml       2015-02-14 13:42:46.645744300 +0
+800
++++ _deploy/blog/categories/latex/atom.xml      2015-01-18 16:33:33.341309330 +0
+800
+@@ -4,7 +4,7 @@
+   &lt;title&gt;&lt;![CDATA[Category: Latex | Blog 1]]&gt;&lt;/title&gt;
+   &lt;link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="
+self"/&gt;
+   &lt;link href="http://vincenttam.github.io/"/&gt;
+-  &lt;updated&gt;2015-02-14T13:41:37+08:00&lt;/updated&gt;
++  &lt;updated&gt;2015-01-18T16:32:04+08:00&lt;/updated&gt;
+   &lt;id&gt;http://vincenttam.github.io/&lt;/id&gt;
+   &lt;author&gt;
+     &lt;name&gt;&lt;![CDATA[Vincent Tam]]&gt;&lt;/name&gt;
+</code></pre>
+
+<p>In the above situation, I <em>assume</em> that the previous version of the
+<abbr title="Rich Site Summary">RSS</abbr> feed is <em>correct</em>.</p>
+
 <div id="right_code" class="noscr">
   <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Correct version of C/C++ category feed</span><a href="http://goo.gl/YuA1Y9">View Raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -217,37 +247,6 @@ already <em>published</em>.</p>
 </span><span class="line"><span class="nt">&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/notextile&gt;&lt;/div&gt;&lt;/p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 </div>
-
-<p>Then one can deploy it to the Internet.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>As I am <em>not</em> an IT student nor staff, I <em>don’t</em> know the reason.
-Therefore, what I can do <em>doesn’t</em> differ much from the above “fix”:
-check if the locally generated HTML source code for
-<code>/blog/category/foo/atom.xml</code> is OK.</p>
-
-<pre class="cliUB"><code>$ diff -u public/blog/categories/latex/atom.xml _deploy/blog/categories/latex/at
-om.xml
---- public/blog/categories/latex/atom.xml       2015-02-14 13:42:46.645744300 +0
-800
-+++ _deploy/blog/categories/latex/atom.xml      2015-01-18 16:33:33.341309330 +0
-800
-@@ -4,7 +4,7 @@
-   &lt;title&gt;&lt;![CDATA[Category: Latex | Blog 1]]&gt;&lt;/title&gt;
-   &lt;link href="http://vincenttam.github.io/blog/categories/latex/atom.xml" rel="
-self"/&gt;
-   &lt;link href="http://vincenttam.github.io/"/&gt;
--  &lt;updated&gt;2015-02-14T13:41:37+08:00&lt;/updated&gt;
-+  &lt;updated&gt;2015-01-18T16:32:04+08:00&lt;/updated&gt;
-   &lt;id&gt;http://vincenttam.github.io/&lt;/id&gt;
-   &lt;author&gt;
-     &lt;name&gt;&lt;![CDATA[Vincent Tam]]&gt;&lt;/name&gt;
-</code></pre>
-
-<p>In the above situation, I <em>assume</em> that the previous version of the
-<abbr title="Rich Site Summary">RSS</abbr> feed is <em>correct</em>.</p>
-
 </div>
 
 
@@ -291,6 +290,8 @@ self"/&gt;
         <a class="basic-alignment left" href="/blog/2015/02/14/use-tmux-for-previewing-posts/" title="Previous Post: Use Tmux for Previewing Posts">&laquo; Use Tmux for Previewing Posts</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/" title="Next Post: Let TTY Remember SSH Passphrase">Let TTY Remember SSH Passphrase &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -333,7 +334,7 @@ self"/&gt;
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (5)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (34)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (35)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (14)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (21)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -354,6 +355,10 @@ self"/&gt;
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/">Let TTY Remember SSH Passphrase</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/14/code-blocks-in-octopress-atom-feeds/">Code Blocks in Octopress Atom Feeds</a>
       </li>
     
@@ -367,10 +372,6 @@ self"/&gt;
     
       <li class="post">
         <a href="/blog/2015/01/18/subring-of-ring-with-unity/">Subring of Ring With Unity</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/12/got-a-win-star-blue-screen/">Got a Win* Blue Screen</a>
       </li>
     
   </ul>
