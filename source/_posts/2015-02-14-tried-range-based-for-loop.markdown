@@ -32,9 +32,9 @@ Solution
 ---
 
 I searched "gcc range based for loop are not allowed in" on Google,
-and realised that I forgot to add the flag `-std=c++11`.  [^sol]
-After doing so, I could successfully compile the program using either
-[GCC] or clang++.
+and realised that I forgot to add the flag `-std=c++11`.[^sol]  After
+doing so, I could successfully compile the program using either [GCC]
+or clang++.
 
 clang++'s error message
 ---

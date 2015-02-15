@@ -35,7 +35,7 @@ Solution
 ---
 
 I now use [Byobu], which depends on [Tmux], to preview the generated
-blog.  [^fig]
+blog.[^fig]
 
 ---
 [^fig]: The [screenshot]{:.fancybox} of Tmux.

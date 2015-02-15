@@ -51,40 +51,6 @@ Re-generate the site *again*, and wait for luck so that the above
 *incorrect* HTML code will be finally transformed to
 [a correct one](#right_code){:.cliwide}.
 
-<div id="right_code" class="noscr" markdown="1">
-{% codeblock Correct version of C/C++ category feed lang:html http://goo.gl/YuA1Y9 View Raw %}
-<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: Helmut Michels</span>
-</span><span class='line'><span class="c1">// Source: DISLIN 10.4—A Data Plotting Library</span>
-</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
-</span><span class='line'><span class="cp">#include &quot;discpp.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">main</span><span
-class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'> <span class="n">Dislin</span> <span class="n">g</span><span class="p">;</span>
-</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">disini</span> <span class="p">();</span>
-</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">messag</span> <span class="p">(</span><span
-class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span><span
-class="err">”</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
-</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">disfin</span> <span class="p">();</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-{% endcodeblock %}
-</div>
-
 Then one can deploy it to the Internet.
 
 Solution
@@ -119,3 +85,37 @@ RSS feed is *correct*.
 [kramdown]: http://kramdown.gettalong.org/
 
 *[RSS]: Rich Site Summary
+
+<div id="right_code" class="noscr" markdown="1">
+{% codeblock Correct version of C/C++ category feed lang:html http://goo.gl/YuA1Y9 View Raw %}
+<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: Helmut Michels</span>
+</span><span class='line'><span class="c1">// Source: DISLIN 10.4—A Data Plotting Library</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;discpp.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">main</span><span
+class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'> <span class="n">Dislin</span> <span class="n">g</span><span class="p">;</span>
+</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">disini</span> <span class="p">();</span>
+</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">messag</span> <span class="p">(</span><span
+class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span><span
+class="err">”</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'> <span class="n">g</span><span class="p">.</span><span class="n">disfin</span> <span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+{% endcodeblock %}
+</div>

@@ -30,7 +30,7 @@ preamble.
   line, so the situation goes back to Figure 1.
 - [Figure 4][fig4]: I typed `<Enter>` to jump
   to the "error location". (line 6)
-- [Figure 5][fig5]: I typed `<C-w> j` to go
+- [Figure 5][fig5]: I typed `<C-w>j` to go
   back to the quickfix window, and the situation goes back to Figure 1
   again.
 - [Figure 6][fig6]: I typed `j` again, and
