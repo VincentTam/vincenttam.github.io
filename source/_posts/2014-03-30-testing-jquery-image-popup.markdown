@@ -222,5 +222,3 @@ included in `sass/custom/_print.scss`.  Then, a new file
 [Erubis]: http://goo.gl/0oZy6
 [jquery_noconflict]: http://goo.gl/hOF4mR
 [orig_screen_scss]: http://goo.gl/BNqlL7
-
-<!-- vim:set tw=70:wrap: -->
