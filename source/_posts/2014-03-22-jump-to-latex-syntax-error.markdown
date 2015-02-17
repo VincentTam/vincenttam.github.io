@@ -52,5 +52,3 @@ written in Markdown.
 [fig5]: /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err5.png
 [fig6]: /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err6.png
 [fig7]: /images/posts/Jump2LaTeXSyntaxErr/vim-latex-err7.png
-
-<!-- vim:set tw=70:wrap: -->
