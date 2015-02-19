@@ -58,12 +58,14 @@ My custom settings
 - My VIMRCs (on [M\$ Win\* 7][vimrc_ms] and on
     [Ubuntu 14.04 LTS][vimrc_ub])
 - [My bash aliases][myalias]
+- [My Byobu configuration file][mybyobuconf]
 
 [mymacros]: /about/mymacros.html
 [myvimreg]: /about/myvimreg.html
 [vimrc_ms]: https://gist.github.com/VincentTam/abc1cbd2b2181ad69165
 [vimrc_ub]: https://gist.github.com/VincentTam/2379ba75d6ad703a3786
 [myalias]:  https://gist.github.com/VincentTam/31442af28f1509728469
+[mybyobuconf]: /about/mybyobuconf.html
 
 My Math Notes
 ---
