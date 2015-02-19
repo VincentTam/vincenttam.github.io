@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-15T13:52:08+08:00</updated>
+  <updated>2015-02-19T23:53:36+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Switch Tmux Panes and Vim-$\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex/"/>
+    
+    <updated>2015-02-19T10:37:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="http://byobu.co">Byobu</a> with <a href="http://tmux.sourceforge.net">Tmux</a> backend.<sup id="fnref:pp_tmux"><a href="#fn:pp_tmux" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<ul>
+  <li>Moving across panes is inconvenient.</li>
+  <li>If I have a Vim vertical/horizontal split in a Tmux pane, I need to
+  use <em>two</em> different sets of key bindings to navigate the adjacent
+  panes.</li>
+  <li>In the copy mode, it’s great that most of the key bindings follow
+  from those of <a href="http://www.vim.org">Vim</a>, <em>but not the most important two</em>:
+    <ul>
+      <li>start selection</li>
+      <li>copy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>I find two articles on <em>Giant Robots</em> very useful.</p>
+
+<ol>
+  <li><a href="http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits"><em>Seamlessly Navigate Vim and tmux Splits</em></a></li>
+  <li><a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"><em>Tmux Copy &amp; Paste on OS X: A Better Future</em></a></li>
+</ol>
+
+<p>Therefore, I followed the steps in the first blog post, and installed
+<a href="https://github.com/christoomey/vim-tmux-navigator">Vim Tmux Navigator</a>.</p>
+
+<h2 id="another-problem">Another problem</h2>
+
+<p>After the installation of the Vim plugin, I got another problem while
+editing my VIMRC: The <code>{Down-Mapping}</code> <em>didn’t</em> work.
+<a href="https://github.com/vim-latex/vim-latex">Vim-$\rm \LaTeX$</a> should know the reason.  I found an
+article describing a similar problem.<sup id="fnref:choy"><a href="#fn:choy" class="footnote">2</a></sup>  However, I <em>wouldn’t</em>
+like to change <code>~/.vim/bundle/vim-latex/plugin/imaps.vim</code>, so I got
+stuck at this point for hours.  I tried to substitute <code>{Down-Mapping}</code>
+with <code>&lt;C-a&gt;j</code> in VIMRC, but it <em>didn’t</em> work.</p>
+
+<h2 id="lessons-learnt">Lessons Learnt</h2>
+
+<ol>
+  <li>
+    <p>Accept simple ways to do things</p>
+
+    <p>Even though I <em>can’t</em> set <code>{Down-Mapping}</code> to <code>&lt;C-j&gt;</code>, the Vim
+ editor command <code>:TmuxNavigateDown</code> <em>isn’t</em> so hard to type.  I
+ failed to realise that typing <code>:tm&lt;Tab&gt;</code> will do, and wasted time
+ on that.  Now I accept the use of <em>two</em> different sets of
+ keystrokes for switching to the Tmux pane/Vim buffer below.  We
+ can look at this problem from another angle.</p>
+  </li>
+  <li>
+    <p>Store a list of windows in a file</p>
+
+    <p>A sample file can be found on Super User.<sup id="fnref:su"><a href="#fn:su" class="footnote">3</a></sup>  I found that if I
+ had run Byobu before, a session <code>0</code> would <em>also</em> be created on top
+ of <code>tmuxs</code>.  To avoid this problem, remove the first line in the
+ sample window list and type <code>byobu attach -t 0</code> starting from the
+ second time of opening Byobu.</p>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp_tmux">
+
+      <p>See <a href="blog/2015/02/14/use-tmux-for-previewing-posts/"><em>Use Tmux for Previewing Posts</em></a> in this blog for
+details. <a href="#fnref:pp_tmux" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:choy">
+
+      <p>See <a href="https://chrischoy.github.io/blog/notes/vim-tmux-navigation-and-vim-latex/"><em>Key mapping collision between vim-navigation and vim-latex</em></a>
+by Chris Choy for details. <a href="#fnref:choy" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:su">
+
+      <p>See <a href="http://superuser.com/a/747819"><em>Proper Format for Byobu’s windows.tmux?</em></a> on Super
+User. <a href="#fnref:su" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2475,64 +2574,6 @@ section of the tip, I now know to use <code>:set paste</code>.</p>
   </ol>
 </div>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Using Xclip]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/12/using-xclip/"/>
-    
-    <updated>2014-12-12T17:21:12+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/12/using-xclip</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I always use commands for different tasks.  Then I need a command line
-utility for copying command output into clipboard so as to quickly
-finish typing the command.  Luckily, it’s very easy to install xclip
-on Ubuntu.  I believe that on other GNU/Linux distributions, the
-installation <em>won’t</em> be too difficult.</p>
-
-<p>Although it’s convenient to use xclip, I experienced two problems
-while using it on *nix GUI.</p>
-
-<h2 id="problem-1">Problem 1</h2>
-
-<p>Suppose that you want to capture the output of a command, and pipe it
-to another command.  However, the output often consists of a trailing
-newline character.  As a result, I sometimes executed commands
-incorrectly and carelessly.  <strong>How can one get rid of it?</strong></p>
-
-<h2 id="problem-2">Problem 2</h2>
-
-<p>Before this Wednesday morning, I <em>didn’t</em> know how to use xclip with
-other options.  Therefore, when I wanted to retrieve to contents in
-the clipboard, the <em>only</em> two ways that I knew were to use the utility
-with the <code>-o</code> flag to obtain the <strong>o</strong>utput, and to use the middle
-click of the mouse.  However, from problem one, I <em>couldn’t</em> chop off
-the newline character at the end of the clipped text.  Moreover, if
-one only needs <em>part</em> of the text in the clipboard, it would be quite
-troublesome to pipe the output of <code>xclip -o</code> to other text editing
-commands like <code>sed</code> and <code>awk</code>.  If one can use a keyboard shortcut for
-pasting text in a terminal emulator like Gnome Terminal (e.g.
-<code>&lt;C-v&gt;</code>), then one can also use <code>&lt;C-b&gt;</code>, <code>&lt;Alt-d&gt;</code>, etc. For example,
-if there’re three words in the clipboard, and I only need the last
-two, then combining the use of these keyboard shortcuts will enable
-one to type strings quickly and accurately.  <strong>Is there such a
-keyboard shortcut?</strong></p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I found two Stack Overflow quesitons extremely useful for improving my
-skills in xclip.</p>
-
-<ol>
-  <li><a href="http://stackoverflow.com/a/12524320">Bash: Strip trailing linebreak from output</a></li>
-  <li><a href="http://stackoverflow.com/a/4208191">Pipe to/from Clipboard</a></li>
-</ol>
-
-]]></content>
     
   </entry>
   

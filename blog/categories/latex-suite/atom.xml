@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex-suite | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/latex-suite/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-15T13:52:08+08:00</updated>
+  <updated>2015-02-19T23:53:36+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Switch Tmux Panes and Vim-$\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex/"/>
+    
+    <updated>2015-02-19T10:37:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="http://byobu.co">Byobu</a> with <a href="http://tmux.sourceforge.net">Tmux</a> backend.<sup id="fnref:pp_tmux"><a href="#fn:pp_tmux" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<ul>
+  <li>Moving across panes is inconvenient.</li>
+  <li>If I have a Vim vertical/horizontal split in a Tmux pane, I need to
+  use <em>two</em> different sets of key bindings to navigate the adjacent
+  panes.</li>
+  <li>In the copy mode, it’s great that most of the key bindings follow
+  from those of <a href="http://www.vim.org">Vim</a>, <em>but not the most important two</em>:
+    <ul>
+      <li>start selection</li>
+      <li>copy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>I find two articles on <em>Giant Robots</em> very useful.</p>
+
+<ol>
+  <li><a href="http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits"><em>Seamlessly Navigate Vim and tmux Splits</em></a></li>
+  <li><a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"><em>Tmux Copy &amp; Paste on OS X: A Better Future</em></a></li>
+</ol>
+
+<p>Therefore, I followed the steps in the first blog post, and installed
+<a href="https://github.com/christoomey/vim-tmux-navigator">Vim Tmux Navigator</a>.</p>
+
+<h2 id="another-problem">Another problem</h2>
+
+<p>After the installation of the Vim plugin, I got another problem while
+editing my VIMRC: The <code>{Down-Mapping}</code> <em>didn’t</em> work.
+<a href="https://github.com/vim-latex/vim-latex">Vim-$\rm \LaTeX$</a> should know the reason.  I found an
+article describing a similar problem.<sup id="fnref:choy"><a href="#fn:choy" class="footnote">2</a></sup>  However, I <em>wouldn’t</em>
+like to change <code>~/.vim/bundle/vim-latex/plugin/imaps.vim</code>, so I got
+stuck at this point for hours.  I tried to substitute <code>{Down-Mapping}</code>
+with <code>&lt;C-a&gt;j</code> in VIMRC, but it <em>didn’t</em> work.</p>
+
+<h2 id="lessons-learnt">Lessons Learnt</h2>
+
+<ol>
+  <li>
+    <p>Accept simple ways to do things</p>
+
+    <p>Even though I <em>can’t</em> set <code>{Down-Mapping}</code> to <code>&lt;C-j&gt;</code>, the Vim
+ editor command <code>:TmuxNavigateDown</code> <em>isn’t</em> so hard to type.  I
+ failed to realise that typing <code>:tm&lt;Tab&gt;</code> will do, and wasted time
+ on that.  Now I accept the use of <em>two</em> different sets of
+ keystrokes for switching to the Tmux pane/Vim buffer below.  We
+ can look at this problem from another angle.</p>
+  </li>
+  <li>
+    <p>Store a list of windows in a file</p>
+
+    <p>A sample file can be found on Super User.<sup id="fnref:su"><a href="#fn:su" class="footnote">3</a></sup>  I found that if I
+ had run Byobu before, a session <code>0</code> would <em>also</em> be created on top
+ of <code>tmuxs</code>.  To avoid this problem, remove the first line in the
+ sample window list and type <code>byobu attach -t 0</code> starting from the
+ second time of opening Byobu.</p>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp_tmux">
+
+      <p>See <a href="blog/2015/02/14/use-tmux-for-previewing-posts/"><em>Use Tmux for Previewing Posts</em></a> in this blog for
+details. <a href="#fnref:pp_tmux" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:choy">
+
+      <p>See <a href="https://chrischoy.github.io/blog/notes/vim-tmux-navigation-and-vim-latex/"><em>Key mapping collision between vim-navigation and vim-latex</em></a>
+by Chris Choy for details. <a href="#fnref:choy" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:su">
+
+      <p>See <a href="http://superuser.com/a/747819"><em>Proper Format for Byobu’s windows.tmux?</em></a> on Super
+User. <a href="#fnref:su" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -61,7 +160,6 @@ specific formatting requirements like 1-inch margin, 1.5 line spacing,
 etc.  As you can see from the footer of this blog, this post is also
 written in Markdown.</p>
 
-<!-- vim:set tw=70:wrap: -->
 ]]></content>
     
   </entry>
@@ -194,106 +292,6 @@ on the comparison between the <code>apacite</code> and <code>biblatex-apa</code>
 <p>For writing scientific reports, refer to <em>$\rm \LaTeX$ Style and
 Bib$\rm \TeX$ Bibliography Formats for Biologists: $\rm \TeX$ and
 $\rm \LaTeX$ Resources</em> by Tom Schneider.  (<a href="http://schneider.ncifcrf.gov/latex.html">URL</a>)</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Edit $\rm \LaTeX$ Equations in Vim]]></title>
-      <link href="http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/"/>
-    
-    <updated>2013-08-16T14:56:00+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim</id>
-    
-      <content type="html"><![CDATA[<p>With <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a>, it’s possible to edit $\rm \LaTeX$
-equations with Vim quickly without making syntax errors.  (e.g.
-undefined control sequence caused by mismatched braces ‘{}’)</p>
-
-<p><a href="//www.youtube.com/embed/y67t-05nFD0" class="fancybox-media"><img src="/images/posts/EditLaTeXEquations/Video.png" alt="YouTube video" class="center" /></a><br />
-Please view it fullscreen in <em>HD</em>.  Sorry for the inconvenience
-caused.<br />
-For the sample files, please click the above “YouTube” button.</p>
-
-<!-- more -->
-
-<p>Why use <a href="http://www.vim.org">Vim</a>?  Please refer to <a href="/blog/2013/08/16/why-vim/" title="Why Vim">my post on Vim</a>.</p>
-
-<p>For a quick startup guide, see the <a href="http://vim-latex.sourceforge.net/documentation/latex-suite-quickstart/">official tutorial</a>.  If
-you’ve learnt those keyboard mappings, here’s <a href="http://www.cheat-sheets.org/saved-copy/vimlatexqrc.pdf">a quick review</a> of
-some commands.  For detailed list of all keyboard shortcuts and
-customizations (e.g. custom compile rule: use <code>pdflatex</code> instead of
-<code>latex</code> and <code>dvipdfm</code>), you can refer to <a href="http://vim-latex.sourceforge.net/documentation/latex-suite.html">the user manual</a>.</p>
-
-<p>There’re many blog entries about how to install $\rm \LaTeX$ on <a href="http://www.vim.org">Vim</a>
-on *nix and M$ Win*.  Searching “vim latex” gives you millions of
-search results.  Summarizing the articles, the three major components
-are:</p>
-
-<ol>
-  <li>Editor
-    <ul>
-      <li><a href="http://www.vim.org">Vim</a> (found on <em>almost every distribution of *nix</em>)</li>
-      <li>GVim (on GUI of any platform)</li>
-    </ul>
-  </li>
-  <li>$\rm \LaTeX$
-    <ul>
-      <li><a href="https://www.tug.org/texlive">$\rm \TeX$Live</a> (found in package manager on *nix)</li>
-      <li><a href="http://miktex.org">Mik$\rm \TeX$</a> (have a $\rm \LaTeX$ package manager)</li>
-    </ul>
-  </li>
-  <li><a href="http://www.vim.org">Vim</a> plugin for writing $\rm \LaTeX$: <a href="http://vim-latex.sourceforge.net">Latex-Suite</a></li>
-</ol>
-
-<p>For *nix, you may find some GUI tools for installing packages.
-(especially in some popular distributions)</p>
-
-<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/SoftwareCenter.png" title="‘Software Centre in Ubuntu 12.04 LTS’ ‘fig1’" ></p>
-
-<p><img class="fancybox" src="/images/posts/EditLaTeXEquations/FedoraSoftwareMgr.png" title="‘PackageKit in Fedora 17’ ‘fig2’" ></p>
-
-<p>You can also type the install commands for these packages on the
-terminal.</p>
-
-<p>For <a href="http://www.ubuntu.com">Ubuntu</a>:</p>
-
-<pre class="cliUB"><code># Also include `vim-gnome' if you'd like to install GVim.
-$ sudo apt get install vim-gnome vim-latexsuite texlive
-</code></pre>
-
-<p>For <a href="https://getfedora.org">Fedora</a>:</p>
-
-<pre class="cli"><code># Also include `vim-X11' if you'd like to install GVim.
-[root@localhost]# yum install vim-latex latex
-</code></pre>
-
-<p>Unlike M$ Win*, the dependencies will be automatically resolved.</p>
-
-<p>For M$ Win*, the installation procedures for GVim
-(<a href="http://portablegvim.sourceforge.net">portable</a>), <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> and
-<a href="http://miktex.org">Mik$\rm \TeX$</a> (<a href="http://miktex.org/portable">portable</a>) are as followed:</p>
-
-<ol>
-  <li>
-    <p>Go to the official websites of GVim and <a href="http://miktex.org">Mik$\rm \TeX$</a>
-(or equivalent packages) and download the packages; or</p>
-
-    <p>Put <a href="http://miktex.org/portable">Mik$\rm \TeX$ portable</a> and <a href="http://portablegvim.sourceforge.net">GVim portable</a>
-to any folder you like.</p>
-
-    <ul>
-      <li>e.g. <code>C:\Temp</code></li>
-      <li><em>Don’t</em> put them under <code>C:\Program Files</code>.</li>
-    </ul>
-  </li>
-  <li>Download <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> from SourceForge.</li>
-  <li>Follow the steps <a href="http://vim-latex.sourceforge.net/index.php?subject=download&amp;title=Download">here</a>.</li>
-</ol>
-
-<p>Remarks: The installation of <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a> (items 3
-and 4) is the same for portable and non-portable versions of GVim.</p>
 
 ]]></content>
     

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-15T13:52:08+08:00</updated>
+  <updated>2015-02-19T23:53:36+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,105 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Switch Tmux Panes and Vim-$\rm \LaTeX$]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex/"/>
+    
+    <updated>2015-02-19T10:37:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="http://byobu.co">Byobu</a> with <a href="http://tmux.sourceforge.net">Tmux</a> backend.<sup id="fnref:pp_tmux"><a href="#fn:pp_tmux" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<ul>
+  <li>Moving across panes is inconvenient.</li>
+  <li>If I have a Vim vertical/horizontal split in a Tmux pane, I need to
+  use <em>two</em> different sets of key bindings to navigate the adjacent
+  panes.</li>
+  <li>In the copy mode, it’s great that most of the key bindings follow
+  from those of <a href="http://www.vim.org">Vim</a>, <em>but not the most important two</em>:
+    <ul>
+      <li>start selection</li>
+      <li>copy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>I find two articles on <em>Giant Robots</em> very useful.</p>
+
+<ol>
+  <li><a href="http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits"><em>Seamlessly Navigate Vim and tmux Splits</em></a></li>
+  <li><a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"><em>Tmux Copy &amp; Paste on OS X: A Better Future</em></a></li>
+</ol>
+
+<p>Therefore, I followed the steps in the first blog post, and installed
+<a href="https://github.com/christoomey/vim-tmux-navigator">Vim Tmux Navigator</a>.</p>
+
+<h2 id="another-problem">Another problem</h2>
+
+<p>After the installation of the Vim plugin, I got another problem while
+editing my VIMRC: The <code>{Down-Mapping}</code> <em>didn’t</em> work.
+<a href="https://github.com/vim-latex/vim-latex">Vim-$\rm \LaTeX$</a> should know the reason.  I found an
+article describing a similar problem.<sup id="fnref:choy"><a href="#fn:choy" class="footnote">2</a></sup>  However, I <em>wouldn’t</em>
+like to change <code>~/.vim/bundle/vim-latex/plugin/imaps.vim</code>, so I got
+stuck at this point for hours.  I tried to substitute <code>{Down-Mapping}</code>
+with <code>&lt;C-a&gt;j</code> in VIMRC, but it <em>didn’t</em> work.</p>
+
+<h2 id="lessons-learnt">Lessons Learnt</h2>
+
+<ol>
+  <li>
+    <p>Accept simple ways to do things</p>
+
+    <p>Even though I <em>can’t</em> set <code>{Down-Mapping}</code> to <code>&lt;C-j&gt;</code>, the Vim
+ editor command <code>:TmuxNavigateDown</code> <em>isn’t</em> so hard to type.  I
+ failed to realise that typing <code>:tm&lt;Tab&gt;</code> will do, and wasted time
+ on that.  Now I accept the use of <em>two</em> different sets of
+ keystrokes for switching to the Tmux pane/Vim buffer below.  We
+ can look at this problem from another angle.</p>
+  </li>
+  <li>
+    <p>Store a list of windows in a file</p>
+
+    <p>A sample file can be found on Super User.<sup id="fnref:su"><a href="#fn:su" class="footnote">3</a></sup>  I found that if I
+ had run Byobu before, a session <code>0</code> would <em>also</em> be created on top
+ of <code>tmuxs</code>.  To avoid this problem, remove the first line in the
+ sample window list and type <code>byobu attach -t 0</code> starting from the
+ second time of opening Byobu.</p>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp_tmux">
+
+      <p>See <a href="blog/2015/02/14/use-tmux-for-previewing-posts/"><em>Use Tmux for Previewing Posts</em></a> in this blog for
+details. <a href="#fnref:pp_tmux" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:choy">
+
+      <p>See <a href="https://chrischoy.github.io/blog/notes/vim-tmux-navigation-and-vim-latex/"><em>Key mapping collision between vim-navigation and vim-latex</em></a>
+by Chris Choy for details. <a href="#fnref:choy" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:su">
+
+      <p>See <a href="http://superuser.com/a/747819"><em>Proper Format for Byobu’s windows.tmux?</em></a> on Super
+User. <a href="#fnref:su" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -572,107 +671,6 @@ be mounted with <code>-o uid=foo,gid=bar</code> for USB devices.</p>
 
       <p><a href="https://www.suse.com/communities/conversations/manually-mounting-a-usb-flash-drive-in-linux/"><em>Manually Mount a USB Flash Drive in Linux</em></a> by
 coolguys-suse on SUSE Communities. <a href="#fnref:suse" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[An Up-to-date Git on Ubuntu]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu/"/>
-    
-    <updated>2014-12-21T01:03:49+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Tonight, I read the most recent blog article on
-<a href="https://github.com/blog">GitHub’s blog</a>.<sup id="fnref:post"><a href="#fn:post" class="footnote">1</a></sup>  It says that the version of Git Bash
-on my M$ Win* 7 is <em>unsafe</em>.  Moreover, it is claimed that
-<a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> computers <em>aren’t</em> affected since they’re case
-sensitive.  At first, I believed that I <em>didn’t</em> need to upgrade my
-<a href="http://git-scm.com/">Git</a>.  However, after I clicked the link for the announcement of Git
-v2.2.1, I checked the version of the <a href="http://git-scm.com/">Git</a> on <a href="http://www.ubuntu.com">Ubuntu</a>, and found out
-that it <em>wasn’t</em> the newest one.  The following paragraph convinced me
-to get this update on my Ubuntu desktop.</p>
-
-<p><blockquote><p>Even though the issue may not affect Linux users, if you are a hosting service whose users may fetch from your service to Windows or Mac OS X machines, you are strongly encouraged to update to protect such users who use existing versions of Git.</p><footer><strong>Junio C Hamano</strong> <cite><a href='http://article.gmane.org/gmane.linux.kernel/1853266'>[ANNOUNCE] Git v2.2.1 (and Updates to Older Maintenance Tracks)</a></cite></footer></blockquote></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Add the <abbr title="Personal Package Archive">PPA</abbr> for <a href="http://git-scm.com/">Git</a>.</p>
-
-<pre class="cliUB"><code>$ sudo add-apt-repository ppa:git-core/ppa
-[sudo] password for owner:
- The most current stable version of Git for Ubuntu.
-
-For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
-  More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
-Press [ENTER] to continue or Ctrl-C to cancel adding it
-
-gpg: keyring `/tmp/tmplo3t2ozz/secring.gpg' created
-gpg: keyring `/tmp/tmplo3t2ozz/pubring.gpg' created
-gpg: requesting key E1DF1F24 from hkp server keyserver.ubuntu.com
-gpg: /tmp/tmplo3t2ozz/trustdb.gpg: trustdb created
-gpg: key E1DF1F24: public key "Launchpad PPA for Ubuntu Git Maintainers" imported
-gpg: Total number processed: 1
-gpg:               imported: 1  (RSA: 1)
-OK
-</code></pre>
-
-<p>Update the package information and upgrade the file.</p>
-
-<pre class="cliUB"><code>$ sudo apt-get upgrade
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following packages will be upgraded:
-  git git-core git-man gitk
-4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 5,604 kB of archives.
-After this operation, 1,528 kB of additional disk space will be used.
-Do you want to continue? [Y/n] Y
-Get:1 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main gitk all 1:2.2.1-0ppa2~ubuntu14.04.1 [704 kB]
-Get:2 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git i386 1:2.2.1-0ppa2~ubuntu14.04.1 [3,601 kB]
-Get:3 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-man all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,298 kB]
-Get:4 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-core all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,412 B]
-Fetched 5,604 kB in 23s (240 kB/s)
-(Reading database ... 380182 files and directories currently installed.)
-Preparing to unpack .../gitk_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking gitk (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git_1%3a2.2.1-0ppa2~ubuntu14.04.1_i386.deb ...
-Unpacking git (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git-man_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking git-man (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git-core_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking git-core (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
-Setting up git-man (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up git (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up gitk (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up git-core (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-</code></pre>
-
-<p>Now, I’ve the newest stable release of <a href="http://git-scm.com/">Git</a>.</p>
-
-<pre class="cliUB"><code>$ git --version
-git version 2.2.1
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:post">
-
-      <p><a href="http://article.gmane.org/gmane.linux.kernel/1853266"><em>Vulnerability announced: update your Git clients</em></a> by
-Vicent Marti. <a href="#fnref:post" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
