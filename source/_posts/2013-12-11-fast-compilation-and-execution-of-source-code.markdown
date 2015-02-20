@@ -63,9 +63,9 @@ My sample makefile\:
 
 {% codeblock lang:make %}
 hello : hello.c
-    gcc -o hello hello.c
+	gcc -o hello hello.c
 clean:
-    rm -f hello
+	rm -f hello
 {% endcodeblock %}
 
 Note: Insert *tabs* for indentation, *not* whitespaces.  If the
