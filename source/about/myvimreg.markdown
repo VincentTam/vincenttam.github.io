@@ -11,6 +11,7 @@ The registers are for writing math in $\rm \LaTeX$, Octopress posts,
 HTML, etc.
 
 {% codeblock The list of my Vim macros lang:html %}
+"a   cout << "i: " << i << endl;
 "b   \mathbf
 "c   \mathcal
 "e   \exists
@@ -18,8 +19,13 @@ HTML, etc.
 "g   &gt;
 "i   é
 "j   è
+"k   :!clang++ % && ./a.out^M
 "l   &lt;
 "m   <!-- more -->
+"s   :%s/std:://g^M
 "t   target="_blank"
 "z   $\rm \LaTeX$
 {% endcodeblock %}
+
+Remark: The `^M` at the end of registers `k` and `s` denote the
+"carriage return", which can be input by typing `<C-v><C-m>` in Vim.
