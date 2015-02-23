@@ -19,11 +19,12 @@ HTML, etc.
 "g   &gt;
 "i   é
 "j   è
-"k   :!clang++ % && ./a.out^M
+"k   :!clang++ -g % -o %<.out^M
 "l   &lt;
 "m   <!-- more -->
 "s   :%s/std:://g^M
 "t   target="_blank"
+"x   :!./%<.out^M
 "z   $\rm \LaTeX$
 {% endcodeblock %}
 
