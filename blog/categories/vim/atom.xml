@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-23T13:44:02+08:00</updated>
+  <updated>2015-02-28T17:02:00+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,86 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Updated VIMRC for Vundle]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/28/updated-vimrc-for-vundle/"/>
+    
+    <updated>2015-02-28T16:30:16+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/28/updated-vimrc-for-vundle</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Three days ago, I made a change in <a href="https://gist.github.com/VincentTam/2379ba75d6ad703a3786">my VIMRC on *nix</a> due to
+<a href="https://github.com/gmarik/Vundle.vim" title="A Vim plugin manager">Vundle</a>’s interface change a year ago.<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup> <sup id="fnref:vundle_change"><a href="#fn:vundle_change" class="footnote">2</a></sup></p>
+
+<p>With the following <a href="http://www.vim.org">Vim</a> editor command, the replacement was done
+quickly.</p>
+
+<pre><code>:%s/\(Plugin \)\@&lt;="\([^"]*\)"/'\2'/
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I got some errors when I opened Vim again.</p>
+
+<pre class="cliUB"><code>Error detected while processing /home/owner/.vimrc:
+line   38:
+E471: Argument required: Plugin 
+line   39:
+E471: Argument required: Plugin 
+line   40:
+E471: Argument required: Plugin 
+line   42:
+E471: Argument required: Plugin 
+line   45:
+E471: Argument required: Plugin 
+line   46:
+E471: Argument required: Plugin 
+line   47:
+E471: Argument required: Plugin 
+line   48:
+E471: Argument required: Plugin 
+Press ENTER or type command to continue
+</code></pre>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>The number of errors I had received was <em>less</em> than that of the
+plugins I had installed.  Therefore, it was reasonable for me to
+conclude that the lines in my VIMRC for some plugin were <em>still</em>
+correct.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>After I had saved the console error output into a text file, I opened
+my VIMRC with Vim, so that I could use <code>38G</code> to jump to the first
+erroneous line.  Above that line, I also had some lines starting with
+<code>Plugin</code>.  I compared their differences, and jumped to other erroneous
+lines as well.  I finally discovered that one should <em>never</em> use a
+double quote for indicating the name of the plugin — use single
+quote only.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+
+      <p>Commit <a href="https://gist.github.com/VincentTam/2379ba75d6ad703a3786/247f888a3c00d90b42ff0f2e2b367ce3294bf874">247f888a3c00d90b42ff0f2e2b367ce3294bf874</a> of my VIMRC
+on Gist. <a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vundle_change">
+      <p>Vundle <a href="https://github.com/gmarik/Vundle.vim/commit/0521de9">version 0.10.2</a> <a href="#fnref:vundle_change" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -286,297 +366,6 @@ section of the tip, I now know to use <code>:set paste</code>.</p>
   </ol>
 </div>
 <p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/">&infin; Permalink</a></p>]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Update Vim Plugins Managed by pathogen.vim]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/"/>
-    
-    <updated>2014-10-11T16:58:38+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim</id>
-    
-      <content type="html"><![CDATA[<h2 id="objective">Objective</h2>
-
-<p>To update <em>many</em> Vim plugins under <code>runtimepath</code> managed by
-<a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> <em>efficiently</em>.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>With the <code>:BundleUpdate</code> editor command, users of <a href="https://github.com/gmarik/Vundle.vim">Vundle</a> can easily
-keep his/her plugins up to date with the remote repository.  However,
-pathogen.vim is a popular plugin, so it’s worth studying.</p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>Write a for-loop which runs through the directories (i.e. plugins
-folders) and</p>
-
-<ol>
-  <li><code>cd $f</code>: change to the plugin folder</li>
-  <li><code>git pull</code>: fetch and merge commits from the tracking branch
-    <ul>
-      <li>One can set the tracking branch with <code>git branch -u
- [remote]/branch</code>.  In this case, the command is <code>git branch -u
- origin/master</code>.</li>
-    </ul>
-  </li>
-  <li><code>cd ..</code>: <em>without</em> this command, it won’t proceed to the next
-folder.</li>
-</ol>
-
-<pre class="cliUB"><code>$ for f in $(ls); do cd $f;echo $f;git pull;echo "";cd ..;done
-DrawIt~
-Already up-to-date.
-
-FuzzyFinder
-Already up-to-date.
-
-L9
-Already up-to-date.
-
-OmniCppComplete
-Already up-to-date.
-
-a.vim
-Already up-to-date.
-
-c.vim
-Already up-to-date.
-
-cscope.vim
-Already up-to-date.
-
-loremipsum
-Already up-to-date.
-
-nerdtree
-Already up-to-date.
-
-taglist.vim
-Already up-to-date.
-
-tlib_vim
-remote: Counting objects: 9, done.
-remote: Compressing objects: 100% (7/7), done.
-remote: Total 9 (delta 1), reused 4 (delta 1)
-Unpacking objects: 100% (9/9), done.
-From git://github.com/tomtom/tlib_vim
-   b7fc1e3..bc4097b  master     -&gt; origin/master
-Updating b7fc1e3..bc4097b
-Fast-forward
- autoload/tlib/input.vim | 20 ++++++++++++++------
- plugin/02tlib.vim       |  4 ++--
- 2 files changed, 16 insertions(+), 8 deletions(-)
-
-vim-addon-mw-utils
-Already up-to-date.
-
-vim-easy-align
-remote: Counting objects: 24, done.
-remote: Compressing objects: 100% (19/19), done.
-remote: Total 24 (delta 6), reused 14 (delta 2)
-Unpacking objects: 100% (24/24), done.
-From https://github.com/junegunn/vim-easy-align
-   cbb005e..2595ebf  master     -&gt; origin/master
-Updating cbb005e..2595ebf
-Fast-forward
- .travis.yml                 |  4 +++-
- README.md                   |  2 +-
- autoload/easy_align.vim     | 20 ++++++--------------
- test/blockwise.vader        | 22 ++++++++++++++++++++++
- test/fixed.vader            | 13 +++++++++++++
- test/include/setup.vader    |  1 +
- test/include/teardown.vader |  3 ++-
- 7 files changed, 48 insertions(+), 17 deletions(-)
- create mode 100644 test/blockwise.vader
-
-vim-easymotion
-remote: Counting objects: 27, done.
-remote: Compressing objects: 100% (17/17), done.
-remote: Total 27 (delta 11), reused 18 (delta 9)
-Unpacking objects: 100% (27/27), done.
-From https://github.com/Lokaltog/vim-easymotion
-   3b8a2dd..868cd71  master     -&gt; origin/master
-Updating 3b8a2dd..868cd71
-Fast-forward
- TODO.md                              | 54 ------------------------------------
- autoload/EasyMotion.vim              | 17 ++++++++----
- autoload/EasyMotion/cmigemo.vim      |  1 -
- autoload/EasyMotion/command_line.vim |  1 -
- autoload/EasyMotion/helper.vim       |  1 -
- autoload/EasyMotion/highlight.vim    |  1 -
- plugin/EasyMotion.vim                |  4 +--
- t/easymotion_spec.vim                |  1 -
- t/operator_pending_spec.vim          |  1 -
- t/smartsign_spec.vim                 |  1 -
- 10 files changed, 12 insertions(+), 70 deletions(-)
- delete mode 100644 TODO.md
-
-vim-fugitive
-remote: Counting objects: 4, done.
-remote: Compressing objects: 100% (3/3), done.
-remote: Total 4 (delta 0), reused 2 (delta 0)
-Unpacking objects: 100% (4/4), done.
-From github.com:tpope/vim-fugitive
-   90ee6fb..0374322  master     -&gt; origin/master
-Updating 90ee6fb..0374322
-Fast-forward
- plugin/fugitive.vim | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-vim-latex
-Already up-to-date.
-
-vim-markdown
-remote: Counting objects: 119, done.
-remote: Compressing objects: 100% (61/61), done.
-remote: Total 119 (delta 59), reused 85 (delta 41)
-Receiving objects:  64% (77/11
-R)
-Receiving objects: 100% (119/119), 25.96 KiB | 0 bytes/s, done.
-Resolving deltas: 100% (59/59), done.
-From git://github.com/plasticboy/vim-markdown
-   9a3b312..74c9c60  master     -&gt; origin/master
-Updating 9a3b312..74c9c60
-Fast-forward
- .travis.yml            |  12 ++++
- CONTRIBUTING.md        |  10 +--
- README.md              |  72 ++++++++++++++++-----
- after/ftplugin/mkd.vim |   8 ---
- ftplugin/mkd.vim       |   5 +-
- indent/mkd.vim         |   3 +-
- syntax/mkd.vim         |  28 ++++++--
- test/README.md         |   7 ++
- test/indent.md         |  26 ++++++++
- test/run-tests.sh      |   3 +
- test/syntax.md         |  74 +++++++++++++++++++++-
- test/syntax.vader      | 169 +++++++++++++++++++++++++++++++++++++++++++++++++
- test/vimrc             |   8 +++
- 13 files changed, 379 insertions(+), 46 deletions(-)
- create mode 100644 .travis.yml
- create mode 100644 test/README.md
- create mode 100644 test/indent.md
- create mode 100755 test/run-tests.sh
- create mode 100644 test/syntax.vader
- create mode 100644 test/vimrc
-
-vim-misc
-remote: Counting objects: 40, done.
-remote: Compressing objects: 100% (23/23), done.
-remote: Total 40 (delta 12), reused 30 (delta 9)
-Unpacking objects: 100% (40/40), done.
-From https://github.com/xolox/vim-misc
-   6ce98ee..77b23c8  master     -&gt; origin/master
- * [new tag]         1.16.1     -&gt; 1.16.1
- * [new tag]         1.15.1     -&gt; 1.15.1
- * [new tag]         1.16       -&gt; 1.16
-Updating 8551f2b..77b23c8
-Fast-forward
- README.md                          | 357 ++++++++++++++++++++++++++++++-
- autoload/xolox/misc.vim            |   4 +-
- autoload/xolox/misc/async.vim      | 261 +++++++++++++++++++++++
- autoload/xolox/misc/complete.vim   |   8 +-
- autoload/xolox/misc/cursorhold.vim |  71 +++++++
- autoload/xolox/misc/path.vim       |  29 ++-
- autoload/xolox/misc/perm.vim       | 100 +++++++++
- autoload/xolox/misc/persist.vim    |  50 +++++
- autoload/xolox/misc/str.vim        |   7 +-
- autoload/xolox/misc/timer.vim      |  80 ++++++-
- doc/misc.txt                       | 424 +++++++++++++++++++++++++++++++++----
- plugin/xolox/misc.vim              |  19 ++
- 12 files changed, 1342 insertions(+), 68 deletions(-)
- create mode 100644 autoload/xolox/misc/async.vim
- create mode 100644 autoload/xolox/misc/cursorhold.vim
- create mode 100644 autoload/xolox/misc/perm.vim
- create mode 100644 autoload/xolox/misc/persist.vim
- create mode 100644 plugin/xolox/misc.vim
-
-vim-repeat
-Already up-to-date.
-
-vim-session~
-remote: Counting objects: 8, done.
-remote: Compressing objects: 100% (5/5), done.
-remote: Total 8 (delta 1), reused 5 (delta 1)
-Unpacking objects: 100% (8/8), done.
-From https://github.com/xolox/vim-session
-   6773a22..4fb9cdd  master     -&gt; origin/master
- * [new tag]         2.7        -&gt; 2.7
-Updating a55318b..4fb9cdd
-Fast-forward
- README.md                              |  54 +++++++++++--
- autoload/xolox/session.vim             | 136 ++++++++++++++++++++-------------
- autoload/xolox/session/suggestions.vim |  42 ++++++++++
- doc/session.txt                        | 112 +++++++++++++++++++++------
- plugin/session.vim                     |  21 +++--
- 5 files changed, 277 insertions(+), 88 deletions(-)
- create mode 100644 autoload/xolox/session/suggestions.vim
-
-vim-snipmate
-remote: Counting objects: 6, done.
-remote: Compressing objects: 100% (5/5), done.
-remote: Total 6 (delta 0), reused 2 (delta 0)
-Unpacking objects: 100% (6/6), done.
-From git://github.com/garbas/vim-snipmate
-   f8aa804..e6eb057  master     -&gt; origin/master
-Updating f8aa804..e6eb057
-Fast-forward
- Contributors.md     | 1 +
- plugin/snipMate.vim | 4 ++++
- 2 files changed, 5 insertions(+)
-
-vim-snippets
-remote: Counting objects: 290, done.
-remote: Compressing objects: 100% (175/175), done.
-remote: Total 290 (delta 177), reused 195 (delta 115)
-Receiving objects:  80% (232
-Receiving obj
-Receiving objects: 100% (290/290), 67.94 KiB | 0 bytes/s, done.
-Resolving deltas: 100% (177/177), done.
-From git://github.com/honza/vim-snippets
-   049934c..3216ac2  master     -&gt; origin/master
-Updating 049934c..3216ac2
-Fast-forward
- UltiSnips/c.snippets                              |   1 -
- UltiSnips/javascript_angular.snippets             |  46 +-
- UltiSnips/javascript_jsdoc.snippets               |   2 +-
- UltiSnips/pandoc.snippets                         |  11 +-
- UltiSnips/perl.snippets                           |   7 +
- UltiSnips/php.snippets                            |  79 +-
- UltiSnips/python.snippets                         |  48 +-
- UltiSnips/rust.snippets                           |  14 +-
- UltiSnips/scss.snippets                           |  22 +-
- UltiSnips/tex.snippets                            |   2 +-
- snippets/coffee/requirejs_coffee.snippets         |  11 +
- snippets/eruby.snippets                           |   2 +
- snippets/html.snippets                            |  45 +-
- snippets/javascript/javascript-requirejs.snippets |  14 +
- snippets/javascript/javascript.node.snippets      |   3 +-
- snippets/javascript/javascript.snippets           | 185 ++--
- snippets/perl.snippets                            |  10 +-
- snippets/rails.snippets                           |   2 +
- snippets/ruby.snippets                            |   6 +-
- snippets/rust.snippets                            |  14 +-
- snippets/scala.snippets                           |  19 +-
- snippets/stylus.snippets                          | 993 ++++++++++++++++++++++
- snippets/zsh.snippets                             |  12 +-
- 23 files changed, 1403 insertions(+), 145 deletions(-)
- create mode 100644 snippets/coffee/requirejs_coffee.snippets
- create mode 100644 snippets/javascript/javascript-requirejs.snippets
- create mode 100644 snippets/stylus.snippets
-
-vim-surround
-Already up-to-date.
-
-visualrepeat
-Already up-to-date.
-</code></pre>
-
-]]></content>
     
   </entry>
   
