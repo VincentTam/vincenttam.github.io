@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Installed some useful Vim plugins, such as Vundle: (Vim plugins management tool). NERDTree: (file browser). EasyMotion Loremipsum: (random text &hellip;">
+  <meta name="description" content="This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL. The link should be in
+typewriter &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +76,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
+        
+           | <a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL.  The link should be in
+typewriter font after using the command <code>\urlstyle{tt}</code> under adding
+the <code>url</code> package to the preamble.  I googled for almost 2 hours, but
+the blog posts suggested that using this method should work.  I even
+tried to copy some minimum working examples from the web to test if
+they work.  They really worked and so I’m puzzled.  Ten minutes ago, I
+just find out what’s going wrong: the <code>url</code> package should never go
+before the several lines in the preamble that are responsible for
+adding an APA-style bibliography.</p>
+
+<p>The <code>\ll</code> command in <a href="http://vim-latex.sourceforge.net/">Vim-$\rm \LaTeX$</a> seems not doing
+well with <a href="http://sourceforge.net/projects/biblatex-biber/" title="BibTeX replacement for biblatex">Biber</a>.  Whenever the AUX file exists, <code>\ll</code> won’t execute
+<code>biber</code>, causing the resulting PDF file to have no change in the
+bibliography.</p>
+
+<p>I hope I can use less time to figure out any mistake next time.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -414,7 +469,7 @@ For the sample files, please click the above “YouTube” button.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (14)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (22)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (23)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (43)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -433,6 +488,10 @@ For the sample files, please click the above “YouTube” button.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/28/saw-a-new-type-of-ring/">Saw a New Type of Ring</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/28/updated-vimrc-for-vundle/">Updated VIMRC for Vundle</a>
       </li>
     
@@ -446,10 +505,6 @@ For the sample files, please click the above “YouTube” button.</p>
     
       <li class="post">
         <a href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/">Let TTY Remember SSH Passphrase</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/14/code-blocks-in-octopress-atom-feeds/">Code Blocks in Octopress Atom Feeds</a>
       </li>
     
   </ul>
