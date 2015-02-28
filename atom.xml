@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-28T19:14:21+08:00</updated>
+  <updated>2015-02-28T20:15:55+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Evaluated a Convolution Integral]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/"/>
+    
+    <updated>2015-02-28T19:26:05+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral</id>
+    
+      <content type="html"><![CDATA[<p>Yesterday afternoon, I did a convolution integral to show that a
+finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{x} f_{X_{i_1}}(z)
+f_{X_{i_2}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
+z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z &#92;&#92;
+=&amp; \lambda^2 x e^{-\lambda x}
+\end{aligned}
+\]
+</div>
+
+<p>Using the same technique, one can prove the claim by induction.
+What’s written above is the base case.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
+X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; \int_{-\infty}^{x} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k +
+1}}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
+1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
+1} \ud z &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
+\end{aligned}
+\]
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -73,9 +121,9 @@ sure whether such a ring <em>exists</em>.  I <em>couldn’t</em> give an example
 local ring.  This evening, I found it in Wikipedia, and realised that
 even though I had already convinced myself that a finite field $F$ of
 prime characteristic $p$ has an algebraic closure <span class="myeqn">$\displaystyle \overline{F} = \bigcup_{i = 1}^\infty
-F_i$</span>, I still <em>didn’t</em> know many properties of the structure of
-fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local ring is a
-field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
+\fields_{p^i}$</span>, I still <em>didn’t</em> know many properties of the
+structure of fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local
+ring is a field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
 
 <hr />
 
@@ -2459,54 +2507,6 @@ written in the documentation.</p>
 
       <p>See <a href="http://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/"><em>Posting Code to Gist Efficiently</em></a> in Blog 1 for the
 reasons of installing <a href="https://github.com/mattn/gist-vim">Gist.vim</a>. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Changed My FancyBoxLocal.js]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js/"/>
-    
-    <updated>2014-12-13T18:09:31+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I’ve been using fancyBox for image popup since August.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I would like to have large screenshots which belongs to the <code>fancybox</code>
-CSS class <em>centre-aligned</em>.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Refer to <code>source/javascripts/FancyBoxLocal.js</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/460b575">460b575</a> for
-details.</p>
-
-<p>I successfully worked out another solution using <a href="http://www.w3schools.com/js/">JavaScript</a> regular
-expressions.  However, after looking at <a href="http://jquery.com">jQuery</a>’s <code>removeClass()</code>
-method in it’s <a href="https://api.jquery.com/removeclass/">API documentation</a>, I dediced to start it all
-over again using <a href="http://jquery.com">jQuery</a> due to the simplicity of this approach.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>In <a href="http://www.vim.org">Vim</a>’s search pattern, <code>\&gt;</code> denotes the end of a word.  It took me
-a while to find out its counterpart in <a href="http://www.w3schools.com/js/">JavaScript</a> — <code>\b</code>.  The
-character ‘b’ stands for “boundary”.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>See <a href="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> for details. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

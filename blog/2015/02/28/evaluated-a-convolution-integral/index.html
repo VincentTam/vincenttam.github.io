@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Writing Vim&#8217;s Output to Files - Blog 1</title>
+  <title>Evaluated a Convolution Integral - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Changing environment variables in vimrc Refer to Vim Wiki’s page on environment variables. The tips
-uses paths in *nix in the examples. However, for &hellip;">
+  <meta name="description" content="Yesterday afternoon, I did a convolution integral to show that a
+finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed. \[
+\begin{aligned} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ uses paths in *nix in the examples. However, for &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -79,7 +80,7 @@ uses paths in *nix in the examples. However, for &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Writing Vim&#8217;s Output to Files</h1>
+	<h1 class="entry-title">Evaluated a Convolution Integral</h1>
       
     
     
@@ -89,7 +90,7 @@ uses paths in *nix in the examples. However, for &hellip;">
 
 
 
-<time class='entry-date' datetime='2013-12-13T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+<time class='entry-date' datetime='2015-02-28T19:26:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -100,45 +101,42 @@ uses paths in *nix in the examples. However, for &hellip;">
   </header>
 
 
-<div class="entry-content"><h2 id="changing-environment-variables-in-vimrc">Changing environment variables in vimrc</h2>
+<div class="entry-content"><p>Yesterday afternoon, I did a convolution integral to show that a
+finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed.</p>
 
-<p>Refer to <a href="http://vim.wikia.com/wiki/Environment_variables">Vim Wiki’s page on environment variables</a>. The tips
-uses paths in <em>*nix in the examples. However, for Win*</em>, some
-inexperienced users don’t know whether slashes or backslashes should
-be used. In fact, backslashes should be used, and the string should be
-enclosed by a pair of single quote (I don’t know if double quotes
-work.) Then things should run. If you’re unlucky and receive a runtime
-error in the next time you start Vim, then it may be due to the
-missing space characters around the equal sign.</p>
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{x} f_{X_{i_1}}(z)
+f_{X_{i_2}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
+z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z &#92;&#92;
+=&amp; \lambda^2 x e^{-\lambda x}
+\end{aligned}
+\]
+</div>
 
-<h2 id="writing-external-commands-to-files">Writing external commands to files</h2>
+<p>Using the same technique, one can prove the claim by induction.
+What’s written above is the base case.</p>
 
-<p>It’s easy! (<code>:r ![command]</code> will do.)</p>
-
-<h2 id="writing-variables-to-files">Writing variables to files</h2>
-
-<p>Use the <code>=</code> register. First get into normal mode, then type the
-following command.</p>
-
-<pre><code>"=sin(1)p
-</code></pre>
-
-<p>The <code>p</code> have to be typed before any further changes of contents.
-Otherwise, it may not work. For details, see
-<a href="http://unix.stackexchange.com/q/8101/">Unix &amp; Linux Stack Exchange question 8101</a>.</p>
-
-<h2 id="writing-internal-commands-to-files">Writing internal commands to files</h2>
-
-<p>A forum post has answered my doubt. I redirect interested readers to
-<a href="http://objectmix.com/editors/786190-how-redirect-vim-internal-command-output-current-buffer.html">here</a>.</p>
-
-<h2 id="quick-reference-lists-of-some-easy-vim-commands">Quick reference lists of some easy Vim commands</h2>
-
-<ul>
-  <li><a href="http://www.catswhocode.com/blog/100-vim-commands-every-programmer-should-know">100 Vim commands every programmers should know</a></li>
-  <li><a href="http://php.dzone.com/articles/130-essential-vim-commands">130+ Essential Vim Commands</a></li>
-</ul>
-
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
+X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; \int_{-\infty}^{x} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k +
+1}}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
+1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
+1} \ud z &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
+\end{aligned}
+\]
+</div>
 </div>
 
 
@@ -154,12 +152,12 @@ Otherwise, it may not work. For details, see
 
 
 
-<time class='entry-date' datetime='2013-12-13T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+<time class='entry-date' datetime='2015-02-28T19:26:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/vim/'>vim</a>
+    <a class='category' href='/blog/categories/math/'>math</a>
   
 </span>
 
@@ -168,7 +166,7 @@ Otherwise, it may not work. For details, see
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/" data-via="" data-counturl="http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/" >Tweet</a>
   
   
   
@@ -179,10 +177,8 @@ Otherwise, it may not work. For details, see
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/12/12/omnicppcomplete-installation-for-dummies/" title="Previous Post: OmniCppComplete Installation for Dummies">&laquo; OmniCppComplete Installation for Dummies</a>
+        <a class="basic-alignment left" href="/blog/2015/02/28/another-bod-on-win-star-7/" title="Previous Post: Another BoD on Win* 7">&laquo; Another BoD on Win* 7</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/12/23/vi-key-bindings-in-emacs/" title="Next Post: Vi Key Bindings in Emacs">Vi Key Bindings in Emacs &raquo;</a>
       
     </p>
   </footer>
@@ -292,8 +288,8 @@ Otherwise, it may not work. For details, see
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/';
         var disqus_script = 'embed.js';
       
     (function () {

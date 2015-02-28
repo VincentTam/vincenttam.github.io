@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Yesterday afternoon, I switched on a public computer. After the
-desktop had been loaded, a dialog box popped up in the middle of the
-screen. I &hellip;">
+  <meta name="description" content="Yesterday afternoon, I did a convolution integral to show that a
+finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed. \[
+\begin{aligned} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,77 @@ screen. I &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-28T19:26:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
+        
+           | <a href="/blog/2015/02/28/evaluated-a-convolution-integral/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/02/28/evaluated-a-convolution-integral/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday afternoon, I did a convolution integral to show that a
+finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{x} f_{X_{i_1}}(z)
+f_{X_{i_2}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
+z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z &#92;&#92;
+=&amp; \lambda^2 x e^{-\lambda x}
+\end{aligned}
+\]
+</div>
+
+<p>Using the same technique, one can prove the claim by induction.
+What’s written above is the base case.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
+X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) &#92;&#92;
+=&amp; \int_{-\infty}^{x} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k +
+1}}}(x - z) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
+1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z &#92;&#92;
+=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
+1} \ud z &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} &#92;&#92;
+=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
+\end{aligned}
+\]
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -180,9 +251,9 @@ sure whether such a ring <em>exists</em>.  I <em>couldn’t</em> give an example
 local ring.  This evening, I found it in Wikipedia, and realised that
 even though I had already convinced myself that a finite field $F$ of
 prime characteristic $p$ has an algebraic closure <span class="myeqn">$\displaystyle \overline{F} = \bigcup_{i = 1}^\infty
-F_i$</span>, I still <em>didn’t</em> know many properties of the structure of
-fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local ring is a
-field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
+\fields_{p^i}$</span>, I still <em>didn’t</em> know many properties of the
+structure of fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local
+ring is a field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
 
 <hr />
 
@@ -737,51 +808,6 @@ temp1.cpp:16:18: error: range-based ‘for’ loops are not allowed in C++98 mod
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/01/18/subring-of-ring-with-unity/">Subring of Ring With Unity</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-18T14:51:27+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:51 pm</span></time>
-        
-           | <a href="/blog/2015/01/18/subring-of-ring-with-unity/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2015/01/18/subring-of-ring-with-unity/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/01/18/subring-of-ring-with-unity/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve just read a statement which asserts that a subring isomorphic to
-$\integers$ or $\integers_n$ can be found in any ring $R$ with unity.
-The proof which is based on a ring homomorphism $\phi:\integers\to R$
-defined by $\phi(m)=m\cdot 1$ <em>isn’t</em> difficult to read.</p>
-
-<p>I used fifteen minutes to think of why one needs a <em>subring</em> inside
-the ring $R$ with unity, instead of $R$.  After I’ve come up with
-<span class="myeqn">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
-\in \integers, b \in\integers_{\ge 0} \right\}$</span>, I start this
-post.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -822,7 +848,7 @@ post.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (15)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (23)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (24)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (43)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -841,6 +867,10 @@ post.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/28/another-bod-on-win-star-7/">Another BoD on Win* 7</a>
       </li>
     
@@ -854,10 +884,6 @@ post.</p>
     
       <li class="post">
         <a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/">Read a Proof of Existence of Algebraic Closure</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/">Switch Tmux Panes and Vim-$\rm \LaTeX$</a>
       </li>
     
   </ul>
