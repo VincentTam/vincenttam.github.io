@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I’ve found some useful pages about maintaining one’s notebook
-computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing the &hellip;">
+  <meta name="description" content="I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
+since it’s easy to use. According to the official demo1, with a
+CSL file2, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +76,87 @@ computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing th
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Including a Bibliography in Pandoc Markdown on Ubuntu 12.04 LTS</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-23T18:16:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>6:16 pm</span></time>
+        
+           | <a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
+since it’s easy to use.  According to the official demo<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, with a
+<abbr title="Citation Style Language">CSL</abbr> file<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, which specifies the style to the citation, users are
+suppose to be able to create a document with a bibliography.  However,
+when I ran the following command in Vim on Ubuntu 12.04 LTS, pandoc
+hanged.</p>
+
+<pre><code>:!pandoc -s -S --biblio mybib.bib --csl foo.csl -t beamer %\
+-V theme:Berlin -o %&lt;.pdf
+</code></pre>
+
+<p>I admit that it’s <em>too</em> complicated.  I tested several things:</p>
+
+<ol>
+  <li>$\rm \LaTeX$ Beamer class</li>
+  <li>Bibliography</li>
+</ol>
+
+<p>To figure out which part of the command is wrong, I tried to remove
+the part related to item 1.  Issuing a simple command for item 2, the
+usage of one of the <abbr title="Central Processing Unit">CPU</abbr> in my computer rose to almost 100%, and
+remained high with small fluctuations.</p>
+
+<pre><code>:!pandoc -s -S --biblio biblio.bib -o %&lt;.html
+</code></pre>
+
+<p>This issue is indeed one faced by the community of Ubuntu users, so I
+can find official advices on GitHub.  Eventually, the last comment on
+the page has solved my problem.  I think installing
+<code>libghc-citeproc-hs-data</code> is quicker than installing the latest
+(1.9.4.2-2) version of the DEB file for pandoc.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://johnmacfarlane.net/pandoc/demos.html">Pandoc demos item 24 (Markdown citations)</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://github.com/citation-style-language/styles">CSL’s official repository on GitHub</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -626,60 +708,6 @@ should <em>never</em> use <code>.md</code>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">A Reason for My VimRepress Installation Failure</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-04T14:11:58+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:11 pm</span></time>
-        
-           | <a href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In one of my old posts, I mentioned that I had tried using
-VimRepress.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>  However, this plugin kept throwing errors like this.</p>
-
-<pre class="cli"><code class="UBMono">Confirm Delete [6]: First Post Using VimRepress? [yes/NO] :yes
-<span class="vimErr">Error detected while processing :
-Traceback (most recent call last):
-File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
-File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 41, in __check
-echoerr(&quot;something wrong: %s&quot; % e)
-File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 47, in &lt;lambda&gt;
-echoerr = lambda s: vim.command('echoerr &quot;%s&quot;' % s)
-vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s:user_input</span>
-<span class="vimErrCont">Press ENTER or type command to continue</span>
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -722,7 +750,7 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (15)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (24)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (25)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (43)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -741,6 +769,10 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/">Learnt Cauchy&#8211;Bunyakovsky&#8211;Schwarz Inequality for Definite Integrals</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
       </li>
     
@@ -754,10 +786,6 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
     
       <li class="post">
         <a href="/blog/2015/02/28/updated-vimrc-for-vundle/">Updated VIMRC for Vundle</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/">Read a Proof of Existence of Algebraic Closure</a>
       </li>
     
   </ul>

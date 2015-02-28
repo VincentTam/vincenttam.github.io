@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-28T20:15:55+08:00</updated>
+  <updated>2015-02-28T22:48:41+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Learnt Cauchy--Bunyakovsky--Schwarz Inequality for Definite Integrals]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/"/>
+    
+    <updated>2015-02-28T22:37:59+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals</id>
+    
+      <content type="html"><![CDATA[<p>When I was a secondary school student, I was quite satisfied with this
+proof of Cauchy–Schwarz Inequality.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+&amp; (\sum_{i = 1}^n a_i b_i)^2 \le (\sum_{i = 1}^n a_i^2)(\sum_{j = 1}^n
+b_j^2) &#92;&#92;
+\iff&amp; (\sum_{i = 1}^n a_i b_i) (\sum_{j = 1}^n a_j b_j) \le (\sum_{i =
+1}^n a_i^2)(\sum_{j = 1}^n b_j^2) &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n a_i^2 b_j^2 &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n \frac{1}{2} \left( a_i^2 b_j^2 + \frac{1}{2} a_j^2
+b_i^2 \right) &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i^2 b_j^2 - 2 a_i
+b_j \cdot a_j b_i + a_j^2 b_i^2) \ge 0 &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i b_j - a_j b_i)^2
+\ge 0
+\end{aligned}
+\]
+</div>
+
+<p>Equality holds if and only if <span class="myeqn">$\forall i,j = 1,\dots,n, a_i b_j - a_j b_i = 0$</span>.
+I was so happy that I <em>didn’t</em> think of further generalisations.  I
+<em>didn’t</em> realise that the inequality can be more concisely written as
+$\langle \vect{a}, \vect{b} \rangle^2 \le \norm{\vect{a}}^2
+\norm{\vect{b}}^2$, where <span class="myeqn">$\vect{a} =
+(a_1,\cdots,a_n), \vect{b} = (b_1,\cdots,b_n) \in \reals^n$</span></p>
+
+<p>This Friday evening, I did a question about the integral version of
+the inequality.  After spending hours to come up with an idea, I
+realised why I needed to learn inner product spaces.  The very first
+version of the inequality that I learnt has too many summation signs,
+and it <em>can’t</em> be easily generalised to other spaces.  The second
+proof of the <em>same</em> inequality that I learnt makes use of the
+determinant of a quadratic polynomial $p(t) = \norm{\vect{u} - t
+\vect{v}}^2$.  That proof is much more elegant, and it helped me a lot
+while I was doing that question.  When equality holds, it’s very hard
+to imagine what happens by looking at the original equality.  However,
+if we convert it into the determinant of $p(t)$, then one quickly
+knows that this is equivalent to $p(t) = 0$, and can easily conclude
+that equality holds if and only if the two functions $f$ and $g$
+satisfy $f \equiv k g$ for some $k \in \reals$ for almost all
+points.<sup id="fnref:rmk"><a href="#fn:rmk" class="footnote">1</a></sup></p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:rmk">
+
+      <p>To be more precise, if one accepts that the space $C([a,b])$ of
+continuous functions defined on a closed and bounded interval
+$[a,b]$ in an inner product space, and $f,g \in C([a,b])$,
+then the condition “for almost all points” can be dropped.  If we
+<em>don’t</em> to want be to so strict on the functions $f$ and $g$
+defined on $[a,b]$, and we just say that $f$ and $g$ are
+integrable functions defined on $[a,b]$, then we have to accept
+the fact that $\displaystyle \int_a^b f^2 = 0$ <em>doesn’t</em> imply
+that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2460,53 +2535,6 @@ git version 2.2.1
 
       <p><a href="http://article.gmane.org/gmane.linux.kernel/1853266"><em>Vulnerability announced: update your Git clients</em></a> by
 Vicent Marti. <a href="#fnref:post" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Edit Gist Descriptions With Gist.vim]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/13/edit-gist-descriptions-with-gist-dot-vim/"/>
-    
-    <updated>2014-12-13T23:58:28+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/13/edit-gist-descriptions-with-gist-dot-vim</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I use <a href="https://github.com/mattn/gist-vim">Gist.vim</a> to post code to <a href="https://gist.github.com">Gist</a> directly in a <a href="http://www.vim.org">Vim</a> buffer for
-efficiency.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In the manual of <a href="https://github.com/mattn/gist-vim">Gist.vim</a>, it’s said that after opening the Gist
-buffer in <a href="http://www.vim.org">Vim</a>, one can add/change the description of a <a href="https://gist.github.com">Gist</a> with
-<code>:Gist -e -s something</code>.  To add a description for a <a href="https://gist.github.com">Gist</a>, I typed
-<code>:Gist -s foo bar ...</code> in a buffer for the particular <a href="https://gist.github.com">Gist</a> — I
-tried to use it like <code>:!echo foo bar</code> — and what I got in the list
-of my Gists was <em>just</em> the last word.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>After one encounters such a problem, he/she will be likely to solve
-the problem within seconds: use a double quote to surround the whole
-description.</p>
-
-<p>When I was in doubt of the words in the manual, I used simple examples
-for testing, so I could quickly see the output and get the concepts
-written in the documentation.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp">
-
-      <p>See <a href="http://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/"><em>Posting Code to Gist Efficiently</em></a> in Blog 1 for the
-reasons of installing <a href="https://github.com/mattn/gist-vim">Gist.vim</a>. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

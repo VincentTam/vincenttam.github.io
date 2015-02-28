@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-28T20:15:55+08:00</updated>
+  <updated>2015-02-28T22:48:41+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Learnt Cauchy--Bunyakovsky--Schwarz Inequality for Definite Integrals]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/"/>
+    
+    <updated>2015-02-28T22:37:59+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals</id>
+    
+      <content type="html"><![CDATA[<p>When I was a secondary school student, I was quite satisfied with this
+proof of Cauchy–Schwarz Inequality.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+&amp; (\sum_{i = 1}^n a_i b_i)^2 \le (\sum_{i = 1}^n a_i^2)(\sum_{j = 1}^n
+b_j^2) &#92;&#92;
+\iff&amp; (\sum_{i = 1}^n a_i b_i) (\sum_{j = 1}^n a_j b_j) \le (\sum_{i =
+1}^n a_i^2)(\sum_{j = 1}^n b_j^2) &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n a_i^2 b_j^2 &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n \frac{1}{2} \left( a_i^2 b_j^2 + \frac{1}{2} a_j^2
+b_i^2 \right) &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i^2 b_j^2 - 2 a_i
+b_j \cdot a_j b_i + a_j^2 b_i^2) \ge 0 &#92;&#92;
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i b_j - a_j b_i)^2
+\ge 0
+\end{aligned}
+\]
+</div>
+
+<p>Equality holds if and only if <span class="myeqn">$\forall i,j = 1,\dots,n, a_i b_j - a_j b_i = 0$</span>.
+I was so happy that I <em>didn’t</em> think of further generalisations.  I
+<em>didn’t</em> realise that the inequality can be more concisely written as
+$\langle \vect{a}, \vect{b} \rangle^2 \le \norm{\vect{a}}^2
+\norm{\vect{b}}^2$, where <span class="myeqn">$\vect{a} =
+(a_1,\cdots,a_n), \vect{b} = (b_1,\cdots,b_n) \in \reals^n$</span></p>
+
+<p>This Friday evening, I did a question about the integral version of
+the inequality.  After spending hours to come up with an idea, I
+realised why I needed to learn inner product spaces.  The very first
+version of the inequality that I learnt has too many summation signs,
+and it <em>can’t</em> be easily generalised to other spaces.  The second
+proof of the <em>same</em> inequality that I learnt makes use of the
+determinant of a quadratic polynomial $p(t) = \norm{\vect{u} - t
+\vect{v}}^2$.  That proof is much more elegant, and it helped me a lot
+while I was doing that question.  When equality holds, it’s very hard
+to imagine what happens by looking at the original equality.  However,
+if we convert it into the determinant of $p(t)$, then one quickly
+knows that this is equivalent to $p(t) = 0$, and can easily conclude
+that equality holds if and only if the two functions $f$ and $g$
+satisfy $f \equiv k g$ for some $k \in \reals$ for almost all
+points.<sup id="fnref:rmk"><a href="#fn:rmk" class="footnote">1</a></sup></p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:rmk">
+
+      <p>To be more precise, if one accepts that the space $C([a,b])$ of
+continuous functions defined on a closed and bounded interval
+$[a,b]$ in an inner product space, and $f,g \in C([a,b])$,
+then the condition “for almost all points” can be dropped.  If we
+<em>don’t</em> to want be to so strict on the functions $f$ and $g$
+defined on $[a,b]$, and we just say that $f$ and $g$ are
+integrable functions defined on $[a,b]$, then we have to accept
+the fact that $\displaystyle \int_a^b f^2 = 0$ <em>doesn’t</em> imply
+that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -178,32 +253,6 @@ the ring $R$ with unity, instead of $R$.  After I’ve come up with
 <span class="myeqn">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
 \in \integers, b \in\integers_{\ge 0} \right\}$</span>, I start this
 post.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Read a Proof About the Transitivity of Characteristic Subgroups]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/"/>
-    
-    <updated>2014-12-31T00:52:20+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups</id>
-    
-      <content type="html"><![CDATA[<p>On the day before yesterday, I read a proof about the transitivity of
-characteristic subgroups.  The proof <em>shouldn’t</em> be too difficult.
-The key step is just to create a restriction automorphism.</p>
-
-<p>Suppose $K\le H\le G$, and $f\in \Aut(G)$.  Then $f(H)=H$.  Define the
-restriction of $f$ on $H$ as $g:H\to H$ such that $g(h)=f(h)\forall h
-\in H$.  Clearly, $g\in \Aut(H)$.</p>
-
-<p>I <em>couldn’t</em> understand why $g(K)=K$.  I googled “strongly normal
-transitivity”, but <em>couldn’t</em> find anything relevant.  I changed the
-words, and found <a href="https://www.proofwiki.org/wiki/Definition:Characteristic_Subgroup">the proof on ProofWiki</a>.  Then I realised why I
-got stuck: when I wrote the definition of characteristic subgroup
-symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
-
 ]]></content>
     
   </entry>

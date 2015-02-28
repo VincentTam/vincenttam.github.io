@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Two months ago, I wrote my first list of Git commands, and said that I
-didn’t know how to use Git commands to view the changes.1 Now, I can &hellip;">
+  <meta name="description" content="While I was writing my previous post, I made a link to
+a Git cheatsheet. In the list, I saw a wrong command. git checkout – &lt;file&gt; It is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,72 @@ didn’t know how to use Git commands to view the changes.1 Now, I can &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/07/double-hyphens-in-git-checkout/">Double Hyphens in Git Checkout</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-07T18:08:56+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:08 pm</span></time>
+        
+           | <a href="/blog/2014/08/07/double-hyphens-in-git-checkout/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-checkout/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/07/double-hyphens-in-git-checkout/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While I was writing my <a href="/blog/2014/08/07/double-hyphens-in-git-diff/" title="Double Hyphens in Git Diff">previous post</a>, I made a link to
+<a href="http://supercollider.sourceforge.net/wiki/index.php/Developer_cheatsheet_for_git#Common_git_commands" title="Developer Cheatsheet for Git">a Git cheatsheet</a>.  In the list, I saw a <em>wrong</em> command.</p>
+
+<pre><code>git checkout – &lt;file&gt;
+</code></pre>
+
+<p>It is <em>incorrect</em> to use an en-dash <code>–</code> in the above command, instead
+of a double hyphen <code>--</code>.  I’ll illustrate this with an example below.
+Assume that the current file is <code>~/octopress</code>.</p>
+
+<pre class="cli"><code class="UBMono">$ cat &gt;&gt; Gemfile
+bullshxt
+$ git diff
+<span class="UBHLCode">diff --git a/Gemfile b/Gemfile
+index 4d028d3..a1718ff 100644
+    --- a/Gemfile
+    +++ b/Gemfile</span>
+<span class="gitA">@@ -20,3 +20,4 @@</span> group :development do
+ end
+ 
+ gem 'sinatra', '~&gt; 1.4.2'
+<span class="gitP">+bullshxt</span>
+
+...
+
+$ git checkout <span class="err">—</span> Gemfile
+<span class="err">error: pathspec '—' did not match any file(s) known to git.</span>
+
+$ git checkout <span class="UBHLCode">--</span> Gemfile  # correct command
+</code></pre>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -742,61 +808,6 @@ GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/07/12/pappuss-hexagon-theorem/">Pappus&#8217;s Hexagon Theorem</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-07-12T23:48:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:48 pm</span></time>
-        
-           | <a href="/blog/2014/07/12/pappuss-hexagon-theorem/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/07/12/pappuss-hexagon-theorem/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm.svg" width="600" /><br />
-<small><a href="/downloads/code/pappus/PappusHexThm.tex">Source</a></small></p>
-
-<p>Suppose that points $A,B$ and $C$ lie on the same straight line, and
-$D,E$ and $F$ lie on <em>another</em> one.  Draw line segments
-$AE,BD,BF,CE,AF$ and $CD$.<br />
-Let <span class="grp1">$P$</span> be the intersection point of $AE$
-and $BD$.<br />
-Let <span class="grp1">$Q$</span> be the intersection point of $AF$
-and $CD$.<br />
-Let <span class="grp1">$R$</span> be the intersection point of $BF$
-and $CE$.<br />
-Then <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span>
-are <em>collinear</em>.  (i.e.  The <span class="grp1">red dashed line</span>
-and the <span class="grp1">red solid line</span> are collinear.)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/07/12/pappuss-hexagon-theorem/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -839,7 +850,7 @@ and the <span class="grp1">red solid line</span> are collinear.)</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (15)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (24)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (25)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (43)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -858,6 +869,10 @@ and the <span class="grp1">red solid line</span> are collinear.)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/">Learnt Cauchy&#8211;Bunyakovsky&#8211;Schwarz Inequality for Definite Integrals</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
       </li>
     
@@ -871,10 +886,6 @@ and the <span class="grp1">red solid line</span> are collinear.)</p>
     
       <li class="post">
         <a href="/blog/2015/02/28/updated-vimrc-for-vundle/">Updated VIMRC for Vundle</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/">Read a Proof of Existence of Algebraic Closure</a>
       </li>
     
   </ul>
