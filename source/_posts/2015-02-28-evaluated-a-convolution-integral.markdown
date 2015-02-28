@@ -12,7 +12,7 @@ finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed.
 <div class="myeqn">
 \[
 \begin{aligned}
-f_{X_{i_1}} * f_{X_{i_2}}(x) =& \int_{-\infty}^{x} f_{X_{i_1}}(z)
+f_{X_{i_1}} * f_{X_{i_2}}(x) =& \int_{-\infty}^{\infty} f_{X_{i_1}}(z)
 f_{X_{i_2}}(x - z) \ud z \\\\
 =& \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
 z)}) \ud z \\\\
@@ -31,8 +31,8 @@ What's written above is the base case.
 f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =& f_{\sum_{j = 1}^{k} X_{i_j} +
 X_{i_{k + 1}}}(x) \\\\
 =& f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) \\\\
-=& \int_{-\infty}^{x} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k +
-1}}}(x - z) \ud z \\\\
+=& \int_{-\infty}^{\infty} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k
++ 1}}}(x - z) \ud z \\\\
 =& \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
 1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z \\\\
 =& \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
