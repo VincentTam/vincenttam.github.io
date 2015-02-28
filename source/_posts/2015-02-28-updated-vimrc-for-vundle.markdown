@@ -10,7 +10,7 @@ Background
 ---
 
 Three days ago, I made a change in [my VIMRC on \*nix][vimrc] due to
-[Vundle]'s interface change a year ago.[^src] [^vundle_change]
+[Vundle]'s interface change a year ago.[^src][^vundle_change]
 
 With the following [Vim] editor command, the replacement was done
 quickly.
