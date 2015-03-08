@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-02-28T22:57:50+08:00</updated>
+  <updated>2015-03-08T18:01:52+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Another Jekyll Error]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/03/08/another-jekyll-error/"/>
+    
+    <updated>2015-03-08T17:08:53+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/03/08/another-jekyll-error</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Markdown encountered an error when I ran <code>rake generate</code>.</p>
+
+<pre class="cliUB"><code>owner@owner-Inspiron-560s:~/octopress$ rake generate &amp;&amp; rake preview
+## Generating Site with Jekyll
+    write source/stylesheets/screen.css
+Configuration file: /home/owner/octopress/_config.yml
+            Source: source
+       Destination: public
+      Generating... 
+  Conversion error: Jekyll::Converters::Markdown encountered an error while conv
+erting '_posts/2014-01-31-comparison-of-latexs-quote-and-quotation-environments.
+markdown/#excerpt':
+                    "\xC2" from ASCII-8BIT to UTF-8
+jekyll 2.5.3 | Error:  "\xC2" from ASCII-8BIT to UTF-8
+Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+Configuration file: /home/owner/octopress/_config.yml
+[2015-03-08 15:49:51] INFO  WEBrick 1.3.1
+[2015-03-08 15:49:51] INFO  ruby 2.1.2 (2014-05-08) [i686-linux]
+[2015-03-08 15:49:51] INFO  WEBrick::HTTPServer#start: pid=5560 port=4000
+&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+directory public/stylesheets
+    write public/stylesheets/print.css
+            Source: source
+       Destination: public
+      Generating... 
+    write public/stylesheets/screen.css
+  Conversion error: Jekyll::Converters::Markdown encountered an error while conv
+erting '_posts/2014-04-05-latex-template-for-chinese-essays.markdown/#excerpt':
+                    "\xE6" from ASCII-8BIT to UTF-8
+jekyll 2.5.3 | Error:  "\xE6" from ASCII-8BIT to UTF-8
+</code></pre>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I feel that this problem is similar to the YAML error which I
+encountered last year.<sup id="fnref:pp_yaml"><a href="#fn:pp_yaml" class="footnote">1</a></sup>  However, I had <em>already</em> added the
+line <code>encoding: UTF-8</code> to <code>_config.yml</code>, and when I opened the file
+with Vim, I saw, from <code>:se fenc</code> and <code>:se enc</code> that the encoding was
+UTF-8.</p>
+
+<p>I googled “incompatible character encodings utf-8 and ascii-8bit
+octopress” and clicked the first result, which was an article written
+in 2013.<sup id="fnref:chin1"><a href="#fn:chin1" class="footnote">2</a></sup>  According to the blog post, I opened
+<code>:~/.rvm/gems/ruby-2.1.2/gems/jekyll-2.5.3/lib/jekyll/converters/markdown.rb</code>,
+but I <em>couldn’t</em> find line 120 because I’m now using Ruby 2.1.2 and
+Jekyll 2.5.3.</p>
+
+<p>Though the steps mentioned in another blog posts found were the same,
+from the first paragraph of that post, I knew that the cause was the
+embedded Gists in Octopress posts/pages.<sup id="fnref:chin2"><a href="#fn:chin2" class="footnote">3</a></sup></p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>I continued viewing other Google search results, and discovered a
+single question on two different sites.  That question was actually a
+Stack Overflow question which had two responses.<sup id="fnref:so16264160"><a href="#fn:so16264160" class="footnote">4</a></sup>  The
+second one seemed to solve my problem.</p>
+
+<p>I googled “vim remove bom”, and found another web page.<sup id="fnref:vim_bom"><a href="#fn:vim_bom" class="footnote">5</a></sup>
+Later, I realised that I could find the information using <code>:h bom</code>.  I
+typed <code>:se nobomb</code> in the affected files, and Rake could finally
+generate the site.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp_yaml">
+
+      <p>See <a href="/blog/2014/06/04/resolving-jekylls-yaml-exception/"><em>Resolving Jekyll’s YAML Exception</em></a> in Blog 1 for
+details. <a href="#fnref:pp_yaml" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:chin1">
+
+      <p><a href="http://blog.txx.im/blog/2013/08/25/octopress-utf-8-ascii-8bit-conflict-error/"><em>Octopress 上的 utf-8和ASCII-8BIT 冲突的解决方案</em></a> in
+txx’s blog <a href="#fnref:chin1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:chin2">
+
+      <p><a href="http://lenciel.cn/2014/05/fix-gist-style-in-octopress/"><em>Octopress里插入带中文Gist的问题和解决</em></a> @Lenciel <a href="#fnref:chin2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:so16264160">
+
+      <p><a href="https://stackoverflow.com/a/25228668">Unicode weirdness with octopress, kramdown, and Heroku</a> on Stack
+Overflow <a href="#fnref:so16264160" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:vim_bom">
+
+      <p><a href="http://www.santiagolizardo.com/article/remove-bom-mark-from-files-with-vim"><em>Remove BOM mark from files with VIM</em></a> by Santiago
+Lizardo. <a href="#fnref:vim_bom" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -295,14 +404,30 @@ src="http://vincenttam.github.io/stylesheets/print.css" ... /&gt;</code>.</li>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/stylesheets/screen.css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen, projection&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;/stylesheets/screen.css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen,</span>
+</span><span class='line'><span class="s">projection&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="nt">/&gt;</span>
+</span><span class='line'>
 </span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/javascripts/modernizr-2.0.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'>
 </span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">&#39;%3Cscript</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script&gt;</span><span class="o">!</span><span class="nb">window</span><span class="p">.</span><span class="nx">jQuery</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">unescape</span><span class="p">(</span><span class="s1">&#39;%3Cscript</span>
 </span><span class='line'><span class="s1">src=&quot;http://vincenttam.github.io/javascripts/libs/jquery.min.js&quot;%3E%3C/script%3E&#39;</span><span class="p">))</span><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
 </span><span class='line'><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">&quot;/javascripts/octopress.js&quot;</span> <span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="combine-and-compress-fancybox-javascripts">Combine and compress fancyBox JavaScripts</h3>
@@ -563,11 +688,15 @@ browsers, such as Mozilla Firefox.</p>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;picture</span> <span class="na">class=</span><span class="s">&quot;fancybox center&quot;</span> <span class="na">title=</span><span class="s">&quot;Custom search failed&quot;</span><span class="nt">&gt;</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;picture</span> <span class="na">class=</span><span class="s">&quot;fancybox center&quot;</span> <span class="na">title=</span><span class="s">&quot;Custom search failed&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;source</span> <span class="na">srcset=</span><span class="s">&quot;/images/big.png&quot;</span> <span class="na">media=</span><span class="s">&quot;(min-width: 880px)&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'>  <span class="c">&lt;!-- a fallback for browsers that don&#39;t support the source tag --&gt;</span>
 </span><span class='line'>  <span class="nt">&lt;img</span> <span class="na">alt=</span><span class="s">&quot;alt text&quot;</span> <span class="na">src=</span><span class="s">&quot;http://vincenttam.github.io/images/small.png&quot;</span> <span class="nt">/&gt;</span>
 </span><span class='line'><span class="nt">&lt;/picture&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <p>The simplest way to avoid getting the message “Optimize images” in a
@@ -1041,74 +1170,6 @@ character ‘b’ stands for “boundary”.</p>
   <ol>
     <li id="fn:pp1">
       <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> for details. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (2)]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/"/>
-    
-    <updated>2014-12-13T11:06:59+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>In the <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">previous post</a> in this series, I’ve listed a number of
-steps and included a group of <a href="http://www.vim.org">Vim</a> editor commands for screening out
-<a href="http://kramdown.gettalong.org">kramdown</a> syntax errors.  This is useful for [Octopress] posts with
-ordinary contents.  However, if one wants to write some math equations
-using <a href="http://www.mathjax.org">MathJax</a>, then one will encounter great difficulties.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<p>Even though the <a href="http://kramdown.gettalong.org">kramdown</a> command line utility enables users to
-instantly convert code across different formats, and a web browser
-enables them to notice any syntax error, these tools just help them to
-find the mistakes, but <em>not</em> the solution.  In the cited post in the
-<a href="#fn:pp1">first footnote</a>, I spent <em>hours</em> to realise that <em>exactly
-eight ‘\’s</em> were needed to break the current line in <a href="http://www.mathjax.org">MathJax</a>.
-After that, I feel that using eight ‘\’s and adding a ‘\’ before a
-‘_’ in <a href="http://www.mathjax.org">MathJax</a> equations interrupt my thinking.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Reading <a href="/blog/2014/09/13/completely-remove-linux-kernels/" title="Completely Remove Linux Kernels">an old post on removing Linux kernels on Ubuntu</a>, I
-remembered that the <code>markdown</code> attribute in <code>&lt;div markdown="1"&gt;</code>
-enabled <a href="http://kramdown.gettalong.org">kramdown</a> to interpret the Markdown code within the <code>&lt;div&gt;</code>
-block.  Therefore, I tried to surround the HTML code for an inline
-math expression with a <code>&lt;span&gt;</code> tag.  Unluckily, unlike <code>&lt;div&gt;</code>
-blocks, the surrounded code was <em>still</em> interpreted by <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
-
-<p>After that, I read the syntax documentation.  It claimed that setting
-<code>markdown="0"</code> disabled parsing of contents inside the tag <em>except</em>
-for <code>&lt;span&gt;</code> tags.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">2</a></sup>  Though the manual says that it’s
-<em>impossible</em>, I still inserted it into the <code>&lt;span&gt;</code> tag which
-surrounded the code for the <a href="http://www.mathjax.org">MathJax</a> math expression, because it
-<em>didn’t</em> take much time to see the result: the inline <a href="http://www.mathjax.org">MathJax</a>
-expression could be <em>successfully</em> displayed.<sup id="fnref:pp3"><a href="#fn:pp3" class="footnote">3</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>For example, it’s troublesome to <a href="/blog/2014/09/07/mathjax-and-rss/" title="MathJax and RSS">start a new line</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:doc">
-
-      <p>See the first bullet point of the section “HTML Spans” in
-<a href="http://kramdown.gettalong.org/syntax.html#html-spans">kramdown’s syntax documentation</a>. <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:pp3">
-
-      <p>See <a href="/blog/2014/12/09/a-group-of-689-elements/"><em>A Group of 689 Elements</em></a> and
-<a href="https://github.com/vincenttam/vincenttam.github.io/commit/af4f216">its source code</a> in Blog 1 at commit af4f216 for a
-working example. <a href="#fnref:pp3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
