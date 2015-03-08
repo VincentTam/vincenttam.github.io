@@ -11,7 +11,7 @@ Problem
 
 Markdown encountered an error when I ran `rake generate`.
 
-    owner@owner-Inspiron-560s:~/octopress$ rake generate && rake preview
+    $ rake generate && rake preview
     ## Generating Site with Jekyll
         write source/stylesheets/screen.css
     Configuration file: /home/owner/octopress/_config.yml

@@ -7,7 +7,7 @@ categories: math
 ---
 
 Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i ~ exp(\lambda)$ is Gamma distributed.
+finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed.
 
 <div class="myeqn">
 \[
