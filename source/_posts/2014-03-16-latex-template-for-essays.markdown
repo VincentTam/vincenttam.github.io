@@ -45,13 +45,11 @@ I've found [$\rm \LaTeX$-Online-Compiler](http://latex.informatik.uni-halle.de/l
 [^1]:
     Visual comparison between LaTeX and Word output (hyphenation,
     typesetting, ligatures etc) on
-    [$\rm \TeX$--$\rm \LaTeX$ Stack Exchange][texse].
+    [$\rm \TeX$--$\rm \LaTeX$ Stack Exchange][texse110133].
 
 [^2]:
     Taraborelli, D.  (July 4, 2011).  *The Beauty of $\rm \LaTeX$*.
     Retrieved from <http://nitens.org/taraborelli/latex>
 
-[texse]: http://tex.stackexchange.com/q/110133
+[texse110133]: http://tex.stackexchange.com/q/110133
 [sample_output]: /downloads/latex_sample.pdf
-
-<!-- vim:set sw=2:tw=70:wrap: -->
