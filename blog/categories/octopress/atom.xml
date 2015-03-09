@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-03-09T14:51:27+08:00</updated>
+  <updated>2015-03-09T23:30:20+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,193 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Set Up Another Local Repository for an Existing Octopress Blog]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog/"/>
+    
+    <updated>2015-03-09T15:17:20+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Same as the raison d’être in <a href="/blog/2014/05/26/using-octopress-on-another-device/#raison-dtre"><em>Using Octopress on Another Device</em></a>
+in Blog 1.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>When I wrote that post last year, I gave <em>too little</em> commands for the
+actual process of setting up the local repository.  Yesterday, I
+re-read <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Robert Anderson’s post</a> again, and tried reproducing the
+steps, and got some redundant Git branches.</p>
+
+<!-- more -->
+
+<h2 id="my-steps">My steps</h2>
+
+<p>Assume that throughout this post, the current working directoy is
+<code>~/octopress</code>.</p>
+
+<pre class="cliUB"><code>$ pwd
+/home/owner/octopress
+$ git clone -b source git@github.com:VincentTam/vincenttam.github.io.git .
+Cloning into '.'...
+remote: Counting objects: 71346, done.
+remote: Compressing objects: 100% (76/76), done.
+remote: Total 71346 (delta 8), reused 0 (delta 0), pack-reused 71266
+Receiving objects: 100% (71346/71346), 63.71 MiB | 3.08 MiB/s, done.
+Resolving deltas: 100% (33764/33764), done.
+Checking connectivity... done.
+</code></pre>
+
+<p>This is a standard command, and I first created the folder
+<code>~/octopress</code> before cloning the <code>source</code> branch to the folder, so
+that my commands <em>aren’t</em> exactly the same as Anderson’s.</p>
+
+<p>To make another difference, I also fetched the <code>master</code> branch from
+Octopress.</p>
+
+<pre class="cliUB"><code>$ git remote add octopress git@github.com:imathis/octopress.git
+$ git fetch octopress master
+From github.com:imathis/octopress
+ * branch            master     -&gt; FETCH_HEAD
+ * [new branch]      master     -&gt; octopress/master
+$ git branch -av
+* source                   bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
+  remotes/octopress/master 5080107 Fixed improper canonical url
+  remotes/origin/HEAD      -&gt; origin/source
+  remotes/origin/master    7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  remotes/origin/source    bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
+</code></pre>
+
+<p>Since I <em>dont’t</em> and <em>won’t</em> have a Mac laptop, I <em>skipped</em> the
+command <code>rbenv rehash</code>.</p>
+
+<picture class="fancybox" title="A Macbook exploded">
+  <source srcset="/images/posts/MacExplosion/MacExplosion.jpg" media="(min-width: 340px)" />
+  <img alt="Macbook exploded" src="http://vincenttam.github.io/images/posts/MacExplosion/MacExplosion300.jpg" />
+</picture>
+
+<p><small>Source:
+<a href="http://www.homelandsecureit.com/wp-content/uploads/2011/07/MacExplosion.jpg">http://www.homelandsecureit.com/wp-content/uploads/2011/07/MacExplosion.jpg</a>
+</small></p>
+
+<p>I then viewed the task <code>setup_github_pages</code> in <code>Rakefile</code>, and
+discovered that if I cloned the whole remote repository of the
+Octopress blog into <code>_deploy</code>, the there’d be an extra <code>master</code> branch
+in the default deploy directory.  To avoid this, I typed a longer
+command.</p>
+
+<pre class="cliUB"><code>$ gem install bundler
+$ bundle install
+$ git clone git@github.com:VincentTam/vincenttam.github.io.git -b master _deploy
+Cloning into '_deploy'...
+remote: Counting objects: 71346, done.
+remote: Compressing objects:  68% (52/76)   Receiving objects:   0% (1/71346)
+remote: Compressing objects: 100% (76/76), done.
+remote: Total 71346 (delta 8), reused 0 (delta 0), pack-reused 71266
+Receiving objects: 100% (71346/71346), 63.71 MiB | 2.77 MiB/s, done.
+Resolving deltas: 100% (33764/33764), done.
+Checking connectivity... done.
+Checking out files: 100% (644/644), done.
+$ cd _deploy &amp;&amp; git branch -av &amp;&amp; cd ..
+* master                7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  remotes/origin/HEAD   -&gt; origin/source
+  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  remotes/origin/source bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
+</code></pre>
+
+<p>To test if the last two words of the command in Anderson’s post could
+be <em>omitted</em>, I <em>changed</em> the Markdown source of one of my old posts
+slightly, committed the change and pushed it to GitHub.</p>
+
+<pre class="cliUB"><code>$ gvim source/_posts/2014-03-16-latex-template-for-essays.markdown
+$ git commit -am "Another small minor change" &amp;&amp; git push
+[source 4be7fba] Another small minor change
+1 file changed, 2 insertions(+), 4 deletions(-)
+Counting objects: 10, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 435 bytes | 0 bytes/s, done.
+Total 5 (delta 4), reused 0 (delta 0)
+To git@github.com:VincentTam/vincenttam.github.io.git
+bd39cb2..4be7fba  source -&gt; source
+$ cd _deploy/ &amp;&amp; git branch -av &amp;&amp; cd ..
+* master		7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  remotes/origin/HEAD   -&gt; origin/source
+  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  <span class="HLCode">remotes/origin/source bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)</span>
+$ cd _deploy/ &amp;&amp; <span class="HLCode">git pull</span> &amp;&amp; git branch -av &amp;&amp; cd ..
+* master		7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  remotes/origin/HEAD   -&gt; origin/source
+  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
+  <span class="HLCode">remotes/origin/source 4be7fba Another small minor change</span>
+</code></pre>
+
+<p>From <code>Rakefile</code> and the above highlighted command output, I could
+deduce that before starting to blog on another machine and publish
+them to GitHub Pages, one needed to pull the commits from the remote
+repository by <code>git pull origin source</code> and <code>git pull</code> in <code>~/octopress</code>
+and <code>~/octopres/_deploy</code> respectively.</p>
+
+<p>Then I faced the same errors I saw yesterday.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup>  After solving
+them, I proceeded to deploying the site to GitHub Pages.</p>
+
+<pre class="cliUB"><code>$ rake deploy
+
+...
+
+ 30 files changed, 44 insertions(+), 46 deletions(-)
+
+## Pushing generated _deploy website
+Counting objects: 130, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (64/64), done.
+Writing objects: 100% (65/65), 5.37 KiB | 0 bytes/s, done.
+Total 65 (delta 35), reused 0 (delta 0)
+To git@github.com:VincentTam/vincenttam.github.io.git
+   7f8f845..5af7b9d  master -&gt; master
+
+## Github Pages deploy complete
+cd -
+</code></pre>
+
+<p>Lastly, I found that the remote tracking branch <code>origin/master</code>
+<em>wasn’t</em> necessary in <code>~/octopress</code>.  However, the creation of this
+branch <em>couldn’t</em> be avoided: using <code>git clone</code> to clone either the
+<em>whole repository</em> or <em>a single branch only</em> will lead the creation of
+<em>all</em> remote branches.  To minimize the number of branches in the
+local repository for an Octopress blog, I suggest deleting the
+outdated <code>origin/master</code> branch.</p>
+
+<pre class="cliUB"><code>$ cd _deploy &amp;&amp; git branch -av &amp;&amp; cd ..
+<span class="HLCode">* master                5af7b9d Site updated at 2015-03-09 06:54:16 UTC</span>
+  remotes/origin/HEAD   -&amp;gt; origin/source
+  <span class="HLCode">remotes/origin/master 5af7b9d Site updated at 2015-03-09 06:54:16 UTC</span>
+  remotes/origin/source 4be7fba Another small minor change
+$ git branch -av
+* source                   4be7fba Another small minor change
+  remotes/octopress/master 5080107 Fixed improper canonical url
+  remotes/origin/HEAD      -&amp;gt; origin/source
+  <span class="HLCode">remotes/origin/master    7f8f845 Site updated at 2015-03-08 12:59:04 UTC</span>
+  remotes/origin/source    4be7fba Another small minor change
+$ git branch -rd origin/master
+Deleted remote branch origin/master (was 7f8f845).
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp2">
+      <p>See <a href="/blog/2015/03/08/another-jekyll-error/"><em>Another Jekyll Error</em></a> in Blog 1 for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1122,54 +1309,6 @@ by MG Siegler on TechCrunch. <a href="#fnref:news" class="reversefootnote">&#861
     </li>
     <li id="fn:po">
       <p><a href="http://blog.ivansiu.com/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/"><em>精英主義與投票考試</em></a> by Zigang Xiao. <a href="#fnref:po" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Changed My FancyBoxLocal.js]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js/"/>
-    
-    <updated>2014-12-13T18:09:31+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I’ve been using fancyBox for image popup since August.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I would like to have large screenshots which belongs to the <code>fancybox</code>
-CSS class <em>centre-aligned</em>.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Refer to <code>source/javascripts/FancyBoxLocal.js</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/460b575">460b575</a> for
-details.</p>
-
-<p>I successfully worked out another solution using <a href="http://www.w3schools.com/js/">JavaScript</a> regular
-expressions.  However, after looking at <a href="http://jquery.com">jQuery</a>’s <code>removeClass()</code>
-method in it’s <a href="https://api.jquery.com/removeclass/">API documentation</a>, I dediced to start it all
-over again using <a href="http://jquery.com">jQuery</a> due to the simplicity of this approach.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>In <a href="http://www.vim.org">Vim</a>’s search pattern, <code>\&gt;</code> denotes the end of a word.  It took me
-a while to find out its counterpart in <a href="http://www.w3schools.com/js/">JavaScript</a> — <code>\b</code>.  The
-character ‘b’ stands for “boundary”.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> for details. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
