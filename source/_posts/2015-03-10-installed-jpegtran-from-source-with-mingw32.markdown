@@ -24,8 +24,8 @@ Since there're *too many* words following the instructions for a \*nix
 machine below the table of contents in `install.txt`, I tried
 installing it with [Make] like \*nix, so that the installation could
 be finished in four simple commands: `./configure`, `make`, `make
-test` and `make install`.
-[The output of the first command](#config_o) was fine.
+test` and `make install`.  The output of the first command was
+fine.[^config]
 
 Unluckily, I got trouble when I moved on to the next command.
 
@@ -112,6 +112,7 @@ pictures.
     in Blog 1 for details.
 
 [^goo_dev]: [*Optimize images*][imgoptim] in Google Pagespeed rules.
+[^config]: Click [here](#config_o){:.cliwide} to see the bash output.
 [^su401808]:
     [*make: Interrupt/Exception caught*][su401808] in Super User.
 
