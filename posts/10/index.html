@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="This afternoon, I read the proof of Banach fixed-point theorem in
-Wikipedia.1 It’s said that \begin{equation} d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1, &hellip;">
+  <meta name="description" content="I’m upgrading my Ubuntu 12.04 LTS to 14.04 LTS. I hope the process
+will go smoothly. However, I saw something like this. File descriptor 46 (pipe:[ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,52 @@ Wikipedia.1 It’s said that \begin{equation} d(x^*,x_n) \le \frac{q^n}{1 - q} d
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">Ubuntu Distribution Upgrade to 14.04</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-12T23:46:40+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:46 pm</span></time>
+        
+           | <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/posts/UbuntuDistUpgrade/img.png" alt="Screenshot of the GUI upgrade manager" title="Upgrading Ubuntu to version 14.04" /></p>
+
+<p>I’m upgrading my <a href="http://www.ubuntu.com/" title="A popular Linux distro">Ubuntu</a> 12.04 LTS to 14.04 LTS.  I hope the process
+will go smoothly.  However, I saw something like this.</p>
+
+<pre><code>File descriptor 46 (pipe:[31349]) leaked on lvs invocation. Parent PID 20708: /bin/sh
+</code></pre>
+
+<p>As <em>not</em> a IT student, I probably <em>won’t</em> find the cause for it for
+the next few years.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -746,70 +792,6 @@ scroll to enlarge/reduce it.<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
-        
-           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
-my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
-post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
-load.  I found out what’s wrong in a minute—at line 21 of in
-<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
-96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
-official MathJax script via HTTPS, and my local settings and macros in
-<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
-discovered that in the official documentation of MathJax, the address
-for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
-opinion, the new URL is better because it’s more easy to remember.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -851,7 +833,7 @@ opinion, the new URL is better because it’s more easy to remember.</p>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (15)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (25)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -871,6 +853,10 @@ opinion, the new URL is better because it’s more easy to remember.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Installed Jpegtran From Source With MinGW32</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog/">Set Up Another Local Repository for an Existing Octopress Blog</a>
       </li>
     
@@ -884,10 +870,6 @@ opinion, the new URL is better because it’s more easy to remember.</p>
     
       <li class="post">
         <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/28/another-bod-on-win-star-7/">Another BoD on Win* 7</a>
       </li>
     
   </ul>

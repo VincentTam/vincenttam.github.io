@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Goal Same as the one in My CSS Settiings for Printing (1). Problem Having written a post on loading MathJax with a local configuration
-file, I &hellip;">
+  <meta name="description" content="Googling “tikz tutorial”, one can find several useful PDF documents
+which are easy to follow, such as the first two results. PGF/TikZ - Graphics for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,126 @@ file, I &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/11/13/plot-polar-coordinates-graphs/">Plot Polar Coordinates Graphs</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-13T23:23:04+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:23 pm</span></time>
+        
+           | <a href="/blog/2014/11/13/plot-polar-coordinates-graphs/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/11/13/plot-polar-coordinates-graphs/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/11/13/plot-polar-coordinates-graphs/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Googling “tikz tutorial”, one can find several useful PDF documents
+which are easy to follow, such as the first two results.</p>
+
+<ol>
+  <li><a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf"><em>PGF/TikZ - Graphics for</em> $\rm \LaTeX$ <em>—A tutorial</em></a> by
+Meik Hellmund</li>
+  <li><a href="http://cremeronline.com/LaTeX/minimaltikz.pdf"><em>A very minimal introduction to TikZ</em></a> by Jacques Crémer</li>
+</ol>
+
+<p>The second PDF document covers plotting graphs in rectangular
+coordinates.  <strong>How about polar coordinates?</strong></p>
+
+<p>It’s easy to find a solution online, but understanding the code and
+adapting them according to your needs are <em>much</em> harder.  One has to
+make use of “cs”, which stands for “coordinate system”.  If one is too
+lazy to read more webpages, then one may use the code below.</p>
+
+<p>When I drew figures with <a href="http://www.texample.net/tikz/">Ti<em>k</em>Z</a> a recent post on limits of composite
+functions on $\reals^n$, I found a way to construct random region with
+Ti<em>k</em>Z in a $\rm \TeX$–$\rm \LaTeX$ Stack Exchange
+question.<sup id="fnref:rand_region"><a href="#fn:rand_region" class="footnote">1</a></sup>  This inspired me to come up with the
+following graph.</p>
+
+<h2 id="output">Output</h2>
+
+<p><img class="center" src="/images/posts/TikZPolar/graph.svg" width="750" title="fig1" alt="polar plot" /></p>
+
+<h2 id="source-code">Source code</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>The $\rm \LaTeX$ source code for the above graph  (TikZPolar.tex)</span> <a href="/downloads/code/TikZPolar.tex">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line">  <span class="c">% drawing grid lines</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>1,...,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (0,0) circle (<span class="k">\r</span>);<span class="nb">}</span>
+</span><span class="line">  <span class="k">\draw</span> (-6.5,0) -- (6.5,0);
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\theta</span> in <span class="nb">{</span>15,30,...,165<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (<span class="k">\theta</span>:6.5) -- (<span class="k">\theta</span>+180:6.5);<span class="nb">}</span>
+</span><span class="line">  <span class="c">% labelling them</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
+</span><span class="line">  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
+</span><span class="line">    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="nb">^</span><span class="nv">\circ</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line">  <span class="nb">}</span>
+</span><span class="line">  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
+</span><span class="line">  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
+</span><span class="line">  plot (<span class="k">\x</span>:<span class="nb">{</span>5-sin(3*<span class="k">\x</span>)<span class="nb">}</span>);
+</span><span class="line">  <span class="k">\node</span> at (270:8) <span class="nb">{</span>The graph of <span class="s">$</span><span class="nb">r </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="o">(</span><span class="m">3</span><span class="nv">\theta</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>I got the idea of for loop in TikZ from
+  <a href="http://stuff.mit.edu/afs/athena/contrib/tex-contrib/beamer/pgf-1.01/doc/generic/pgf/version-for-tex4ht/en/pgfmanualse15.html"><em>TikZ and PGF Manual</em></a>.</li>
+  <li>I learnt the syntax for plotting functions from the PDF in item (2).</li>
+</ul>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:rand_region">
+
+      <p>Refer to <a href="http://tex.stackexchange.com/a/60707"><em>TikZ: Arbitrary shapes and filling?</em></a> for
+details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -634,56 +754,6 @@ Cauchy–Schwartz inequality.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Update Vim Plugins Managed by pathogen.vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-11T16:58:38+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:58 pm</span></time>
-        
-           | <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="objective">Objective</h2>
-
-<p>To update <em>many</em> Vim plugins under <code>runtimepath</code> managed by
-<a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> <em>efficiently</em>.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>With the <code>:BundleUpdate</code> editor command, users of <a href="https://github.com/gmarik/Vundle.vim">Vundle</a> can easily
-keep his/her plugins up to date with the remote repository.  However,
-pathogen.vim is a popular plugin, so it’s worth studying.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -725,7 +795,7 @@ pathogen.vim is a popular plugin, so it’s worth studying.</p>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (15)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (25)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -745,6 +815,10 @@ pathogen.vim is a popular plugin, so it’s worth studying.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Installed Jpegtran From Source With MinGW32</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog/">Set Up Another Local Repository for an Existing Octopress Blog</a>
       </li>
     
@@ -758,10 +832,6 @@ pathogen.vim is a popular plugin, so it’s worth studying.</p>
     
       <li class="post">
         <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/28/another-bod-on-win-star-7/">Another BoD on Win* 7</a>
       </li>
     
   </ul>
