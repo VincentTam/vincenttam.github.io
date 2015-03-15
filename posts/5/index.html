@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Googling “tikz tutorial”, one can find several useful PDF documents
-which are easy to follow, such as the first two results. PGF/TikZ - Graphics for &hellip;">
+  <meta name="description" content="Half a month ago, I didn’t know how to find $\displaystyle
+\lim_{n \to \infty} \sqrt[n]{a^n+b^n}$. With the help from
+others, I could show that the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +76,99 @@ which are easy to follow, such as the first two results. PGF/TikZ - Graphics for
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/11/14/power-means-with-infinite-exponents/">Power Means With Infinite Exponents</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-14T00:30:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:30 am</span></time>
+        
+           | <a href="/blog/2014/11/14/power-means-with-infinite-exponents/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/11/14/power-means-with-infinite-exponents/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find $\displaystyle
+\lim_{n \to \infty} \sqrt[n]{a^n+b^n}$.  With the help from
+others, I could show that the answer was $\max\left\{ a,b
+\right\}$.  This inspired me to solve a question which had been in
+my mind since I was F.3.</p>
+
+<p>Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}}
+\quad\forall\,n \in \naturals$, and $a_i &gt; 0\quad\forall\,i =
+1,\dots,k$.<br />
+Show that $\displaystyle \lim_{n \to \infty} M_n
+(a_1,\dots,a_k) = \max\left\{ a_i \mid i = 1,\dots,k
+\right\}$ and $\displaystyle \lim_{n \to -\infty} M_n =
+\min\left\{ a_i \mid i = 1,\dots,k \right\}$.</p>
+
+<p><em>Proof</em>:</p>
+
+<p>I’ll use the facts that $\displaystyle \lim_{n \to \infty}
+b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by
+dividing $b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let
+$b^{\frac{1}{n}} = 1 + \delta_n$ for some $\delta_n &gt; 0$.
+It’s a good exercise on the definition of limits, the binomial
+expansion and elementary properties of inequalities.)</p>
+
+<p>Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note
+that
+\[
+\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}}
+\le \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
+\sqrt[n]{\frac{kM^n}{k}} = M
+\]
+Therefore, taking limit as $n \to \infty$ and applying the Squeeze
+Theorem, one has
+\[
+\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{
+a_i \mid i = 1,\dots,k \right\}.
+\]
+I wrote similar arguments for the case $n \to -\infty$, but after I
+read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
+
+<p>Replace $a_i$’s with $1/a_i$’s.  Then
+\[
+\begin{aligned}
+\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
+\left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
+\left.\frac{1}{a_i} \right| i = 1,\dots,k \right\} &#92;\<br />
+\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
+a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
+1,\dots,k \right\}} &#92;\<br />
+\lim_{n \to \infty} \left( \frac{\sum_{i=1}^{k}
+a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
+\mid i = 1,\dots,k \right\}
+\end{aligned}
+\]
+Hence, $\displaystyle \lim_{n \to -\infty} M_n
+(a_1,\dots,a_k) = \lim_{n \to -\infty}
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} = \min\left\{
+a_i \mid i = 1,\dots,k \right\}$.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -675,85 +769,6 @@ main&gt;'
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Understood Power Means Inequality for Integer Powers</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-25T18:02:53+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:02 pm</span></time>
-        
-           | <a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve learnt the AM–GM–HM inequality when I was a secondary school
-student.</p>
-
-<p>\[
-  \frac{\sum_{i=1}^n x_i}{n} \ge \sqrt[n]{\prod_{i=1}^n x_i} \ge
-  \frac{n}{\sum_{i=1}^n x_i^{-1}}
-\]</p>
-
-<p>But I didn’t know how to generalise it to integer power $s$.  That is,
-if $k$ and $m$ are positive integers such that $k \le m$, then we have</p>
-
-<p>\[
-  \left( \frac{\sum_{i=1}^n x_i^k}{n} \right)^{\frac{1}{k}} \le
-  \left( \frac{\sum_{i=1}^n x_i^m}{n} \right)^{\frac{1}{m}}.
-\]</p>
-
-<p>I read the proof in Wikipedia, and got stuck in the first step.</p>
-
-<p>\[
-  \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k}}{\sum_{i=1}^{n}w_{i}x_{i}^
-  {k-1}} \le \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k+1}}{\sum_{i=1}^{n}
-  w_{i}x_{i}^{k}},
-\]</p>
-
-<p>I quickly realised that $w_i = 1/n$ in this case.  Even though I know
-that the above inequality is eqivalent to</p>
-
-<p>\[
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k} \right)^2 \le
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k-1} \right)
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k+1} \right),
-\]</p>
-
-<p>At the first glance, I didn’t know how to relate this to the famous
-Cauchy–Schwartz inequality.</p>
-
-<p>\[
-  \left( \sum_{i=1}^n a_{i}b_{i} \right)^2 \le
-  \left(\sum_{i=1}^n a_{i}^2\right)
-  \left(\sum_{i=1}^n b_{i}^2\right)
-\]</p>
-
-<p>Actually, setting $a_i = \sqrt{w_{i}x_{i}^{k-1}}$ and $b_i =
-\sqrt{w_{i}x_{i}^{k+1}}$ will do.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -796,7 +811,7 @@ Cauchy–Schwartz inequality.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (36)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (25)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (26)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -815,6 +830,10 @@ Cauchy–Schwartz inequality.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/">Powers of Roots of Irreducible Polynomials in a Field With Characteristic $p$</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Installed Jpegtran From Source With MinGW32</a>
       </li>
     
@@ -828,10 +847,6 @@ Cauchy–Schwartz inequality.</p>
     
       <li class="post">
         <a href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/">Learnt Cauchy&#8211;Bunyakovsky&#8211;Schwarz Inequality for Definite Integrals</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a>
       </li>
     
   </ul>

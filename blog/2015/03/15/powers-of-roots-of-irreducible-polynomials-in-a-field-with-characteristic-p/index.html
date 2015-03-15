@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Emacs - Blog 1</title>
+  <title>Powers of Roots of Irreducible Polynomials in a Field With Characteristic $p$ - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Category: emacs">
+  <meta name="description" content="Suppose we have a field $F$ of characteristic $p$ and a degree $n$
+irreducible polynomial $f \in F[x]$. \[
+f(x) = \sum_{i = 0}^n a_i x^i \text{, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/categories/emacs">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -73,42 +75,193 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Emacs</h1>
-    
-  </header>
-  
-  <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2013</h2>
-
-<article>
-  
-
-    <h1><a href="/blog/2013/12/23/vi-key-bindings-in-emacs/">Vi Key Bindings in Emacs</a></h1>
-
-<time datetime="2013-12-23T23:40:00+08:00" pubdate><span class='month'>Dec</span> <span class='day'>23</span> <span class='year'>2013</span></time>
-
-  <footer>
-    
     
       
-      <span class="categories">posted in <a class='category' href='/blog/categories/emacs/'>emacs</a></span>
+	<h1 class="entry-title">Powers of Roots of Irreducible Polynomials in a Field With Characteristic $p$</h1>
+      
     
-  </footer>
+    
+      <p class="meta">
+        
 
 
-</article>
 
+
+<time class='entry-date' datetime='2015-03-15T13:53:12+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:53 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Suppose we have a field $F$ of characteristic $p$ and a degree $n$
+irreducible polynomial $f \in F[x]$.</p>
+
+<div class="myeqn">
+\[
+f(x) = \sum_{i = 0}^n a_i x^i \text{, where } a_i \in F \,\forall i =
+0,1,\dots,n.
+\]
 </div>
 
+<p>One can find a root $\alpha \notin F$ of $f$ in a field extension $E$
+of $F$ by Kronecker’s Theorem.  Then $f(\alpha) = 0$. <strong>How about the
+other $n - 1$ roots of $f$?</strong></p>
+
+<p>Half a month ago, I <em>couldn’t</em> find out the answer directly — I used
+the fact that all finite fields of order $p^n$ were isomorphic to
+$\fields_{p^n}$, which was the collection of roots of $x^{p^n} - x$
+in $\integers_p$ in $\overline{\integers_p}$.  However, this makes
+use of <em>too many</em> abstract facts.</p>
+
+<p>Yesterday night, by computing the $p$-th power of an element $\beta$
+in $E$, I finally know the direct way of finding the other $n - 1$
+roots of $f$ in $E$.  Let $b_0,\dots,b_n \in F$ such that</p>
+
+<div class="myeqn">
+\[
+\beta = \sum_{i = 0}^{n - 1} b_i \alpha^i.
+\]
+</div>
+
+<p>Compute the $p$-th power of $\beta$.</p>
+
+<div class="myeqn">
+\[
+\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{k_0,\dots,k_{n
+- 1}} \frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
+  \alpha^i)^{k_i},
+\]
+</div>
+
+<div class="myeqn">
+\begin{equation}
+\text{ where } 0 \le k_i \le p \,\forall i = 0,\dots,n \text{ and }
+\sum_{i = 0}^{n - 1} k_i = p. \label{eq:cond}
+\end{equation}
+</div>
+
+<p>Case 1: $\exists k_j = p$, then $k_i = 0 \,\forall i \ne j$.</p>
+
+<div class="myeqn">
+\[
+\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
+\alpha^i)^{k_i} = 1 \cdot (b_j \alpha^j)^{k_j} = b_j \alpha^{pj}
+\]
+</div>
+
+<p>Note that one can prove that $\forall b \in F, b^p = b$ by induction.</p>
+
+<p>Case 2: $k_i \ne p \,\forall i = 0,\dots,n$.  Since $p$ is a prime,</p>
+
+<div class="myeqn">
+\[
+\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} = 0 \text{ in } \integers_p
+\]
+</div>
+
+<p>Since one only has $n$ choices of $k_0,\dots,k_{n - 1}$ which
+satisfy \eqref{eq:cond}, we conclude that</p>
+
+<div class="myeqn">
+\begin{equation}
+\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{i = 0}^{n - 1}
+b_i^p \alpha^{pi} \label{eq:powp}
+\end{equation}
+</div>
+
+<p>Since $\alpha$ is a root of $f$ in $E$, $(f(\alpha))^p = 0$.
+Replacing “$n - 1$” by “$n$” in the derivation of \eqref{eq:powp}, one
+gets</p>
+
+<div class="myeqn">
+\[
+(f(\alpha))^p = (\sum_{i = 0}^n a_i \alpha^i)^p = \sum_{i = 0}^n a_i
+\alpha^{pi} = f(\alpha^p) = 0
+\]
+</div>
+
+<p>Therefore, <em>without</em> learning induction, one can sense that
+$f(\alpha^{p^m}) = 0 \,\forall m \in \naturals$.  That’s not the end.
+Since the degree of $f$ is $n$, we expect to that the number of roots
+of $f$ is <em>finite</em>.  Since we expect $n$ roots of $f$, we hope that
+$\alpha^{p^m}$ will repeat itself for sufficiently large $m$.  This
+hope comes true due to Lagrange’s Theorem — $|F^\times| = p^n -
+1$, so $\alpha^{p^n - 1} = 1$.</p>
+
+<p>Unluckily, I’ve just found out that $f$ <em>has</em> some root $\alpha’$
+which <em>doesn’t</em> hit either one of
+$\alpha,\alpha^p,\alpha^{p^2},\dots,\alpha^{p^{n - 1}}$.  For example,
+if one sets $f(x) := x^{p^2} - x \in \integers_p[x]$ and let
+$\alpha$ be a root of $f$ in $\overline{\integers_p}$, then it’s
+trivial that $\alpha^{p^2} = \alpha$, thus the collection of the
+$p^m$-th power of $\alpha$ is just $\left\{ \alpha,\alpha^p
+\right\}$.  (i.e. $\left\{ \alpha^{p^m} \mid m \in \naturals
+\right\} = \left\{ \alpha,\alpha^p \right\}$)  Nevertheless, $f$
+should have $p^2$ roots in $\overline{\integers_p}$.</p>
+
+<p>Hence, I <em>didn’t</em> succeed in answering <strong>the above bolded question</strong>,
+but I still learn something about the roots of an irreducible
+polynomial in an algebraic extension.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-03-15T13:53:12+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:53 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/math/'>math</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/" title="Previous Post: Installed Jpegtran from Source with MinGW32">&laquo; Installed Jpegtran from Source with MinGW32</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -207,7 +360,10 @@
       var disqus_shortname = 'blogueun';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
