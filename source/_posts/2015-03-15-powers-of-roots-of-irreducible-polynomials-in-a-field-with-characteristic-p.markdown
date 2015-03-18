@@ -101,6 +101,7 @@ $\alpha^{p^m}$ will repeat itself for sufficiently large $m$.  This
 hope comes true due to Lagrange's Theorem --- $\|F^\times\| = p^n -
 1$, so $\alpha^{p^n - 1} = 1$.
 
+<del>
 Unluckily, I've just found out that $f$ *has* some root $\alpha'$
 which *doesn't* hit either one of
 $\alpha,\alpha^p,\alpha^{p^2},\dots,\alpha^{p^{n - 1}}$.  For example,
@@ -111,7 +112,14 @@ $p^m$-th power of $\alpha$ is just $\left\\{ \alpha,\alpha^p
 \right\\}$.  (i.e. $\left\\{ \alpha^{p^m} \mid m \in \naturals
 \right\\} = \left\\{ \alpha,\alpha^p \right\\}$)  Nevertheless, $f$
 should have $p^2$ roots in $\overline{\integers\_p}$.
+</del>
 
 Hence, I *didn't* succeed in answering **the above bolded question**,
 but I still learn something about the roots of an irreducible
 polynomial in an algebraic extension.
+
+---
+(Added on MAR 18, 2015)
+
+With the results from splitting fields, **this question** can be
+answered immediately.
