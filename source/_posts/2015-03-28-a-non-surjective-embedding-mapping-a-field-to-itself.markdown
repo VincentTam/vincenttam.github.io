@@ -24,7 +24,7 @@ From this, I've understood that why the Isomorphism Extension Theomrem
 
 ---
 [^mathse91688]:
-    [*How to prove that the Frobenius homomorphism is
-    surjective?*][mathse91688] on Mathematics Stack Exchange.
+    [*How to prove that the Frobenius homomorphism is surjective?*][mathse91688]
+    on Mathematics Stack Exchange.
 
 [mathse91688]: http://math.stackexchange.com/q/91688
