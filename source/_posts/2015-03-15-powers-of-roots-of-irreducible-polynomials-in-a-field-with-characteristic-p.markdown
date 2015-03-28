@@ -119,7 +119,7 @@ but I still learn something about the roots of an irreducible
 polynomial in an algebraic extension.
 
 ---
-(Added on MAR 18, 2015)
+(Edited on MAR 28, 2015)
 
-With the results from splitting fields, **this question** can be
-answered immediately.
+With the results from perfect fields, we *immediately* know that $f$
+has $n$ different roots.
