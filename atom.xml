@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-03-18T19:57:41+08:00</updated>
+  <updated>2015-03-28T15:31:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Non-surjective Embedding Mapping a Field to Itself]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/"/>
+    
+    <updated>2015-03-28T13:38:52+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself</id>
+    
+      <content type="html"><![CDATA[<p>A week ago, I came up with an injective, but <em>not surjective</em>
+homomorphism which mapped a field to the same field: $\phi:
+\rationals(e) \to \rationals(e)$ defined by $\phi(e) = e^2$ and
+$\left.\phi\right|_\rationals = \id_{\rationals}$.  It <em>isn’t</em>
+surjective because $\phi[\rationals(e)] = \rationals(e^2) \subsetneq
+\rationals(e)$</p>
+
+<p>Obviously, this kind of mapping <em>wasn’t</em> defined on a finite field.</p>
+
+<p>After that, I found another non-surjective embedding which sends field
+$\integers_p [y]$, where $y$ is an indeterminate, to itself on
+Mathematics Stack Exchange.<sup id="fnref:mathse91688"><a href="#fn:mathse91688" class="footnote">1</a></sup></p>
+
+<p>From this, I’ve understood that why the Isomorphism Extension Theomrem
+<em>doesn’t</em> apply to transcendental field extensions.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:mathse91688">
+
+      <p><a href="http://math.stackexchange.com/q/91688"><em>How to prove that the Frobenius homomorphism is
+surjective?</em></a> on Mathematics Stack Exchange. <a href="#fnref:mathse91688" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -134,10 +173,10 @@ but I still learn something about the roots of an irreducible
 polynomial in an algebraic extension.</p>
 
 <hr />
-<p>(Added on MAR 18, 2015)</p>
+<p>(Edited on MAR 28, 2015)</p>
 
-<p>With the results from splitting fields, <strong>this question</strong> can be
-answered immediately.</p>
+<p>With the results from perfect fields, we <em>immediately</em> know that $f$
+has $n$ different roots.</p>
 ]]></content>
     
   </entry>
@@ -2286,112 +2325,6 @@ the previous command.</p>
   <ol>
     <li id="fn:use_lynx">
       <p>See <a href="http://vincenttam.github.io/blog/2014/06/07/use-lynx-browser/"><em>Use Lynx Browser</em></a> for the reasons. <a href="#fnref:use_lynx" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Push to USB]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb/"/>
-    
-    <updated>2015-01-01T22:51:20+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ol>
-  <li>I created a bare Git repository in my USB stick on GUI.</li>
-  <li>I pushed some Git commits to the bare repository in the USB.</li>
-</ol>
-
-<p>The commands for the above steps <em>shouldn’t</em> be difficult.  In step 2,
-if one sets the upstream repository to the bare repository in the USB,
-the command to be issued is even easier: just <code>git push</code> will do, and
-the remote and branch names can be omitted.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I worked on Linux text mode instead of GUI.  After committing the
-changes, I tried pushing them into the bare Git repository in the USB.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ git status
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
-  (use "git push" to publish your local commits)
-nothing to commit, working directory clean
-[owner@localhost ~/MATH2220]$ sudo mount -t vfat /dev/sdf1 \
-&gt; /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ git push
-Counting objects: 4, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-remote: error: insufficient permission for adding an object to repository databa
-se objects
-remote: fatal: failed to write object
-error: unpack failed: unpack-objects abnormal exit
-To /media/owner/08F1-B181/MATH2220/MATH2220.git
- ! [remote rejected] master -&gt; master (unpacker error)
-error: failed to push some refs to '/media/owner/08F1-B181/MATH2220/MATH2220.git
-'
-</code></pre>
-
-<p><strong>How can I push commits into the USB?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “git push usb rejected” for a similar problem, and “linux
-text mode git” for a Git tutorial on CLI, but I <em>couldn’t</em> find what I
-wanted.  I observed that this <em>wasn’t</em> a problem of Git, but a problem
-about file permissions on *nix.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ ll /media/owner/
-total 12
-drwxr-x---+ 3 root root 4096 Jan  1 21:40 ./
-drwxr-xr-x  4 root root 4096 Aug 13 02:09 ../
-drwxr-xr-x  2 root root 4096 Jan  1 21:40 08F1-B181/
-</code></pre>
-
-<p>Then I changed the search words, and finally found a page on SUSE
-Communities.<sup id="fnref:suse"><a href="#fn:suse" class="footnote">1</a></sup>  I read the commands and their descriptions, and
-eventually solved the problem.</p>
-
-<p>After I had unmounted the USB drive, I typed the command for mounting
-the USB stick again.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ sudo umount /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ sudo mount -t vfat -o uid=owner,gid=owner\
-&gt; /dev/sdf1 /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ git push
-Counting objects: 4, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-To /media/owner/08F1-B181/MATH2220/MATH2220.git
-   9e8e53e..4fa36c7  master -&gt; master
-</code></pre>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>One can specify the owner and the user group of the VFAT filesystem to
-be mounted with <code>-o uid=foo,gid=bar</code> for USB devices.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:suse">
-
-      <p><a href="https://www.suse.com/communities/conversations/manually-mounting-a-usb-flash-drive-in-linux/"><em>Manually Mount a USB Flash Drive in Linux</em></a> by
-coolguys-suse on SUSE Communities. <a href="#fnref:suse" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

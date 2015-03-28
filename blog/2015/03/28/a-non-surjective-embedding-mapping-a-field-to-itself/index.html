@@ -5,12 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Cheat in an Online Quiz - Blog 1</title>
+  <title>A Non-surjective Embedding Mapping a Field to Itself - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I saw an online quiz on France Technology. I didn’t know
-the answers, but wanted to give the right response. How? First, view the HTML &hellip;">
+  <meta name="description" content="A week ago, I came up with an injective, but not surjective
+homomorphism which mapped a field to the same field: $\phi:
+\rationals(e) \to \rationals( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +20,7 @@ the answers, but wanted to give the right response. How? First, view the HTML &h
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -79,7 +80,7 @@ the answers, but wanted to give the right response. How? First, view the HTML &h
   <header>
     
       
-	<h1 class="entry-title">Cheat in an Online Quiz</h1>
+	<h1 class="entry-title">A Non-surjective Embedding Mapping a Field to Itself</h1>
       
     
     
@@ -89,7 +90,7 @@ the answers, but wanted to give the right response. How? First, view the HTML &h
 
 
 
-<time class='entry-date' datetime='2014-12-11T18:14:44+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:14 pm</span></time>
+<time class='entry-date' datetime='2015-03-28T13:38:52+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:38 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -100,69 +101,33 @@ the answers, but wanted to give the right response. How? First, view the HTML &h
   </header>
 
 
-<div class="entry-content"><h2 id="background">Background</h2>
+<div class="entry-content"><p>A week ago, I came up with an injective, but <em>not surjective</em>
+homomorphism which mapped a field to the same field: $\phi:
+\rationals(e) \to \rationals(e)$ defined by $\phi(e) = e^2$ and
+$\left.\phi\right|_\rationals = \id_{\rationals}$.  It <em>isn’t</em>
+surjective because $\phi[\rationals(e)] = \rationals(e^2) \subsetneq
+\rationals(e)$</p>
 
-<p>I saw <a href="http://www.kejifalanxi.com/en/category/quiz">an online quiz on France Technology</a>.  I <em>didn’t</em> know
-the answers, but wanted to give the <em>right</em> response.</p>
+<p>Obviously, this kind of mapping <em>wasn’t</em> defined on a finite field.</p>
 
-<!-- more -->
+<p>After that, I found another non-surjective embedding which sends field
+$\integers_p [y]$, where $y$ is an indeterminate, to itself on
+Mathematics Stack Exchange.<sup id="fnref:mathse91688"><a href="#fn:mathse91688" class="footnote">1</a></sup></p>
 
-<h2 id="how">How?</h2>
+<p>From this, I’ve understood that why the Isomorphism Extension Theomrem
+<em>doesn’t</em> apply to transcendental field extensions.</p>
 
-<p>First, view the HTML source code of the web page for the quiz and find
-the relevant part.</p>
+<hr />
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of the source code for the quiz</span><a href="http://goo.gl/cy3GYD">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div&gt;&lt;h3&gt;</span>1.In which year was the first French technical exhibition
-</span><span class="line">held in China?<span class="nt">&lt;/h3&gt;&lt;/div&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span>  <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>A.1492 <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>B.1954<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span> <span class="na">value=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>C.1964 <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;radio&quot;</span> <span class="na">name=</span><span class="s">&quot;d1&quot;</span><span class="nt">&gt;</span>D.2014<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;button&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span> <span class="na">class=</span><span class="s">&quot;submit&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="footnotes">
+  <ol>
+    <li id="fn:mathse91688">
 
-<p>It’s quite obvious that ‘C’ is the answer.</p>
-
-<p>If one wants to know what will happen after clicking the “Submit”
-button, one may search for this word in the HTML source code.  In this
-case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>What does the &#8220;Submit&#8221; button do?</span><a href="http://goo.gl/cy3GYD">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.submit&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">	<span class="nx">$this</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
-</span><span class="line">	<span class="nx">value</span><span class="o">=</span><span class="nx">$this</span><span class="p">.</span><span class="nx">parent</span><span class="p">().</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;input:radio:checked&quot;</span><span class="p">).</span><span class="nx">val</span><span class="p">();</span>
-</span><span class="line">	<span class="k">if</span><span class="p">(</span><span class="nx">value</span><span class="o">==</span><span class="mi">1</span><span class="p">){</span>
-</span><span class="line">	    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Congratulations! right answer~&quot;</span><span class="p">);</span>
-</span><span class="line">	<span class="p">}</span><span class="k">else</span><span class="p">{</span>
-</span><span class="line">	    <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;OOPS, wrong answer~&quot;</span><span class="p">);</span>
-</span><span class="line">	<span class="p">}</span>
-</span><span class="line">  <span class="p">});</span>
-</span><span class="line"><span class="p">});</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Finally, one can conclude that if the radio button has the value
-<em>one</em>, then it is certainly the answer.</p>
-
+      <p><a href="http://math.stackexchange.com/q/91688"><em>How to prove that the Frobenius homomorphism is
+surjective?</em></a> on Mathematics Stack Exchange. <a href="#fnref:mathse91688" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -178,15 +143,21 @@ case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
 
 
 
-<time class='entry-date' datetime='2014-12-11T18:14:44+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:14 pm</span></time>
+<time class='entry-date' datetime='2015-03-28T13:38:52+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:38 pm</span></time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/math/'>math</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/" >Tweet</a>
   
   
   
@@ -197,10 +168,8 @@ case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/" title="Previous Post: A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (1)">&laquo; A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (1)</a>
+        <a class="basic-alignment left" href="/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/" title="Previous Post: Powers of Roots of Irreducible Polynomials in a Field with Characteristic $p$">&laquo; Powers of Roots of Irreducible Polynomials in a Field with Characteristic $p$</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/11/creating-latex-resumes-on-ubuntu/" title="Next Post: Creating $\rm \LaTeX$ Résumés on Ubuntu">Creating $\rm \LaTeX$ Résumés on Ubuntu &raquo;</a>
       
     </p>
   </footer>
@@ -310,8 +279,8 @@ case, one finds a <a href="http://jquery.com">jQuery</a> function.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/12/11/cheat-in-an-online-quiz/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/';
         var disqus_script = 'embed.js';
       
     (function () {
