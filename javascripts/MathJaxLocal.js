@@ -10,7 +10,7 @@ MathJax.Hub.Config({
   "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
   TeX: {
     equationNumbers: { autoNumber: "AMS" },
-    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
     TagSide: "left",
     Macros: {
       reals: ['\\mathbb{R}'],
@@ -41,7 +41,7 @@ MathJax.Hub.Config({
       GL: ['\\mathrm{GL}'],
       SL: ['\\mathrm{SL}'],
       Aut: ['\\mathrm{Aut}'],
-      id: ['\\mathop{\\mathrm{id}}'],
+      id: ['\\mathrm{id}'],
     }
   }
 });
