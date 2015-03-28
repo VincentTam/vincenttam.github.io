@@ -7,4 +7,4 @@ sharing: true
 footer: false
 ---
 
-{% include_code My config for Byobu with Tmux backend .tmux.conf lang:text %}
+{% include_code My config for Byobu with Tmux backend tmux.conf lang:text %}
