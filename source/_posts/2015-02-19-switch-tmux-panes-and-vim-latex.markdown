@@ -80,7 +80,7 @@ Lessons Learnt
 
 [Byobu]: http://byobu.co
 [Tmux]: http://tmux.sourceforge.net
-[pp]: blog/2015/02/14/use-tmux-for-previewing-posts/
+[pp]: /blog/2015/02/14/use-tmux-for-previewing-posts/
 [Vim]: http://www.vim.org
 [src1]: http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits
 [src2]: http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future
