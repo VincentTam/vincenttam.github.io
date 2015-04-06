@@ -19,6 +19,13 @@ MathJax.Hub.Config({
       integers: ['\\mathbb{Z}'],
       naturals: ['\\mathbb{N}'],
       fields: ['\\mathbb{F}'],
+      field: ['\\mathbb{#1}', 1],
+      C: ['\\field{C}'],
+      F: ['\\field{F}'],
+      N: ['\\field{N}'],
+      Q: ['\\field{Q}'],
+      R: ['\\field{R}'],
+      Z: ['\\field{Z}'],
 
       zeros: ['\\mathbf{0}'],
       ud: ['\\,\\mathrm{d}'],
