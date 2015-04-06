@@ -45,8 +45,8 @@ The file extension `.tex` is for using Vim-\LaTeX.
 
 ## Subsection 1.1: sample math
 
-Suppose that $\vect{x} \ne \zeros \in \complex^n, \rationals^n, \integers^n,
-\naturals^n$.  Then we have
+Suppose that $\vect{x} \ne \zeros \in \C^n, \Q^n, \Z^n, \N^n$.  Then
+we have
 
 (@foo) $$\int_{0}^{1} 1 \ud x = \abs{1} =
 \normlr{\frac{\vect{x}}{\norm{\vect{x}}}}.$$
