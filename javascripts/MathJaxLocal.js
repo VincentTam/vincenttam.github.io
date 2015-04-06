@@ -34,6 +34,9 @@ MathJax.Hub.Config({
       exterior: ['\\mathop{\\mathrm{ext}}'],
       volume: ['\\mathop{\\mathrm{vol}}'],
 
+      E: ['{\\rm I\\kern-.3em E}'],
+      Var: ['\\mathop{\\mathrm{Var}}'],
+      Cov: ['\\mathop{\\mathrm{Cov}}'],
       Binom: ['\\mathop{\\mathrm{Binom}}'],
       Exp: ['\\mathop{\\mathrm{Exp}}'],
       Poi: ['\\mathop{\\mathrm{Poi}}'],
