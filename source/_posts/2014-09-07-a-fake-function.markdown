@@ -36,5 +36,5 @@ g\_2$.  I realised that I need to check whether $\phi$ was
 *well-defined*.  As a result, I wasted an hour on some equations.
 Suddenly, I stopped substituting $x = g\_1$ or $x = g\_2$ into
 $\varphi\_{g\_1} (x) = \varphi\_{g\_2} (x)$.  Instead I took $\langle
-G, * \rangle = \langle \reals, \cdot \rangle$ and realized what I just
-did was a waste of time.
+G, * \rangle = \langle \R, \cdot \rangle$ and realized what I just did
+was a waste of time.

@@ -9,10 +9,10 @@ external-url: https://proofwiki.org/wiki/Product_of_GCD_and_LCM
 
 In ProofWiki's first proof, it has taken me some time to understand.
 I often write $d=\gcd(a,b)$, $a=a'd$, $b=b'd$ for some $a',b' \in
-\integers\_{>0}$, and $n$ as *any* common multiple of $a$ and $b$.
-Then $n=q\_1 a=q\_2 b$ for some $q\_1,q\_2 \in \integers$.  The letter
-$q$ connotes *quotient*.  To show that $\lcm(a,b) \times \gcd(a,b) =
-ab$, it suffices to show that
+\Z\_{>0}$, and $n$ as *any* common multiple of $a$ and $b$.  Then
+$n = q\_1 a = q\_2 b$ for some $q\_1,q\_2 \in \Z$.  The letter $q$
+connotes *quotient*.  To show that $\lcm(a,b) \times \gcd(a,b) = ab$,
+it suffices to show that
 
 \begin{gather}
   a \left | \frac{ab}{d} \right. \land 
@@ -27,7 +27,7 @@ $b$" respectively.
 Equation \eqref{eq:isLCM} is very easy to check since $\displaystyle
 \frac{ab}{d} = a'b = ab'$.
 
-By Bézout's Identity, $ax+by=d$ for some $x,y \in \integers$.
+By Bézout's Identity, $ax+by=d$ for some $x,y \in \Z$.
 
 Since what we want is $\displaystyle \frac{ab}{d} (\dots) = n$, we
 multiply both sides of the above equation by $\displaystyle

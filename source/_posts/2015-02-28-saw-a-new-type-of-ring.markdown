@@ -27,7 +27,7 @@ local ring.  This evening, I found it in Wikipedia, and realised that
 even though I had already convinced myself that a finite field $F$ of
 prime characteristic $p$ has an algebraic closure <span class="myeqn"
 markdown="0">$\displaystyle \overline{F} = \bigcup_{i = 1}^\infty
-\fields_{p^i}$</span>, I still *didn't* know many properties of the
+\F_{p^i}$</span>, I still *didn't* know many properties of the
 structure of fields.[^alg_closure]  The simplest example of a local
 ring is a field, which has only the trivial ideal <span class="myeqn"
 markdown="0">$\{0\}$</span> as its proper ideal.

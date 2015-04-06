@@ -34,7 +34,7 @@ I was so happy that I *didn't* think of further generalisations.  I
 *didn't* realise that the inequality can be more concisely written as
 $\langle \vect{a}, \vect{b} \rangle^2 \le \norm{\vect{a}}^2
 \norm{\vect{b}}^2$, where <span class="myeqn" markdown="0">$\vect{a} =
-(a_1,\cdots,a_n), \vect{b} = (b_1,\cdots,b_n) \in \reals^n$</span>
+(a_1,\cdots,a_n), \vect{b} = (b_1,\cdots,b_n) \in \R^n$</span>
 
 This Friday evening, I did a question about the integral version of
 the inequality.  After spending hours to come up with an idea, I
@@ -49,7 +49,7 @@ to imagine what happens by looking at the original equality.  However,
 if we convert it into the determinant of $p(t)$, then one quickly
 knows that this is equivalent to $p(t) = 0$, and can easily conclude
 that equality holds if and only if the two functions $f$ and $g$
-satisfy $f \equiv k g$ for some $k \in \reals$ for almost all
+satisfy $f \equiv k g$ for some $k \in \R$ for almost all
 points.[^rmk]
 
 ---

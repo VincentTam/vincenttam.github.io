@@ -71,14 +71,13 @@ Existence of identity
 An application in secondary school mathematics
 ---
 
-In high school, to show that $B \in M\_{n \times n}(\reals)$ is an
-inverse of $A \in M\_{n \times n}(\reals)$[^1], one is taught to show
-*both* $AB = I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in
-general.
+In high school, to show that $B \in M\_{n \times n}(\R)$ is an inverse
+of $A \in M\_{n \times n}(\R)$[^1], one is taught to show *both* $AB =
+I$ and $BA = I$.  Calculating $AB$ and $BA$ is hard in general.
 
-Taking $G = \GL(n,\reals)$ and regard $\*$ as matrix multiplication,
-one can just show that $AB = I$ by direct calculation and then
-conclude that $BA = I$, and vice versa.
+Taking $G = \GL(n,\R)$ and regard $\*$ as matrix multiplication, one
+can just show that $AB = I$ by direct calculation and then conclude
+that $BA = I$, and vice versa.
 
 ---
-[^1]: To be more general, $\reals$ can be replaced with $\fields$.
+[^1]: To be more general, $\R$ can be replaced with $\F$.

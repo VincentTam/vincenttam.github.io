@@ -6,8 +6,7 @@ comments: true
 categories: math
 ---
 
-Suppose $f: \vect{I} \to \reals^2$, where $\vect{I} = [0,1] \times
-[0,1]$,
+Suppose $f: \vect{I} \to \R^2$, where $\vect{I} = [0,1] \times [0,1]$,
 
 \\[
 f(x,y) =

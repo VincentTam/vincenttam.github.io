@@ -22,9 +22,9 @@ other $n - 1$ roots of $f$?**
 
 Half a month ago, I *couldn't* find out the answer directly --- I used
 the fact that all finite fields of order $p^n$ were isomorphic to
-$\fields\_{p^n}$, which was the collection of roots of $x^{p^n} - x$
-in $\integers\_p$ in $\overline{\integers_p}$.  However, this makes
-use of *too many* abstract facts.
+$\F\_{p^n}$, which was the collection of roots of $x^{p^n} - x$ in
+$\Z\_p$ in $\overline{\Z_p}$.  However, this makes use of *too many*
+abstract facts.
 
 Yesterday night, by computing the $p$-th power of an element $\beta$
 in $E$, I finally know the direct way of finding the other $n - 1$
@@ -68,7 +68,7 @@ Case 2: $k\_i \ne p \,\forall i = 0,\dots,n$.  Since $p$ is a prime,
 
 <div class="myeqn">
 \[
-\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} = 0 \text{ in } \integers_p
+\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} = 0 \text{ in } \Z_p
 \]
 </div>
 
@@ -94,9 +94,9 @@ gets
 </div>
 
 Therefore, *without* learning induction, one can sense that
-$f(\alpha^{p^m}) = 0 \,\forall m \in \naturals$.  That's not the end.
-Since the degree of $f$ is $n$, we expect to that the number of roots
-of $f$ is *finite*.  Since we expect $n$ roots of $f$, we hope that
+$f(\alpha^{p^m}) = 0 \,\forall m \in \N$.  That's not the end.  Since
+the degree of $f$ is $n$, we expect to that the number of roots of $f$
+is *finite*.  Since we expect $n$ roots of $f$, we hope that
 $\alpha^{p^m}$ will repeat itself for sufficiently large $m$.  This
 hope comes true due to Lagrange's Theorem --- $\|F^\times\| = p^n -
 1$, so $\alpha^{p^n - 1} = 1$.
@@ -105,13 +105,13 @@ hope comes true due to Lagrange's Theorem --- $\|F^\times\| = p^n -
 Unluckily, I've just found out that $f$ *has* some root $\alpha'$
 which *doesn't* hit either one of
 $\alpha,\alpha^p,\alpha^{p^2},\dots,\alpha^{p^{n - 1}}$.  For example,
-if one sets $f(x) := x^{p^2} - x \in \integers\_p\[x\]$ and let
-$\alpha$ be a root of $f$ in $\overline{\integers\_p}$, then it's
-trivial that $\alpha^{p^2} = \alpha$, thus the collection of the
-$p^m$-th power of $\alpha$ is just $\left\\{ \alpha,\alpha^p
-\right\\}$.  (i.e. $\left\\{ \alpha^{p^m} \mid m \in \naturals
-\right\\} = \left\\{ \alpha,\alpha^p \right\\}$)  Nevertheless, $f$
-should have $p^2$ roots in $\overline{\integers\_p}$.
+if one sets $f(x) := x^{p^2} - x \in \Z\_p\[x\]$ and let $\alpha$ be a
+root of $f$ in $\overline{\Z\_p}$, then it's trivial that
+$\alpha^{p^2} = \alpha$, thus the collection of the $p^m$-th power of
+$\alpha$ is just $\left\\{ \alpha,\alpha^p \right\\}$.  (i.e.
+$\left\\{ \alpha^{p^m} \mid m \in \N \right\\} = \left\\{
+\alpha,\alpha^p \right\\}$)  Nevertheless, $f$ should have $p^2$ roots
+in $\overline{\Z\_p}$.
 </del>
 
 Hence, I *didn't* succeed in answering **the above bolded question**,

@@ -22,9 +22,9 @@ myself what ideas should be introduced.
 
 <!-- more -->
 
-Unless otherwise specified, assume that $A \in \reals^n,\vect{x},
-\vect{x}\_0,\vect{u},\vect{v} \in \reals^n,\vect{u}\_i \in \reals^n\,
-\forall\,i \in \naturals$.
+Unless otherwise specified, assume that $A \in \R^n,\vect{x},
+\vect{x}\_0,\vect{u},\vect{v} \in \R^n,\vect{u}\_i \in \R^n\,
+\forall\,i \in \N$.
 
 Norm
 : The *norm* of $\vect{x}$ is defined as
@@ -51,14 +51,14 @@ Open set
 : $A$ is *open* if $A = \interior A$.
 
 Limit of $\\{\vect{u}\_k\\}$
-: $\forall\,\varepsilon > 0,\exists\,K \in \naturals \text{ s.t. }
+: $\forall\,\varepsilon > 0,\exists\,K \in \N \text{ s.t. }
   \forall\,k \ge K, \norm{\vect{u}\_k - \vect{u}} < \varepsilon$
 
   We denote it as
   $\displaystyle \lim\_{k \to \infty} \vect{u}\_k = \vect{u}$.
 
 Closed set
-: $\displaystyle \vect{u}\_k \in A\,\forall\,k \in \naturals,
+: $\displaystyle \vect{u}\_k \in A\,\forall\,k \in \N,
   \lim\_{k \to \infty} \vect{u}\_k = \vect{u} \implies \vect{u}\in A$
 
 Boundary
@@ -69,33 +69,33 @@ Boundary
 Exterior point
 : $\vect{u}$ is an *exterior point in* $A$ if
   $\,\exists\,r > 0 \text{ s.t. } \mathcal{B}\_r(\vect{u}) \subseteq
-  \reals^n \setminus A$.
+  \R^n \setminus A$.
 
 Exterior of a set
 : $\exterior A := \\{\vect{u} \mid \exists\,r > 0 \text{ s.t. }
-  \mathcal{B}\_r(\vect{u}) \subseteq \reals^n \setminus A\\}$
+  \mathcal{B}\_r(\vect{u}) \subseteq \R^n \setminus A\\}$
 
 Some claims
 ---
 
-If a subset $A$ of $\reals^n$ is contained in a closed subset $B$ of
-$\reals^n$, $\partial A \subseteq B$.
+If a subset $A$ of $\R^n$ is contained in a closed subset $B$ of
+$\R^n$, $\partial A \subseteq B$.
 {: #claim1}
 
 *Proof*. Let
-$\vect{u} \in \partial A. \forall\,k\in\naturals,
+$\vect{u} \in \partial A. \forall\,k \in \N,
 \exists\,\vect{u}\_k \in \mathcal{B}\_{1/k}(\vect{u}) \cap A$.
 Then $\displaystyle \lim\_{k \to \infty} \vect{u}\_k = \vect{u}$
 because $\forall\,\varepsilon > 0,K > 1/\varepsilon,
 (k \ge K \implies \norm{\vect{u} - \vect{u}\_k} < 1/k
 \le \varepsilon)$.  
-$\because \vect{u}\_k \in A\,\forall\,k \in \naturals,
+$\because \vect{u}\_k \in A\,\forall\,k \in \N,
 {\displaystyle \lim\_{k \to \infty} \vect{u}\_k = \vect{u}}$, and $B$
 is closed.  
 $\therefore\vect{u}\in B$.  
 Q.E.D.
 
-$\reals^n = \interior A \sqcup \partial A \sqcup \exterior A$
+$\R^n = \interior A \sqcup \partial A \sqcup \exterior A$
 
 *Proof*. Let $\vect{x} \notin \interior A$.  Then
 $\forall\,r > 0,\exists\,\vect{u} \in \mathcal{B}\_r(\vect{x})
@@ -120,22 +120,22 @@ $\therefore \exists\,r > 0 \text{ s.t. } \vect{v} \in A \uparrow
 i.e. $\exists\,r > 0 \text{ s.t. } \vect{v} \in
 \mathcal{B}\_r(\vect{x}) \implies \vect{v} \notin A$  
 $\therefore \exists\,r > 0 \text{ s.t. } \mathcal{B}\_r(\vect{x})
-\subseteq \reals^n \setminus A$  
+\subseteq \R^n \setminus A$  
 Hence $\vect{x}\in\exterior A$.  
 Q.E.D.
 
 From the definition of the *exterior* of $A$, it's clear that
-$\exterior A \subseteq \reals^n \setminus A$.  The reason is that
+$\exterior A \subseteq \R^n \setminus A$.  The reason is that
 $\vect{u} \in \mathcal{B}\_r(\vect{u})$.  If $\vect{u} \in \exterior
 A$, then $\exists\,r > 0 \text{ s.t. } \mathcal{B}\_r(\vect{u})
-\subseteq \reals^n \setminus A$.  Thus, $\vect{u} \in
-\mathcal{B}\_r(\vect{u}) \subseteq \reals^n \setminus A \implies
-\vect{u} \notin A$.
+\subseteq \R^n \setminus A$.  Thus, $\vect{u} \in
+\mathcal{B}\_r(\vect{u}) \subseteq \R^n \setminus A \implies \vect{u}
+\notin A$.
 {: #trivial1}
 
 Another trivial fact is from the definition of the *interior* of $A$.
 $\interior A \subseteq A$ due to the same reason for $\exterior A
-\subseteq \reals^n \setminus A$, that is, $\vect{u} \in
+\subseteq \R^n \setminus A$, that is, $\vect{u} \in
 \mathcal{B}\_r(\vect{u})$.
 $\vect{u} \in \interior A \implies \exists\,r > 0 \text{ s.t. }
 \mathcal{B}\_r(\vect{u}) \subseteq A$.
@@ -147,7 +147,7 @@ More definitions
 ---
 
 Unless otherwise specified, assume that
-$a\_i,b\_i \in \reals\,\forall\,i \in \naturals$.
+$a\_i,b\_i \in \R\,\forall\,i \in \N$.
 
 Closure
 : $\overline{A} := \interior A \cup \partial A$
@@ -158,21 +158,21 @@ Bounded set
 
 Generalized rectangle
 : $\vect{I} := \vect{I\_1} \times \dots \times \vect{I\_n}$, where
-  $\vect{I\_i} := [a\_i,b\_i]\,\forall\,i \in \naturals$.
+  $\vect{I\_i} := [a\_i,b\_i]\,\forall\,i \in \N$.
 
 Volume of generalized rectangle
 : $\displaystyle \volume \vect{I} := \prod\_{i = 1}^n (b\_i - a\_i)$
 
-From the definition of the closure of a set, we can conclude that
-$A \subseteq \overline{A}$ since $\reals^n = \interior A \sqcup 
-\partial A \sqcup \exterior A$ and $A \cap \exterior A = \varnothing$.
-([proved](#trivial1))  Thus, $A \subseteq \interior A \sqcup
-\partial A = \overline{A}$.
+From the definition of the closure of a set, we can conclude that $A
+\subseteq \overline{A}$ since $\R^n = \interior A \sqcup \partial A
+\sqcup \exterior A$ and $A \cap \exterior A = \varnothing$.
+([proved](#trivial1))  Thus, $A \subseteq \interior A \sqcup \partial
+A = \overline{A}$.
 
 We can extend the [first claim](#claim1) like this.
 
-> If a subset $A$ of $\reals^n$ is contained in a closed subset $B$ of
-> $\reals^n$, $\overline{A} \subseteq B$.
+> If a subset $A$ of $\R^n$ is contained in a closed subset $B$ of
+> $\R^n$, $\overline{A} \subseteq B$.
 {: #ExtendedClaim}
 
 *Proof*.  $\overline{A} := \interior A \cup \partial A$.  By the
@@ -187,9 +187,9 @@ Comparing the definitions
 
 That's the definition of *Jordan content 0* sets.
 
-Suppose $D$ is a bounded subset of $\reals^n$.  
+Suppose $D$ is a bounded subset of $\R^n$.  
 $\forall\,\varepsilon > 0,\exists$ generalized rectangle $\vect{I}\_1,
-\dots,\vect{I}\_m \subseteq \reals^n$ s.t.
+\dots,\vect{I}\_m \subseteq \R^n$ s.t.
 $\displaystyle D \subseteq \bigcup\_{j = 1}^m \vect{I}\_j$ and
 $\displaystyle \sum\_{j = 1}^m \volume \vect{I}\_j < \varepsilon$.
 

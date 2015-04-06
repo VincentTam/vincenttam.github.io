@@ -9,8 +9,8 @@ categories: math
 Two weeks ago, I revised calculus and read the proof of the Inverse
 Function Theorem in the calculus textbook that I was reading.[^1]  The
 Nonlinear Stablity Theorem is first applied to a continuously
-differentiable function $\vect{F}: \mathcal{O} \to \reals^n$, where
-$\mathcal{O}$ is an open subset of $\reals^n$ and contains a point
+differentiable function $\vect{F}: \mathcal{O} \to \R^n$, where
+$\mathcal{O}$ is an open subset of $\R^n$ and contains a point
 $\vect{x}\_\*$ at which $\det \vect{DF}(\vect{x}\_\*) \ne 0$, to
 construct a neighbourhood $U$ of $\vect{x}\_\*$ and find $c > 0$ such
 that
@@ -21,7 +21,7 @@ It's said that if $V := \vect{F}(U)$, then $\vect{F}: U \to V$ is
 bijective.  The surjectivity is obvious, but I *wasn't* smart enough
 to see the injectivity immediately.  After a week, I realised that I
 overlooked the discussion about invertible linear operators on
-$\fields^n$ that preceeded the introduction to the idea of *stable
+$\F^n$ that preceeded the introduction to the idea of *stable
 mapping*.  In fact,
 $\forall\,\vect{u},\vect{v} \in U,\vect{F}(\vect{u}) =
 \vect{F}(\vect{v}) \iff \norm{\vect{F}(\vect{u}) - \vect{F}(\vect{v})}

@@ -22,7 +22,7 @@ make use of "cs", which stands for "coordinate system".  If one is too
 lazy to read more webpages, then one may use the code below.
 
 When I drew figures with [Ti*k*Z] a recent post on limits of composite
-functions on $\reals^n$, I found a way to construct random region with
+functions on $\R^n$, I found a way to construct random region with
 Ti*k*Z in a $\rm \TeX$--$\rm \LaTeX$ Stack Exchange
 question.[^rand_region]  This inspired me to come up with the
 following graph.

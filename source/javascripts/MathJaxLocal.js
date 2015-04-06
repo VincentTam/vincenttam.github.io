@@ -13,12 +13,6 @@ MathJax.Hub.Config({
     extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
     TagSide: "left",
     Macros: {
-      reals: ['\\mathbb{R}'],
-      complex: ['\\mathbb{C}'],
-      rationals: ['\\mathbb{Q}'],
-      integers: ['\\mathbb{Z}'],
-      naturals: ['\\mathbb{N}'],
-      fields: ['\\mathbb{F}'],
       field: ['\\mathbb{#1}', 1],
       C: ['\\field{C}'],
       F: ['\\field{F}'],

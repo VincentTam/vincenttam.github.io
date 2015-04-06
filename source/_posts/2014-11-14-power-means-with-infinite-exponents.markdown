@@ -14,8 +14,8 @@ my mind since I was F.3.
 
 Suppose that $\\displaystyle M\_n (a\_1,\\dots,a\_k) :=
 \\sqrt\[n\]\{\\frac\{\\sum\_\{i=1}^\{k} a\_i^n}\{k}}
-\\quad\\forall\\,n \\in \\naturals$, and $a\_i > 0\\quad\\forall\\,i =
-1,\\dots,k$.  
+\\quad\\forall\\,n \\in \\N$, and $a\_i > 0\\quad\\forall\\,i = 1,
+\\dots,k$.  
 Show that $\\displaystyle \\lim\_\{n \\to \\infty} M\_n
 (a\_1,\\dots,a\_k) = \\max\\left\\\{ a\_i \\mid i = 1,\\dots,k
 \\right\\}$ and $\\displaystyle \\lim\_\{n \\to -\\infty} M\_n =

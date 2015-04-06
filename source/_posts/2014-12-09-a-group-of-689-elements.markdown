@@ -21,5 +21,5 @@ prove the existence of such a group.
 
 Thinking that the group of 689 elements *isn't* useful, I put that
 problem aside.  After a fortnight, I came up with an answer:
-<span class="myeqn" markdown="0">$\integers_{13} \times \integers_{53}
-\cong \integers_{689}$</span>.
+<span class="myeqn" markdown="0">$\Z_{13} \times \Z_{53} \cong
+\Z_{689}$</span>.

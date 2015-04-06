@@ -9,15 +9,15 @@ categories: math
 Problem
 ---
 
-Let $\\mathcal\{U}$ and $\\mathcal\{V}$ be open subsets of $\\reals^n$
-and $\\reals^m$ respectively, $f:\\mathcal\{V} \\to \\reals^k$ and
-$g:\\mathcal\{U} \\to \\reals^m$ be functions such that
-$g(\\mathcal\{U}) \\subseteq \\mathcal\{V}$, and $\\vect\{x}\_0 \\in
-\\mathcal\{U}, \\vect\{y}\_0 \\in \\mathcal\{V}$, and $\\vect\{z}\_0
-\\in \\reals^k$ be points such that $\\displaystyle
-\\lim\_\{\\vect\{x} \\to \\vect\{x}\_0} g(\\vect\{x}) = \\vect\{y}\_0$
-and $\\displaystyle \\lim\_\{\\vect\{y} \\to \\vect\{y}\_0}
-f(\\vect\{y}) = \\vect\{z}\_0$.
+Let $\\mathcal\{U}$ and $\\mathcal\{V}$ be open subsets of $\\R^n$ and
+$\\R^m$ respectively, $f:\\mathcal\{V} \\to \\R^k$ and
+$g:\\mathcal\{U} \\to \\R^m$ be functions such that $g(\\mathcal\{U})
+\\subseteq \\mathcal\{V}$, and $\\vect\{x}\_0 \\in \\mathcal\{U},
+\\vect\{y}\_0 \\in \\mathcal\{V}$, and $\\vect\{z}\_0 \\in \\R^k$ be
+points such that $\\displaystyle \\lim\_\{\\vect\{x} \\to
+\\vect\{x}\_0} g(\\vect\{x}) = \\vect\{y}\_0$ and $\\displaystyle
+\\lim\_\{\\vect\{y} \\to \\vect\{y}\_0} f(\\vect\{y}) =
+\\vect\{z}\_0$.
 
 **Is it possible that** $\\displaystyle \\lim\_\{\\vect\{x} \\to
 \\vect\{x}\_0} f(g(\\vect\{x})) \\ne \\vect\{z}\_0$**?**

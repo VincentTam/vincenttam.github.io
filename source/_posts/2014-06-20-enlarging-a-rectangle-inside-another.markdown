@@ -6,9 +6,9 @@ comments: true
 categories: math
 ---
 
-$\vect{I}$ is a generalized rectangle in $\reals^n$ with edges of
-length $l_i$.  $\vect{J} \subseteq \vect{I}$ is the main character
-here.  If the edges of $\vect{J}$ is allowed to coincide with those of
+$\vect{I}$ is a generalized rectangle in $\R^n$ with edges of length
+$l_i$.  $\vect{J} \subseteq \vect{I}$ is the main character here.  If
+the edges of $\vect{J}$ is allowed to coincide with those of
 $\vect{I}$, then the problem is trivial.
 
 **How about finding $\vect{J} \subseteq \interior \vect{I}$ such that
@@ -28,7 +28,7 @@ $\varepsilon$.[^1]
 =& \prod\_{i = 1}^n \left [\left(l\_i - \frac{\varepsilon}{L}\right) +
   \frac{\varepsilon}{L} \right] \\\\\\\\
 =& \left[ \prod\_{i = 1}^n \left( l\_i - \frac{\varepsilon}{L} \right)
-  \right] + \sum\_{i = 1}^{n \choose 1} \left( l\_i -
+  \right] + \sum\_{i = 1}^n \left( l\_i -
   \frac{\varepsilon}{L} \right) \left( \frac{\varepsilon}{L}
   \right)^{n - 1} \\\\\\\\
 & + \sum\_{i = 2}^{n - 1} \sum\_{\left\\{ a\_j \right\\} \in S\_i}
