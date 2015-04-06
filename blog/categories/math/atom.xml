@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-06T17:42:25+08:00</updated>
+  <updated>2015-04-06T22:39:25+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,207 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Calculate the Expected Waiting Time in a Hard Way]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/"/>
+    
+    <updated>2015-04-06T22:18:03+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>If one assumes that servers $X_1$ and $X_2$ has exponential service
+times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
+$X_i \sim \Exp(\lambda_i), i = 1,2$), then one can follow the
+standard arguments and say that the waiting time $\min\left\{ X_1,
+X_2 \right\} \sim \Exp(\lambda_1 + \lambda_2)$, so the expected
+waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried finding the expected waiting time by conditioning on $X_1 - X_2$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \Pr(X_1 &gt; X_2) &#92;&#92;
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
+    e^{-\lambda_2 x_1}) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
+    \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
+    x_1 &#92;&#92;
+    =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} &#92;&#92;
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} &#92;&#92;
+    =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:pr_min}
+\end{equation}
+</div>
+
+<p>Similarly, one has $\Pr(X_1 \le X_2) = \lambda_1/(\lambda_1 +
+\lambda_2)$.</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{split}
+&amp; \E[\left\{ X_1, X_2 \right\}] &#92;&#92;
+=&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2) +
+\E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
+&#92;&#92;
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) &#92;&#92;
+=&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} &#92;&#92;
+=&amp; \frac{2}{\lambda_1 + \lambda_2}
+\end{split}
+\label{eq:wrong}
+\end{equation}
+</div>
+
+<p>This is <em>different</em> from what we expect.  <strong>What’s wrong with the
+above calculation?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I really thought about the meaning of $\E[\min\left\{ X_1, X_2
+\right\} \mid X_1 &gt; X_2]$, and find out that this conditional
+expectation <em>won’t</em> be helpful because</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] =
+  \frac{\int_{0}^{\infty} \int_{0}^{x_1} x_2 \ud x_2 \ud x_1}{\Pr(X_1
+  &gt; X_2)}
+\]
+</div>
+
+<p>Actually, one can divide it into two halves.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1
+    + \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
+  \end{split}
+  \label{eq:head}
+\end{equation}
+</div>
+
+<p>By observing the symmetry between the subscripts ‘1’ and ‘2’ in the
+above equation, we only need to evaluate <em>one</em> of them.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
+    \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
+    \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
+    x_1} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
+    (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
+    &#92;&#92;
+    =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
+    \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right) + \frac{\lambda_1}{\lambda_2}
+    \left( \left. -\frac{e^{\lambda_1 x_1}}{\lambda_1}
+    \right|_{0}^{\infty} + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} \right) &#92;&#92;
+    =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
+    \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
+    \frac{1}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)}
+  \end{split}
+  \label{eq:half_int}
+\end{equation}
+</div>
+
+<p>Similarly, one has</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+  e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 =
+  -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} + \frac{1}{\lambda_1} -
+  \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)}.
+  \label{eq:half_int2}
+\end{equation}
+</div>
+
+<p>Substitute \eqref{eq:half_int} and \eqref{eq:half_int2} into
+\eqref{eq:head}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)} \right)
+    + \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+	\frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+	\lambda_1)} \right) &#92;&#92;
+    =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
+    \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) - \left(
+    \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
+    \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
+    \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
+    (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
+    \lambda_2} &#92;&#92;
+    =&amp; \frac{1}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:fin}
+\end{equation}
+</div>
+
+<p>This is consistent with what we expect.  I finally understand what’s
+wrong in \eqref{eq:wrong}: $X_1$ <em>isn’t</em> independent from $X_1 -
+X_2$.</p>
+
+<h2 id="generalization">Generalization</h2>
+
+<p>By induction, we can generalize \eqref{eq:fin} to the expected waiting
+time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
+\forall 1 \le i \le n$, then</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
+  \lambda_k}.
+\]
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -327,54 +528,6 @@ the fact that $\displaystyle \int_a^b f^2 = 0$ <em>doesn’t</em> imply
 that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Evaluated a Convolution Integral]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/"/>
-    
-    <updated>2015-02-28T19:26:05+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral</id>
-    
-      <content type="html"><![CDATA[<p>Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{\infty} f_{X_{i_1}}(z)
-f_{X_{i_2}}(x - z) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
-z)}) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z &#92;&#92;
-=&amp; \lambda^2 x e^{-\lambda x}
-\end{aligned}
-\]
-</div>
-
-<p>Using the same technique, one can prove the claim by induction.
-What’s written above is the base case.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
-X_{i_{k + 1}}}(x) &#92;&#92;
-=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) &#92;&#92;
-=&amp; \int_{-\infty}^{\infty} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k
-+ 1}}}(x - z) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
-1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
-1} \ud z &#92;&#92;
-=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} &#92;&#92;
-=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
-\end{aligned}
-\]
 </div>
 ]]></content>
     

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-06T17:42:25+08:00</updated>
+  <updated>2015-04-06T22:39:25+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,207 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Calculate the Expected Waiting Time in a Hard Way]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/"/>
+    
+    <updated>2015-04-06T22:18:03+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>If one assumes that servers $X_1$ and $X_2$ has exponential service
+times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
+$X_i \sim \Exp(\lambda_i), i = 1,2$), then one can follow the
+standard arguments and say that the waiting time $\min\left\{ X_1,
+X_2 \right\} \sim \Exp(\lambda_1 + \lambda_2)$, so the expected
+waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried finding the expected waiting time by conditioning on $X_1 - X_2$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \Pr(X_1 &gt; X_2) &#92;&#92;
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
+    e^{-\lambda_2 x_1}) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
+    \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
+    x_1 &#92;&#92;
+    =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} &#92;&#92;
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} &#92;&#92;
+    =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:pr_min}
+\end{equation}
+</div>
+
+<p>Similarly, one has $\Pr(X_1 \le X_2) = \lambda_1/(\lambda_1 +
+\lambda_2)$.</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{split}
+&amp; \E[\left\{ X_1, X_2 \right\}] &#92;&#92;
+=&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2) +
+\E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
+&#92;&#92;
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) &#92;&#92;
+=&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} &#92;&#92;
+=&amp; \frac{2}{\lambda_1 + \lambda_2}
+\end{split}
+\label{eq:wrong}
+\end{equation}
+</div>
+
+<p>This is <em>different</em> from what we expect.  <strong>What’s wrong with the
+above calculation?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I really thought about the meaning of $\E[\min\left\{ X_1, X_2
+\right\} \mid X_1 &gt; X_2]$, and find out that this conditional
+expectation <em>won’t</em> be helpful because</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] =
+  \frac{\int_{0}^{\infty} \int_{0}^{x_1} x_2 \ud x_2 \ud x_1}{\Pr(X_1
+  &gt; X_2)}
+\]
+</div>
+
+<p>Actually, one can divide it into two halves.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1
+    + \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
+  \end{split}
+  \label{eq:head}
+\end{equation}
+</div>
+
+<p>By observing the symmetry between the subscripts ‘1’ and ‘2’ in the
+above equation, we only need to evaluate <em>one</em> of them.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
+    \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
+    \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
+    x_1} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
+    (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
+    &#92;&#92;
+    =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
+    \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right) + \frac{\lambda_1}{\lambda_2}
+    \left( \left. -\frac{e^{\lambda_1 x_1}}{\lambda_1}
+    \right|_{0}^{\infty} + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} \right) &#92;&#92;
+    =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
+    \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
+    \frac{1}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)}
+  \end{split}
+  \label{eq:half_int}
+\end{equation}
+</div>
+
+<p>Similarly, one has</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+  e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 =
+  -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} + \frac{1}{\lambda_1} -
+  \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)}.
+  \label{eq:half_int2}
+\end{equation}
+</div>
+
+<p>Substitute \eqref{eq:half_int} and \eqref{eq:half_int2} into
+\eqref{eq:head}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)} \right)
+    + \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+	\frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+	\lambda_1)} \right) &#92;&#92;
+    =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
+    \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) - \left(
+    \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
+    \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
+    \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
+    (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
+    \lambda_2} &#92;&#92;
+    =&amp; \frac{1}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:fin}
+\end{equation}
+</div>
+
+<p>This is consistent with what we expect.  I finally understand what’s
+wrong in \eqref{eq:wrong}: $X_1$ <em>isn’t</em> independent from $X_1 -
+X_2$.</p>
+
+<h2 id="generalization">Generalization</h2>
+
+<p>By induction, we can generalize \eqref{eq:fin} to the expected waiting
+time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
+\forall 1 \le i \le n$, then</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
+  \lambda_k}.
+\]
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2082,272 +2283,6 @@ box.</p>
 
 <p>I’m sure that I <em>won’t</em> get into these troubles on <a href="https://www.gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Certificate Verify Failed During Gem Update]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/"/>
-    
-    <updated>2015-01-04T22:41:05+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I pull the Git commits from the <code>origin</code> of this blog to Git Bash on
-M$ Win*.  The <code>Gemfile</code> has changed due to commit <a href="https://github.com/imathis/octopress/commit/fbc3c0b">fbc3c0b</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I ran <code>bundle install</code> according to the official documentation, and
-got an <em>unexpected error</em>.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">1</a></sup></p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ bundle install
-DL is deprecated, please use Fiddle
-Fetching gem metadata from https://rubygems.org/.........
-Resolving dependencies...
-<span class="err">Bundler could not find compatible versions for gem "sass":
-  In snapshot (Gemfile.lock):
-    sass (3.2.19)
-
-  In Gemfile:
-    compass (~&gt; 1.0.1) x64-mingw32 depends on
-      sass (&lt; 3.5, &gt;= 3.3.13) x64-mingw32</span>
-
-Running `<span class="HLCode">bundle update</span>` will rebuild your snapshot from scratch, using only
-the gems in your Gemfile, which may resolve the conflict.
-</code></pre>
-
-<p><em>Without</em> updated gems, even though everything in the <code>source</code> folder
-is <em>correct</em>, one <em>can’t</em> generate an Octopress blog.  <strong>How can one
-get the gems updated?</strong></p>
-
-<!-- more -->
-
-<p>I then tried to follow the suggestion, but received <em>another</em> error.</p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-Owner@OWNER-PC /c/github/vincenttam.github.io (source)
-$ bundle update
-DL is deprecated, please use Fiddle
-Fetching gem metadata from https://rubygems.org/.........
-Resolving dependencies...
-
-<span class="err">Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0 state=SSLv3 read
-server certificate B: certificate verify failed (https://rubygems.org/gems/rake-
-10.4.2.gem)
-An error occurred while installing rake (10.4.2), and Bundler cannot continue.
-Make sure that `<span class="HLCode">gem install rake -v '10.4.2'</span>` succeeds before bundling.</span>
-</code></pre>
-
-<p>I ran the <strong>command in bold</strong> in the above message, and got <em>similar</em>
-messages.</p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ gem install rake -v '10.4.2'
-<span class="err">ERROR:  Could not find a valid gem 'rake' (= 10.4.2), here is why:
-          Unable to download data from https://rubygems.org/ - SSL_connect retur
-ned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (
-https://rubygems.org/specs.4.8.gz)</span>
-</code></pre>
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “windows unable to download data from https //rubygems.org/
-- ssl_connect returned=1”, and clicked on the
-<a href="https://stackoverflow.com/q/19150017" title="SSL Error When installing rubygems, Unable to pull data ...">first Stack Overflow question that I saw</a>.  I quickly
-skimmed through the first answer of this question, and read the last
-section “Windows note”, which referred interested readers to two
-places:</p>
-
-<ol>
-  <li>RubyInstaller issue <a href="https://github.com/oneclick/rubyinstaller/issues/249" title="Change OpenSSL certificates path">249</a> on GitHub,</li>
-  <li>The second answer of this question.</li>
-</ol>
-
-<p>I clicked the first webpage, and quickly jumped to
-<a href="https://gist.github.com/luislavena/f064211759ee0f806c88" title="SSL upgrades on rubygems.org and RubyInstaller versions">Luis Lavena’s response</a> to the issue.  Unlike the previous
-webpages, I read every word from the beginning to the third section
-this time, and read the Stack Overflow question again, before deciding
-what to be done.</p>
-
-<p>I followed the instructions in the third section, instead of manually
-downloading and inserting the PEM file back to the folder which the
-command <code>gem which rubygems</code> returned.</p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ gem install --local ~/Downloads/rubygems-update-2.0.15.gem
-Successfully installed rubygems-update-2.0.15
-Parsing documentation for rubygems-update-2.0.15
-Installing ri documentation for rubygems-update-2.0.15
-1 gem installed
-
-<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ update_rubygems --no-ri --no-rdoc
-RubyGems 2.0.15 installed
-
-=== 2.0.14 / 2013-11-12
-
-Bug fixes:
-
-* Restore concurrent requires following the fix for ruby bug #8374.  Pull
-  request #637 and issue #640 by Charles Nutter.
-* Gem::Specification::remove_spec no longer checks for existence of the spec
-  to be removed.  Issue #698 by Tiago Macedo.
-* Restored wildcard handling when installing gems.  Issue #697 by Chuck Remes.
-* Added DigiCert High Assurance EV Root CA certificate for the cloudfront.net
-  certificate change.
-* The Gem::RemoteFetcher tests now choose the test server port more reliably.
-  Pull Request #706 by akr.
-
-
-------------------------------------------------------------------------------
-
-RubyGems installed the following executables:
-        c:/Ruby200-x64/bin/gem
-
-<span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ gem uninstall rubygems-update -x
-Removing update_rubygems
-Successfully uninstalled rubygems-update-2.0.15
-</code></pre>
-
-<p>Then I ran <code>bundle install</code> <em>again</em>, and I still got the <em>same</em> error
-shown at the very beginning of the post.  However, I <em>could</em> update the
-gems.</p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ bundle update
-DL is deprecated, please use Fiddle
-Fetching gem metadata from https://rubygems.org/.........
-Resolving dependencies...
-<span class="HLCode">Installing rake 10.4.2 (was 10.3.2)</span>
-Using RedCloth 4.2.9
-Using blankslate 2.1.2.4
-Installing hitimes 1.2.2
-Installing timers 4.0.1 (was 1.1.0)
-Installing celluloid 0.16.0 (was 0.15.2)
-Installing chunky_png 1.3.3 (was 1.3.1)
-Using fast-stemmer 1.0.2
-Installing classifier-reborn 2.0.3 (was 2.0.1)
-Using coffee-script-source 1.8.0
-Installing execjs 2.2.2 (was 2.2.1)
-Using coffee-script 2.3.0
-Using colorator 0.1
-Installing multi_json 1.10.1
-Installing sass 3.4.9 (was 3.2.19)
-Installing compass-core 1.0.1
-Installing compass-import-once 1.0.5
-Using rb-fsevent 0.9.4
-Installing ffi 1.9.6 (was 1.9.3)
-Using rb-inotify 0.9.5
-Installing compass 1.0.1 (was 0.12.7)
-Using tilt 1.4.1
-Installing haml 4.0.6 (was 4.0.5)
-Installing jekyll-coffeescript 1.0.1 (was 1.0.0)
-Using jekyll-gist 1.1.0
-Installing jekyll-paginate 1.1.0 (was 1.0.0)
-Installing jekyll-sass-converter 1.3.0 (was 1.2.0)
-Installing listen 2.8.4 (was 2.7.9)
-Installing jekyll-watch 1.2.0 (was 1.1.0)
-Installing kramdown 1.5.0 (was 1.4.1)
-Using liquid 2.6.1
-Installing mercenary 0.3.5 (was 0.3.4)
-Using posix-spawn 0.3.9
-Using yajl-ruby 1.1.0
-Using pygments.rb 0.6.0
-Installing redcarpet 3.2.2 (was 3.1.2)
-Installing safe_yaml 1.0.4 (was 1.0.3)
-Using parslet 1.5.0
-Installing toml 0.1.2 (was 0.1.1)
-Installing jekyll 2.5.3 (was 2.3.0)
-Installing jekyll-sitemap 0.7.0 (was 0.5.1)
-Installing octopress-hooks 2.2.3 (was 2.2.1)
-Installing octopress-date-format 2.0.2 (was 2.0.1)
-Installing rack 1.6.0 (was 1.5.2)
-Using rack-protection 1.5.3
-Using rubypants 0.2.0
-Using sass-globbing 1.0.0
-Using sinatra 1.4.5
-Using stringex 1.4.0
-Using wdm 0.1.0
-Using bundler 1.7.2
-<span class="HLCode">Your bundle is updated!</span>
-</code></pre>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>To save space in the hard disk, I removed the old versions of gems
-with a short and simple command.</p>
-
-<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
-$ gem cleanup
-Cleaning up installed gems...
-Attempting to uninstall rake-10.3.2
-Successfully uninstalled rake-10.3.2
-Attempting to uninstall rack-1.5.2
-Successfully uninstalled rack-1.5.2
-Attempting to uninstall octopress-date-format-2.0.1
-Successfully uninstalled octopress-date-format-2.0.1
-Attempting to uninstall octopress-hooks-2.2.1
-Successfully uninstalled octopress-hooks-2.2.1
-Attempting to uninstall jekyll-sitemap-0.5.1
-Successfully uninstalled jekyll-sitemap-0.5.1
-Attempting to uninstall jekyll-2.3.0
-Successfully uninstalled jekyll-2.3.0
-Attempting to uninstall jekyll-watch-1.1.0
-Successfully uninstalled jekyll-watch-1.1.0
-Attempting to uninstall listen-2.7.9
-Successfully uninstalled listen-2.7.9
-Attempting to uninstall jekyll-sass-converter-1.2.0
-Successfully uninstalled jekyll-sass-converter-1.2.0
-Attempting to uninstall jekyll-coffeescript-1.0.0
-Successfully uninstalled jekyll-coffeescript-1.0.0
-Attempting to uninstall jekyll-paginate-1.0.0
-Successfully uninstalled jekyll-paginate-1.0.0
-Attempting to uninstall toml-0.1.1
-Successfully uninstalled toml-0.1.1
-Attempting to uninstall redcarpet-3.1.2
-Successfully uninstalled redcarpet-3.1.2
-Attempting to uninstall safe_yaml-1.0.3
-Successfully uninstalled safe_yaml-1.0.3
-Attempting to uninstall mercenary-0.3.4
-Successfully uninstalled mercenary-0.3.4
-Attempting to uninstall kramdown-1.4.1
-Successfully uninstalled kramdown-1.4.1
-Attempting to uninstall haml-4.0.5
-Successfully uninstalled haml-4.0.5
-Attempting to uninstall ffi-1.9.3-x64-mingw32
-Successfully uninstalled ffi-1.9.3-x64-mingw32
-Attempting to uninstall execjs-2.2.1
-Successfully uninstalled execjs-2.2.1
-Attempting to uninstall compass-0.12.7
-Successfully uninstalled compass-0.12.7
-Attempting to uninstall classifier-reborn-2.0.1
-Successfully uninstalled classifier-reborn-2.0.1
-Attempting to uninstall chunky_png-1.3.1
-Successfully uninstalled chunky_png-1.3.1
-Attempting to uninstall celluloid-0.15.2
-Successfully uninstalled celluloid-0.15.2
-Attempting to uninstall timers-1.1.0
-Successfully uninstalled timers-1.1.0
-Attempting to uninstall sass-3.2.19
-Successfully uninstalled sass-3.2.19
-<span class="HLCode">Clean Up Complete</span>
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:doc">
-      <p><a href="http://octopress.org/docs/updating/">Updating Octopress</a> in <em>Octopress Documentation</em>. <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
