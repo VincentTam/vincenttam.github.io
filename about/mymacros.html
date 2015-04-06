@@ -164,8 +164,8 @@ highlighting, you may use <code>.mkd</code> or whatever way you want.</p>
 </span><span class="line">
 </span><span class="line"><span class="l-Scalar-Plain">## Subsection 1.1</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">sample math</span>
 </span><span class="line">
-</span><span class="line"><span class="l-Scalar-Plain">Suppose that $\vect{x} \ne \zeros \in \complex^n, \rationals^n, \integers^n,</span>
-</span><span class="line"><span class="l-Scalar-Plain">\naturals^n$.  Then we have</span>
+</span><span class="line"><span class="l-Scalar-Plain">Suppose that $\vect{x} \ne \zeros \in \C^n, \Q^n, \Z^n, \N^n$.  Then</span>
+</span><span class="line"><span class="l-Scalar-Plain">we have</span>
 </span><span class="line">
 </span><span class="line"><span class="l-Scalar-Plain">(@foo) $$\int_{0}^{1} 1 \ud x = \abs{1} =</span>
 </span><span class="line"><span class="l-Scalar-Plain">\normlr{\frac{\vect{x}}{\norm{\vect{x}}}}.$$</span>
@@ -230,15 +230,25 @@ following pages while writing the above example.</p>
 <span class="line-number">25</span>
 <span class="line-number">26</span>
 <span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
 </pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
 </span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>amsfonts<span class="nb">}</span>
 </span><span class="line">
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\reals</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>R<span class="nb">}}</span>
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\complex</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>C<span class="nb">}}</span>
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\rationals</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>Q<span class="nb">}}</span>
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\integers</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>Z<span class="nb">}}</span>
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\naturals</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>N<span class="nb">}}</span>
-</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\fields</span><span class="nb">}{</span><span class="k">\mathbb</span><span class="nb">{</span>F<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\field</span><span class="nb">}</span>[1]<span class="nb">{</span><span class="k">\mathbb</span><span class="nb">{</span>#1<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\C</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>C<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\F</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>F<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\N</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>N<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Q</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>Q<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\R</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>R<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Z</span><span class="nb">}{</span><span class="k">\field</span><span class="nb">{</span>Z<span class="nb">}}</span>
 </span><span class="line">
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\zeros</span><span class="nb">}{</span><span class="k">\mathbf</span><span class="nb">{</span>0<span class="nb">}}</span>
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\ud</span><span class="nb">}{</span><span class="k">\,\mathrm</span><span class="nb">{</span>d<span class="nb">}}</span>
@@ -254,9 +264,17 @@ following pages while writing the above example.</p>
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\exterior</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>ext<span class="nb">}}}</span>
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\volume</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>vol<span class="nb">}}}</span>
 </span><span class="line">
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\E</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>E<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Var</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>Var<span class="nb">}}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Cov</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>Cov<span class="nb">}}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Binom</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>Binom<span class="nb">}}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Exp</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>Exp<span class="nb">}}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Poi</span><span class="nb">}{</span><span class="k">\mathop</span><span class="nb">{</span><span class="k">\mathrm</span><span class="nb">{</span>Poi<span class="nb">}}}</span>
+</span><span class="line">
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\GL</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>GL<span class="nb">}}</span>
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\SL</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>SL<span class="nb">}}</span>
 </span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\Aut</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>Aut<span class="nb">}}</span>
+</span><span class="line"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\id</span><span class="nb">}{</span><span class="k">\mathrm</span><span class="nb">{</span>id<span class="nb">}}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample output  (test_macros.tex)</span> <a href="/downloads/code/mymacros/test_macros.tex">download</a></figcaption>
@@ -272,17 +290,21 @@ following pages while writing the above example.</p>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 <span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
 </pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[varwidth]</span><span class="nb">{</span>standalone<span class="nb">}</span>
 </span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>mymacros<span class="nb">}</span>
 </span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
 </span><span class="line"><span class="sb">\[</span><span class="nb"></span>
-</span><span class="line"><span class="nb">  </span><span class="nv">\int</span><span class="nb">_{</span><span class="m">0</span><span class="nb">}^{</span><span class="m">1</span><span class="nb">} </span><span class="m">1</span><span class="nb"> </span><span class="nv">\ud</span><span class="nb"> x </span><span class="o">=</span><span class="nb"> </span><span class="nv">\abs</span><span class="nb">{</span><span class="m">1</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\normlr</span><span class="nb">{</span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\vect</span><span class="nb">{x}}{</span><span class="nv">\norm</span><span class="nb">{</span><span class="nv">\vect</span><span class="nb">{x}}}},</span>
+</span><span class="line"><span class="nb">  </span><span class="nv">\int</span><span class="nb">_{</span><span class="m">0</span><span class="nb">}^{</span><span class="m">1</span><span class="nb">} </span><span class="m">1</span><span class="nb"> </span><span class="nv">\ud</span><span class="nb"> x </span><span class="o">=</span><span class="nb"> </span><span class="nv">\abs</span><span class="nb">{</span><span class="nv">\id</span><span class="nb">_{</span><span class="nv">\Q</span><span class="nb">}</span><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="nb">} </span><span class="o">=</span><span class="nb"></span>
+</span><span class="line"><span class="nb">  </span><span class="nv">\normlr</span><span class="nb">{</span><span class="nv">\frac</span><span class="nb">{</span><span class="nv">\vect</span><span class="nb">{x}}{</span><span class="nv">\norm</span><span class="nb">{</span><span class="nv">\vect</span><span class="nb">{x}}}},</span>
 </span><span class="line"><span class="s">\]</span>
-</span><span class="line">where <span class="s">$</span><span class="nv">\vect</span><span class="nb">{x} </span><span class="nv">\ne</span><span class="nb"> </span><span class="nv">\zeros</span><span class="nb"> </span><span class="nv">\in</span><span class="nb"> </span><span class="nv">\complex</span><span class="nb">^n, </span><span class="nv">\rationals</span><span class="nb">^n, </span><span class="nv">\integers</span><span class="nb">^n,</span>
-</span><span class="line"><span class="nv">\naturals</span><span class="nb">^n</span><span class="s">$</span>.<span class="k">\\</span>
+</span><span class="line">where <span class="s">$</span><span class="nv">\vect</span><span class="nb">{x} </span><span class="nv">\ne</span><span class="nb"> </span><span class="nv">\zeros</span><span class="nb"> </span><span class="nv">\in</span><span class="nb"> </span><span class="nv">\C</span><span class="nb">^n, </span><span class="nv">\Z</span><span class="nb">^n, </span><span class="nv">\N</span><span class="nb">^n</span><span class="s">$</span>.<span class="k">\\</span>
 </span><span class="line"><span class="s">$</span><span class="nv">\lcm</span><span class="o">(</span><span class="nb">a,b</span><span class="o">)=</span><span class="nb">ab</span><span class="o">/</span><span class="nv">\gcd</span><span class="nb">{</span><span class="o">(</span><span class="nb">a,b</span><span class="o">)</span><span class="nb">}</span><span class="s">$</span><span class="k">\\</span>
-</span><span class="line"><span class="s">$</span><span class="nv">\interior</span><span class="nb"> A</span><span class="o">=</span><span class="nv">\exterior</span><span class="nb"> </span><span class="o">(</span><span class="nv">\reals</span><span class="nb">^n </span><span class="nv">\setminus</span><span class="nb"> A</span><span class="o">)</span><span class="nb"> </span><span class="nv">\ne</span><span class="nb"> </span><span class="nv">\volume</span><span class="nb"> C</span><span class="s">$</span><span class="k">\\</span>
-</span><span class="line"><span class="s">$</span><span class="nv">\SL</span><span class="o">(</span><span class="nb">n,</span><span class="nv">\fields</span><span class="o">)</span><span class="nb"> </span><span class="nv">\le</span><span class="nb"> </span><span class="nv">\GL</span><span class="o">(</span><span class="nb">n,</span><span class="nv">\fields</span><span class="o">)</span><span class="s">$</span>
+</span><span class="line"><span class="s">$</span><span class="nv">\interior</span><span class="nb"> A</span><span class="o">=</span><span class="nv">\exterior</span><span class="nb"> </span><span class="o">(</span><span class="nv">\R</span><span class="nb">^n </span><span class="nv">\setminus</span><span class="nb"> A</span><span class="o">)</span><span class="nb"> </span><span class="nv">\ne</span><span class="nb"> </span><span class="nv">\volume</span><span class="nb"> C</span><span class="s">$</span><span class="k">\\</span>
+</span><span class="line"><span class="s">$</span><span class="nv">\SL</span><span class="o">(</span><span class="nb">n,</span><span class="nv">\F</span><span class="o">)</span><span class="nb"> </span><span class="nv">\lhd</span><span class="nb"> </span><span class="nv">\GL</span><span class="o">(</span><span class="nb">n,</span><span class="nv">\F</span><span class="o">)</span><span class="s">$</span><span class="k">\\</span>
+</span><span class="line"><span class="s">$</span><span class="nb">X </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Binom</span><span class="o">(</span><span class="nb">n,p</span><span class="o">)</span><span class="nb">, Y </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Poi</span><span class="o">(</span><span class="nv">\lambda</span><span class="nb"> t</span><span class="o">)</span><span class="s">$</span><span class="k">\\</span>
+</span><span class="line"><span class="s">$</span><span class="nb">Z </span><span class="nv">\sim</span><span class="nb"> </span><span class="nv">\Exp</span><span class="o">(</span><span class="nv">\lambda</span><span class="o">)</span><span class="nb">, </span><span class="nv">\E</span><span class="o">[</span><span class="nb">Z</span><span class="o">]</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\Var</span><span class="o">[</span><span class="nb">Z</span><span class="o">]</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\lambda</span><span class="s">$</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
