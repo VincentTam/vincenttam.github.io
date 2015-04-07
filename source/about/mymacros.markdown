@@ -14,7 +14,7 @@ adapted it for `mymacros.sty`.
 Sample output
 ---
 
-![sample](/images/posts/mymacros/sample.jpg)
+![sample](/images/posts/mymacros/sample.png)
 
 Using the macros
 ---
