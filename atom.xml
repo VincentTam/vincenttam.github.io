@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-06T22:54:57+08:00</updated>
+  <updated>2015-04-07T16:21:56+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,98 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Calculating the Volume of a Triangular Pyramid in a Hard Way]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/"/>
+    
+    <updated>2015-04-07T16:07:49+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>There is an easy way of calculating the volume of $\{(x,y,z) \in
+\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
+permutation of $x,y,z$.<sup id="fnref:easy_vol"><a href="#fn:easy_vol" class="footnote">1</a></sup>  This can be easily generalized to
+$n$ dimension.</p>
+
+<h2 id="another-way-using-multiple-integrals">Another way using multiple integrals</h2>
+
+<div class="myeqn">
+\[
+\begin{split}
+&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
+\forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
+&#92;&#92;
+&amp; \text{Volume of } A &#92;&#92;
+=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
+\ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
+\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
+\ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
+2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
+x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
+3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+&amp; \vdots &#92;&#92;
+=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 &#92;&#92;
+=&amp; \frac{t^n}{n!}
+\end{split}
+\]
+</div>
+
+<h2 id="why-use-this-method">Why use this method?</h2>
+
+<p>To calculate its centre of mass.</p>
+
+<div class="myeqn">
+\[
+\begin{split}
+&amp; \text{First component of its centre of mass} &#92;&#92;
+=&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
+x_2 \ud x_1 &#92;&#92;
+=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
+x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
+\cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
+\ud x_1 &#92;&#92;
+=&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
+1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
+\right) &#92;&#92;
+=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) &#92;&#92;
+=&amp; \frac{t}{n + 1}
+\end{split}
+\]
+</div>
+
+<p>By symmetry, we conclude that the center of mass is $(\frac{t}{n + 1},
+\frac{t}{n + 1}, \ldots, \frac{t}{n + 1}) \in \R^n$.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:easy_vol">
+
+      <p>Simplex. (2015, March 29). In <em>Wikipedia, The Free Encyclopedia</em>.
+Retrieved 15:34, April 6, 2015, from
+<a href="http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423">http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423</a> <a href="#fnref:easy_vol" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2257,37 +2349,6 @@ $\phi(m) = m\cdot 1$ <em>isn’t</em> difficult to read.</p>
 the ring $R$ with unity, instead of $R$.  After I’ve come up with
 <span class="myeqn">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
 \in \Z, b \in\Z_{\ge 0} \right\}$</span>, I start this post.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Got a Win* Blue Screen]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/12/got-a-win-star-blue-screen/"/>
-    
-    <updated>2015-01-12T21:31:51+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/12/got-a-win-star-blue-screen</id>
-    
-      <content type="html"><![CDATA[<p>This afternoon, I got a <abbr title="bluescreen of death">BoD</abbr> on M$ Win*, which <em>couldn’t</em> be captured
-by <code>PrtSc</code>.  However, after I’ve rebooted my laptop, I got this dialog
-box.</p>
-
-<picture class="fancybox" title="Recoverd from a BoD">
-  <source srcset="/images/posts/BoD/fig.png" media="(min-width: 370px)" />
-  <img alt="got a BoD" src="http://vincenttam.github.io/images/posts/BoD/fig_s.png" />
-</picture>
-
-<p>Then I wrote a post for that, and while I was writing this post,
-<em>another</em> dialog box popped up and disrupted my thoughts.</p>
-
-<picture class="fancybox" title="Update M$ Off*">
-  <source srcset="/images/posts/BoD/no.png" media="(min-width: 470px)" />
-  <img alt="got a BoD" src="http://vincenttam.github.io/images/posts/BoD/no_s.png" />
-</picture>
-
-<p>I’m sure that I <em>won’t</em> get into these troubles on <a href="https://www.gnu.org/gnu/linux-and-gnu.html">GNU/Linux</a>.</p>
-
 ]]></content>
     
   </entry>
