@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C/c++ | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-07T16:21:56+08:00</updated>
+  <updated>2015-04-10T14:46:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,146 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Compared Two Poisson Variables]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/"/>
+    
+    <updated>2015-04-10T13:21:37+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+</p>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
+
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
+
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
+
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -586,201 +726,6 @@ Won in A Small Matter of Programming. <a href="#fnref:wu" class="reversefootnote
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[OmniCppComplete Installation for Dummies]]></title>
-      <link href="http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies/"/>
-    
-    <updated>2013-12-12T01:01:00+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2013/12/12/omnicppcomplete-installation-for-dummies</id>
-    
-      <content type="html"><![CDATA[<p><em>Note: In <a href="https://stackoverflow.com/q/12339415" title="Can't figure out difference - omnicppcomplete versus clang">a Stack Overflow question</a>, it is suggested
-that <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> is better.  For its installation, refer to its
-<a href="http://aknow-work.blogspot.hk/2013/04/vim-clangcomplete.html">another fan’s blog</a>.</em></p>
-
-<!-- more -->
-
-<h2 id="background">Background</h2>
-
-<p><a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a> is a great Vim plugin that has the popup menu like
-many big IDEs.  <a href="http://youtu.be/MQy2rVOf-z0">A Youtube video</a> can show the power of
-<a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a>.</p>
-
-<h2 id="download">Download</h2>
-
-<p><a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a> requires <a href="http://ctags.sourceforge.net/">ctags</a>.</p>
-
-<ol>
-  <li><a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete’s GitHub repository</a> (To avoid
-mixing up of files from different plugins, use a plugin management
-plugin like <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> or <a href="https://github.com/gmarik/vundle">Vundle</a>.)</li>
-  <li><a href="http://ctags.sourceforge.net/">Ctags’s official homepage</a> on SourceForge (The ZIP file
-for M$ Win *2**0 is fine.)</li>
-</ol>
-
-<p>For more detailed information on the installation of <a href="http://ctags.sourceforge.net/">ctags</a>, please
-refer to my earlier blog post <a href="http://blogue-un.blogspot.hk/2013/12/links-to-good-posts.html"><em>Links to Good Posts</em></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Reading the <a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a>’s documentation only, you won’t be able
-to understand how to use this plugin, so follow some tutorials, and
-the most viewed one should be on <a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">Vim Tips Wiki</a>.
-Followed its guidance, I got error in typing <code>std::</code> in a new CPP
-file.  Omni completion told me something like “pattern not match”.  I
-spent nearly 2 hours to figure out what’s wrong, and finally managed
-to fully understand the contents of <a href="http://carl830.pixnet.net/blog/post/67681043-vim-omnicppcomplete%2Bstl-support">this blog entry</a>.</p>
-
-<p>Now, I’m going to make <em>a M$ Win* version</em> of Vim Tips Wiki’s
-tutorial, using the ideas from Carl.</p>
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="step-one">Step one</h3>
-
-<p>I suppose <a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a> and <a href="http://ctags.sourceforge.net/">ctags</a> are installed properly.</p>
-
-<ul>
-  <li>
-    <p><a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a> does not mix up with other plugins.</p>
-
-    <p>Note: For gVimPortable, do store files under the Data folder, but
-  NOT the <code>$VIMRUNTIME</code> file.  Otherwise the settings will be lost
-  after upgrading gVimPortable.</p>
-
-    <p><img class="fancybox" src="/images/posts/OmniCpp/pathogen.png" title="‘The folder for different plugins are separated (except the plugin management plugin itself).’ ‘Vim plugins location using pathogen.vim’" ></p>
-  </li>
-  <li>
-    <p>Typing <code>:h omnicppcomplete</code> in Vim normal mode gives up the help
-  file for <a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a>.</p>
-
-    <p><img class="/images/posts/OmniCpp/omnicpp.png ‘Typing <code>:h" src="omnicppcomplete</code>&#8221; title=&#8221;gives you the corresponding help file.’ ‘Help for OmniCppComplete.txt’&#8221; ></p>
-  </li>
-  <li>
-    <p>The folder for <a href="http://ctags.sourceforge.net/">ctags</a> is in the PATH environment variable.</p>
-
-    <p>Follow <a href="http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx">this page</a> for setting the PATH variable.</p>
-
-    <p><img class="fancybox" src="/images/posts/OmniCpp/ctags.png" width="800" title="‘Set PATH variable’ ‘fig1’" ><br />
-  Note: <code>C:\ctags58</code> should be in the <code>PATH</code> variable.</p>
-  </li>
-</ul>
-
-<h3 id="step-two">Step two</h3>
-
-<p>Download the <a href="http://www.vim.org/scripts/script.php?script_id=2358">modified libstdc++ headers</a> from
-<a href="https://github.com/vim-scripts/tags-for-std-cpp-STL-streams-...">GitHub</a>.</p>
-
-<h3 id="step-three">Step three</h3>
-
-<p>Unzip the folder and place it under “somewhere meaningful to you”.</p>
-
-<ul>
-  <li>
-    <p>My suggestion: <code>C:\Users\[your-user-name]\.vim</code><br />
-  Here you can substitute <code>[your user name]</code> with your <em>real</em> user
-  name on M$ Win*.</p>
-  </li>
-  <li>
-    <p>Note: In the dialogue (in case you use GUI), <em>don’t</em> input <code>tags</code> at
-  the end.  Otherwise, you’ll get
-  <code>C:\Users\[your-user-name]\.vim\tags\tags</code></p>
-  </li>
-</ul>
-
-<h3 id="step-four">Step four</h3>
-
-<p>If things go right, you should have
-    <code>C:\Users\[your-user-name]\.vim\tags</code></p>
-
-<p>Go to that directory by typing <code>cd .vim\tags</code> in M$ Win*’s Command
-Prompt, which can be involked by typing <code>cmd</code> in the “Start” menu.
-(For M$ Win* XP, choose “Run” and type “cmd” in the popup dialogue.
-If you like choosing from the menu, follow
-<a href="http://windows.microsoft.com/en-hk/windows-vista/open-a-command-prompt-window">the way on the official website</a>.)</p>
-
-<p>At first, a commad prompt should be like this.</p>
-
-<p><img src="/images/posts/OmniCpp/cmd.png" title="‘Command Prompt default starting display’ ‘fig4’" ><br />
-The current directory is <code>C:\Users\Owner</code>.</p>
-
-<p><img src="/images/posts/OmniCpp/cmd2.png" title="‘Change directory in Win* CMD’ ‘fig5’" ><br />
-Change the current directory to <code>C:\Users\Owner\.vim\tags</code>.</p>
-
-<p>The contents should be shown by typing <code>dir</code> (There’re so many files
-that I use the <code>/w</code> option to save space.)</p>
-
-<p><img src="/images/posts/OmniCpp/dir1.png" title="‘fig6’ ‘w flag in dir command in Win* CMD’" ><br />
-The contents are in the right place, so we may proceed.</p>
-
-<p><img src="/images/posts/OmniCpp/ctags1.png" title="‘fig7’ ‘Ctags in Win* CMD’" ><br />
-Get a list of <a href="http://ctags.sourceforge.net/">ctags</a>.</p>
-
-<p>To get a list of <a href="http://ctags.sourceforge.net/">ctags</a>, the correct command:</p>
-
-<pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="HLCode">.</span></code></pre>
-
-<p>The one you see on Vim Tips Wiki:</p>
-
-<pre class="cli"><code>&gt;ctags -R --sort=1 --c++-kinds=+p --fields=+iaS --extra=+q --language-force=C++ -f cpp <span class="err">cpp_src</span></code></pre>
-
-<h3 id="step-five">Step five</h3>
-
-<p>Then you should have a huge list of <a href="http://ctags.sourceforge.net/">ctags</a> with the file name cpp.
-Not adding the additional tags for <a href="https://www.opengl.org">OpenGL</a>, etc, is OK.</p>
-
-<h3 id="step-six">Step six</h3>
-
-<p>Finally, adding the lines found in the Vim Tips Wiki into your VIMRC
-will do.</p>
-
-<p>Note: If you don’t add the additional tags in step 5, then the
-following lines should NOT be added.</p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/gl
-</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/sdl
-</span><span class='line'><span class="k">set</span> <span class="k">tags</span><span class="p">+=~</span><span class="sr">/.vim/</span><span class="k">tags</span>/qt4
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h2 id="testing">Testing</h2>
-
-<p>A picture can illustrate the feature well.  Typing <code>std::</code>, you’ll get
-a popup list.</p>
-
-<p><img class="fancybox" src="/images/posts/OmniCpp/omni.png" title="‘OmniCppComplete in GVim’ ‘fig8’" ></p>
-
-<h2 id="incompatibility-with-clangcomplete">Incompatibility with clang_complete</h2>
-
-<p>Note that <a href="https://github.com/vim-scripts/OmniCppComplete">Omnicppcomplete</a> is <em>incompatible</em> with another Vim plugin
-called <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>, due to its “unconditional popup of completion
-list”.  To understand this, the following pictures give a good
-interpretation.</p>
-
-<p>In <a href="https://github.com/vim-scripts/OmniCppComplete">OmniCppComplete</a>, after typing <code>std::</code>, the completion list will
-pop up.</p>
-
-<p>However, in <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a>, since the information is from the clang
-compiler, you need to give the syntax in the right position for the
-compiler so as to let the completion list to show up.</p>
-
-<p><img class="fancybox" src="/images/posts/OmniCpp/ClangComplete1.png" title="‘Missing a line’ ‘missing iostream’" ><br />
-Missing <code>#include &lt;iostream&gt;</code></p>
-
-<p><img class="fancybox" src="/images/posts/OmniCpp/std_err.png" title="‘Still wrong position of the input’ ‘wrong place for std::’" ></p>
-
-<p><img class="fancybox" src="/images/posts/OmniCpp/ClangComplete2.png" title="‘Cannot figure out difference - omnicppcomplete versus clang’ ‘clang_complete work for correct code’" ></p>
-
-<p>On <a href="http://www.ubuntu.com">Ubuntu</a>, it’s easy to install.  Note that you need <code>clang-dev</code> as
-well.  For M$ Win*, maybe you need to download the source. (I hope
-there will be a <em>compiled version of the compiler</em>.)</p>
-
 ]]></content>
     
   </entry>

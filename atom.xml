@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-07T16:21:56+08:00</updated>
+  <updated>2015-04-10T14:46:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,145 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Compared Two Poisson Variables]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/"/>
+    
+    <updated>2015-04-10T13:21:37+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<div><script src="https://gist.github.com/c27c38c49fe8de17c815.js"></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
+
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
+
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
+
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2328,27 +2467,6 @@ on Stack Overflow. <a href="#fnref:sol" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Subring of Ring With Unity]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/18/subring-of-ring-with-unity/"/>
-    
-    <updated>2015-01-18T14:51:27+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/18/subring-of-ring-with-unity</id>
-    
-      <content type="html"><![CDATA[<p>I’ve just read a statement which asserts that a subring isomorphic to
-$\Z$ or $\Z_n$ can be found in any ring $R$ with unity.  The proof
-which is based on a ring homomorphism $\phi:\Z\to R$ defined by
-$\phi(m) = m\cdot 1$ <em>isn’t</em> difficult to read.</p>
-
-<p>I used fifteen minutes to think of why one needs a <em>subring</em> inside
-the ring $R$ with unity, instead of $R$.  After I’ve come up with
-<span class="myeqn">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
-\in \Z, b \in\Z_{\ge 0} \right\}$</span>, I start this post.</p>
 ]]></content>
     
   </entry>

@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Pandoc Template (1) - Blog 1</title>
+  <title>Compared Two Poisson Variables - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="The last post about pandoc was written four months ago. Last week,
-I slightly changed the pandoc template default.latex on
-jgm/pandoc-templates so &hellip;">
+  <meta name="description" content="Background Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ jgm/pandoc-templates so &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -80,7 +79,7 @@ jgm/pandoc-templates so &hellip;">
   <header>
     
       
-	<h1 class="entry-title">My Pandoc Template (1)</h1>
+	<h1 class="entry-title">Compared Two Poisson Variables</h1>
       
     
     
@@ -90,7 +89,7 @@ jgm/pandoc-templates so &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-08-03T17:21:01+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
+<time class='entry-date' datetime='2015-04-10T13:21:37+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:21 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -101,216 +100,133 @@ jgm/pandoc-templates so &hellip;">
   </header>
 
 
-<div class="entry-content"><p>The last post about <a href="http://johnmacfarlane.net/pandoc/" title="pandoc—a universal document converter">pandoc</a> was written four months ago.  Last week,
-I slightly changed the pandoc template <code>default.latex</code> on
-<a href="https://github.com/jgm/pandoc-templates" title="Templates for pandoc">jgm/pandoc-templates</a> so that users can easily create $\rm \LaTeX$
-documents with</p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<ul>
-  <li>1-inch margin; and</li>
-  <li>one-half (or double) spacing.</li>
-</ul>
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
 
-<p>The following command can create a PDF using the template.</p>
+<h2 id="problem">Problem</h2>
 
-<pre class="cli"><code>$ pandoc src.mkd --template=my_template1.latex -o out.pdf
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<div><script src="https://gist.github.com/c27c38c49fe8de17c815.js"></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
 </code></pre>
 
-<p>I hope that more people will use pandoc and write in Markdown.</p>
+<h2 id="lessons-learnt">Lessons learnt</h2>
 
-<!-- more -->
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
 
-<div><script src="https://gist.github.com/ffad6efe2c65d5e70b28.js?file=my_template1.latex"></script>
-<noscript><pre><code>\documentclass[12pt,a4paper]{$documentclass$}
-$if(fontfamily)$
-\usepackage{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
-\usepackage{setspace}
-\setstretch{1.241} % for one half spacing of 12pt
-%\setstretch{1.655} % for double spacing of 12pt
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-    \usepackage{xltxtra,xunicode}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
-  \newcommand{\euro}{€}
-$if(mainfont)$
-    \setmainfont{$mainfont$}
-$endif$
-$if(sansfont)$
-    \setsansfont{$sansfont$}
-$endif$
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi]{$monofont$}
-$endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek){$mathfont$}
-$endif$
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage[margin=1in]{geometry}
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-\usepackage{biblatex}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
-$endif$
-$endif$
-$if(listings)$
-\usepackage{listings}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(verbatim-in-note)$
-\usepackage{fancyvrb}
-$endif$
-$if(tables)$
-\usepackage{longtable,booktabs}
-$endif$
-$if(graphics)$
-\usepackage{graphicx}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width&gt;\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height&gt;\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-$endif$
-\ifxetex
-  \usepackage[setpagesize=false, % page size defined by xetex
-              unicode=false, % unicode breaks when used with xetex
-              xetex]{hyperref}
-\else
-  \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
-            bookmarks=true,
-            pdfauthor={$author-meta$},
-            pdftitle={$title-meta$},
-            colorlinks=true,
-            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
-            pdfborder={0 0 0}}
-\urlstyle{same}  % don&#39;t use monospace font for urls
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-$if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
-$endif$
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-$if(numbersections)$
-\setcounter{secnumdepth}{5}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
-$if(verbatim-in-note)$
-\VerbatimFootnotes % allows verbatim text in footnotes
-$endif$
-$if(lang)$
-\ifxetex
-  \usepackage{polyglossia}
-  \setmainlanguage{$mainlang$}
-\else
-  \usepackage[$lang$]{babel}
-\fi
-$endif$
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
 
-$if(title)$
-\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
-$endif$
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-\date{$date$}
-$for(header-includes)$
-$header-includes$
-$endfor$
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
 
-\begin{document}
-$if(title)$
-\maketitle
-$endif$
-$if(abstract)$
-\begin{abstract}
-$abstract$
-\end{abstract}
-$endif$
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
 
-$for(include-before)$
-$include-before$
-
-$endfor$
-$if(toc)$
-{
-\hypersetup{linkcolor=black}
-\setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
-}
-$endif$
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
-$body$
-
-$if(natbib)$
-$if(biblio-files)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$biblio-files$}
-
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-
-$endif$
-$for(include-after)$
-$include-after$
-
-$endfor$
-\end{document}</code></pre></noscript></div>
-
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -326,12 +242,12 @@ $endfor$
 
 
 
-<time class='entry-date' datetime='2014-08-03T17:21:01+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
+<time class='entry-date' datetime='2015-04-10T13:21:37+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:21 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/pandoc/'>pandoc</a>, <a class='category' href='/blog/categories/template/'>template</a>
+    <a class='category' href='/blog/categories/c-slash-c-plus-plus/'>c/c++</a>, <a class='category' href='/blog/categories/math/'>math</a>
   
 </span>
 
@@ -340,7 +256,7 @@ $endfor$
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/" >Tweet</a>
   
   
   
@@ -351,10 +267,8 @@ $endfor$
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/" title="Previous Post: After Reading About.com's Introduction to the SVG Viewbox">&laquo; After Reading About.com&#8217;s Introduction to the SVG Viewbox</a>
+        <a class="basic-alignment left" href="/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/" title="Previous Post: Calculating the Volume of a Triangular Pyramid in a Hard Way">&laquo; Calculating the Volume of a Triangular Pyramid in a Hard Way</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/05/fixing-embedded-gists-in-octopress/" title="Next Post: Fixing Embedded Gists in Octopress">Fixing Embedded Gists in Octopress &raquo;</a>
       
     </p>
   </footer>
@@ -464,8 +378,8 @@ $endfor$
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/';
         var disqus_script = 'embed.js';
       
     (function () {

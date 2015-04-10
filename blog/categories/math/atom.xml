@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-07T16:21:56+08:00</updated>
+  <updated>2015-04-10T14:46:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,146 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Compared Two Poisson Variables]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/"/>
+    
+    <updated>2015-04-10T13:21:37+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+</p>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
+
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
+
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
+
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -423,135 +563,6 @@ on Mathematics Stack Exchange. <a href="#fnref:mathse91688" class="reversefootno
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Powers of Roots of Irreducible Polynomials in a Field With Characteristic $p$]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/"/>
-    
-    <updated>2015-03-15T13:53:12+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p</id>
-    
-      <content type="html"><![CDATA[<p>Suppose we have a field $F$ of characteristic $p$ and a degree $n$
-irreducible polynomial $f \in F[x]$.</p>
-
-<div class="myeqn">
-\[
-f(x) = \sum_{i = 0}^n a_i x^i \text{, where } a_i \in F \,\forall i =
-0,1,\dots,n.
-\]
-</div>
-
-<p>One can find a root $\alpha \notin F$ of $f$ in a field extension $E$
-of $F$ by Kronecker’s Theorem.  Then $f(\alpha) = 0$. <strong>How about the
-other $n - 1$ roots of $f$?</strong></p>
-
-<p>Half a month ago, I <em>couldn’t</em> find out the answer directly — I used
-the fact that all finite fields of order $p^n$ were isomorphic to
-$\F_{p^n}$, which was the collection of roots of $x^{p^n} - x$ in
-$\Z_p$ in $\overline{\Z_p}$.  However, this makes use of <em>too many</em>
-abstract facts.</p>
-
-<p>Yesterday night, by computing the $p$-th power of an element $\beta$
-in $E$, I finally know the direct way of finding the other $n - 1$
-roots of $f$ in $E$.  Let $b_0,\dots,b_n \in F$ such that</p>
-
-<div class="myeqn">
-\[
-\beta = \sum_{i = 0}^{n - 1} b_i \alpha^i.
-\]
-</div>
-
-<p>Compute the $p$-th power of $\beta$.</p>
-
-<div class="myeqn">
-\[
-\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{k_0,\dots,k_{n
-- 1}} \frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
-  \alpha^i)^{k_i},
-\]
-</div>
-
-<div class="myeqn">
-\begin{equation}
-\text{ where } 0 \le k_i \le p \,\forall i = 0,\dots,n \text{ and }
-\sum_{i = 0}^{n - 1} k_i = p. \label{eq:cond}
-\end{equation}
-</div>
-
-<p>Case 1: $\exists k_j = p$, then $k_i = 0 \,\forall i \ne j$.</p>
-
-<div class="myeqn">
-\[
-\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
-\alpha^i)^{k_i} = 1 \cdot (b_j \alpha^j)^{k_j} = b_j \alpha^{pj}
-\]
-</div>
-
-<p>Note that one can prove that $\forall b \in F, b^p = b$ by induction.</p>
-
-<p>Case 2: $k_i \ne p \,\forall i = 0,\dots,n$.  Since $p$ is a prime,</p>
-
-<div class="myeqn">
-\[
-\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} = 0 \text{ in } \Z_p
-\]
-</div>
-
-<p>Since one only has $n$ choices of $k_0,\dots,k_{n - 1}$ which
-satisfy \eqref{eq:cond}, we conclude that</p>
-
-<div class="myeqn">
-\begin{equation}
-\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{i = 0}^{n - 1}
-b_i^p \alpha^{pi} \label{eq:powp}
-\end{equation}
-</div>
-
-<p>Since $\alpha$ is a root of $f$ in $E$, $(f(\alpha))^p = 0$.
-Replacing “$n - 1$” by “$n$” in the derivation of \eqref{eq:powp}, one
-gets</p>
-
-<div class="myeqn">
-\[
-(f(\alpha))^p = (\sum_{i = 0}^n a_i \alpha^i)^p = \sum_{i = 0}^n a_i
-\alpha^{pi} = f(\alpha^p) = 0
-\]
-</div>
-
-<p>Therefore, <em>without</em> learning induction, one can sense that
-$f(\alpha^{p^m}) = 0 \,\forall m \in \N$.  That’s not the end.  Since
-the degree of $f$ is $n$, we expect to that the number of roots of $f$
-is <em>finite</em>.  Since we expect $n$ roots of $f$, we hope that
-$\alpha^{p^m}$ will repeat itself for sufficiently large $m$.  This
-hope comes true due to Lagrange’s Theorem — $|F^\times| = p^n -
-1$, so $\alpha^{p^n - 1} = 1$.</p>
-
-<p><del>
-Unluckily, I’ve just found out that $f$ <em>has</em> some root $\alpha’$
-which <em>doesn’t</em> hit either one of
-$\alpha,\alpha^p,\alpha^{p^2},\dots,\alpha^{p^{n - 1}}$.  For example,
-if one sets $f(x) := x^{p^2} - x \in \Z_p[x]$ and let $\alpha$ be a
-root of $f$ in $\overline{\Z_p}$, then it’s trivial that
-$\alpha^{p^2} = \alpha$, thus the collection of the $p^m$-th power of
-$\alpha$ is just $\left\{ \alpha,\alpha^p \right\}$.  (i.e.
-$\left\{ \alpha^{p^m} \mid m \in \N \right\} = \left\{
-\alpha,\alpha^p \right\}$)  Nevertheless, $f$ should have $p^2$ roots
-in $\overline{\Z_p}$.
-</del></p>
-
-<p>Hence, I <em>didn’t</em> succeed in answering <strong>the above bolded question</strong>,
-but I still learn something about the roots of an irreducible
-polynomial in an algebraic extension.</p>
-
-<hr />
-<p>(Edited on MAR 28, 2015)</p>
-
-<p>With the results from perfect fields, we <em>immediately</em> know that $f$
-has $n$ different roots.</p>
 ]]></content>
     
   </entry>
