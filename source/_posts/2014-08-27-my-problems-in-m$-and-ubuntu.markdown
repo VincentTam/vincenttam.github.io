@@ -7,7 +7,7 @@ categories: [M$ Win*, Linux]
 ---
 
 I seldom encounter problems in both operating systems.  However,
-there's *exceptional* situations.
+there're *exceptional* situations.
 
 M\$ Win\* 7
 ---
@@ -23,7 +23,7 @@ Ubuntu 14.04
 
 Last night, I saw a small dialog box after the login.
 
-{% img fancybox /images/posts/MSUbuProblem/Ubu.png 'Ubuntu 14.04' 'MS problem' %}
+{% img fancybox /images/posts/MSUbuProblem/Ubu.png 'Ubuntu 14.04' 'Ubuntu problem' %}
 
 I checked the details---it was the problem of Ubuntu's greeter, but
 I'm going to do *nothing* to resolve it.
@@ -32,7 +32,7 @@ I think that this is due to my method of getting the newer version of
 Ubuntu---upgrading instead of clearing and installing.[^UpUb]
 
 Since I lack time to study the official manual and related posts about
-clearing Linux partitions and installing Ubuntu 14.04, I just keep
+clearing Linux partitions and installing Ubuntu 14.04, I just keep
 using the Ubuntu that I have.
 
 Conclusion
@@ -49,7 +49,7 @@ what's wrong.
 
 It's great to learn what's really going on in an OS, and I personally
 think that the GNU/Linux commands are better tools for that, when
-compared to GUI tools.
+compared to their GUI counterparts.
 
 ---
 [^UpUb]:
