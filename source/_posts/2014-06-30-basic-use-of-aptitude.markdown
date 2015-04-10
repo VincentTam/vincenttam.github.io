@@ -102,6 +102,7 @@ those in Vim.
 - Press `/` to search
 - Press `n` to repeat search
 - Press `N` to repeat search *backward*
+- Press `l` to view the matched packages *only*[^mod150410]
 
 #### Working with windows
 
@@ -160,7 +161,12 @@ Note: One needs to confirm the action by pressing `g`.  See
 #### More commands
 
 There's still more commands, like `i` for switching the tabbed panes
-which contain the information of the packages.
+which contain the information of the packages.  One may view more in
+[Aptitude Survival Guide][more_cmd] in Ubuntu's *Community Help Wiki*.
+
+---
+[^mod150410]: Last added on Apr 10, 2015.
 
 [GIMP]: http://www.gimp.org/ "GIMP - The GNU Image Manipulation Program"
 [a:applying-the-changes]: #applying-the-changes "Applying the changes"
+[more_cmd]: https://help.ubuntu.com/community/AptitudeSurvivalGuide
