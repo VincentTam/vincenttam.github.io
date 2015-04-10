@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-10T14:46:42+08:00</updated>
+  <updated>2015-04-10T16:01:38+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Looping Through Lines]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/10/looping-through-lines/"/>
+    
+    <updated>2015-04-10T15:01:48+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/10/looping-through-lines</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I copied lines from an enumerated list in this blog and pasted it to
+Vim.  The content in each list item was seen in the current Vim
+buffer, but <em>not</em> the numbers.</p>
+
+<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
+
+<p>A sample ordered list with 2015 items</p>
+
+<ol>
+  <li>Item one</li>
+  <li>Item two</li>
+  <li>Item three</li>
+</ol>
+
+<p>…</p>
+
+<ol start="2015"><li>Item 2015</li></ol>
+
+<p>What is seen in Vim after copy and paste</p>
+
+<pre><code>Item one
+Item two
+Item three
+...
+Item 2015
+</code></pre>
+
+<p>If one writes in Markdown and he/she copies a numbered list from
+elsewhere to a text editor, then it will be very <em>inconvenient</em> to
+manually add back the numbers.  To exaggerate this inconvenience, I
+put “2015” above.</p>
+
+<h2 id="goal">Goal</h2>
+
+<p>Insert the item number at the beginning.</p>
+
+<pre><code>1. Item one
+2. Item two
+3. Item three
+...
+2015. Item 2015
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I read chapters 28–30 and 36 of
+<a href="http://learnvimscriptthehardway.stevelosh.com/"><em>Learn Vimscript the Hard Way</em></a> by Steve Losh, and searched
+“vim loop through lines” on Google.  After I saw <code>while liner &lt;
+line("$")</code> in a forum thread, I typed the following editor commands in
+Vim.</p>
+
+<p><figure class='code'><figcaption><span>A while-loop which runs through the lines </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">let</span> <span class="k">l</span> <span class="p">=</span> <span class="m">1</span>
+</span><span class='line'><span class="m">1</span>
+</span><span class='line'><span class="k">wh</span> <span class="k">l</span> &amp;<span class="k">lt</span>;<span class="p">=</span> line<span class="p">(</span>“$”<span class="p">)</span>
+</span><span class='line'>  exe “norm<span class="p">!</span> I” . <span class="k">l</span> . “&amp;<span class="k">lt</span>;esc&amp;gt;<span class="k">j</span>”
+</span><span class='line'>  <span class="k">let</span> <span class="k">l</span> <span class="p">+=</span> <span class="m">1</span>
+</span><span class='line'><span class="k">endwh</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Why is <code>exe "norm!</code> used instead of <code>norm</code>?  Since <code>\&lt;esc&gt;</code> <em>can’t</em> go
+with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
+norm!</code>, insert a backslash <code>\</code> before <code>&lt;</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -331,41 +417,6 @@ I just copied the whole autocommand group to
   </ol>
 </div>
 ]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[How to Stop Auto Indenting? &#9733;]]></title>
-      <link href="http://vim.wikia.com/wiki/How_to_stop_auto_indenting"/>
-    
-    <updated>2014-12-12T22:31:11+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting</id>
-    
-      <content type="html"><![CDATA[<p>After reading this guide, I created a file
-<code>$HOME/vimfiles/indent/html.vim</code> with only one line.</p>
-
-<pre><code>let b:did_indent = 1
-</code></pre>
-
-<p>In the past, I would <code>:setlocal noautoident nosmartindent</code> before
-pasting anything into a <a href="http://www.vim.org">Vim</a> buffer.  However, as I paste the
-<a href="http://jquery.com">jQuery</a> code from a website while I was writing a recent post, the
-code was <em>still</em> wrongly indented.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>  After reading the last
-section of the tip, I now know to use <code>:set paste</code>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp">
-
-      <p>See <a href="/blog/2014/12/11/cheat-in-an-online-quiz/"><em>Cheat in an Online Quiz</em></a> in Blog 1 for the copied
-<a href="http://jquery.com">jQuery</a> function. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-<p><a rel="full-article" href="http://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/">&infin; Permalink</a></p>]]></content>
     
   </entry>
   

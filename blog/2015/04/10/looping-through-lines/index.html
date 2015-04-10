@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Upgraded Ubuntu - Blog 1</title>
+  <title>Looping Through Lines - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I’ve upgraded Ubuntu to 14.04 LTS. In the first reboot, I saw a few
-errors. Since then, usual things like web browsers and terminal have
-run smoothly &hellip;">
+  <meta name="description" content="Problem I copied lines from an enumerated list in this blog and pasted it to
+Vim. The content in each list item was seen in the current Vim
+buffer, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ run smoothly &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/04/10/looping-through-lines">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -80,7 +80,7 @@ run smoothly &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Upgraded Ubuntu</h1>
+	<h1 class="entry-title">Looping Through Lines</h1>
       
     
     
@@ -90,7 +90,7 @@ run smoothly &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-08-13T11:06:58+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:06 am</span></time>
+<time class='entry-date' datetime='2015-04-10T15:01:48+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -101,33 +101,79 @@ run smoothly &hellip;">
   </header>
 
 
-<div class="entry-content"><p>I’ve upgraded <a href="http://www.ubuntu.com" title="A popular Linux distro">Ubuntu</a> to 14.04 LTS.</p>
+<div class="entry-content"><h2 id="problem">Problem</h2>
 
-<p><img src="/images/posts/UbuntuDistUpgrade2/tty1.png" alt="tty1 of Ubuntu 14.04" /></p>
+<p>I copied lines from an enumerated list in this blog and pasted it to
+Vim.  The content in each list item was seen in the current Vim
+buffer, but <em>not</em> the numbers.</p>
 
-<p>In the first reboot, I saw a few
-errors.  Since then, usual things like web browsers and terminal have
-run smoothly, except the tool tip text of the <a href="https://www.mozilla.org/en-US/firefox/new/" title="Mozilla Firefox">Firefox</a> icon in the
-<a href="https://unity.ubuntu.com" title="Ubuntu's default desktop environment">Unity</a> desktop environment.</p>
+<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
 
-<p>At first, the time <em>wasn’t</em> synchronized with the Internet, though it
-had been set to “Automatically from the Internet” in “Time &amp; Date” in
-“Systems Settings”.  After an hour or so, it’ll be fine.</p>
+<p>A sample ordered list with 2015 items</p>
 
-<p>However, the display of monospaced fonts in some places is strange.
-For example, when I view the source code of a web page in Chromium,
-the font <em>isn’</em> monospaced.</p>
+<ol>
+  <li>Item one</li>
+  <li>Item two</li>
+  <li>Item three</li>
+</ol>
 
-<p><img src="/images/posts/UbuntuDistUpgrade2/src_code.png" alt="HTML source code viewed inside Chrome" /></p>
+<p>…</p>
 
-<p>I <em>won’t</em> try to fix the problem since I think that metric spaces are
-more <em>interesting</em> than technical problems.</p>
+<ol start="2015"><li>Item 2015</li></ol>
 
-<hr />
-<p>(Last edited on AUG 17, 2014)</p>
+<p>What is seen in Vim after copy and paste</p>
 
-<p>I have now worked out a solution to this problem.  Refer to
-<a href="/blog/2014/08/17/ubuntu-14-dot-04-monospaced-font-family/"><em>Ubuntu 14.04 Monospaced Font Family</em></a> for details.</p>
+<pre><code>Item one
+Item two
+Item three
+...
+Item 2015
+</code></pre>
+
+<p>If one writes in Markdown and he/she copies a numbered list from
+elsewhere to a text editor, then it will be very <em>inconvenient</em> to
+manually add back the numbers.  To exaggerate this inconvenience, I
+put “2015” above.</p>
+
+<h2 id="goal">Goal</h2>
+
+<p>Insert the item number at the beginning.</p>
+
+<pre><code>1. Item one
+2. Item two
+3. Item three
+...
+2015. Item 2015
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I read chapters 28–30 and 36 of
+<a href="http://learnvimscriptthehardway.stevelosh.com/"><em>Learn Vimscript the Hard Way</em></a> by Steve Losh, and searched
+“vim loop through lines” on Google.  After I saw <code>while liner &lt;
+line("$")</code> in a forum thread, I typed the following editor commands in
+Vim.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A while-loop which runs through the lines </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="k">let</span> <span class="k">l</span> <span class="p">=</span> <span class="m">1</span>
+</span><span class="line"><span class="m">1</span>
+</span><span class="line"><span class="k">wh</span> <span class="k">l</span> <span class="p">&lt;=</span> line<span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span>
+</span><span class="line">  exe <span class="s2">&quot;norm! I&quot;</span> . <span class="k">l</span> . <span class="s2">&quot;\&lt;esc&gt;j&quot;</span>
+</span><span class="line">  <span class="k">let</span> <span class="k">l</span> <span class="p">+=</span> <span class="m">1</span>
+</span><span class="line"><span class="k">endwh</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Why is <code>exe "norm!</code> used instead of <code>norm</code>?  Since <code>\&lt;esc&gt;</code> <em>can’t</em> go
+with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
+norm!</code>, insert a backslash <code>\</code> before <code>&lt;</code>.</p>
 
 </div>
 
@@ -144,12 +190,12 @@ more <em>interesting</em> than technical problems.</p>
 
 
 
-<time class='entry-date' datetime='2014-08-13T11:06:58+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:06 am</span></time>
+<time class='entry-date' datetime='2015-04-10T15:01:48+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>
+    <a class='category' href='/blog/categories/vim/'>vim</a>
   
 </span>
 
@@ -158,7 +204,7 @@ more <em>interesting</em> than technical problems.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/04/10/looping-through-lines/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/04/10/looping-through-lines/" >Tweet</a>
   
   
   
@@ -169,10 +215,8 @@ more <em>interesting</em> than technical problems.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/" title="Previous Post: Ubuntu Distribution Upgrade to 14.04">&laquo; Ubuntu Distribution Upgrade to 14.04</a>
+        <a class="basic-alignment left" href="/blog/2015/04/10/compared-two-poisson-variables/" title="Previous Post: Compared Two Poisson Variables">&laquo; Compared Two Poisson Variables</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/13/install-ruby-again-2/" title="Next Post: Install Ruby Again! (2)">Install Ruby Again! (2) &raquo;</a>
       
     </p>
   </footer>
@@ -282,8 +326,8 @@ more <em>interesting</em> than technical problems.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/08/13/upgraded-ubuntu/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/04/10/looping-through-lines/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/04/10/looping-through-lines/';
         var disqus_script = 'embed.js';
       
     (function () {
