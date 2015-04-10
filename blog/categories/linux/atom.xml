@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-04-10T23:34:06+08:00</updated>
+  <updated>2015-04-11T01:23:10+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fbi vs Fim]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/04/11/fbi-vs-fim/"/>
+    
+    <updated>2015-04-11T00:15:56+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/04/11/fbi-vs-fim</id>
+    
+      <content type="html"><![CDATA[<p>This is just a small table listing <em>some</em> differences between <abbr title="framebuffer imageviewer">fbi</abbr> and
+<abbr title="fbi improved">fim</abbr>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: left">Advantages</th>
+      <th style="text-align: left">Disadvantages</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><abbr title="framebuffer imageviewer">fbi</abbr></td>
+      <td style="text-align: left">support SVG files</td>
+      <td style="text-align: left"><em>doesn’t</em> support tmux <br /> <em>doesn’t</em> have full control over the zooming size</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><abbr title="fbi improved">fim</abbr></td>
+      <td style="text-align: left">support tmux <br /> support custom zooming<sup id="fnref:fim_zoom"><a href="#fn:fim_zoom" class="footnote">1</a></sup></td>
+      <td style="text-align: left"><em>doesn’t</em> support SVG files</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To view SVG images in tmux buffers, one can use ImageMagick’s
+<code>convert</code> command.<sup id="fnref:convert"><a href="#fn:convert" class="footnote">2</a></sup></p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>While writing the above table, I ran into the problem of a Markdown
+table with more than one line.  Luckily, searching “kramdown table
+lines” on Google, I quickly found a Stack Overflow question which
+solved my problem.<sup id="fnref:so12119310"><a href="#fn:so12119310" class="footnote">3</a></sup>  Note that <code>&lt;br&gt;</code> is <em>not</em> the best
+way: add a slash <code>/</code> to suppress the following messages.</p>
+
+<pre class="cliUB"><code>Warning: The HTML tag 'br' on line 15 cannot have any content -
+auto-closing it
+Warning: The HTML tag 'br' on line 17 cannot have any content -
+auto-closing it
+Warning: The HTML tag 'br' on line 1 cannot have any content -
+auto-closing it
+Warning: The HTML tag 'br' on line 1 cannot have any content -
+auto-closing it
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:fim_zoom">
+      <p>By <code>:nn%</code> <a href="#fnref:fim_zoom" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:convert">
+      <p>By <code>convert in.svg out.jpg</code> <a href="#fnref:convert" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:so12119310">
+
+      <p><a href="http://stackoverflow.com/a/12119310"><em>Newline in markdown table?</em></a> in Stack Overflow. <a href="#fnref:so12119310" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -565,112 +639,6 @@ the previous command.</p>
   <ol>
     <li id="fn:use_lynx">
       <p>See <a href="/blog/2014/06/07/use-lynx-browser/"><em>Use Lynx Browser</em></a> for the reasons. <a href="#fnref:use_lynx" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Push to USB]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb/"/>
-    
-    <updated>2015-01-01T22:51:20+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/01/git-push-to-usb</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ol>
-  <li>I created a bare Git repository in my USB stick on GUI.</li>
-  <li>I pushed some Git commits to the bare repository in the USB.</li>
-</ol>
-
-<p>The commands for the above steps <em>shouldn’t</em> be difficult.  In step 2,
-if one sets the upstream repository to the bare repository in the USB,
-the command to be issued is even easier: just <code>git push</code> will do, and
-the remote and branch names can be omitted.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I worked on Linux text mode instead of GUI.  After committing the
-changes, I tried pushing them into the bare Git repository in the USB.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ git status
-On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
-  (use "git push" to publish your local commits)
-nothing to commit, working directory clean
-[owner@localhost ~/MATH2220]$ sudo mount -t vfat /dev/sdf1 \
-&gt; /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ git push
-Counting objects: 4, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-remote: error: insufficient permission for adding an object to repository databa
-se objects
-remote: fatal: failed to write object
-error: unpack failed: unpack-objects abnormal exit
-To /media/owner/08F1-B181/MATH2220/MATH2220.git
- ! [remote rejected] master -&gt; master (unpacker error)
-error: failed to push some refs to '/media/owner/08F1-B181/MATH2220/MATH2220.git
-'
-</code></pre>
-
-<p><strong>How can I push commits into the USB?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “git push usb rejected” for a similar problem, and “linux
-text mode git” for a Git tutorial on CLI, but I <em>couldn’t</em> find what I
-wanted.  I observed that this <em>wasn’t</em> a problem of Git, but a problem
-about file permissions on *nix.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ ll /media/owner/
-total 12
-drwxr-x---+ 3 root root 4096 Jan  1 21:40 ./
-drwxr-xr-x  4 root root 4096 Aug 13 02:09 ../
-drwxr-xr-x  2 root root 4096 Jan  1 21:40 08F1-B181/
-</code></pre>
-
-<p>Then I changed the search words, and finally found a page on SUSE
-Communities.<sup id="fnref:suse"><a href="#fn:suse" class="footnote">1</a></sup>  I read the commands and their descriptions, and
-eventually solved the problem.</p>
-
-<p>After I had unmounted the USB drive, I typed the command for mounting
-the USB stick again.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ sudo umount /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ sudo mount -t vfat -o uid=owner,gid=owner\
-&gt; /dev/sdf1 /media/owner/08F1-B181/
-[owner@localhost ~/MATH2220]$ git push
-Counting objects: 4, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
-Total 4 (delta 1), reused 0 (delta 0)
-To /media/owner/08F1-B181/MATH2220/MATH2220.git
-   9e8e53e..4fa36c7  master -&gt; master
-</code></pre>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>One can specify the owner and the user group of the VFAT filesystem to
-be mounted with <code>-o uid=foo,gid=bar</code> for USB devices.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:suse">
-
-      <p><a href="https://www.suse.com/communities/conversations/manually-mounting-a-usb-flash-drive-in-linux/"><em>Manually Mount a USB Flash Drive in Linux</em></a> by
-coolguys-suse on SUSE Communities. <a href="#fnref:suse" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
