@@ -10,8 +10,8 @@ Background
 ---
 
 I sometimes upload pictures for illustrating ideas.  You may see
-[*Two Diagrams Illustrating the Isomorphism Extension Theorem*][pp] in
-this blog for example.
+[*Two Diagrams Illustrating the Isomorphism Extension Theorem*][pp1]
+in this blog for example.
 
 Motivation
 ---
@@ -57,4 +57,26 @@ Click "download" to view the sample web page.
 
 {% include_code A minimum working example resizable/test.html %}
 
-[pp]: /blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/
+Discussion
+---
+
+Initially, due to my laziness, I used the *same* SVG image as the one
+in the section "Problem".  Even though the height and width of the SVG
+image were increased, the diagram *didn't*.  Moreover, it's
+*inconvenient* to manually increase the size of the picture by *both*
+adjusting the knob *and* moving the mouse wheel.  As a result, I
+googled "html scale svg" and found a long article which I *didn't*
+really read.[^ref]  I just saw the word "viewport" and realized that
+the SVG image in the section "Problem" had been processed with steps
+described in [*Zooming SVG in Web Browsers*][pp2] for incorporating
+the special functionalities of SVGPan in this blog.  Therefore,
+generating the SVG file for the $\rm \LaTeX$ source code again, I
+finally succeeded in getting the *contents* of the image enlarged.
+
+---
+[^ref]:
+    [How to Scale SVG][ref] by Amelia Bellamy-Royds on *CSS-Tricks*.
+
+[pp1]: /blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/
+[pp2]: /blog/2014/08/02/zooming-svg-in-web-browsers/
+[ref]: http://css-tricks.com/scale-svg/
