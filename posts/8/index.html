@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why? With detailed output from the terminal, other users can understand the
-problem better. This helps them come up with a solution to the
-problem. &hellip;">
+  <meta name="description" content="While writing a post about purging old Linux kernels, I made use of
+fancybox’s plugin to show a popup window which contains some HTML
+elements.1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,117 @@ problem. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/14/kramdowns-markdown-attributes/">Kramdown&#8217;s Markdown Attributes</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T16:37:49+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:37 pm</span></time>
+        
+           | <a href="/blog/2014/09/14/kramdowns-markdown-attributes/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/14/kramdowns-markdown-attributes/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/kramdowns-markdown-attributes/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While writing a post about purging old Linux kernels, I made use of
+<a href="http://fancyapps.com/fancybox/">fancybox</a>’s plugin to show a popup window which contains some <abbr title="HyperText Markup Language">HTML</abbr>
+elements.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Original container for popup contents</span><a href="http://goo.gl/rdMWNf">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;strong&gt;</span>bolded<span class="nt">&lt;/strong&gt;</span> lines represent the packages that are
+</span><span class="line">going to be completely removed.<span class="nt">&lt;/p&gt;</span>
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>There&#39;s <span class="nt">&lt;em&gt;</span>no<span class="nt">&lt;/em&gt;</span> lines beginning with <span class="nt">&lt;code&gt;</span>rc<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I tried writing Markdown code inside these <code>&lt;div&gt;</code> containers, but the
+Markdown code <em>failed</em> to be changed to <abbr title="HyperText Markup Language">HTML</abbr>.  As a result, <em>not</em>
+being familiar with much of the Markdown syntax specified by
+<a href="http://kramdown.gettalong.org/" title="fast, pure-Ruby Markdown-superset converter">kramdown</a>, I simply write <abbr title="HyperText Markup Language">HTML</abbr> inside these <code>&lt;div&gt;</code> elements.</p>
+
+<p>Fancybox is great, but if I need to give up Markdown, then what’s the
+point of overcoming so many technical problems related to Octopress?
+<em>Without</em> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and <a href="http://www.vim.org"><abbr title="VIsual editor, iMproved">Vim</abbr></a>, blogging will be <em>incredibly</em>
+difficult for me.  For the former, when compared with <abbr title="HyperText Markup Language">HTML</abbr>, it’s much
+easier to read and write; for the latter, it offers an efficient text
+editing experience.</p>
+
+<p>Therefore, this afternoon, I browsed <em>kramdown Syntax</em> in kramdown’s
+official website, and found out that the <code>markdown="1"</code> attribute can
+solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Current container for popup contents</span><a href="http://goo.gl/53zo2d">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">The **bolded** lines represent the packages that are going to be
+</span><span class="line">completely removed.
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">There&#39;s *no* lines beginning with `rc`.
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="/blog/2014/09/13/completely-remove-linux-kernels/"><em>Completely Remove Linux Kernels</em></a> in Blog 1. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://kramdown.gettalong.org/syntax.html#html-blocks">HTML Blocks</a> in <em>kramdown Syntax</em>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -673,59 +784,6 @@ verify the commands.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://detexify.kirelabs.org/classify.html">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T17:07:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:07 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Searching symbols in
-<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
-time-consuming.  For example, when I was writing my
-<a href="/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
-‘$\circ$’ symbol for composition of two functions.  At first, I typed
-<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
-‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
-Detexify is the answer for commonly used symbols.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -763,12 +821,12 @@ Detexify is the answer for commonly used symbols.</p>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (3)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (2)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (3)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (37)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (31)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (32)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -787,6 +845,10 @@ Detexify is the answer for commonly used symbols.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/04/12/understood-euler-product-formula/">Understood Euler Product Formula</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/11/an-image-with-changeable-size/">An Image With Changeable Size</a>
       </li>
     
@@ -800,10 +862,6 @@ Detexify is the answer for commonly used symbols.</p>
     
       <li class="post">
         <a href="/blog/2015/04/10/compared-two-poisson-variables/">Compared Two Poisson Variables</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/">Calculating the Volume of a Triangular Pyramid in a Hard Way</a>
       </li>
     
   </ul>

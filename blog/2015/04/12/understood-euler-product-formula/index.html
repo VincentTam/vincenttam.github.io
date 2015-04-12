@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Installed Prawn - Blog 1</title>
+  <title>Understood Euler Product Formula - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem This noon, I tried to use the kramdown command line utility to
-generate PDF files, but failed. $ kramdown test.tex -o pdf &gt; test.pdf
-/home &hellip;">
+  <meta name="description" content="Before I understood this formula When I was a high school student, it’s hard for me to imagine a
+product whose index looped through all prime numbers &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ generate PDF files, but failed. $ kramdown test.tex -o pdf &gt; test.pdf
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/11/03/installed-prawn">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/04/12/understood-euler-product-formula">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -80,7 +79,7 @@ generate PDF files, but failed. $ kramdown test.tex -o pdf &gt; test.pdf
   <header>
     
       
-	<h1 class="entry-title">Installed Prawn</h1>
+	<h1 class="entry-title">Understood Euler Product Formula</h1>
       
     
     
@@ -90,7 +89,7 @@ generate PDF files, but failed. $ kramdown test.tex -o pdf &gt; test.pdf
 
 
 
-<time class='entry-date' datetime='2014-11-03T12:21:34+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:21 pm</span></time>
+<time class='entry-date' datetime='2015-04-12T08:19:36+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:19 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -101,73 +100,101 @@ generate PDF files, but failed. $ kramdown test.tex -o pdf &gt; test.pdf
   </header>
 
 
-<div class="entry-content"><h2 id="problem">Problem</h2>
+<div class="entry-content"><h2 id="before-i-understood-this-formula">Before I understood this formula</h2>
 
-<p>This noon, I tried to use the <a href="http://kramdown.gettalong.org/documentation.html#usage">kramdown</a> command line utility to
-generate PDF files, but failed.</p>
+<p>When I was a high school student, it’s <em>hard</em> for me to imagine a
+product whose index looped through all prime numbers because primes
+<em>don’t</em> appear in a regular way: between 1 and 100, there’re 25
+primes, but between 900 and 1000, there’re 14.</p>
 
-<pre class="cliUB"><code>$ kramdown test.tex -o pdf &gt; test.pdf
-/home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygems/core_ext/ke
-rnel_require.rb:55:in `require': cannot load such file -- prawn (LoadError)
-	from /home/owner/.rvm/rubies/ruby-2.1.2/lib/ruby/site_ruby/2.1.0/rubygem
-s/core_ext/kernel_require.rb:55:in `require'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/c
-onverter/pdf.rb:10:in `&lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
-ocument.rb:119:in `const_defined?'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/lib/kramdown/d
-ocument.rb:119:in `method_missing'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `block in &lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `each'
-	from /home/owner/.rvm/gems/ruby-2.1.2/gems/kramdown-1.4.1/bin/kramdown:6
-1:in `&lt;top (required)&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `load'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/kramdown:23:in `&lt;main&gt;'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `e
-val'
-	from /home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;
-main&gt;'
-</code></pre>
+<p>Even though it’s easier to imagine the infinite sum whose $n$-th term
+is $n^{-s}$, <em>without</em> learning the $p$-Test and the Comparison Test
+for the convergence of infinite sums, I <em>couldn’t</em> understand why the
+infinite sum in the following equality exists.</p>
 
-<!-- more -->
+<div class="myeqn">
+\[
+\sum_{k = 1}^{\infty} \frac{1}{k^s} = \prod_{p \text{ prime}}
+\frac{1}{1 - p^{-s}}
+\]
+</div>
 
-<h2 id="attempt">Attempt</h2>
+<h2 id="a-heuristic-way-to-understand-it">A heuristic way to understand it</h2>
 
-<p>I searched Google for “kramdown pdf”, and find
-<a href="http://stackoverflow.com/a/4377892" title="How to generate PDF from markdown using pure ruby">this question</a> useful.  It linked to a page introducing
-<a href="http://prawn.majesticseacreature.com/">Prawn</a>.</p>
+<ol>
+  <li>Note that the geometric series converge (absolutely).</li>
+  <li>Borrow the proofs about the Comparison Test and the $p$-Test to
+convince yourself that the infinite sum on the LHS of the formula is
+<em>well-defined</em>.</li>
+  <li>Know something about convergent infinite products.<sup id="fnref:wiki"><a href="#fn:wiki" class="footnote">1</a></sup></li>
+  <li>Convince yourself that the infinite product on the RHS
+<em>exists</em>.<sup id="fnref:inf_prod_exists"><a href="#fn:inf_prod_exists" class="footnote">2</a></sup></li>
+  <li>Recall the Fundamental Theorem of Arithmetic.</li>
+</ol>
 
-<p>I used the testing code there to figure out that the above problem had
-arised because I <em>didn’t</em> install the Ruby gem.</p>
+<p>I think that the last item is the <em>trickiest</em> step.  Writing the
+following lines, I understood this equation.</p>
 
-<pre class="cliUB"><code>$ gem install prawn
-Fetching: ttfunk-1.4.0.gem (100%)
-Successfully installed ttfunk-1.4.0
-Fetching: pdf-core-0.4.0.gem (100%)
-Successfully installed pdf-core-0.4.0
-Fetching: prawn-1.3.0.gem (100%)
+<div class="myeqn">
+\begin{align}
+&amp; 1^{-s} + 2^{-s} + 3^{-s} + \cdots &#92;&#92;
+=&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) (1^{-s} + 2^{-s} + 2^{-2s} +
+\cdots) \label{step1} &#92;&#92;
+=&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) \cdot \frac{1}{1 - 2^{-s}}
+\label{step2} &#92;&#92;
+=&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) (1^{-s} + 3^{-s} + 3^{-2s} +
+\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} &#92;&#92;
+=&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) \cdot \frac{1}{1 - 3^{-s}}
+\cdot \frac{1}{1 - 2^{-s}} \label{step4}
+\end{align}
+</div>
 
-  ********************************************
+<p>Steps \eqref{step1} (resp. \eqref{step3}) holds because for each
+$k^{-s}$ in the leftmost bracket, powers of 2 (resp. 3) can be taken
+out from $k$.  In steps \eqref{step2} and \eqref{step4}, the formula
+for the sum of geometric series is applied.</p>
 
+<h2 id="refining-the-above-thoughts">Refining the above thoughts</h2>
 
-  A lot has changed recently in Prawn.
+<p>I’ll end this post by wrapping up the above ideas by summation and
+product signs.</p>
 
-  Please read the changelog for details:
+<div class="myeqn">
+\[
+\begin{aligned}
+&amp; \sum_{k = 1}^{\infty} \frac{1}{k^s} &#92;&#92;
+=&amp; \sum_{k \in \N} \frac{1}{k^s} &#92;&#92;
+=&amp; \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} &#92;&#92;
+=&amp; \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}&#92;&#92;
+=&amp; \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}
+\end{aligned}
+\]
+</div>
 
-  https://github.com/prawnpdf/prawn/wiki/CHANGELOG
+<hr />
 
+<div class="footnotes">
+  <ol>
+    <li id="fn:wiki">
 
-  ********************************************
+      <p>One may refer to the convergence criteria of infinite products on
+<a href="http://en.wikipedia.org/wiki/Infinite_product#Convergence_criteria">Wikipedia</a> <a href="#fnref:wiki" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:inf_prod_exists">
 
-Successfully installed prawn-1.3.0
-3 gems installed
-</code></pre>
+      <p>There’s more than one way to do it.  When I tried to do this for
+the first time, I used the Mean Value Theorem on logarithms to
+establish a standard result.</p>
 
-<p>But I still <em>can’t</em> run the sample code correctly.  Finally, I use
-<a href="http://johnmacfarlane.net/pandoc/">pandoc</a>.</p>
-
+      <div class="myeqn">
+\[
+\frac{x}{1 + x} &lt; \log(1 + x) &lt; x \quad \forall\, x &gt; 0
+\]
+</div>
+      <p><a href="#fnref:inf_prod_exists" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 </div>
 
 
@@ -183,12 +210,12 @@ Successfully installed prawn-1.3.0
 
 
 
-<time class='entry-date' datetime='2014-11-03T12:21:34+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:21 pm</span></time>
+<time class='entry-date' datetime='2015-04-12T08:19:36+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:19 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+    <a class='category' href='/blog/categories/math/'>math</a>
   
 </span>
 
@@ -197,7 +224,7 @@ Successfully installed prawn-1.3.0
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/11/03/installed-prawn/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/11/03/installed-prawn/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/04/12/understood-euler-product-formula/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/04/12/understood-euler-product-formula/" >Tweet</a>
   
   
   
@@ -208,10 +235,8 @@ Successfully installed prawn-1.3.0
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/10/26/typeset-acute-accents/" title="Previous Post: Typeset Acute Accents">&laquo; Typeset Acute Accents</a>
+        <a class="basic-alignment left" href="/blog/2015/04/11/an-image-with-changeable-size/" title="Previous Post: An Image with Changeable Size">&laquo; An Image with Changeable Size</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/11/04/product-of-gcd-and-lcm/" title="Next Post: Product of GCD and LCM">Product of GCD and LCM &raquo;</a>
       
     </p>
   </footer>
@@ -321,8 +346,8 @@ Successfully installed prawn-1.3.0
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/11/03/installed-prawn/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/11/03/installed-prawn/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/04/12/understood-euler-product-formula/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/04/12/understood-euler-product-formula/';
         var disqus_script = 'embed.js';
       
     (function () {
