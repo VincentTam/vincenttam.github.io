@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="(Added on SEP 14, 2014) Since the update of Octopress source code, this post won’t make
-sense anymore. I can’t find a way to use MathJax in category &hellip;">
+  <meta name="description" content="Yesterday, I upgraded the Vim plugins on my Ubuntu Desktop using
+Vundle. Among the upgraded plugins, Ultrablog.vim was
+the only one that didn’t run &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +76,68 @@ sense anymore. I can’t find a way to use MathJax in category &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/">Fixing a Vim Error Caused by an UltraBlog.vim Upgrade</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-05-25T20:01:52+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:01 pm</span></time>
+        
+           | <a href="/blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday, I upgraded the Vim plugins on my Ubuntu Desktop using
+<a href="https://github.com/gmarik/Vundle.vim">Vundle</a>.  Among the upgraded plugins, <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">Ultrablog.vim</a> was
+the <em>only</em> one that didn’t run smoothly on <em>my installed version</em> of
+Vim.</p>
+
+<p>Right after I issued the command <code>vi</code> on the terminal, I got the
+following error message.</p>
+
+<pre class="cliUB"><code>$ vi
+Error detected while processing /home/owner/.vim/bundle/UltraBlog.vim/plugin/UltraBlog.vim:
+line  253:
+Traceback (most recent call last):
+  File "&lt;string&gt;", line 7, in &lt;module&gt;
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/commands.py", line 8, in &lt;module&gt;
+from db import *
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/db.py", line 181, in &lt;module&gt;
+u.ub_echoerr(msg)
+  File "/home/owner/.vim/bundle/UltraBlog.vim/plugin/ultrablog/util.py", line 623, in ub_echoerr
+vim.command(cmd)
+vim.error: Vim(echoerr):Missing key 'xmlrpc_uri' in the settings list of UltraBlog.vim !
+Press ENTER or type command to continue
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/25/fixing-a-vim-error-caused-by-an-ultrablog-dot-vim-upgrade/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -611,78 +674,6 @@ nutheads use vi?</em>.  Retrieved from
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/03/15/complicated-pandoc-commands/">Complicated Pandoc Commands</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-03-15T12:55:46+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:55 pm</span></time>
-        
-           | <a href="/blog/2014/03/15/complicated-pandoc-commands/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/03/15/complicated-pandoc-commands/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/03/15/complicated-pandoc-commands/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I don’t need to memorize these commands.  Instead, what I need is to
-create a page here so that I can make quickly get the right command
-for my work.  This saves the time for checking and testing the right
-command.</p>
-
-<h2 id="pandoc-markdown">Pandoc markdown</h2>
-
-<p>Official demo:
-<a href="http://johnmacfarlane.net/pandoc/demos.html">http://johnmacfarlane.net/pandoc/demos.html</a></p>
-
-<h3 id="beamer">Beamer</h3>
-
-<p>A shell command for APA style reference list:</p>
-
-<pre><code>$ pandoc -t beamer -s -S --biblio mybib.bib\
-&gt; --csl /path/to/apa.csl % -V theme:Berlin -o %&lt;.pdf
-</code></pre>
-
-<h3 id="customized-pdf">Customized PDF</h3>
-<p>(Added on AUG 03RD, 2014)</p>
-
-<p>The command below is just an example of narrowing the margin, and
-choosing a larger font.</p>
-
-<pre><code>$ pandoc % -V geometry:margin=1in -V fontsize:12pt\
-&gt; -V linestretch:1.655 -o %&lt;.pdf 
-</code></pre>
-
-<p>For more variables, refer to the User Guide:
-<a href="http://johnmacfarlane.net/pandoc/README.html#templates">http://johnmacfarlane.net/pandoc/README.html#templates</a></p>
-
-<p>For many ordinary computer users who are used to write documents using
-WYSIWYG editors, the above command is quite scary, so I’ve written a
-custom template to save the trouble.  See
-<a href="/blog/2014/08/03/my-pandoc-template-1/"><em>My Pandoc Template (1)</em></a> for details.</p>
-
-<!-- vim:set tw=70 wrap: -->
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -725,7 +716,7 @@ custom template to save the trouble.  See
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (37)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (32)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (33)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -744,6 +735,10 @@ custom template to save the trouble.  See
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/04/25/found-2-incomparable-topologies/">Found 2 Incomparable Topologies</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/04/25/play-youtube-videos-on-old-version-firefox/">Play Youtube Videos on Old Version Firefox</a>
       </li>
     
@@ -757,10 +752,6 @@ custom template to save the trouble.  See
     
       <li class="post">
         <a href="/blog/2015/04/11/fbi-vs-fim/">Fbi vs Fim</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/10/looping-through-lines/">Looping Through Lines</a>
       </li>
     
   </ul>
