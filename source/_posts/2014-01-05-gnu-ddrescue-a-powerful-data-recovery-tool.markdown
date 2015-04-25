@@ -145,18 +145,18 @@ file feature enables users to pause the job.[^geek_proj][^doc])
 Therefore, *always use a logfile*.[^doc_ub]
 
 Without adequate knowledge on GNU ddrescue, I stopped the task with
-``, but it took the computer several minutes to receive this input.
-But what's next for an *incomplete* task? The files *don't* occupy the
-whole USB stick.  It might took me another day if I waited for some
-while and then resumed the task.  At that moment, I decided to try
-mounting the destination partition `/dev/sdyn`.  Thinking that the
-destination was a NTFS partition from the partition table rendered by
-`fdisk -l`, I tried `mount -t ntfs /dev/sdyn`, but the computer
+`<C-c>`, but it took the computer several minutes to receive this
+input.  But what's next for an *incomplete* task? The files *don't*
+occupy the whole USB stick.  It might took me another day if I waited
+for some while and then resumed the task.  At that moment, I decided
+to try mounting the destination partition `/dev/sdyn`.  Thinking that
+the destination was a NTFS partition from the partition table rendered
+by `fdisk -l`, I tried `mount -t ntfs /dev/sdyn`, but the computer
 wouldn't let me go.  I was fortunate to be stopped by this error.
 Otherwise, I think I would do another harm to the file system.  This
 time, I let `mount` to automatically decide the partition type by
 removing the `-t` flag.  It worked! I could browse and open the file
-there.  After that, I copied the files to a safe place (i.e.  a
+there.  After that, I copied the files to a safe place (i.e. a
 *normal* data storage device) Finally, I've found that *most* of the
 files were salvaged, despite some corruption of the multimedia files.
 

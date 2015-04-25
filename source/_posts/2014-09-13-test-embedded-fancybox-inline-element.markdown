@@ -104,7 +104,7 @@ Copying non-tried blocks...
 </code></pre>
 </div>
 
-Unluckily, I *can't* to anything about the horizontal scrollbar at the
+Unluckily, I *can't* do anything about the horizontal scrollbar at the
 bottom.
 
 [pp]: /blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/
