@@ -9,5 +9,3 @@ categories: Octopress
 [Zerodie](http://zerodie.github.io/blog/2012/01/19/octopress-github-pages/)
 has found a mistake in
 [*Blogging Basics*](http://octopress.org/docs/blogging/).
-
-<!-- vim:set tw=70 wrap spell: -->
