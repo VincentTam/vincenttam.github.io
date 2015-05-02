@@ -30,7 +30,7 @@ message described in ImageMagick's examples.[^3].
     *Record Linux Terminal*.
 
     ~~~
-    $ convert src.png 512x225+0+0 tty1.png
+    $ convert src.png -crop 512x225+0+0 tty1.png
     ~~~
     {:.cliUB}
 
