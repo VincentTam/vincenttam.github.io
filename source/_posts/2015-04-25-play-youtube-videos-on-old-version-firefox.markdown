@@ -26,7 +26,7 @@ Request YouTube's HTML5 player and enjoy watching videos.
   <img alt="require YouTube's HTML5 player" src="/images/posts/YouTubeHTML5Player/reqHTML5_s.png" />
 </picture>
 
-<picture class="fancybox noscr" title="A video on a lawmaker in the LegCo">
+<picture class="fancybox noscr" title="A video of a lawmaker in the LegCo">
   <source srcset="/images/posts/YouTubeHTML5Player/treegun.png" media="(min-width: 1030px)"></source>
   <img alt="tree gun" src="/images/posts/YouTubeHTML5Player/treegun_s.png" />
 </picture>
