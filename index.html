@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Tonight, I just go to Facebook as usual, and I’ve just received an
-error saying that “server not found” in Firefox. The screenshot below
-illustrates &hellip;">
+  <meta name="description" content="Yesterday morning, I read the article
+every map into sphere which is not onto is nullhomotopic on
+PlanetMath before I understood part of the proof of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +76,54 @@ illustrates &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/05/05/planetmath-socket-error/">PlanetMath Socket Error</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-05T22:31:44+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:31 pm</span></time>
+        
+           | <a href="/blog/2015/05/05/planetmath-socket-error/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2015/05/05/planetmath-socket-error/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/05/05/planetmath-socket-error/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday morning, I read the article
+<a href="http://planetmath.org/everymapintospherewhichisnotontoisnullhomotopic"><em>every map into sphere which is not onto is nullhomotopic</em></a> on
+PlanetMath before I understood part of the proof of a very useful
+theorem in topology: Brouwer’s Fixed Point Theorem.</p>
+
+<picture class="fancybox" title="An error triggered by clicking &quot;Commnents&quot;">
+  <source srcset="/images/posts/PlanetMath/socket_err.png" media="(min-width: 755px)" />
+  <img alt="socket error" src="/images/posts/PlanetMath/socket_err300.png" />
+</picture>
+
+<p>Unluckily, if I click “Coauthors”, I got the error shown in the above
+screenshot.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -906,235 +954,6 @@ Retrieved 15:34, April 6, 2015, from
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Calculate the Expected Waiting Time in a Hard Way</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-06T22:18:03+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:18 pm</span></time>
-        
-           | <a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>If one assumes that servers $X_1$ and $X_2$ has exponential service
-times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
-$X_i \sim \Exp(\lambda_i), i = 1,2$), then one can follow the
-standard arguments and say that the waiting time $\min\left\{ X_1,
-X_2 \right\} \sim \Exp(\lambda_1 + \lambda_2)$, so the expected
-waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried finding the expected waiting time by conditioning on $X_1 - X_2$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    &amp; \Pr(X_1 &gt; X_2) &#92;&#92;
-    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
-    e^{-\lambda_2 x_1}) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
-    \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
-    x_1 &#92;&#92;
-    =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
-    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} &#92;&#92;
-    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} &#92;&#92;
-    =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
-  \end{split}
-  \label{eq:pr_min}
-\end{equation}
-</div>
-
-<p>Similarly, one has $\Pr(X_1 \le X_2) = \lambda_1/(\lambda_1 +
-\lambda_2)$.</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{split}
-&amp; \E[\left\{ X_1, X_2 \right\}] &#92;&#92;
-=&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2)
-&#92;&#92;
-+&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
-&#92;&#92;
-=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) &#92;&#92;
-=&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
-\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} &#92;&#92;
-=&amp; \frac{2}{\lambda_1 + \lambda_2}
-\end{split}
-\label{eq:wrong}
-\end{equation}
-</div>
-
-<p>This is <em>different</em> from what we expect.  <strong>What’s wrong with the
-above calculation?</strong></p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I really thought about the meaning of $\E[\min\left\{ X_1, X_2
-\right\} \mid X_1 &gt; X_2]$, and find out that this conditional
-expectation <em>won’t</em> be helpful because</p>
-
-<div class="myeqn">
-\[
-  \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] =
-  \frac{\int_{0}^{\infty} \int_{0}^{x_1} x_2 \ud x_2 \ud x_1}{\Pr(X_1
-  &gt; X_2)}
-\]
-</div>
-
-<p>Actually, one can divide it into two halves.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
-    =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
-    +&amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
-	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
-  \end{split}
-  \label{eq:head}
-\end{equation}
-</div>
-
-<p>By observing the symmetry between the subscripts ‘1’ and ‘2’ in the
-above equation, we only need to evaluate <em>one</em> of them.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
-    \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
-    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
-    \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
-    x_1} \right) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
-    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 &#92;&#92;
-    =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
-    x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
-    (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
-    &#92;&#92;
-    =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
-    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
-    \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
-    x_1}}{\lambda_1 + \lambda_2} \right) &#92;&#92;
-    +&amp; \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
-    x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
-    \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
-    \right|_{0}^{\infty} \right) &#92;&#92;
-    =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
-    x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
-    \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
-    \frac{1}{\lambda_1 + \lambda_2} \right) &#92;&#92;
-    =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
-    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
-    \lambda_2)}
-  \end{split}
-  \label{eq:half_int}
-\end{equation}
-</div>
-
-<p>Similarly, one has</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    &amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
-    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 &#92;&#92;
-    =&amp; -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
-    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
-    \lambda_1)}.
-  \end{split}
-  \label{eq:half_int2}
-\end{equation}
-</div>
-
-<p>Substitute \eqref{eq:half_int} and \eqref{eq:half_int2} into
-\eqref{eq:head}.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
-    =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
-    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
-    \lambda_2)} \right) &#92;&#92;
-    +&amp; \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
-    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
-    \lambda_1)} \right) &#92;&#92;
-    =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
-    \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
-    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) &#92;&#92;
-    -&amp; \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
-    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) &#92;&#92;
-    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
-    \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
-    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
-    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
-    \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
-    (\lambda_1 + \lambda_2)} &#92;&#92;
-    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
-    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
-    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
-    \lambda_2} &#92;&#92;
-    =&amp; \frac{1}{\lambda_1 + \lambda_2}
-  \end{split}
-  \label{eq:fin}
-\end{equation}
-</div>
-
-<p>This is consistent with what we expect.  I finally understand what’s
-wrong in \eqref{eq:wrong}: $X_1$ <em>isn’t</em> independent from $X_1 -
-X_2$.</p>
-
-<h2 id="generalization">Generalization</h2>
-
-<p>By induction, we can generalize \eqref{eq:fin} to the expected waiting
-time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
-\forall 1 \le i \le n$, then</p>
-
-<div class="myeqn">
-\[
-  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
-  \lambda_k}.
-\]
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -1194,6 +1013,10 @@ time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/05/planetmath-socket-error/">PlanetMath Socket Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/02/cant-go-to-facebook/">Can&#8217;t Go to Facebook</a>
       </li>
     
@@ -1207,10 +1030,6 @@ time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
     
       <li class="post">
         <a href="/blog/2015/04/12/understood-euler-product-formula/">Understood Euler Product Formula</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/11/an-image-with-changeable-size/">An Image With Changeable Size</a>
       </li>
     
   </ul>
