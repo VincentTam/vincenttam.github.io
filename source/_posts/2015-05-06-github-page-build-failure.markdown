@@ -12,9 +12,9 @@ Problem
 I received two emails from GitHub today at 01:15.  The emails says
 that a recent GitHub Page build failed.
 
-![fail build 1][/images/posts/GHPagesBuild/fail1_300.png]
+![fail build 1](/images/posts/GHPagesBuild/fail1_300.png)
 
-![fail build 2][/images/posts/GHPagesBuild/fail2_300.png]
+![fail build 2](/images/posts/GHPagesBuild/fail2_300.png)
 
 Cause
 ---
