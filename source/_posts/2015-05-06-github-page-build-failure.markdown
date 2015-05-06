@@ -46,4 +46,6 @@ command in Vim.
 ---
 [^ub1dead]:
     [Shutting down Ubuntu One file services][src] by Jane Silber on
-    *Canonical Blog*
+    *Canonical Blog*.
+
+[src]: http://blog.canonical.com/2014/04/02/shutting-down-ubuntu-one-file-services/
