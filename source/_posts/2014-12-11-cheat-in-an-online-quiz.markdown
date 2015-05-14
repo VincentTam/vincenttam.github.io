@@ -9,8 +9,12 @@ categories:
 Background
 ---
 
-I saw [an online quiz on France Technology][quiz].  I *didn't* know
-the answers, but wanted to give the *right* response.
+I saw an online quiz on France Technology.
+
+<iframe src="/downloads/code/quiz.html" frameborder="1"></iframe>
+
+I *didn't* know the answers, but wanted to give the *right*
+response.[^rmk]
 
 <!-- more -->
 
@@ -20,7 +24,7 @@ How?
 First, view the HTML source code of the web page for the quiz and find
 the relevant part.
 
-{% codeblock Part of the source code for the quiz lang:html http://goo.gl/cy3GYD %}
+{% codeblock Part of the source code for the quiz lang:html %}
 <div><h3>1.In which year was the first French technical exhibition
 held in China?</h3></div>
 <input type="radio"  name="d1">A.1492 <br />
@@ -37,7 +41,7 @@ If one wants to know what will happen after clicking the "Submit"
 button, one may search for this word in the HTML source code.  In this
 case, one finds a [jQuery] function.
 
-{% codeblock What does the "Submit" button do? lang:js http://goo.gl/cy3GYD %}
+{% codeblock What does the "Submit" button do? lang:js %}
 $(document).ready(function(){
   $(".submit").click(function(){
 	$this=$(this);
@@ -54,5 +58,9 @@ $(document).ready(function(){
 Finally, one can conclude that if the radio button has the value
 *one*, then it is certainly the answer.
 
-[quiz]: http://www.kejifalanxi.com/en/category/quiz
+---
+[^rmk]:
+    The link to the online quiz, which was on
+    http://www.kejifalanxi.com/en/category/quiz, is now *dead*.
+
 [jQuery]: http://jquery.com
