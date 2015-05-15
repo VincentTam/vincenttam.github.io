@@ -127,24 +127,25 @@ under the **same** host (http://username.github.io) is **too
 difficult** since they share the **same** `source` folder.
 </del>
 
-*Not* being an IT student[^not_it_student], I will get pretty project
-page template set up with several clicks on GitHub's online platform.
+*Not* being an IT student, I will get pretty project page template set
+up with several clicks on GitHub's online platform.[^not_it_student]
 For details, you may refer to
-[*Instantly Beautiful Project Pages*](https://github.com/blog/1081-instantly-beautiful-project-pages)
-written by Boxer.
+[*Instantly Beautiful Project Pages*][inst_pp] written by Boxer.
 
-1. [Hello-World](http://vincenttam.github.io/Hello-World/): A testing
-repository.
-2. [pandoc_slides](http://vincenttam.github.io/pandoc_slides/): A
-repository for some of my slides.
-3. [i_dont_use_word](http://vincenttam.github.io/i_dont_use_word/):
-Another repository for hosting a slide created easily **without** M$
-Office.
-4. [recursion_samples](http://vincenttam.github.io/recursion_samples):
-A testing repository which contains program code in the `master`
-branch and a GitHub project page built with Jekyll Bootstrap in the
-`gh-pages` branch.
+1. [Hello-World][Hello-World]: A testing repository.
+2. [pandoc_slides][pandoc_slides]: A repository for some of my slides.
+3. [i_dont_use_word][i_dont_use_word]: Another repository for hosting
+a slide created easily **without** M$ Office.
+4. [blog2][blog2]: A testing repository which contains program code in
+the `master` branch and a GitHub project page built with Jekyll
+Bootstrap in the `gh-pages` branch.
 
 ---
 [^not_it_student]: I reused the words from [my WordPress blog][wp_pp].
+
+[inst_pp]: https://github.com/blog/1081-instantly-beautiful-project-pages
+[Hello-World]: https://vincenttam.github.io/Hello-World
+[pandoc_slides]: https://vincenttam.github.io/pandoc_slides
+[i_dont_use_word]: https://vincenttam.github.io/i_dont_use_word
+[blog2]: https://vincenttam.github.io/blog2
 [wp_pp]: http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/
