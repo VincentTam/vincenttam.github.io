@@ -62,7 +62,40 @@ Finally, I could read the contents of the post.
     src="/images/posts/UseGooCache/view300.png" />
 </picture>
 
+Lessons learnt
+---
+
+1. Define new variables in shell scripts.
+2. Use `s/foo/bar/` in `sed` for manipulating the name of the output
+files.
+
+The screenshots were intially under the home folder `~` and their
+names were like `temp_foo.png` or `temp_bar.png` so that they would
+stay close to each other in [Nautilus].  However, when I included
+these PNG files under the directory
+`~/octopress/source/images/flalign_spacing` for uploading them to this
+blog, I *wouldn't* like to keep `temp_` because they're already in a
+separate folder.  Therefore, I wrote a script to do this.
+
+Since `mv` can overwrite files and commands can be wrongly typed, I
+used `cp` instead of `mv` so that the original files *wouldn't*
+disappear even though something went wrong.  If everything proceeds
+smoothly, then the old files in the home folder can then be safely
+deleted.
+
+{% include_code A little script for moving the files lang:sh custom_move.sh %}
+
+If I use single quotes to surround the destination (e.g.
+`'~/.../$newf'`), the syntax highlighting for `$newf` will be *gone*
+in Vim.  Therefore, I used double quotes `""` instead, but I then
+received errors similar to the one below from `cp`.
+
+    cp: cannot create regular file `/home/octopress/source/images/posts/UseGooCache/
+    blocked300.png': No such file or directory
+{:.cliUB}
+
 ---
 [^blocked]: [在github的Project Pages上部署jekyll][target] 
 
 [target]: http://evsseny.appspot.com/?p=63001
+[Nautilus]: https://help.ubuntu.com/community/DefaultFileManager

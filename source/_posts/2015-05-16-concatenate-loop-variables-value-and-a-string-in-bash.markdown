@@ -6,6 +6,14 @@ comments: true
 categories: Linux
 ---
 
+Motivation
+---
+
+While I was writing the post about a recent GitHub page build failure
+ten days ago, I prepared two screenshots of the email from
+GitHub.[^pp_motiv]  I would like to resize them to 300px wide so that
+they *wouldn't* be too wide for mobile devices.
+
 Problem
 ---
 
@@ -35,5 +43,12 @@ underscore character `_`.
     $ rm fail.png  # Clean up the mess
     $ for i in {1..2}; do convert fail$i.png -resize 300 fail$i\_300.png; done
     $ ls
-    fail1_300.png  fail1.png  fail2_300.png  fail2.png  fail.png
+    fail1_300.png  fail1.png  fail2_300.png  fail2.png
 {:.cliUB}
+
+---
+[^pp_motiv]:
+    Refer to [GitHub Page Build Failure][pp] in *Blog 1* for the
+    details of the cause of the technical error.
+
+[pp]: /blog/2015/05/06/github-page-build-failure/
