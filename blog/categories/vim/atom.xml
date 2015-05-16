@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-05-16T00:46:59+08:00</updated>
+  <updated>2015-05-16T17:34:53+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Recent Vundle Plugin Update]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/05/16/recent-vundle-plugin-update/"/>
+    
+    <updated>2015-05-16T16:42:01+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/05/16/recent-vundle-plugin-update</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="https://github.com/gmarik/Vundle.vim">Vundle</a> for managing my Vim plugins.<sup id="fnref:eg"><a href="#fn:eg" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I typed <code>:PluginUpdate</code> in Vim as usual for keeping all of the plugins
+up-to-date, and the system prompted me to supply my user name and
+password for GitHub.[^rec]  Initially, I <em>refused</em> to do so.  Then
+Vundle skipped the first plugin and proceeded to another one.  I was
+prompted again for the user name, and my response was still the same.
+This repeated for several times, and finally <em>nothing</em> was updated.</p>
+
+<p>I quitted Vim and re-opened it again, and issued the <em>same</em> editor
+command for updating the plugins, and ran into the <em>same</em> trouble.</p>
+
+<h2 id="result">Result</h2>
+
+<p>Since I <em>didn’t</em> have much time, I finally input correctly the
+required account information in order to get the plugins updated.
+Luckily, this was needed for <em>once</em> only, instead of once for each
+plugin.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:eg">
+
+      <p>For example, you may refer to the screenshot in a comment for my
+post <a href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Clang Complete on Ubuntu 14.04</a> on <em>Blog 1</em>. <a href="#fnref:eg" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -318,101 +364,6 @@ written in the documentation.</p>
 
       <p>See <a href="/blog/2014/01/30/posting-code-to-gist-efficiently/"><em>Posting Code to Gist Efficiently</em></a> in Blog 1 for the
 reasons of installing <a href="https://github.com/mattn/gist-vim">Gist.vim</a>. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Improved Custom Autocompletion Mappings in Vim]]></title>
-      <link href="http://vincenttam.github.io/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/"/>
-    
-    <updated>2014-12-13T14:40:44+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Inspired by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>, I added some
-autocompletion mappings in my VIMRC last year.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Three months
-later, I saw the word “FileType” in <a href="http://vimdoc.sourceforge.net/htmldoc/usr_40.html#40.3">Vim’s User Manual</a>,
-and shortened these autocommand a little bit.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup>  In my opinion,
-it’s incredibly amazing since I can type text at the speed of thought.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If I’ve finished editing an HTML file and open another $\rm \LaTeX$
-file, then my insert mode mappings will interfere with those defined
-by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>.  <strong>How can I restrict my custom
-mappings to the current working buffer only?</strong></p>
-
-<!-- more -->
-
-<p>Since I <em>didn’t</em> know how to describe this problem in words in
-February, I spent <em>hours</em> searching for webpages on <a href="http://www.google.com">Google</a>, but got
-<em>nothing</em>.  At that time, I had focus on my homework and exams, so I
-put this problem aside.  As a <a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> user, I adjust my
-wants according to what I know and what I can do, after accepting the
-fact that M$ Off* has <em>no</em> known plan to support the free operating
-system.</p>
-
-<p>Last night, when I wrote a
-<a href="/blog/2014/12/12/how-to-stop-auto-indenting/" title="How to Stop Auto Indenting?">recent linklog about Vim’s auto indenting</a>, I did some
-configurations on <a href="http://www.vim.org">Vim</a>.  This reminded me of hte problem of setting
-up autocompletion for brackets.  After writing over 150 blog posts in
-<a href="http://www.vim.org">Vim</a>, I realise the inconvenience <em>without</em> these keyboard shortcuts
-for autocompletion in the insert mode.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>First, I glanced through the codeblocks in the cited posts in the
-<a href="#fn:pp1">first two footnotes</a>.  After that, I googled “autocmd
-group”, and found two sites very useful.</p>
-
-<ol>
-  <li>
-    <p><a href="http://stackoverflow.com/a/8826323"><em>Vim inoremap for specific filetypes</em></a> on Stack
-Overflow.</p>
-
-    <p><code>&lt;buffer&gt;</code> is the missing part of the autocommands.</p>
-  </li>
-  <li>
-    <p><a href="http://learnvimscriptthehardway.stevelosh.com/chapters/14.html"><em>Autocommand Groups</em></a> on <em>Learn Vimscript the Hard Way</em>.</p>
-
-    <p><code>au!</code> avoids <a href="http://www.vim.org">Vim</a> to slow down after running <code>:so $MYVIMRC</code>.
- Therefore, I also added <code>!</code> after the function <code>MyDiff</code> in my
- VIMRC on M$ Win* 7.<sup id="fnref:vimrc_ms"><a href="#fn:vimrc_ms" class="footnote">3</a></sup></p>
-  </li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>See <a href="/blog/2013/12/11/links-to-good-posts/"><em>Links to Good Posts</em></a> in Blog 1 for the mappings. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:pp2">
-
-      <p>See the bottom part of
-<a href="/blog/2014/01/26/working-with-vims-autocommand-groups/"><em>Working With Vim’s Autocommand Groups</em></a> in Blog 1 for the
-shorter mappings. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:vimrc_ms">
-
-      <p>View my VIMRC on M$ Win* 7 at commit <a href="https://gist.github.com/VincentTam/abc1cbd2b2181ad69165/c11d1a1e42cd5bfbe1e76347b098880e6e73ebc9">c11d1a1</a>.</p>
-
-      <p>This morning, I tried to write similar keyboard shortcuts for
-‘&#8217;’, ‘&#8221;’ and ‘`’ at lines 62–63 and 67.  However, typing two
-‘&#8221;’s quickly on M$ Win* 7, GVim <em>duplicated</em> my input.
-Therefore, I changed the rules so that they would only be invoked
-when one quickly typed any one of these characters <em>twice</em>.</p>
-
-      <p>Remarks: On Ubuntu 14.04 LTS, I have the <em>same</em> experience.  Thus,
-I just copied the whole autocommand group to
-<a href="https://gist.github.com/VincentTam/2379ba75d6ad703a3786">my VIMRC there</a>. <a href="#fnref:vimrc_ms" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

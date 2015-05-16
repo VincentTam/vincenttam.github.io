@@ -9,7 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem ">
+  <meta name="description" content="Background In *nix, one can use :Gcommit to commit the staged changes,
+provided that fugitive.vim has been installed. Problem How can one use the Vim &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +75,72 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Git Commits With fugitive.vim on Windows</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-03T00:48:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:48 am</span></time>
+        
+           | <a href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/#disqus_thread"
+             data-disqus-identifier="http://vincenttam.github.io/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/03/git-commits-with-fugitive-dot-vim-on-windows/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In *nix, one can use <code>:Gcommit</code> to commit the staged changes,
+provided that <a href="https://github.com/tpope/vim-fugitive" title="An awesome Git wrapper">fugitive.vim</a> has been installed.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one use the Vim plugin <em>within</em> Vim on M$ Win*?</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Inspired by <a href="http://stackoverflow.com/a/19416705" title="GCommit doesn't work with fugitive.vim under windows xp?">a Stack Overflow question</a>, I set my
+<code>core.editor</code> to <code>gvim -f</code> through <code>git config</code>.</p>
+
+<p>Then I tried running <code>git commit</code> in 
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />,
+but it’s “aborting commit due to empty commit message”.</p>
+
+<p>Why is the <code>-f</code> flag there?  It’s because the <code>--nofork</code> option causes
+gVim to be in the foreground in *nix.  I’ve learnt this from <a href="https://help.github.com/articles/associating-text-editors-with-git" title="Associating text editors with Git">here</a>.
+The <code>-w</code> flag in the commands for setting other editors as the default
+editor for Git is the key for the above quoted message.</p>
+
+<p>I tried to solve this problem by reading Vim’s offical manual about
+<code>nofork</code>, and it’s clearly stated that this option <em>wasn’t</em> supported
+in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
+
+<p>To conclude, if I’m working on M$ Win*, I’ll just forget about
+<code>:Gcommit</code> in Vim, and use
+<img class="nobd" src="/images/posts/OctopressOnOtherDev/gitbash1.png" title="icon" alt="Git Bash icon" />.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,63 +648,6 @@ compared to their GUI counterparts.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/21/updated-octopress-source-code/">Updated Octopress Source Code</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-21T21:37:59+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:37 pm</span></time>
-        
-           | <a href="/blog/2014/08/21/updated-octopress-source-code/#disqus_thread"
-             data-disqus-identifier="http://vincenttam.github.io/blog/2014/08/21/updated-octopress-source-code/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/21/updated-octopress-source-code/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<ol>
-  <li>Upgraded to Ubuntu 14.04 LTS<sup id="fnref:UpUb"><a href="#fn:UpUb" class="footnote">1</a></sup></li>
-  <li>Installed Ruby 2.1.2.<sup id="fnref:UpRVM"><a href="#fn:UpRVM" class="footnote">2</a></sup></li>
-  <li>Tried to generate the blog from the <em>same</em> Markdown and HTML
-source, but failed.<sup id="fnref:Ruby2Fail"><a href="#fn:Ruby2Fail" class="footnote">3</a></sup></li>
-</ol>
-
-<p>During the merge of Octopress source code last week, there’re some
-conflicts between my old working source code and the new one fetched
-from Octopress’s Github repository.  When <code>rake</code> complained, I changed
-my original code bit by bit—this turned out to be a <em>failed and
-inefficient</em> approach.  <em>Not</em> familiar with Ruby, I gave up the whole
-idea of updating Octopress’s source code and generating the contents
-on top of a new version of Ruby.  In order to keep posting things to
-this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/21/updated-octopress-source-code/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -689,7 +699,7 @@ this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.
 <li class='category'><a href='/blog/categories/svg/'>svg (5)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (26)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (15)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -697,6 +707,10 @@ this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/05/16/recent-vundle-plugin-update/">Recent Vundle Plugin Update</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/05/06/github-page-build-failure/">GitHub Page Build Failure</a>
@@ -712,10 +726,6 @@ this blog, I kept using <em>old</em> things on this <em>new</em> Ubuntu release.
     
       <li class="post">
         <a href="/blog/2015/04/25/found-2-incomparable-topologies/">Found 2 Incomparable Topologies</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/04/25/play-youtube-videos-on-old-version-firefox/">Play Youtube Videos on Old Version Firefox</a>
       </li>
     
   </ul>

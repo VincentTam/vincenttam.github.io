@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="http://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-05-16T00:46:59+08:00</updated>
+  <updated>2015-05-16T17:34:53+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Recent Vundle Plugin Update]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/05/16/recent-vundle-plugin-update/"/>
+    
+    <updated>2015-05-16T16:42:01+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/05/16/recent-vundle-plugin-update</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use <a href="https://github.com/gmarik/Vundle.vim">Vundle</a> for managing my Vim plugins.<sup id="fnref:eg"><a href="#fn:eg" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I typed <code>:PluginUpdate</code> in Vim as usual for keeping all of the plugins
+up-to-date, and the system prompted me to supply my user name and
+password for GitHub.[^rec]  Initially, I <em>refused</em> to do so.  Then
+Vundle skipped the first plugin and proceeded to another one.  I was
+prompted again for the user name, and my response was still the same.
+This repeated for several times, and finally <em>nothing</em> was updated.</p>
+
+<p>I quitted Vim and re-opened it again, and issued the <em>same</em> editor
+command for updating the plugins, and ran into the <em>same</em> trouble.</p>
+
+<h2 id="result">Result</h2>
+
+<p>Since I <em>didn’t</em> have much time, I finally input correctly the
+required account information in order to get the plugins updated.
+Luckily, this was needed for <em>once</em> only, instead of once for each
+plugin.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:eg">
+
+      <p>For example, you may refer to the screenshot in a comment for my
+post <a href="http://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Clang Complete on Ubuntu 14.04</a> on <em>Blog 1</em>. <a href="#fnref:eg" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2075,54 +2121,6 @@ the fact that $\displaystyle \int_a^b f^2 = 0$ <em>doesn’t</em> imply
 that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Evaluated a Convolution Integral]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/"/>
-    
-    <updated>2015-02-28T19:26:05+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral</id>
-    
-      <content type="html"><![CDATA[<p>Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{\infty} f_{X_{i_1}}(z)
-f_{X_{i_2}}(x - z) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
-z)}) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z &#92;&#92;
-=&amp; \lambda^2 x e^{-\lambda x}
-\end{aligned}
-\]
-</div>
-
-<p>Using the same technique, one can prove the claim by induction.
-What’s written above is the base case.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
-X_{i_{k + 1}}}(x) &#92;&#92;
-=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) &#92;&#92;
-=&amp; \int_{-\infty}^{\infty} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k
-+ 1}}}(x - z) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
-1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z &#92;&#92;
-=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
-1} \ud z &#92;&#92;
-=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} &#92;&#92;
-=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
-\end{aligned}
-\]
 </div>
 ]]></content>
     
