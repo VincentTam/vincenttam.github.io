@@ -36,7 +36,7 @@ folders) and
 folder.
 
 ~~~
-$ for f in $(ls); do cd $f;echo $f;git pull;echo "";cd ..;done
+$ for f in $(ls); do cd $f; echo $f; git pull; echo ""; cd ..; done
 DrawIt~
 Already up-to-date.
 
