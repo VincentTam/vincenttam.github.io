@@ -126,7 +126,7 @@ Google.</p>
 
     <picture class="fancybox" title="Paste the URL of the blocked site to text box">
    <source srcset="/images/posts/UseGooCache/search609.png" media="(min-width: 609px)" />
-   <img alt="google the blocked URL" src="/images/posts/UseGooCache/blocked300.png" />
+   <img alt="google the blocked URL" src="/images/posts/UseGooCache/search300.png" />
  </picture>
   </li>
   <li>
@@ -148,6 +148,52 @@ Google.</p>
   <source srcset="/images/posts/UseGooCache/view508.png" media="(min-width: 508px)" />
   <img alt="google the blocked URL" src="/images/posts/UseGooCache/view300.png" />
 </picture>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>Define new variables in shell scripts.</li>
+  <li>Use <code>s/foo/bar/</code> in <code>sed</code> for manipulating the name of the output
+files.</li>
+</ol>
+
+<p>The screenshots were intially under the home folder <code>~</code> and their
+names were like <code>temp_foo.png</code> or <code>temp_bar.png</code> so that they would
+stay close to each other in <a href="https://help.ubuntu.com/community/DefaultFileManager">Nautilus</a>.  However, when I included
+these PNG files under the directory
+<code>~/octopress/source/images/flalign_spacing</code> for uploading them to this
+blog, I <em>wouldn’t</em> like to keep <code>temp_</code> because they’re already in a
+separate folder.  Therefore, I wrote a script to do this.</p>
+
+<p>Since <code>mv</code> can overwrite files and commands can be wrongly typed, I
+used <code>cp</code> instead of <code>mv</code> so that the original files <em>wouldn’t</em>
+disappear even though something went wrong.  If everything proceeds
+smoothly, then the old files in the home folder can then be safely
+deleted.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A little script for moving the files  (custom_move.sh)</span> <a href="/downloads/code/custom_move.sh">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/bash</span>
+</span><span class="line"><span class="k">for</span> f in <span class="k">$(</span>ls *.png<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
+</span><span class="line">    <span class="nv">newf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$f</span> <span class="p">|</span> sed <span class="s1">&#39;s/temp_//&#39;</span><span class="sb">`</span>
+</span><span class="line">    <span class="nb">echo</span> <span class="nv">$f</span> <span class="nv">$newf</span>
+</span><span class="line">    cp -v <span class="nv">$f</span> ~/octopress/source/images/posts/UseGooCache/<span class="nv">$newf</span>
+</span><span class="line"><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If I use single quotes to surround the destination (e.g.
+<code>'~/.../$newf'</code>), the syntax highlighting for <code>$newf</code> will be <em>gone</em>
+in Vim.  Therefore, I used double quotes <code>""</code> instead, but I then
+received errors similar to the one below from <code>cp</code>.</p>
+
+<pre class="cliUB"><code>cp: cannot create regular file `/home/octopress/source/images/posts/UseGooCache/
+blocked300.png': No such file or directory
+</code></pre>
 
 <hr />
 
@@ -201,6 +247,8 @@ Google.</p>
         <a class="basic-alignment left" href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/" title="Previous Post: Concatenate Loop Variable's Value and a String in Bash">&laquo; Concatenate Loop Variable&#8217;s Value and a String in Bash</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/" title="Next Post: A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode">A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -234,14 +282,14 @@ Google.</p>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (3)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/gimp/'>gimp (1)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/git/'>git (12)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (3)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (3)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (16)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (17)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (38)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -264,6 +312,10 @@ Google.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/">A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/05/16/one-use-of-google-cache/">One Use of Google Cache</a>
       </li>
     
@@ -277,10 +329,6 @@ Google.</p>
     
       <li class="post">
         <a href="/blog/2015/05/06/github-page-build-failure/">GitHub Page Build Failure</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/05/planetmath-socket-error/">PlanetMath Socket Error</a>
       </li>
     
   </ul>
