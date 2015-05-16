@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Injectivity of Stable Mappings - Blog 1</title>
+  <title>Concatenate Loop Variable&#8217;s Value and a String in Bash - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Two weeks ago, I revised calculus and read the proof of the Inverse
-Function Theorem in the calculus textbook that I was reading.1 The
-Nonlinear &hellip;">
+  <meta name="description" content="Problem There’re 2 image files in a folder: fail1.png and fail2.png. I
+wanted to create a scaled-down version of both pictures, and name the
+smaller &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ Nonlinear &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings">
+  <link rel="canonical" href="http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -80,7 +80,7 @@ Nonlinear &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Injectivity of Stable Mappings</h1>
+	<h1 class="entry-title">Concatenate Loop Variable&#8217;s Value and a String in Bash</h1>
       
     
     
@@ -90,7 +90,7 @@ Nonlinear &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-06-17T19:44:37+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:44 pm</span></time>
+<time class='entry-date' datetime='2015-05-16T18:41:18+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="http://vincenttam.github.io">Comments</a>
@@ -101,39 +101,34 @@ Nonlinear &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Two weeks ago, I revised calculus and read the proof of the Inverse
-Function Theorem in the calculus textbook that I was reading.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  The
-Nonlinear Stablity Theorem is first applied to a continuously
-differentiable function $\vect{F}: \mathcal{O} \to \R^n$, where
-$\mathcal{O}$ is an open subset of $\R^n$ and contains a point
-$\vect{x}_*$ at which $\det \vect{DF}(\vect{x}_*) \ne 0$, to
-construct a neighbourhood $U$ of $\vect{x}_*$ and find $c &gt; 0$ such
-that
-$\norm{\vect{F}(\vect{u})-\vect{F}(\vect{v})} \ge c \norm{\vect{u} -
-\vect{v}}\quad\forall\,\vect{u},\vect{v} \in U$.</p>
+<div class="entry-content"><h2 id="problem">Problem</h2>
 
-<p>It’s said that if $V := \vect{F}(U)$, then $\vect{F}: U \to V$ is
-bijective.  The surjectivity is obvious, but I <em>wasn’t</em> smart enough
-to see the injectivity immediately.  After a week, I realised that I
-overlooked the discussion about invertible linear operators on
-$\F^n$ that preceeded the introduction to the idea of <em>stable
-mapping</em>.  In fact,
-$\forall\,\vect{u},\vect{v} \in U,\vect{F}(\vect{u}) =
-\vect{F}(\vect{v}) \iff \norm{\vect{F}(\vect{u}) - \vect{F}(\vect{v})}
-= 0$.</p>
+<p>There’re 2 image files in a folder: <code>fail1.png</code> and <code>fail2.png</code>.  I
+wanted to create a scaled-down version of both pictures, and name the
+smaller ones as <code>fail1_300.png</code> and <code>fail2_300.png</code>.</p>
 
-<p>Then
-$\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
-\vect{F}(\vect{v})} / c = 0 \iff \vect{u} = \vect{v}$.</p>
+<h2 id="failed-attempt">Failed attempt</h2>
 
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>FitzPatrick’s <em>Advanced Calculus</em> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<pre class="cliUB"><code>$ file *
+fail1.png: PNG image data, 467 x 243, 8-bit/color RGB, non-interlaced
+fail2.png: PNG image data, 464 x 242, 8-bit/color RGB, non-interlaced
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i_300.png; done
+$ ls
+fail1.png  fail2.png  fail.png
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Add a backslash <code>\</code> between the end of the loop variable <code>i</code> and the
+underscore character <code>_</code>.</p>
+
+<pre class="cliUB"><code>$ rm fail.png  # Clean up the mess
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i\_300.png; done
+$ ls
+fail1_300.png  fail1.png  fail2_300.png  fail2.png  fail.png
+</code></pre>
 </div>
 
 
@@ -149,12 +144,12 @@ $\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
 
 
 
-<time class='entry-date' datetime='2014-06-17T19:44:37+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:44 pm</span></time>
+<time class='entry-date' datetime='2015-05-16T18:41:18+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/math/'>math</a>
+    <a class='category' href='/blog/categories/linux/'>linux</a>
   
 </span>
 
@@ -163,7 +158,7 @@ $\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/" data-via="" data-counturl="http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/" data-via="" data-counturl="http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/" >Tweet</a>
   
   
   
@@ -174,10 +169,8 @@ $\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/" title="Previous Post: An Unreported Mistake in "Advanced Calculus"">&laquo; An Unreported Mistake in &#8220;Advanced Calculus&#8221;</a>
+        <a class="basic-alignment left" href="/blog/2015/05/16/recent-vundle-plugin-update/" title="Previous Post: Recent Vundle Plugin Update">&laquo; Recent Vundle Plugin Update</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/06/17/my-git-command-list-2/" title="Next Post: My Git Command List (2)">My Git Command List (2) &raquo;</a>
       
     </p>
   </footer>
@@ -287,8 +280,8 @@ $\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/';
-        var disqus_url = 'http://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/';
+        var disqus_identifier = 'http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/';
+        var disqus_url = 'http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="http://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://vincenttam.github.io/"/>
-  <updated>2015-05-16T18:15:11+08:00</updated>
+  <updated>2015-05-16T19:06:42+08:00</updated>
   <id>http://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Concatenate Loop Variable's Value and a String in Bash]]></title>
+      <link href="http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/"/>
+    
+    <updated>2015-05-16T18:41:18+08:00</updated>
+    <id>http://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>There’re 2 image files in a folder: <code>fail1.png</code> and <code>fail2.png</code>.  I
+wanted to create a scaled-down version of both pictures, and name the
+smaller ones as <code>fail1_300.png</code> and <code>fail2_300.png</code>.</p>
+
+<h2 id="failed-attempt">Failed attempt</h2>
+
+<pre class="cliUB"><code>$ file *
+fail1.png: PNG image data, 467 x 243, 8-bit/color RGB, non-interlaced
+fail2.png: PNG image data, 464 x 242, 8-bit/color RGB, non-interlaced
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i_300.png; done
+$ ls
+fail1.png  fail2.png  fail.png
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Add a backslash <code>\</code> between the end of the loop variable <code>i</code> and the
+underscore character <code>_</code>.</p>
+
+<pre class="cliUB"><code>$ rm fail.png  # Clean up the mess
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i\_300.png; done
+$ ls
+fail1_300.png  fail1.png  fail2_300.png  fail2.png  fail.png
+</code></pre>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -584,61 +624,6 @@ blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
   <ol>
     <li id="fn:fig">
       <p>The <a href="/images/posts/Tmux/tmux.png" title="Tmux on Ubuntu" class="fancybox">screenshot</a> of Tmux. <a href="#fnref:fig" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Use Lynx Browser (2): Access Shell]]></title>
-      <link href="http://vincenttam.github.io/blog/2015/01/03/use-lynx-browser-2-access-shell/"/>
-    
-    <updated>2015-01-03T21:26:24+08:00</updated>
-    <id>http://vincenttam.github.io/blog/2015/01/03/use-lynx-browser-2-access-shell</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I often use <a href="http://lynx.isc.org/" title="Lynx Browser">Lynx</a> due to several reasons.<sup id="fnref:use_lynx"><a href="#fn:use_lynx" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>While browsing the Internet with Lynx, one can spawn the shell, so that
-one can resume the browsing session after executing some commands.</p>
-
-<p>When one wants to exit the shell invoked by ‘!’ in Lynx, the command
-required is the <em>same</em> as the one needed for logging out: <code>exit</code>.
-These are pretty <em>easy</em>.</p>
-
-<p>However, in Linux text mode, if one typed some commands and the
-contents in the browser were <em>completely</em> covered by the output of
-these commands, <strong>how can one distinguishs a shell started by Lynx
-from the one that simply exists after one has logged in?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>At first, I typed <code>ps aux | grep lynx</code> to determine whether Lynx was
-running.  After that, I issued <code>ps</code>, and got a small list of running
-processes.  Then I tried adding the letters <code>a</code>, <code>u</code>, and <code>x</code> after
-the previous command.</p>
-
-<ul>
-  <li><code>a</code>: Received processes from all TTY consoles, instead of the
-  current one.</li>
-  <li><code>x</code>: A <code>STAT</code> column was shown.</li>
-  <li><code>u</code>: More details were shown, including the <code>STAT</code> column.</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:use_lynx">
-      <p>See <a href="/blog/2014/06/07/use-lynx-browser/"><em>Use Lynx Browser</em></a> for the reasons. <a href="#fnref:use_lynx" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
