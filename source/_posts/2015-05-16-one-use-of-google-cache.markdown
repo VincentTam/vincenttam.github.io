@@ -38,7 +38,7 @@ Google.
       <source srcset="/images/posts/UseGooCache/search609.png"
 	media="(min-width: 609px)"></source>
       <img alt="google the blocked URL"
-	src="/images/posts/UseGooCache/blocked300.png" />
+	src="/images/posts/UseGooCache/search300.png" />
     </picture>
 
 2. Click the down arrow next to the URL.
