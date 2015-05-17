@@ -14,5 +14,5 @@ testing, I've decided to write blog entries about IT on
 
 Posted via [UltraBlog.vim][UB].
 
-[ExtURL]: http://vincenttam.github.io/
+[ExtURL]: https://vincenttam.github.io/
 [UB]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
