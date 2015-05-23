@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-23T20:13:33+08:00</updated>
+  <updated>2015-05-24T00:31:46+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,122 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Added W3C Valided Logos to Some Pages]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-valided-logos-to-some-pages/"/>
+    
+    <updated>2015-05-23T22:42:17+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/05/23/added-w3c-valided-logos-to-some-pages</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>The web pages under <code>/downloads/code/</code> <em>don’t</em> conform to the <abbr title="World Wide Web Consortium">W3C</abbr>’s
+standards.  This afternoon, after I had rewritten the code and passed
+the HTML 4.01 Strict Test and CSS3 Test, I was given the code to embed
+the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnref:samp_pic"><a href="#fn:samp_pic" class="footnote">1</a></sup></p>
+
+<p>&#8220;` html HTML code for embedding the validation icon for HTML 4.01 Strict</p>
+<p>
+  <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" /></a>
+</p>
+<p>&#8220;`</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Unluckily, when I clicked on the icon for re-validation of the site, I
+<em>got</em> a 404 error.</p>
+
+<picture class="fancybox" title="404 Not Found">
+  <source srcset="/images/posts/W3C/err497.png" media="(min-width: 497px)" />
+  <img alt="404 not found" src="https://vincenttam.github.io/images/posts/W3C/err300.png" />
+</picture>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>I <em>wasn’t</em> so patient to read the <a href="http://validator.w3.org/docs/help.html#faq-referer"><abbr title="Frequently Asked Questions">FAQ</abbr></a> of the <abbr title="World Wide Web Consortium">W3C</abbr>.  I googled “w3c
+validator referer”.  Realising that the web pages hosted on the
+official website were similar to the <abbr title="Frequently Asked Questions">FAQ</abbr>, I clicked on the first blog
+article that I saw.<sup id="fnref:1st_blog"><a href="#fn:1st_blog" class="footnote">2</a></sup>  I still <em>didn’t</em> know what’s wrong
+with my hyperlink on the validation icon.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I refined my search by added the phrase “requested URL /check”
+<em>surrounded by double quotes</em> to the query string.  Then, only four
+web pages were displayed.  I glimpsed a mailing list and I <em>didn’t</em>
+found it useful.  Although I believed that the hyperlink for a forum
+thread <em>wouldn’t</em> help me, I clicked it.<sup id="fnref:forum"><a href="#fn:forum" class="footnote">3</a></sup>  It was in 2007, and
+the situtation <em>differed</em> much from this one.  I clicked on an
+old-versioned hyperlink to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, and <em>it worked</em>.
+After that, I “inspected this element” and changed the destination to
+the current URL of the validator.  It worked again.</p>
+
+<p>I compared the code found on the forum post with mine, and I
+discovered that the only difference is the <code>s</code> in front of the domain
+name <code>validator.w3.org</code>.  Knowing that some users may view the site
+using the HTTP protocol, I finally removed the beginning <code>https:</code> in
+the <code>href</code> attribute in that hyperlink.  Now users may re-validate the
+page with a simple click on the validation icons.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>Through the validation process, I’ve learnt some HTML.</p>
+
+<ol>
+  <li>Always begin an HTML file with <code>&lt;!DOCTYPE HTML ...&gt;</code>.</li>
+  <li>Add a <code>lang</code> attribute in <code>&lt;html&gt;</code> for internationalization.</li>
+  <li>Add a <code>&lt;meta charset="UTF-8"&gt;</code> tag to tell the validator the
+character encoding of the page.</li>
+  <li>
+    <p>In HTML 4.01 or earlier, avoid using a slash <code>/</code> before <code>&gt;</code>.</p>
+
+    <p>i.e. Use <code>&lt;img ... foo="bar"&gt;</code> instead of <code>&lt;img ... foo="bar" /&gt;</code>,
+ <code>&lt;br&gt;</code> instead of <code>&lt;br/&gt;</code>, etc.</p>
+  </li>
+  <li>
+    <p>Images in HTML 4.01 Strict:</p>
+
+    <ul>
+      <li>an alternate text is needed</li>
+      <li>specify the dimenstions of the picture (i.e. <code>height="XX"
+  witdth="YY"</code>)</li>
+    </ul>
+  </li>
+  <li>Inline elements in HTML 4.01 Strict need to be wrapped by
+block-level elements like <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, etc.</li>
+  <li>Forms in HTML 4.01 Strict need an <code>action</code>.</li>
+  <li>Use the <code>charset</code> attribute in <code>&lt;script&gt;</code> tags only for external
+scripts.</li>
+  <li>Using a hyperlink to <code>http://validator.w3.org/check?uri=referer</code> is
+more convenient than the manual way.</li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:samp_pic">
+      <p><a href="/images/posts/W3C/valid_code.png">Here</a>’s a sample screenshot. <a href="#fnref:samp_pic" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1st_blog">
+
+      <p><a href="http://bryanhadaway.com/how-to-link-to-the-w3c-css3-validation-page/"><em>How to Link to the W3C CSS3 Validation Page</em></a> on <em>Bryan
+Hadaway’s Web + Tech Blog</em>. <a href="#fnref:1st_blog" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:forum">
+
+      <p><a href="http://t29233.org-w3c-validator.w3ctalk.info/what-happend-to-http-validator-w3-org-check-referer-t29233.html#91166"><em>What happend to http://validator.w3.org/check/referer ?</em></a>
+on <em>W3c Discussion Forums</em>. <a href="#fnref:forum" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -300,10 +416,10 @@ image will be hidden.</p>
 </span><span class='line'>  Your browser does not support SVG.
 </span><span class='line'><span class="nt">&lt;/object&gt;</span>
 </span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
 </span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
 </span><span class='line'>  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
 </span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
 </span><span class='line'><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
 </span><span class='line'><span class="nt">&lt;/body&gt;</span>
@@ -1129,54 +1245,6 @@ by MG Siegler on TechCrunch. <a href="#fnref:news" class="reversefootnote">&#861
     </li>
     <li id="fn:po">
       <p><a href="http://blog.ivansiu.com/blog/2014/10/01/jing-ying-zhu-yi-yu-tou-piao-kao-shi/"><em>精英主義與投票考試</em></a> by Zigang Xiao. <a href="#fnref:po" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Changed My FancyBoxLocal.js]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js/"/>
-    
-    <updated>2014-12-13T18:09:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/12/13/changed-my-fancyboxlocal-dot-js</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I’ve been using fancyBox for image popup since August.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I would like to have large screenshots which belongs to the <code>fancybox</code>
-CSS class <em>centre-aligned</em>.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Refer to <code>source/javascripts/FancyBoxLocal.js</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/460b575">460b575</a> for
-details.</p>
-
-<p>I successfully worked out another solution using <a href="http://www.w3schools.com/js/">JavaScript</a> regular
-expressions.  However, after looking at <a href="http://jquery.com">jQuery</a>’s <code>removeClass()</code>
-method in it’s <a href="https://api.jquery.com/removeclass/">API documentation</a>, I dediced to start it all
-over again using <a href="http://jquery.com">jQuery</a> due to the simplicity of this approach.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>In <a href="http://www.vim.org">Vim</a>’s search pattern, <code>\&gt;</code> denotes the end of a word.  It took me
-a while to find out its counterpart in <a href="http://www.w3schools.com/js/">JavaScript</a> — <code>\b</code>.  The
-character ‘b’ stands for “boundary”.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>See <a href="/blog/2014/08/21/updated-octopress-source-code/"><em>Updated Octopress Source Code</em></a> for details. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

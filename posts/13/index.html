@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="In a $\rm \LaTeX$ guide found on the website of George Mason
-University, it’s said that Computer Modern fonts can look ugly.1
-Like most Computer &hellip;">
+  <meta name="description" content="I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.1 About two hours ago, while writing and previewing a
+post about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,70 @@ Like most Computer &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -646,54 +710,6 @@ case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://lanyrd.com/2011/houcodecamp/sgwhy/">Stop Using Git Like Subversion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T15:22:11+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/06/20/stop-using-git-like-subversion/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/stop-using-git-like-subversion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I saw a sentence like “Git does SVN better than SVN does” long ago,
-but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
-double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
-to use it just like SVN, but to explore more powerful commands for
-branching.</p>
-
-<p>Reasons for using branches:</p>
-
-<ul>
-  <li>Working with multiple features</li>
-  <li>Sharing with others</li>
-  <li>Merging others work conveniently</li>
-</ul>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/14">&larr; Older</a>
@@ -746,13 +762,17 @@ branching.</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (16)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (17)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/05/23/added-w3c-valided-logos-to-some-pages/">Added W3C Valided Logos to Some Pages</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/">A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode</a>
@@ -768,10 +788,6 @@ branching.</p>
     
       <li class="post">
         <a href="/blog/2015/05/16/recent-vundle-plugin-update/">Recent Vundle Plugin Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/06/github-page-build-failure/">GitHub Page Build Failure</a>
       </li>
     
   </ul>
