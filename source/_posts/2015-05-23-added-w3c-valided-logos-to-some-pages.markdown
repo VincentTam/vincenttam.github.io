@@ -74,23 +74,25 @@ Through the validation process, I've learnt some HTML.
 2. Add a `lang` attribute in `<html>` for internationalization.
 3. Add a `<meta charset="UTF-8">` tag to tell the validator the
 character encoding of the page.
-4. In HTML 4.01 or earlier, avoid using a slash `/` before `>`.
+4. A `<title>` inside the `<head>` is *necessary*: without this, the
+vaildator *won't* regard the `<head>` as closed.
+5. In HTML 4.01 or earlier, avoid using a slash `/` before `>`.
 
     i.e. Use `<img ... foo="bar">` instead of `<img ... foo="bar" />`,
     `<br>` instead of `<br/>`, etc.
 
-5. Images in HTML 4.01 Strict:
+6. Images in HTML 4.01 Strict:
 
     - an alternate text is needed
     - specify the dimenstions of the picture (i.e. `height="XX"
         witdth="YY"`)
 
-6. Inline elements in HTML 4.01 Strict need to be wrapped by
+7. Inline elements in HTML 4.01 Strict need to be wrapped by
 block-level elements like `<p>`, `<div>`, etc.
-7. Forms in HTML 4.01 Strict need an `action`.
-8. Use the `charset` attribute in `<script>` tags only for external
+8. Forms in HTML 4.01 Strict need an `action`.
+9. Use the `charset` attribute in `<script>` tags only for external
 scripts.
-9. Using a hyperlink to `http://validator.w3.org/check?uri=referer` is
+10. Using a hyperlink to `http://validator.w3.org/check?uri=referer` is
 more convenient than the manual way.
 
 ---
