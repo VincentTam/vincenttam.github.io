@@ -42,5 +42,3 @@ custom template to save the trouble.  See
 [*My Pandoc Template (1)*][NewPost] for details.
 
 [NewPost]: /blog/2014/08/03/my-pandoc-template-1/
-
-<!-- vim:set tw=70 wrap: -->
