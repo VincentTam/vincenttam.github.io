@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-25T23:15:25+08:00</updated>
+  <updated>2015-05-27T00:12:40+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -99,13 +99,13 @@ following lines, I understood this equation.</p>
 
 <div class="myeqn">
 \begin{align}
-&amp; 1^{-s} + 2^{-s} + 3^{-s} + \cdots &#92;&#92;
+&amp; 1^{-s} + 2^{-s} + 3^{-s} + \cdots \\\\
 =&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) (1^{-s} + 2^{-s} + 2^{-2s} +
-\cdots) \label{step1} &#92;&#92;
+\cdots) \label{step1} \\\\
 =&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) \cdot \frac{1}{1 - 2^{-s}}
-\label{step2} &#92;&#92;
+\label{step2} \\\\
 =&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) (1^{-s} + 3^{-s} + 3^{-2s} +
-\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} &#92;&#92;
+\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} \\\\
 =&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) \cdot \frac{1}{1 - 3^{-s}}
 \cdot \frac{1}{1 - 2^{-s}} \label{step4}
 \end{align}
@@ -124,10 +124,10 @@ product signs.</p>
 <div class="myeqn">
 \[
 \begin{aligned}
-&amp; \sum_{k = 1}^{\infty} \frac{1}{k^s} &#92;&#92;
-=&amp; \sum_{k \in \N} \frac{1}{k^s} &#92;&#92;
-=&amp; \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} &#92;&#92;
-=&amp; \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}&#92;&#92;
+&amp; \sum_{k = 1}^{\infty} \frac{1}{k^s} \\\\
+=&amp; \sum_{k \in \N} \frac{1}{k^s} \\\\
+=&amp; \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} \\\\
+=&amp; \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}\\\\
 =&amp; \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}
 \end{aligned}
 \]
@@ -206,60 +206,7 @@ term.</p>
 
 <h3 id="source-code">Source code</h3>
 
-<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
-<noscript><pre><code>#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-using namespace std;
-
-double pXy(double x, double y, int N);
-double pxy(double x, double y, int N);
-
-int main(void) {
-    double pAb,paB,pab,a,b;
-    int N;
-    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Parameter for A: &quot;;
-    cin &gt;&gt; a;
-    cout &lt;&lt; &quot;Parameter for B: &quot;;
-    cin &gt;&gt; b;
-    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
-    cin &gt;&gt; N;
-    pAb = pXy(a,b,N);
-    paB = pXy(b,a,N);
-    pab = pxy(a,b,N);
-    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
-        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
-}
-
-/* P(X &gt; Y) */
-double pXy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 1; i &lt;= N; i++) {
-        for (int j = 0; j &lt; i ; j++) {
-            double term = 1;
-            for (int k = 1; k &lt;= i; k++)
-                term *= x / k;
-            for (int k = 1; k &lt;= j; k++)
-                term *= y / k;
-            ans += term;
-        }
-    }
-    return ans * exp(-x - y);
-}
-
-/* P(X = Y) */
-double pxy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 0; i &lt;= N; i++) {
-        double term = 1;
-        for (int k = 1; k &lt;= i; k++)
-            term *= x / k * y / k;
-        ans += term;
-    }
-    return ans * exp(-x - y);
-}
-</code></pre></noscript></div>
-</p>
+<p>{% gist c27c38c49fe8de17c815 %}</p>
 
 <h3 id="sample-output">Sample output</h3>
 
@@ -323,29 +270,29 @@ $n$ dimension.</p>
 \begin{split}
 &amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
 \forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
-&#92;&#92;
-&amp; \text{Volume of } A &#92;&#92;
-=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+\\\\
+&amp; \text{Volume of } A \\\\
+=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
-\ud x_1 &#92;&#92;
+\ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
-\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
-\ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+\ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
-2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
-x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
-3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-&amp; \vdots &#92;&#92;
-=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 &#92;&#92;
+3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+&amp; \vdots \\\\
+=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\\\
 =&amp; \frac{t^n}{n!}
 \end{split}
 \]
@@ -358,18 +305,18 @@ x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
 <div class="myeqn">
 \[
 \begin{split}
-&amp; \text{First component of its centre of mass} &#92;&#92;
+&amp; \text{First component of its centre of mass} \\\\
 =&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
-x_2 \ud x_1 &#92;&#92;
+x_2 \ud x_1 \\\\
 =&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
 x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
-\cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
+\cdots \ud x_3 \ud x_2 \ud x_1 \\\\
 =&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
-\ud x_1 &#92;&#92;
+\ud x_1 \\\\
 =&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
 1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
-\right) &#92;&#92;
-=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) &#92;&#92;
+\right) \\\\
+=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\\\
 =&amp; \frac{t}{n + 1}
 \end{split}
 \]
@@ -417,16 +364,16 @@ waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \Pr(X_1 &gt; X_2) &#92;&#92;
-    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 &#92;&#92;
+    &amp; \Pr(X_1 &gt; X_2) \\\\
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
-    e^{-\lambda_2 x_1}) \ud x_1 &#92;&#92;
+    e^{-\lambda_2 x_1}) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
     \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
-    x_1 &#92;&#92;
+    x_1 \\\\
     =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
-    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} &#92;&#92;
-    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} &#92;&#92;
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\\\
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\\\
     =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:pr_min}
@@ -439,14 +386,14 @@ waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
 <div class="myeqn">
 \begin{equation}
 \begin{split}
-&amp; \E[\left\{ X_1, X_2 \right\}] &#92;&#92;
+&amp; \E[\left\{ X_1, X_2 \right\}] \\\\
 =&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2)
-&#92;&#92;
+\\\\
 +&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
-&#92;&#92;
-=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) &#92;&#92;
+\\\\
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) \\\\
 =&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
-\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} &#92;&#92;
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\\\
 =&amp; \frac{2}{\lambda_1 + \lambda_2}
 \end{split}
 \label{eq:wrong}
@@ -475,9 +422,9 @@ expectation <em>won’t</em> be helpful because</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\\\
     =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
     +&amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
 	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
   \end{split}
@@ -492,36 +439,36 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 \begin{equation}
   \begin{split}
     &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
     \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
-    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
     \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
-    x_1} \right) \ud x_1 &#92;&#92;
+    x_1} \right) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
-    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 &#92;&#92;
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\\\
     =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
     x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
     (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
-    &#92;&#92;
+    \\\\
     =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
     x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
     \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
-    x_1}}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    x_1}}{\lambda_1 + \lambda_2} \right) \\\\
     +&amp; \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
     x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
     \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
-    \right|_{0}^{\infty} \right) &#92;&#92;
+    \right|_{0}^{\infty} \right) \\\\
     =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
     x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
     \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
-    \frac{1}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    \frac{1}{\lambda_1 + \lambda_2} \right) \\\\
     =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
     \lambda_2)}
@@ -536,7 +483,7 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 \begin{equation}
   \begin{split}
     &amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
-    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 &#92;&#92;
+    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\\\
     =&amp; -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
     \lambda_1)}.
@@ -551,28 +498,28 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\\\
     =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
-    \lambda_2)} \right) &#92;&#92;
+    \lambda_2)} \right) \\\\
     +&amp; \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
-    \lambda_1)} \right) &#92;&#92;
+    \lambda_1)} \right) \\\\
     =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
     \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
-    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) &#92;&#92;
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\\\
     -&amp; \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
-    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) &#92;&#92;
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\\\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
     \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
-    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
     \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
-    (\lambda_1 + \lambda_2)} &#92;&#92;
+    (\lambda_1 + \lambda_2)} \\\\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
-    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
-    \lambda_2} &#92;&#92;
+    \lambda_2} \\\\
     =&amp; \frac{1}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:fin}
