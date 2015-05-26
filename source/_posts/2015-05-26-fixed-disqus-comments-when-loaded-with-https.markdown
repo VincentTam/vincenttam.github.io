@@ -50,6 +50,9 @@ give it a try.  The moment that I opened the generated CSV file in a
 spreadsheet program, I knew that I had chosen the right way because
 this gave me more control over the URL of the posts on my blog.
 
+I also added a script copied from [konklone's Gist][gist] for using
+HTTPS by defalut.
+
 In the official documentation, a spreadsheet program is used to modify
 CSV files.  In fact, if one knows regular expression, one would do
 batch text editing using some tools available in the CLI.  For
@@ -72,3 +75,4 @@ I need to be patient and work on other things first after I've already
 tried all possible ways to solve the problem.
 
 [gh10popHttps]: https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
+[gist]: https://gist.github.com/konklone/9968713
