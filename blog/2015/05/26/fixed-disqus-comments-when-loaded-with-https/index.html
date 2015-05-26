@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Git Status of My Octopress Folder - Blog 1</title>
+  <title>Fixed Disqus Comments When Loaded With HTTPS - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I’d like to include my GitHub repositories here. To do so, it’s a
-piece of cake to slightly modify _config.yml.1 Once, I curiously typed git status &hellip;">
+  <meta name="description" content="Background GitHub Pages now supports HTTPS. I saw that Google search showed the HTTP version of the hyperlinks. I want to convert add the existing “ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ piece of cake to slightly modify _config.yml.1 Once, I curiously typed git statu
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder">
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -83,7 +82,7 @@ piece of cake to slightly modify _config.yml.1 Once, I curiously typed git statu
   <header>
     
       
-	<h1 class="entry-title">Git Status of My Octopress Folder</h1>
+	<h1 class="entry-title">Fixed Disqus Comments When Loaded With HTTPS</h1>
       
     
     
@@ -93,7 +92,7 @@ piece of cake to slightly modify _config.yml.1 Once, I curiously typed git statu
 
 
 
-<time class='entry-date' datetime='2014-03-01T17:32:29+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:32 pm</span></time>
+<time class='entry-date' datetime='2015-05-26T22:12:24+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:12 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -104,59 +103,72 @@ piece of cake to slightly modify _config.yml.1 Once, I curiously typed git statu
   </header>
 
 
-<div class="entry-content"><p>I’d like to include my GitHub repositories here.  To do so, it’s a
-piece of cake to slightly modify <code>_config.yml</code>.<sup id="fnref:config_octopress"><a href="#fn:config_octopress" class="footnote">1</a></sup></p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<p>Once, I curiously typed <code>git status</code> in <code>~/octopress</code>.  The following
-screenshot is from my terminal.</p>
+<ol>
+  <li><a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">GitHub Pages now supports HTTPS</a>.</li>
+  <li>I saw that Google search showed the HTTP version of the hyperlinks.</li>
+  <li>I want to convert add the existing “http://” to “https://”.</li>
+</ol>
 
-<p><img src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" alt="git status" /></p>
+<h2 id="problem">Problem</h2>
 
-<p>Then I blindly followed the “advice” of <code>git status</code> and typed</p>
+<ol>
+  <li>I changed “http://…” to “https://…” in the Admin settings for
+the disqus site of this blog.</li>
+  <li>The original comments <em>disappeared</em>!</li>
+</ol>
 
-<pre class="cliUB"><code>$ git add .
-</code></pre>
+<p><strong>How can I get back the original comments and correct the URLs of the
+links to my blog articles on Disqus?</strong></p>
 
-<p><del>It seemed that I had made a mistake.</del>  Actually, <em>without
-adding those modified and untracked files on the stage for commit</em>,
-the following two commands will <del>do</del> update the contents on
-the GitHub pages.</p>
+<!-- more -->
 
-<pre class="cliUB"><code>$ rake generate
-$ rake deploy
-</code></pre>
+<h2 id="failed-attempt">Failed attempt</h2>
 
-<p>The final step is to view your blog again after going out for a cup
-water or some snacks.</p>
+<p>I tried to use the “Domain Migration Wizard”.  <em>Lacking</em> knowledge in
+terms like “host”, I just clicked the button to proceed even though I
+saw that the original host name was recognised as “http://https://.”.</p>
 
-<p>How about the <code>git status</code>?  <del>Simply <em>forget about it</em>!</del></p>
+<p>In the end, I messed up the URLs of the forum threads.  After using
+the “Wizard”, I waited for about 20 hours, and then I saw that
+hundreds of links started with
+“http://https://vincentam.githhub.io/…”.</p>
 
-<hr />
+<p>I read a lot of articles from the Web, but the problem that they’re
+facing <em>weren’t</em> the same as mine.</p>
 
-<p>(Last added on MAR 15TH, 2014)</p>
+<h2 id="solution">Solution</h2>
 
-<p>If you have <em>more than one</em> local repository of your Octopress or
-Jekyll site, you may upload your contents to the Internet as long as
-the corresponding branch in the local repository is newer than the one
-in the remote repository.  To keep the Octopress or Jekyll code
-updated, one needs to use Git to check if the <code>source</code> branch contains
-the latest changes.  Otherwise, after writing a new post, it is
-possible that one <em>can’t</em> upload the new post to the Octopress or
-Jekyll site using <code>rake deploy</code>.</p>
+<p>I finally decided to use the “URL Mapper”.  When I read the official
+onine help page about this migration tool, I realised that I should
+give it a try.  The moment that I opened the generated CSV file in a
+spreadsheet program, I knew that I had chosen the right way because
+this gave me more control over the URL of the posts on my blog.</p>
 
-<p>Thus, eight days ago, I made Git commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99">8c7be99</a>.</p>
+<p>I also added a script copied from <a href="https://gist.github.com/konklone/9968713">konklone’s Gist</a> for using
+HTTPS by defalut.</p>
 
-<hr />
+<p>In the official documentation, a spreadsheet program is used to modify
+CSV files.  In fact, if one knows regular expression, one would do
+batch text editing using some tools available in the CLI.  For
+instance, I used Vim to do this last night.</p>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:config_octopress">
+<p>This morning, I discovered that the URLs in the box “Promoted
+Discovery” were <em>still</em> wrong!  This afternoon, I read a lot of
+related websites, just like what I did yesterday.  I <em>wasn’t</em> sure
+what to do next.  The URLs shown in the “Admin” page were finally
+correct, but those hyperlinks on the pages “View in discussion” on the
+white-backgrounded Disqus site <em>weren’t</em>.</p>
 
-      <p>Mathis, B.  (Jul 19, 2011).  <em>Configuring Octopress</em>.  Retrieved
-from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a> <a href="#fnref:config_octopress" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>Then I worked on something else, and at about 8pm tonight, all the
+URLs have finally been corrected.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I need to be patient and work on other things first after I’ve already
+tried all possible ways to solve the problem.</p>
+
 </div>
 
 
@@ -172,12 +184,12 @@ from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/
 
 
 
-<time class='entry-date' datetime='2014-03-01T17:32:29+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:32 pm</span></time>
+<time class='entry-date' datetime='2015-05-26T22:12:24+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:12 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
+    <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/web-technologies/'>web technologies</a>
   
 </span>
 
@@ -186,7 +198,7 @@ from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/" data-via="" data-counturl="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/" >Tweet</a>
   
   
   
@@ -197,10 +209,8 @@ from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/" title="Previous Post: Including a Bibliography in Pandoc Markdown on Ubuntu 12.04 LTS">&laquo; Including a Bibliography in Pandoc Markdown on Ubuntu 12.04 LTS</a>
+        <a class="basic-alignment left" href="/blog/2015/05/23/added-w3c-valided-logos-to-some-pages/" title="Previous Post: Added W3C Valided Logos to Some Pages">&laquo; Added W3C Valided Logos to Some Pages</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/02/creating-a-new-octopress-page/" title="Next Post: Creating a New Octopress Page">Creating a New Octopress Page &raquo;</a>
       
     </p>
   </footer>
@@ -310,8 +320,8 @@ from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/';
-        var disqus_url = 'https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/';
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/';
         var disqus_script = 'embed.js';
       
     (function () {
