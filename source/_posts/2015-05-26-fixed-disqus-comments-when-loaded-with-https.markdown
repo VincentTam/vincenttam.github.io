@@ -74,5 +74,12 @@ Lessons learnt
 I need to be patient and work on other things first after I've already
 tried all possible ways to solve the problem.
 
+Final remarks
+---
+
+During the site migration, one *couldn't* see the comments and the
+"Also on" box took one to *wrong* pages.  I apologize for any
+inconvenience caused.
+
 [gh10popHttps]: https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it
 [gist]: https://gist.github.com/konklone/9968713
