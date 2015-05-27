@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-27T01:08:01+08:00</updated>
+  <updated>2015-05-27T14:37:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -288,7 +288,20 @@ disappear even though something went wrong.  If everything proceeds
 smoothly, then the old files in the home folder can then be safely
 deleted.</p>
 
-<p>{% include_code A little script for moving the files lang:sh custom_move.sh %}</p>
+<p><figure class='code'><figcaption><span>A little script for moving the files  (custom_move.sh)</span> <a href='/downloads/code/custom_move.sh'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'><span class="k">for</span> f in <span class="k">$(</span>ls *.png<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nv">newf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$f</span> <span class="p">|</span> sed <span class="s1">&#39;s/temp_//&#39;</span><span class="sb">`</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$f</span> <span class="nv">$newf</span>
+</span><span class='line'>    cp -v <span class="nv">$f</span> ~/octopress/source/images/posts/UseGooCache/<span class="nv">$newf</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If I use single quotes to surround the destination (e.g.
 <code>'~/.../$newf'</code>), the syntax highlighting for <code>$newf</code> will be <em>gone</em>
@@ -398,7 +411,100 @@ image will be hidden.</p>
 
 <p>Click “download” to view the sample web page.</p>
 
-<p>{% include_code A minimum working example resizable/test.html %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example (test.html)</span> <a href='/downloads/code/resizable/test.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Testing resizable SVG<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">bar</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">bar</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">val</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">lbl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;lbl&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">lbl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">obj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;obj&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="c">&lt;!-- Show the border --&gt;</span>
+</span><span class='line'><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nc">.boxed</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">border-style</span><span class="o">:</span> <span class="k">solid</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">border-width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">&lt;/style&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span><span class='line'><span class="nt">&lt;span&gt;</span>Image size:<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;range&quot;</span> <span class="na">name=</span><span class="s">&quot;points&quot;</span> <span class="na">min=</span><span class="s">&quot;200&quot;</span> <span class="na">max=</span><span class="s">&quot;800&quot;</span>
+</span><span class='line'><span class="na">value=</span><span class="s">&quot;200&quot;</span> <span class="na">step=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;lbl&quot;</span><span class="nt">&gt;</span>200<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;object</span> <span class="na">id=</span><span class="s">&quot;obj&quot;</span> <span class="na">class=</span><span class="s">&quot;boxed&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span> <span class="na">data=</span><span class="s">&quot;IET.svg&quot;</span>
+</span><span class='line'>  <span class="na">width=</span><span class="s">&quot;200&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  Your browser does not support SVG.
+</span><span class='line'><span class="nt">&lt;/object&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
+</span><span class='line'>  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="discussion">Discussion</h2>
 

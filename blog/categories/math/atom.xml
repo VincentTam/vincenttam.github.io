@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-27T01:08:01+08:00</updated>
+  <updated>2015-05-27T14:37:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -206,7 +206,60 @@ term.</p>
 
 <h3 id="source-code">Source code</h3>
 
-<p>{% gist c27c38c49fe8de17c815 %}</p>
+<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+</p>
 
 <h3 id="sample-output">Sample output</h3>
 

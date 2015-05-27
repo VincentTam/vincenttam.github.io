@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-27T01:08:01+08:00</updated>
+  <updated>2015-05-27T14:37:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -180,10 +180,11 @@ official manual.</p>
 <p>I tried following the instructions in MathJax’s official Wiki for
 using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">2</a></sup></p>
 
-<p>{% codeblock lang:html %}
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML, 	/javascripts/MathJaxLocal.js ">
-</script>
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML, 	/javascripts/MathJaxLocal.js &quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Things seems worked, but undesirably <em>slow</em>.</p>
 
@@ -201,16 +202,12 @@ quicker with a local configuration file</strong>, like <a href="http://drz.ac">h
 <p>I googled “mathjax local config long”, and found a message from
 <a href="https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ">this page</a> extremely useful.</p>
 
-<p>{% blockquote Davide P. Cervone http://goo.gl/WzV2w3 Re: Local configuration file processing is extremely slow (~15 sec) %}</p>
-<p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p>
-<pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre>
-<p>at the bottom of your font configuration file and that should take care of it for you.</p>
-<p>{% endblockquote %}</p>
+<p><blockquote><p></p><br/><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><br/><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre><br/><p>at the bottom of your font configuration file and that should take care of it for you.</p><br/><p></p><footer><strong>Davide P. Cervone</strong> <cite><a href='http://goo.gl/WzV2w3'>Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote></p>
 
 <h2 id="failed-attempts">Failed attempts</h2>
 
 <p>I tried using relative paths in <code>source/_includes/custom/head.html</code>
-, <code>{% raw %}{{ root_url }}{% endraw %}</code> in the <code>&lt;script&gt;</code> tag that
+, <code>{{ root_url }}</code> in the <code>&lt;script&gt;</code> tag that
 calls MathJax with a local configuration file and in the local
 configuration file <code>source/javascripts/MathJaxLocal.js</code>.  Since this
 blog has more than 200 pages, it took about a minute for regeneration
@@ -221,7 +218,7 @@ of contents after each slight modification in the code.</p>
 <p>I typed full paths manually for the above <code>&lt;script&gt;</code> tag in the custom
 head of a page and the local configuration file.  To avoid loading
 “insecure contents”, I used full URLs instead of
-<code>{% raw %}{{ site.url }}{% endraw %}</code> since the URL of this site
+<code>{{ site.url }}</code> since the URL of this site
 <em>doesn’t</em> start with “https” in <code>_config.yml</code>.<sup id="fnref:https"><a href="#fn:https" class="footnote">3</a></sup><sup id="fnref:config_yml"><a href="#fn:config_yml" class="footnote">4</a></sup>
 Then the equations should load quickly.</p>
 
@@ -233,7 +230,160 @@ Then the equations should load quickly.</p>
 configuration file and upload it to GitHub, so that I could test it in
 a local HTML file <code>file:///path/to/test_mathjax.html</code></p>
 
-<p>{% include_code A local testing page for using the MathJax macros test_mathjax.html %}</p>
+<p><figure class='code'><figcaption><span>A local testing page for using the MathJax macros (test_mathjax.html)</span> <a href='/downloads/code/test_mathjax.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
+</span><span class='line'><span class="s">https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
+</span><span class='line'><span class="s">https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>This page is for testing MathJax in my blog.  I wrote some custom
+</span><span class='line'>shorthand like $\zeros \in \R^n$.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>Problem<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>For sequences of numbers, <span class="nt">&lt;em&gt;</span>limit inferior<span class="nt">&lt;/em&gt;</span> and <span class="nt">&lt;em&gt;</span>limit
+</span><span class='line'>superior<span class="nt">&lt;/em&gt;</span> are defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge
+</span><span class='line'>n\}\}$ and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$ respectively;
+</span><span class='line'>for sequences of sets, they are defined as $\displaystyle
+</span><span class='line'>\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
+</span><span class='line'>\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$ respectively.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;strong&gt;</span>Why are they consistent?<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;h2&gt;</span>Discussion<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>It suffices to find a relation between &#39;<span class="ni">&amp;lt;</span>&#39; and &#39;<span class="ni">&amp;sube;</span>&#39;: $\{x
+</span><span class='line'>\le a\} \subseteq \{x \le b\} \iff a \le b$.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x \le \sup
+</span><span class='line'>A\}$.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;&lt;em&gt;</span>Proof<span class="nt">&lt;/em&gt;</span>:<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>\[
+</span><span class='line'>  \begin{aligned}
+</span><span class='line'>    <span class="err">&amp;</span> x \in \bigcup_{a \in A} \{x \le a\} \\
+</span><span class='line'>    \iff<span class="err">&amp;</span> x \le a \;\forall a \in A \\
+</span><span class='line'>    \iff<span class="err">&amp;</span> x \text{ is a lower bound of } A \\
+</span><span class='line'>    \iff<span class="err">&amp;</span> x \le \inf A
+</span><span class='line'>  \end{aligned}
+</span><span class='line'>\]
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>The last step is due to the defintion of infimum (<span class="nt">&lt;em&gt;</span>greatest<span class="nt">&lt;/em&gt;</span>
+</span><span class='line'>lower bound).<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>With the above claim, one has<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>\[
+</span><span class='line'>  \begin{aligned}
+</span><span class='line'>    <span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{x \le a_k\} \\
+</span><span class='line'>    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{a \in \{a_k:k \ge n\}} \{x \le a\} \\
+</span><span class='line'>    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \{ x \le \sup \{a_k:k \ge n\}\} \\
+</span><span class='line'>    =<span class="err">&amp;</span> \{x \le \inf\sup \{a_k:k \ge n\}\}
+</span><span class='line'>  \end{aligned}
+</span><span class='line'>\]
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le \inf\sup
+</span><span class='line'>\{a_k:k \ge n\}$ and $\displaystyle \bigcup_{n=1}^{\infty}
+</span><span class='line'>\bigcap_{k=n}^{\infty} \{x \le a_k\} \subseteq \bigcap_{n=1}^{\infty}
+</span><span class='line'>\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in common.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
+</span><span class='line'>  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <hr />
 
@@ -341,9 +491,9 @@ of the binary relation symbols there’s a whitespace character.</p>
 
 <h3 id="visual-effects-in-a-page-for-a-single-post">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/post.png ‘LaTeX code seen in post’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/post.png" title="‘LaTeX code seen in post’ ‘fig1’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 \begin{aligned}
 d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
@@ -353,13 +503,13 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
 =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/collection.png ‘LaTeX code seen in index page’ ‘fig2’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/collection.png" title="‘LaTeX code seen in index page’ ‘fig2’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 \begin{aligned}
 d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
@@ -369,7 +519,7 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
 =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
 </code>
-{% endraw %}</p>
+</p>
 
 <p>It <em>doesn’t</em> matter much in block equations.</p>
 
@@ -406,9 +556,9 @@ f(x,y) =
 
 <h3 id="visual-effects-in-a-page-for-a-single-post-1">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/cases3.png ‘LaTeX code seen in post’ ‘fig3’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases3.png" title="‘LaTeX code seen in post’ ‘fig3’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 f(x,y) =
   \begin{cases}
@@ -416,13 +566,13 @@ f(x,y) =
     1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
   \end{cases}
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page-1">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/cases2.png ‘LaTeX code seen in index page’ ‘fig4’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases2.png" title="‘LaTeX code seen in index page’ ‘fig4’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 f(x,y) =
   \begin{cases}
@@ -430,7 +580,7 @@ f(x,y) =
     1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
   \end{cases}
 </code>
-{% endraw %}</p>
+</p>
 
 <h2 id="solution">Solution</h2>
 
@@ -462,9 +612,9 @@ f(x,y) = \left\\{
 
 <h3 id="visual-effects-in-a-page-for-a-single-post-2">Visual effects in a page for a single post</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/aligned3.png ‘LaTeX code seen in post’ ‘fig5’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned3.png" title="‘LaTeX code seen in post’ ‘fig5’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen in an individual post
 f(x,y) = \left\{
   \begin{aligned}
@@ -473,13 +623,13 @@ f(x,y) = \left\{
   \end{aligned}
 \right.
 </code>
-{% endraw %}</p>
+</p>
 
 <h3 id="visual-effects-in-pages-under-posts-or-the-index-page-2">Visual effects in pages under “/posts/” or the index page</h3>
 
-<p>{% img fancybox /images/posts/MathJaxDisplay2/aligned2.png ‘LaTeX code seen in index page’ ‘fig6’ %}</p>
+<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned2.png" title="‘LaTeX code seen in index page’ ‘fig6’" ></p>
 
-<p>{% raw %}
+<p>
 <code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
 f(x,y) = \left\{
   \begin{aligned}
@@ -488,7 +638,7 @@ f(x,y) = \left\{
   \end{aligned}
 \right.
 </code>
-{% endraw %}</p>
+</p>
 
 <p>‘0’ and ‘1’ in the above example are aligned.  Though in pages for
 each individual posts, the whitespace character preceeding ‘1’ still

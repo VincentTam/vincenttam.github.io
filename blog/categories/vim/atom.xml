@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-27T01:08:01+08:00</updated>
+  <updated>2015-05-27T14:37:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -142,14 +142,20 @@ put “2015” above.</p>
 line("$")</code> in a forum thread, I typed the following editor commands in
 Vim.</p>
 
-<p>{% codeblock A while-loop which runs through the lines lang:vim %}
-let l = 1
-1
-wh l &lt;= line(“$”)
-  exe “norm! I” . l . “&lt;esc&gt;j”
-  let l += 1
-endwh
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>A while-loop which runs through the lines </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">let</span> <span class="k">l</span> <span class="p">=</span> <span class="m">1</span>
+</span><span class='line'><span class="m">1</span>
+</span><span class='line'><span class="k">wh</span> <span class="k">l</span> &amp;<span class="k">lt</span>;<span class="p">=</span> line<span class="p">(</span>“$”<span class="p">)</span>
+</span><span class='line'>  exe “norm<span class="p">!</span> I” . <span class="k">l</span> . “&amp;<span class="k">lt</span>;esc&amp;gt;<span class="k">j</span>”
+</span><span class='line'>  <span class="k">let</span> <span class="k">l</span> <span class="p">+=</span> <span class="m">1</span>
+</span><span class='line'><span class="k">endwh</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Why is <code>exe "norm!</code> used instead of <code>norm</code>?  Since <code>\&lt;esc&gt;</code> <em>can’t</em> go
 with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
