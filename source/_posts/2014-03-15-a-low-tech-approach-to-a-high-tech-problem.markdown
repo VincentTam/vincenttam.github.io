@@ -33,5 +33,3 @@ paper.
     De Heredia, J. B.  (May 16, 2007).  *Why, oh WHY, do those #?@!
     nutheads use vi?*.  Retrieved from
     <http://www.viemu.com/a-why-vi-vim.html>, Misconception #5.
-
-<!-- vim:set tw=70:wrap: -->
