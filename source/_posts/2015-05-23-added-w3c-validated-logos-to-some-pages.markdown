@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Added W3C Valided Logos to Some Pages"
+title: "Added W3C Validated Logos to Some Pages"
 date: 2015-05-23 22:42:17 +0800
 comments: true
 categories: [web technologies]

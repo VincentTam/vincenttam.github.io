@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Valide HTML Code for SVG Fallbacks to Text"
+title: "Validate HTML Code for SVG Fallbacks to Text"
 date: 2015-05-30 22:23:37 +0800
 comments: true
 categories: [CSS, SVG]
@@ -41,7 +41,7 @@ To get an HTML page which consists of a `<foreignObject>` tag inside
 an `<svg>` tag validated by the W3C HTML validator, it's obligatory to
 specify the dimensions of the `<foreignObject>` tag.
 
-[pp]: /blog/2015/05/23/added-w3c-valided-logos-to-some-pages/
+[pp]: /blog/2015/05/23/added-w3c-validated-logos-to-some-pages/
 [w3sch]: http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst
 [se26249728]: http://stackoverflow.com/a/26249728
 
