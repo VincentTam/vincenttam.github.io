@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-05-30T22:19:18+08:00</updated>
+  <updated>2015-05-30T22:54:33+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,49 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Valide HTML Code for SVG Fallbacks to Text]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/05/30/valide-html-code-for-svg-fallbacks-to-text/"/>
+    
+    <updated>2015-05-30T22:23:37+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/05/30/valide-html-code-for-svg-fallbacks-to-text</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>After I’d written <a href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-valided-logos-to-some-pages/"><em>Added <abbr title="World Wide Web Consortium">W3C</abbr> Valided Logos to Some Pages</em></a>, I saw
+that in the site, there’s still two pages which <em>hadn’t</em> been checked
+by the <abbr title="World Wide Web Consortium">W3C</abbr>’s validators.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>To allow SVG fallbacks to text, I viewed the source code for
+<a href="http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">the SVG example from W3Schools</a>.  The fallback message was
+simply included inside a <code>&lt;svg&gt;</code> tag just like a <code>&lt;p&gt;</code> tag.  I applied
+this technique to <code>source/downloads/code/SVGViewBox/viewBox1.html</code>.</p>
+
+<p>Then I uploaded that HTML file to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, which
+complained such an inclusion of text.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>After that, I googled “svg fallback text” using the encrypted version
+of the search engine.  Luckily, <a href="http://stackoverflow.com/a/26249728">the second answer</a> to the
+Stack Overflow question, which appeared at the top of the list of
+search results, is useful.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>To get an HTML page which consists of a <code>&lt;foreignObject&gt;</code> tag inside
+an <code>&lt;svg&gt;</code> tag validated by the <abbr title="World Wide Web Consortium">W3C</abbr> HTML validator, it’s obligatory to
+specify the dimensions of the <code>&lt;foreignObject&gt;</code> tag.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1674,44 +1717,6 @@ Blog 1. <a href="#fnref:tech" class="reversefootnote">&#8617;</a></p>
     <li id="fn:pp-artin">
 
       <p>Same as footnote 1. <a href="#fnref:pp-artin" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Non-surjective Embedding Mapping a Field to Itself]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself/"/>
-    
-    <updated>2015-03-28T13:38:52+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/03/28/a-non-surjective-embedding-mapping-a-field-to-itself</id>
-    
-      <content type="html"><![CDATA[<p>A week ago, I came up with an injective, but <em>not surjective</em>
-homomorphism which mapped a field to the same field: $\phi: \Q(e) \to
-\Q(e)$ defined by $\phi(e) = e^2$ and $\left.\phi\right|_\Q =
-\id_{\Q}$.  It <em>isn’t</em> surjective because $\phi[\Q(e)] = \Q(e^2)
-\subsetneq \Q(e)$</p>
-
-<p>Obviously, this kind of mapping <em>wasn’t</em> defined on a finite field.</p>
-
-<p>After that, I found another non-surjective embedding which sends field
-$\Z_p [y]$, where $y$ is an indeterminate, to itself on Mathematics
-Stack Exchange.<sup id="fnref:mathse91688"><a href="#fn:mathse91688" class="footnote">1</a></sup></p>
-
-<p>From this, I’ve understood that why the Isomorphism Extension Theomrem
-<em>doesn’t</em> apply to transcendental field extensions.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:mathse91688">
-
-      <p><a href="http://math.stackexchange.com/q/91688"><em>How to prove that the Frobenius homomorphism is surjective?</em></a>
-on Mathematics Stack Exchange. <a href="#fnref:mathse91688" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
