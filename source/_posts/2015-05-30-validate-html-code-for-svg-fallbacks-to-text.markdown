@@ -9,9 +9,9 @@ categories: [CSS, SVG]
 Background
 ---
 
-After I'd written [*Added W3C Valided Logos to Some Pages*][pp], I saw
-that in the site, there's still two pages which *hadn't* been checked
-by the W3C's validators.
+After I'd written [*Added W3C Validated Logos to Some Pages*][pp], I
+saw that in the site, there's still two pages which *hadn't* been
+checked by the W3C's validators.
 
 Problem
 ---
