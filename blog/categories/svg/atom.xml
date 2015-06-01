@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Svg | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/svg/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-01T16:57:59+08:00</updated>
+  <updated>2015-06-01T17:45:05+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixed a JavaScript TypeError]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/"/>
+    
+    <updated>2015-06-01T17:22:45+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I included <a href="/blog/2015/04/11/an-image-with-changeable-size/">an image with changeable size</a> in a post written about
+two months ago.</p>
+
+<h3 id="howwhy-does-this-work">How/Why does this work?</h3>
+
+<ul>
+  <li>In brief: View <code>/javascripts/svg_resize_bar.js</code>.</li>
+  <li>For details: click the hyperlink above.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<picture class="fancybox" title="A error received from Firefox
+  console">
+  <source srcset="/images/posts/SVGResizeErr/null_bar558.png" media="(min-width: 558px)" />
+  <img alt="FF throws TypeError" src="https://vincenttam.github.io/images/posts/SVGResizeErr/null_bar270.png" />
+</picture>
+
+<p>When I browsed any pages except that post which contains the
+changeable SVG image, the above <code>TypeError</code> was thrown.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>From the error message <code>TypeError: bar is null</code> and the filename
+<code>svg_resize_bar.js</code> on the right, an ordinary user who knows how to
+write if-else statements should be able to solve this in a few
+seconds: surround the part <code>bar.onchange = function () { ... }</code> by the
+if-else statement <code>if (bar != null ) { ... }</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -496,70 +541,6 @@ scaling of other HTML elements.</p>
     </li>
     <li id="fn:3">
       <p>MDN. 2014, Feb 23. <em>Transform</em>. Retrieved from <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform">https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Evince Viewing Error]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/07/13/evince-viewing-error/"/>
-    
-    <updated>2014-07-13T18:39:52+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/07/13/evince-viewing-error</id>
-    
-      <content type="html"><![CDATA[<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Evince</th>
-      <th style="text-align: center">Firefox</th>
-      <th style="text-align: center">Sumatra PDF</th>
-      <th style="text-align: center">SVG</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/Evince.png" width="200" title="‘img:1’ ‘Evince’" ></td>
-      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/FF.png" width="200" title="‘img:2’ ‘Firefox’" ></td>
-      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/chrome.png" width="200" title="‘img:3’ ‘Google Chrome’" ></td>
-      <td style="text-align: center"><img src="/images/posts/EvinceTikZ/SVG.svg" width="200" title="‘img:4’ ‘SVG’" ></td>
-    </tr>
-    <tr>
-      <td style="text-align: center">bad</td>
-      <td style="text-align: center">ok<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></td>
-      <td style="text-align: center">good</td>
-      <td style="text-align: center">good</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><small>The <a href="https://gist.github.com/VincentTam/02391d6016da80df1ffa">Gist</a> for the $\rm \LaTeX$ source code of the TikZ
-diagram</small></p>
-
-<p>This afternoon, while I was using TikZ to fill a triangle with line
-pattern, I found that the filling pattern flowed out of the triangle.
-Using the <code>clip</code> command doesn’t help.  Initially, I thought it was
-the problem of TikZ.  As a result, I tried searching “tikz fill
-pattern triagnle”, and <em>didn’t</em> read anything useful.  Finally, I
-found <a href="http://tex.stackexchange.com/a/100706" title="Why is this TikZ pattern spilling outside the path it fills? [closed]">a question on $\rm \LaTeX$ Stack Exchange</a>, and
-realized that it was a problem of the PDF viewer, instead of my use of
-the markup language for graphics.  I tried using Mozilla’s <a href="http://mozilla.github.io/pdf.js/">pdf.js</a> to
-open the file, but the grids <em>weren’t</em> being rendered properly either.</p>
-
-<p>Luckily, if I use <a href="http://www.cityinthesky.co.uk/opensource/pdf2svg/"><code>pdf2svg</code></a> to convert the PDF file to an SVG file,
-the SVG file <em>doesn’t</em> have such problem.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>The results are the <em>same</em> in Firefox on M$ Windows and
-GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-01T16:57:59+08:00</updated>
+  <updated>2015-06-01T17:45:05+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixed a JavaScript TypeError]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/"/>
+    
+    <updated>2015-06-01T17:22:45+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I included <a href="/blog/2015/04/11/an-image-with-changeable-size/">an image with changeable size</a> in a post written about
+two months ago.</p>
+
+<h3 id="howwhy-does-this-work">How/Why does this work?</h3>
+
+<ul>
+  <li>In brief: View <code>/javascripts/svg_resize_bar.js</code>.</li>
+  <li>For details: click the hyperlink above.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<picture class="fancybox" title="A error received from Firefox
+  console">
+  <source srcset="/images/posts/SVGResizeErr/null_bar558.png" media="(min-width: 558px)" />
+  <img alt="FF throws TypeError" src="https://vincenttam.github.io/images/posts/SVGResizeErr/null_bar270.png" />
+</picture>
+
+<p>When I browsed any pages except that post which contains the
+changeable SVG image, the above <code>TypeError</code> was thrown.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>From the error message <code>TypeError: bar is null</code> and the filename
+<code>svg_resize_bar.js</code> on the right, an ordinary user who knows how to
+write if-else statements should be able to solve this in a few
+seconds: surround the part <code>bar.onchange = function () { ... }</code> by the
+if-else statement <code>if (bar != null ) { ... }</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -366,193 +411,6 @@ blocked300.png': No such file or directory
 
 <p>Just like *nix, <code>&lt;Alt-PrtSc&gt;</code> can be used for capturing only the
 current window instead of the <em>whole</em> screen.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[An Image With Changeable Size]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/11/an-image-with-changeable-size/"/>
-    
-    <updated>2015-04-11T17:14:23+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/11/an-image-with-changeable-size</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I sometimes upload pictures for illustrating ideas.  You may see
-<a href="/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/"><em>Two Diagrams Illustrating the Isomorphism Extension Theorem</em></a>
-in this blog for example.</p>
-
-<h2 id="motivation">Motivation</h2>
-
-<p>Enable users to adjust the size of SVG graphics.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In the linked post, if the zoom level is too <em>large</em>, then part of the
-image will be hidden.</p>
-
-<object type="image/svg+xml" class="boxed" data="/downloads/code/svgpan_1.2.2/IET.svg" width="200" height="200">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan_1.2.2%2FIET.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<p>This is quite <em>inconvenient</em> for users who want a <em>whole</em> picture.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>To set up a slide bar which controls the size of an SVG image.</p>
-
-<p><span>Image size:</span>
-<input id="bar" type="range" name="points" min="200" max="800" value="200" step="10" />
-<span id="lbl">200</span></p>
-
-<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/resizable/IET.svg" width="200" height="200">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fresizable%2FIET.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<!-- more -->
-
-<h2 id="example">Example</h2>
-
-<p>Click “download” to view the sample web page.</p>
-
-<p><figure class='code'><figcaption><span>A minimum working example (test.html)</span> <a href='/downloads/code/resizable/test.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;title&gt;</span>Testing resizable SVG<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="nx">bar</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
-</span><span class='line'>  <span class="nx">bar</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>    <span class="nx">val</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">lbl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;lbl&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">lbl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">obj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;obj&quot;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">obj</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class='line'>  <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span><span class='line'><span class="c">&lt;!-- Show the border --&gt;</span>
-</span><span class='line'><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nc">.boxed</span> <span class="p">{</span>
-</span><span class='line'>  <span class="k">border-style</span><span class="o">:</span> <span class="k">solid</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">border-width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'><span class="nt">&lt;/style&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span><span class='line'><span class="nt">&lt;span&gt;</span>Image size:<span class="nt">&lt;/span&gt;</span>
-</span><span class='line'><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;range&quot;</span> <span class="na">name=</span><span class="s">&quot;points&quot;</span> <span class="na">min=</span><span class="s">&quot;200&quot;</span> <span class="na">max=</span><span class="s">&quot;800&quot;</span>
-</span><span class='line'><span class="na">value=</span><span class="s">&quot;200&quot;</span> <span class="na">step=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;lbl&quot;</span><span class="nt">&gt;</span>200<span class="nt">&lt;/span&gt;</span>
-</span><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;object</span> <span class="na">id=</span><span class="s">&quot;obj&quot;</span> <span class="na">class=</span><span class="s">&quot;boxed&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span> <span class="na">data=</span><span class="s">&quot;IET.svg&quot;</span>
-</span><span class='line'>  <span class="na">width=</span><span class="s">&quot;200&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>  Your browser does not support SVG.
-</span><span class='line'><span class="nt">&lt;/object&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
-</span><span class='line'>  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/a&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span>
-</span><span class='line'><span class="na">href=</span><span class="s">&quot;https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/resizable/IET.svg;ss=1&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class='line'><span class="na">src=</span><span class="s">&quot;/images/valid-svg11.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid SVG 1.1&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span>
-</span><span class='line'><span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Initially, due to my laziness, I used the <em>same</em> SVG image as the one
-in the section “Problem”.  Even though the height and width of the SVG
-image were increased, the diagram <em>didn’t</em>.  Moreover, it’s
-<em>inconvenient</em> to manually increase the size of the picture by <em>both</em>
-adjusting the knob <em>and</em> moving the mouse wheel.  As a result, I
-googled “html scale svg” and found a long article which I <em>didn’t</em>
-really read.<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup>  I just saw the word “viewport” and realized that
-the SVG image in the section “Problem” had been processed with steps
-described in <a href="/blog/2014/08/02/zooming-svg-in-web-browsers/"><em>Zooming SVG in Web Browsers</em></a> for incorporating
-the special functionalities of SVGPan in this blog.  Therefore,
-generating the SVG file for the $\rm \LaTeX$ source code again, I
-finally succeeded in getting the <em>contents</em> of the image enlarged.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ref">
-
-      <p><a href="http://css-tricks.com/scale-svg/">How to Scale SVG</a> by Amelia Bellamy-Royds on <em>CSS-Tricks</em>. <a href="#fnref:ref" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
