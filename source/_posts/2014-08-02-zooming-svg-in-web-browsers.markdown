@@ -17,6 +17,12 @@ graphics for ordinary users.  The image is borrowed from the post
 about proving Pappus's Hexagon Theorem.  
 [$\rm \LaTeX$ Source code](/downloads/code/pappus/PappusHexThm4.tex)</small>
 
+<a
+href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fimages%2Fposts%2FPappusHexThm%2FPappusHexThm4.svg;ss=1"><img
+src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
+width="88">
+</a>
+
 **How can one enlarge SVG images *only* within web browsers?**
 
 <object type="image/svg+xml"
@@ -28,6 +34,12 @@ about proving Pappus's Hexagon Theorem.
 functions of SVG graphics.  Drag the figure to translate it, and
 scroll to enlarge/reduce it.  
 [Source code](/downloads/code/svgpan_1.2.2/PappusHexThm4.svg)</small>
+
+<a
+href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan_1.2.2/PappusHexThm4.svg;ss=1"><img
+src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
+width="88">
+</a>
 
 <!-- more -->
 
