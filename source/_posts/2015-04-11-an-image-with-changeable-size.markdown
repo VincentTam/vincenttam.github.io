@@ -48,6 +48,12 @@ value="200" step="10">
   Your browser does not support SVG
 </object>
 
+<a
+href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fresizable%2FIET.svg;ss=1"><img
+src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
+width="88">
+</a>
+
 <!-- more -->
 
 Example
