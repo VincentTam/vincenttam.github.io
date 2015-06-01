@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Installed some useful Vim plugins, such as Vundle: (Vim plugins management tool). NERDTree: (file browser). EasyMotion Loremipsum: (random text &hellip;">
+  <meta name="description" content="This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL. The link should be in
+typewriter &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,59 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/">Error of the Font of the Cited URL in Bibliography Using Bib$\rm \LaTeX$ in APA Style</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-06T02:36:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:36 am</span></time>
+        
+           | <a href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/11/06/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This midnight, I tried to compile my $\rm \LaTeX$ document with a
+so-called “bibliography”, which contains a URL.  The link should be in
+typewriter font after using the command <code>\urlstyle{tt}</code> under adding
+the <code>url</code> package to the preamble.  I googled for almost 2 hours, but
+the blog posts suggested that using this method should work.  I even
+tried to copy some minimum working examples from the web to test if
+they work.  They really worked and so I’m puzzled.  Ten minutes ago, I
+just find out what’s going wrong: the <code>url</code> package should never go
+before the several lines in the preamble that are responsible for
+adding an APA-style bibliography.</p>
+
+<p>The <code>\ll</code> command in <a href="http://vim-latex.sourceforge.net/">Vim-$\rm \LaTeX$</a> seems not doing
+well with <a href="http://sourceforge.net/projects/biblatex-biber/" title="BibTeX replacement for biblatex">Biber</a>.  Whenever the AUX file exists, <code>\ll</code> won’t execute
+<code>biber</code>, causing the resulting PDF file to have no change in the
+bibliography.</p>
+
+<p>I hope I can use less time to figure out any mistake next time.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -424,17 +479,21 @@ For the sample files, please click the above “YouTube” button.</p>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/svg/'>svg (7)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (19)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (20)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/01/w3c-validator-and-svgpan/">W3C Validator and SVGPan</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a>
@@ -450,10 +509,6 @@ For the sample files, please click the above “YouTube” button.</p>
     
       <li class="post">
         <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">Added W3C Validated Logos to Some Pages</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/">A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode</a>
       </li>
     
   </ul>

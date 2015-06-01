@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Two weeks ago, I had proved that any two algebraic closures of a field
-are isomorphic to each other in a homework problem. To finish this
-problem, I &hellip;">
+  <meta name="description" content="Background If one assumes that servers $X_1$ and $X_2$ has exponential service
+times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
+$X_i \ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,235 @@ problem, I &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Calculate the Expected Waiting Time in a Hard Way</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-06T22:18:03+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:18 pm</span></time>
+        
+           | <a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>If one assumes that servers $X_1$ and $X_2$ has exponential service
+times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
+$X_i \sim \Exp(\lambda_i), i = 1,2$), then one can follow the
+standard arguments and say that the waiting time $\min\left\{ X_1,
+X_2 \right\} \sim \Exp(\lambda_1 + \lambda_2)$, so the expected
+waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried finding the expected waiting time by conditioning on $X_1 - X_2$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \Pr(X_1 &gt; X_2) &#92;&#92;
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
+    e^{-\lambda_2 x_1}) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
+    \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
+    x_1 &#92;&#92;
+    =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} &#92;&#92;
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} &#92;&#92;
+    =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:pr_min}
+\end{equation}
+</div>
+
+<p>Similarly, one has $\Pr(X_1 \le X_2) = \lambda_1/(\lambda_1 +
+\lambda_2)$.</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{split}
+&amp; \E[\left\{ X_1, X_2 \right\}] &#92;&#92;
+=&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2)
+&#92;&#92;
++&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
+&#92;&#92;
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) &#92;&#92;
+=&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} &#92;&#92;
+=&amp; \frac{2}{\lambda_1 + \lambda_2}
+\end{split}
+\label{eq:wrong}
+\end{equation}
+</div>
+
+<p>This is <em>different</em> from what we expect.  <strong>What’s wrong with the
+above calculation?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I really thought about the meaning of $\E[\min\left\{ X_1, X_2
+\right\} \mid X_1 &gt; X_2]$, and find out that this conditional
+expectation <em>won’t</em> be helpful because</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] =
+  \frac{\int_{0}^{\infty} \int_{0}^{x_1} x_2 \ud x_2 \ud x_1}{\Pr(X_1
+  &gt; X_2)}
+\]
+</div>
+
+<p>Actually, one can divide it into two halves.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    +&amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
+  \end{split}
+  \label{eq:head}
+\end{equation}
+</div>
+
+<p>By observing the symmetry between the subscripts ‘1’ and ‘2’ in the
+above equation, we only need to evaluate <em>one</em> of them.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
+    \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
+    \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
+    x_1} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 &#92;&#92;
+    =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
+    (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
+    &#92;&#92;
+    =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
+    \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    +&amp; \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
+    x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
+    \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
+    \right|_{0}^{\infty} \right) &#92;&#92;
+    =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
+    \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
+    \frac{1}{\lambda_1 + \lambda_2} \right) &#92;&#92;
+    =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)}
+  \end{split}
+  \label{eq:half_int}
+\end{equation}
+</div>
+
+<p>Similarly, one has</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 &#92;&#92;
+    =&amp; -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+    \lambda_1)}.
+  \end{split}
+  \label{eq:half_int2}
+\end{equation}
+</div>
+
+<p>Substitute \eqref{eq:half_int} and \eqref{eq:half_int2} into
+\eqref{eq:head}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] &#92;&#92;
+    =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)} \right) &#92;&#92;
+    +&amp; \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+    \lambda_1)} \right) &#92;&#92;
+    =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
+    \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) &#92;&#92;
+    -&amp; \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
+    \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
+    \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
+    (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} &#92;&#92;
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
+    \lambda_2} &#92;&#92;
+    =&amp; \frac{1}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:fin}
+\end{equation}
+</div>
+
+<p>This is consistent with what we expect.  I finally understand what’s
+wrong in \eqref{eq:wrong}: $X_1$ <em>isn’t</em> independent from $X_1 -
+X_2$.</p>
+
+<h2 id="generalization">Generalization</h2>
+
+<p>By induction, we can generalize \eqref{eq:fin} to the expected waiting
+time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
+\forall 1 \le i \le n$, then</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
+  \lambda_k}.
+\]
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -812,76 +1041,6 @@ this is a difference between M$ Win* 7 Home Edition and Enterprise.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/saw-a-new-type-of-ring/">Saw a New Type of Ring</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T17:56:44+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:56 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/saw-a-new-type-of-ring/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/saw-a-new-type-of-ring/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/saw-a-new-type-of-ring/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This Thursday evening, I saw a <strong>local ring</strong> in a commutative ring
-with unity for the first time.  At the first glance, I <em>didn’t</em> know
-how to make use of it’s definition — a ring that has only one
-maximal ideal — to answer a question.  If I was given a local ring
-$R$, then should I first assume that there’s a maximal ideal $M$, and
-then construct another proper ideal $I$ of $R$ so that no proper
-ideals of $R$ contained $I$ except for $I$ itself?  I got stuck at
-this point for almost an hour, and <em>couldn’t</em> write down something
-more for that question.</p>
-
-<p>I finally read another half of the question, and understood the
-statement of the whole question.  It would be impossible for me to do
-the question <em>without</em> knowing the proper ideal that consisted merely
-of elements of R which <em>don’t</em> have a multiplicative inverse.</p>
-
-<p>After I had proved the statement in that question, I was still not
-sure whether such a ring <em>exists</em>.  I <em>couldn’t</em> give an example of a
-local ring.  This evening, I found it in Wikipedia, and realised that
-even though I had already convinced myself that a finite field $F$ of
-prime characteristic $p$ has an algebraic closure <span class="myeqn">$\displaystyle \overline{F} = \bigcup_{i = 1}^\infty
-\F_{p^i}$</span>, I still <em>didn’t</em> know many properties of the
-structure of fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local
-ring is a field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:alg_closure">
-
-      <p>See <a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/"><em>Read a Proof of Existence of Algebraic Closure</em></a> in
-Blog 1 for details. <a href="#fnref:alg_closure" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -930,17 +1089,21 @@ Blog 1 for details. <a href="#fnref:alg_closure" class="reversefootnote">&#8617
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/svg/'>svg (7)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (19)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (20)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/01/w3c-validator-and-svgpan/">W3C Validator and SVGPan</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a>
@@ -956,10 +1119,6 @@ Blog 1 for details. <a href="#fnref:alg_closure" class="reversefootnote">&#8617
     
       <li class="post">
         <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">Added W3C Validated Logos to Some Pages</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/">A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode</a>
       </li>
     
   </ul>
