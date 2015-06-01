@@ -30,6 +30,12 @@ image will be hidden.
   Your browser does not support SVG
 </object>
 
+<a
+href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan_1.2.2/IET.svg;ss=1"><img
+src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
+width="88">
+</a>
+
 This is quite *inconvenient* for users who want a *whole* picture.
 
 Goal

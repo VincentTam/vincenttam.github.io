@@ -18,6 +18,12 @@ existence of algebraic closure.[^pp-eac]
   Your browser does not support SVG
 </object>
 
+<a
+href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan_1.2.2/IET.svg;ss=1"><img
+src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
+width="88">
+</a>
+
 <small>Drag the figure to translate it, and scroll to enlarge/reduce
 it.[^tech]  
 Source code: [$\rm \LaTeX$][tex_src], [SVG][svg_src]</small>
