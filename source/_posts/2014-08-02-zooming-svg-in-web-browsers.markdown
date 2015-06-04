@@ -3,9 +3,7 @@ layout: post
 title: "Zooming SVG in Web Browsers"
 date: 2014-08-02 18:07:08 +0800
 comments: true
-categories:
-- web technologies
-- SVG
+categories: [SVG, web technologies]
 ---
 
 In my post about proving Pappus's Hexagon Theorem[^1], I inserted some
