@@ -3,9 +3,7 @@ layout: post
 title: "Liquid Exceptions during Generation of My Blog on Windows 7"
 date: 2014-05-30 22:09:24 +0800
 comments: true
-categories:
-- Octopress
-- M$ Win*
+categories: [M$ Win*, Octopress]
 ---
 
 Background
