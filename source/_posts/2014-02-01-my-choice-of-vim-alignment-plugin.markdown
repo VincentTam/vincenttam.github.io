@@ -2,12 +2,7 @@
 layout: post
 title: My Choice of Vim Alignment Plugin
 date: 2014-02-01 11:16:53 +0800
-categories:
-- Vim
-tags:
-- Align.vim
-- vim-easy-align
-published: true
+categories: Vim
 comments: true
 ---
 
