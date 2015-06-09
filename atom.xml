@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-02T14:35:19+08:00</updated>
+  <updated>2015-06-09T16:25:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MS Word Hanged]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/"/>
+    
+    <updated>2015-06-09T15:59:15+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I tried editing in M$ Word, but <em>failed</em>.</p>
+
+<picture class="fancybox" title="M$ Word not responding">
+  <source srcset="/images/posts/MSWordHanged/word_hang926.png" media="(min-width: 926px)" />
+  <img alt="M$ Word hanged" src="https://vincenttam.github.io/images/posts/MSWordHanged/word_hang250.png" />
+</picture>
+
+<h2 id="solution">Solution</h2>
+
+<p>The solution is extremely simple: <em>don’t</em> use M$ Office if it’s too
+heavy for your computer — use something more lightweight : a text
+editor with a typesetting engine.</p>
+
+<h3 id="choose-your-favourite-editors">Choose your favourite editors</h3>
+
+<p>I use <a href="http://www.vim.org">Vim</a> every day as a text editor.  I tried <a href="http://www.gnu.org/software/emacs/">EMACS</a>. Though I
+<em>can’t</em> remember two sets of keystrokes, the latter is still useful
+when you need to browse <code>info</code> pages on *nix.</p>
+
+<h3 id="typesetting-engines">Typesetting engines</h3>
+
+<ol>
+  <li>
+    <p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and <a href="http://pandoc.org/">pandoc</a></p>
+
+    <p>For simple documents which have <em>little</em> variation in styles, such
+ as blog entries and some homework essays.</p>
+  </li>
+  <li>
+    <p>$\rm \LaTeX$</p>
+
+    <p>For more complicated documents like lab report, documents
+ containing math expressions, etc.</p>
+  </li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1468,98 +1518,6 @@ returns the factorial of a number.</p>
       <p>Keller, J. B. (1994). A characterization of the Poisson
 distribution and the probability of winning a game. <em>The American
 Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Calculating the Volume of a Triangular Pyramid in a Hard Way]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/"/>
-    
-    <updated>2015-04-07T16:07:49+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>There is an easy way of calculating the volume of $\{(x,y,z) \in
-\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
-permutation of $x,y,z$.<sup id="fnref:easy_vol"><a href="#fn:easy_vol" class="footnote">1</a></sup>  This can be easily generalized to
-$n$ dimension.</p>
-
-<h2 id="another-way-using-multiple-integrals">Another way using multiple integrals</h2>
-
-<div class="myeqn">
-\[
-\begin{split}
-&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
-\forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
-&#92;&#92;
-&amp; \text{Volume of } A &#92;&#92;
-=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
-\ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
-\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
-\ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
-2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
-x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
-3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-&amp; \vdots &#92;&#92;
-=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 &#92;&#92;
-=&amp; \frac{t^n}{n!}
-\end{split}
-\]
-</div>
-
-<h2 id="why-use-this-method">Why use this method?</h2>
-
-<p>To calculate its centre of mass.</p>
-
-<div class="myeqn">
-\[
-\begin{split}
-&amp; \text{First component of its centre of mass} &#92;&#92;
-=&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
-x_2 \ud x_1 &#92;&#92;
-=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
-x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
-\cdots \ud x_3 \ud x_2 \ud x_1 &#92;&#92;
-=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
-\ud x_1 &#92;&#92;
-=&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
-1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
-\right) &#92;&#92;
-=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) &#92;&#92;
-=&amp; \frac{t}{n + 1}
-\end{split}
-\]
-</div>
-
-<p>By symmetry, we conclude that the center of mass is $(\frac{t}{n + 1},
-\frac{t}{n + 1}, \ldots, \frac{t}{n + 1}) \in \R^n$.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:easy_vol">
-
-      <p>Simplex. (2015, March 29). In <em>Wikipedia, The Free Encyclopedia</em>.
-Retrieved 15:34, April 6, 2015, from
-<a href="http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423">http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423</a> <a href="#fnref:easy_vol" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
