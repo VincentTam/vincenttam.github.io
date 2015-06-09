@@ -22,7 +22,7 @@ Solution
 ---
 
 The solution is extremely simple: *don't* use M\$ Office if it's too
-heavy for your computer --- use something more lightweight : a text
+heavy for your computer --- use something more lightweight: a text
 editor with a typesetting engine.
 
 ### Choose your favourite editors
