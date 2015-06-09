@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-09T16:25:36+08:00</updated>
+  <updated>2015-06-09T18:26:49+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MikTeX Update]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
+    
+    <updated>2015-06-09T16:41:12+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/09/miktex-update</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This morning, I tried typing the chemical symbol of carbon dioxide
+(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
+<code>\mathrm</code> in math mode — first, I changed from text mode to math
+mode, then in order to type normal font, I used <code>\mathrm</code> to change it
+back to “text mode in math mode”.  I did all of these for a little
+subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
+CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
+needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
+complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
+a result, I opened the package manager, and called the “Update Wizard”
+inside.</p>
+
+<picture class="fancybox" title="No update helper found">
+  <source srcset="/images/posts/MikTeXUpdate/no_helper460.png" media="(min-width: 460px)" />
+  <img alt="update helper disappered?" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/no_helper300.png" />
+</picture>
+
+<p><strong>How can I get the packages updated <em>without</em> manually creating
+another folder?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I first clicked “Repository” and then “Synchronize”, but it loaded
+slowly, and I finally got <em>nothing</em>.  Then I tried to “Change package
+repository”.  I randomly selected an item in the list of remote
+package repository, and clicked “Synchronize” again.  What I saw was
+still the same.</p>
+
+<p>Then I decided <em>not</em> to include the <code>mhchem</code> package.  I restored the
+<code>\ce{CO2}</code> back to <code>CO2</code>, and then I pressed <code>\ll</code> in
+<a href="http://vim-latex.sourceforge.net/">$\rm \LaTeX$-Suite</a>.<sup id="fnref:ll"><a href="#fn:ll" class="footnote">1</a></sup>  Then I received <em>unexpected
+errors</em> from the $\rm \LaTeX$ compiler.  I then compiled another
+document which contained characters with accents, such as ‘à’, ‘é’,
+‘ï’, …  I received the same error message in the quickfix window as
+well.  Since it’s gone, I’ve retrieved the message from the
+corresponding LOG file.<sup id="fnref:log"><a href="#fn:log" class="footnote">2</a></sup></p>
+
+<pre class="cli"><code>(C:\Temp\MikTeXPortable\tex\latex\fontspec\fontspec.cfg)))
+(C:\Temp\MikTeXPortable\tex\generic\babel\babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Temp\MikTeXPortable\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(C:\Temp\MikTeXPortable\tex\latex\babel-french\frenchb.ldf
+Language: frenchb 2015/05/31 v3.1f French support from the babel system
+
+(C:\Temp\MikTeXPortable\tex\generic\babel\babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count123
+\U@D=\dimen139
+)
+
+<span class="err">! Package frenchb.ldf Error: frenchb requires babel v.3.9i.
+(frenchb.ldf)                Aborting here.</span>
+
+See the frenchb.ldf package documentation for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...
+
+l.116          {Please upgrade Babel!}
+
+<span class="HLCode">Please upgrade Babel!</span>
+</code></pre>
+
+<h2 id="a-nearly-successful-update">A nearly successful update</h2>
+
+<p>From Google, I’ve learnt to “Update MikTeX” directly from the little
+icon at the lower right-hand corner of the screen.  Then I directly
+clicked the “Next &gt;” button, and Mik$\rm \TeX$ tried connecting the
+manually chosen remote.  Unluckily, this <em>failed</em> and I got an error
+mesage like <em>Permission denied</em>.  I tried searching “miktex permission
+denied” on Google, but I <em>didn’t</em> understand what I’d found.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>As shown in the screenshot below, I checked the first two radio
+buttons so as to get updated packages from the nearest package
+repository.</p>
+
+<picture class="fancybox" title="Update MikTeX packages">
+  <source srcset="/images/posts/MikTeXUpdate/update513.png" media="(min-width: 513px)" />
+  <img alt="update miktex packages" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/update300.png" />
+</picture>
+
+<p>After clicking “Next &gt;”, things went smooth luckily.</p>
+
+<picture class="fancybox" title="Downloading updates from remotes">
+  <source srcset="/images/posts/MikTeXUpdate/download513.jpg" media="(min-width: 513px)" />
+  <img alt="miktex package updates downloading" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/download300.jpg" />
+</picture>
+
+<p>After the update had completed, the <code>babel</code> package had been upgraded
+from version 3.8 to 3.9i.  With the correct syntax, I could finally
+use <code>babel</code> and <code>mhchem</code>.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I often forget the command for optimizing JPEG images.  This evening,
+while I was writing this post, I googled “jpegtran command”, and I
+issued</p>
+
+<pre class="cli"><code>jpegtran -optimize input.jpg &gt; output.jpg
+</code></pre>
+
+<p>after I’d read the command example from <a href="http://junalontherun.com/2009/07/15/optimize-all-jpeg-images-with-jpegtran-utility/">this page</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ll">
+
+      <p><code>\ll</code> is the default keystroke for compiling a PDF document from
+the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
+<a href="http://www.vim.org">Vim</a> plugin for writing in $\rm \LaTeX$ efficiently. <a href="#fnref:ll" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:log">
+
+      <p>You may view the complete LOG file <a href="https://vincenttam.github.io/downloads/1eDoc.log">here</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -33,7 +179,7 @@
 <h2 id="solution">Solution</h2>
 
 <p>The solution is extremely simple: <em>don’t</em> use M$ Office if it’s too
-heavy for your computer — use something more lightweight : a text
+heavy for your computer — use something more lightweight: a text
 editor with a typesetting engine.</p>
 
 <h3 id="choose-your-favourite-editors">Choose your favourite editors</h3>
@@ -1382,145 +1528,6 @@ Vim.</p>
 with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
 norm!</code>, insert a backslash <code>\</code> before <code>&lt;</code>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Compared Two Poisson Variables]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/"/>
-    
-    <updated>2015-04-10T13:21:37+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Last Friday, I had to submit a homework which required me to evaluate
-$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
-Poisson random variables with parameters $\alpha$ and $\beta$
-respectively.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I then started evaluating the sum.</p>
-
-<div class="myeqn">
-\[
-  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
-  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
-\]
-</div>
-
-<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
-
-<div class="myeqn">
-\[
-  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
-  \alpha^i \beta^i}{(i!)^2}
-\]
-</div>
-
-<h2 id="fact">Fact</h2>
-
-<p>I googled for a solution for hours, and after I saw equation (3.1) in
-a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
-free software, I avoided using M$ Ex*, and wrote a program in C++ to
-approximate the above probabitities by directly adding them term by
-term.</p>
-
-<h3 id="source-code">Source code</h3>
-
-<div><script src="https://gist.github.com/c27c38c49fe8de17c815.js"></script>
-<noscript><pre><code>#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-using namespace std;
-
-double pXy(double x, double y, int N);
-double pxy(double x, double y, int N);
-
-int main(void) {
-    double pAb,paB,pab,a,b;
-    int N;
-    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Parameter for A: &quot;;
-    cin &gt;&gt; a;
-    cout &lt;&lt; &quot;Parameter for B: &quot;;
-    cin &gt;&gt; b;
-    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
-    cin &gt;&gt; N;
-    pAb = pXy(a,b,N);
-    paB = pXy(b,a,N);
-    pab = pxy(a,b,N);
-    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
-        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
-}
-
-/* P(X &gt; Y) */
-double pXy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 1; i &lt;= N; i++) {
-        for (int j = 0; j &lt; i ; j++) {
-            double term = 1;
-            for (int k = 1; k &lt;= i; k++)
-                term *= x / k;
-            for (int k = 1; k &lt;= j; k++)
-                term *= y / k;
-            ans += term;
-        }
-    }
-    return ans * exp(-x - y);
-}
-
-/* P(X = Y) */
-double pxy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 0; i &lt;= N; i++) {
-        double term = 1;
-        for (int k = 1; k &lt;= i; k++)
-            term *= x / k * y / k;
-        ans += term;
-    }
-    return ans * exp(-x - y);
-}
-</code></pre></noscript></div>
-
-<h3 id="sample-output">Sample output</h3>
-
-<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
-Parameter for A: 1.6
-Parameter for B: 1.4
-Number of terms to be added (100 &lt;= N &lt;= 1000): 8
-P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
-</code></pre>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>
-    <p>A one-line method for writing the content of a function which
-returns the factorial of a number.</p>
-
-    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
-  </li>
-  <li>
-    <p>Evaluation of a function inside GDB</p>
-
-    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
-  </li>
-</ol>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:fact">
-
-      <p>Keller, J. B. (1994). A characterization of the Poisson
-distribution and the probability of winning a game. <em>The American
-Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

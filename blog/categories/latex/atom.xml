@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-09T16:25:36+08:00</updated>
+  <updated>2015-06-09T18:26:49+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MikTeX Update]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
+    
+    <updated>2015-06-09T16:41:12+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/09/miktex-update</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This morning, I tried typing the chemical symbol of carbon dioxide
+(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
+<code>\mathrm</code> in math mode — first, I changed from text mode to math
+mode, then in order to type normal font, I used <code>\mathrm</code> to change it
+back to “text mode in math mode”.  I did all of these for a little
+subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
+CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
+needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
+complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
+a result, I opened the package manager, and called the “Update Wizard”
+inside.</p>
+
+<picture class="fancybox" title="No update helper found">
+  <source srcset="/images/posts/MikTeXUpdate/no_helper460.png" media="(min-width: 460px)" />
+  <img alt="update helper disappered?" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/no_helper300.png" />
+</picture>
+
+<p><strong>How can I get the packages updated <em>without</em> manually creating
+another folder?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I first clicked “Repository” and then “Synchronize”, but it loaded
+slowly, and I finally got <em>nothing</em>.  Then I tried to “Change package
+repository”.  I randomly selected an item in the list of remote
+package repository, and clicked “Synchronize” again.  What I saw was
+still the same.</p>
+
+<p>Then I decided <em>not</em> to include the <code>mhchem</code> package.  I restored the
+<code>\ce{CO2}</code> back to <code>CO2</code>, and then I pressed <code>\ll</code> in
+<a href="http://vim-latex.sourceforge.net/">$\rm \LaTeX$-Suite</a>.<sup id="fnref:ll"><a href="#fn:ll" class="footnote">1</a></sup>  Then I received <em>unexpected
+errors</em> from the $\rm \LaTeX$ compiler.  I then compiled another
+document which contained characters with accents, such as ‘à’, ‘é’,
+‘ï’, …  I received the same error message in the quickfix window as
+well.  Since it’s gone, I’ve retrieved the message from the
+corresponding LOG file.<sup id="fnref:log"><a href="#fn:log" class="footnote">2</a></sup></p>
+
+<pre class="cli"><code>(C:\Temp\MikTeXPortable\tex\latex\fontspec\fontspec.cfg)))
+(C:\Temp\MikTeXPortable\tex\generic\babel\babel.sty
+Package: babel 2008/07/08 v3.8m The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+(C:\Temp\MikTeXPortable\tex\latex\00miktex\bblopts.cfg
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+(C:\Temp\MikTeXPortable\tex\latex\babel-french\frenchb.ldf
+Language: frenchb 2015/05/31 v3.1f French support from the babel system
+
+(C:\Temp\MikTeXPortable\tex\generic\babel\babel.def
+File: babel.def 2008/07/08 v3.8m Babel common definitions
+\babel@savecnt=\count123
+\U@D=\dimen139
+)
+
+<span class="err">! Package frenchb.ldf Error: frenchb requires babel v.3.9i.
+(frenchb.ldf)                Aborting here.</span>
+
+See the frenchb.ldf package documentation for explanation.
+Type  H &lt;return&gt;  for immediate help.
+ ...
+
+l.116          {Please upgrade Babel!}
+
+<span class="HLCode">Please upgrade Babel!</span>
+</code></pre>
+
+<h2 id="a-nearly-successful-update">A nearly successful update</h2>
+
+<p>From Google, I’ve learnt to “Update MikTeX” directly from the little
+icon at the lower right-hand corner of the screen.  Then I directly
+clicked the “Next &gt;” button, and Mik$\rm \TeX$ tried connecting the
+manually chosen remote.  Unluckily, this <em>failed</em> and I got an error
+mesage like <em>Permission denied</em>.  I tried searching “miktex permission
+denied” on Google, but I <em>didn’t</em> understand what I’d found.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>As shown in the screenshot below, I checked the first two radio
+buttons so as to get updated packages from the nearest package
+repository.</p>
+
+<picture class="fancybox" title="Update MikTeX packages">
+  <source srcset="/images/posts/MikTeXUpdate/update513.png" media="(min-width: 513px)" />
+  <img alt="update miktex packages" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/update300.png" />
+</picture>
+
+<p>After clicking “Next &gt;”, things went smooth luckily.</p>
+
+<picture class="fancybox" title="Downloading updates from remotes">
+  <source srcset="/images/posts/MikTeXUpdate/download513.jpg" media="(min-width: 513px)" />
+  <img alt="miktex package updates downloading" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/download300.jpg" />
+</picture>
+
+<p>After the update had completed, the <code>babel</code> package had been upgraded
+from version 3.8 to 3.9i.  With the correct syntax, I could finally
+use <code>babel</code> and <code>mhchem</code>.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I often forget the command for optimizing JPEG images.  This evening,
+while I was writing this post, I googled “jpegtran command”, and I
+issued</p>
+
+<pre class="cli"><code>jpegtran -optimize input.jpg &gt; output.jpg
+</code></pre>
+
+<p>after I’d read the command example from <a href="http://junalontherun.com/2009/07/15/optimize-all-jpeg-images-with-jpegtran-utility/">this page</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ll">
+
+      <p><code>\ll</code> is the default keystroke for compiling a PDF document from
+the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
+<a href="http://www.vim.org">Vim</a> plugin for writing in $\rm \LaTeX$ efficiently. <a href="#fnref:ll" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:log">
+
+      <p>You may view the complete LOG file <a href="/downloads/1eDoc.log">here</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -290,85 +436,6 @@ details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
 </span><span class='line'>I went to café yesterday.
 </span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure></p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[IPA Symbols in $\rm \LaTeX$]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-latex/"/>
-    
-    <updated>2014-10-01T22:28:49+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/10/01/ipa-symbols-in-latex</id>
-    
-      <content type="html"><![CDATA[<h2 id="target">Target</h2>
-
-<p><img src="/images/posts/LaTeXIPA/out.jpg" alt="target" /></p>
-
-<!-- more -->
-
-<h2 id="failed-attempts">Failed attempts</h2>
-
-<ul>
-  <li>Googled “xelatex ipa symbols”</li>
-  <li>Tried the <code>tipa</code> package, and got the error “command sups already
-  defined”.<sup id="fnref:tipaFail"><a href="#fn:tipaFail" class="footnote">1</a></sup></li>
-</ul>
-
-<h2 id="source-code">Source code</h2>
-
-<p>I limited the above google search to academic sites <em>only</em><sup id="fnref:SiteEdu"><a href="#fn:SiteEdu" class="footnote">2</a></sup>,
-and I luckily found a blog post which inspired me to work out the
-following example.  (This link to the post is included in the
-footnotes.)</p>
-
-<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[border=5pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class='line'><span class="k">\newfontfamily</span><span class="nb">{</span><span class="k">\LL</span><span class="nb">}{</span>Linux Libertine O<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'>Examples of nasal vowels: <span class="nb">{</span><span class="k">\LL</span> /ɑ̃/, /ɛ̃/, /ɔ̃/<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>Line 2: For inserting characters with accents, for example, ‘é’ and
-‘ö’.  <em>Without</em> this line, those characters <em>won’t</em> be processed by
-the typesetting system.</p>
-
-<p>Line 3: For changing to a font that supports IPA symbols.  Here are
-the sources of inspirations.</p>
-
-<ul>
-  <li>Principal: <a href="http://www.phonologist.org/papers/becker_IPAandLaTeX.pdf"><em>Typesetting phonology papers</em></a> by Michael
-  Becker</li>
-  <li>Practical: <a href="http://tex.stackexchange.com/a/64846"><em>Using TIPA with fontspec</em></a> on $\rm
-  \TeX$–$\rm \LaTeX$ Stack Exchange</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:tipaFail">
-
-      <p>I gave up trying <code>tipa</code> after reading
-<a href="http://sonny.cslu.ohsu.edu/~gormanky/blog/tex-tips-for-linguists/"><em>$\rm \TeX$ tips for linguists</em></a> by Kyle Gorman. <a href="#fnref:tipaFail" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:SiteEdu">
-
-      <p>This can done by appending “site:*.edu” to the query string. <a href="#fnref:SiteEdu" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
