@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-09T18:26:49+08:00</updated>
+  <updated>2015-06-13T23:05:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octoshape on Ubuntu 14.04]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2015-06-13T22:26:34+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
+A year ago, I <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried running Octoshape streaming service on
+<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
+work.  On the test page, the output on the right-hand side was similar
+to the one listed below.</p>
+
+<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
+20:35:57.382: Player is waiting for a link input (this does not mean
+that Octoshape is ready).
+20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
+20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
+20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
+20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
+20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
+20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
+20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
+20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
+20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
+20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
+20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
+20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
+20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
+</code></pre>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>I ran <code>ls</code> in <code>/opt/octoshape</code>, which is the folder in which Octoshape
+player had been installed.</p>
+
+<pre class="cliUB"><code>$ pwd
+/opt/octoshape
+$ ls
+eula.rtf                     sua-1011082-0-marker.txt
+eula.txt                     sua-1011082-0-module.xml
+OctoshapeClient              sua-1011082-0-OctoshapeClientSUA
+setup.xml                    sua-1011082-0-OctoshapeClientSUA.sig
+sua-1011082-0-confirmed.txt  sua-1011082-0-suapack-versions.txt
+sua-1011082-0-dynfiles.zip
+</code></pre>
+
+<p>I suspected that the version of Octoshape was too <em>old</em>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I <em>removed the folder</em> where Octoshape was installed, and
+<em>re-installed</em> the player again, then it <em>worked</em>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -319,122 +386,6 @@ Hadaway’s Web + Tech Blog</em>. <a href="#fnref:1st_blog" class="reversefootno
 
       <p><a href="http://t29233.org-w3c-validator.w3ctalk.info/what-happend-to-http-validator-w3-org-check-referer-t29233.html#91166"><em>What happend to http://validator.w3.org/check/referer ?</em></a>
 on <em>W3c Discussion Forums</em>. <a href="#fnref:forum" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[One Use of Google Cache]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/16/one-use-of-google-cache/"/>
-    
-    <updated>2015-05-16T19:37:07+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/16/one-use-of-google-cache</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>This Thursday, I wanted to browse Evsseny’s article about setting up a
-Jekyll site using Jekyll-Bootstrap on a GitHub project page.<sup id="fnref:blocked"><a href="#fn:blocked" class="footnote">1</a></sup>
-Unluckily, this site had been blocked for the administrator.</p>
-
-<picture class="fancybox" title="Web site blocked">
-  <source srcset="/images/posts/UseGooCache/blocked621.png" media="(min-width: 621px)" />
-  <img alt="web site blocked" src="https://vincenttam.github.io/images/posts/UseGooCache/blocked294.png" />
-</picture>
-
-<p><strong>How can I view the contents of the page?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Use Google’s web cache.</p>
-
-<ol>
-  <li>
-    <p>Search “http://www.your-blocked-site.com/path/to/your/page” on
-Google.</p>
-
-    <picture class="fancybox" title="Paste the URL of the blocked site to text box">
-   <source srcset="/images/posts/UseGooCache/search609.png" media="(min-width: 609px)" />
-   <img alt="google the blocked URL" src="https://vincenttam.github.io/images/posts/UseGooCache/search300.png" />
- </picture>
-  </li>
-  <li>
-    <p>Click the down arrow next to the URL.</p>
-
-    <picture class="fancybox" title="Click the down arrow next to the URL and then &quot;Cached&quot;">
-   <source srcset="/images/posts/UseGooCache/cached300.png" />
-   <img alt="click the down arrow and &quot;cached&quot;" src="https://vincenttam.github.io/images/posts/UseGooCache/cached300.png" />
- </picture>
-  </li>
-  <li>
-    <p>Click the first item in the pop-up menu.</p>
-  </li>
-</ol>
-
-<p>Finally, I could read the contents of the post.</p>
-
-<picture class="fancybox" title="Enjoy reading the post!">
-  <source srcset="/images/posts/UseGooCache/view508.png" media="(min-width: 508px)" />
-  <img alt="google the blocked URL" src="https://vincenttam.github.io/images/posts/UseGooCache/view300.png" />
-</picture>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>Define new variables in shell scripts.</li>
-  <li>Use <code>s/foo/bar/</code> in <code>sed</code> for manipulating the name of the output
-files.</li>
-</ol>
-
-<p>The screenshots were intially under the home folder <code>~</code> and their
-names were like <code>temp_foo.png</code> or <code>temp_bar.png</code> so that they would
-stay close to each other in <a href="https://help.ubuntu.com/community/DefaultFileManager">Nautilus</a>.  However, when I included
-these PNG files under the directory
-<code>~/octopress/source/images/flalign_spacing</code> for uploading them to this
-blog, I <em>wouldn’t</em> like to keep <code>temp_</code> because they’re already in a
-separate folder.  Therefore, I wrote a script to do this.</p>
-
-<p>Since <code>mv</code> can overwrite files and commands can be wrongly typed, I
-used <code>cp</code> instead of <code>mv</code> so that the original files <em>wouldn’t</em>
-disappear even though something went wrong.  If everything proceeds
-smoothly, then the old files in the home folder can then be safely
-deleted.</p>
-
-<p><figure class='code'><figcaption><span>A little script for moving the files  (custom_move.sh)</span> <a href='/downloads/code/custom_move.sh'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'><span class="k">for</span> f in <span class="k">$(</span>ls *.png<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="nv">newf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$f</span> <span class="p">|</span> sed <span class="s1">&#39;s/temp_//&#39;</span><span class="sb">`</span>
-</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$f</span> <span class="nv">$newf</span>
-</span><span class='line'>    cp -v <span class="nv">$f</span> ~/octopress/source/images/posts/UseGooCache/<span class="nv">$newf</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>If I use single quotes to surround the destination (e.g.
-<code>'~/.../$newf'</code>), the syntax highlighting for <code>$newf</code> will be <em>gone</em>
-in Vim.  Therefore, I used double quotes <code>""</code> instead, but I then
-received errors similar to the one below from <code>cp</code>.</p>
-
-<pre class="cliUB"><code>cp: cannot create regular file `/home/octopress/source/images/posts/UseGooCache/
-blocked300.png': No such file or directory
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:blocked">
-      <p><a href="http://evsseny.appspot.com/?p=63001">在github的Project Pages上部署jekyll</a> <a href="#fnref:blocked" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

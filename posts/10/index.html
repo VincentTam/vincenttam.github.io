@@ -9,9 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why? It’s because I’ve some code block/console input/output which have more
-than 80 characters and their width can’t be reduced. For example,
-in GNU &hellip;">
+  <meta name="description" content="Problem I encountered some block I/O errors while deleting old Linux kernels. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +78,51 @@ in GNU &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:14:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:14 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+
+<p><img class="fancybox" src="/images/posts/RmOldKer/err.png" width="900" title="Received errors in tty1" alt="error messages" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -690,92 +733,6 @@ e$</dd>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo&#8217;s Network Graph</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
-        
-           | <a href="/blog/2014/09/05/fixing-this-repos-network-graph/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/05/fixing-this-repos-network-graph/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
-
-<ol>
-  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
-<em>Blog 1</em>.</li>
-  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-  <li>Understand item 5 of Scott Cheng’s post on setting up
-<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
-it in order to understand what it really means.  After running <code>rake
-setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
-branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
-remote the <em>only</em> branch there.  To avoid conflicts when I push my
-commits on <code>master</code> branch to my remote repository in GitHub, I ran
-some commands as shown below.</li>
-  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
-    <ul>
-      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
- branch shares, as shown in the graph, a common node with
- <code>source</code> branch.  This is <em>wrong</em>!</li>
-      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
- the remote repository to clear the mess.</li>
-      <li>In the new graph, those two branches <em>don’t</em> share a common node
- anymore.</li>
-    </ul>
-  </li>
-</ol>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
-Deleted remote branch origin/master (was e745caf).
-owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
-* <span class="GitBrName">master</span>
-[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
-To git@github.com:vincenttam/vincenttam.github.io.git
- - [deleted]         master
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -816,7 +773,7 @@ To git@github.com:vincenttam/vincenttam.github.io.git
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (3)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (38)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (39)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (33)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -828,13 +785,17 @@ To git@github.com:vincenttam/vincenttam.github.io.git
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (20)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (21)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Octoshape on Ubuntu 14.04</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/06/09/miktex-update/">MikTeX Update</a>
@@ -850,10 +811,6 @@ To git@github.com:vincenttam/vincenttam.github.io.git
     
       <li class="post">
         <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Validate HTML Code for SVG Fallbacks to Text</a>
       </li>
     
   </ul>

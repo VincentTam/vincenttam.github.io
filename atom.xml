@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-09T18:26:49+08:00</updated>
+  <updated>2015-06-13T23:05:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octoshape on Ubuntu 14.04]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2015-06-13T22:26:34+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
+A year ago, I <a href="https://vincenttam.github.io/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried running Octoshape streaming service on
+<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
+work.  On the test page, the output on the right-hand side was similar
+to the one listed below.</p>
+
+<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
+20:35:57.382: Player is waiting for a link input (this does not mean
+that Octoshape is ready).
+20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
+20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
+20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
+20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
+20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
+20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
+20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
+20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
+20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
+20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
+20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
+20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
+20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
+</code></pre>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>I ran <code>ls</code> in <code>/opt/octoshape</code>, which is the folder in which Octoshape
+player had been installed.</p>
+
+<pre class="cliUB"><code>$ pwd
+/opt/octoshape
+$ ls
+eula.rtf                     sua-1011082-0-marker.txt
+eula.txt                     sua-1011082-0-module.xml
+OctoshapeClient              sua-1011082-0-OctoshapeClientSUA
+setup.xml                    sua-1011082-0-OctoshapeClientSUA.sig
+sua-1011082-0-confirmed.txt  sua-1011082-0-suapack-versions.txt
+sua-1011082-0-dynfiles.zip
+</code></pre>
+
+<p>I suspected that the version of Octoshape was too <em>old</em>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I <em>removed the folder</em> where Octoshape was installed, and
+<em>re-installed</em> the player again, then it <em>worked</em>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1442,92 +1509,6 @@ auto-closing it
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Looping Through Lines]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/10/looping-through-lines/"/>
-    
-    <updated>2015-04-10T15:01:48+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/10/looping-through-lines</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I copied lines from an enumerated list in this blog and pasted it to
-Vim.  The content in each list item was seen in the current Vim
-buffer, but <em>not</em> the numbers.</p>
-
-<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
-
-<p>A sample ordered list with 2015 items</p>
-
-<ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-</ol>
-
-<p>…</p>
-
-<ol start="2015"><li>Item 2015</li></ol>
-
-<p>What is seen in Vim after copy and paste</p>
-
-<pre><code>Item one
-Item two
-Item three
-...
-Item 2015
-</code></pre>
-
-<p>If one writes in Markdown and he/she copies a numbered list from
-elsewhere to a text editor, then it will be very <em>inconvenient</em> to
-manually add back the numbers.  To exaggerate this inconvenience, I
-put “2015” above.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>Insert the item number at the beginning.</p>
-
-<pre><code>1. Item one
-2. Item two
-3. Item three
-...
-2015. Item 2015
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I read chapters 28–30 and 36 of
-<a href="http://learnvimscriptthehardway.stevelosh.com/"><em>Learn Vimscript the Hard Way</em></a> by Steve Losh, and searched
-“vim loop through lines” on Google.  After I saw <code>while liner &lt;
-line("$")</code> in a forum thread, I typed the following editor commands in
-Vim.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A while-loop which runs through the lines </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="k">let</span> <span class="k">l</span> <span class="p">=</span> <span class="m">1</span>
-</span><span class="line"><span class="m">1</span>
-</span><span class="line"><span class="k">wh</span> <span class="k">l</span> <span class="p">&lt;=</span> line<span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">)</span>
-</span><span class="line">  exe <span class="s2">&quot;norm! I&quot;</span> . <span class="k">l</span> . <span class="s2">&quot;\&lt;esc&gt;j&quot;</span>
-</span><span class="line">  <span class="k">let</span> <span class="k">l</span> <span class="p">+=</span> <span class="m">1</span>
-</span><span class="line"><span class="k">endwh</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Why is <code>exe "norm!</code> used instead of <code>norm</code>?  Since <code>\&lt;esc&gt;</code> <em>can’t</em> go
-with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
-norm!</code>, insert a backslash <code>\</code> before <code>&lt;</code>.</p>
-
 ]]></content>
     
   </entry>

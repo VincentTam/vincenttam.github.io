@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-06-09T18:26:49+08:00</updated>
+  <updated>2015-06-13T23:05:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octoshape on Ubuntu 14.04]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/"/>
+    
+    <updated>2015-06-13T22:26:34+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
+A year ago, I <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried running Octoshape streaming service on
+<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
+work.  On the test page, the output on the right-hand side was similar
+to the one listed below.</p>
+
+<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
+20:35:57.382: Player is waiting for a link input (this does not mean
+that Octoshape is ready).
+20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
+20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
+20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
+20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
+20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
+20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
+20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
+20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
+20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
+20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
+20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
+20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
+20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
+</code></pre>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>I ran <code>ls</code> in <code>/opt/octoshape</code>, which is the folder in which Octoshape
+player had been installed.</p>
+
+<pre class="cliUB"><code>$ pwd
+/opt/octoshape
+$ ls
+eula.rtf                     sua-1011082-0-marker.txt
+eula.txt                     sua-1011082-0-module.xml
+OctoshapeClient              sua-1011082-0-OctoshapeClientSUA
+setup.xml                    sua-1011082-0-OctoshapeClientSUA.sig
+sua-1011082-0-confirmed.txt  sua-1011082-0-suapack-versions.txt
+sua-1011082-0-dynfiles.zip
+</code></pre>
+
+<p>I suspected that the version of Octoshape was too <em>old</em>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I <em>removed the folder</em> where Octoshape was installed, and
+<em>re-installed</em> the player again, then it <em>worked</em>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -594,55 +661,6 @@ To git@github.com:VincentTam/vincenttam.github.io.git
     </li>
     <li id="fn:eg3">
       <p>See <a href="#eg3" class="cliwide">the terminal’s output</a>. <a href="#fnref:eg3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Use Tmux for Previewing Posts]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/02/14/use-tmux-for-previewing-posts/"/>
-    
-    <updated>2015-02-14T14:04:38+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/02/14/use-tmux-for-previewing-posts</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>After I finished an Octopress post, one may check if there’s any error
-by previewing the post.  In GUI, it’s easy: just open a new window.
-<strong>How about in Linux text mode?</strong></p>
-
-<h2 id="a-so-called-method">A so-called method</h2>
-
-<p>Add an ampersand ‘&amp;’ behind the command for previewing the blog.
-However, while viewing the site in a browser, the contents would be
-<em>covered</em> by some lines.</p>
-
-<pre class="cliUB"><code>127.0.0.1 - - [14/Feb/2015:13:46:08 +0800] "GET / HTTP/1.1" 200 39685 0.0024
-127.0.0.1 - - [14/Feb/2015:13:46:14 +0800] "GET /blog/2015/02/14/tried-range-bas
-ed-for-loop/ HTTP/1.1" 200 21821 0.0028
-127.0.0.1 - - [14/Feb/2015:13:46:59 +0800] "GET /atom.xml HTTP/1.1" 200 131801 0
-.0071
-</code></pre>
-
-<p>This can be an inconvenience.  It <em>isn’t</em> hard to log on <em>another TTY</em>
-and open the browser there, but one has to type the password
-<em>twice</em>—this is <em>still</em> inconvenient.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I now use <a href="http://byobu.co" title="a free terminal multiplexer">Byobu</a>, which depends on <a href="http://tmux.sourceforge.net" title="a terminal multiplexer">Tmux</a>, to preview the generated
-blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:fig">
-      <p>The <a href="/images/posts/Tmux/tmux.png" title="Tmux on Ubuntu" class="fancybox">screenshot</a> of Tmux. <a href="#fnref:fig" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
