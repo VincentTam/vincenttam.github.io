@@ -2,13 +2,7 @@
 layout: post
 title: Migrated from Blogger
 date: 2014-01-11 07:10:58 +0800
-categories:
-- blogging
-tags:
-- Blogger
-- Vim
-- WordPress
-published: true
+categories: blogging
 comments: true
 ---
 
