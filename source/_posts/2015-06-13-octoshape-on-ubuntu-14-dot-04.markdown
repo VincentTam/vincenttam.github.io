@@ -64,6 +64,12 @@ Solution
 I *removed the folder* where Octoshape was installed, and
 *re-installed* the player again, then it *worked*.
 
+---
+(Added on AUG 3RD, 2015)
+
+This only worked for a while.  **After reboot, it *won't* start
+again**.
+
 [octoshape]: http://www.octoshape.com/support/infinite-hd-octoshape-app/
 [ubuntu_upgrade]: /blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/
 [test_page]: http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500

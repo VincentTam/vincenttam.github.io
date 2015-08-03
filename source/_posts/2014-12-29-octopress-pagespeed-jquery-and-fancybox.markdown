@@ -457,6 +457,18 @@ be *unusable* if one *doesn't* make proper use of `script.onload`.
 
 ### A fallback for Google hosted jQuery
 
+---
+(Added on AUG 3RD, 2015)
+
+**Unluckily, this failed on mobile devices.**  I was told that I
+should have this problem fixed.  Due to the difficulty described
+below and the enormous number of mobile device users, *I decided to
+remove the part of JavaScript source code which was responsible for
+loading a local copy of jQuery.*  This would reduce over 9,600 lines
+of code in the `master` branch.
+
+---
+
 In my opinion, this is the *most* difficult part, which has taken me a
 *whole* day.
 
