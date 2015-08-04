@@ -34,6 +34,8 @@ HTML code of the `<head>`, which loads MathJax, in other HTML files.
 This can *seriously* slow down the editing process.  Unhappily, this
 problem *isn't* solved in [the second post][seri2] in this series.
 
+<!-- more -->
+
 Solution
 ---
 
@@ -41,8 +43,8 @@ Solution
 
 There might be some option for the kramdown command line utility to
 use accept an HTML template files during the code conversion.
-However, I'm *too lazy* to search for them as I need to
-[work on math][^pp1].
+However, I'm *too lazy* to search for them as I need to work on
+math.[^pp1]
 
 Remembering that I defered the loading of JavaScripts in order to
 boost the PageSpeed score of this site, I adpated the script to load
