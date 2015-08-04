@@ -118,21 +118,25 @@ class="myeqn" markdown="0">$\varepsilon_2$</span> in a similar way.
 
 <div class="myeqn">
 \begin{align}
-  \varepsilon_1(\Delta x,\Delta y)& :=
-  \begin{cases}
-    \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-    f}{\partial x}(x_0,y_0) &\text{if } \Delta x \ne 0,\\\\
-    0 &\text{if } \Delta x = 0,
-  \end{cases}
+  &\begin{split}
+    & \varepsilon_1(\Delta x,\Delta y) :=\\\\
+    &\begin{cases}
+      \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
+      f}{\partial x}(x_0,y_0) &{\small \text{if } \Delta x \ne 0},\\\\
+      0 &\text{if } \Delta x = 0,
+    \end{cases}
+  \end{split}
   \label{def2a}\\\\
 
-\varepsilon_2(\Delta x,\Delta y)& :=
-  \begin{cases}
-    \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
-    y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &\text{if }
-    \Delta y \ne 0,\\\\
-    0 &\text{if } \Delta y = 0,
-  \end{cases}
+  &\begin{split}
+    & \varepsilon_2(\Delta x,\Delta y) :=\\\\
+    &\begin{cases}
+      \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
+      y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &\text{if }
+      \Delta y \ne 0,\\\\
+      0 &\text{if } \Delta y = 0,
+    \end{cases}
+  \end{split}
   \label{def2b}
 \end{align}
 </div>
@@ -142,12 +146,17 @@ $\Delta y$ respectively, just like what we've done in \eqref{mult1}.
 
 <div class="myeqn">
 \begin{align}
-  \varepsilon_1(\Delta x,\Delta y) \Delta x& = f(x_0+\Delta x,y_0) -
-  f(x_0,y_0) - \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
+  &\begin{split}
+    \varepsilon_1(\Delta x,\Delta y) \Delta x =& f(x_0+\Delta x,y_0) -
+    f(x_0,y_0)\\\\
+    &- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
+  \end{split}
   \label{mult2a}\\\\
-  \varepsilon_2(\Delta x,\Delta y) \Delta y& = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
-  y}(x_0+\Delta x,y_0) \Delta y
+  &\begin{split}
+    \varepsilon_2(\Delta x,\Delta y) \Delta y =& f(x_0+\Delta
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    &- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
+  \end{split}
   \label{mult2b}
 \end{align}
 </div>
@@ -202,9 +211,12 @@ markdown="0">$(x_0,y_0)$</span>.
 
 <div class="myeqn">
 \begin{equation}
-  \varepsilon_2(\Delta x,\Delta y) \Delta y = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \left ( \frac{\partial
-  f}{\partial y}(x_0,y_0) + \varepsilon_3(\Delta x) \right ) \Delta y
+  \begin{split}
+    \varepsilon_2(\Delta x,\Delta y) \Delta y =& f(x_0+\Delta
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    &- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
+    \varepsilon_3(\Delta x) \right ) \Delta y
+  \end{split}
   \label{b4repl}
 \end{equation}
 </div>
@@ -215,22 +227,30 @@ as \varepsilon_2</span> to get an equation which looks more similar to
 \eqref{mult2a} than \eqref{mult2b} does.
 
 <div class="myeqn">
-\begin{align}
-  \varepsilon_2(\Delta x,\Delta y) \Delta y& = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y
+\begin{gather}
+  \begin{split}
+    &\varepsilon_2(\Delta x,\Delta y) \Delta y\\\\
+    =& f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
+  \end{split}
   \label{mult2bb}\\\\
-  \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta y)&
-  = f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0) - \frac{\partial
-  f}{\partial x}(x_0,y_0) \Delta x - \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y \quad
-  \text{(\eqref{mult2a}+\eqref{mult2bb})}\\\\
-  f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)& = \frac{\partial
-  f}{\partial x}(x_0,y_0) \Delta x + \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y + \varepsilon_1(\Delta x,\Delta y) +
-  \varepsilon_2(\Delta x,\Delta y)
+  \begin{split}
+    &\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
+    y)\\\\
+    =& f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    &- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
+    \text{(\eqref{mult2a}+\eqref{mult2bb})}
+  \end{split}\\\\
+  \begin{split}
+    &f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    =& \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
+    \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
+    y)
+  \end{split}
   \label{result}
-\end{align}
+\end{gather}
 </div>
 
 The result \eqref{result} is what we desired in \eqref{fact}.
