@@ -3,7 +3,7 @@ layout: post
 title: "MS Word Hanged"
 date: 2015-06-09 15:59:15 +0800
 comments: true
-categories: 
+categories: [M$ Win*]
 ---
 
 Problem
