@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-05T01:27:09+08:00</updated>
+  <updated>2015-08-05T02:28:01+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -123,21 +123,25 @@ the difference between a difference quotient between two points
 
 <div class="myeqn">
 \begin{align}
-  \varepsilon_1(\Delta x,\Delta y)&amp; :=
-  \begin{cases}
-    \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-    f}{\partial x}(x_0,y_0) &amp;\text{if } \Delta x \ne 0,&#92;&#92;
-    0 &amp;\text{if } \Delta x = 0,
-  \end{cases}
+  &amp;\begin{split}
+    &amp; \varepsilon_1(\Delta x,\Delta y) :=&#92;&#92;
+    &amp;\begin{cases}
+      \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
+      f}{\partial x}(x_0,y_0) &amp;{\small \text{if } \Delta x \ne 0},&#92;&#92;
+      0 &amp;\text{if } \Delta x = 0,
+    \end{cases}
+  \end{split}
   \label{def2a}&#92;&#92;
 
-\varepsilon_2(\Delta x,\Delta y)&amp; :=
-  \begin{cases}
-    \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
-    y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
-    \Delta y \ne 0,&#92;&#92;
-    0 &amp;\text{if } \Delta y = 0,
-  \end{cases}
+  &amp;\begin{split}
+    &amp; \varepsilon_2(\Delta x,\Delta y) :=&#92;&#92;
+    &amp;\begin{cases}
+      \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
+      y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
+      \Delta y \ne 0,&#92;&#92;
+      0 &amp;\text{if } \Delta y = 0,
+    \end{cases}
+  \end{split}
   \label{def2b}
 \end{align}
 </div>
@@ -147,12 +151,17 @@ $\Delta y$ respectively, just like what we’ve done in \eqref{mult1}.</p>
 
 <div class="myeqn">
 \begin{align}
-  \varepsilon_1(\Delta x,\Delta y) \Delta x&amp; = f(x_0+\Delta x,y_0) -
-  f(x_0,y_0) - \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
+  &amp;\begin{split}
+    \varepsilon_1(\Delta x,\Delta y) \Delta x =&amp; f(x_0+\Delta x,y_0) -
+    f(x_0,y_0)&#92;&#92;
+    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
+  \end{split}
   \label{mult2a}&#92;&#92;
-  \varepsilon_2(\Delta x,\Delta y) \Delta y&amp; = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
-  y}(x_0+\Delta x,y_0) \Delta y
+  &amp;\begin{split}
+    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)&#92;&#92;
+    &amp;- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
+  \end{split}
   \label{mult2b}
 \end{align}
 </div>
@@ -203,9 +212,12 @@ first-order partial derivative with respect to $y$ at <span class="myeqn">$(x_0+
 
 <div class="myeqn">
 \begin{equation}
-  \varepsilon_2(\Delta x,\Delta y) \Delta y = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \left ( \frac{\partial
-  f}{\partial y}(x_0,y_0) + \varepsilon_3(\Delta x) \right ) \Delta y
+  \begin{split}
+    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)&#92;&#92;
+    &amp;- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
+    \varepsilon_3(\Delta x) \right ) \Delta y
+  \end{split}
   \label{b4repl}
 \end{equation}
 </div>
@@ -216,22 +228,30 @@ as \varepsilon_2</span> to get an equation which looks more similar to
 \eqref{mult2a} than \eqref{mult2b} does.</p>
 
 <div class="myeqn">
-\begin{align}
-  \varepsilon_2(\Delta x,\Delta y) \Delta y&amp; = f(x_0+\Delta
-  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y
+\begin{gather}
+  \begin{split}
+    &amp;\varepsilon_2(\Delta x,\Delta y) \Delta y&#92;&#92;
+    =&amp; f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
+  \end{split}
   \label{mult2bb}&#92;&#92;
-  \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta y)&amp;
-  = f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0) - \frac{\partial
-  f}{\partial x}(x_0,y_0) \Delta x - \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y \quad
-  \text{(\eqref{mult2a}+\eqref{mult2bb})}&#92;&#92;
-  f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)&amp; = \frac{\partial
-  f}{\partial x}(x_0,y_0) \Delta x + \frac{\partial f}{\partial
-  y}(x_0,y_0) \Delta y + \varepsilon_1(\Delta x,\Delta y) +
-  \varepsilon_2(\Delta x,\Delta y)
+  \begin{split}
+    &amp;\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
+    y)&#92;&#92;
+    =&amp; f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)&#92;&#92;
+    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
+    \text{(\eqref{mult2a}+\eqref{mult2bb})}
+  \end{split}&#92;&#92;
+  \begin{split}
+    &amp;f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)&#92;&#92;
+    =&amp; \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
+    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
+    \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
+    y)
+  \end{split}
   \label{result}
-\end{align}
+\end{gather}
 </div>
 
 <p>The result \eqref{result} is what we desired in \eqref{fact}.</p>
