@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-04T00:15:35+08:00</updated>
+  <updated>2015-08-04T22:37:25+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,258 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Some Thoughts on a Real-Valued Function]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/"/>
+    
+    <updated>2015-08-04T22:28:52+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Spending so much time to work out <a href="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">the locale support for dates</a>
+and <a href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">valid HTML code</a> in my <a href="https://vincenttam.github.io/blog2">second blog</a> which was
+powered by Jekyll-Bootstrap, I <em>couldn’t</em> recall this fact.</p>
+
+<p>Suppose that $\mathcal{D}$ is a subset of $\R^2$ that contains an
+$\varepsilon$-neighbourhood of a point <span class="myeqn">$(x_0,y_0)$</span>.  If</p>
+
+<ol>
+  <li>$f: \mathcal{D} \to \R$ is has first-order partial derivatives in
+the $\varepsilon$-neighbourhood of <span class="myeqn">$(x_0,y_0)$</span>.</li>
+  <li>The first-order partial derivatives of $f$ are continuous at <span class="myeqn">$(x_0,y_0)$</span>.</li>
+</ol>
+
+<p>Then we can write</p>
+
+<div class="myeqn">
+\begin{equation}
+  \Delta f = \frac{\partial f}{\partial x} (x_0,y_0) \Delta x +
+  \frac{\partial f}{\partial y} (x_0,y_0) \Delta y + \varepsilon_1
+  \Delta x + \varepsilon_2 \Delta y,
+  \label{fact}
+\end{equation}
+</div>
+
+<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
+x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
+0$</span> as $\Delta x$ and $\Delta y \to 0$.</p>
+
+<!-- more -->
+
+<h2 id="the-first-order-approximation-for-a-differentiable-function">The First-Order Approximation For a Differentiable Function</h2>
+
+<p>At first, I thought that equation \eqref{fact} followed from formula
+\eqref{thm}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \lim_{\vect{h} \to \zeros}
+  \frac{f(\vect{x}+\vect{h})-[f(\vect{x})+\langle\nabla
+  f(\vect{x}),\vect{h}\rangle]}{\norm{\vect{h}}} = 0
+  \label{thm}
+\end{equation}
+</div>
+
+<p>I forgot that this statement assumed the continuous differentiability
+on <em>an open set</em>.  However, we only know that the first-order partial
+derivatives are continuous <em>at one point</em> <span class="myeqn">$(x_0,y_0)$</span>.</p>
+
+<h2 id="solve-an-easier-problem-first">Solve an easier problem first</h2>
+
+<p>This question should be much easier and much more intuitive if the
+domain of the function $f$ in \eqref{fact} is one-dimensional.  Then,
+by drawing a curve and sketching its tangent line at a point, one can
+intuitively realise that the geometric meaning of $\varepsilon$.</p>
+
+<p>In fact, one <em>constructs</em></p>
+
+<div class="myeqn">
+\begin{equation}
+  \varepsilon (\Delta x) :=
+    \begin{cases}
+      \frac{\Delta f}{\Delta x}-f&#8217;(x_0) &amp;\text{if }\Delta x \ne 0,&#92;&#92;
+      0 &amp;\text{if } \Delta x = 0,
+    \end{cases}
+  \label{def1}
+\end{equation}
+</div>
+
+<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
+x)-f(x_0)$</span> in this section since $f$ is now one-dimensional.</p>
+
+<p>Then one can make use of the differentiability of $f$ at $(x_0)$ to
+say that $\varepsilon \to 0$ as $\Delta x \to 0$.</p>
+
+<p>To get the one-dimensional version of \eqref{fact}, we get rid of the
+denominator by multiplying both sides by $\Delta x$ in the case of
+$\Delta x \ne 0$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    \varepsilon \Delta x &amp;= \Delta f - f&#8217; (x_0) \Delta x&#92;&#92;
+    \Delta f &amp;= f&#8217; (x_0) \Delta x + \varepsilon \Delta x
+  \end{aligned}
+  \label{mult1}
+\end{equation}
+</div>
+
+<p>Observe that equality \eqref{mult1} also holds when $\Delta x = 0$.</p>
+
+<h2 id="back-to-the-problem">Back to the problem</h2>
+
+<h3 id="make-use-of-the-previous-section">Make use of the previous section</h3>
+
+<p>From \eqref{def1}, we observe that $\varepsilon$ is defined as
+the difference between a difference quotient between two points
+<span class="myeqn">$x_0$</span> and <span class="myeqn">$x_0+\Delta x$</span> and the derivative <span class="myeqn">$f&#8217;(x_0)$</span>.  We can define <span class="myeqn">$\varepsilon_1$</span> and <span class="myeqn">$\varepsilon_2$</span> in a similar way.</p>
+
+<div class="myeqn">
+\begin{align}
+  \varepsilon_1(\Delta x,\Delta y)&amp; :=
+  \begin{cases}
+    \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
+    f}{\partial x}(x_0,y_0) &amp;\text{if } \Delta x \ne 0,&#92;&#92;
+    0 &amp;\text{if } \Delta x = 0,
+  \end{cases}
+  \label{def2a}&#92;&#92;
+
+\varepsilon_2(\Delta x,\Delta y)&amp; :=
+  \begin{cases}
+    \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
+    y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
+    \Delta y \ne 0,&#92;&#92;
+    0 &amp;\text{if } \Delta y = 0,
+  \end{cases}
+  \label{def2b}
+\end{align}
+</div>
+
+<p>We then multiply \eqref{def2a} and \eqref{def2b} by $\Delta x$ and
+$\Delta y$ respectively, just like what we’ve done in \eqref{mult1}.</p>
+
+<div class="myeqn">
+\begin{align}
+  \varepsilon_1(\Delta x,\Delta y) \Delta x&amp; = f(x_0+\Delta x,y_0) -
+  f(x_0,y_0) - \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
+  \label{mult2a}&#92;&#92;
+  \varepsilon_2(\Delta x,\Delta y) \Delta y&amp; = f(x_0+\Delta
+  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
+  y}(x_0+\Delta x,y_0) \Delta y
+  \label{mult2b}
+\end{align}
+</div>
+
+<p>The trick is to change the independent variables <em>one-by-one</em> since we
+can only make use of partial derivatives.  After defining
+\eqref{def2a}, there’s <em>no</em> need to scratch our head for \eqref{def2b}
+to fit the pizzle.  We may first try to use \eqref{def2a} to get
+\eqref{mult2a}.  Then by observing the term $\Delta f$ in
+\eqref{fact}, we realize that we should add the term <span class="myeqn">$f(x_0+\Delta x,y_0+\Delta y)$ and remove
+$f(x_0+\Delta x,y_0)$</span> so as to get $\Delta f$ in \eqref{fact}.</p>
+
+<h3 id="remaining-problem">Remaining problem</h3>
+
+<p>In \eqref{mult2b}, the partial derivative with respect to $y$ is taken
+at <span class="myeqn">$(x_0+\Delta x,y_0)$</span>, which
+<em>shouldn’t</em> appear in \eqref{fact}.  Therefore, we need a way to get
+rid of the $\Delta x$ inside the bracket.  That leads us to the one
+<em>unused</em> condition—the second given condition in \eqref{fact}.</p>
+
+<p>By the continuity of the first-order partial derivatives at <span class="myeqn">$(x_0,y_0)$</span>,</p>
+
+<div class="myeqn">
+\begin{equation}
+  \lim_{\Delta x \to 0} \frac{\partial f}{\partial y}(x_0+\Delta
+  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)&#92;&#92;
+  \lim_{\Delta x \to 0} \left ( \frac{\partial f}{\partial
+  y}(x_0+\Delta x,y_0)
+  - \frac{\partial f}{\partial y}(x_0,y_0) \right ) = 0
+  \label{cts1}
+\end{equation}
+</div>
+
+<p>Thus, we define</p>
+
+<div class="myeqn">
+\begin{equation}
+  \varepsilon_3(\Delta x) := \frac{\partial f}{\partial y}(x_0+\Delta
+  x,y_0) - \frac{\partial f}{\partial y}(x_0,y_0)
+  \label{cts2}
+\end{equation}
+</div>
+
+<p>so that <span class="myeqn">$\varepsilon_3 \to 0$</span>
+as $\Delta x \to 0$.  With \eqref{cts2}, we can replace the
+first-order partial derivative with respect to $y$ at <span class="myeqn">$(x_0+\Delta x,y_0)$</span> in
+\eqref{mult2b} by the one at <span class="myeqn">$(x_0,y_0)$</span>.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \varepsilon_2(\Delta x,\Delta y) \Delta y = f(x_0+\Delta
+  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \left ( \frac{\partial
+  f}{\partial y}(x_0,y_0) + \varepsilon_3(\Delta x) \right ) \Delta y
+  \label{b4repl}
+\end{equation}
+</div>
+
+<p>Therefore, from \eqref{b4repl}, we see that it’s legitimate for us to
+rename <span class="myeqn">$\varepsilon_2-\varepsilon_3$
+as \varepsilon_2</span> to get an equation which looks more similar to
+\eqref{mult2a} than \eqref{mult2b} does.</p>
+
+<div class="myeqn">
+\begin{align}
+  \varepsilon_2(\Delta x,\Delta y) \Delta y&amp; = f(x_0+\Delta
+  x,y_0+\Delta y) - f(x_0+\Delta x,y_0) - \frac{\partial f}{\partial
+  y}(x_0,y_0) \Delta y
+  \label{mult2bb}&#92;&#92;
+  \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta y)&amp;
+  = f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0) - \frac{\partial
+  f}{\partial x}(x_0,y_0) \Delta x - \frac{\partial f}{\partial
+  y}(x_0,y_0) \Delta y \quad
+  \text{(\eqref{mult2a}+\eqref{mult2bb})}&#92;&#92;
+  f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)&amp; = \frac{\partial
+  f}{\partial x}(x_0,y_0) \Delta x + \frac{\partial f}{\partial
+  y}(x_0,y_0) \Delta y + \varepsilon_1(\Delta x,\Delta y) +
+  \varepsilon_2(\Delta x,\Delta y)
+  \label{result}
+\end{align}
+</div>
+
+<p>The result \eqref{result} is what we desired in \eqref{fact}.</p>
+
+<h2 id="generalisation-to-n-dimension">Generalisation to $n$-dimension</h2>
+
+<p>By reusing the trick of changing the variables once at a time from
+\eqref{def2a} to \eqref{mult2b}, and a suitable renaming and
+rearrangment of terms, one can generalise the result in \eqref{fact}
+to a function $f:\mathcal{D} \to \R$ defined on a subset $\mathcal{D}$
+of $\R^n$ containing a $\varepsilon$-neighbourhood of a point
+$\vect{x}_0 \in \R^n$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \Delta f = \langle \nabla f(\vect{x_0}) + \vect{\varepsilon},\Delta
+  \vect{x} \rangle,
+  \label{generalisation}
+\end{equation}
+</div>
+
+<p><span class="myeqn">where $\Delta f :=
+f(\vect{x_0}+\Delta \vect{x})-f(\vect{x_0})$ and $\vect{\varepsilon}
+\to \zeros$ as $\Delta \vect{x} \to \zeros$.</span></p>
+
+<p>As you can see in \eqref{generalisation}, writing the statement in its
+vector form is more concise than writing out each partial derivative
+in \eqref{fact}.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1371,193 +1623,6 @@ establish a standard result.</p>
 \]
 </div>
       <p><a href="#fnref:inf_prod_exists" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[An Image With Changeable Size]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/11/an-image-with-changeable-size/"/>
-    
-    <updated>2015-04-11T17:14:23+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/11/an-image-with-changeable-size</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I sometimes upload pictures for illustrating ideas.  You may see
-<a href="https://vincenttam.github.io/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/"><em>Two Diagrams Illustrating the Isomorphism Extension Theorem</em></a>
-in this blog for example.</p>
-
-<h2 id="motivation">Motivation</h2>
-
-<p>Enable users to adjust the size of SVG graphics.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In the linked post, if the zoom level is too <em>large</em>, then part of the
-image will be hidden.</p>
-
-<object type="image/svg+xml" class="boxed" data="/downloads/code/svgpan_1.2.2/IET.svg" width="200" height="200">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan_1.2.2%2FIET.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<p>This is quite <em>inconvenient</em> for users who want a <em>whole</em> picture.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>To set up a slide bar which controls the size of an SVG image.</p>
-
-<p><span>Image size:</span>
-<input id="bar" type="range" name="points" min="200" max="800" value="200" step="10" />
-<span id="lbl">200</span></p>
-
-<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/resizable/IET.svg" width="200" height="200">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fresizable%2FIET.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<!-- more -->
-
-<h2 id="example">Example</h2>
-
-<p>Click “download” to view the sample web page.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example (test.html)</span> <a href="https://vincenttam.github.io/downloads/code/resizable/test.html">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
-</span><span class="line"><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;head&gt;</span>
-</span><span class="line"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;title&gt;</span>Testing resizable SVG<span class="nt">&lt;/title&gt;</span>
-</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="nx">bar</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
-</span><span class="line">  <span class="nx">bar</span><span class="p">.</span><span class="nx">onchange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">val</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">lbl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;lbl&quot;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">lbl</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">obj</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;obj&quot;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">obj</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">obj</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">val</span><span class="p">;</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span><span class="line"><span class="c">&lt;!-- Show the border --&gt;</span>
-</span><span class="line"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;screen&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nc">.boxed</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">border-style</span><span class="o">:</span> <span class="k">solid</span><span class="p">;</span>
-</span><span class="line">  <span class="k">border-width</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span><span class="line"><span class="nt">&lt;/style&gt;</span>
-</span><span class="line"><span class="nt">&lt;/head&gt;</span>
-</span><span class="line"><span class="nt">&lt;body&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>
-</span><span class="line"><span class="nt">&lt;span&gt;</span>Image size:<span class="nt">&lt;/span&gt;</span>
-</span><span class="line"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;bar&quot;</span> <span class="na">type=</span><span class="s">&quot;range&quot;</span> <span class="na">name=</span><span class="s">&quot;points&quot;</span> <span class="na">min=</span><span class="s">&quot;200&quot;</span> <span class="na">max=</span><span class="s">&quot;800&quot;</span>
-</span><span class="line"><span class="na">value=</span><span class="s">&quot;200&quot;</span> <span class="na">step=</span><span class="s">&quot;10&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;span</span> <span class="na">id=</span><span class="s">&quot;lbl&quot;</span><span class="nt">&gt;</span>200<span class="nt">&lt;/span&gt;</span>
-</span><span class="line"><span class="nt">&lt;/p&gt;</span>
-</span><span class="line"><span class="nt">&lt;object</span> <span class="na">id=</span><span class="s">&quot;obj&quot;</span> <span class="na">class=</span><span class="s">&quot;boxed&quot;</span> <span class="na">type=</span><span class="s">&quot;image/svg+xml&quot;</span> <span class="na">data=</span><span class="s">&quot;IET.svg&quot;</span>
-</span><span class="line">  <span class="na">width=</span><span class="s">&quot;200&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">  Your browser does not support SVG.
-</span><span class="line"><span class="nt">&lt;/object&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>
-</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class="line">  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
-</span><span class="line">  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class="line">  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a&gt;</span>
-</span><span class="line"><span class="nt">&lt;a</span>
-</span><span class="line"><span class="na">href=</span><span class="s">&quot;https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/resizable/IET.svg;ss=1&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class="line"><span class="na">src=</span><span class="s">&quot;/images/valid-svg11.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid SVG 1.1&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span>
-</span><span class="line"><span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-</span><span class="line"><span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Initially, due to my laziness, I used the <em>same</em> SVG image as the one
-in the section “Problem”.  Even though the height and width of the SVG
-image were increased, the diagram <em>didn’t</em>.  Moreover, it’s
-<em>inconvenient</em> to manually increase the size of the picture by <em>both</em>
-adjusting the knob <em>and</em> moving the mouse wheel.  As a result, I
-googled “html scale svg” and found a long article which I <em>didn’t</em>
-really read.<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup>  I just saw the word “viewport” and realized that
-the SVG image in the section “Problem” had been processed with steps
-described in <a href="https://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/"><em>Zooming SVG in Web Browsers</em></a> for incorporating
-the special functionalities of SVGPan in this blog.  Therefore,
-generating the SVG file for the $\rm \LaTeX$ source code again, I
-finally succeeded in getting the <em>contents</em> of the image enlarged.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ref">
-
-      <p><a href="http://css-tricks.com/scale-svg/">How to Scale SVG</a> by Amelia Bellamy-Royds on <em>CSS-Tricks</em>. <a href="#fnref:ref" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
