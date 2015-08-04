@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="That said, I hacked around to see if injecting Javascript on the WebView was possible and it was, with a bit of change I could actually get the user &hellip;">
+  <meta name="description" content="After viewing Sam Kuo’s article on eavatar.com, I changed my
+Rakefile according to the instructions there. However, I was unsure
+where the source &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/01/notifying-search-engines-of-new-sitemaps/">Notifying Search Engines of New Sitemaps</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-01T23:47:48+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>11:47 pm</span></time>
+        
+           | <a href="/blog/2014/06/01/notifying-search-engines-of-new-sitemaps/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/01/notifying-search-engines-of-new-sitemaps/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/01/notifying-search-engines-of-new-sitemaps/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After viewing <a href="http://blog.eavatar.com/post/2013/06/octopress-ping-search-engines/">Sam Kuo’s article on eavatar.com</a>, I changed my
+<code>Rakefile</code> according to the instructions there.  However, I was unsure
+where the source code should be added.  Thus, I read
+<a href="https://github.com/larrynung/larrynung.github.io/blob/de3c947/Rakefile">Larry Nung’s working example</a>, and knew that it
+should immediately follow line 29 of the file.  However, I updated
+Octopress’s source code recently.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, the file looked
+<em>different</em> from Nung’s one—in my own version of the file, I saw the
+following lines of code which caused me to think twice before really
+modifying the file.  (Click “Commit history” to see the highlighted
+section of code.)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Part of my `Rakefile` at commit 27d0510</span><a href="https://github.com/VincentTam/vincenttam.github.io/blob/27d05105f4a82c8512ad6c8233fe7a70dc373e60/Rakefile#L30-33">Commit history</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="k">if</span> <span class="p">(</span><span class="sr">/cygwin|mswin|mingw|bccwin|wince|emx/</span> <span class="o">=~</span> <span class="no">RUBY_PLATFORM</span><span class="p">)</span> <span class="o">!=</span> <span class="kp">nil</span>
+</span><span class="line">  <span class="nb">puts</span> <span class="s1">&#39;## Set the codepage to 65001 for Windows machines&#39;</span>
+</span><span class="line">  <span class="sb">`chcp 65001`</span>
+</span><span class="line"><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Finally, I decided to add the code for ping services <em>behind</em> the
+above section of code.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/27d0510">27d0510</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -625,77 +694,6 @@ case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/04/27/gimp-transparent-background/">Make Images With Transparent Background Using GIMP, and More &#8230;</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-04-27T13:38:12+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:38 pm</span></time>
-        
-           | <a href="/blog/2014/04/27/gimp-transparent-background/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/04/27/gimp-transparent-background/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/04/27/gimp-transparent-background/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="getting-an-image-with-transparent-background">Getting an image with transparent background</h2>
-
-<h3 id="an-apple-with-white-background">An apple with white background</h3>
-
-<p><img class="left" src="/images/posts/GIMPTransparentBg/apple-logo-2.jpg" width="285" height="251" /></p>
-
-<p>Downloaded from <a href="http://fineprintnyc.com/blog/history-of-the-apple-logo"><em>History of the Apple Logo</em></a>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>Thanks to <a href="http://mbrsolution.com/tutorial/gimp-tutorial-how-to-make-an-image-background-transparent.php">Ruiz’s <abbr title="GNU Image Manipulation Program">GIMP</abbr> tutorial</a> on
-<a href="http://mbrsolution.com/">Mbrsolution</a>, I can remove the white background of the
-picture on the left.</p>
-
-<h3 id="using-gimp">Using <abbr title="GNU Image Manipulation Program">GIMP</abbr></h3>
-
-<p>It’s a brief summary of the referenced tutorial.  To save time, I
-won’t post screenshots here.  You may refer to those in the tutorial.</p>
-
-<p><img class="right" src="/images/posts/GIMPTransparentBg/apple-logo-3.png" width="171" height="150" /></p>
-
-<ol>
-  <li>Use the <strong>Fuzzy Tool</strong> and click on the background.</li>
-  <li>Click <strong>Layer → Transparency</strong> to check if an alpha channel has
-been added.  If not, then add one.</li>
-  <li>Produce a transparent background by <strong>Edit → Clear</strong>.</li>
-  <li>Save it as a <abbr title="Portable Network Graphics">PNG</abbr> file.
-    <ul>
-      <li>See the detailed instructions in the tutorial.</li>
-      <li><abbr title="Joint Photographic Experts Group">JPEG</abbr> images can’t have transparent background.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></li>
-    </ul>
-  </li>
-</ol>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/04/27/gimp-transparent-background/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/19">&larr; Older</a>
@@ -733,28 +731,32 @@ been added.  If not, then add one.</li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (3)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (4)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (39)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (16)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (17)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (12)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (45)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (46)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (27)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (21)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (28)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (22)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Some Thoughts on a Real-Valued Function</a>
@@ -770,10 +772,6 @@ been added.  If not, then add one.</li>
     
       <li class="post">
         <a href="/blog/2015/06/09/miktex-update/">MikTeX Update</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/06/09/ms-word-hanged/">MS Word Hanged</a>
       </li>
     
   </ul>

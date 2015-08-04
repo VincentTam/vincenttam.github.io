@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-04T22:37:25+08:00</updated>
+  <updated>2015-08-05T01:27:09+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,154 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/"/>
+    
+    <updated>2015-08-05T00:18:45+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I often write math in this blog.  After typing lots of characters,
+syntax errors are <em>inevitable</em>, but no one wants them to be published.
+Unluckily, the <code>rake generate</code> command takes <em>too long</em> to run.  In
+order to find them out more quickly, I quickly went over the
+<code>Gemfile</code> of the repository for this blog, and saw that the Markdown
+engine of Octopress is kramdown.  Therefore, I used the command line
+version of this Markdown parser to convert my Markdown source file to
+an HTML document by a Vim Ex command.</p>
+
+<pre><code>:!kramdown % &gt; %&lt;.html
+</code></pre>
+
+<p>For this, I’ve written two posts describing the workflow of producing
+HTML web pages consisting of math expressions from Markdown source
+files using kramdown and MathJax.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">the first post</a> in this series, I’ve made a list of steps
+in Vim.  However, jumping to other files is laborious.  More
+importantly, those steps involve browsing and copying of lines of
+HTML code of the <code>&lt;head&gt;</code>, which loads MathJax, in other HTML files.
+This can <em>seriously</em> slow down the editing process.  Unhappily, this
+problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series.</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="include-the-script-in-the-content">Include the script in the content</h3>
+
+<p>There might be some option for the kramdown command line utility to
+use accept an HTML template files during the code conversion.
+However, I’m <em>too lazy</em> to search for them as I need to
+[work on math]<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>.</p>
+
+<p>Remembering that I defered the loading of JavaScripts in order to
+boost the PageSpeed score of this site, I adpated the script to load
+MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
+
+<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
+</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
+</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
+</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
+</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
+
+<p>By default, with the plugin <code>vim-markdown</code> installed, the sections are
+<em>folded</em>.  Before I can continue editing at the end of the file, I
+have to open the last fold, which contained more than 25 lines due to
+the script enabling MathJax at the bottom.  As a result, I have to
+move back to the middle of the last fold by pressing <code>k</code> for a while.
+That annoys me.  If the script is contained in a separate fold, it’s
+better.  Therefore, adding a blank line and then a line consisting of
+three hyphens will fix this problem.</p>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>In <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series, we know that <code>&lt;div&gt;</code> tag
+prevents kramdown from converting the code inside the tag to HTML,
+while in <a href="/blog/2014/09/14/kramdowns-markdown-attributes/">another old post about kramdown’s Markdown attributes</a>,
+one can revert the above behaviour by simply adding an attribute
+<code>markdown="1"</code> to the <code>&lt;div&gt;</code> tag.  These can be reflected in the
+above test.</p>
+
+<p>Usually, in math environments inside a $\rm \LaTeX$ document, double
+backslashes <code>\\</code> start a new line, and it’s the same in MathJax.
+Typing <em>two</em> backslashes in the Markdown source down will suffice.
+Unluckily, in the <em>real Markdown source</em> for Octopress posts, <em>four</em>
+<code>\</code> are needed.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+
+      <p>For example, I have to think about
+<a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">multi-variable real-valued functions</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp2">
+
+      <p>Refer to my old post
+<a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a> in <em>Blog 1</em> for
+details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -25,7 +173,7 @@
 
 <p>In the <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">previous post</a> in this series, I’ve listed a number of
 steps and included a group of <a href="http://www.vim.org">Vim</a> editor commands for screening out
-<a href="http://kramdown.gettalong.org">kramdown</a> syntax errors.  This is useful for [Octopress] posts with
+<a href="http://kramdown.gettalong.org">kramdown</a> syntax errors.  This is useful for <a href="http://octopress.org">Octopress</a> posts with
 ordinary contents.  However, if one wants to write some math equations
 using <a href="http://www.mathjax.org">MathJax</a>, then one will encounter great difficulties.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
 
@@ -440,229 +588,6 @@ Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a
     </li>
     <li id="fn:2">
       <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Another Way of Writing Piecewise Functions]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions/"/>
-    
-    <updated>2014-09-08T18:38:29+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/09/08/another-way-of-writing-piecewise-functions</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I changed my way of writing block equations for <abbr title="Rich Site Summary">RSS</abbr>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, in
-my old post about the Contraction Mapping Principles, there’s an
-inequality on the rate of convergence of a point in a complete metric
-space to the unique fixed point of the Lipschitz mapping with a
-Lipschitz constant strictly less than one.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>\[
-\begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) &#92;\<br />
-=&amp; \lim_{k \to \infty} d(x_k,x_n) &#92;\<br />
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) &#92;\<br />
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
-\end{aligned}
-\]</p>
-
-<p><code>text Source code of the above block equation
-\\[
-\begin{aligned}
-d(x^\*,x\_n) =&amp; d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
-=&amp; \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
-\le&amp; \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
-  \text{(by \eqref{eq:finite_err})} \\\\\\\\
-=&amp; \frac{q^n}{1 - q} d(x\_1,x\_0)
-\end{aligned}
-\\]
-</code></p>
-
-<p>Starting from the second line in the above block equation, at the left
-of the binary relation symbols there’s a whitespace character.</p>
-
-<!-- more -->
-
-<h3 id="visual-effects-in-a-page-for-a-single-post">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/post.png" title="‘LaTeX code seen in post’ ‘fig1’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen in an individual post
-\begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
-=&amp; \lim_{k \to \infty} d(x_k,x_n) \\\
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-  \text{(by \eqref{eq:finite_err})} \\\
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
-\end{aligned}
-</code>
-</p>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/collection.png" title="‘LaTeX code seen in index page’ ‘fig2’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
-\begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
-=&amp; \lim_{k \to \infty} d(x_k,x_n) \\
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-  \text{(by \eqref{eq:finite_err})} \\
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
-\end{aligned}
-</code>
-</p>
-
-<p>It <em>doesn’t</em> matter much in block equations.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>However, it <em>does</em> matter if I have to define a piecewise function.
-Take one defined in one of my old posts as an example.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<hr />
-<p>(Added on DEC 12TH, 2014)</p>
-
-<p>Note: As you can see from the above piecewise function, the problem is
-now <em>gone</em>.</p>
-
-<hr />
-
-<p>\[
-f(x,y) =
-  \begin{cases}
-    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
-    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-  \end{cases}
-\]</p>
-
-<p><code>text Source code of the above block equation
-\\[
-f(x,y) =
-  \begin{cases}
-    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-  \end{cases}
-\\]
-</code></p>
-
-<h3 id="visual-effects-in-a-page-for-a-single-post-1">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases3.png" title="‘LaTeX code seen in post’ ‘fig3’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen in an individual post
-f(x,y) =
-  \begin{cases}
-    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x\\\
-    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-  \end{cases}
-</code>
-</p>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-1">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/cases2.png" title="‘LaTeX code seen in index page’ ‘fig4’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
-f(x,y) =
-  \begin{cases}
-    0 &amp;\text{if } (x,y) \in \vect{I} \land y \ge x\\
-    1 &amp;\text{if } (x,y) \in \vect{I} \land y &lt; x
-  \end{cases}
-</code>
-</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>After I observed that the two equations, which are aligned by the
-<code>aligned</code> environment, at the bottom of the post cited in footnote #3,
-I used the $\rm \LaTeX$ commands <code>\left\\{</code> and <code>\right.</code> in the
-Markdown source file for posts to construct the left curly brace
-<em>only</em>.</p>
-
-<p>\[
-f(x,y) = \left\{
-  \begin{aligned}
-    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x&#92;\<br />
-    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-  \end{aligned}
-\right.
-\]</p>
-
-<p><code>text Source code of the above block equation
-\\[
-f(x,y) = \left\\{
-  \begin{aligned}
-    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-  \end{aligned}
-\right.
-\\]
-</code></p>
-
-<h3 id="visual-effects-in-a-page-for-a-single-post-2">Visual effects in a page for a single post</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned3.png" title="‘LaTeX code seen in post’ ‘fig5’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen in an individual post
-f(x,y) = \left\{
-  \begin{aligned}
-    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x\\\
-    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-  \end{aligned}
-\right.
-</code>
-</p>
-
-<h3 id="visual-effects-in-pages-under-posts-or-the-index-page-2">Visual effects in pages under “/posts/” or the index page</h3>
-
-<p><img class="fancybox" src="/images/posts/MathJaxDisplay2/aligned2.png" title="‘LaTeX code seen in index page’ ‘fig6’" ></p>
-
-<p>
-<code>tex $\rm \LaTeX$ code as seen under "/posts/" or the index page
-f(x,y) = \left\{
-  \begin{aligned}
-    0 &amp;\text{ if } (x,y) \in \vect{I} \land y \ge x\\
-    1 &amp;\text{ if } (x,y) \in \vect{I} \land y &lt; x,
-  \end{aligned}
-\right.
-</code>
-</p>
-
-<p>‘0’ and ‘1’ in the above example are aligned.  Though in pages for
-each individual posts, the whitespace character preceeding ‘1’ still
-exists, it <em>isn’t</em> visible unless it’s highlighted.  I’m quite
-satified with this alternative method of typesetting piecewise
-functions.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See <a href="/blog/2014/09/07/mathjax-and-rss/"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>See
-<a href="/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/"><em>Error Bound of the Fixed Point of Contraction Mappings</em></a> in
-Blog 1 for details. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>See <a href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/"><em>Archimedean Sequence of Partitions of a Square</em></a> in
-Blog 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

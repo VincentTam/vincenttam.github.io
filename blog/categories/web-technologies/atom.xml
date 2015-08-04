@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-04T22:37:25+08:00</updated>
+  <updated>2015-08-05T01:27:09+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,154 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/"/>
+    
+    <updated>2015-08-05T00:18:45+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I often write math in this blog.  After typing lots of characters,
+syntax errors are <em>inevitable</em>, but no one wants them to be published.
+Unluckily, the <code>rake generate</code> command takes <em>too long</em> to run.  In
+order to find them out more quickly, I quickly went over the
+<code>Gemfile</code> of the repository for this blog, and saw that the Markdown
+engine of Octopress is kramdown.  Therefore, I used the command line
+version of this Markdown parser to convert my Markdown source file to
+an HTML document by a Vim Ex command.</p>
+
+<pre><code>:!kramdown % &gt; %&lt;.html
+</code></pre>
+
+<p>For this, I’ve written two posts describing the workflow of producing
+HTML web pages consisting of math expressions from Markdown source
+files using kramdown and MathJax.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">the first post</a> in this series, I’ve made a list of steps
+in Vim.  However, jumping to other files is laborious.  More
+importantly, those steps involve browsing and copying of lines of
+HTML code of the <code>&lt;head&gt;</code>, which loads MathJax, in other HTML files.
+This can <em>seriously</em> slow down the editing process.  Unhappily, this
+problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series.</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="include-the-script-in-the-content">Include the script in the content</h3>
+
+<p>There might be some option for the kramdown command line utility to
+use accept an HTML template files during the code conversion.
+However, I’m <em>too lazy</em> to search for them as I need to
+[work on math]<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>.</p>
+
+<p>Remembering that I defered the loading of JavaScripts in order to
+boost the PageSpeed score of this site, I adpated the script to load
+MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
+
+<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
+</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
+</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
+</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
+</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
+
+<p>By default, with the plugin <code>vim-markdown</code> installed, the sections are
+<em>folded</em>.  Before I can continue editing at the end of the file, I
+have to open the last fold, which contained more than 25 lines due to
+the script enabling MathJax at the bottom.  As a result, I have to
+move back to the middle of the last fold by pressing <code>k</code> for a while.
+That annoys me.  If the script is contained in a separate fold, it’s
+better.  Therefore, adding a blank line and then a line consisting of
+three hyphens will fix this problem.</p>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>In <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series, we know that <code>&lt;div&gt;</code> tag
+prevents kramdown from converting the code inside the tag to HTML,
+while in <a href="/blog/2014/09/14/kramdowns-markdown-attributes/">another old post about kramdown’s Markdown attributes</a>,
+one can revert the above behaviour by simply adding an attribute
+<code>markdown="1"</code> to the <code>&lt;div&gt;</code> tag.  These can be reflected in the
+above test.</p>
+
+<p>Usually, in math environments inside a $\rm \LaTeX$ document, double
+backslashes <code>\\</code> start a new line, and it’s the same in MathJax.
+Typing <em>two</em> backslashes in the Markdown source down will suffice.
+Unluckily, in the <em>real Markdown source</em> for Octopress posts, <em>four</em>
+<code>\</code> are needed.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+
+      <p>For example, I have to think about
+<a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">multi-variable real-valued functions</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp2">
+
+      <p>Refer to my old post
+<a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a> in <em>Blog 1</em> for
+details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -277,124 +425,6 @@ tried all possible ways to solve the problem.</p>
 “Also on” box took one to <em>wrong</em> pages.  I apologize for any
 inconvenience caused.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Added W3C Validated Logos to Some Pages]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"/>
-    
-    <updated>2015-05-23T22:42:17+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>The web pages under <code>/downloads/code/</code> <em>don’t</em> conform to the <abbr title="World Wide Web Consortium">W3C</abbr>’s
-standards.  This afternoon, after I had rewritten the code and passed
-the HTML 4.01 Strict Test and CSS3 Test, I was given the code to embed
-the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnref:samp_pic"><a href="#fn:samp_pic" class="footnote">1</a></sup></p>
-
-<p>&#8220;` html HTML code for embedding the validation icon for HTML 4.01 Strict</p>
-<p>
-  <a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Strict" height="31" width="88" /></a>
-</p>
-<p>&#8220;`</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Unluckily, when I clicked on the icon for re-validation of the site, I
-<em>got</em> a 404 error.</p>
-
-<picture class="fancybox" title="404 Not Found">
-  <source srcset="/images/posts/W3C/err497.png" media="(min-width: 497px)" />
-  <img alt="404 not found" src="https://vincenttam.github.io/images/posts/W3C/err300.png" />
-</picture>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>I <em>wasn’t</em> so patient to read the <a href="http://validator.w3.org/docs/help.html#faq-referer"><abbr title="Frequently Asked Questions">FAQ</abbr></a> of the <abbr title="World Wide Web Consortium">W3C</abbr>.  I googled “w3c
-validator referer”.  Realising that the web pages hosted on the
-official website were similar to the <abbr title="Frequently Asked Questions">FAQ</abbr>, I clicked on the first blog
-article that I saw.<sup id="fnref:1st_blog"><a href="#fn:1st_blog" class="footnote">2</a></sup>  I still <em>didn’t</em> know what’s wrong
-with my hyperlink on the validation icon.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I refined my search by added the phrase “requested URL /check”
-<em>surrounded by double quotes</em> to the query string.  Then, only four
-web pages were displayed.  I glimpsed a mailing list and I <em>didn’t</em>
-found it useful.  Although I believed that the hyperlink for a forum
-thread <em>wouldn’t</em> help me, I clicked it.<sup id="fnref:forum"><a href="#fn:forum" class="footnote">3</a></sup>  It was in 2007, and
-the situtation <em>differed</em> much from this one.  I clicked on an
-old-versioned hyperlink to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, and <em>it worked</em>.
-After that, I “inspected this element” and changed the destination to
-the current URL of the validator.  It worked again.</p>
-
-<p>I compared the code found on the forum post with mine, and I
-discovered that the only difference is the <code>s</code> in front of the domain
-name <code>validator.w3.org</code>.  Knowing that some users may view the site
-using the HTTP protocol, I finally removed the beginning <code>https:</code> in
-the <code>href</code> attribute in that hyperlink.  Now users may re-validate the
-page with a simple click on the validation icons.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>Through the validation process, I’ve learnt some HTML.</p>
-
-<ol>
-  <li>Always begin an HTML file with <code>&lt;!DOCTYPE HTML ...&gt;</code>.</li>
-  <li>Add a <code>lang</code> attribute in <code>&lt;html&gt;</code> for internationalization.</li>
-  <li>Add a <code>&lt;meta charset="UTF-8"&gt;</code> tag to tell the validator the
-character encoding of the page.</li>
-  <li>A <code>&lt;title&gt;</code> inside the <code>&lt;head&gt;</code> is <em>necessary</em>: without this, the
-vaildator <em>won’t</em> regard the <code>&lt;head&gt;</code> as closed.</li>
-  <li>
-    <p>In HTML 4.01 or earlier, avoid using a slash <code>/</code> before <code>&gt;</code>.</p>
-
-    <p>i.e. Use <code>&lt;img ... foo="bar"&gt;</code> instead of <code>&lt;img ... foo="bar" /&gt;</code>,
- <code>&lt;br&gt;</code> instead of <code>&lt;br/&gt;</code>, etc.</p>
-  </li>
-  <li>
-    <p>Images in HTML 4.01 Strict:</p>
-
-    <ul>
-      <li>an alternate text is needed</li>
-      <li>specify the dimenstions of the picture (i.e. <code>height="XX"
-  witdth="YY"</code>)</li>
-    </ul>
-  </li>
-  <li>Inline elements in HTML 4.01 Strict need to be wrapped by
-block-level elements like <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, etc.</li>
-  <li>Forms in HTML 4.01 Strict need an <code>action</code>.</li>
-  <li>Use the <code>charset</code> attribute in <code>&lt;script&gt;</code> tags only for external
-scripts.</li>
-  <li>Using a hyperlink to <code>http://validator.w3.org/check?uri=referer</code> is
-more convenient than the manual way.</li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:samp_pic">
-      <p><a href="/images/posts/W3C/valid_code.png">Here</a>’s a sample screenshot. <a href="#fnref:samp_pic" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:1st_blog">
-
-      <p><a href="http://bryanhadaway.com/how-to-link-to-the-w3c-css3-validation-page/"><em>How to Link to the W3C CSS3 Validation Page</em></a> on <em>Bryan
-Hadaway’s Web + Tech Blog</em>. <a href="#fnref:1st_blog" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:forum">
-
-      <p><a href="http://t29233.org-w3c-validator.w3ctalk.info/what-happend-to-http-validator-w3-org-check-referer-t29233.html#91166"><em>What happend to http://validator.w3.org/check/referer ?</em></a>
-on <em>W3c Discussion Forums</em>. <a href="#fnref:forum" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
