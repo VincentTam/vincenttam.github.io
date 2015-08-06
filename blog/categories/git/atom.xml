@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-05T02:28:01+08:00</updated>
+  <updated>2015-08-06T20:44:57+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Git Command List (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/"/>
+    
+    <updated>2015-08-06T17:39:08+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+
+<p>Unlike the Git commands found on the previous posts in this series, in
+this article, I’ll focus on <em>low-level</em> Git commands.</p>
+
+<h2 id="raison-dtre">Raison d’être</h2>
+
+<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
+but I included them here because these commands help one understand
+the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
+
+<h2 id="the-list">The list</h2>
+
+<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
+$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
+$ git hash-object {file}  # Return the hash of {file}
+$ git hash-object --stdin # Return the hash of the standard input
+$ git write-tree          # Return the hash of the tree of tracked contents
+$ git ls-files -s         # List all tracked files and their hash
+$ git ls-tree {hash}      # List the contents of a tree
+$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
+$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
+$ git diff                # Show changes not staged for commit
+$ git diff --cache        # Show changes staged for commit
+</code></pre>
+
+<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
+<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<ol>
+  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
+bytes.  When it’s displayed, it has 40 hex-digits.</li>
+  <li><em>The blob for a file is independent of the file name</em>, which was
+actually stored in a tree object.  For example, the object ID of a
+file which contains only a single line “hello world” is
+3b18e512dba79e4c8300dd08aeb37f8e728b8dad, so if the file is stored
+inside the <code>.git</code> directory as a blob, the blob will be named as
+<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
+  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
+entry will be created in the tree object corresponding to
+<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tree_obj">
+
+      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
+in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
+<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -310,49 +379,6 @@ To git@github.com:vincenttam/vincenttam.github.io.git
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Double Hyphens in Git Checkout]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-checkout/"/>
-    
-    <updated>2014-08-07T18:08:56+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/08/07/double-hyphens-in-git-checkout</id>
-    
-      <content type="html"><![CDATA[<p>While I was writing my <a href="/blog/2014/08/07/double-hyphens-in-git-diff/" title="Double Hyphens in Git Diff">previous post</a>, I made a link to
-<a href="http://supercollider.sourceforge.net/wiki/index.php/Developer_cheatsheet_for_git#Common_git_commands" title="Developer Cheatsheet for Git">a Git cheatsheet</a>.  In the list, I saw a <em>wrong</em> command.</p>
-
-<pre><code>git checkout – &lt;file&gt;
-</code></pre>
-
-<p>It is <em>incorrect</em> to use an en-dash <code>–</code> in the above command, instead
-of a double hyphen <code>--</code>.  I’ll illustrate this with an example below.
-Assume that the current file is <code>~/octopress</code>.</p>
-
-<pre class="cli"><code class="UBMono">$ cat &gt;&gt; Gemfile
-bullshxt
-$ git diff
-<span class="UBHLCode">diff --git a/Gemfile b/Gemfile
-index 4d028d3..a1718ff 100644
-    --- a/Gemfile
-    +++ b/Gemfile</span>
-<span class="gitA">@@ -20,3 +20,4 @@</span> group :development do
- end
- 
- gem 'sinatra', '~&gt; 1.4.2'
-<span class="gitP">+bullshxt</span>
-
-...
-
-$ git checkout <span class="err">—</span> Gemfile
-<span class="err">error: pathspec '—' did not match any file(s) known to git.</span>
-
-$ git checkout <span class="UBHLCode">--</span> Gemfile  # correct command
-</code></pre>
-
 ]]></content>
     
   </entry>

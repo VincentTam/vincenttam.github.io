@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-05T02:28:01+08:00</updated>
+  <updated>2015-08-06T20:44:57+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Git Command List (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/"/>
+    
+    <updated>2015-08-06T17:39:08+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+
+<p>Unlike the Git commands found on the previous posts in this series, in
+this article, I’ll focus on <em>low-level</em> Git commands.</p>
+
+<h2 id="raison-dtre">Raison d’être</h2>
+
+<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
+but I included them here because these commands help one understand
+the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
+
+<h2 id="the-list">The list</h2>
+
+<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
+$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
+$ git hash-object {file}  # Return the hash of {file}
+$ git hash-object --stdin # Return the hash of the standard input
+$ git write-tree          # Return the hash of the tree of tracked contents
+$ git ls-files -s         # List all tracked files and their hash
+$ git ls-tree {hash}      # List the contents of a tree
+$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
+$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
+$ git diff                # Show changes not staged for commit
+$ git diff --cache        # Show changes staged for commit
+</code></pre>
+
+<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
+<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<ol>
+  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
+bytes.  When it’s displayed, it has 40 hex-digits.</li>
+  <li><em>The blob for a file is independent of the file name</em>, which was
+actually stored in a tree object.  For example, the object ID of a
+file which contains only a single line “hello world” is
+3b18e512dba79e4c8300dd08aeb37f8e728b8dad, so if the file is stored
+inside the <code>.git</code> directory as a blob, the blob will be named as
+<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
+  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
+entry will be created in the tree object corresponding to
+<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tree_obj">
+
+      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
+in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
+<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1650,45 +1719,6 @@ $(c,d)$ containing $a$ is a subset of $[a,b)$.</p>
 element $[0,b)$ containing 0 must hit $1/n$ for some $n \in \Z_+$ by
 Archimedean Property of $\Z_+$.  Thus, $\forall b &gt; 0, [0,b)
 \nsubseteq B_2$.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Play Youtube Videos on Old Version Firefox]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/25/play-youtube-videos-on-old-version-firefox/"/>
-    
-    <updated>2015-04-25T19:40:04+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/25/play-youtube-videos-on-old-version-firefox</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<picture class="fancybox" title="Move the mouse to the right and click for the solution">
-  <source srcset="/images/posts/YouTubeHTML5Player/no10pot.png" media="(min-width: 1030px)" />
-  <img alt="old Firefox can't browse YouTube?" src="https://vincenttam.github.io/images/posts/YouTubeHTML5Player/no10pot_s.png" />
-</picture>
-
-<p>I went to YouTube with the old version Firefox.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Request YouTube’s HTML5 player and enjoy watching videos.</p>
-
-<picture class="fancybox" title="Click the blue button at the bottom.">
-  <source srcset="/images/posts/YouTubeHTML5Player/reqHTML5.png" media="(min-width: 1030px)" />
-  <img alt="require YouTube's HTML5 player" src="https://vincenttam.github.io/images/posts/YouTubeHTML5Player/reqHTML5_s.png" />
-</picture>
-
-<picture class="fancybox noscr" title="A video of a lawmaker in the LegCo">
-  <source srcset="/images/posts/YouTubeHTML5Player/treegun.png" media="(min-width: 1030px)" />
-  <img alt="tree gun" src="https://vincenttam.github.io/images/posts/YouTubeHTML5Player/treegun_s.png" />
-</picture>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>Just like *nix, <code>&lt;Alt-PrtSc&gt;</code> can be used for capturing only the
-current window instead of the <em>whole</em> screen.</p>
 ]]></content>
     
   </entry>
