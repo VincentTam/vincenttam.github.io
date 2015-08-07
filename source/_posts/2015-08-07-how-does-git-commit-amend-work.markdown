@@ -74,7 +74,7 @@ Hence, the difference of the timestamp of the `committer` causes the
 difference in the hashes, whereas the timestamp of the `author` is
 converted to a human readable date for display.
 
-Fact learnt
+Facts learnt
 ---
 
 ### Unix timestamp
