@@ -3,7 +3,7 @@ layout: post
 title: "MikTeX Update"
 date: 2015-06-09 16:41:12 +0800
 comments: true
-categories: [LaTeX]
+categories: [LaTeX, M$ Win*]
 ---
 
 Background
