@@ -36,7 +36,7 @@ the repository of this blog.
 
 We get the *same* SHA-1 hash.  Therefore, the ID for Git commit
 objects is just the SHA-1 hash of the contents of the Git commits with
-the string "commit {len}\0" inserted at the beginning, where `{len}`
+the string `commit {len}\0` inserted at the beginning, where `{len}`
 stands for the number of bytes of the Git commit object (which is
 stored in `test.txt` in the above situation).
 
