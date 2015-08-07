@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-07T21:53:30+08:00</updated>
+  <updated>2015-08-07T23:27:52+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Object ID Generation (3): Trees With Multiple Blobs]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/"/>
+    
+    <updated>2015-08-07T22:30:55+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Having written <a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
+word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
+<a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
+convenience.</p>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+68aba62e560c0ebc3396e8ae9335232cd93a3f60
+$ echo "sweet" &gt; rose
+$ git add rose
+$ git write-tree
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1
+$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
+100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
+</code></pre>
+
+<p>Therefore, our target hash is
+<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
+
+<p>Just like what I’d done in the previous post, I manually changed the
+hashes into a <code>printf</code> command that writes out the binary value of the
+hashes.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
+7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+a4b430f9da3e22c0854fb26c97da77db271e5acf  -
+</code></pre>
+
+<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
+<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
+hash</strong>?</em></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I read domegetter’s comment on <a href="https://gist.github.com/masak/2415865">this Gist</a>, and removed the
+newline character <code>\n</code> in the middle of the quoted string in the above
+<code>printf</code> command.  Then I decreased the object size by one since a
+character had been taken out.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 69\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad100644 rose\x00\xaa\x82\x37\x28\xea\x7d
+\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
+</code></pre>
+
+<p>We’re done!</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -53,7 +128,7 @@ Control with Git</em>.</p>
   <li>
     <p>Create the file <code>len.txt</code> consisting of</p>
 
-    <pre><code> "tree" SP &lt;result in item 6&gt; NUL
+    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
 </code></pre>
 
     <p><em>without</em> the line terminator.</p>
@@ -111,6 +186,28 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
 
 <p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
 <code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
+
+<h2 id="fact-learnt-formatting-printfs-output">Fact learnt: formatting printf’s output</h2>
+
+<p>In the Stack Overflow question, there’s a command</p>
+
+<pre><code>find .git/objects/ -type f -printf "%h%f %s\n" {.cliUB}
+</code></pre>
+
+<ul>
+  <li>The flag <code>-type f</code> stands for files.  <em>Without</em> this flag,
+  directories like <code>.git/objects</code> will be displayed.</li>
+  <li>The flag <code>-printf</code> formats the output.
+    <ul>
+      <li><code>%h</code> means the head of the file name <em>without</em> the last
+  component of the file name.  Thus, it expands to a the path of
+  a directory <em>without</em> the trailing <code>/</code>.</li>
+      <li><code>%f</code> means the last component of the file name.  As a result,
+  the <code>/</code> inside the displayed SHA-1 hashes are taken away.</li>
+      <li><code>%s</code> means the file size</li>
+    </ul>
+  </li>
+</ul>
 
 ]]></content>
     
@@ -193,7 +290,7 @@ online.  I just select some important ones for quick reference.</code>
 difference in the hashes, whereas the timestamp of the <code>author</code> is
 converted to a human readable date for display.</p>
 
-<h2 id="fact-learnt">Fact learnt</h2>
+<h2 id="facts-learnt">Facts learnt</h2>
 
 <h3 id="unix-timestamp">Unix timestamp</h3>
 
@@ -1839,63 +1936,6 @@ post <a href="https://vincenttam.github.io/blog/2014/08/29/clang-complete-on-ubu
 
       <p>Refer to the “<a href="https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml#Indentation">General Formatting Rules</a>” in <em>Google
 HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[GitHub Page Build Failure]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/06/github-page-build-failure/"/>
-    
-    <updated>2015-05-06T20:21:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/06/github-page-build-failure</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I received two emails from GitHub today at 01:15.  The emails says
-that a recent GitHub Page build failed.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/GHPagesBuild/fail1_300.png" alt="fail build 1" /></p>
-
-<p><img src="https://vincenttam.github.io/images/posts/GHPagesBuild/fail2_300.png" alt="fail build 2" /></p>
-
-<h2 id="cause">Cause</h2>
-
-<p>In my YouTube videos about the use of Vim for efficient $\rm \LaTeX$
-editing and APA citing, I shared the sample source files and the
-output PDFs using Ubuntu One, which is now dead.<sup id="fnref:ub1dead"><a href="#fn:ub1dead" class="footnote">1</a></sup></p>
-
-<p>To fix this problem, I moved these files from <code>~/Ubuntu
-One/path/to/files</code> to <code>~/octopress</code> as well as <code>~/octopress/_deploy</code>.
-Then I pushed my commits to GitHub, and received notifications of an
-unexpected error.  Since I’ve other things to do, I <em>won’t</em> try to
-learn something from this problem.</p>
-
-<h2 id="resolution">Resolution</h2>
-
-<p>I just locally generated this site with Rake and deployed it to
-GitHub.  Finally, the URLs for the sample files have been corrected.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>One may open a text file on the Internet with the following editor
-command in Vim.</p>
-
-<pre><code>:e http://www.example.com/path/to/file.txt
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ub1dead">
-
-      <p><a href="http://blog.canonical.com/2014/04/02/shutting-down-ubuntu-one-file-services/">Shutting down Ubuntu One file services</a> by Jane Silber on
-<em>Canonical Blog</em>. <a href="#fnref:ub1dead" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

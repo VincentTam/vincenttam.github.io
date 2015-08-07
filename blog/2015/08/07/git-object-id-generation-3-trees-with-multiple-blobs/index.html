@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Install Ruby Again! (2) - Blog 1</title>
+  <title>Git Object ID Generation (3): Trees With Multiple Blobs - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I installed Ruby 2.1.2 so as to build Octopress on top of it.
-Luckily, the installation was successful. This afternoon, I tried running rake on Ruby &hellip;">
+  <meta name="description" content="Background Having written the second post in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects. Problem &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +19,7 @@ Luckily, the installation was successful. This afternoon, I tried running rake o
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2">
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -83,7 +83,7 @@ Luckily, the installation was successful. This afternoon, I tried running rake o
   <header>
     
       
-	<h1 class="entry-title">Install Ruby Again! (2)</h1>
+	<h1 class="entry-title">Git Object ID Generation (3): Trees With Multiple Blobs</h1>
       
     
     
@@ -93,7 +93,7 @@ Luckily, the installation was successful. This afternoon, I tried running rake o
 
 
 
-<time class='entry-date' datetime='2014-08-13T20:26:05+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:26 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T22:30:55+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:30 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -104,45 +104,68 @@ Luckily, the installation was successful. This afternoon, I tried running rake o
   </header>
 
 
-<div class="entry-content"><p>I installed Ruby 2.1.2 so as to build Octopress on top of it.
-Luckily, the installation was successful.</p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<p><img src="/images/posts/Ruby212/rvm_install.png" alt="Installed Ruby 2.1.2 in the terminal" /></p>
+<p>Having written <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects.</p>
 
-<p>This afternoon, I tried running <code>rake</code> on Ruby 2.1.2.  Unluckily, I
-failed.</p>
+<h2 id="problem">Problem</h2>
+
+<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
+word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
+<a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
+convenience.</p>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+68aba62e560c0ebc3396e8ae9335232cd93a3f60
+$ echo "sweet" &gt; rose
+$ git add rose
+$ git write-tree
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1
+$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
+100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
+</code></pre>
+
+<p>Therefore, our target hash is
+<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
+
+<p>Just like what I’d done in the previous post, I manually changed the
+hashes into a <code>printf</code> command that writes out the binary value of the
+hashes.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
+7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+a4b430f9da3e22c0854fb26c97da77db271e5acf  -
+</code></pre>
+
+<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
+<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
+hash</strong>?</em></p>
 
 <!-- more -->
 
-<p><img src="/images/posts/Ruby212/gen_failed.png" alt="`rake generate` failed" /></p>
+<h2 id="method">Method</h2>
 
-<p>The above problem could be fixed by simply changing <code>nil</code> to <code>null</code> at
-the second line of <code>source/_includes/custom/category_feed.xml</code>, so
-it’s <em>not</em> really a problem.</p>
+<p>I read domegetter’s comment on <a href="https://gist.github.com/masak/2415865">this Gist</a>, and removed the
+newline character <code>\n</code> in the middle of the quoted string in the above
+<code>printf</code> command.  Then I decreased the object size by one since a
+character had been taken out.</p>
 
-<p>First, the image popup plugin complained about the new version of gems.</p>
-
-<p>I tried to replace all <code>imgpopup</code> by <code>img</code> to find further problems
-first.</p>
-
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~/octopress$ rake generate
-## Generating Site with Jekyll
-<span class="rake_gen_unchanged">unchanged</span> sass/print.scss
-<span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-<span class="err">Liquid Exception: undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa45c82
-4&gt;&gt; in _posts/2013-08-16-edit-latex-equations-in-vim.html/#excerpt</span>
-jekyll 2.3.0 | Error:  undefined method `safe_wrap' for #&lt;&lt;Jekyll::ImgPopup:0xa4
-5c824&gt;&gt;
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 69\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad100644 rose\x00\xaa\x82\x37\x28\xea\x7d
+\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
 </code></pre>
 
-<p>Second, it’s the <code>gsub</code> method <em>again</em>!  I’m sorry to that I has been
-tired of reading Ruby’s documentation, so I decided to reset my commit
-history to the tip of <code>origin/source</code>, and revert the default RVM
-version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
+<p>We’re done!</p>
 
 </div>
 
@@ -159,12 +182,12 @@ version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
 
 
 
-<time class='entry-date' datetime='2014-08-13T20:26:05+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:26 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T22:30:55+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:30 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/ruby/'>ruby</a>
+    <a class='category' href='/blog/categories/git/'>git</a>
   
 </span>
 
@@ -173,7 +196,7 @@ version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/" data-via="" data-counturl="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/" >Tweet</a>
   
   
   
@@ -184,10 +207,8 @@ version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/08/13/upgraded-ubuntu/" title="Previous Post: Upgraded Ubuntu">&laquo; Upgraded Ubuntu</a>
+        <a class="basic-alignment left" href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/" title="Previous Post: Git Object ID Generation (2): Trees with One Single Blob">&laquo; Git Object ID Generation (2): Trees with One Single Blob</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/08/14/my-scanner-and-ubuntu-14-dot-04/" title="Next Post: My Scanner and Ubuntu 14.04">My Scanner and Ubuntu 14.04 &raquo;</a>
       
     </p>
   </footer>
@@ -296,8 +317,8 @@ version to 1.9.3 <em>again</em> by <code>rvm use --default 1.9.3</code>.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/';
-        var disqus_url = 'https://vincenttam.github.io/blog/2014/08/13/install-ruby-again-2/';
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/';
         var disqus_script = 'embed.js';
       
     (function () {

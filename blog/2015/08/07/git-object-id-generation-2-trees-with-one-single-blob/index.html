@@ -136,7 +136,7 @@ Control with Git</em>.</p>
   <li>
     <p>Create the file <code>len.txt</code> consisting of</p>
 
-    <pre><code> "tree" SP &lt;result in item 6&gt; NUL
+    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
 </code></pre>
 
     <p><em>without</em> the line terminator.</p>
@@ -195,6 +195,28 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
 <p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
 <code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
 
+<h2 id="fact-learnt-formatting-printfs-output">Fact learnt: formatting printf’s output</h2>
+
+<p>In the Stack Overflow question, there’s a command</p>
+
+<pre><code>find .git/objects/ -type f -printf "%h%f %s\n" {.cliUB}
+</code></pre>
+
+<ul>
+  <li>The flag <code>-type f</code> stands for files.  <em>Without</em> this flag,
+  directories like <code>.git/objects</code> will be displayed.</li>
+  <li>The flag <code>-printf</code> formats the output.
+    <ul>
+      <li><code>%h</code> means the head of the file name <em>without</em> the last
+  component of the file name.  Thus, it expands to a the path of
+  a directory <em>without</em> the trailing <code>/</code>.</li>
+      <li><code>%f</code> means the last component of the file name.  As a result,
+  the <code>/</code> inside the displayed SHA-1 hashes are taken away.</li>
+      <li><code>%s</code> means the file size</li>
+    </ul>
+  </li>
+</ul>
+
 </div>
 
 
@@ -238,6 +260,8 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
         <a class="basic-alignment left" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Previous Post: How Does Git Commit Amend Work?">&laquo; How Does Git Commit Amend Work?</a>
       
       
+        <a class="basic-alignment right" href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/" title="Next Post: Git Object ID Generation (3): Trees with Multiple Blobs">Git Object ID Generation (3): Trees with Multiple Blobs &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -271,7 +295,7 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (16)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (17)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -280,7 +304,7 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
 <li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (39)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (17)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (18)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (46)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -300,6 +324,10 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Git Object ID Generation (3): Trees With Multiple Blobs</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a>
       </li>
     
@@ -313,10 +341,6 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
     
       <li class="post">
         <a href="/blog/2015/08/06/my-git-command-list-3/">My Git Command List (3)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a>
       </li>
     
   </ul>

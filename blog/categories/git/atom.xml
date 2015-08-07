@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-07T21:53:30+08:00</updated>
+  <updated>2015-08-07T23:27:52+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Object ID Generation (3): Trees With Multiple Blobs]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/"/>
+    
+    <updated>2015-08-07T22:30:55+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Having written <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
+word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
+<a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
+convenience.</p>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+68aba62e560c0ebc3396e8ae9335232cd93a3f60
+$ echo "sweet" &gt; rose
+$ git add rose
+$ git write-tree
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1
+$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
+100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
+</code></pre>
+
+<p>Therefore, our target hash is
+<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
+
+<p>Just like what I’d done in the previous post, I manually changed the
+hashes into a <code>printf</code> command that writes out the binary value of the
+hashes.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
+7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+a4b430f9da3e22c0854fb26c97da77db271e5acf  -
+</code></pre>
+
+<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
+<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
+hash</strong>?</em></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I read domegetter’s comment on <a href="https://gist.github.com/masak/2415865">this Gist</a>, and removed the
+newline character <code>\n</code> in the middle of the quoted string in the above
+<code>printf</code> command.  Then I decreased the object size by one since a
+character had been taken out.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 69\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad100644 rose\x00\xaa\x82\x37\x28\xea\x7d
+\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
+</code></pre>
+
+<p>We’re done!</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -53,7 +128,7 @@ Control with Git</em>.</p>
   <li>
     <p>Create the file <code>len.txt</code> consisting of</p>
 
-    <pre><code> "tree" SP &lt;result in item 6&gt; NUL
+    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
 </code></pre>
 
     <p><em>without</em> the line terminator.</p>
@@ -111,6 +186,28 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
 
 <p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
 <code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
+
+<h2 id="fact-learnt-formatting-printfs-output">Fact learnt: formatting printf’s output</h2>
+
+<p>In the Stack Overflow question, there’s a command</p>
+
+<pre><code>find .git/objects/ -type f -printf "%h%f %s\n" {.cliUB}
+</code></pre>
+
+<ul>
+  <li>The flag <code>-type f</code> stands for files.  <em>Without</em> this flag,
+  directories like <code>.git/objects</code> will be displayed.</li>
+  <li>The flag <code>-printf</code> formats the output.
+    <ul>
+      <li><code>%h</code> means the head of the file name <em>without</em> the last
+  component of the file name.  Thus, it expands to a the path of
+  a directory <em>without</em> the trailing <code>/</code>.</li>
+      <li><code>%f</code> means the last component of the file name.  As a result,
+  the <code>/</code> inside the displayed SHA-1 hashes are taken away.</li>
+      <li><code>%s</code> means the file size</li>
+    </ul>
+  </li>
+</ul>
 
 ]]></content>
     
@@ -193,7 +290,7 @@ online.  I just select some important ones for quick reference.</code>
 difference in the hashes, whereas the timestamp of the <code>author</code> is
 converted to a human readable date for display.</p>
 
-<h2 id="fact-learnt">Fact learnt</h2>
+<h2 id="facts-learnt">Facts learnt</h2>
 
 <h3 id="unix-timestamp">Unix timestamp</h3>
 
@@ -341,107 +438,6 @@ entry will be created in the tree object corresponding to
       <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
 in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
 <code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[An Up-to-date Git on Ubuntu]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu/"/>
-    
-    <updated>2014-12-21T01:03:49+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/12/21/an-up-to-date-git-on-ubuntu</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Tonight, I read the most recent blog article on
-<a href="https://github.com/blog">GitHub’s blog</a>.<sup id="fnref:post"><a href="#fn:post" class="footnote">1</a></sup>  It says that the version of Git Bash
-on my M$ Win* 7 is <em>unsafe</em>.  Moreover, it is claimed that
-<a href="https://www.gnu.org/gnu/linux-and-gnu.en.html">GNU/Linux</a> computers <em>aren’t</em> affected since they’re case
-sensitive.  At first, I believed that I <em>didn’t</em> need to upgrade my
-<a href="http://git-scm.com/">Git</a>.  However, after I clicked the link for the announcement of Git
-v2.2.1, I checked the version of the <a href="http://git-scm.com/">Git</a> on <a href="http://www.ubuntu.com">Ubuntu</a>, and found out
-that it <em>wasn’t</em> the newest one.  The following paragraph convinced me
-to get this update on my Ubuntu desktop.</p>
-
-<p><blockquote><p>Even though the issue may not affect Linux users, if you are a hosting service whose users may fetch from your service to Windows or Mac OS X machines, you are strongly encouraged to update to protect such users who use existing versions of Git.</p><footer><strong>Junio C Hamano</strong> <cite><a href='http://article.gmane.org/gmane.linux.kernel/1853266'>[ANNOUNCE] Git v2.2.1 (and Updates to Older Maintenance Tracks)</a></cite></footer></blockquote></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Add the <abbr title="Personal Package Archive">PPA</abbr> for <a href="http://git-scm.com/">Git</a>.</p>
-
-<pre class="cliUB"><code>$ sudo add-apt-repository ppa:git-core/ppa
-[sudo] password for owner:
- The most current stable version of Git for Ubuntu.
-
-For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
-  More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
-Press [ENTER] to continue or Ctrl-C to cancel adding it
-
-gpg: keyring `/tmp/tmplo3t2ozz/secring.gpg' created
-gpg: keyring `/tmp/tmplo3t2ozz/pubring.gpg' created
-gpg: requesting key E1DF1F24 from hkp server keyserver.ubuntu.com
-gpg: /tmp/tmplo3t2ozz/trustdb.gpg: trustdb created
-gpg: key E1DF1F24: public key "Launchpad PPA for Ubuntu Git Maintainers" imported
-gpg: Total number processed: 1
-gpg:               imported: 1  (RSA: 1)
-OK
-</code></pre>
-
-<p>Update the package information and upgrade the file.</p>
-
-<pre class="cliUB"><code>$ sudo apt-get upgrade
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-Calculating upgrade... Done
-The following packages will be upgraded:
-  git git-core git-man gitk
-4 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
-Need to get 5,604 kB of archives.
-After this operation, 1,528 kB of additional disk space will be used.
-Do you want to continue? [Y/n] Y
-Get:1 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main gitk all 1:2.2.1-0ppa2~ubuntu14.04.1 [704 kB]
-Get:2 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git i386 1:2.2.1-0ppa2~ubuntu14.04.1 [3,601 kB]
-Get:3 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-man all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,298 kB]
-Get:4 http://ppa.launchpad.net/git-core/ppa/ubuntu/ trusty/main git-core all 1:2.2.1-0ppa2~ubuntu14.04.1 [1,412 B]
-Fetched 5,604 kB in 23s (240 kB/s)
-(Reading database ... 380182 files and directories currently installed.)
-Preparing to unpack .../gitk_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking gitk (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git_1%3a2.2.1-0ppa2~ubuntu14.04.1_i386.deb ...
-Unpacking git (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git-man_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking git-man (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Preparing to unpack .../git-core_1%3a2.2.1-0ppa2~ubuntu14.04.1_all.deb ...
-Unpacking git-core (1:2.2.1-0ppa2~ubuntu14.04.1) over (1:2.0.4-0ppa1~ubuntu12.04.1) ...
-Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
-Setting up git-man (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up git (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up gitk (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-Setting up git-core (1:2.2.1-0ppa2~ubuntu14.04.1) ...
-</code></pre>
-
-<p>Now, I’ve the newest stable release of <a href="http://git-scm.com/">Git</a>.</p>
-
-<pre class="cliUB"><code>$ git --version
-git version 2.2.1
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:post">
-
-      <p><a href="http://article.gmane.org/gmane.linux.kernel/1853266"><em>Vulnerability announced: update your Git clients</em></a> by
-Vicent Marti. <a href="#fnref:post" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
