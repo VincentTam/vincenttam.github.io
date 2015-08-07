@@ -94,5 +94,23 @@ digits in the blob ID.  I then put the things together in a command.
 By executing the above command, I got **the right SHA-1 hash**:
 `68aba62e560c0ebc3396e8ae9335232cd93a3f60`.
 
+Fact learnt: formatting printf's output
+---
+
+In the Stack Overflow question, there's a command
+
+    find .git/objects/ -type f -printf "%h%f %s\n"
+{.cliUB}
+
+- The flag `-type f` stands for files.  *Without* this flag,
+    directories like `.git/objects` will be displayed.
+- The flag `-printf` formats the output.
+    - `%h` means the head of the file name *without* the last
+        component of the file name.  Thus, it expands to a the path of
+        a directory *without* the trailing `/`.
+    - `%f` means the last component of the file name.  As a result,
+        the `/` inside the displayed SHA-1 hashes are taken away.
+    - `%s` means the file size
+
 [seri1]: /blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/
 [so13977017]: http://stackoverflow.com/a/13977017
