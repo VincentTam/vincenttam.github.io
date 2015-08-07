@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-07T17:08:53+08:00</updated>
+  <updated>2015-08-07T19:02:14+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,102 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[How Does Git Commit --amend Work?]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/"/>
+    
+    <updated>2015-08-07T17:15:29+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work</id>
+    
+      <content type="html"><![CDATA[<h2 id="situation">Situation</h2>
+
+<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
+but after a while, I changed that post.  In order not to complexify
+my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
+simple and convenient.  I observed that the displayed time in the
+amended commit was the <em>same</em> as the original one, whereas the SHA-1
+hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
+However, from
+<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
+that the ID of Git commit objects is totally determined by</p>
+
+<ol>
+  <li>the content of the commit message</li>
+  <li>the commit time</li>
+  <li>the author</li>
+</ol>
+
+<p>In this case, no difference of the above factors between the original
+commit and the amended commit can be observed with <code>git show</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
+
+<!-- more -->
+
+<h2 id="difference">Difference</h2>
+
+<p>To solve this problem, I scrolled up the screen and captured the SHA-1
+hashes fo the two commits.</p>
+
+<ul>
+  <li>the original commit’s hash: <code>9de8974b93a2e4032b608c0de17ea5ed0c55524b</code></li>
+  <li>the amended commit’s hash: <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code></li>
+</ul>
+
+<p>Note: I just <em>make up</em> the email address <code>demo@example.com</code> to replace
+my real email address to <a href="http://www.problogger.net/archives/2008/12/06/10-reasons-to-avoid-mailto-links/">avoid email spams</a>.  Therefore,
+<strong>the above commit hashes don’t correspond to the content displayed
+below</strong>.  In fact, they correspond to the commits in the Git
+repository for this blog.</p>
+
+<pre class="cliUB"><code>$ git cat-file -p 9de8974b93a2e4032b608c0de17ea5ed0c55524b
+tree b9f4fb708327e25c8b1b822711ec7dda9c5b2198
+parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
+author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
+committer Vincent Tam &lt;demo@example.com&gt; <span class="UBHLCode">1438859683</span> +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.
+$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f
+tree 2d864bcb7e4944e9d98b663649c79084692873c1
+parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
+author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
+committer Vincent Tam &lt;demo@example.com&gt; 1438864942 +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.</code>
+</pre>
+
+<p>Hence, the difference of the timestamp of the <code>committer</code> causes the
+difference in the hashes, whereas the timestamp of the <code>author</code> is
+converted to a human readable date for display.</p>
+
+<h2 id="fact-learnt">Fact learnt</h2>
+
+<h3 id="unix-timestamp">Unix timestamp</h3>
+
+<p>A Unix timestamp is the number of seconds elasped since the start of
+the year 1970 in <abbr title="Global Mean Time">GMT</abbr>.</p>
+
+<h3 id="a-little-bit-kramdown-syntax-eob-marker">A little bit kramdown syntax: <abbr title="End-Of-Block Marker">EOB</abbr> marker</h3>
+
+<p>According to kramdown’s syntax guide,
+<a href="http://kramdown.gettalong.org/syntax.html#eob-marker">the <abbr title="End-Of-Block Marker">EOB</abbr> marker <em>won’t</em> be found in most Markdown documents</a>.  In
+order to include a list followed by a code block that <em>isn’t</em>
+contained inside the list, the boundary of the list has to be
+specified by a line consisting of a leading ‘^’ character.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -110,8 +206,8 @@ $ git ls-files -s         # List all tracked files and their hash
 $ git ls-tree {hash}      # List the contents of a tree
 $ git rev-parse {hash}    # Return the full SHA-1 of {hash}
 $ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-$ git diff                # Show changes not staged for commit
-$ git diff --cache        # Show changes staged for commit
+$ git diff                # Show changes in tracked files not staged for commit
+$ git diff --cached       # Show changes in tracked files staged for commit
 </code></pre>
 
 <p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
@@ -322,67 +418,6 @@ Total 48241 (delta 23195), reused 38708 (delta 18503)
 Removing duplicate objects: 100% (256/256), done.
 </code></pre>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Repositories in USB Drives on Windows]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/10/09/git-repositories-in-usb-drives-on-windows/"/>
-    
-    <updated>2014-10-09T22:59:24+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/10/09/git-repositories-in-usb-drives-on-windows</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p><img src="/images/posts/MSysGitUSB/problem.jpg" alt="git bash" /></p>
-
-<p><strong>How to access my USB drive (F:/) in Git Bash?</strong></p>
-
-<p>I had tried closing all instances of Git Bash and re-opening them
-again.<sup id="fnref:reopen"><a href="#fn:reopen" class="footnote">1</a></sup>  However, it <em>didn’t</em> worked.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>If users can use Git command line utilities in <code>cmd.exe</code>, then what’s
-the point of asking the above question?</p>
-
-<p><em>Without</em> stopping <code>ssh-agent.exe</code>, one <em>can’t</em> pull Git repositories
-from the hard disk to the USB drive.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p><img src="/images/posts/MSysGitUSB/taskmgr.jpg" alt="taskmgr" /></p>
-
-<p>The culprit is <code>ssh-agent.exe</code>.  Killing it will do.<sup id="fnref:sol"><a href="#fn:sol" class="footnote">2</a></sup></p>
-
-<h2 id="result">Result</h2>
-
-<p><img src="/images/posts/MSysGitUSB/result.jpg" alt="result" /></p>
-
-<p>The USB drive (F:/) can now be <em>detected</em> in Git Bash.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:reopen">
-
-      <p><a href="http://superuser.com/a/442297"><em>mount external drive on windows7 for git</em></a> in Super
-User <a href="#fnref:reopen" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:sol">
-
-      <p><a href="http://stackoverflow.com/a/21375551"><em>Git “unable to determine absolute path of git directory”</em></a>
-in Stack Overflow</p>
-
-      <p><blockquote><p>Killing the ssh-agent.exe process works for me.</p><footer><strong>Nikolaos Georgiou</strong></footer></blockquote> <a href="#fnref:sol" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

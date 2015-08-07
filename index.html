@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="The SHA-1 hash for blobs isn’t so hard to generate, and the process
-is now well-known. I don’t repeat it here. The one for commits can
-be similarly &hellip;">
+  <meta name="description" content="Situation I’ve written and commited the post My Git Command List (3),
+but after a while, I changed that post. In order not to complexify
+my Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,70 @@ be similarly &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit &#8211;amend Work?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="situation">Situation</h2>
+
+<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
+but after a while, I changed that post.  In order not to complexify
+my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
+simple and convenient.  I observed that the displayed time in the
+amended commit was the <em>same</em> as the original one, whereas the SHA-1
+hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
+However, from
+<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
+that the ID of Git commit objects is totally determined by</p>
+
+<ol>
+  <li>the content of the commit message</li>
+  <li>the commit time</li>
+  <li>the author</li>
+</ol>
+
+<p>In this case, no difference of the above factors between the original
+commit and the amended commit can be observed with <code>git show</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/how-does-git-commit-amend-work/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -174,8 +238,8 @@ $ git ls-files -s         # List all tracked files and their hash
 $ git ls-tree {hash}      # List the contents of a tree
 $ git rev-parse {hash}    # Return the full SHA-1 of {hash}
 $ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-$ git diff                # Show changes not staged for commit
-$ git diff --cache        # Show changes staged for commit
+$ git diff                # Show changes in tracked files not staged for commit
+$ git diff --cached       # Show changes in tracked files staged for commit
 </code></pre>
 
 <p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
@@ -668,68 +732,6 @@ site of SVGPan as an example.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-01T17:22:45+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:22 pm</span></time>
-        
-           | <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/01/fixed-a-javascript-typeerror/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I included <a href="/blog/2015/04/11/an-image-with-changeable-size/">an image with changeable size</a> in a post written about
-two months ago.</p>
-
-<h3 id="howwhy-does-this-work">How/Why does this work?</h3>
-
-<ul>
-  <li>In brief: View <code>/javascripts/svg_resize_bar.js</code>.</li>
-  <li>For details: click the hyperlink above.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<picture class="fancybox" title="A error received from Firefox
-  console">
-  <source srcset="/images/posts/SVGResizeErr/null_bar558.png" media="(min-width: 558px)" />
-  <img alt="FF throws TypeError" src="/images/posts/SVGResizeErr/null_bar270.png" />
-</picture>
-
-<p>When I browsed any pages except that post which contains the
-changeable SVG image, the above <code>TypeError</code> was thrown.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -745,7 +747,6 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
   <img src="/images/avatar256.png" alt="My Avatar"/>
   <p><a href="/about">Here</a>&#8217;s a more detailed version.</p>
   <ol>
-    <li><strong>NOT</strong> an IT student or staff</li>
     <li>A free software supporter</li>
     <li>A GNU/Linux user</li>
     <li>Love text editing in Vim</li>
@@ -760,12 +761,12 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (14)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (15)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (4)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (39)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -789,6 +790,10 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit &#8211;amend Work?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Git Object ID Generation (1): Blobs and Commits</a>
       </li>
     
@@ -802,10 +807,6 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
     
       <li class="post">
         <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Some Thoughts on a Real-Valued Function</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/">Basic Jekyll Date Locale Support</a>
       </li>
     
   </ul>

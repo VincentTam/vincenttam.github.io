@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Firefox&#8217;s Markdown Viewer - Blog 1</title>
+  <title>How Does Git Commit &#8211;amend Work? - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="This morning, I’ve found a Firefox Add-on called
-Markdown Viewer. As its name suggests, it’s a Firefox plugin
-that enables users to view Markdown &hellip;">
+  <meta name="description" content="Situation I’ve written and commited the post My Git Command List (3),
+but after a while, I changed that post. In order not to complexify
+my Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@ that enables users to view Markdown &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer">
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -84,7 +84,7 @@ that enables users to view Markdown &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Firefox&#8217;s Markdown Viewer</h1>
+	<h1 class="entry-title">How Does Git Commit &#8211;amend Work?</h1>
       
     
     
@@ -94,7 +94,7 @@ that enables users to view Markdown &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-02-04T17:10:36+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:10 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -105,52 +105,89 @@ that enables users to view Markdown &hellip;">
   </header>
 
 
-<div class="entry-content"><p>This morning, I’ve found a Firefox Add-on called
-<a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>.  As its name suggests, it’s a Firefox plugin
-that enables users to view Markdown documents.  The screenshot
-provided on the home page of the add-on illustrates that it works on
-M$ Win*.  How about GNU/Linux? I clicked the button and installed
-the plugin.  After that, I used <code>:restart</code> in Vimperator to see what
-happened if I used Firefox to view a local Markdown file with
-extension name <code>.md</code>.</p>
+<div class="entry-content"><h2 id="situation">Situation</h2>
 
-<p>It turned out that nothing happened! With Lai’s review titled <em>Work on
-Linux</em>, I figured out what to do.  After looking at his suggested code
-for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it
-and it worked.  Critical readers will then ask about the way to
-include multiple file extensions.</p>
+<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
+but after a while, I changed that post.  In order not to complexify
+my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
+simple and convenient.  I observed that the displayed time in the
+amended commit was the <em>same</em> as the original one, whereas the SHA-1
+hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
+However, from
+<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
+that the ID of Git commit objects is totally determined by</p>
 
-<p>Browsing the code with <code>#</code> in the RDF file helps.  Here’s what my
-results.</p>
+<ol>
+  <li>the content of the commit message</li>
+  <li>the commit time</li>
+  <li>the author</li>
+</ol>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
-</span><span class="line"><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;/RDF:Description&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>In this case, no difference of the above factors between the original
+commit and the amended commit can be observed with <code>git show</code>.</p>
 
-<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than
-one</em> extension name for a Markdown file.  However, a GNU/Linux user
-should <em>never</em> use <code>.md</code>.</p>
+<h2 id="problem">Problem</h2>
 
-<p>Finally, combining Lai’s and Cas’s posts, I’ve come up with
-<a href="https://gist.github.com/VincentTam/8800268">a Gist</a>.</p>
+<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
 
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+<!-- more -->
+
+<h2 id="difference">Difference</h2>
+
+<p>To solve this problem, I scrolled up the screen and captured the SHA-1
+hashes fo the two commits.</p>
+
+<ul>
+  <li>the original commit’s hash: <code>9de8974b93a2e4032b608c0de17ea5ed0c55524b</code></li>
+  <li>the amended commit’s hash: <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code></li>
+</ul>
+
+<p>Note: I just <em>make up</em> the email address <code>demo@example.com</code> to replace
+my real email address to <a href="http://www.problogger.net/archives/2008/12/06/10-reasons-to-avoid-mailto-links/">avoid email spams</a>.  Therefore,
+<strong>the above commit hashes don’t correspond to the content displayed
+below</strong>.  In fact, they correspond to the commits in the Git
+repository for this blog.</p>
+
+<pre class="cliUB"><code>$ git cat-file -p 9de8974b93a2e4032b608c0de17ea5ed0c55524b
+tree b9f4fb708327e25c8b1b822711ec7dda9c5b2198
+parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
+author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
+committer Vincent Tam &lt;demo@example.com&gt; <span class="UBHLCode">1438859683</span> +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.
+$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f
+tree 2d864bcb7e4944e9d98b663649c79084692873c1
+parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
+author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
+committer Vincent Tam &lt;demo@example.com&gt; 1438864942 +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.</code>
+</pre>
+
+<p>Hence, the difference of the timestamp of the <code>committer</code> causes the
+difference in the hashes, whereas the timestamp of the <code>author</code> is
+converted to a human readable date for display.</p>
+
+<h2 id="fact-learnt">Fact learnt</h2>
+
+<h3 id="unix-timestamp">Unix timestamp</h3>
+
+<p>A Unix timestamp is the number of seconds elasped since the start of
+the year 1970 in <abbr title="Global Mean Time">GMT</abbr>.</p>
+
+<h3 id="a-little-bit-kramdown-syntax-eob-marker">A little bit kramdown syntax: <abbr title="End-Of-Block Marker">EOB</abbr> marker</h3>
+
+<p>According to kramdown’s syntax guide,
+<a href="http://kramdown.gettalong.org/syntax.html#eob-marker">the <abbr title="End-Of-Block Marker">EOB</abbr> marker <em>won’t</em> be found in most Markdown documents</a>.  In
+order to include a list followed by a code block that <em>isn’t</em>
+contained inside the list, the boundary of the list has to be
+specified by a line consisting of a leading ‘^’ character.</p>
 
 </div>
 
@@ -167,12 +204,12 @@ should <em>never</em> use <code>.md</code>.</p>
 
 
 
-<time class='entry-date' datetime='2014-02-04T17:10:36+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:10 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/web-technologies/'>web technologies</a>
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/kramdown/'>kramdown</a>
   
 </span>
 
@@ -181,7 +218,7 @@ should <em>never</em> use <code>.md</code>.</p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/" data-via="" data-counturl="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/" >Tweet</a>
   
   
   
@@ -192,10 +229,8 @@ should <em>never</em> use <code>.md</code>.</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/" title="Previous Post: A Reason for My VimRepress Installation Failure">&laquo; A Reason for My VimRepress Installation Failure</a>
+        <a class="basic-alignment left" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/" title="Previous Post: Git Object ID Generation (1): Blobs and Commits">&laquo; Git Object ID Generation (1): Blobs and Commits</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/02/04/my-error-while-using-ultrablog/" title="Next Post: My Error While Using UltraBlog">My Error While Using UltraBlog &raquo;</a>
       
     </p>
   </footer>
@@ -304,8 +339,8 @@ should <em>never</em> use <code>.md</code>.</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/';
-        var disqus_url = 'https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/';
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/';
         var disqus_script = 'embed.js';
       
     (function () {
