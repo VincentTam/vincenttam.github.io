@@ -46,7 +46,7 @@ bytes.  When it's displayed, it has 40 hex-digits.
 2. *The blob for a file is independent of the file name*, which was
 actually stored in a tree object.  For example, the object ID of a
 file which contains only a single line "hello world" is
-3b18e512dba79e4c8300dd08aeb37f8e728b8dad, so if the file is stored
+`3b18e512dba79e4c8300dd08aeb37f8e728b8dad`, so if the file is stored
 inside the `.git` directory as a blob, the blob will be named as
 `.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad`.
 3. If a sub-directory is created in the `dir` directory, then a `tree`
