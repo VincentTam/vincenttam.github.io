@@ -36,6 +36,7 @@ Control with Git*.
 8. Create the file `len.txt` consisting of
 
         "tree" SP <result in item 6> NUL
+    {:.cliUB}
 
     *without* the line terminator.
 
