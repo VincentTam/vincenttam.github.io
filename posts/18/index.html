@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="After writing my previous post, I found out that the
-standard Markdown syntax for nesting a code block
-inside a list item doesn’t work. I knew a &hellip;">
+  <meta name="description" content="GNU’s shred utility The command for files and folders For a single file, the command should be simple. For a directory,
+the following command can &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,93 @@ inside a list item doesn’t work. I knew a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/05/secure-file-removal/">Secure File Removal</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-05T13:11:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:11 pm</span></time>
+        
+           | <a href="/blog/2014/06/05/secure-file-removal/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/05/secure-file-removal/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/05/secure-file-removal/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="gnus-shred-utility">GNU’s <code>shred</code> utility</h2>
+
+<h3 id="the-command-for-files-and-folders">The command for files and folders</h3>
+
+<p>For a <em>single</em> file, the command should be simple.  For a <em>directory</em>,
+the following command can shred the files recursively.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cliUB"><code>$ find &lt;dir&gt; -type f -exec shred {} \;
+</code></pre>
+
+<h3 id="effectiveness-of-shred-in-ext3-and-ntfs-file-systems">Effectiveness of <code>shred</code> in Ext3 and NTFS file systems</h3>
+
+<p>The cited part of <code>shred</code>’s manpage in the second answer interested me
+to read more about the utility.  In Vim, I pressed <code>K</code> when the cursor
+is on the word <code>shred</code>, and opened the manpage, which claims that
+<em>using it on an Ext3 partition is fine</em> if the partition is in either
+the <code>data=ordered</code> (<strong>default</strong>) or <code>data=writeback</code> mode.  How about
+<em>an NTFS partition</em>?  At the bottom, it says that the info page has
+more information about the utility.  I found the following section in
+the info page.</p>
+
+<blockquote>
+  <p><strong>Please note</strong> that `shred’ relies on a very important assumption:
+that the file system overwrites data in place.  This is the
+traditional way to do things, but many modern file system designs do
+not satisfy this assumption.  Exceptions include:</p>
+
+  <ul>
+    <li>Log-structured or journaled file systems, such as those supplied
+with AIX and Solaris, and JFS, ReiserFS, XFS, Ext3 (in
+`data=journal’ mode), BFS, <strong>NTFS</strong>, etc. when they are configured
+to journal <em>data</em>.</li>
+  </ul>
+</blockquote>
+
+<p>However, googling “shred ntfs effective”, I saw another post about the
+utility.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Due to my <em>limited</em> IT knowledge, searching for the word
+“NTFS”, all I could understand was that “using <code>shred</code> on NTFS is
+fine”.  I searched for the word “ext3”, and found Shane’s comment,
+which questioned Wayne Richardson’s advice.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<h3 id="true-solution-encrypt-the-file-system">True solution: Encrypt the file system</h3>
+
+<p>I went back to the Unix Stack Exchange question and re-read the second
+solution.  The feasible way is in the last line.  I think many new
+GNU/Linux users who have read this answer won’t think of encrypting
+swap.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/05/secure-file-removal/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -629,58 +715,6 @@ information.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/05/27/my-desktop-crashed/">My Desktop Crashed!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-27T00:22:22+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
-        
-           | <a href="/blog/2014/05/27/my-desktop-crashed/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/05/27/my-desktop-crashed/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/05/27/my-desktop-crashed/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="beginning">Beginning</h2>
-
-<p>Last Saturday night, I used my Ubuntu Desktop to watch some videos.
-While it was playing, the recently upgraded Firefox suddenly hanged.
-The screen was freezed, and the sound continued to play.  To avoid
-disturbing my neighbour, I muted the monitor speakers.  I initially
-guessed that the newly upgraded Firefox didn’t work well with Linux
-kernel 3.2.0-61, which was released on May 2 2014.  I forced the
-machine to halt by pressing the power button for a while.  Then I
-switched on the computer again, and chose “Memtest86+” in the GRUB
-menu.  Within several minutes, the words in the blue screen blurred
-due to some blinking dots.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/27/my-desktop-crashed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/19">&larr; Older</a>
@@ -712,7 +746,7 @@ due to some blinking dots.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (15)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (16)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -741,7 +775,11 @@ due to some blinking dots.</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit &#8211;amend Work?</a>
+        <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a>
       </li>
     
       <li class="post">
@@ -754,10 +792,6 @@ due to some blinking dots.</p>
     
       <li class="post">
         <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Some Thoughts on a Real-Valued Function</a>
       </li>
     
   </ul>

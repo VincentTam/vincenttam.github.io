@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Giving Up Testing MathJax and Anchors on Blogger - Blog 1</title>
+  <title>Git Object ID Generation (2): Trees With One Single Blob - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="In dynamic view, though the code for dynamic loading of MathJax
-contents has been pasted into the HTML code for the template, things
-just work in a &hellip;">
+  <meta name="description" content="Background In the first post in this series, I’ve claimed that the
+generation of object IDs in Git is the SHA-1 hash of the string &lt;object type &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ just work in a &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/01/05/giving-up-testing-mathjax-and-anchors-on-blogger">
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -84,7 +83,7 @@ just work in a &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Giving Up Testing MathJax and Anchors on Blogger</h1>
+	<h1 class="entry-title">Git Object ID Generation (2): Trees With One Single Blob</h1>
       
     
     
@@ -94,7 +93,7 @@ just work in a &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-01-05T01:45:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2015-08-07T19:36:21+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:36 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -105,38 +104,97 @@ just work in a &hellip;">
   </header>
 
 
-<div class="entry-content"><p>In dynamic view, though the code for dynamic loading of <a href="http://www.mathjax.org">MathJax</a>
-contents has been pasted into the HTML code for the template, things
-just work in a strange way: in the class mode, <a href="http://www.mathjax.org">MathJax</a> works the
-best; in other modes, it may not work or it works partially.  For
-example, in a mode, the dollar sign in the code tag is interpreted,
-and the script file for <a href="http://www.mathjax.org">MathJax</a> is loaded.  But when you click a
-blog entry for a popup frame containing some <a href="http://www.mathjax.org">MathJax</a> code, then it
-simply won’t load.  Nonetheless, anchors don’t work in a desired way
-in the dynamic view—after clicking an anchor, I am immediately
-directed to the destination, which is covered by the header.  Finally,
-to ensure that the contents are correctly interpreted, the best way is
-to use the <code>tex2jax_ignore</code> class.<sup id="fnref:no_render"><a href="#fn:no_render" class="footnote">1</a></sup>  Anyways, if readers
-are also writers of HTML, $\rm \LaTeX$, etc, they’ll know what I
-intend to write by testing the HTML code, and for the remaining
-readers, I just apologize for the inconvenience caused and suggest
-them to right click the article in the default “Sidebar” view and
-press <code>&lt;F5&gt;</code> to reload for the correctly rendered contents.  I’ve
-forgotten about anchors since toggling between the “Compose” and
-“HTML” modes while writing a new post will cause some strange change
-in the <code>&lt;href&gt;</code> attribute of the <code>&lt;a&gt;</code> tag.</p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<hr />
+<p>In <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
+generation of object IDs in Git is the SHA-1 hash of the string</p>
 
-<div class="footnotes">
-  <ol>
-    <li id="fn:no_render">
+<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
+</code></pre>
 
-      <p>See <a href="https://github.com/mathjax/mathjax-docs/wiki/How-to-prevent-rendering:-use-tex2jax_ignore"><em>How to prevent rendering: use tex2jax_ignore</em></a> by
-Davide P.  Cervone. <a href="#fnref:no_render" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p>,where</p>
+
+<ul>
+  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
+  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
+  command <code>wc -c</code>.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
+Control with Git</em>.</p>
+
+<ol>
+  <li>Create a folder named <code>hello</code> and go to that directory.</li>
+  <li>Initialise an empty Git repository.</li>
+  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
+  <li>Add the file to Git’s object storage.</li>
+  <li>Get a tree object from the index.</li>
+  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
+  <li>Count the number of bytes in <code>test.txt</code>.</li>
+  <li>
+    <p>Create the file <code>len.txt</code> consisting of</p>
+
+    <pre><code> "tree" SP &lt;result in item 6&gt; NUL
+</code></pre>
+
+    <p><em>without</em> the line terminator.</p>
+  </li>
+  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
+compute its SHA-1 hash.</li>
+</ol>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
+$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
+<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
+$ wc -c test.txt
+63 test.txt
+$ printf "tree 63\0" &gt; len.txt
+$ cat len.txt test.txt | shasum
+<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
+</code></pre>
+
+<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
+hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I googled “git tree hash id”, and I found the chosen answer of
+<a href="http://stackoverflow.com/a/13977017">this Stack Overflow question</a> very explanative.  One may
+shorten the included command by replacing <code>echo -en</code> with <code>printf</code>.</p>
+
+<h3 id="get-the-object-size-right">Get the object size right</h3>
+
+<p>In this case, the object size of the tree
+<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code> containg the blob
+<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code> which corresponds to the
+file <code>hello.txt</code> should be 37 (= 6 + 1 + 9 + 1 + 20).</p>
+
+<h3 id="get-the-object-content-right">Get the object content right</h3>
+
+<p>As the blob ID is stored as binary value, I copied it and pasted it
+Vim so that I could easily insert <code>\x</code> in front of a pair of hex
+digits in the blob ID.  I then put the things together in a command.</p>
+
+<pre class="cliUB"><code># Contents of `testing.sh' as seen inside Vim
+# Note that there's NO newline character in the following command
+printf "tree 37\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4
+c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
+</code></pre>
+
+<h3 id="result">Result</h3>
+
+<p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
+<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
+
 </div>
 
 
@@ -152,12 +210,12 @@ Davide P.  Cervone. <a href="#fnref:no_render" class="reversefootnote">&#8617;</
 
 
 
-<time class='entry-date' datetime='2014-01-05T01:45:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:45 am</span></time>
+<time class='entry-date' datetime='2015-08-07T19:36:21+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:36 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/mathjax/'>mathjax</a>, <a class='category' href='/blog/categories/web-technologies/'>web technologies</a>
+    <a class='category' href='/blog/categories/git/'>git</a>
   
 </span>
 
@@ -166,7 +224,7 @@ Davide P.  Cervone. <a href="#fnref:no_render" class="reversefootnote">&#8617;</
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/01/05/giving-up-testing-mathjax-and-anchors-on-blogger/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/01/05/giving-up-testing-mathjax-and-anchors-on-blogger/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/" data-via="" data-counturl="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/" >Tweet</a>
   
   
   
@@ -177,10 +235,8 @@ Davide P.  Cervone. <a href="#fnref:no_render" class="reversefootnote">&#8617;</
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/01/05/guidelines-for-setting-a-strong-password/" title="Previous Post: Guidelines for Setting a Strong Password">&laquo; Guidelines for Setting a Strong Password</a>
+        <a class="basic-alignment left" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Previous Post: How Does Git Commit Amend Work?">&laquo; How Does Git Commit Amend Work?</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/" title="Next Post: GNU ddrescue—A Powerful Data Recovery Tool">GNU ddrescue—A Powerful Data Recovery Tool &raquo;</a>
       
     </p>
   </footer>
@@ -289,8 +345,8 @@ Davide P.  Cervone. <a href="#fnref:no_render" class="reversefootnote">&#8617;</
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/01/05/giving-up-testing-mathjax-and-anchors-on-blogger/';
-        var disqus_url = 'https://vincenttam.github.io/blog/2014/01/05/giving-up-testing-mathjax-and-anchors-on-blogger/';
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/';
         var disqus_script = 'embed.js';
       
     (function () {

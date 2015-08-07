@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-07T19:02:14+08:00</updated>
+  <updated>2015-08-07T21:53:30+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,7 +15,110 @@
   
   <entry>
     
-      <title type="html"><![CDATA[How Does Git Commit --amend Work?]]></title>
+      <title type="html"><![CDATA[Git Object ID Generation (2): Trees With One Single Blob]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/"/>
+    
+    <updated>2015-08-07T19:36:21+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In <a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
+generation of object IDs in Git is the SHA-1 hash of the string</p>
+
+<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
+</code></pre>
+
+<p>,where</p>
+
+<ul>
+  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
+  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
+  command <code>wc -c</code>.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
+Control with Git</em>.</p>
+
+<ol>
+  <li>Create a folder named <code>hello</code> and go to that directory.</li>
+  <li>Initialise an empty Git repository.</li>
+  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
+  <li>Add the file to Git’s object storage.</li>
+  <li>Get a tree object from the index.</li>
+  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
+  <li>Count the number of bytes in <code>test.txt</code>.</li>
+  <li>
+    <p>Create the file <code>len.txt</code> consisting of</p>
+
+    <pre><code> "tree" SP &lt;result in item 6&gt; NUL
+</code></pre>
+
+    <p><em>without</em> the line terminator.</p>
+  </li>
+  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
+compute its SHA-1 hash.</li>
+</ol>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
+$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
+<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
+$ wc -c test.txt
+63 test.txt
+$ printf "tree 63\0" &gt; len.txt
+$ cat len.txt test.txt | shasum
+<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
+</code></pre>
+
+<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
+hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
+
+<!-- more -->
+
+<h2 id="method">Method</h2>
+
+<p>I googled “git tree hash id”, and I found the chosen answer of
+<a href="http://stackoverflow.com/a/13977017">this Stack Overflow question</a> very explanative.  One may
+shorten the included command by replacing <code>echo -en</code> with <code>printf</code>.</p>
+
+<h3 id="get-the-object-size-right">Get the object size right</h3>
+
+<p>In this case, the object size of the tree
+<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code> containg the blob
+<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code> which corresponds to the
+file <code>hello.txt</code> should be 37 (= 6 + 1 + 9 + 1 + 20).</p>
+
+<h3 id="get-the-object-content-right">Get the object content right</h3>
+
+<p>As the blob ID is stored as binary value, I copied it and pasted it
+Vim so that I could easily insert <code>\x</code> in front of a pair of hex
+digits in the blob ID.  I then put the things together in a command.</p>
+
+<pre class="cliUB"><code># Contents of `testing.sh' as seen inside Vim
+# Note that there's NO newline character in the following command
+printf "tree 37\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4
+c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
+</code></pre>
+
+<h3 id="result">Result</h3>
+
+<p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
+<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[How Does Git Commit Amend Work?]]></title>
       <link href="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/"/>
     
     <updated>2015-08-07T17:15:29+08:00</updated>
@@ -97,10 +200,10 @@ converted to a human readable date for display.</p>
 <p>A Unix timestamp is the number of seconds elasped since the start of
 the year 1970 in <abbr title="Global Mean Time">GMT</abbr>.</p>
 
-<h3 id="a-little-bit-kramdown-syntax-eob-marker">A little bit kramdown syntax: <abbr title="End-Of-Block Marker">EOB</abbr> marker</h3>
+<h3 id="a-little-bit-kramdown-syntax-eob-marker">A little bit kramdown syntax: <abbr title="End-Of-Block">EOB</abbr> marker</h3>
 
 <p>According to kramdown’s syntax guide,
-<a href="http://kramdown.gettalong.org/syntax.html#eob-marker">the <abbr title="End-Of-Block Marker">EOB</abbr> marker <em>won’t</em> be found in most Markdown documents</a>.  In
+<a href="http://kramdown.gettalong.org/syntax.html#eob-marker">the <abbr title="End-Of-Block">EOB</abbr> marker <em>won’t</em> be found in most Markdown documents</a>.  In
 order to include a list followed by a code block that <em>isn’t</em>
 contained inside the list, the boundary of the list has to be
 specified by a line consisting of a leading ‘^’ character.</p>
@@ -147,7 +250,7 @@ $ cat len.txt test.txt | shasum
 
 <p>We get the <em>same</em> SHA-1 hash.  Therefore, the ID for Git commit
 objects is just the SHA-1 hash of the contents of the Git commits with
-the string “commit {len}\0” inserted at the beginning, where <code>{len}</code>
+the string <code>commit {len}\0</code> inserted at the beginning, where <code>{len}</code>
 stands for the number of bytes of the Git commit object (which is
 stored in <code>test.txt</code> in the above situation).</p>
 
@@ -221,7 +324,7 @@ bytes.  When it’s displayed, it has 40 hex-digits.</li>
   <li><em>The blob for a file is independent of the file name</em>, which was
 actually stored in a tree object.  For example, the object ID of a
 file which contains only a single line “hello world” is
-3b18e512dba79e4c8300dd08aeb37f8e728b8dad, so if the file is stored
+<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code>, so if the file is stored
 inside the <code>.git</code> directory as a blob, the blob will be named as
 <code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
   <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
@@ -1796,31 +1899,6 @@ command in Vim.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[PlanetMath Socket Error]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/05/planetmath-socket-error/"/>
-    
-    <updated>2015-05-05T22:31:44+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/05/planetmath-socket-error</id>
-    
-      <content type="html"><![CDATA[<p>Yesterday morning, I read the article
-<a href="http://planetmath.org/everymapintospherewhichisnotontoisnullhomotopic"><em>every map into sphere which is not onto is nullhomotopic</em></a> on
-PlanetMath before I understood part of the proof of a very useful
-theorem in topology: Brouwer’s Fixed Point Theorem.</p>
-
-<picture class="fancybox" title="An error triggered by clicking &quot;Commnents&quot;">
-  <source srcset="/images/posts/PlanetMath/socket_err.png" media="(min-width: 755px)" />
-  <img alt="socket error" src="https://vincenttam.github.io/images/posts/PlanetMath/socket_err300.png" />
-</picture>
-
-<p>Unluckily, if I click “Coauthors”, I got the error shown in the above
-screenshot.</p>
-
 ]]></content>
     
   </entry>
