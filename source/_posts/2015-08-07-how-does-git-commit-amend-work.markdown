@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How does git commit --amend work?"
+title: "How Does Git Commit Amend Work?"
 date: 2015-08-07 17:15:29 +0800
 comments: true
 categories: [Git, kramdown]
@@ -96,4 +96,4 @@ specified by a line consisting of a leading '^' character.
 [eob]: http://kramdown.gettalong.org/syntax.html#eob-marker
 
 *[GMT]: Global Mean Time
-*[EOB]: End-Of-Block Marker
+*[EOB]: End-Of-Block
