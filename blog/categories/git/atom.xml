@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-06T20:44:57+08:00</updated>
+  <updated>2015-08-07T17:08:53+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Object ID Generation (1): Blobs and Commits]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"/>
+    
+    <updated>2015-08-07T13:52:47+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits</id>
+    
+      <content type="html"><![CDATA[<p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
+is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
+be similarly generated.</p>
+
+<!-- more -->
+
+<p>For example, <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code> is a hash of
+the repository of this blog.</p>
+
+<pre class="cliUB"><code>$ git rev-parse HEAD
+5b7b566b8a07d4813ba9f08a326e169cf38ca20f
+$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f | tee test.txt
+tree 2d864bcb7e4944e9d98b663649c79084692873c1
+parent afcb4d97cb447112bd2e930159966d92b8e4754a
+author Vincent Tam &lt;sere@live.hk&gt; 1438859683 +0800
+committer Vincent Tam &lt;sere@live.hk&gt; 1438864942 +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.
+$ wc -c test.txt
+379 test.txt
+$ printf "commit 379\0" &gt; len.txt
+$ cat len.txt test.txt | shasum
+5b7b566b8a07d4813ba9f08a326e169cf38ca20f  -
+</code></pre>
+
+<p>We get the <em>same</em> SHA-1 hash.  Therefore, the ID for Git commit
+objects is just the SHA-1 hash of the contents of the Git commits with
+the string “commit {len}\0” inserted at the beginning, where <code>{len}</code>
+stands for the number of bytes of the Git commit object (which is
+stored in <code>test.txt</code> in the above situation).</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="the-printf-command">The printf command</h3>
+
+<p>The commands <code>printf "\0"</code> and <code>printf "\000"</code> <em>doesn’t</em> differ.
+Therefore, if a digit zero follows the null character, one may
+indicate the null character using hex digits: <code>printf "\x000"</code>.
+<code>printf</code> will interpret <code>\x00</code> as a null character and the trailing
+digit <code>0</code> <em>won’t</em> be mixed up with the characters on its left.</p>
+
+<h3 id="the-wc-command">The wc command</h3>
+
+<p>Apart from counting words, the <code>wc</code> command provide various flags
+which return the number of lines, characters, etc.  In the past, I
+knew three flags only: <code>-l</code>, <code>-w</code>, and <code>-c</code>.  I thought that they told
+<code>wc</code> to count the number of <strong>l</strong>ines, <strong>w</strong>ords and <strong>c</strong>haracters
+respectively.  After running the <code>wc</code> command on strings that include
+accents (e.g. “café”, “resumé”, etc), I realised that I misunderstood
+the function of the <code>-c</code> flag, which actually counts the number of
+<em>bytes</em> of the input.  To count the number of characters, use the <code>-m</code>
+flag instead.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -313,69 +380,6 @@ User <a href="#fnref:reopen" class="reversefootnote">&#8617;</a></p>
 in Stack Overflow</p>
 
       <p><blockquote><p>Killing the ssh-agent.exe process works for me.</p><footer><strong>Nikolaos Georgiou</strong></footer></blockquote> <a href="#fnref:sol" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixing This Repo's Network Graph]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/"/>
-    
-    <updated>2014-09-05T23:33:17+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph</id>
-    
-      <content type="html"><![CDATA[<p>Tonight, I worked on my blog.  Here’re something done.</p>
-
-<ol>
-  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
-<em>Blog 1</em>.</li>
-  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-  <li>Understand item 5 of Scott Cheng’s post on setting up
-<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
-it in order to understand what it really means.  After running <code>rake
-setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
-branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
-remote the <em>only</em> branch there.  To avoid conflicts when I push my
-commits on <code>master</code> branch to my remote repository in GitHub, I ran
-some commands as shown below.</li>
-  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
-    <ul>
-      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
- branch shares, as shown in the graph, a common node with
- <code>source</code> branch.  This is <em>wrong</em>!</li>
-      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
- the remote repository to clear the mess.</li>
-      <li>In the new graph, those two branches <em>don’t</em> share a common node
- anymore.</li>
-    </ul>
-  </li>
-</ol>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
-Deleted remote branch origin/master (was e745caf).
-owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
-* <span class="GitBrName">master</span>
-[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
-To git@github.com:vincenttam/vincenttam.github.io.git
- - [deleted]         master
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-06T20:44:57+08:00</updated>
+  <updated>2015-08-07T17:08:53+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Object ID Generation (1): Blobs and Commits]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"/>
+    
+    <updated>2015-08-07T13:52:47+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits</id>
+    
+      <content type="html"><![CDATA[<p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
+is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
+be similarly generated.</p>
+
+<!-- more -->
+
+<p>For example, <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code> is a hash of
+the repository of this blog.</p>
+
+<pre class="cliUB"><code>$ git rev-parse HEAD
+5b7b566b8a07d4813ba9f08a326e169cf38ca20f
+$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f | tee test.txt
+tree 2d864bcb7e4944e9d98b663649c79084692873c1
+parent afcb4d97cb447112bd2e930159966d92b8e4754a
+author Vincent Tam &lt;sere@live.hk&gt; 1438859683 +0800
+committer Vincent Tam &lt;sere@live.hk&gt; 1438864942 +0800
+
+A new post on some Git low level commands
+
+I *don't* go over the details of the book *Pro Git*, which is available
+online.  I just select some important ones for quick reference.
+$ wc -c test.txt
+379 test.txt
+$ printf "commit 379\0" &gt; len.txt
+$ cat len.txt test.txt | shasum
+5b7b566b8a07d4813ba9f08a326e169cf38ca20f  -
+</code></pre>
+
+<p>We get the <em>same</em> SHA-1 hash.  Therefore, the ID for Git commit
+objects is just the SHA-1 hash of the contents of the Git commits with
+the string “commit {len}\0” inserted at the beginning, where <code>{len}</code>
+stands for the number of bytes of the Git commit object (which is
+stored in <code>test.txt</code> in the above situation).</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="the-printf-command">The printf command</h3>
+
+<p>The commands <code>printf "\0"</code> and <code>printf "\000"</code> <em>doesn’t</em> differ.
+Therefore, if a digit zero follows the null character, one may
+indicate the null character using hex digits: <code>printf "\x000"</code>.
+<code>printf</code> will interpret <code>\x00</code> as a null character and the trailing
+digit <code>0</code> <em>won’t</em> be mixed up with the characters on its left.</p>
+
+<h3 id="the-wc-command">The wc command</h3>
+
+<p>Apart from counting words, the <code>wc</code> command provide various flags
+which return the number of lines, characters, etc.  In the past, I
+knew three flags only: <code>-l</code>, <code>-w</code>, and <code>-c</code>.  I thought that they told
+<code>wc</code> to count the number of <strong>l</strong>ines, <strong>w</strong>ords and <strong>c</strong>haracters
+respectively.  After running the <code>wc</code> command on strings that include
+accents (e.g. “café”, “resumé”, etc), I realised that I misunderstood
+the function of the <code>-c</code> flag, which actually counts the number of
+<em>bytes</em> of the input.  To count the number of characters, use the <code>-m</code>
+flag instead.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1678,47 +1745,6 @@ illustrates the problem.</p>
   <source srcset="/images/posts/NoFB/nofb.png" media="(min-width: 791px)" />
   <img alt="can't go to Facebook" src="https://vincenttam.github.io/images/posts/NoFB/nofb300.png" />
 </picture>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Found 2 Incomparable Topologies]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/25/found-2-incomparable-topologies/"/>
-    
-    <updated>2015-04-25T21:17:45+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/25/found-2-incomparable-topologies</id>
-    
-      <content type="html"><![CDATA[<ol>
-  <li>
-    <p>Lower limit topology ($\R_l$)</p>
-
-    <ul>
-      <li>Basis: $\{[a,b): a,b \in \R\text{ s.t. } a &lt; b\}$</li>
-    </ul>
-  </li>
-  <li>
-    <p>K-topology ($\R_K$)</p>
-
-    <ul>
-      <li>Basis: $\{(a,b), (a,b) - K: a,b \in \R\text{ s.t. } a &lt; b \}$,
- where $K = \{ 1/n : n \in \Z_+ \}$.</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="rl-nsubseteq-rk">$\R_l \nsubseteq \R_K$</h2>
-
-<p>Consider a base element $[a,b)$.  At the point $a$, <em>no</em> open interval
-$(c,d)$ containing $a$ is a subset of $[a,b)$.</p>
-
-<h2 id="rk-nsubseteq-rl">$\R_K \nsubseteq \R_l$</h2>
-
-<p>Let $B_2 = (-1, 1) - K$.  At $B_2 \notin \R_l$ because any base
-element $[0,b)$ containing 0 must hit $1/n$ for some $n \in \Z_+$ by
-Archimedean Property of $\Z_+$.  Thus, $\forall b &gt; 0, [0,b)
-\nsubseteq B_2$.</p>
 ]]></content>
     
   </entry>
