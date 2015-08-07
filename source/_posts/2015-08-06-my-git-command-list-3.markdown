@@ -31,8 +31,8 @@ The list
     $ git ls-tree {hash}      # List the contents of a tree
     $ git rev-parse {hash}    # Return the full SHA-1 of {hash}
     $ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-    $ git diff                # Show changes not staged for commit
-    $ git diff --cache        # Show changes staged for commit
+    $ git diff                # Show changes in tracked files not staged for commit
+    $ git diff --cached       # Show changes in tracked files staged for commit
 {:.cliUB}
 
 It *isn't* necessary to supply the full SHA-1 hash for
