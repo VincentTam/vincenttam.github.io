@@ -15,15 +15,19 @@ be similarly generated.
 For example, `5b7b566b8a07d4813ba9f08a326e169cf38ca20f` is a hash of
 the repository of this blog.
 
-    $ git rev-parse HEAD
+Remark: The email shown below is *fake*, so the SHA-1 hash of `HEAD`
+*isn't* real.  For the reason of displaying that email, you may refer
+to [the remark in *Git Object Id Generation (4): General Trees*][pp1].
+
+    $ git rev-parse head
     5b7b566b8a07d4813ba9f08a326e169cf38ca20f
     $ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f | tee test.txt
     tree 2d864bcb7e4944e9d98b663649c79084692873c1
     parent afcb4d97cb447112bd2e930159966d92b8e4754a
-    author Vincent Tam <sere@live.hk> 1438859683 +0800
-    committer Vincent Tam <sere@live.hk> 1438864942 +0800
+    author vincent tam <demo@example.com> 1438859683 +0800
+    committer vincent tam <demo@example.com> 1438864942 +0800
 
-    A new post on some Git low level commands
+    a new post on some git low level commands
 
     I *don't* go over the details of the book *Pro Git*, which is available
     online.  I just select some important ones for quick reference.
@@ -62,3 +66,5 @@ accents (e.g. "café", "resumé", etc), I realised that I misunderstood
 the function of the `-c` flag, which actually counts the number of
 *bytes* of the input.  To count the number of characters, use the `-m`
 flag instead.
+
+[pp1]: /blog/2015/08/07/how-does-git-commit-amend-work/
