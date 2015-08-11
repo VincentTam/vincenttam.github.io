@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-09T20:02:45+08:00</updated>
+  <updated>2015-08-11T12:06:57+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Object ID Generation (5): Predict ID]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/"/>
+    
+    <updated>2015-08-11T10:52:56+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>The method for getting the Git object ID described in
+<a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
+consists of <em>several</em> commands.</p>
+
+<h2 id="the-one-line-command">The one-line command</h2>
+
+<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
+ash}) | shasum
+</code></pre>
+
+<ul>
+  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
+  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
+</ul>
+
+<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
+
+<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
+<p>Hence, we can modify the above command to predict the Git object ID of
+a <code>{file}</code>.</p>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
+</code></pre>
+
+<p>In order to verify the result for files, one can quickly get the blob
+ID from Git by <code>git log -1 -p -- {file}</code>.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h2 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h2>
+
+<p>I typed “linux extract number” on Google, and the autocompletion gave
+me “from string”.  I finally saw two commands for doing this.</p>
+
+<ol>
+  <li><code>sed 's/[^0-9]//g'</code></li>
+  <li><code>tr -dc '0-9'</code></li>
+</ol>
+
+<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
+complement of the characters marked by <code>-d</code>.</p>
+
+<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
+
+<p>Using the command in the section “Predict Git object IDs” gives users
+a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
+of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
+byte count of the files with <code>\r\n</code> as the line terminator in that
+command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
+
+<h3 id="using-git-for-win">Using Git for Win*</h3>
+
+<p>For the installed version of Git on M$ Win*, one needs to use
+<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
+it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
+
+<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
+
+<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
+instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
+hexadecimal number.)</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1977,65 +2055,6 @@ blocked300.png': No such file or directory
   <ol>
     <li id="fn:blocked">
       <p><a href="http://evsseny.appspot.com/?p=63001">在github的Project Pages上部署jekyll</a> <a href="#fnref:blocked" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Concatenate Loop Variable's Value and a String in Bash]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/"/>
-    
-    <updated>2015-05-16T18:41:18+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>While I was writing the post about a recent GitHub page build failure
-ten days ago, I prepared two screenshots of the email from
-GitHub.<sup id="fnref:pp_motiv"><a href="#fn:pp_motiv" class="footnote">1</a></sup>  I would like to resize them to 300px wide so that
-they <em>wouldn’t</em> be too wide for mobile devices.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>There’re 2 image files in a folder: <code>fail1.png</code> and <code>fail2.png</code>.  I
-wanted to create a scaled-down version of both pictures, and name the
-smaller ones as <code>fail1_300.png</code> and <code>fail2_300.png</code>.</p>
-
-<h2 id="failed-attempt">Failed attempt</h2>
-
-<pre class="cliUB"><code>$ file *
-fail1.png: PNG image data, 467 x 243, 8-bit/color RGB, non-interlaced
-fail2.png: PNG image data, 464 x 242, 8-bit/color RGB, non-interlaced
-$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i_300.png; done
-$ ls
-fail1.png  fail2.png  fail.png
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Add a backslash <code>\</code> between the end of the loop variable <code>i</code> and the
-underscore character <code>_</code>.</p>
-
-<pre class="cliUB"><code>$ rm fail.png  # Clean up the mess
-$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i\_300.png; done
-$ ls
-fail1_300.png  fail1.png  fail2_300.png  fail2.png
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp_motiv">
-
-      <p>Refer to <a href="https://vincenttam.github.io/blog/2015/05/06/github-page-build-failure/">GitHub Page Build Failure</a> in <em>Blog 1</em> for the
-details of the cause of the technical error. <a href="#fnref:pp_motiv" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
