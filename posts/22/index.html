@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="In one of my old posts, I mentioned that I had tried using
-VimRepress.1 However, this plugin kept throwing errors like this. Confirm Delete [6]: &hellip;">
+  <meta name="description" content="This morning, I’ve found a Firefox Add-on called
+Markdown Viewer. As its name suggests, it’s a Firefox plugin
+that enables users to view Markdown &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,88 @@ VimRepress.1 However, this plugin kept throwing errors like this. Confirm Delete
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/04/firefox-markdown-viewer/">Firefox&#8217;s Markdown Viewer</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-04T17:10:36+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:10 pm</span></time>
+        
+           | <a href="/blog/2014/02/04/firefox-markdown-viewer/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/04/firefox-markdown-viewer/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This morning, I’ve found a Firefox Add-on called
+<a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>.  As its name suggests, it’s a Firefox plugin
+that enables users to view Markdown documents.  The screenshot
+provided on the home page of the add-on illustrates that it works on
+M$ Win*.  How about GNU/Linux? I clicked the button and installed
+the plugin.  After that, I used <code>:restart</code> in Vimperator to see what
+happened if I used Firefox to view a local Markdown file with
+extension name <code>.md</code>.</p>
+
+<p>It turned out that nothing happened! With Lai’s review titled <em>Work on
+Linux</em>, I figured out what to do.  After looking at his suggested code
+for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it
+and it worked.  Critical readers will then ask about the way to
+include multiple file extensions.</p>
+
+<p>Browsing the code with <code>#</code> in the RDF file helps.  Here’s what my
+results.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
+</span><span class="line"><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
+</span><span class="line"><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
+</span><span class="line"><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
+</span><span class="line"><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;/RDF:Description&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than
+one</em> extension name for a Markdown file.  However, a GNU/Linux user
+should <em>never</em> use <code>.md</code>.</p>
+
+<p>Finally, combining Lai’s and Cas’s posts, I’ve come up with
+<a href="https://gist.github.com/VincentTam/8800268">a Gist</a>.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -680,50 +763,6 @@ the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Compilation of C++ Programs That Depends on DISLIN on CLI</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-19T14:59:15+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:59 pm</span></time>
-        
-           | <a href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As a supporter of the <a href="https://www.gnu.org/">GNU</a> Project, I am not so happy to use
-<a href="http://www.dislin.de/">DISLIN</a>, which comes with an <em>EULA</em>, but I don’t have time to find
-out another alternative to the plotting library suggested by Prof.
-Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a></sup></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/23">&larr; Older</a>
@@ -750,7 +789,8 @@ Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a><
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+    <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -784,6 +824,10 @@ Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a><
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Debug Apps on Real Devices in Android Studio</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/">Git Object ID Generation (5): Predict ID</a>
       </li>
     
@@ -797,10 +841,6 @@ Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a><
     
       <li class="post">
         <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a>
       </li>
     
   </ul>

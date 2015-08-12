@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-11T12:06:57+08:00</updated>
+  <updated>2015-08-12T11:37:17+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,57 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Debug Apps on Real Devices in Android Studio]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/"/>
+    
+    <updated>2015-08-12T10:46:44+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio</id>
+    
+      <content type="html"><![CDATA[<p>After spending hours to find out that I need to tap on “Settings” →
+“About” → … → “Build number” for enabling USB debugging in the
+“Developers options” on an Android phone, I plugged the phone into a
+Mac desktop, but it <em>didn’t</em> show up in the “Devices” in Finder.  I
+thought that Mac <em>couldn’t</em> detect the phone, and I searched Google
+for a long time.  After having seen the name of an application for
+synchronising data between and phone and the computer for a few times,
+I finally decided to download it since I <em>didn’t</em> know what else to
+do.  Luckily, my app could be run on the phone with the help of
+Android Studio installed on the Mac desktop.</p>
+
+<p>An hour later, I tried to setup the development environment on an M$
+Win* computer.  Its installed size is over 20GB!  After hours of
+installation work, I was <em>stuck</em> again on M$ Win*:  unlike the Mac
+computer, that M$ Win* machine could detect the Android mobile
+device and show it in “Computer” within a minute.  I added the
+following lines into <code>/{AppName}/app/build.gradle</code> according to
+<a href="https://developer.android.com/tools/device.html#setting-up">a page of the official website</a>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">android</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">buildTypes</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">debug</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">debuggable</span> <span class="kc">true</span>
+</span><span class="line">        <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>However, the IDE said that <em>no debuggable device</em> could be found.  I
+guessed that the synchronising application made by the manufacturer of
+the phone was the cause of that undesirable result.  After fetching
+the application from the website of the phone manufacturer and
+restarting Android Studio, I could finally run the same application on
+a real Android device by clicking the little triangle on the top.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1939,122 +1990,6 @@ to the <a href="https://vincenttam.github.io/blog/2015/05/06/github-page-build-f
 <a href="https://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Concatenate Loop Variable’s Value and a String in Bash</a>
 in <em>Blog 1</em> if you want to know when, why and how I know to put a
 backslash ‘\’ behind the loop variable. <a href="#fnref:pp_for" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[One Use of Google Cache]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/16/one-use-of-google-cache/"/>
-    
-    <updated>2015-05-16T19:37:07+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/16/one-use-of-google-cache</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>This Thursday, I wanted to browse Evsseny’s article about setting up a
-Jekyll site using Jekyll-Bootstrap on a GitHub project page.<sup id="fnref:blocked"><a href="#fn:blocked" class="footnote">1</a></sup>
-Unluckily, this site had been blocked for the administrator.</p>
-
-<picture class="fancybox" title="Web site blocked">
-  <source srcset="/images/posts/UseGooCache/blocked621.png" media="(min-width: 621px)" />
-  <img alt="web site blocked" src="https://vincenttam.github.io/images/posts/UseGooCache/blocked294.png" />
-</picture>
-
-<p><strong>How can I view the contents of the page?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Use Google’s web cache.</p>
-
-<ol>
-  <li>
-    <p>Search “http://www.your-blocked-site.com/path/to/your/page” on
-Google.</p>
-
-    <picture class="fancybox" title="Paste the URL of the blocked site to text box">
-   <source srcset="/images/posts/UseGooCache/search609.png" media="(min-width: 609px)" />
-   <img alt="google the blocked URL" src="https://vincenttam.github.io/images/posts/UseGooCache/search300.png" />
- </picture>
-  </li>
-  <li>
-    <p>Click the down arrow next to the URL.</p>
-
-    <picture class="fancybox" title="Click the down arrow next to the URL and then &quot;Cached&quot;">
-   <source srcset="/images/posts/UseGooCache/cached300.png" />
-   <img alt="click the down arrow and &quot;cached&quot;" src="https://vincenttam.github.io/images/posts/UseGooCache/cached300.png" />
- </picture>
-  </li>
-  <li>
-    <p>Click the first item in the pop-up menu.</p>
-  </li>
-</ol>
-
-<p>Finally, I could read the contents of the post.</p>
-
-<picture class="fancybox" title="Enjoy reading the post!">
-  <source srcset="/images/posts/UseGooCache/view508.png" media="(min-width: 508px)" />
-  <img alt="google the blocked URL" src="https://vincenttam.github.io/images/posts/UseGooCache/view300.png" />
-</picture>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>Define new variables in shell scripts.</li>
-  <li>Use <code>s/foo/bar/</code> in <code>sed</code> for manipulating the name of the output
-files.</li>
-</ol>
-
-<p>The screenshots were intially under the home folder <code>~</code> and their
-names were like <code>temp_foo.png</code> or <code>temp_bar.png</code> so that they would
-stay close to each other in <a href="https://help.ubuntu.com/community/DefaultFileManager">Nautilus</a>.  However, when I included
-these PNG files under the directory
-<code>~/octopress/source/images/flalign_spacing</code> for uploading them to this
-blog, I <em>wouldn’t</em> like to keep <code>temp_</code> because they’re already in a
-separate folder.  Therefore, I wrote a script to do this.</p>
-
-<p>Since <code>mv</code> can overwrite files and commands can be wrongly typed, I
-used <code>cp</code> instead of <code>mv</code> so that the original files <em>wouldn’t</em>
-disappear even though something went wrong.  If everything proceeds
-smoothly, then the old files in the home folder can then be safely
-deleted.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A little script for moving the files  (custom_move.sh)</span> <a href="https://vincenttam.github.io/downloads/code/custom_move.sh">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/bash</span>
-</span><span class="line"><span class="k">for</span> f in <span class="k">$(</span>ls *.png<span class="k">)</span> <span class="p">;</span> <span class="k">do</span>
-</span><span class="line">    <span class="nv">newf</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="nv">$f</span> <span class="p">|</span> sed <span class="s1">&#39;s/temp_//&#39;</span><span class="sb">`</span>
-</span><span class="line">    <span class="nb">echo</span> <span class="nv">$f</span> <span class="nv">$newf</span>
-</span><span class="line">    cp -v <span class="nv">$f</span> ~/octopress/source/images/posts/UseGooCache/<span class="nv">$newf</span>
-</span><span class="line"><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If I use single quotes to surround the destination (e.g.
-<code>'~/.../$newf'</code>), the syntax highlighting for <code>$newf</code> will be <em>gone</em>
-in Vim.  Therefore, I used double quotes <code>""</code> instead, but I then
-received errors similar to the one below from <code>cp</code>.</p>
-
-<pre class="cliUB"><code>cp: cannot create regular file `/home/octopress/source/images/posts/UseGooCache/
-blocked300.png': No such file or directory
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:blocked">
-      <p><a href="http://evsseny.appspot.com/?p=63001">在github的Project Pages上部署jekyll</a> <a href="#fnref:blocked" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
-since it’s easy to use. According to the official demo1, with a
-CSL file2, &hellip;">
+  <meta name="description" content="I’d like to include my GitHub repositories here. To do so, it’s a
+piece of cake to slightly modify _config.yml.1 Once, I curiously typed git status &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,94 @@ CSL file2, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/03/01/git-status-of-my-octopress-folder/">Git Status of My Octopress Folder</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-01T17:32:29+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:32 pm</span></time>
+        
+           | <a href="/blog/2014/03/01/git-status-of-my-octopress-folder/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/03/01/git-status-of-my-octopress-folder/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’d like to include my GitHub repositories here.  To do so, it’s a
+piece of cake to slightly modify <code>_config.yml</code>.<sup id="fnref:config_octopress"><a href="#fn:config_octopress" class="footnote">1</a></sup></p>
+
+<p>Once, I curiously typed <code>git status</code> in <code>~/octopress</code>.  The following
+screenshot is from my terminal.</p>
+
+<p><img src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" alt="git status" /></p>
+
+<p>Then I blindly followed the “advice” of <code>git status</code> and typed</p>
+
+<pre class="cliUB"><code>$ git add .
+</code></pre>
+
+<p><del>It seemed that I had made a mistake.</del>  Actually, <em>without
+adding those modified and untracked files on the stage for commit</em>,
+the following two commands will <del>do</del> update the contents on
+the GitHub pages.</p>
+
+<pre class="cliUB"><code>$ rake generate
+$ rake deploy
+</code></pre>
+
+<p>The final step is to view your blog again after going out for a cup
+water or some snacks.</p>
+
+<p>How about the <code>git status</code>?  <del>Simply <em>forget about it</em>!</del></p>
+
+<hr />
+
+<p>(Last added on MAR 15TH, 2014)</p>
+
+<p>If you have <em>more than one</em> local repository of your Octopress or
+Jekyll site, you may upload your contents to the Internet as long as
+the corresponding branch in the local repository is newer than the one
+in the remote repository.  To keep the Octopress or Jekyll code
+updated, one needs to use Git to check if the <code>source</code> branch contains
+the latest changes.  Otherwise, after writing a new post, it is
+possible that one <em>can’t</em> upload the new post to the Octopress or
+Jekyll site using <code>rake deploy</code>.</p>
+
+<p>Thus, eight days ago, I made Git commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99">8c7be99</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:config_octopress">
+
+      <p>Mathis, B.  (Jul 19, 2011).  <em>Configuring Octopress</em>.  Retrieved
+from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a> <a href="#fnref:config_octopress" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -628,88 +715,6 @@ UltraBlog.vim since it’s <em>better</em> than WordPress.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/04/firefox-markdown-viewer/">Firefox&#8217;s Markdown Viewer</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-04T17:10:36+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:10 pm</span></time>
-        
-           | <a href="/blog/2014/02/04/firefox-markdown-viewer/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/04/firefox-markdown-viewer/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This morning, I’ve found a Firefox Add-on called
-<a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>.  As its name suggests, it’s a Firefox plugin
-that enables users to view Markdown documents.  The screenshot
-provided on the home page of the add-on illustrates that it works on
-M$ Win*.  How about GNU/Linux? I clicked the button and installed
-the plugin.  After that, I used <code>:restart</code> in Vimperator to see what
-happened if I used Firefox to view a local Markdown file with
-extension name <code>.md</code>.</p>
-
-<p>It turned out that nothing happened! With Lai’s review titled <em>Work on
-Linux</em>, I figured out what to do.  After looking at his suggested code
-for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it
-and it worked.  Critical readers will then ask about the way to
-include multiple file extensions.</p>
-
-<p>Browsing the code with <code>#</code> in the RDF file helps.  Here’s what my
-results.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
-</span><span class="line"><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;/RDF:Description&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than
-one</em> extension name for a Markdown file.  However, a GNU/Linux user
-should <em>never</em> use <code>.md</code>.</p>
-
-<p>Finally, combining Lai’s and Cas’s posts, I’ve come up with
-<a href="https://gist.github.com/VincentTam/8800268">a Gist</a>.</p>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/22">&larr; Older</a>
@@ -736,7 +741,8 @@ should <em>never</em> use <code>.md</code>.</p>
 <section>
   <h1>Categories</h1>
   <ul id="categories">
-    <li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+    <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -770,6 +776,10 @@ should <em>never</em> use <code>.md</code>.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Debug Apps on Real Devices in Android Studio</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/">Git Object ID Generation (5): Predict ID</a>
       </li>
     
@@ -783,10 +793,6 @@ should <em>never</em> use <code>.md</code>.</p>
     
       <li class="post">
         <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a>
       </li>
     
   </ul>
