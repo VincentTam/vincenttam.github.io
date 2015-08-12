@@ -17,6 +17,7 @@ I finally decided to download it since I *didn't* know what else to
 do.  Luckily, my app could be run on the phone with the help of
 Android Studio installed on the Mac desktop.
 
+<span class="tex2jax_ignore">
 An hour later, I tried to setup the development environment on an M\$
 Win\* computer.  Its installed size is over 20GB!  After hours of
 installation work, I was *stuck* again on M\$ Win\*:  unlike the Mac
@@ -24,8 +25,9 @@ computer, that M\$ Win\* machine could detect the Android mobile
 device and show it in "Computer" within a minute.  I added the
 following lines into `/{AppName}/app/build.gradle` according to
 [a page of the official website][doc].
+</span>
 
-{% codeblock Put this at the bottom lang:groovy %}
+{% codeblock To enable debugging on a real Android device lang:groovy %}
 android {
     buildTypes {
         debug {
