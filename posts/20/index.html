@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="With this template, I believe that creating a Chinese article using
-$\rm \LaTeX$ should be a lot quicker and easier. I’ve tried including a Gist in &hellip;">
+  <meta name="description" content="Yesterday, the category list of this blog was still like the one in
+Vigo’s Development Tips.1 However, I think that
+Watson’s Category List Plugin is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,74 @@ $\rm \LaTeX$ should be a lot quicker and easier. I’ve tried including a Gist i
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/04/27/octopress-category-list/">Octopress Category List</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-04-27T10:38:23+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:38 am</span></time>
+        
+           | <a href="/blog/2014/04/27/octopress-category-list/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/04/27/octopress-category-list/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/04/27/octopress-category-list/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday, the category list of this blog was still like the one in
+<a href="http://vigodome.com/blog/categories/">Vigo’s <em>Development Tips</em></a>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  However, I think that
+<a href="http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/">Watson’s Category List Plugin</a> is more user-friendly
+because users can view the categories by scrolling, instead of
+clicking and waiting for another page to load.</p>
+
+<p>I tried copying everything, and put them in the right places, but
+initially I failed.  I quickly realized that I <em>wrongly</em> named the
+plugin file as <code>category_list.rb</code>, and <code>rake preview</code> still didn’t
+produce the desired list.  Then I moved the HTML file that calls the
+plugin, namely the <code>category_list.html</code>, from
+<code>/source/_includes/asides</code> to <code>/source/_includes/custom/asides</code>, and
+changed <code>_config.yml</code> a little bit.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<p>Finally, I copied the contents from my <em>working</em> example (i.e.
+<code>/source/_includes/custom/asides/about.html</code>) <em>first</em>.  As expected, I
+could see that the “About Me (Brief)” section was duplicated.  I
+changed the code bit by bit, and I managed to include a list of
+categories.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p><code>source/blog/categories/index.markdown</code> at commit <a href="https://raw.githubusercontent.com/VincentTam/vincenttam.github.io/94c7d97/source/blog/categories/index.markdown">94c7d97</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/7dcf6b7#diff-0">7dcf6b7</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -587,71 +656,6 @@ to other English websites.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/03/02/creating-a-new-octopress-page/">Creating a New Octopress Page</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-03-02T01:30:51+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>1:30 am</span></time>
-        
-           | <a href="/blog/2014/03/02/creating-a-new-octopress-page/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/03/02/creating-a-new-octopress-page/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/03/02/creating-a-new-octopress-page/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I haven’t learnt something about Octopress for 2 weeks.  I hope that I
-can create a GitHub project page using Octopress successfully.</p>
-
-<p>I have seen a comment for a blog post which briefly describes the
-procedures for making <code>gh-pages</code>.  The user who has left the comment
-claims that the posts, which should be under the <code>source/_posts</code>
-directory<sup id="fnref:doc"><a href="#fn:doc" class="footnote">1</a></sup>, is in the <code>source</code> branch of Octopress Git
-repository.  I’m going to figure it out.  No matter it’s true or not,
-it’s something that puzzles some Octopress users.</p>
-
-<h2 id="creating-an-about-page">Creating an ABOUT page</h2>
-
-<p>I couldn’t find the answer for adding new items to the navigation bar
-at the top of the posts and under the header in an Octopress blog
-because I didn’t know the Google search words.  This afternoon, I
-found that googling “octopress page navigation” help.  I managed to
-find a blog post on that.<sup id="fnref:octopress_about"><a href="#fn:octopress_about" class="footnote">2</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:doc">
-      <p><a href="http://octopress.org/docs/blogging/">Blogging Basics</a> <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:octopress_about">
-      <p><a href="http://icodeit.org/2013/01/add-new-page-to-octopress/">為 Octopress 添加新的頁面</a> <a href="#fnref:octopress_about" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/21">&larr; Older</a>
@@ -692,7 +696,7 @@ find a blog post on that.<sup id="fnref:octopress_about"><a href="#fn:octopress_
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (41)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (42)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -713,6 +717,10 @@ find a blog post on that.<sup id="fnref:octopress_about"><a href="#fn:octopress_
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Debug Apps on Real Devices in Android Studio</a>
       </li>
     
@@ -726,10 +734,6 @@ find a blog post on that.<sup id="fnref:octopress_about"><a href="#fn:octopress_
     
       <li class="post">
         <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Git Object ID Generation (3): Trees With Multiple Blobs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a>
       </li>
     
   </ul>
