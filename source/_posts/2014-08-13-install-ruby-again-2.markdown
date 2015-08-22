@@ -27,7 +27,7 @@ First, the image popup plugin complained about the new version of gems.
 I tried to replace all `imgpopup` by `img` to find further problems
 first.
 
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~/octopress$ rake generate
+<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress]$ rake generate
 ## Generating Site with Jekyll
 <span class="rake_gen_unchanged">unchanged</span> sass/print.scss
 <span class="rake_gen_identical">identical</span> source/stylesheets/screen.css 

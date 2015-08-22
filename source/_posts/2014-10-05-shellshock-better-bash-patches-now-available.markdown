@@ -9,15 +9,15 @@ external-url: http://www.zdnet.com/shellshock-better-bash-patches-now-available-
 
 Luckily, the Ubuntu updater has already fetched the lastest patch of the vunerable bash.
 
-    owner@owner-Inspiron-560s:~$ env 'x=() { :;}; echo vulnerable' 'BASH_FUNC_x()=()
+    $ env 'x=() { :;}; echo vulnerable' 'BASH_FUNC_x()=()
      { :;}; echo vulnerable' bash -c "echo test"
     bash: warning: x: ignoring function definition attempt
     bash: error importing function definition for `BASH_FUNC_x'
     test
 
-    owner@owner-Inspiron-560s:~$ cd /tmp; rm -f /tmp/echo; env 'x=() { (a)=>\' bash 
+    $ cd /tmp; rm -f /tmp/echo; env 'x=() { (a)=>\' bash 
     -c "echo date"; cat /tmp/echo
     date
     cat: /tmp/echo: No such file or directory
-    owner@owner-Inspiron-560s:/tmp$ 
+    $ 
 {:.cliUB}

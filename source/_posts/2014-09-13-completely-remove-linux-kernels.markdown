@@ -30,8 +30,7 @@ Solution
 
 Use `purge` instead of `remove` in the above command.
 
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pa
-e</span>
+<pre class="cli"><code class="UBMono">$ <span class="UBHLCode">sudo aptitude purge linux-image-3.2.0-67-generic-pae</span>
 [sudo] password for owner:
 The following packages will be REMOVED:
   linux-image-3.2.0-67-generic-pae{p}
@@ -47,8 +46,8 @@ run-parts: executing /etc/kernel/postrm.d/initramfs-tools 3.2.0-67-generic-pae /
 boot/vmlinuz-3.2.0-67-generic-pae
 run-parts: executing /etc/kernel/postrm.d/zz-update-grub 3.2.0-67-generic-pae /
 boot/vmlinuz-3.2.0-67-generic-pae
-owner@owner-Inspiron-560s:~$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic l
-inux-image-extra-3.13.0-33-generic</span>
+$ <span class="UBHLCode">sudo aptitude purge linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-
+generic</span>
 The following packages will be REMOVED:
   linux-image-3.13.0-33-generic{p} linux-image-extra-3.13.0-33-generic{p}
 0 packages upgraded, 0 newly installed, 2 to remove and 0 not upgraded.
@@ -83,7 +82,7 @@ packages anymore.[^2]
 The **bold** lines represent the packages that are going to be
 completely removed.
 
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+<pre class="cli"><code class="UBMono">$ dpkg -l | grep linux
 ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
 ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
 ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib
@@ -139,7 +138,7 @@ ii  util-<span class="grep">linux</span>                                        
 <div id="list2" class="noscr" markdown="1">
 There's *no* lines beginning with `rc`.
 
-<pre class="cli"><code class="UBMono">owner@owner-Inspiron-560s:~$ dpkg -l | grep linux
+<pre class="cli"><code class="UBMono">$ dpkg -l | grep linux
 ii  fonts-<span class="grep">linux</span>libertine                                  5.3.0-2                                             all          Linux Libertine family of fonts
 ii  libse<span class="grep">linux</span>1:i386                                      2.2.2-1ubuntu0.1                                    i386         SELinux runtime shared libraries
 ii  libv4l-0:i386                                         1.0.1-1                                             i386         Collection of video4<span class="grep">linux</span> support lib

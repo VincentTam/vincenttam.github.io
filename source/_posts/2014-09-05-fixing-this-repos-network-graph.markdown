@@ -30,7 +30,7 @@ some commands as shown below.
 
 <pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
 Deleted remote branch origin/master (was e745caf).
-owner@owner-Inspiron-560s:~/octopress/_deploy$ git branch -a
+[owner@localhost ~/octopress/_deploy]$ git branch -a
 * <span class="GitBrName">master</span>
 [owner@localhost ~/octopress/_deploy]$ git push origin --delete master
 To git@github.com:vincenttam/vincenttam.github.io.git
