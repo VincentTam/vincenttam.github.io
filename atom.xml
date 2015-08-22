@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-13T00:48:50+08:00</updated>
+  <updated>2015-08-22T20:08:59+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,143 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Used More Bash Utilities]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities/"/>
+    
+    <updated>2015-08-22T11:59:26+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Same as what has been written in my older post
+<a href="https://vincenttam.github.io/blog/2014/12/12/using-xclip/"><em>Using Xclip</em></a>.</p>
+
+<h2 id="drawback">Drawback</h2>
+
+<p>Inputing the keyboard command for the paste action is, in my opinion,
+<em>laborious</em>.</p>
+
+<h2 id="tools-used">Tools used</h2>
+
+<ol>
+  <li><code>find</code></li>
+  <li><code>grep</code></li>
+  <li><code>sed</code></li>
+  <li><code>awk</code></li>
+  <li><code>xargs</code></li>
+</ol>
+
+<!-- more -->
+
+<h3 id="the-find-command">The find command</h3>
+
+<pre class="cliUB"><code>find . -path ./dir -prune -o -name '*.txt' -type f -print
+find ./foo -exec wc {} \;
+</code></pre>
+
+<ul>
+  <li><code>-path ./dir -prune -o</code>: exclude the directory <code>./dir</code></li>
+  <li><code>-name '*.txt'</code>: match the name of the file</li>
+  <li><code>-type f</code>: match files only, not directories</li>
+  <li><code>-print</code>: print all matched paths</li>
+  <li><code>-exec {cmd} {} \;</code>
+    <ul>
+      <li>execute <em>one single</em> command <code>{cmd}</code>, no pipes are allowed</li>
+      <li><code>{}</code>: an instance of matched path</li>
+      <li><code>\;</code>: terminator</li>
+    </ul>
+  </li>
+</ul>
+
+<p>I’ve found that if <code>-type f</code> goes <em>before</em> <code>-path ./dir -prune -o</code>,
+the path <code>./dir</code> <em>won’t</em> be excluded.  <strong>Don’t use <code>./</code>, use <code>.</code>!</strong> on
+Mac.</p>
+
+<p>Using <code>-not -path ./dir</code> option <em>doesn’t</em> work.</p>
+
+<h3 id="the-grep-command">The grep command</h3>
+
+<ul>
+  <li><code>-I</code>: ignore binary files</li>
+  <li><code>-q . {}</code>: match any characters and suppress output for faster
+  execution</li>
+</ul>
+
+<h3 id="the-sed-command">The sed command</h3>
+
+<ul>
+  <li><code>-i .bak</code>: edit file with backup extension <code>.bak</code> (Mac only, not in
+  *nix)</li>
+  <li><code>-i ''</code>: no backup (Also Mac only)</li>
+  <li><code>sed 'p;s/foo/bar/'</code>: print original and replaced strings, separated
+by whitespace.</li>
+</ul>
+
+<h3 id="the-awk-command">The awk command</h3>
+
+<p>The command <code>awk '{ print $2 }'</code> extracts the second column.  For more
+examples, see <a href="http://www.hcs.harvard.edu/~dholland/computers/awk.html">the simple awk tutorial</a>.</p>
+
+<h3 id="the-xargs-command">The xargs command</h3>
+
+<p>This is a very powerful command when combined with <code>find</code>.  This
+utility reads from <code>stdin</code> and echos it.</p>
+
+<ul>
+  <li>no flags: all output joined into a single line</li>
+  <li><code>-n3</code>: 3 space-delimited stdin in each line</li>
+  <li><code>xargs -n2 {cmd}</code>: execute <code>{cmd} {arg1} {arg2}</code>, …, <code>{cmd}
+  {arg2n-1} {arg2n}</code>.</li>
+</ul>
+
+<h3 id="putting-things-together">Putting things together</h3>
+
+<p>Here’s some sample commands.</p>
+
+<h4 id="find-and-replace-for-all-text-files-under-a-path">Find and replace for all text files under a path</h4>
+
+<pre class="cliUB"><code>find . -path ./.git -prune -o -type f -exec grep -Iq . {} \; -and \
+-exec sed -i 's/foo/bar/g' {} \;
+</code></pre>
+
+<p>Ignore the <code>.git</code> folder, which is the Git repository, to avoid
+damaging it.</p>
+
+<h4 id="find-and-replace-substrings-in-path-names">Find and replace substrings in path names</h4>
+
+<pre class="cliUB"><code>find . -path ./.git -prune -o -name "*foo*" -print | sed \
+'p;s/foo/bar/g' | xargs -n2 mv
+</code></pre>
+
+<p>All instances of <code>foo</code> in path names are replaced with <code>bar</code>.  Note
+that that <code>-print</code> option <em>should be included</em>.  Otherwise, the path
+<code>./.git</code> which is intended to be omitted will appear in the piped
+output and processed by <code>sed</code>, and then the terminal will throw the
+follow error message.</p>
+
+<pre class="cliUB"><code>fatal: can not move directory into itself, source=.git, destination=.git/.git
+</code></pre>
+
+<h4 id="find-and-replace-git-remote-paths">Find and replace Git remote paths</h4>
+
+<pre class="cliUB"><code>$ git remote -v | awk '{ print $2 }' | head -1 | \
+xargs git remote set-url origin
+$ git remote -v
+origin	https://github.com/VincentTam/StudentList1.git (fetch)
+origin	https://github.com/VincentTam/StudentList1.git (push)
+$ git remote -v | awk '{ print $2 }' | head -1 | sed \
+'s/StudentList1/StudentList4/' | xargs git remote set-url origin
+$ git remote -v
+origin	https://github.com/VincentTam/StudentList4.git (fetch)
+origin	https://github.com/VincentTam/StudentList4.git (push)
+</code></pre>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1831,130 +1968,6 @@ tried all possible ways to solve the problem.</p>
 “Also on” box took one to <em>wrong</em> pages.  I apologize for any
 inconvenience caused.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Added W3C Validated Logos to Some Pages]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"/>
-    
-    <updated>2015-05-23T22:42:17+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>The web pages under <code>/downloads/code/</code> <em>don’t</em> conform to the <abbr title="World Wide Web Consortium">W3C</abbr>’s
-standards.  This afternoon, after I had rewritten the code and passed
-the HTML 4.01 Strict Test and CSS3 Test, I was given the code to embed
-the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnref:samp_pic"><a href="#fn:samp_pic" class="footnote">1</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>HTML code for embedding the validation icon for HTML 4.01 Strict</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;p&gt;</span>
-</span><span class="line">  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class="line">    <span class="na">src=</span><span class="s">&quot;http://www.w3.org/Icons/valid-html401&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
-</span><span class="line">    <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class="line"><span class="nt">&lt;/p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="problem">Problem</h2>
-
-<p>Unluckily, when I clicked on the icon for re-validation of the site, I
-<em>got</em> a 404 error.</p>
-
-<picture class="fancybox" title="404 Not Found">
-  <source srcset="/images/posts/W3C/err497.png" media="(min-width: 497px)" />
-  <img alt="404 not found" src="https://vincenttam.github.io/images/posts/W3C/err300.png" />
-</picture>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>I <em>wasn’t</em> so patient to read the <a href="http://validator.w3.org/docs/help.html#faq-referer"><abbr title="Frequently Asked Questions">FAQ</abbr></a> of the <abbr title="World Wide Web Consortium">W3C</abbr>.  I googled “w3c
-validator referer”.  Realising that the web pages hosted on the
-official website were similar to the <abbr title="Frequently Asked Questions">FAQ</abbr>, I clicked on the first blog
-article that I saw.<sup id="fnref:1st_blog"><a href="#fn:1st_blog" class="footnote">2</a></sup>  I still <em>didn’t</em> know what’s wrong
-with my hyperlink on the validation icon.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I refined my search by added the phrase “requested URL /check”
-<em>surrounded by double quotes</em> to the query string.  Then, only four
-web pages were displayed.  I glimpsed a mailing list and I <em>didn’t</em>
-found it useful.  Although I believed that the hyperlink for a forum
-thread <em>wouldn’t</em> help me, I clicked it.<sup id="fnref:forum"><a href="#fn:forum" class="footnote">3</a></sup>  It was in 2007, and
-the situtation <em>differed</em> much from this one.  I clicked on an
-old-versioned hyperlink to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, and <em>it worked</em>.
-After that, I “inspected this element” and changed the destination to
-the current URL of the validator.  It worked again.</p>
-
-<p>I compared the code found on the forum post with mine, and I
-discovered that the only difference is the <code>s</code> in front of the domain
-name <code>validator.w3.org</code>.  Knowing that some users may view the site
-using the HTTP protocol, I finally removed the beginning <code>https:</code> in
-the <code>href</code> attribute in that hyperlink.  Now users may re-validate the
-page with a simple click on the validation icons.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>Through the validation process, I’ve learnt some HTML.</p>
-
-<ol>
-  <li>Always begin an HTML file with <code>&lt;!DOCTYPE HTML ...&gt;</code>.</li>
-  <li>Add a <code>lang</code> attribute in <code>&lt;html&gt;</code> for internationalization.</li>
-  <li>Add a <code>&lt;meta charset="UTF-8"&gt;</code> tag to tell the validator the
-character encoding of the page.</li>
-  <li>A <code>&lt;title&gt;</code> inside the <code>&lt;head&gt;</code> is <em>necessary</em>: without this, the
-vaildator <em>won’t</em> regard the <code>&lt;head&gt;</code> as closed.</li>
-  <li>
-    <p>In HTML 4.01 or earlier, avoid using a slash <code>/</code> before <code>&gt;</code>.</p>
-
-    <p>i.e. Use <code>&lt;img ... foo="bar"&gt;</code> instead of <code>&lt;img ... foo="bar" /&gt;</code>,
- <code>&lt;br&gt;</code> instead of <code>&lt;br/&gt;</code>, etc.</p>
-  </li>
-  <li>
-    <p>Images in HTML 4.01 Strict:</p>
-
-    <ul>
-      <li>an alternate text is needed</li>
-      <li>specify the dimenstions of the picture (i.e. <code>height="XX"
-  witdth="YY"</code>)</li>
-    </ul>
-  </li>
-  <li>Inline elements in HTML 4.01 Strict need to be wrapped by
-block-level elements like <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, etc.</li>
-  <li>Forms in HTML 4.01 Strict need an <code>action</code>.</li>
-  <li>Use the <code>charset</code> attribute in <code>&lt;script&gt;</code> tags only for external
-scripts.</li>
-  <li>Using a hyperlink to <code>http://validator.w3.org/check?uri=referer</code> is
-more convenient than the manual way.</li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:samp_pic">
-      <p><a href="https://vincenttam.github.io/images/posts/W3C/valid_code.png">Here</a>’s a sample screenshot. <a href="#fnref:samp_pic" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:1st_blog">
-
-      <p><a href="http://bryanhadaway.com/how-to-link-to-the-w3c-css3-validation-page/"><em>How to Link to the W3C CSS3 Validation Page</em></a> on <em>Bryan
-Hadaway’s Web + Tech Blog</em>. <a href="#fnref:1st_blog" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:forum">
-
-      <p><a href="http://t29233.org-w3c-validator.w3ctalk.info/what-happend-to-http-validator-w3-org-check-referer-t29233.html#91166"><em>What happend to http://validator.w3.org/check/referer ?</em></a>
-on <em>W3c Discussion Forums</em>. <a href="#fnref:forum" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
