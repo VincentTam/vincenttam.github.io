@@ -2,10 +2,7 @@
 layout: post
 title: "Heads Up While Creating Online Form"
 date: 2014-01-18 14:07:29 +0800
-categories:
-- information security
-tags:
-- online forms
+categories: [information security]
 external-url: http://cloud.itsc.cuhk.edu.hk/enewsasp/app/article-details.aspx/26D533F3B5CF28FBE498826C239038FD/
 published: true
 comments: true
