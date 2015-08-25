@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-22T20:08:59+08:00</updated>
+  <updated>2015-08-25T11:36:03+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,170 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Rare Sed Delimiters]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/"/>
+    
+    <updated>2015-08-25T10:47:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
+Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
+have to be escaped by backslashes, which makes the whole command ugly.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
+` `, etc, and you’re <em>too lazy</em> to look for
+<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
+
+<!-- more -->
+
+<h2 id="discussion-on-the-custom-delimiter">Discussion on the custom delimiter</h2>
+
+<p>When I read article at the above link, I was stuck at the last part,
+which was about using a custom delimiter.  I <em>mistakenly</em> thought that
+this was for the search pattern and the replacement.  In fact, reading
+<a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">GNU’s manual</a> and trying some commands repeatedly, I realized
+that prepending the custom delimiter with a backslash was for
+specifying the range of the following expresion.</p>
+
+<p>Therefore, I finally understand what <code>somevar</code> is in
+<a href="http://stackoverflow.com/a/20808364">this Stack Overflow question</a>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="customizing-the-delimiter-in-a-replacement">Customizing the delimiter in a replacement</h3>
+
+<p>To begin with, I tried the following command.</p>
+
+<pre class="cliUB"><code>$ echo strange | sed s/'[a-e]'/#/g
+str#ng#
+</code></pre>
+
+<p>After that, I know that surrounding the whole <code>s</code> command <em>isn’t</em> a
+must, just the <code>regex</code> and <code>replacement</code> will do.</p>
+
+<p>Then I replaced all <code>/</code> with <code>y</code> in the above command.</p>
+
+<pre class="cliUB"><code>$ echo strange | sed sy'[a-e]'y#yg
+str#ng#
+</code></pre>
+
+<p>Now, it’s clear that the custom delimiter in the <code>s</code> command <em>doesn’t</em>
+need to be escaped.</p>
+
+<h3 id="towards-the-goal">Towards the goal</h3>
+
+<p>The goal in this post is to use bizarre characters as the delimiter in
+the <code>s</code> command, and I believe that if you’ve reached here, you’ll
+probably understand what <a href="https://stackoverflow.com/a/4844945">this command</a> is doing, provided
+that you know the way to
+<a href="https://stackoverflow.com/a/10571642">input control characters as arguments in bash commands</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Find Files for Vim to Edit in Bash]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/"/>
+    
+    <updated>2015-08-23T23:48:54+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Since copying and pasting the output of a command can be a tedious
+job.  For example, if you want to create your blog using a framework,
+you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
+repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
+GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
+one.</p>
+
+<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
+repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
+the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
+introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
+the <code>sed</code> substitution.</p>
+
+<pre class="cliUB"><code>$ git remote -v
+octopress	git@github.com:imathis/octopress.git (fetch)
+octopress	git@github.com:imathis/octopress.git (push)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
+$ name=userName; repo=repoName
+$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
+"s;(\w*)/(.*).git;$name/$repo.git;"
+$ unset name repo
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried extracting a list of Markdown files containing a particular
+word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
+<code>xargs</code>.  Unluckily, I got an error.</p>
+
+<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
+&gt; -print | xargs vi
+Vim: Warning: Input is not from a terminal
+3 files to edit
+$ 
+</code></pre>
+
+<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>As a result, I searched “vim warning input is not from a terminal
+xargs” on Google, and found <a href="http://superuser.com/q/336016">this question</a> very useful.  I
+should have wrapped the <code>find</code> command like <code>$(find ...)</code>.</p>
+
+<pre class="cliUB"><code>$ vi $(find source/_posts/ -name "*.markdown" -exec \
+&gt; grep -q ^tag {} \; -print | xargs)
+3 files to edit
+</code></pre>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="sed">sed</h3>
+<ul>
+  <li><code>3{p;q}</code>: quit after printing the third line for the sake of
+  efficiency</li>
+  <li><code>-r</code>: use extended regular expression to save the trouble of
+  escaping <code>()</code> for submatches.</li>
+  <li><code>-n</code>: suppress standard output.</li>
+  <li>Enclose the expression
+    <ul>
+      <li>with <em>single</em> quote to <em>disable</em> interpretation of bash
+  variables</li>
+      <li>with <em>double</em> quote to <em>enable</em> interpretation of bash
+  variables.</li>
+    </ul>
+  </li>
+  <li>One can replace the delimiter <code>/</code> in the expression
+  <code>s/{pat}/{repl}/</code> by any one character from <code>_;#| </code>.</li>
+  <li>Specify a custom delimiter like <code>\%.%s%foo%bar%</code>.  (The
+  variable/range <code>.</code> is <em>needed</em>.)</li>
+</ul>
+
+<h3 id="bash">bash</h3>
+
+<ul>
+  <li>Set variables using <code>var1=value1;var2=value2;...</code></li>
+  <li>Unset variable usign <code>unset var1 var2 ...</code></li>
+</ul>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -267,240 +431,6 @@ it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
 <p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
 instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
 hexadecimal number.)</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (4): General Trees]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-4-general-trees/"/>
-    
-    <updated>2015-08-07T23:41:40+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-4-general-trees</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>After I’ve written <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">the third post</a> in this series, I believed
-that I could generate the SHA-1 hash of <em>all</em> Git objects.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In order to understand the object ID of an arbitrary tree object, it
-is necessary that I create a file in a sub-folder.  Suppose that I
-copied the file <code>hello.txt</code> to the sub-directory <code>subdir</code> in the
-directory <code>hello</code> in <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a>  In short, I just
-followed the steps in Chapter 4 of <em>Version Control with Git</em>.  I
-include the setup here for convenience.</p>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-68aba62e560c0ebc3396e8ae9335232cd93a3f60
-$ mkdir subdir
-$ cp hello.txt subdir
-$ git add subdir/hello.txt
-$ git write-tree
-492413269336d21fac079d4a4672e55d5d2147ac
-$ git cat-file -p 492413269336d21fac079d4a4672e55d5d2147ac
-100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt
-040000 tree 68aba62e560c0ebc3396e8ae9335232cd93a3f60	subdir
-</code></pre>
-
-<p>After having successfully generated the SHA-1 hash for the tree object
-<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code> in <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a>
-in this series, I tried the same task for another tree object
-<code>492413269336d21fac079d4a4672e55d5d2147ac</code>.  Using the <em>same</em>
-technique describe in <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">the previous post</a>, I got another
-<em>wrong</em> SHA-1 hash <code>06eb95bda67a8f86e65bb1590744f10a61eeccef</code>.</p>
-
-<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
-$ printf "tree 71\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
-0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad040000 subdir\x00\x68\xab\xa6\x2e\x56\x
-0c\x0e\xbc\x33\x96\xe8\xae\x93\x35\x23\x2c\xd9\x3a\x3f\x60"
-06eb95bda67a8f86e65bb1590744f10a61eeccef  -
-</code></pre>
-
-<p><em>How to get the <strong>right object ID</strong></em>?</p>
-
-<!-- more -->
-
-<h2 id="cause-of-error">Cause of error</h2>
-
-<p>I realised that I had misunderstood the structure of a tree object
-again after reading the first Google search result of “git tree object
-format”.  It’s a Stack Overflow question on the “format of Git tree
-object”.  I read the largest code block of
-<a href="http://stackoverflow.com/a/21599232">the first answer</a>, and find out that <em>the leftmost zero
-digit in</em> <code>040000</code> <em>should be taken away</em>.</p>
-
-<h2 id="a-primitive-method">A primitive method</h2>
-
-<h3 id="get-the-object-size-with-the-wc-command">Get the object size with the wc command</h3>
-
-<pre class="cliUB"><code>$ printf "100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x00\xdd\x08\x
-ae\xb3\x7f\x8e\x72\x8b\x8d\xad40000 subdir\x00\x68\xab\xa6\x2e\x56\x0c\x0e\xbc\x
-33\x96\xe8\xae\x93\x35\x23\x2c\xd9\x3a\x3f\x60" | wc -c
-70
-</code></pre>
-
-<h3 id="sha-1-hash">SHA-1 hash</h3>
-
-<pre class="cliUB"><code>$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
-0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad40000 subdir\x00\x68\xab\xa6\x2e\x56\x0
-c\x0e\xbc\x33\x96\xe8\xae\x93\x35\x23\x2c\xd9\x3a\x3f\x60" | shasum
-492413269336d21fac079d4a4672e55d5d2147ac  -
-</code></pre>
-
-<h2 id="a-more-time-saving-method">A more time-saving method</h2>
-
-<p>The above <code>printf</code> command is error-prone.  Here’re some less
-laborious commands.</p>
-
-<h3 id="understand-the-tree-object">Understand the tree object</h3>
-
-<p>While searching for the cause of error, I jumped through many web
-pages, and I went back to
-<a href="http://stackoverflow.com/a/13977017">the Stack Overflow question stated in the second post</a>
-in this series.</p>
-
-<pre class="cliUB"><code>$ git cat-file tree 492413269336d21fac079d4a4672e55d5d2147ac | od -c
-0000000   1   0   0   6   4   4       h   e   l   l   o   .   t   x   t
-0000020  \0   ; 030 345 022 333 247 236   L 203  \0 335  \b 256 263 177
-0000040 216   r 213 215 255   4   0   0   0   0       s   u   b   d   i
-0000060   r  \0   h 253 246   .   V  \f 016 274   3 226 350 256 223   5
-0000100   #   , 331   :   ?   `
-0000106
-</code></pre>
-
-<ul>
-  <li>The <code>c</code> flag: show the input as characters if possible, otherwise as
-  octal 1-byte units.</li>
-  <li>The <code>b</code> flag: show the input as octal 1-byte units.</li>
-</ul>
-
-<p>Note that the number of bytes can be found at the bottom left hand
-corner.  This is actually the object size of the tree object
-<code>492413269336d21fac079d4a4672e55d5d2147ac</code>.</p>
-
-<p>One can capture the binary output and dump it to <code>od</code> with one
-command.</p>
-
-<pre class="cliUB"><code>$ git cat-file tree 4924132 | tee test.txt | od -c
-</code></pre>
-
-<h3 id="an-improved-printf-command">An improved printf command</h3>
-
-<pre class="cliUB"><code>$ printf "tree 70\0" &gt; len.txt
-$ cat len.txt test.txt | shasum
-492413269336d21fac079d4a4672e55d5d2147ac  -
-</code></pre>
-
-<p>We finally get the target object ID in three steps.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="another-use-of-git-cat-file">Another use of git cat-file</h3>
-
-<pre class="cliUB"><code>$ git cat-file -s 492413269336d21fac079d4a4672e55d5d2147ac
-70
-</code></pre>
-
-<ul>
-  <li>The <code>-s</code> flag: size</li>
-  <li>The <code>-p</code> flag: pretty-print</li>
-</ul>
-
-<p>From the word “pretty” in the man page for <code>git-cat-file</code>, I
-understand why I had misunderstood the structure of Git tree objects.</p>
-
-<h3 id="use-od-like-hd">Use od like hd</h3>
-
-<p>From a comment to the second answer to
-<a href="http://stackoverflow.com/a/21599232">the Stack Overflow question</a> about the “format of git
-tree object”, I saw the word <code>hexdump</code>, and I viewed its man page.  At
-first, I <em>didn’t</em> know their difference, so I googled “od vs hexdump”,
-and then I saw the abbreviation <code>hd</code> for <code>hexdump</code>, so I changed the
-search query string to “hd vs od”, but found out that their functions
-are basically the <em>same</em>, but their display is <em>different</em> by default.
-I like the default display of <code>hd</code>.  To use <code>od</code> like <code>hd</code>, one only
-needs to copy the command from the man page of <code>od</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Octoshape on Ubuntu 14.04]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/"/>
-    
-    <updated>2015-06-13T22:26:34+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
-A year ago, I <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried running Octoshape streaming service on
-<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
-work.  On the test page, the output on the right-hand side was similar
-to the one listed below.</p>
-
-<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
-20:35:57.382: Player is waiting for a link input (this does not mean
-that Octoshape is ready).
-20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
-20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
-20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
-20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
-20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
-20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
-20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
-20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
-20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
-20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
-20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
-20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
-20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
-</code></pre>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>I ran <code>ls</code> in <code>/opt/octoshape</code>, which is the folder in which Octoshape
-player had been installed.</p>
-
-<pre class="cliUB"><code>$ pwd
-/opt/octoshape
-$ ls
-eula.rtf                     sua-1011082-0-marker.txt
-eula.txt                     sua-1011082-0-module.xml
-OctoshapeClient              sua-1011082-0-OctoshapeClientSUA
-setup.xml                    sua-1011082-0-OctoshapeClientSUA.sig
-sua-1011082-0-confirmed.txt  sua-1011082-0-suapack-versions.txt
-sua-1011082-0-dynfiles.zip
-</code></pre>
-
-<p>I suspected that the version of Octoshape was too <em>old</em>.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I <em>removed the folder</em> where Octoshape was installed, and
-<em>re-installed</em> the player again, then it <em>worked</em>.</p>
-
-<hr />
-<p>(Added on AUG 3RD, 2015)</p>
-
-<p>This only worked for a while.  <strong>After reboot, it <em>won’t</em> start
-again</strong>.</p>
 
 ]]></content>
     

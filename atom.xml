@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-22T20:08:59+08:00</updated>
+  <updated>2015-08-25T11:36:03+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,170 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Rare Sed Delimiters]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/"/>
+    
+    <updated>2015-08-25T10:47:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
+Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
+have to be escaped by backslashes, which makes the whole command ugly.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
+` `, etc, and you’re <em>too lazy</em> to look for
+<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
+
+<!-- more -->
+
+<h2 id="discussion-on-the-custom-delimiter">Discussion on the custom delimiter</h2>
+
+<p>When I read article at the above link, I was stuck at the last part,
+which was about using a custom delimiter.  I <em>mistakenly</em> thought that
+this was for the search pattern and the replacement.  In fact, reading
+<a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">GNU’s manual</a> and trying some commands repeatedly, I realized
+that prepending the custom delimiter with a backslash was for
+specifying the range of the following expresion.</p>
+
+<p>Therefore, I finally understand what <code>somevar</code> is in
+<a href="http://stackoverflow.com/a/20808364">this Stack Overflow question</a>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<h3 id="customizing-the-delimiter-in-a-replacement">Customizing the delimiter in a replacement</h3>
+
+<p>To begin with, I tried the following command.</p>
+
+<pre class="cliUB"><code>$ echo strange | sed s/'[a-e]'/#/g
+str#ng#
+</code></pre>
+
+<p>After that, I know that surrounding the whole <code>s</code> command <em>isn’t</em> a
+must, just the <code>regex</code> and <code>replacement</code> will do.</p>
+
+<p>Then I replaced all <code>/</code> with <code>y</code> in the above command.</p>
+
+<pre class="cliUB"><code>$ echo strange | sed sy'[a-e]'y#yg
+str#ng#
+</code></pre>
+
+<p>Now, it’s clear that the custom delimiter in the <code>s</code> command <em>doesn’t</em>
+need to be escaped.</p>
+
+<h3 id="towards-the-goal">Towards the goal</h3>
+
+<p>The goal in this post is to use bizarre characters as the delimiter in
+the <code>s</code> command, and I believe that if you’ve reached here, you’ll
+probably understand what <a href="https://stackoverflow.com/a/4844945">this command</a> is doing, provided
+that you know the way to
+<a href="https://stackoverflow.com/a/10571642">input control characters as arguments in bash commands</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Find Files for Vim to Edit in Bash]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/"/>
+    
+    <updated>2015-08-23T23:48:54+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Since copying and pasting the output of a command can be a tedious
+job.  For example, if you want to create your blog using a framework,
+you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
+repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
+GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
+one.</p>
+
+<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
+repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
+the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
+introduced in <a href="https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
+the <code>sed</code> substitution.</p>
+
+<pre class="cliUB"><code>$ git remote -v
+octopress	git@github.com:imathis/octopress.git (fetch)
+octopress	git@github.com:imathis/octopress.git (push)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
+$ name=userName; repo=repoName
+$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
+"s;(\w*)/(.*).git;$name/$repo.git;"
+$ unset name repo
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried extracting a list of Markdown files containing a particular
+word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
+<code>xargs</code>.  Unluckily, I got an error.</p>
+
+<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
+&gt; -print | xargs vi
+Vim: Warning: Input is not from a terminal
+3 files to edit
+$ 
+</code></pre>
+
+<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>As a result, I searched “vim warning input is not from a terminal
+xargs” on Google, and found <a href="http://superuser.com/q/336016">this question</a> very useful.  I
+should have wrapped the <code>find</code> command like <code>$(find ...)</code>.</p>
+
+<pre class="cliUB"><code>$ vi $(find source/_posts/ -name "*.markdown" -exec \
+&gt; grep -q ^tag {} \; -print | xargs)
+3 files to edit
+</code></pre>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="sed">sed</h3>
+<ul>
+  <li><code>3{p;q}</code>: quit after printing the third line for the sake of
+  efficiency</li>
+  <li><code>-r</code>: use extended regular expression to save the trouble of
+  escaping <code>()</code> for submatches.</li>
+  <li><code>-n</code>: suppress standard output.</li>
+  <li>Enclose the expression
+    <ul>
+      <li>with <em>single</em> quote to <em>disable</em> interpretation of bash
+  variables</li>
+      <li>with <em>double</em> quote to <em>enable</em> interpretation of bash
+  variables.</li>
+    </ul>
+  </li>
+  <li>One can replace the delimiter <code>/</code> in the expression
+  <code>s/{pat}/{repl}/</code> by any one character from <code>_;#| </code>.</li>
+  <li>Specify a custom delimiter like <code>\%.%s%foo%bar%</code>.  (The
+  variable/range <code>.</code> is <em>needed</em>.)</li>
+</ul>
+
+<h3 id="bash">bash</h3>
+
+<ul>
+  <li>Set variables using <code>var1=value1;var2=value2;...</code></li>
+  <li>Unset variable usign <code>unset var1 var2 ...</code></li>
+</ul>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1840,133 +2004,6 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
 write if-else statements should be able to solve this in a few
 seconds: surround the part <code>bar.onchange = function () { ... }</code> by the
 if-else statement <code>if (bar != null ) { ... }</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Validate HTML Code for SVG Fallbacks to Text]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/"/>
-    
-    <updated>2015-05-30T22:23:37+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>After I’d written <a href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"><em>Added <abbr title="World Wide Web Consortium">W3C</abbr> Validated Logos to Some Pages</em></a>, I
-saw that in the site, there’s still two pages which <em>hadn’t</em> been
-checked by the <abbr title="World Wide Web Consortium">W3C</abbr>’s validators.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>To allow SVG fallbacks to text, I viewed the source code for
-<a href="http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">the SVG example from W3Schools</a>.  The fallback message was
-simply included inside a <code>&lt;svg&gt;</code> tag just like a <code>&lt;p&gt;</code> tag.  I applied
-this technique to <code>source/downloads/code/SVGViewBox/viewBox1.html</code>.</p>
-
-<p>Then I uploaded that HTML file to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, which
-complained such an inclusion of text.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>After that, I googled “svg fallback text” using the encrypted version
-of the search engine.  Luckily, <a href="http://stackoverflow.com/a/26249728">the second answer</a> to the
-Stack Overflow question, which appeared at the top of the list of
-search results, is useful.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>To get an HTML page which consists of a <code>&lt;foreignObject&gt;</code> tag inside
-an <code>&lt;svg&gt;</code> tag validated by the <abbr title="World Wide Web Consortium">W3C</abbr> HTML validator, it’s obligatory to
-specify the dimensions of the <code>&lt;foreignObject&gt;</code> tag.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixed Disqus Comments When Loaded With HTTPS]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/"/>
-    
-    <updated>2015-05-26T22:12:24+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ol>
-  <li><a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">GitHub Pages now supports HTTPS</a>.</li>
-  <li>I saw that Google search showed the HTTP version of the hyperlinks.</li>
-  <li>I want to convert add the existing “http://” to “https://”.</li>
-</ol>
-
-<h2 id="problem">Problem</h2>
-
-<ol>
-  <li>I changed “http://…” to “https://…” in the Admin settings for
-the disqus site of this blog.</li>
-  <li>The original comments <em>disappeared</em>!</li>
-</ol>
-
-<p><strong>How can I get back the original comments and correct the URLs of the
-links to my blog articles on Disqus?</strong></p>
-
-<!-- more -->
-
-<h2 id="failed-attempt">Failed attempt</h2>
-
-<p>I tried to use the “Domain Migration Wizard”.  <em>Lacking</em> knowledge in
-terms like “host”, I just clicked the button to proceed even though I
-saw that the original host name was recognised as “http://https://.”.</p>
-
-<p>In the end, I messed up the URLs of the forum threads.  After using
-the “Wizard”, I waited for about 20 hours, and then I saw that
-hundreds of links started with
-“http://https://vincentam.githhub.io/…”.</p>
-
-<p>I read a lot of articles from the Web, but the problem that they’re
-facing <em>weren’t</em> the same as mine.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I finally decided to use the “URL Mapper”.  When I read the official
-onine help page about this migration tool, I realised that I should
-give it a try.  The moment that I opened the generated CSV file in a
-spreadsheet program, I knew that I had chosen the right way because
-this gave me more control over the URL of the posts on my blog.</p>
-
-<p>I also added a script copied from <a href="https://gist.github.com/konklone/9968713">konklone’s Gist</a> for using
-HTTPS by defalut.</p>
-
-<p>In the official documentation, a spreadsheet program is used to modify
-CSV files.  In fact, if one knows regular expression, one would do
-batch text editing using some tools available in the CLI.  For
-instance, I used Vim to do this last night.</p>
-
-<p>This morning, I discovered that the URLs in the box “Promoted
-Discovery” were <em>still</em> wrong!  This afternoon, I read a lot of
-related websites, just like what I did yesterday.  I <em>wasn’t</em> sure
-what to do next.  The URLs shown in the “Admin” page were finally
-correct, but those hyperlinks on the pages “View in discussion” on the
-white-backgrounded Disqus site <em>weren’t</em>.</p>
-
-<p>Then I worked on something else, and at about 8pm tonight, all the
-URLs have finally been corrected.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I need to be patient and work on other things first after I’ve already
-tried all possible ways to solve the problem.</p>
-
-<h2 id="final-remarks">Final remarks</h2>
-
-<p>During the site migration, one <em>couldn’t</em> see the comments and the
-“Also on” box took one to <em>wrong</em> pages.  I apologize for any
-inconvenience caused.</p>
 
 ]]></content>
     
