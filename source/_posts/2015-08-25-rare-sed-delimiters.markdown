@@ -66,10 +66,36 @@ probably understand what [this command][so4844945] is doing, provided
 that you know the way to
 [input control characters as arguments in bash commands][so10571642].
 
+More examples
+---
+
+I've just tried to delete a `<script>` tag in the `master` branch of a
+repository for [my sample W3CSS page][w3css] using the in-place
+editing option of `sed`.  Before making *real* changes to the file, I
+tested my command syntax with the standard output first.
+
+    [owner@localhost ~/SampleWebPage]$ git branch -a
+    * master
+      remotes/origin/HEAD -> origin/master
+      remotes/origin/gh-pages
+      remotes/origin/master
+    [owner@localhost ~/SampleWebPage]$ sed -nr '\#<scr#,#</scr#p' ex0.html
+    sed: -e expression #1, char 9: unexpected `,'
+{:.cliUB}
+
+Looking at [the manual][man] *again*, I thought that `\%regex%`
+represented *one* address only.  The pattern after the comma was
+*another* address, so I should have used *two* backslashes in the last
+command.
+
+    [owner@localhost ~/SampleWebPage]$ sed -ir '\#<scr#,\#</scr#' ex0.html
+{:.cliUB}
+
 [ref]: http://backreference.org/2010/02/20/using-different-delimiters-in-sed/
 [man]: https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses
 [so20808364]: http://stackoverflow.com/a/20808364
 [so4844945]: https://stackoverflow.com/a/4844945
 [so10571642]: https://stackoverflow.com/a/10571642
+[w3css]: https://vincenttam.github.io/SampleWebPage/ex0.html
 
 *[URL]: Uniform Resource Locator
