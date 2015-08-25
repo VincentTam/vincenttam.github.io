@@ -30,6 +30,7 @@ the `sed` substitution.
     $ name=userName; repo=repoName
     $ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
     "s;(\w*)/(.*).git;$name/$repo.git;"
+    $ unset name repo
 {:.cliUB}
 
 Problem
@@ -61,6 +62,30 @@ should have wrapped the `find` command like `$(find ...)`.
     > grep -q ^tag {} \; -print | xargs)
     3 files to edit
 {:.cliUB}
+
+Facts learnt
+---
+
+### sed
+- `3{p;q}`: quit after printing the third line for the sake of
+    efficiency
+- `-r`: use extended regular expression to save the trouble of
+    escaping `()` for submatches.
+- `-n`: suppress standard output.
+- Enclose the expression
+    - with *single* quote to *disable* interpretation of bash
+        variables
+    - with *double* quote to *enable* interpretation of bash
+        variables.
+- One can replace the delimiter `/` in the expression
+    `s/{pat}/{repl}/` by any one character from `_;#| `.
+- Specify a custom delimiter like `\%.%s%foo%bar%`.  (The
+    variable/range `.` is *needed*.)
+
+### bash
+
+- Set variables using `var1=value1;var2=value2;...`
+- Unset variable usign `unset var1 var2 ...`
 
 [GitHub]: https://github.com
 [Octopress]: http://octopress.org
