@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-25T11:36:03+08:00</updated>
+  <updated>2015-08-25T21:30:52+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -76,6 +76,30 @@ the <code>s</code> command, and I believe that if you’ve reached here, you’l
 probably understand what <a href="https://stackoverflow.com/a/4844945">this command</a> is doing, provided
 that you know the way to
 <a href="https://stackoverflow.com/a/10571642">input control characters as arguments in bash commands</a>.</p>
+
+<h2 id="more-examples">More examples</h2>
+
+<p>I’ve just tried to delete a <code>&lt;script&gt;</code> tag in the <code>master</code> branch of a
+repository for <a href="https://vincenttam.github.io/SampleWebPage/ex0.html">my sample W3CSS page</a> using the in-place
+editing option of <code>sed</code>.  Before making <em>real</em> changes to the file, I
+tested my command syntax with the standard output first.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/gh-pages
+  remotes/origin/master
+[owner@localhost ~/SampleWebPage]$ sed -nr '\#&lt;scr#,#&lt;/scr#p' ex0.html
+sed: -e expression #1, char 9: unexpected `,'
+</code></pre>
+
+<p>Looking at <a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">the manual</a> <em>again</em>, I thought that <code>\%regex%</code>
+represented <em>one</em> address only.  The pattern after the comma was
+<em>another</em> address, so I should have used <em>two</em> backslashes in the last
+command.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ sed -ir '\#&lt;scr#,\#&lt;/scr#' ex0.html
+</code></pre>
 
 ]]></content>
     
