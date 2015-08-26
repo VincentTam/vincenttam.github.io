@@ -73,9 +73,9 @@ Facts learnt
     escaping `()` for submatches.
 - `-n`: suppress standard output.
 - Enclose the expression
-    - with *single* quote to *disable* interpretation of bash
+    - with *single* quotes to *disable* interpretation of bash
         variables
-    - with *double* quote to *enable* interpretation of bash
+    - with *double* quotes to *enable* interpretation of bash
         variables.
 - One can replace the delimiter `/` in the expression
     `s/{pat}/{repl}/` by any one character from `_;#| `.
