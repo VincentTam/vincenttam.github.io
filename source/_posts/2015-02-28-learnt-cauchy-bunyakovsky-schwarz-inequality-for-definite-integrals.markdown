@@ -13,15 +13,15 @@ proof of Cauchy--Schwarz Inequality.
 \[
 \begin{aligned}
 & (\sum_{i = 1}^n a_i b_i)^2 \le (\sum_{i = 1}^n a_i^2)(\sum_{j = 1}^n
-b_j^2) \\\\
+b_j^2) \\
 \iff& (\sum_{i = 1}^n a_i b_i) (\sum_{j = 1}^n a_j b_j) \le (\sum_{i =
-1}^n a_i^2)(\sum_{j = 1}^n b_j^2) \\\\
+1}^n a_i^2)(\sum_{j = 1}^n b_j^2) \\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
-\sum_{j = 1}^n a_i^2 b_j^2 \\\\
+\sum_{j = 1}^n a_i^2 b_j^2 \\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
-\sum_{j = 1}^n \frac{1}{2} \left(a_i^2 b_j^2 + a_j^2 b_i^2 \right)\\\\
+\sum_{j = 1}^n \frac{1}{2} \left(a_i^2 b_j^2 + a_j^2 b_i^2 \right)\\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i^2 b_j^2 - 2 a_i
-b_j \cdot a_j b_i + a_j^2 b_i^2) \ge 0 \\\\
+b_j \cdot a_j b_i + a_j^2 b_i^2) \ge 0 \\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i b_j - a_j b_i)^2
 \ge 0
 \end{aligned}

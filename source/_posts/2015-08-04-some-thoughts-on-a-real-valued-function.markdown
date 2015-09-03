@@ -74,7 +74,7 @@ In fact, one *constructs*
 \begin{equation}
   \varepsilon (\Delta x) :=
     \begin{cases}
-      \frac{\Delta f}{\Delta x}-f'(x_0) &\text{if }\Delta x \ne 0,\\\\
+      \frac{\Delta f}{\Delta x}-f'(x_0) &\text{if }\Delta x \ne 0,\\
       0 &\text{if } \Delta x = 0,
     \end{cases}
   \label{def1}
@@ -94,7 +94,7 @@ $\Delta x \ne 0$.
 <div class="myeqn">
 \begin{equation}
   \begin{aligned}
-    \varepsilon \Delta x &= \Delta f - f' (x_0) \Delta x\\\\
+    \varepsilon \Delta x &= \Delta f - f' (x_0) \Delta x\\
     \Delta f &= f' (x_0) \Delta x + \varepsilon \Delta x
   \end{aligned}
   \label{mult1}
@@ -119,21 +119,21 @@ class="myeqn" markdown="0">$\varepsilon_2$</span> in a similar way.
 <div class="myeqn">
 \begin{align}
   &\begin{split}
-    & \varepsilon_1(\Delta x,\Delta y) :=\\\\
+    & \varepsilon_1(\Delta x,\Delta y) :=\\
     &\begin{cases}
       \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-      f}{\partial x}(x_0,y_0) &{\small \text{if } \Delta x \ne 0},\\\\
+      f}{\partial x}(x_0,y_0) &{\small \text{if } \Delta x \ne 0},\\
       0 &\text{if } \Delta x = 0,
     \end{cases}
   \end{split}
-  \label{def2a}\\\\
+  \label{def2a}\\
 
   &\begin{split}
-    & \varepsilon_2(\Delta x,\Delta y) :=\\\\
+    & \varepsilon_2(\Delta x,\Delta y) :=\\
     &\begin{cases}
       \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
       y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &\text{if }
-      \Delta y \ne 0,\\\\
+      \Delta y \ne 0,\\
       0 &\text{if } \Delta y = 0,
     \end{cases}
   \end{split}
@@ -148,13 +148,13 @@ $\Delta y$ respectively, just like what we've done in \eqref{mult1}.
 \begin{align}
   &\begin{split}
     \varepsilon_1(\Delta x,\Delta y) \Delta x =& f(x_0+\Delta x,y_0) -
-    f(x_0,y_0)\\\\
+    f(x_0,y_0)\\
     &- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
   \end{split}
-  \label{mult2a}\\\\
+  \label{mult2a}\\
   &\begin{split}
     \varepsilon_2(\Delta x,\Delta y) \Delta y =& f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
     &- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
   \end{split}
   \label{mult2b}
@@ -184,7 +184,7 @@ class="myeqn" markdown="0">$(x_0,y_0)$</span>,
 <div class="myeqn">
 \begin{equation}
   \lim_{\Delta x \to 0} \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\\\
+  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\
   \lim_{\Delta x \to 0} \left ( \frac{\partial f}{\partial
   y}(x_0+\Delta x,y_0)
   - \frac{\partial f}{\partial y}(x_0,y_0) \right ) = 0
@@ -213,7 +213,7 @@ markdown="0">$(x_0,y_0)$</span>.
 \begin{equation}
   \begin{split}
     \varepsilon_2(\Delta x,\Delta y) \Delta y =& f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
     &- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
     \varepsilon_3(\Delta x) \right ) \Delta y
   \end{split}
@@ -229,21 +229,21 @@ as \varepsilon_2</span> to get an equation which looks more similar to
 <div class="myeqn">
 \begin{gather}
   \begin{split}
-    &\varepsilon_2(\Delta x,\Delta y) \Delta y\\\\
+    &\varepsilon_2(\Delta x,\Delta y) \Delta y\\
     =& f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
   \end{split}
-  \label{mult2bb}\\\\
+  \label{mult2bb}\\
   \begin{split}
     &\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)\\\\
-    =& f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    y)\\
+    =& f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
     &- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
     \text{(\eqref{mult2a}+\eqref{mult2bb})}
-  \end{split}\\\\
+  \end{split}\\
   \begin{split}
-    &f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    &f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
     =& \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
     \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta

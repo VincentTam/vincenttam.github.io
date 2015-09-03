@@ -22,29 +22,29 @@ Another way using multiple integrals
 \begin{split}
 & \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
 \forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
-\\\\
-& \text{Volume of } A \\\\
-=& \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+\\
+& \text{Volume of } A \\
+=& \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
-\ud x_1 \\\\
+\ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
-\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
-\ud x_3 \ud x_2 \ud x_1 \\\\
+\ud x_3 \ud x_2 \ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
-2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
-x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =& \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
 \int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
-3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-& \vdots \\\\
-=& \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\\\
+3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+& \vdots \\
+=& \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\
 =& \frac{t^n}{n!}
 \end{split}
 \]
@@ -58,18 +58,18 @@ To calculate its centre of mass.
 <div class="myeqn">
 \[
 \begin{split}
-& \text{First component of its centre of mass} \\\\
+& \text{First component of its centre of mass} \\
 =& \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
-x_2 \ud x_1 \\\\
+x_2 \ud x_1 \\
 =& \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
 x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
-\cdots \ud x_3 \ud x_2 \ud x_1 \\\\
+\cdots \ud x_3 \ud x_2 \ud x_1 \\
 =& \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
-\ud x_1 \\\\
+\ud x_1 \\
 =& \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
 1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
-\right) \\\\
-=& \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\\\
+\right) \\
+=& \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\
 =& \frac{t}{n + 1}
 \end{split}
 \]

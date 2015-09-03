@@ -8,17 +8,21 @@ external-url: https://proofwiki.org/wiki/Product_of_GCD_and_LCM
 ---
 
 In ProofWiki's first proof, it has taken me some time to understand.
-I often write $d=\gcd(a,b)$, $a=a'd$, $b=b'd$ for some $a',b' \in
-\Z\_{>0}$, and $n$ as *any* common multiple of $a$ and $b$.  Then
-$n = q\_1 a = q\_2 b$ for some $q\_1,q\_2 \in \Z$.  The letter $q$
-connotes *quotient*.  To show that $\lcm(a,b) \times \gcd(a,b) = ab$,
-it suffices to show that
+I often write $d=\gcd(a,b)$, $a=a'd$, $b=b'd$ for some <span
+class="myeqn" markdown="0">$a',b' \in \Z_{>0}$</span>, and $n$ as
+*any* common multiple of $a$ and $b$.  Then <span class="myeqn"
+markdown="0">$n = q_1 a = q_2 b$</span> for some <span class="myeqn"
+markdown="0">$q_1,q_2 \in \Z$</span>.  The letter $q$ connotes
+*quotient*.  To show that $\lcm(a,b) \times \gcd(a,b) = ab$, it
+suffices to show that
 
+<div class="myeqn">
 \begin{gather}
-  a \left | \frac{ab}{d} \right. \land 
-    b \left | \frac{ab}{d} \right. \label{eq:isLCM}\\\\\\\\
-  a|n \land b|n \implies\left.\frac{ab}{d}\right|n \label{eq:leastLCM}
+a \left | \frac{ab}{d} \right. \land 
+b \left | \frac{ab}{d} \right. \label{eq:isLCM}\\
+a|n \land b|n \implies \left.\frac{ab}{d}\right|n \label{eq:leastLCM}
 \end{gather}
+</div>
 
 Equations \eqref{eq:isLCM} and \eqref{eq:leastLCM} mean that "$ab/d$
 is *a* LCM of $a$ and $b$" and "$ab/d$ is the *least* LCM of $a$ and
@@ -33,12 +37,14 @@ Since what we want is $\displaystyle \frac{ab}{d} (\dots) = n$, we
 multiply both sides of the above equation by $\displaystyle
 \frac{n}{d}$.
 
-\\[
+<div class="myeqn">
+\[
 \begin{aligned}
-  \frac{axn+byn}{d}=n\\\\\\\\
-  \frac{axbq\_2+byaq\_1}{d}=n\\\\\\\\
-  \left( \frac{ab}{d} \right) (xq\_2+yq\_1) = n
+\frac{axn+byn}{d}=n\\
+\frac{axbq_2+byaq_1}{d}=n\\
+\left( \frac{ab}{d} \right) (xq_2+yq_1) = n
 \end{aligned}
-\\]
+\]
+</div>
 
 Hence \eqref{eq:leastLCM} is proved.

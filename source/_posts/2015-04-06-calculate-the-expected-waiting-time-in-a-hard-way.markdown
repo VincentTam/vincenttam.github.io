@@ -24,16 +24,16 @@ I tried finding the expected waiting time by conditioning on $X\_1 - X\_2$.
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    & \Pr(X_1 > X_2) \\\\
-    =& \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 < x_1) \ud x_1 \\\\
+    & \Pr(X_1 > X_2) \\
+    =& \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 < x_1) \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
-    e^{-\lambda_2 x_1}) \ud x_1 \\\\
+    e^{-\lambda_2 x_1}) \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
     \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
-    x_1 \\\\
+    x_1 \\
     =& 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
-    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\\\
-    =& 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\\\
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\
+    =& 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\
     =& \frac{\lambda_2}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:pr_min}
@@ -46,14 +46,14 @@ Similarly, one has $\Pr(X\_1 \le X\_2) = \lambda\_1/(\lambda\_1 +
 <div class="myeqn">
 \begin{equation}
 \begin{split}
-& \E[\left\{ X_1, X_2 \right\}] \\\\
+& \E[\left\{ X_1, X_2 \right\}] \\
 =& \E[\min\left\{ X_1, X_2 \right\} \mid X_1 > X_2] \Pr(X_1 > X_2)
-\\\\
+\\
 +& \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
-\\\\
-=& \E[X_2] \Pr(X_1 > X_2) + \E[X_1] \Pr(X_1 \le X_2) \\\\
+\\
+=& \E[X_2] \Pr(X_1 > X_2) + \E[X_1] \Pr(X_1 \le X_2) \\
 =& \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
-\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\\\
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\
 =& \frac{2}{\lambda_1 + \lambda_2}
 \end{split}
 \label{eq:wrong}
@@ -83,9 +83,9 @@ Actually, one can divide it into two halves.
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    & \E[\min\left\{ X_1, X_2 \right\}] \\\\
+    & \E[\min\left\{ X_1, X_2 \right\}] \\
     =& \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
     +& \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
 	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
   \end{split}
@@ -100,36 +100,36 @@ above equation, we only need to evaluate *one* of them.
 \begin{equation}
   \begin{split}
     & \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\\\
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
     \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
-    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\\\
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
     \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
-    x_1} \right) \ud x_1 \\\\
+    x_1} \right) \ud x_1 \\
     =& \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
-    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\\\
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\
     =& \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
     x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
     (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
-    \\\\
+    \\
     =& \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
     x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
     \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
-    x_1}}{\lambda_1 + \lambda_2} \right) \\\\
+    x_1}}{\lambda_1 + \lambda_2} \right) \\
     +& \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
     x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
     \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
-    \right|_{0}^{\infty} \right) \\\\
+    \right|_{0}^{\infty} \right) \\
     =& \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
     x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
     \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
-    \frac{1}{\lambda_1 + \lambda_2} \right) \\\\
+    \frac{1}{\lambda_1 + \lambda_2} \right) \\
     =& -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
     \lambda_2)}
@@ -144,7 +144,7 @@ Similarly, one has
 \begin{equation}
   \begin{split}
     & \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
-    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\\\
+    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\
     =& -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
     \lambda_1)}.
@@ -159,28 +159,28 @@ Substitute \eqref{eq:half\_int} and \eqref{eq:half\_int2} into
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    & \E[\min\left\{ X_1, X_2 \right\}] \\\\
+    & \E[\min\left\{ X_1, X_2 \right\}] \\
     =& \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
-    \lambda_2)} \right) \\\\
+    \lambda_2)} \right) \\
     +& \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
-    \lambda_1)} \right) \\\\
+    \lambda_1)} \right) \\
     =& -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
     \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
-    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\\\
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\
     -& \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
-    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\\\
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\
     =& -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
     \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
-    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
     =& -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
     \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
-    (\lambda_1 + \lambda_2)} \\\\
+    (\lambda_1 + \lambda_2)} \\
     =& -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
-    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
     =& -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
-    \lambda_2} \\\\
+    \lambda_2} \\
     =& \frac{1}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:fin}

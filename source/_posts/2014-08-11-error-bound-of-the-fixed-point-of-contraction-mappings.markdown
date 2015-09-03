@@ -9,51 +9,61 @@ categories: math
 This afternoon, I read the proof of Banach fixed-point theorem in
 *Wikipedia*.[^1]  It's said that
 
+<div class="myeqn">
 \begin{equation}
-  d(x^\*,x\_n) \le \frac{q^n}{1 - q} d(x\_1,x\_0).
+  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
   \label{eq:inf_err}
 \end{equation}
+</div>
 
 In the proofs for the lemmas, I could only find something like $x_k$
-inside the brackets, but *not* $x^\*$.  Thus, I *couldn't* figure out
+inside the brackets, but *not* $x^*$.  Thus, I *couldn't* figure out
 how one can derive inequality \eqref{eq:inf_err} from an inequality
 derived in the proof of Lemma 2.
 
+<div class="myeqn">
 \begin{equation}
-  d(x\_m,x\_n) \le \frac{q^n}{1 - q} d(x\_1,x\_0),
+  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
   \text{ where } m > n.
   \label{eq:finite_err}
 \end{equation}
+</div>
 
 I googled for some notes, and found one which told me to take the
 limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
 \infty$.[^2] After looking at Corollary 2.4 in the PDF file in
 footnote #2 for a while, I know what I've missed.
 
-If $\left\\{ p\_k \right\\}$ converges to $p$,
+If <span class="myeqn" markdown="0">$\left\{ p_k \right\}$</span>
+converges to $p$,
 
+<div class="myeqn">
 \begin{equation}
-  \lim\_{k \to \infty} d(p\_k,q) = d(p,q)
-    = d\left(\lim\_{k \to \infty} p\_k,q \right)
+  \lim_{k \to \infty} d(p_k,q) = d(p,q)
+    = d\left(\lim_{k \to \infty} p_k,q \right)
   \label{eq:dist_limit}
 \end{equation}
+</div>
 
 That's why I wrote the [previous post][PrevPost].
 
 With equation \eqref{eq:dist_limit}, I can now derive
 \eqref{eq:inf_err} from \eqref{eq:finite_err}.
 
-$\displaystyle \because \lim\_{k \to \infty} x\_k = x\_\*$
+<span class="myeqn" markdown="0">$\displaystyle \because \lim_{k \to
+\infty} x_k = x_*$</span>
 
-\\[
+<div class="myeqn">
+\[
 \begin{aligned}
-d(x^\*,x\_n) =& d\left( \lim\_{k \to \infty} x\_k,x\_n\right) \\\\\\\\
-=& \lim\_{k \to \infty} d(x\_k,x\_n) \\\\\\\\
-\le& \lim\_{k \to \infty} \frac{q^n}{1 - q} d(x\_1,x\_0) \qquad
-  \text{(by \eqref{eq:finite_err})} \\\\\\\\
-=& \frac{q^n}{1 - q} d(x\_1,x\_0)
+  d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n\right) \\
+  =& \lim_{k \to \infty} d(x_k,x_n) \\
+  \le& \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
+    \text{(by \eqref{eq:finite_err})} \\
+  =& \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
-\\]
+\]
+</div>
 
 ---
 [^1]:

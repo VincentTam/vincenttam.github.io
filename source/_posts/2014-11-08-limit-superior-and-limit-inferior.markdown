@@ -10,13 +10,13 @@ Problem
 ---
 
 For sequences of numbers, *limit inferior* and *limit superior* are
-defined as $\\liminf (a\_n):=\\sup\\\{\\inf\\\{a\_k:k \\ge n\\}\\}$
-and $\\limsup (a\_n):=\\inf\\\{\\sup\\\{a\_k:k \\ge n\\}\\}$
-respectively; for sequences of sets, they are defined as
-$\\displaystyle \\bigcup\_\{n=1}^\{\\infty}
-\\bigcap\_\{k=n}^\{\\infty} A\_k$ and $\\displaystyle
-\\bigcap\_\{n=1}^\{\\infty} \\bigcup\_\{k=n}^\{\\infty} A\_k$
-respectively.
+defined as <span class="myeqn" markdown="0">$\liminf
+(a_n):=\sup\{\inf\{a_k:k \ge n\}\}$</span> and <span class="myeqn"
+markdown="0">$\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$</span>
+respectively; for sequences of sets, they are defined as <span
+class="myeqn" markdown="0">$\displaystyle \bigcup_{n=1}^{\infty}
+\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle \bigcap_{n=1}^{\infty}
+\bigcup_{k=n}^{\infty} A_k$</span> respectively.
 
 **Why are they consistent?**
 
@@ -25,43 +25,44 @@ respectively.
 Discussion
 ---
 
-It suffices to find a relation between \'<\' and \'⊆\': $\\\{x \\le
-a\\} \\subseteq \\\{x \\le b\\} \\iff a \\le b$.
+It suffices to find a relation between '<' and '⊆': $\{x \le a\}
+\subseteq \{x \le b\} \iff a \le b$.
 
-Claim: $\\displaystyle \\bigcup\_\{a \\in A} \\\{x \\le a\\} = \\\{x
-\\le \\sup A\\}$.
+Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x \le \sup
+A\}$.
 
 *Proof*\:
 
-\\\[
-  \\begin\{aligned}
-    & x \\in \\bigcup\_\{a \\in A} \\\{x \\le a\\} \\\\\\\\
-    \\iff& x \\le a \\;\\forall a \\in A \\\\\\\\
-    \\iff& x \\text\{ is a lower bound of } A \\\\\\\\
-    \\iff& x \\le \\inf A
-    \\end\{aligned}
-\\\]
+<div class="myeqn">
+\[
+\begin{aligned}
+& x \in \bigcup_{a \in A} \{x \le a\} \\
+\iff& x \le a \;\forall a \in A \\
+\iff& x \text{ is a lower bound of } A \\
+\iff& x \le \inf A
+\end{aligned}
+\]
+</div>
 
 The last step is due to the defintion of infimum (*greatest* lower
 bound).
 
 With the above claim, one has
 
-\\\[
-  \\begin\{aligned}
-    & \\bigcap\_\{n=1}^\{\\infty} \\bigcup\_\{k=n}^\{\\infty}
-      \\\{x \\le a\_k\\} \\\\\\\\
-    =& \\bigcap\_\{n=1}^\{\\infty}
-      \\bigcup\_\{a \\in \\\{a\_k:k \\ge n\\}}\\\{x \\le a\\} \\\\\\\\
-    =& \\bigcap\_\{n=1}^\{\\infty}
-      \\\{ x \\le \\sup \\\{a\_k:k \\ge n\\}\\} \\\\\\\\
-    =& \\\{x \\le \\inf\\sup \\\{a\_k:k \\ge n\\}\\}
-  \\end\{aligned}
-\\\]
+<div class="myeqn">
+\[
+\begin{aligned}
+& \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{x \le a_k\} \\
+=& \bigcap_{n=1}^{\infty} \bigcup_{a \in \{a_k:k \ge n\}}\{x \le a\}\\
+=& \bigcap_{n=1}^{\infty} \{ x \le \sup \{a_k:k \ge n\}\} \\
+=& \{x \le \inf\sup \{a_k:k \ge n\}\}
+\end{aligned}
+\]
+</div>
 
-Hence, one can see that $\\sup\\inf \\\{a\_k:k \\ge n\\} \\le
-\\inf\\sup \\\{a\_k:k \\ge n\\}$ and $\\displaystyle
-\\bigcup\_\{n=1}^\{\\infty} \\bigcap\_\{k=n}^\{\\infty} \\\{x \\le
-a\_k\\} \\subseteq \\bigcap\_\{n=1}^\{\\infty}
-\\bigcup\_\{k=n}^\{\\infty} \\\{x \\le a\_k\\}$ share something in
-common. 
+<span class="myeqn" markdown="0">
+Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le \inf\sup \{a_k:k
+\ge n\}$ and $\displaystyle \bigcup_{n=1}^{\infty}
+\bigcap_{k=n}^{\infty} \{x \le a_k\} \subseteq \bigcap_{n=1}^{\infty}
+\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in common. 
+</span>

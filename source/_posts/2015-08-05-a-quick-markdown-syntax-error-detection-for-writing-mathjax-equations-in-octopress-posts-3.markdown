@@ -92,6 +92,14 @@ three hyphens will fix this problem.
 Inadequacies
 ---
 
+---
+(Added on SEP 3RD, 2015)
+
+Now I realised that kramdown will leave the trailing two backslashes
+at each line inside `<div>` tags in Markdown source files *untouched*.
+
+---
+
 In [the second post][seri2] in this series, we know that `<div>` tag
 prevents kramdown from converting the code inside the tag to HTML,
 while in [another old post about kramdown's Markdown attributes][pp3],

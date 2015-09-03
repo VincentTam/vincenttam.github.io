@@ -24,7 +24,8 @@ and the <span class="grp1">red solid line</span> are collinear.)
 
 <!-- more -->
 
-## Discussion
+Discussion
+---
 
 To prove that three points are collinear, Menelaus's Theorem is often
 useful.  To apply the theorem to this problem, (TL;DR;C image below)
@@ -60,7 +61,8 @@ class="grp1">$P$</span>*.  This led us to define a *new* point.  Let
 Then the light blue triangle $\triangle B\color{blue}{S}F$ is what we
 need.
 
-## The proof
+The proof
+---
 
 Since I have been tired of drawing figures using TikZ and typing
 equations with $\rm \LaTeX$, I *don't* want to illustrate or prove any
@@ -69,30 +71,34 @@ depends.  I refer readers to Zhang J. Z.'s work.[^1]
 
 From the above figure, it's clear that what we need to show is
 
-\\[
+<div class="myeqn">
+\[
 \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
-  \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
-  \frac{F\color{red}{R}}{\color{red}{R}B} = -1
-\\]
+\frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
+\frac{F\color{red}{R}}{\color{red}{R}B} = -1
+\]
+</div>
 
 **The main idea of this proof is simple: reduce everything to what is
 given.**  Thus, points <span class="grp1">$P,Q,R$</span> and <span
 class="grp2">$S$ </span> (i.e. <span class="grp1">red</span> and <span
 class="grp2">blue</span> points) should be eventually *eliminated*.
 The tool that we're going to use is Co-side Theorem.
-{: #coside1}
+{:#coside1}
 
+<div class="myeqn">
 \begin{equation}
   \begin{split}
     \frac{F\color{red}{R}}{\color{red}{R}B} &=
-      \frac{S\_{\triangle CEF}}{S\_{\triangle CEB}} \\\\\\\\
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
     \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} &=
-      \frac{S\_{\triangle CD\color{blue}{S}}}
-      {S\_{\triangle CDF}}\\\\\\\\
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle CDF}}\\
     \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} &=
-      -\frac{S\_{\triangle AEB}}{S\_{\triangle AE\color{blue}{S}}}
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}}
   \end{split}
 \end{equation}
+</div>
 
 On RHS of [(1)](#coside1), one can see that the <span
 class="grp1">red</span> points are gone, and we still need to remove
@@ -100,25 +106,27 @@ the <span class="grp2">$S$</span>.  Moreover, dealing with length of
 segments is *easier* than their area because the former and the later
 are one-dimensional and two-dimensional quantities respectively.
 Therefore, we rearrange the area of the triangles to get
-{: #sub1}
+{:#sub1}
 
+<div class="myeqn">
 \begin{equation}
   \begin{split}
     \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
       \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
       \frac{F\color{red}{R}}{\color{red}{R}B} &=
-      -\frac{S\_{\triangle AEB}}{S\_{\triangle AE\color{blue}{S}}} \cdot
-      \frac{S\_{\triangle CD\color{blue}{S}}}{S\_{\triangle CDF}} \cdot
-      \frac{S\_{\triangle CEF}}{S\_{\triangle CEB}} \\\\\\\\
-    &= -\frac{S\_{\triangle AEB}}{S\_{\triangle CEB}} \cdot
-      \frac{S\_{\triangle CEF}}{S\_{\triangle CDF}} \cdot
-      \frac{S\_{\triangle CD\color{blue}{S}}}
-      {S\_{\triangle AE\color{blue}{S}}} \\\\\\\\
+      -\frac{S_{\triangle AEB}}{S_{\triangle AE\color{blue}{S}}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CEB}} \\
+    &= -\frac{S_{\triangle AEB}}{S_{\triangle CEB}} \cdot
+      \frac{S_{\triangle CEF}}{S_{\triangle CDF}} \cdot
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}} \\
     &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-      \frac{S\_{\triangle CD\color{blue}{S}}}
-      {S\_{\triangle AE\color{blue}{S}}}
+      \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AE\color{blue}{S}}}
   \end{split}
 \end{equation}
+</div>
 
 However, those two triangles in [(2)](#sub1) have *no* common side.
 Thus, we need to work out the area of the two coloured triangles in
@@ -146,49 +154,55 @@ that $D\color{blue}{S}$ is the "common side" because $D$,
 
 {% img center /images/posts/PappusHexThm/PappusHexThm3.svg 600 %}
 <small>[Source](/downloads/code/pappus/PappusHexThm3.tex)</small>
-{: #coside2}
+{:#coside2}
 
+<div class="myeqn">
 \begin{equation}
   \begin{split}
-    \frac{S\_{\triangle CD\color{blue}{S}}}
-      {S\_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}
-      \text{, or} \\\\\\\\
-    S\_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
-      S\_{\triangle AD\color{blue}{S}}
+    \frac{S_{\triangle CD\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &= \frac{CB}{BA}
+      \text{, or} \\
+    S_{\triangle CD\color{blue}{S}} &= \frac{CB}{BA} \cdot
+      S_{\triangle AD\color{blue}{S}}
   \end{split}
 \end{equation}
+</div>
 
 The $CB/BA$ in [(3)](#coside2) cancels the $AB/CB$ in [(2)](#sub1).
 Therefore, we're almost done!
 
 {% img center /images/posts/PappusHexThm/PappusHexThm4.svg 600 %}
 <small>[Source](/downloads/code/pappus/PappusHexThm4.tex)</small>
-{: #coside3}
+{:#coside3}
 
+<div class="myeqn">
 \begin{equation}
   \begin{split}
-    \frac{S\_{\triangle AE\color{blue}{S}}}
-      {S\_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}
-      \text{, or}\\\\\\\\
-      S\_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
-      S\_{\triangle AD\color{blue}{S}}
+    \frac{S_{\triangle AE\color{blue}{S}}}
+      {S_{\triangle AD\color{blue}{S}}} &= -\frac{EF}{FD}
+      \text{, or}\\
+      S_{\triangle AE\color{blue}{S}} &= -\frac{EF}{FD} \cdot
+      S_{\triangle AD\color{blue}{S}}
   \end{split}
 \end{equation}
+</div>
 
 Substituting [(3)](#coside2) and [(4)](#coside3) into [(2)](#sub1), we
 get
 
-\\[
+<div class="myeqn">
+\[
 \begin{split}
   \frac{B\color{red}{P}}{\color{red}{P}\color{blue}{S}} \cdot
     \frac{\color{blue}{S}\color{red}{Q}}{\color{red}{Q}F} \cdot
     \frac{F\color{red}{R}}{\color{red}{R}B}
     &= -\frac{AB}{CB} \cdot -\frac{EF}{DF} \cdot
-    \frac{\frac{CB}{BA} \cdot S\_{\triangle AD\color{blue}{S}}}
-    {-\frac{EF}{FD} \cdot S\_{\triangle AD\color{blue}{S}}} \\\\\\\\
+    \frac{\frac{CB}{BA} \cdot S_{\triangle AD\color{blue}{S}}}
+    {-\frac{EF}{FD} \cdot S_{\triangle AD\color{blue}{S}}} \\
     &= -1
 \end{split}
-\\]
+\]
+</div>
 
 Hence, by Menelaus's Theorem, we can conclude that
 <span class="grp1">$P,Q$</span> and <span class="grp1">$R$</span> are

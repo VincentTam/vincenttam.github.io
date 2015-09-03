@@ -60,7 +60,7 @@ $\epsilon:=K-f(t)-a(t)$. If $|x-t|<\delta(t)$ and $x\in I$,
 <div class="myeqn">
 \[
 \begin{aligned}
-f(x)-f(t)\le|f(x)-f(t)|<&\epsilon=K-f(t)-a(t)\\\\
+f(x)-f(t)\le|f(x)-f(t)|<&\epsilon=K-f(t)-a(t)\\
 f(x)<&K-a(t)
 \end{aligned}
 \]

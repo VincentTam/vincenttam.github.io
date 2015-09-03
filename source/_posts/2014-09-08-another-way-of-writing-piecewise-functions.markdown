@@ -59,6 +59,11 @@ d(x^*,x_n) =& d\left( \lim_{k \to \infty} x_k,x_n\right) \\\
 
 ### Visual effects in pages under "/posts/" or the index page
 
+(Added on SEP 3RD, 2015)
+
+Note that due to the development of Octopress, I now see *three*
+backslashes in the "MathJax Equation Source".
+
 {% img fancybox /images/posts/MathJaxDisplay2/collection.png 'LaTeX code seen in index page' 'fig2' %}
 
 {% raw %}
@@ -82,10 +87,11 @@ However, it *does* matter if I have to define a piecewise function.
 Take one defined in one of my old posts as an example.[^3]
 
 ---
-(Added on DEC 12TH, 2014)
+<del>(Added on DEC 12TH, 2014)</del>
+(Revised on SEP 3RD, 2015)
 
-Note: As you can see from the above piecewise function, the problem is
-now *gone*.
+<del>Note: As you can see from the above piecewise function, the
+problem is now *gone*.</del>
 
 ---
 
@@ -123,6 +129,11 @@ f(x,y) =
 
 ### Visual effects in pages under "/posts/" or the index page
 
+(Added on SEP 3RD, 2015)
+
+Note that due to the development of Octopress, I now see *three*
+backslashes in the "MathJax Equation Source".
+
 {% img fancybox /images/posts/MathJaxDisplay2/cases2.png 'LaTeX code seen in index page' 'fig4' %}
 
 {% raw %}
@@ -136,6 +147,14 @@ f(x,y) =
 {% endraw %}
 
 Solution
+---
+
+---
+(Added on SEP 3RD, 2015)
+
+Now, I know [how to tell kramdown to ignore MathJax code][sol].  This
+is *much more convenient* than the method describe below.
+
 ---
 
 After I observed that the two equations, which are aligned by the
@@ -181,6 +200,11 @@ f(x,y) = \left\{
 
 ### Visual effects in pages under "/posts/" or the index page
 
+(Added on SEP 3RD, 2015)
+
+Note that due to the development of Octopress, I now see *three*
+backslashes in the "MathJax Equation Source".
+
 {% img fancybox /images/posts/MathJaxDisplay2/aligned2.png 'LaTeX code seen in index page' 'fig6' %}
 
 {% raw %}
@@ -214,5 +238,6 @@ functions.
 [pp1]: /blog/2014/09/07/mathjax-and-rss/
 [pp2]: /blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/
 [pp3]: /blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/
+[sol]: /blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/
 
 *[RSS]: Rich Site Summary

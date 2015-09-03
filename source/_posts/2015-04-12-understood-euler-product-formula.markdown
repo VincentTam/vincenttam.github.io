@@ -43,13 +43,13 @@ following lines, I understood this equation.
 
 <div class="myeqn">
 \begin{align}
-& 1^{-s} + 2^{-s} + 3^{-s} + \cdots \\\\
+& 1^{-s} + 2^{-s} + 3^{-s} + \cdots \\
 =& (1^{-s} + 3^{-s} + 5^{-s} + \cdots) (1^{-s} + 2^{-s} + 2^{-2s} +
-\cdots) \label{step1} \\\\
+\cdots) \label{step1} \\
 =& (1^{-s} + 3^{-s} + 5^{-s} + \cdots) \cdot \frac{1}{1 - 2^{-s}}
-\label{step2} \\\\
+\label{step2} \\
 =& (1^{-s} + 5^{-s} + 7^{-s} + \cdots) (1^{-s} + 3^{-s} + 3^{-2s} +
-\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} \\\\
+\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} \\
 =& (1^{-s} + 5^{-s} + 7^{-s} + \cdots) \cdot \frac{1}{1 - 3^{-s}}
 \cdot \frac{1}{1 - 2^{-s}} \label{step4}
 \end{align}
@@ -69,10 +69,10 @@ product signs.
 <div class="myeqn">
 \[
 \begin{aligned}
-& \sum_{k = 1}^{\infty} \frac{1}{k^s} \\\\
-=& \sum_{k \in \N} \frac{1}{k^s} \\\\
-=& \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} \\\\
-=& \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}\\\\
+& \sum_{k = 1}^{\infty} \frac{1}{k^s} \\
+=& \sum_{k \in \N} \frac{1}{k^s} \\
+=& \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} \\
+=& \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}\\
 =& \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}
 \end{aligned}
 \]

@@ -35,10 +35,10 @@ how to make use of the above diagram to do this question.
 
 <div class="myeqn">
 \begin{equation*}\begin{CD}
-     @.              \overline{F'}\\\\
-@.                   @AAA\\\\
-E    @>\tau>\cong>   \tau[E]\\\\
-@AAA                 @AAA\\\\
+     @.              \overline{F'}\\
+@.                   @AAA\\
+E    @>\tau>\cong>   \tau[E]\\
+@AAA                 @AAA\\
 F    @>\sigma>\cong> F'
 \end{CD}\end{equation*}
 </div>
