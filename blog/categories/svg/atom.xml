@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Svg | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/svg/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-03T22:35:12+08:00</updated>
+  <updated>2015-09-03T22:49:14+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -341,6 +341,29 @@ generating the SVG file for the $\rm \LaTeX$ source code again, I
 finally succeeded in getting the <em>contents</em> of the image enlarged.</p>
 
 <hr />
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/svg_resize_bar.js",function() {});
+})();
+</script>
 
 <div class="footnotes">
   <ol>
