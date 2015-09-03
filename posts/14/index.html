@@ -9,7 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Scanning and printing works fine in my Ubuntu 12.04 desktop. I’ve upgraded to Ubuntu 14.04 LTS yesterday.1 Problem When I used Simple Scan &hellip;">
+  <meta name="description" content="Tonight, I uninstalled Ubuntu Tweak for security reasons.1 [owner@localhost ~]$ sudo apt-get remove ubuntu-tweak [sudo] password for owner: Reading &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,76 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/15/removed-ubuntu-tweak/">Removed Ubuntu Tweak</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-15T23:50:16+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:50 pm</span></time>
+        
+           | <a href="/blog/2014/08/15/removed-ubuntu-tweak/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/15/removed-ubuntu-tweak/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/15/removed-ubuntu-tweak/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tonight, I uninstalled <a href="http://ubuntu-tweak.com/">Ubuntu Tweak</a> for security reasons.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cliUB"><code>[owner@localhost ~]$ sudo apt-get remove ubuntu-tweak 
+[sudo] password for owner: 
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following packages will be REMOVED:
+ubuntu-tweak
+0 upgraded, 0 newly installed, 1 to remove and 1 not upgraded.
+After this operation, 4,034 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 354631 files and directories currently installed.)
+Removing ubuntu-tweak (0.8.7-1~precise1) ...
+Processing triggers for bamfdaemon (0.5.1+14.04.20140409-0ubuntu1) ...
+Rebuilding /usr/share/applications/bamf-2.index...
+Processing triggers for desktop-file-utils (0.22-1ubuntu1) ...
+Processing triggers for mime-support (3.54ubuntu1) ...
+Processing triggers for gnome-menus (3.10.1-0ubuntu2) ...
+Processing triggers for libglib2.0-0:i386 (2.40.0-2) ...
+Processing triggers for gconf2 (3.2.6-0ubuntu2) ...
+Processing triggers for hicolor-icon-theme (0.13-1) ...
+</code></pre>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="https://sites.google.com/site/easylinuxtipsproject/fatalmistakes#TOC-High-danger-level-orange-alert-:-Ubuntu-Tweak-and-Ubuntu-Sources-List-Generator"><em>Avoid 10 fatal mistakes in Ubuntu and Linux Mint</em></a> in
+Easy Linux tips project. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -321,51 +391,61 @@ the next few years.</p>
   <div class="entry-content"><p>This afternoon, I read the proof of Banach fixed-point theorem in
 <em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
 
-<p>\begin{equation}
+<div class="myeqn">
+\begin{equation}
   d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
   \label{eq:inf_err}
-\end{equation}</p>
+\end{equation}
+</div>
 
 <p>In the proofs for the lemmas, I could only find something like $x_k$
-inside the brackets, but <em>not</em> $x^*$.  Thus, I <em>couldn’t</em> figure out
+inside the brackets, but <em>not</em> $x^<em>$.  Thus, I *couldn’t</em> figure out
 how one can derive inequality \eqref{eq:inf_err} from an inequality
 derived in the proof of Lemma 2.</p>
 
-<p>\begin{equation}
+<div class="myeqn">
+\begin{equation}
   d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
   \text{ where } m &gt; n.
   \label{eq:finite_err}
-\end{equation}</p>
+\end{equation}
+</div>
 
 <p>I googled for some notes, and found one which told me to take the
 limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
 \infty$.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> After looking at Corollary 2.4 in the PDF file in
 footnote #2 for a while, I know what I’ve missed.</p>
 
-<p>If $\left\{ p_k \right\}$ converges to $p$,</p>
+<p>If <span class="myeqn">$\left\{ p_k \right\}$</span>
+converges to $p$,</p>
 
-<p>\begin{equation}
+<div class="myeqn">
+\begin{equation}
   \lim_{k \to \infty} d(p_k,q) = d(p,q)
     = d\left(\lim_{k \to \infty} p_k,q \right)
   \label{eq:dist_limit}
-\end{equation}</p>
+\end{equation}
+</div>
 
 <p>That’s why I wrote the <a href="/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
 
 <p>With equation \eqref{eq:dist_limit}, I can now derive
 \eqref{eq:inf_err} from \eqref{eq:finite_err}.</p>
 
-<p>$\displaystyle \because \lim_{k \to \infty} x_k = x_*$</p>
+<p><span class="myeqn">$\displaystyle \because \lim_{k \to
+\infty} x_k = x_*$</span></p>
 
-<p>\[
+<div class="myeqn">
+\[
 \begin{aligned}
-d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\<br />
-=&amp; \lim_{k \to \infty} d(x_k,x_n) \\\<br />
-\le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
-  \text{(by \eqref{eq:finite_err})} \\\<br />
-=&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+  d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
+  =&amp; \lim_{k \to \infty} d(x_k,x_n) \\
+  \le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
+    \text{(by \eqref{eq:finite_err})} \\
+  =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
 \end{aligned}
-\]</p>
+\]
+</div>
 
 <hr />
 
@@ -422,21 +502,22 @@ from
   </header>
 
 
-  <div class="entry-content"><p>Let $X$ be a metric space and $q \in X$.  Suppose that sequence
-$\left\{ p_k \right\}$ in $X$ converges to a point $p$ in $X$.
-Then, $\left\{ d(p_k,q) \right\}$ converges to $d(p,q)$.</p>
+  <div class="entry-content"><p>Let $X$ be a metric space and $q \in X$.  Suppose that sequence <span class="myeqn">$\left\{ p_k \right\}$</span> in $X$
+converges to a point $p$ in $X$.  Then, <span class="myeqn">$\left\{ d(p_k,q) \right\}$</span> converges to $d(p,q)$.</p>
 
-<p>\begin{align}
+<div class="myeqn">
+\begin{align}
   &amp; \therefore \forall \varepsilon \exists N \forall k (k \ge N
-  \implies d(p_k,p) &lt; \varepsilon) \label{eq2} \\\<br />
-  &amp; \abs{d(p_k,q) - d(p,q)} &lt; \varepsilon \\\<br />
+  \implies d(p_k,p) &lt; \varepsilon) \label{eq2} \\
+  &amp; \abs{d(p_k,q) - d(p,q)} &lt; \varepsilon \\
   &amp; \iff d(p_k,q) - d(p,q) &lt;
-  \varepsilon \land d(p,q) - d(p_k,q) &lt; \varepsilon \notag \\\<br />
+  \varepsilon \land d(p,q) - d(p_k,q) &lt; \varepsilon \notag \\
   &amp; d(p_k,q) - d(p,q) \le d(p,p_k) \iff d(p_k,q) \le
-  d(p,q) + d(p,p_k) \label{eq4} \\\<br />
+  d(p,q) + d(p,p_k) \label{eq4} \\
   &amp; d(p,q) - d(p_k,q) \le d(p,p_k) \iff d(p,q) \le
   d(p_k,q) + d(p,p_k) \label{eq5}
-\end{align}</p>
+\end{align}
+</div>
 
 <p>\eqref{eq4}, and \eqref{eq5} follows from the Triangular Inequality.
 Apply \eqref{eq2} to \eqref{eq4} and \eqref{eq5} to finish the proof.
@@ -654,62 +735,6 @@ position.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/03/my-pandoc-template-1/">My Pandoc Template (1)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-03T17:21:01+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
-        
-           | <a href="/blog/2014/08/03/my-pandoc-template-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/03/my-pandoc-template-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/03/my-pandoc-template-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The last post about <a href="http://johnmacfarlane.net/pandoc/" title="pandoc—a universal document converter">pandoc</a> was written four months ago.  Last week,
-I slightly changed the pandoc template <code>default.latex</code> on
-<a href="https://github.com/jgm/pandoc-templates" title="Templates for pandoc">jgm/pandoc-templates</a> so that users can easily create $\rm \LaTeX$
-documents with</p>
-
-<ul>
-  <li>1-inch margin; and</li>
-  <li>one-half (or double) spacing.</li>
-</ul>
-
-<p>The following command can create a PDF using the template.</p>
-
-<pre class="cli"><code>$ pandoc src.mkd --template=my_template1.latex -o out.pdf
-</code></pre>
-
-<p>I hope that more people will use pandoc and write in Markdown.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/08/03/my-pandoc-template-1/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/15">&larr; Older</a>
@@ -752,7 +777,7 @@ documents with</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (35)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -771,6 +796,10 @@ documents with</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
@@ -784,10 +813,6 @@ documents with</p>
     
       <li class="post">
         <a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
       </li>
     
   </ul>

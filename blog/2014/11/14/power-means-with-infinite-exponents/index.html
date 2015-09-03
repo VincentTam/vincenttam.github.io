@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Half a month ago, I didn’t know how to find $\displaystyle
-\lim_{n \to \infty} \sqrt[n]{a^n+b^n}$. With the help from
-others, I could show that the &hellip;">
+  <meta name="description" content="Half a month ago, I didn’t know how to find $\displaystyle \lim_{n \to \infty}
+\sqrt[n]{a^n+b^n}$. With the help from others, I could show
+that the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -105,64 +105,83 @@ others, I could show that the &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find $\displaystyle
-\lim_{n \to \infty} \sqrt[n]{a^n+b^n}$.  With the help from
-others, I could show that the answer was $\max\left\{ a,b
-\right\}$.  This inspired me to solve a question which had been in
-my mind since I was F.3.</p>
+<div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find <span class="myeqn">$\displaystyle \lim_{n \to \infty}
+\sqrt[n]{a^n+b^n}$</span>.  With the help from others, I could show
+that the answer was <span class="myeqn">$\max\left\{ a,b
+\right\}$</span>.  This inspired me to solve a question which had been
+in my mind since I was F.3.</p>
 
-<p>Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}}
-\quad\forall\,n \in \N$, and $a_i &gt; 0\quad\forall\,i = 1,
-\dots,k$.<br />
-Show that $\displaystyle \lim_{n \to \infty} M_n
-(a_1,\dots,a_k) = \max\left\{ a_i \mid i = 1,\dots,k
-\right\}$ and $\displaystyle \lim_{n \to -\infty} M_n =
-\min\left\{ a_i \mid i = 1,\dots,k \right\}$.</p>
+<p><span class="myeqn">
+Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \quad\forall\,n \in \N$, and
+$a_i &gt; 0\quad\forall\,i = 1, \dots,k$.  
+Show that $\displaystyle \lim_{n \to \infty} M_n (a_1,\dots,a_k) =
+\max\left\{ a_i \mid i = 1,\dots,k \right\}$ and $\displaystyle
+\lim_{n \to -\infty} M_n = \min\left\{ a_i \mid i = 1,\dots,k
+\right\}$.
+</span></p>
 
 <p><em>Proof</em>:</p>
 
-<p>I’ll use the facts that $\displaystyle \lim_{n \to \infty}
-b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by
-dividing $b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let
-$b^{\frac{1}{n}} = 1 + \delta_n$ for some $\delta_n &gt; 0$.
-It’s a good exercise on the definition of limits, the binomial
-expansion and elementary properties of inequalities.)</p>
+<p><span class="myeqn">
+I'll use the facts that $\displaystyle \lim_{n \to \infty}
+b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by dividing
+$b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let $b^{\frac{1}{n}} =
+1 + \delta_n$ for some $\delta_n &gt; 0$.  It's a good exercise on the
+definition of limits, the binomial expansion and elementary properties
+of inequalities.)
+</span></p>
 
-<p>Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note
-that
+<p><span class="myeqn">
+Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note that
+</span></p>
+
+<div class="myeqn">
 \[
-\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}}
-\le \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
+\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}} \le
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
 \sqrt[n]{\frac{kM^n}{k}} = M
 \]
-Therefore, taking limit as $n \to \infty$ and applying the Squeeze
-Theorem, one has
+</div>
+
+<p>Therefore, taking limit as $n \to \infty$ and applying the Squeeze
+Theorem, one has</p>
+
+<div class="myeqn">
 \[
-\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{
-a_i \mid i = 1,\dots,k \right\}.
+\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{ a_i \mid i =
+1,\dots,k \right\}.
 \]
-I wrote similar arguments for the case $n \to -\infty$, but after I
+</div>
+
+<p>I wrote similar arguments for the case $n \to -\infty$, but after I
 read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
 
-<p>Replace $a_i$’s with $1/a_i$’s.  Then
+<p><span class="myeqn">
+Replace $a_i$'s with $1/a_i$'s.  Then
+</span></p>
+
+<div class="myeqn">
 \[
 \begin{aligned}
 \lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
 \left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
-\left.\frac{1}{a_i} \right| i = 1,\dots,k \right\} \\\<br />
+\left.\frac{1}{a_i} \right\| i = 1,\dots,k \right\} \\
 \lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
 a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
-1,\dots,k \right\}} \\\<br />
+1,\dots,k \right\}} \\
 \lim_{n \to \infty} \left( \frac{\sum_{i=1}^{k}
 a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
 \mid i = 1,\dots,k \right\}
 \end{aligned}
 \]
-Hence, $\displaystyle \lim_{n \to -\infty} M_n
-(a_1,\dots,a_k) = \lim_{n \to -\infty}
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} = \min\left\{
-a_i \mid i = 1,\dots,k \right\}$.</p>
+</div>
+
+<p><span class="myeqn">
+Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
+\lim_{n \to -\infty} \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} =
+\min\left\{ a_i \mid i = 1,\dots,k \right\}$.
+</span></p>
 </div>
 
 
@@ -252,7 +271,7 @@ a_i \mid i = 1,\dots,k \right\}$.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (35)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -271,6 +290,10 @@ a_i \mid i = 1,\dots,k \right\}$.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
@@ -284,10 +307,6 @@ a_i \mid i = 1,\dots,k \right\}$.</p>
     
       <li class="post">
         <a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
       </li>
     
   </ul>

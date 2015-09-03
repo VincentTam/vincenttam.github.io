@@ -117,7 +117,7 @@ the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git objec
 
 <h2 id="the-list">The list</h2>
 
-<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
+<pre><code>$ find .git/objects       # Return all files/folders under `.git/objects'
 $ git cat-file -p {hash}  # Print the content to which {hash} corresponds
 $ git hash-object {file}  # Return the hash of {file}
 $ git hash-object --stdin # Return the hash of the standard input
@@ -126,8 +126,10 @@ $ git ls-files -s         # List all tracked files and their hash
 $ git ls-tree {hash}      # List the contents of a tree
 $ git rev-parse {hash}    # Return the full SHA-1 of {hash}
 $ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-$ git diff                # Show changes in tracked files not staged for commit
-$ git diff --cached       # Show changes in tracked files staged for commit
+$ git diff                # Show the difference between the working directory and the index
+$ git diff --cached       # Show the difference between HEAD and the index
+$ git diff HEAD           # Show the difference between HEAD and the working directory
+{:.cliUB}
 </code></pre>
 
 <p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
@@ -250,7 +252,7 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (35)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -269,6 +271,10 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
@@ -282,10 +288,6 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
     
       <li class="post">
         <a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
       </li>
     
   </ul>

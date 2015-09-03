@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-03T16:19:53+08:00</updated>
+  <updated>2015-09-03T22:35:12+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,130 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Found an Upper Bound for the Modulus of Legendre Polynomials]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/"/>
+    
+    <updated>2015-09-03T16:35:01+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials</id>
+    
+      <content type="html"><![CDATA[<h2 id="lemma">Lemma</h2>
+
+<p>Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have</p>
+
+<div class="myeqn">
+\begin{equation}
+\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t)} \ud t.
+\label{lemma}
+\end{equation}
+</div>
+
+<p>The trick is to treat the integral on the L.H.S. of \eqref{lemma} as a
+number.</p>
+
+<div class="myeqn">
+\begin{align}
+\int_{a}^{b} w(t) \ud t &amp;= r_0 e^{i\theta_0} \text{ for some } r \in
+\R \text{ and } \theta_0 \in [-\pi,\pi)
+\label{trick1}\\
+r_0 &amp;= \int_{a}^{b} e^{-i\theta_0} w(t) \ud t
+\label{trick2}
+\end{align}
+</div>
+
+<p>Then from \eqref{lemma} and \eqref{trick1}, it suffices to show that</p>
+
+<div class="myeqn">
+\begin{equation}
+r_0 = \abslr{r_0 e^{i\theta_0}} \le \int_{a}^{b} \abs{w(t)} \ud t.
+\label{new_goal1}
+\end{equation}
+</div>
+
+<p>Since \eqref{trick2} consists of $e^{-i\theta_0}$, which is <em>absent</em>
+on the R.H.S. of \eqref{lemma} and \eqref{new_goal1}, we add it back.
+Thus, we need to show</p>
+
+<div class="myeqn">
+\begin{equation}
+r_0 \le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+\label{new_goal2}
+\end{equation}
+</div>
+
+<p>Looking at \eqref{trick2} again, we’re almost there!  Using elementary
+properties of complex numbers and definite integrals for real-valued
+functions and the fact/definition that</p>
+
+<div class="myeqn">
+\begin{equation}
+\Re\left(\int_{a}^{b} w(t) \ud t\right) = \int_{a}^{b} \Re[w(t)] \ud
+t,
+\label{Re-int}
+\end{equation}
+</div>
+
+<p>we can write</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+r_0 =&amp; \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
+=&amp; \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
+\le&amp; \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+\end{aligned}
+\label{fin}
+\end{equation}
+</div>
+
+<p>Therefore, \eqref{new_goal2} is satisfied, so as \eqref{lemma}.</p>
+
+<h2 id="an-upper-bound-for-legendre-polynomials">An upper bound for Legendre polynomials</h2>
+
+<p>I have <em>never</em> evaluated</p>
+
+<div class="myeqn">
+\begin{equation}
+P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+\cos{\theta})^n \ud\theta,
+\label{pnx}
+\end{equation}
+</div>
+
+<p>where $-1 \le x \le 1$ and $n = 0,1,2,\dots$</p>
+
+<p>Applying \eqref{lemma}, one gets</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+P_n(x) =&amp; \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+\cos{\theta})^n \ud\theta\\
+\le&amp; \frac{1}{\pi} \int_0^\pi \ud\theta\\
+=&amp; 1
+\end{aligned}
+\label{crux}
+\end{equation}
+</div>
+
+<p>because</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+&amp; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+=&amp; \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+\le&amp; \sqrt{x^2 + (1 - x^2)}\\
+=&amp; 1.
+\end{aligned}
+\label{norm-ub}
+\end{equation}
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -84,7 +208,7 @@ intuitively realise that the geometric meaning of $\varepsilon$.</p>
 \begin{equation}
   \varepsilon (\Delta x) :=
     \begin{cases}
-      \frac{\Delta f}{\Delta x}-f'(x_0) &amp;\text{if }\Delta x \ne 0,\\\\
+      \frac{\Delta f}{\Delta x}-f'(x_0) &amp;\text{if }\Delta x \ne 0,\\
       0 &amp;\text{if } \Delta x = 0,
     \end{cases}
   \label{def1}
@@ -104,7 +228,7 @@ $\Delta x \ne 0$.</p>
 <div class="myeqn">
 \begin{equation}
   \begin{aligned}
-    \varepsilon \Delta x &amp;= \Delta f - f' (x_0) \Delta x\\\\
+    \varepsilon \Delta x &amp;= \Delta f - f' (x_0) \Delta x\\
     \Delta f &amp;= f' (x_0) \Delta x + \varepsilon \Delta x
   \end{aligned}
   \label{mult1}
@@ -124,21 +248,21 @@ the difference between a difference quotient between two points
 <div class="myeqn">
 \begin{align}
   &amp;\begin{split}
-    &amp; \varepsilon_1(\Delta x,\Delta y) :=\\\\
+    &amp; \varepsilon_1(\Delta x,\Delta y) :=\\
     &amp;\begin{cases}
       \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-      f}{\partial x}(x_0,y_0) &amp;{\small \text{if } \Delta x \ne 0},\\\\
+      f}{\partial x}(x_0,y_0) &amp;{\small \text{if } \Delta x \ne 0},\\
       0 &amp;\text{if } \Delta x = 0,
     \end{cases}
   \end{split}
-  \label{def2a}\\\\
+  \label{def2a}\\
 
   &amp;\begin{split}
-    &amp; \varepsilon_2(\Delta x,\Delta y) :=\\\\
+    &amp; \varepsilon_2(\Delta x,\Delta y) :=\\
     &amp;\begin{cases}
       \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
       y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
-      \Delta y \ne 0,\\\\
+      \Delta y \ne 0,\\
       0 &amp;\text{if } \Delta y = 0,
     \end{cases}
   \end{split}
@@ -153,13 +277,13 @@ $\Delta y$ respectively, just like what we’ve done in \eqref{mult1}.</p>
 \begin{align}
   &amp;\begin{split}
     \varepsilon_1(\Delta x,\Delta y) \Delta x =&amp; f(x_0+\Delta x,y_0) -
-    f(x_0,y_0)\\\\
+    f(x_0,y_0)\\
     &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
   \end{split}
-  \label{mult2a}\\\\
+  \label{mult2a}\\
   &amp;\begin{split}
     \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
     &amp;- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
   \end{split}
   \label{mult2b}
@@ -187,7 +311,7 @@ rid of the $\Delta x$ inside the bracket.  That leads us to the one
 <div class="myeqn">
 \begin{equation}
   \lim_{\Delta x \to 0} \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\\\
+  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\
   \lim_{\Delta x \to 0} \left ( \frac{\partial f}{\partial
   y}(x_0+\Delta x,y_0)
   - \frac{\partial f}{\partial y}(x_0,y_0) \right ) = 0
@@ -214,7 +338,7 @@ first-order partial derivative with respect to $y$ at <span class="myeqn">$(x_0+
 \begin{equation}
   \begin{split}
     \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\\\
+    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
     &amp;- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
     \varepsilon_3(\Delta x) \right ) \Delta y
   \end{split}
@@ -230,21 +354,21 @@ as \varepsilon_2</span> to get an equation which looks more similar to
 <div class="myeqn">
 \begin{gather}
   \begin{split}
-    &amp;\varepsilon_2(\Delta x,\Delta y) \Delta y\\\\
+    &amp;\varepsilon_2(\Delta x,\Delta y) \Delta y\\
     =&amp; f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
   \end{split}
-  \label{mult2bb}\\\\
+  \label{mult2bb}\\
   \begin{split}
     &amp;\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)\\\\
-    =&amp; f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    y)\\
+    =&amp; f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
     &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
     \text{(\eqref{mult2a}+\eqref{mult2bb})}
-  \end{split}\\\\
+  \end{split}\\
   \begin{split}
-    &amp;f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\\\
+    &amp;f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
     =&amp; \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
     \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
     \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
@@ -371,13 +495,13 @@ following lines, I understood this equation.</p>
 
 <div class="myeqn">
 \begin{align}
-&amp; 1^{-s} + 2^{-s} + 3^{-s} + \cdots \\\\
+&amp; 1^{-s} + 2^{-s} + 3^{-s} + \cdots \\
 =&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) (1^{-s} + 2^{-s} + 2^{-2s} +
-\cdots) \label{step1} \\\\
+\cdots) \label{step1} \\
 =&amp; (1^{-s} + 3^{-s} + 5^{-s} + \cdots) \cdot \frac{1}{1 - 2^{-s}}
-\label{step2} \\\\
+\label{step2} \\
 =&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) (1^{-s} + 3^{-s} + 3^{-2s} +
-\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} \\\\
+\cdots) \cdot \frac{1}{1 - 2^{-s}} \label{step3} \\
 =&amp; (1^{-s} + 5^{-s} + 7^{-s} + \cdots) \cdot \frac{1}{1 - 3^{-s}}
 \cdot \frac{1}{1 - 2^{-s}} \label{step4}
 \end{align}
@@ -396,10 +520,10 @@ product signs.</p>
 <div class="myeqn">
 \[
 \begin{aligned}
-&amp; \sum_{k = 1}^{\infty} \frac{1}{k^s} \\\\
-=&amp; \sum_{k \in \N} \frac{1}{k^s} \\\\
-=&amp; \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} \\\\
-=&amp; \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}\\\\
+&amp; \sum_{k = 1}^{\infty} \frac{1}{k^s} \\
+=&amp; \sum_{k \in \N} \frac{1}{k^s} \\
+=&amp; \prod_{p \text{ prime}} \sum_{k \in \N} \frac{1}{p^{s k}} \\
+=&amp; \prod_{p \text{ prime}} \sum_{k = 1}^{\infty}\frac{1}{p^{s k}}\\
 =&amp; \prod_{p \text{ prime}} \frac{1}{1 - p^{-s}}
 \end{aligned}
 \]
@@ -566,98 +690,6 @@ returns the factorial of a number.</p>
       <p>Keller, J. B. (1994). A characterization of the Poisson
 distribution and the probability of winning a game. <em>The American
 Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Calculating the Volume of a Triangular Pyramid in a Hard Way]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/"/>
-    
-    <updated>2015-04-07T16:07:49+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>There is an easy way of calculating the volume of $\{(x,y,z) \in
-\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
-permutation of $x,y,z$.<sup id="fnref:easy_vol"><a href="#fn:easy_vol" class="footnote">1</a></sup>  This can be easily generalized to
-$n$ dimension.</p>
-
-<h2 id="another-way-using-multiple-integrals">Another way using multiple integrals</h2>
-
-<div class="myeqn">
-\[
-\begin{split}
-&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
-\forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
-\\\\
-&amp; \text{Volume of } A \\\\
-=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
-\ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
-\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
-\ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
-2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
-x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
-3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-&amp; \vdots \\\\
-=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\\\
-=&amp; \frac{t^n}{n!}
-\end{split}
-\]
-</div>
-
-<h2 id="why-use-this-method">Why use this method?</h2>
-
-<p>To calculate its centre of mass.</p>
-
-<div class="myeqn">
-\[
-\begin{split}
-&amp; \text{First component of its centre of mass} \\\\
-=&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
-x_2 \ud x_1 \\\\
-=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
-x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
-\cdots \ud x_3 \ud x_2 \ud x_1 \\\\
-=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
-\ud x_1 \\\\
-=&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
-1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
-\right) \\\\
-=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\\\
-=&amp; \frac{t}{n + 1}
-\end{split}
-\]
-</div>
-
-<p>By symmetry, we conclude that the center of mass is $(\frac{t}{n + 1},
-\frac{t}{n + 1}, \ldots, \frac{t}{n + 1}) \in \R^n$.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:easy_vol">
-
-      <p>Simplex. (2015, March 29). In <em>Wikipedia, The Free Encyclopedia</em>.
-Retrieved 15:34, April 6, 2015, from
-<a href="http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423">http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423</a> <a href="#fnref:easy_vol" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

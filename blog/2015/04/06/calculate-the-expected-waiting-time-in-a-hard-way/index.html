@@ -121,16 +121,16 @@ waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \Pr(X_1 &gt; X_2) \\\\
-    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 \\\\
+    &amp; \Pr(X_1 &gt; X_2) \\
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
-    e^{-\lambda_2 x_1}) \ud x_1 \\\\
+    e^{-\lambda_2 x_1}) \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
     \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
-    x_1 \\\\
+    x_1 \\
     =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
-    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\\\
-    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\\\
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\
     =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:pr_min}
@@ -143,14 +143,14 @@ waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
 <div class="myeqn">
 \begin{equation}
 \begin{split}
-&amp; \E[\left\{ X_1, X_2 \right\}] \\\\
+&amp; \E[\left\{ X_1, X_2 \right\}] \\
 =&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2)
-\\\\
+\\
 +&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
-\\\\
-=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) \\\\
+\\
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) \\
 =&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
-\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\\\
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\
 =&amp; \frac{2}{\lambda_1 + \lambda_2}
 \end{split}
 \label{eq:wrong}
@@ -179,9 +179,9 @@ expectation <em>won’t</em> be helpful because</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\\\
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\
     =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
     +&amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
 	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
   \end{split}
@@ -196,36 +196,36 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 \begin{equation}
   \begin{split}
     &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
-    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\\\
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
-    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\\\
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
     \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
-    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\\\
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
     \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
-    x_1} \right) \ud x_1 \\\\
+    x_1} \right) \ud x_1 \\
     =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
     -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
-    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\\\
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\
     =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
     x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
     (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
-    \\\\
+    \\
     =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
     x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
     \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
-    x_1}}{\lambda_1 + \lambda_2} \right) \\\\
+    x_1}}{\lambda_1 + \lambda_2} \right) \\
     +&amp; \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
     x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
     \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
-    \right|_{0}^{\infty} \right) \\\\
+    \right|_{0}^{\infty} \right) \\
     =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
     x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
     \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
-    \frac{1}{\lambda_1 + \lambda_2} \right) \\\\
+    \frac{1}{\lambda_1 + \lambda_2} \right) \\
     =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
     \lambda_2)}
@@ -240,7 +240,7 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 \begin{equation}
   \begin{split}
     &amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
-    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\\\
+    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\
     =&amp; -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
     \lambda_1)}.
@@ -255,28 +255,28 @@ above equation, we only need to evaluate <em>one</em> of them.</p>
 <div class="myeqn">
 \begin{equation}
   \begin{split}
-    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\\\
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\
     =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
     \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
-    \lambda_2)} \right) \\\\
+    \lambda_2)} \right) \\
     +&amp; \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
     \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
-    \lambda_1)} \right) \\\\
+    \lambda_1)} \right) \\
     =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
     \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
-    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\\\
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\
     -&amp; \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
-    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\\\
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
     \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
-    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
     \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
-    (\lambda_1 + \lambda_2)} \\\\
+    (\lambda_1 + \lambda_2)} \\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
-    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\\\
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
     =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
-    \lambda_2} \\\\
+    \lambda_2} \\
     =&amp; \frac{1}{\lambda_1 + \lambda_2}
   \end{split}
   \label{eq:fin}
@@ -388,7 +388,7 @@ time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (35)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -407,6 +407,10 @@ time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
@@ -420,10 +424,6 @@ time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
     
       <li class="post">
         <a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
       </li>
     
   </ul>

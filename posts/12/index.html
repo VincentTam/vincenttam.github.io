@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I changed my way of writing block equations for RSS.1 However, in
-my old post about the Contraction Mapping Principles, there’s an &hellip;">
+  <meta name="description" content="This afternoon, I found that when I preview the print layout of the
+posts in Chrome, some Mathjax block equations enclosed with
+\begin{equation} &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,65 @@ my old post about the Contraction Mapping Principles, there’s an &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-10T16:27:02+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This afternoon, I found that when I preview the print layout of the
+posts in <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>, some Mathjax block equations enclosed with
+<code>\begin{equation}</code> <em>weren’t</em> displayed properly.  I think it should be
+due to my settings in <code>sass/custom/_print.scss</code> because the contents
+in Mathjax’s official demo can be rendered properly in the print
+preview.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, I deleted some obsolete lines of code in that
+SCSS file .<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Actually, since it takes time for loading MathJax, if
+I open the print preview before the block equations are ready, then I
+will see the source code of those equations.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Refer to <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> in MathJax
+Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -398,13 +458,16 @@ was a waste of time.</p>
 
   <div class="entry-content"><p>The following axioms seem to be weaker.</p>
 
-<p>Let $G$ be a set, and $*: G \times G \to G$ be a binary operation.</p>
+<p>Let <span class="myeqn">$G$ be a set, and $*: G \times G
+\to G$</span> be a binary operation.</p>
 
 <dl>
   <dt>Associativity</dt>
-  <dd>$\forall a,b,c \in G, (a * b) * c = a * (b * c)$</dd>
+  <dd><span class="myeqn">$\forall a,b,c \in G, (a * b) * c =
+a * (b * c)$</span></dd>
   <dt>Existence of <em>left</em> identity</dt>
-  <dd>$\exists e \in G \text{ s.t. } \forall a \in G, e * a = a$</dd>
+  <dd><span class="myeqn">$\exists e \in G \text{ s.t. }
+\forall a \in G, e * a = a$</span></dd>
   <dt>Existence of <em>left</em> inverse</dt>
   <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
 e$</dd>
@@ -618,59 +681,6 @@ in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T15:22:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>This Sunday, I tried to do something similar to what I did in
-May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
-I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
-that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
-easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="/images/posts/OctRuby2a/err.png" title="A compilation error" alt="Screenshot of problem" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/13">&larr; Older</a>
@@ -713,7 +723,7 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (34)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (35)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -732,6 +742,10 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
@@ -745,10 +759,6 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
     
       <li class="post">
         <a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a>
       </li>
     
   </ul>
