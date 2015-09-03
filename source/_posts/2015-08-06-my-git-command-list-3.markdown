@@ -31,9 +31,10 @@ The list
     $ git ls-tree {hash}      # List the contents of a tree
     $ git rev-parse {hash}    # Return the full SHA-1 of {hash}
     $ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-    $ git diff                # Show changes in tracked files not staged for commit
-    $ git diff --cached       # Show changes in tracked files staged for commit
-{:.cliUB}
+    $ git diff                # Show the difference between the working directory and the index
+    $ git diff --cached       # Show the difference between HEAD and the index
+    $ git diff HEAD           # Show the difference between HEAD and the working directory
+    {:.cliUB}
 
 It *isn't* necessary to supply the full SHA-1 hash for
 `{hash}`---several hex digits at the beginning will be enough.
