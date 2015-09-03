@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-08-25T21:30:52+08:00</updated>
+  <updated>2015-09-03T15:36:02+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,52 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Merge Failed?]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/"/>
+    
+    <updated>2015-09-03T14:34:31+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/03/git-merge-failed</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Octopress has recently removed Rubypants, so the automatic smartquotes
+<em>aren’t</em> supported any more.  However, after typing <code>git pull
+octopress master</code> on the <code>source</code> branch of the local working
+directory for this blog, <code>git</code> simply said that it’s “already
+up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
+show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
+If the former has the commits of the later, then
+<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
+the command <code>git merge octopress/master</code> again, and the version
+control system still said that there’s <em>no</em> unmerged commits from the
+<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
+
+<!-- more -->
+
+<h2 id="cause">Cause</h2>
+
+<p>By using <code>git log --abbrev-commit --pretty=oneline --graph</code> and <code>git
+merge-base octopress/master HEAD</code>, I can quickly browse through the
+commits.  Finally, I identified the reason for this failed merge: I
+reverted the first merge of those two branches three months ago.  I
+belive that I can revert this reversion to achieve my desired merge.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:remote">
+
+      <p>Since Octopress 3 is currently in development, I still use the
+original version. <a href="#fnref:remote" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -459,131 +505,6 @@ b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
 </code></pre>
 
 <p>We’re done!</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (2): Trees With One Single Blob]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/"/>
-    
-    <updated>2015-08-07T19:36:21+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
-generation of object IDs in Git is the SHA-1 hash of the string</p>
-
-<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
-</code></pre>
-
-<p>,where</p>
-
-<ul>
-  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
-  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
-  command <code>wc -c</code>.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
-Control with Git</em>.</p>
-
-<ol>
-  <li>Create a folder named <code>hello</code> and go to that directory.</li>
-  <li>Initialise an empty Git repository.</li>
-  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
-  <li>Add the file to Git’s object storage.</li>
-  <li>Get a tree object from the index.</li>
-  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
-  <li>Count the number of bytes in <code>test.txt</code>.</li>
-  <li>
-    <p>Create the file <code>len.txt</code> consisting of</p>
-
-    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
-</code></pre>
-
-    <p><em>without</em> the line terminator.</p>
-  </li>
-  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
-compute its SHA-1 hash.</li>
-</ol>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
-$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
-<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
-$ wc -c test.txt
-63 test.txt
-$ printf "tree 63\0" &gt; len.txt
-$ cat len.txt test.txt | shasum
-<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
-</code></pre>
-
-<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
-hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>I googled “git tree hash id”, and I found the chosen answer of
-<a href="http://stackoverflow.com/a/13977017">this Stack Overflow question</a> very explanative.  One may
-shorten the included command by replacing <code>echo -en</code> with <code>printf</code>.</p>
-
-<h3 id="get-the-object-size-right">Get the object size right</h3>
-
-<p>In this case, the object size of the tree
-<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code> containg the blob
-<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code> which corresponds to the
-file <code>hello.txt</code> should be 37 (= 6 + 1 + 9 + 1 + 20).</p>
-
-<h3 id="get-the-object-content-right">Get the object content right</h3>
-
-<p>As the blob ID is stored as binary value, I copied it and pasted it
-Vim so that I could easily insert <code>\x</code> in front of a pair of hex
-digits in the blob ID.  I then put the things together in a command.</p>
-
-<pre class="cliUB"><code># Contents of `testing.sh' as seen inside Vim
-# Note that there's NO newline character in the following command
-printf "tree 37\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4
-c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
-</code></pre>
-
-<h3 id="result">Result</h3>
-
-<p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
-<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
-
-<h2 id="fact-learnt-formatting-printfs-output">Fact learnt: formatting printf’s output</h2>
-
-<p>In the Stack Overflow question, there’s a command</p>
-
-<pre><code>find .git/objects/ -type f -printf "%h%f %s\n" {.cliUB}
-</code></pre>
-
-<ul>
-  <li>The flag <code>-type f</code> stands for files.  <em>Without</em> this flag,
-  directories like <code>.git/objects</code> will be displayed.</li>
-  <li>The flag <code>-printf</code> formats the output.
-    <ul>
-      <li><code>%h</code> means the head of the file name <em>without</em> the last
-  component of the file name.  Thus, it expands to a the path of
-  a directory <em>without</em> the trailing <code>/</code>.</li>
-      <li><code>%f</code> means the last component of the file name.  As a result,
-  the <code>/</code> inside the displayed SHA-1 hashes are taken away.</li>
-      <li><code>%s</code> means the file size</li>
-    </ul>
-  </li>
-</ul>
 
 ]]></content>
     
