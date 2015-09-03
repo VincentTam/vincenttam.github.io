@@ -92,3 +92,26 @@ finally succeeded in getting the *contents* of the image enlarged.
 [pp1]: /blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/
 [pp2]: /blog/2014/08/02/zooming-svg-in-web-browsers/
 [ref]: http://css-tricks.com/scale-svg/
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("{{ root_url }}/javascripts/svg_resize_bar.js",function() {});
+})();
+</script>
