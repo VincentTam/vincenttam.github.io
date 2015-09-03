@@ -7,8 +7,7 @@ external-url: http://www.skypost.hk/港聞/新聞頭條/20140606/001/常玩手�
 categories: health
 ---
 
-{% blockquote 晴報 %}{% pullquote %}機不離手會令腦生鏽？美國有研究發現，18至39歲年輕人中有14％記憶力變差，相信與經常使用智能產品有關。{" 本港專家指，20歲後腦部發展踏入衰退期，如過分依賴數碼產品，又無鍛練腦筋，長遠會加速腦退化。 "}
-{% endpullquote %}
+{% blockquote 晴報 %}機不離手會令腦生鏽？美國有研究發現，18至39歲年輕人中有14％記憶力變差，相信與經常使用智能產品有關。本港專家指，20歲後腦部發展踏入衰退期，如過分依賴數碼產品，又無鍛練腦筋，長遠會加速腦退化。
 {% endblockquote %}
 
 After reading this piece of news from *Sky Post* last week, I'm glad

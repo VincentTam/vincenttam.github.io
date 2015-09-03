@@ -80,12 +80,10 @@ which have been overwritten is extremely easy.[^6]
 
 #### Conclusion of this sub-section
 
-{% pullquote %}
 Using `shred` to overwrite the data multiple times will destroy the
 USB; while one pass of overwriting provides *not much* additional
-security to IT experts.  As a result, {"stop running `shred` on USB
-and SSD drives."}
-{% endpullquote %}
+security to IT experts.  As a result, stop running `shred` on USB and
+SSD drives.
 
 Encrypt swap
 ---
