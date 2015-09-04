@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-03T22:49:14+08:00</updated>
+  <updated>2015-09-04T22:23:27+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,254 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Stuck at Two Trigonometric Inequalities]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/"/>
+    
+    <updated>2015-09-04T18:26:48+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Suppose that $z = x + iy, x,y \in \R$.  Then $\abs{\sin z} \ge
+\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$.</p>
+
+<!-- more -->
+
+<h2 id="forgotten-facts">Forgotten facts</h2>
+
+<p>I’ve forgotten many facts about complex variables learnt almost two
+years ago.  For example, the defhinition of sines and cosines.  Eight
+years ago, I can memorize well the trigonometric formulae.  Now, I
+have difficulties in proving them.</p>
+
+<div class="myeqn">
+\begin{align}
+  \cos z &amp;= \frac{e^{iz}+e^{-iz}}{2} \label{defa} \\
+  \sin z &amp;= \frac{e^{iz}-e^{-iz}}{2i} \label{defb}
+\end{align}
+</div>
+
+<h2 id="look-at-the-hint">Look at the hint</h2>
+
+<p>In the book that I’m reading, there’re two formulae.</p>
+
+<div class="myeqn">
+\begin{align}
+  \abs{\sin z}^2 &amp;= \sin^2 x + \sinh^2 y \label{hint1a} \\
+  \abs{\cos z}^2 &amp;= \cos^2 x + \sinh^2 y \label{hint1b}
+\end{align}
+</div>
+
+<p>Even though the problem can be solved once these two formulae are
+accepted, I <em>don’t</em> know why they’re true.</p>
+
+<h2 id="look-further-up">Look further up</h2>
+
+<p>I found another two formulae.</p>
+
+<div class="myeqn">
+\begin{align}
+  \sin z &amp;= \sin x \cosh y + i \cos x \sinh y \label{hint2a} \\
+  \cos z &amp;= \cos x \cosh y - i \sin x \sinh y \label{hint2b}
+\end{align}
+</div>
+
+<p>I tried to verify \eqref{hint2a} after having read \eqref{defhb}.</p>
+
+<h2 id="first-failed-attempt">First failed attempt</h2>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: \sin z \\
+    &amp;= \frac{e^{iz} - e^{-iz}}{2i} \\
+    &amp;= \frac{e^{i(x + iy)} - e^{-i(x + iy)}}{2i} \\
+    &amp;= \frac{e^{ix} e^{-y} - e^{-ix} e^{y}}{2i} \\
+    &amp;= \frac{e^{ix} - e^{-ix}}{2i} e^{-y} + \frac{e^{-ix - y}}{2i} -
+    \frac{e^{-ix} e^{y}}{2i} \\
+    &amp;= \sin x \cdot e^{-y} + \frac{e^{-ix}}{i} \cdot
+    \frac{e^{-y} - e^{y}}{2}\\
+    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \frac{e^{y} - e^{-y}}{2} \\
+    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \sinh y
+  \end{aligned}
+  \label{fail1}
+\end{equation}
+</div>
+
+<p>I was <em>stuck</em> at this point because I <em>didn’t</em> know how to change
+\eqref{fail1} to \eqref{hint2a}.</p>
+
+<h2 id="more-forgotten-facts">More forgotten facts</h2>
+
+<p>In fact, some simple identities involving hyperbolic functions can
+simplify matters.</p>
+
+<div class="myeqn">
+\begin{align}
+  \cosh z &amp;= \frac{e^{y}+e^{-y}}{2} \label{defha} \\
+  \sinh z &amp;= \frac{e^{y}-e^{-y}}{2} \label{defhb} \\
+  \cos(iy) &amp;= \cosh y \label{idha} \\
+  \sin(iy) &amp;= i \sinh y \label{idhb}
+\end{align}
+</div>
+
+<p>Then I realised that \eqref{hint2a} follows from the compound angle
+formula.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    \sin(x + iy) &amp;= \sin x \cos(iy) + \cos x \sin(iy) \\
+    &amp;= \sin x \cosh y + i \cos x \sinh y
+  \end{aligned}
+  \label{link}
+\end{equation}
+</div>
+
+<p>Thus, I need to prove something more general.</p>
+
+<h2 id="compound-angle-formulae">Compound angle formulae</h2>
+
+<div class="myeqn">
+\begin{align}
+  \cos(z_1 + z_2) &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
+  \label{cpda} \\
+  \sin(z_1 + z_2) &amp;= \sin z_1 \cos z_2 + \cos z_1 \sin z_2
+  \label{cpdb}
+\end{align}
+</div>
+
+<p>I tried proving \eqref{cpdb} in the <em>same</em> way like \eqref{fail1}.</p>
+
+<h2 id="second-failed-attempt">Second failed attempt</h2>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: \sin(z_1 + z_2) \\
+    &amp;= \frac{e^{i(x_1 + iy_1 + x_2 + iy_2)} - e^{-i(x_1 + iy_1 + x_2 +
+    iy_2)}}{2i} \\
+    &amp;= \frac{1}{2i} [e^{i(x_1 + x_2)} e^{-(y_1 + y_2)}
+    - e^{-i(x_1 + x_2)} e^{y_1 + y_2}]
+  \end{aligned}
+  \label{fail2}
+\end{equation}
+</div>
+
+<p>Then I <em>didn’t</em> know how to continue.</p>
+
+<h2 id="reasons-for-the-above-failures">Reasons for the above failures</h2>
+
+<ul>
+  <li>\eqref{fail1} and \eqref{fail2} involve fractions, which are more
+difficult to deal with than those <em>without</em> fractions.</li>
+  <li>In order to change \eqref{fail1} to \eqref{hint2a}, some sort of
+factorisation is needed, and this requires creating a term that fits
+the puzzle.  Again, this <em>isn’t</em> so easy.</li>
+</ul>
+
+<h2 id="just-use----and--no-">Just use ‘+’, ‘-‘ and ‘×’, no ‘÷’</h2>
+
+<p>From \eqref{defa} and \eqref{defb}, one should know that cosines,
+sines and exponents are <em>related</em>.  For any $z_1, z_2 \in \C$, the
+formula for $\sin(z_1 + z_2)$ and $\cos(z_1 + z_2)$ <em>aren’t</em> so easy,
+but the one for $e^{z_1 + z_2}$ is <em>simple</em>.  Making use of the
+Euler’s formula for complex numbers, one has</p>
+
+<div class="myeqn">
+\begin{align}
+  e^{iz_1} &amp;= \cos z_1 + i \sin z_1 \label{eulerz1} \\
+  e^{iz_2} &amp;= \cos z_2 + i \sin z_2 \label{eulerz2}
+\end{align}
+</div>
+
+<p>Multiply \eqref{eulerz1} by \eqref{eulerz2}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: e^{i(z_1 + z_2)} \\
+    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
+    &amp;\quad\: + i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
+  \end{aligned}
+  \label{eiz12a}
+\end{equation}
+</div>
+
+<p>Remembering Euler’s formula</p>
+
+<div class="myeqn">
+\[
+  e^{i(z_1 + z_2)} = \cos(z_1 + z_2) + i \sin(z_1 + z_2),
+\]
+</div>
+
+<p>can we say immediately that \eqref{hint2a} and \eqref{hint2b} are
+true?  No, since there’s <em>no</em> guarantee that $\cos(z_1 + z_2)$ and
+$\sin(z_1 + z_2)$ are real.  However, I kept working on \eqref{eiz12a}
+so that \eqref{hint2a} and \eqref{hint2b} were proved.</p>
+
+<p>From \eqref{defa} and \eqref{defb}, it’s trivial that</p>
+
+<div class="myeqn">
+\[
+  \sin(-z) = -\sin z \text{ and } \cos(-z) = \cos z.
+\]
+</div>
+
+<p>Therefore, we write an analog of \eqref{eiz12a} for $e^{-i(z_1 +
+z_2)}$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: e^{-i(z_1 + z_2)} \\
+    &amp;= [\cos (-z_1) \cos (-z_2) - \sin (-z_1) \sin (-z_2)] \\
+    &amp;\quad\: + i[\cos (-z_1) \sin (-z_2) + \sin (-z_1) \cos (-z_2)] \\
+    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
+    &amp;\quad\: - i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
+  \end{aligned}
+  \label{eiz12b}
+\end{equation}
+</div>
+
+<div class="myeqn">
+\[
+  \begin{aligned}
+    &amp;\quad\: \cos(z_1 + z_2) \quad
+    (\text{by } \frac{\eqref{eiz12a} + \eqref{eiz12b}}{2}) \\
+    &amp;= \frac{e^{i(z_1 + z_2) - e^{-i(z_1 + z_2)}}}{2} \\
+    &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
+  \end{aligned}
+\]
+</div>
+
+<p>\eqref{hint2a} can be derived in a similar way.</p>
+
+<h2 id="remaining-work">Remaining work</h2>
+
+<p>\eqref{hint1b} can be derived from \eqref{hint2b} by using $\sin^2 x +
+\cos^2 x = 1$ and $\cosh^2 x - \sinh^2 x = 1$.</p>
+
+<div class="myeqn">
+\[
+  \begin{aligned}
+    &amp;\quad\, \abs{\cos z}^2 \\
+    &amp;= \cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y \\
+    &amp;= \cos^2 x (1 + \sinh^2 y) + (1 - \cos^2 x) \sinh^2 y \\
+    &amp;= \cos^2 x + \sinh^2 y
+  \end{aligned}
+\]
+</div>
+
+<p>The derivation of \eqref{hint1a} from \eqref{hint2a} is left as
+exercise.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -646,7 +894,7 @@ ID from Git by <code>git log -1 -p -- {file}</code>.</p>
 
 <h2 id="facts-learnt">Facts learnt</h2>
 
-<h2 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h2>
+<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
 
 <p>I typed “linux extract number” on Google, and the autocompletion gave
 me “from string”.  I finally saw two commands for doing this.</p>
@@ -2048,56 +2296,6 @@ the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MS Word Hanged]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/"/>
-    
-    <updated>2015-06-09T15:59:15+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I tried editing in M$ Word, but <em>failed</em>.</p>
-
-<picture class="fancybox" title="M$ Word not responding">
-  <source srcset="/images/posts/MSWordHanged/word_hang926.png" media="(min-width: 926px)" />
-  <img alt="M$ Word hanged" src="https://vincenttam.github.io/images/posts/MSWordHanged/word_hang250.png" />
-</picture>
-
-<h2 id="solution">Solution</h2>
-
-<p>The solution is extremely simple: <em>don’t</em> use M$ Office if it’s too
-heavy for your computer — use something more lightweight: a text
-editor with a typesetting engine.</p>
-
-<h3 id="choose-your-favourite-editors">Choose your favourite editors</h3>
-
-<p>I use <a href="http://www.vim.org">Vim</a> every day as a text editor.  I tried <a href="http://www.gnu.org/software/emacs/">EMACS</a>. Though I
-<em>can’t</em> remember two sets of keystrokes, the latter is still useful
-when you need to browse <code>info</code> pages on *nix.</p>
-
-<h3 id="typesetting-engines">Typesetting engines</h3>
-
-<ol>
-  <li>
-    <p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and <a href="http://pandoc.org/">pandoc</a></p>
-
-    <p>For simple documents which have <em>little</em> variation in styles, such
- as blog entries and some homework essays.</p>
-  </li>
-  <li>
-    <p>$\rm \LaTeX$</p>
-
-    <p>For more complicated documents like lab report, documents
- containing math expressions, etc.</p>
-  </li>
-</ol>
-
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-03T22:49:14+08:00</updated>
+  <updated>2015-09-04T22:23:27+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,254 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Stuck at Two Trigonometric Inequalities]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/"/>
+    
+    <updated>2015-09-04T18:26:48+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Suppose that $z = x + iy, x,y \in \R$.  Then $\abs{\sin z} \ge
+\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$.</p>
+
+<!-- more -->
+
+<h2 id="forgotten-facts">Forgotten facts</h2>
+
+<p>I’ve forgotten many facts about complex variables learnt almost two
+years ago.  For example, the defhinition of sines and cosines.  Eight
+years ago, I can memorize well the trigonometric formulae.  Now, I
+have difficulties in proving them.</p>
+
+<div class="myeqn">
+\begin{align}
+  \cos z &amp;= \frac{e^{iz}+e^{-iz}}{2} \label{defa} \\
+  \sin z &amp;= \frac{e^{iz}-e^{-iz}}{2i} \label{defb}
+\end{align}
+</div>
+
+<h2 id="look-at-the-hint">Look at the hint</h2>
+
+<p>In the book that I’m reading, there’re two formulae.</p>
+
+<div class="myeqn">
+\begin{align}
+  \abs{\sin z}^2 &amp;= \sin^2 x + \sinh^2 y \label{hint1a} \\
+  \abs{\cos z}^2 &amp;= \cos^2 x + \sinh^2 y \label{hint1b}
+\end{align}
+</div>
+
+<p>Even though the problem can be solved once these two formulae are
+accepted, I <em>don’t</em> know why they’re true.</p>
+
+<h2 id="look-further-up">Look further up</h2>
+
+<p>I found another two formulae.</p>
+
+<div class="myeqn">
+\begin{align}
+  \sin z &amp;= \sin x \cosh y + i \cos x \sinh y \label{hint2a} \\
+  \cos z &amp;= \cos x \cosh y - i \sin x \sinh y \label{hint2b}
+\end{align}
+</div>
+
+<p>I tried to verify \eqref{hint2a} after having read \eqref{defhb}.</p>
+
+<h2 id="first-failed-attempt">First failed attempt</h2>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: \sin z \\
+    &amp;= \frac{e^{iz} - e^{-iz}}{2i} \\
+    &amp;= \frac{e^{i(x + iy)} - e^{-i(x + iy)}}{2i} \\
+    &amp;= \frac{e^{ix} e^{-y} - e^{-ix} e^{y}}{2i} \\
+    &amp;= \frac{e^{ix} - e^{-ix}}{2i} e^{-y} + \frac{e^{-ix - y}}{2i} -
+    \frac{e^{-ix} e^{y}}{2i} \\
+    &amp;= \sin x \cdot e^{-y} + \frac{e^{-ix}}{i} \cdot
+    \frac{e^{-y} - e^{y}}{2}\\
+    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \frac{e^{y} - e^{-y}}{2} \\
+    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \sinh y
+  \end{aligned}
+  \label{fail1}
+\end{equation}
+</div>
+
+<p>I was <em>stuck</em> at this point because I <em>didn’t</em> know how to change
+\eqref{fail1} to \eqref{hint2a}.</p>
+
+<h2 id="more-forgotten-facts">More forgotten facts</h2>
+
+<p>In fact, some simple identities involving hyperbolic functions can
+simplify matters.</p>
+
+<div class="myeqn">
+\begin{align}
+  \cosh z &amp;= \frac{e^{y}+e^{-y}}{2} \label{defha} \\
+  \sinh z &amp;= \frac{e^{y}-e^{-y}}{2} \label{defhb} \\
+  \cos(iy) &amp;= \cosh y \label{idha} \\
+  \sin(iy) &amp;= i \sinh y \label{idhb}
+\end{align}
+</div>
+
+<p>Then I realised that \eqref{hint2a} follows from the compound angle
+formula.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    \sin(x + iy) &amp;= \sin x \cos(iy) + \cos x \sin(iy) \\
+    &amp;= \sin x \cosh y + i \cos x \sinh y
+  \end{aligned}
+  \label{link}
+\end{equation}
+</div>
+
+<p>Thus, I need to prove something more general.</p>
+
+<h2 id="compound-angle-formulae">Compound angle formulae</h2>
+
+<div class="myeqn">
+\begin{align}
+  \cos(z_1 + z_2) &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
+  \label{cpda} \\
+  \sin(z_1 + z_2) &amp;= \sin z_1 \cos z_2 + \cos z_1 \sin z_2
+  \label{cpdb}
+\end{align}
+</div>
+
+<p>I tried proving \eqref{cpdb} in the <em>same</em> way like \eqref{fail1}.</p>
+
+<h2 id="second-failed-attempt">Second failed attempt</h2>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: \sin(z_1 + z_2) \\
+    &amp;= \frac{e^{i(x_1 + iy_1 + x_2 + iy_2)} - e^{-i(x_1 + iy_1 + x_2 +
+    iy_2)}}{2i} \\
+    &amp;= \frac{1}{2i} [e^{i(x_1 + x_2)} e^{-(y_1 + y_2)}
+    - e^{-i(x_1 + x_2)} e^{y_1 + y_2}]
+  \end{aligned}
+  \label{fail2}
+\end{equation}
+</div>
+
+<p>Then I <em>didn’t</em> know how to continue.</p>
+
+<h2 id="reasons-for-the-above-failures">Reasons for the above failures</h2>
+
+<ul>
+  <li>\eqref{fail1} and \eqref{fail2} involve fractions, which are more
+difficult to deal with than those <em>without</em> fractions.</li>
+  <li>In order to change \eqref{fail1} to \eqref{hint2a}, some sort of
+factorisation is needed, and this requires creating a term that fits
+the puzzle.  Again, this <em>isn’t</em> so easy.</li>
+</ul>
+
+<h2 id="just-use----and--no-">Just use ‘+’, ‘-‘ and ‘×’, no ‘÷’</h2>
+
+<p>From \eqref{defa} and \eqref{defb}, one should know that cosines,
+sines and exponents are <em>related</em>.  For any $z_1, z_2 \in \C$, the
+formula for $\sin(z_1 + z_2)$ and $\cos(z_1 + z_2)$ <em>aren’t</em> so easy,
+but the one for $e^{z_1 + z_2}$ is <em>simple</em>.  Making use of the
+Euler’s formula for complex numbers, one has</p>
+
+<div class="myeqn">
+\begin{align}
+  e^{iz_1} &amp;= \cos z_1 + i \sin z_1 \label{eulerz1} \\
+  e^{iz_2} &amp;= \cos z_2 + i \sin z_2 \label{eulerz2}
+\end{align}
+</div>
+
+<p>Multiply \eqref{eulerz1} by \eqref{eulerz2}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: e^{i(z_1 + z_2)} \\
+    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
+    &amp;\quad\: + i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
+  \end{aligned}
+  \label{eiz12a}
+\end{equation}
+</div>
+
+<p>Remembering Euler’s formula</p>
+
+<div class="myeqn">
+\[
+  e^{i(z_1 + z_2)} = \cos(z_1 + z_2) + i \sin(z_1 + z_2),
+\]
+</div>
+
+<p>can we say immediately that \eqref{hint2a} and \eqref{hint2b} are
+true?  No, since there’s <em>no</em> guarantee that $\cos(z_1 + z_2)$ and
+$\sin(z_1 + z_2)$ are real.  However, I kept working on \eqref{eiz12a}
+so that \eqref{hint2a} and \eqref{hint2b} were proved.</p>
+
+<p>From \eqref{defa} and \eqref{defb}, it’s trivial that</p>
+
+<div class="myeqn">
+\[
+  \sin(-z) = -\sin z \text{ and } \cos(-z) = \cos z.
+\]
+</div>
+
+<p>Therefore, we write an analog of \eqref{eiz12a} for $e^{-i(z_1 +
+z_2)}$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{aligned}
+    &amp;\quad\: e^{-i(z_1 + z_2)} \\
+    &amp;= [\cos (-z_1) \cos (-z_2) - \sin (-z_1) \sin (-z_2)] \\
+    &amp;\quad\: + i[\cos (-z_1) \sin (-z_2) + \sin (-z_1) \cos (-z_2)] \\
+    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
+    &amp;\quad\: - i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
+  \end{aligned}
+  \label{eiz12b}
+\end{equation}
+</div>
+
+<div class="myeqn">
+\[
+  \begin{aligned}
+    &amp;\quad\: \cos(z_1 + z_2) \quad
+    (\text{by } \frac{\eqref{eiz12a} + \eqref{eiz12b}}{2}) \\
+    &amp;= \frac{e^{i(z_1 + z_2) - e^{-i(z_1 + z_2)}}}{2} \\
+    &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
+  \end{aligned}
+\]
+</div>
+
+<p>\eqref{hint2a} can be derived in a similar way.</p>
+
+<h2 id="remaining-work">Remaining work</h2>
+
+<p>\eqref{hint1b} can be derived from \eqref{hint2b} by using $\sin^2 x +
+\cos^2 x = 1$ and $\cosh^2 x - \sinh^2 x = 1$.</p>
+
+<div class="myeqn">
+\[
+  \begin{aligned}
+    &amp;\quad\, \abs{\cos z}^2 \\
+    &amp;= \cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y \\
+    &amp;= \cos^2 x (1 + \sinh^2 y) + (1 - \cos^2 x) \sinh^2 y \\
+    &amp;= \cos^2 x + \sinh^2 y
+  \end{aligned}
+\]
+</div>
+
+<p>The derivation of \eqref{hint1a} from \eqref{hint2a} is left as
+exercise.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -550,146 +798,6 @@ establish a standard result.</p>
 \]
 </div>
       <p><a href="#fnref:inf_prod_exists" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Compared Two Poisson Variables]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/"/>
-    
-    <updated>2015-04-10T13:21:37+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Last Friday, I had to submit a homework which required me to evaluate
-$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
-Poisson random variables with parameters $\alpha$ and $\beta$
-respectively.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I then started evaluating the sum.</p>
-
-<div class="myeqn">
-\[
-  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
-  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
-\]
-</div>
-
-<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
-
-<div class="myeqn">
-\[
-  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
-  \alpha^i \beta^i}{(i!)^2}
-\]
-</div>
-
-<h2 id="fact">Fact</h2>
-
-<p>I googled for a solution for hours, and after I saw equation (3.1) in
-a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
-free software, I avoided using M$ Ex*, and wrote a program in C++ to
-approximate the above probabitities by directly adding them term by
-term.</p>
-
-<h3 id="source-code">Source code</h3>
-
-<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
-<noscript><pre><code>#include &lt;iostream&gt;
-#include &lt;cmath&gt;
-using namespace std;
-
-double pXy(double x, double y, int N);
-double pxy(double x, double y, int N);
-
-int main(void) {
-    double pAb,paB,pab,a,b;
-    int N;
-    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
-    cout &lt;&lt; &quot;Parameter for A: &quot;;
-    cin &gt;&gt; a;
-    cout &lt;&lt; &quot;Parameter for B: &quot;;
-    cin &gt;&gt; b;
-    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
-    cin &gt;&gt; N;
-    pAb = pXy(a,b,N);
-    paB = pXy(b,a,N);
-    pab = pxy(a,b,N);
-    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
-        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
-}
-
-/* P(X &gt; Y) */
-double pXy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 1; i &lt;= N; i++) {
-        for (int j = 0; j &lt; i ; j++) {
-            double term = 1;
-            for (int k = 1; k &lt;= i; k++)
-                term *= x / k;
-            for (int k = 1; k &lt;= j; k++)
-                term *= y / k;
-            ans += term;
-        }
-    }
-    return ans * exp(-x - y);
-}
-
-/* P(X = Y) */
-double pxy(double x, double y, int N) {
-    double ans = 0;
-    for (int i = 0; i &lt;= N; i++) {
-        double term = 1;
-        for (int k = 1; k &lt;= i; k++)
-            term *= x / k * y / k;
-        ans += term;
-    }
-    return ans * exp(-x - y);
-}
-</code></pre></noscript></div>
-</p>
-
-<h3 id="sample-output">Sample output</h3>
-
-<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
-Parameter for A: 1.6
-Parameter for B: 1.4
-Number of terms to be added (100 &lt;= N &lt;= 1000): 8
-P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
-</code></pre>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>
-    <p>A one-line method for writing the content of a function which
-returns the factorial of a number.</p>
-
-    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
-  </li>
-  <li>
-    <p>Evaluation of a function inside GDB</p>
-
-    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
-  </li>
-</ol>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:fact">
-
-      <p>Keller, J. B. (1994). A characterization of the Poisson
-distribution and the probability of winning a game. <em>The American
-Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
