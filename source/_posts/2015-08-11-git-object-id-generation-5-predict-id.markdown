@@ -40,7 +40,7 @@ ID from Git by `git log -1 -p -- {file}`.
 Facts learnt
 ---
 
-## Extract numbers from a string in bash
+### Extract numbers from a string in bash
 
 I typed "linux extract number" on Google, and the autocompletion gave
 me "from string".  I finally saw two commands for doing this.
