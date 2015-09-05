@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-04T22:23:27+08:00</updated>
+  <updated>2015-09-06T00:45:26+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Revised Absolute Convergence]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence/"/>
+    
+    <updated>2015-09-05T22:05:03+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence</id>
+    
+      <content type="html"><![CDATA[<p>I am <em>not</em> so satisfied with this the following
+<em>definition</em>.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
+
+<div class="myeqn">
+\[
+  e^{i\theta} := \cos \theta + i \sin \theta
+\]
+</div>
+
+<p>I remembered the proof for convergence of</p>
+
+<div class="myeqn">
+\[
+  e^{x} := \sum_{i = 0}^{\infty} \frac{x^i}{i!}
+\]
+</div>
+
+<p>for real numbers.  I <em>didn’t</em> know if this can be extended to complex
+numbers.  Therefore, I thought about the absolute convergence of
+complex-valued series.  It’s expected that many proofs are similar to
+their real counterparts, such as the result that absolute convergence
+implies convergence.  In real numbers, this result makes use of the
+Triangle Inequalty and Cauchy Convergence Criterion, and the key step
+is</p>
+
+<div class="myeqn">
+\[
+  \abslr{\sum_{k = m + 1}^{n} a_k} \le \sum_{k = m + 1}^{n} \abs{a_k}.
+\]
+</div>
+
+<p>Since the proof of the above statement for real numbers requires
+Bolzano–Weierstrass Theorem, which is about the sequential
+compactness of sequences of real numbers, I was <em>stuck</em> at this point.</p>
+
+<p><span class="myeqn">
+Finally, I read another book, which said that if $(z_n)$ is a Cauchy
+sequence, and $\forall n \in \N$, $u_n := \Re(z_n)$ and $v_n :=
+\Im(z_n)$, $\forall \varepsilon &gt; 0, \exists N \in \N$ such that
+$\forall m,n \le N$,
+</span></p>
+
+<div class="myeqn">
+\begin{align*}
+  \abs{u_n - u_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon, \\
+  \abs{v_n - v_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon.
+\end{align*}
+</div>
+
+<p>Then $(u_n)$ and $(v_n)$ are real-valued Cauchy sequences, which are
+convergent.<sup id="fnref:ahlfors"><a href="#fn:ahlfors" class="footnote">2</a></sup>  This guarantees the convergence of $(z_n)$ in
+the complex plane.</p>
+
+<p>To establish the absolute convergence of $\exp z$, we need the root
+test.  The proofs can be borrowed from their counterparts in the set
+of real numbers.  Ahlfors leaves the proof for <span class="myeqn">$\sqrt[n]{n!} \to \infty$</span> to readers.  I find
+<a href="http://math.stackexchange.com/a/514397">Dan’s proof</a> pretty easy.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:churchill">
+
+      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
+variables and applications (Vol. 7)</em>. (pp. 17). New York:
+McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ahlfors">
+
+      <p>Ahlfors, L. (1979). <em>Complex analysis</em>. (pp. 34). Auckland:
+McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -330,9 +417,9 @@ t,
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-r_0 =&amp; \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
-=&amp; \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
-\le&amp; \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+r_0 &amp;= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
+&amp;= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
+&amp;\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
 \end{aligned}
 \label{fin}
 \end{equation}
@@ -359,10 +446,10 @@ P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-P_n(x) =&amp; \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 \cos{\theta})^n \ud\theta\\
-\le&amp; \frac{1}{\pi} \int_0^\pi \ud\theta\\
-=&amp; 1
+&amp;\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
+&amp;= 1
 \end{aligned}
 \label{crux}
 \end{equation}
@@ -373,10 +460,10 @@ P_n(x) =&amp; \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-&amp; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-=&amp; \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-\le&amp; \sqrt{x^2 + (1 - x^2)}\\
-=&amp; 1.
+&amp;\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+&amp;= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+&amp;\le \sqrt{x^2 + (1 - x^2)}\\
+&amp;= 1.
 \end{aligned}
 \label{norm-ub}
 \end{equation}
@@ -2150,152 +2237,6 @@ sua-1011082-0-dynfiles.zip
 <p>This only worked for a while.  <strong>After reboot, it <em>won’t</em> start
 again</strong>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MikTeX Update]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
-    
-    <updated>2015-06-09T16:41:12+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/09/miktex-update</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>This morning, I tried typing the chemical symbol of carbon dioxide
-(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
-<code>\mathrm</code> in math mode — first, I changed from text mode to math
-mode, then in order to type normal font, I used <code>\mathrm</code> to change it
-back to “text mode in math mode”.  I did all of these for a little
-subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
-CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
-needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
-complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
-a result, I opened the package manager, and called the “Update Wizard”
-inside.</p>
-
-<picture class="fancybox" title="No update helper found">
-  <source srcset="/images/posts/MikTeXUpdate/no_helper460.png" media="(min-width: 460px)" />
-  <img alt="update helper disappered?" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/no_helper300.png" />
-</picture>
-
-<p><strong>How can I get the packages updated <em>without</em> manually creating
-another folder?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I first clicked “Repository” and then “Synchronize”, but it loaded
-slowly, and I finally got <em>nothing</em>.  Then I tried to “Change package
-repository”.  I randomly selected an item in the list of remote
-package repository, and clicked “Synchronize” again.  What I saw was
-still the same.</p>
-
-<p>Then I decided <em>not</em> to include the <code>mhchem</code> package.  I restored the
-<code>\ce{CO2}</code> back to <code>CO2</code>, and then I pressed <code>\ll</code> in
-<a href="http://vim-latex.sourceforge.net/">$\rm \LaTeX$-Suite</a>.<sup id="fnref:ll"><a href="#fn:ll" class="footnote">1</a></sup>  Then I received <em>unexpected
-errors</em> from the $\rm \LaTeX$ compiler.  I then compiled another
-document which contained characters with accents, such as ‘à’, ‘é’,
-‘ï’, …  I received the same error message in the quickfix window as
-well.  Since it’s gone, I’ve retrieved the message from the
-corresponding LOG file.<sup id="fnref:log"><a href="#fn:log" class="footnote">2</a></sup></p>
-
-<pre class="cli"><code>(C:\Temp\MikTeXPortable\tex\latex\fontspec\fontspec.cfg)))
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.sty
-Package: babel 2008/07/08 v3.8m The Babel package
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Temp\MikTeXPortable\tex\latex\00miktex\bblopts.cfg
-File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-)
-(C:\Temp\MikTeXPortable\tex\latex\babel-french\frenchb.ldf
-Language: frenchb 2015/05/31 v3.1f French support from the babel system
-
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.def
-File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count123
-\U@D=\dimen139
-)
-
-<span class="err">! Package frenchb.ldf Error: frenchb requires babel v.3.9i.
-(frenchb.ldf)                Aborting here.</span>
-
-See the frenchb.ldf package documentation for explanation.
-Type  H &lt;return&gt;  for immediate help.
- ...
-
-l.116          {Please upgrade Babel!}
-
-<span class="HLCode">Please upgrade Babel!</span>
-</code></pre>
-
-<h2 id="a-nearly-successful-update">A nearly successful update</h2>
-
-<p>From Google, I’ve learnt to “Update MikTeX” directly from the little
-icon at the lower right-hand corner of the screen.  Then I directly
-clicked the “Next &gt;” button, and Mik$\rm \TeX$ tried connecting the
-manually chosen remote.  Unluckily, this <em>failed</em> and I got an error
-mesage like <em>Permission denied</em>.  I tried searching “miktex permission
-denied” on Google, but I <em>didn’t</em> understand what I’d found.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>As shown in the screenshot below, I checked the first two radio
-buttons so as to get updated packages from the nearest package
-repository.</p>
-
-<picture class="fancybox" title="Update MikTeX packages">
-  <source srcset="/images/posts/MikTeXUpdate/update513.png" media="(min-width: 513px)" />
-  <img alt="update miktex packages" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/update300.png" />
-</picture>
-
-<p>After clicking “Next &gt;”, things went smooth luckily.</p>
-
-<picture class="fancybox" title="Downloading updates from remotes">
-  <source srcset="/images/posts/MikTeXUpdate/download513.jpg" media="(min-width: 513px)" />
-  <img alt="miktex package updates downloading" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/download300.jpg" />
-</picture>
-
-<p>After the update had completed, the <code>babel</code> package had been upgraded
-from version 3.8 to 3.9i.  With the correct syntax, I could finally
-use <code>babel</code> and <code>mhchem</code>.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I often forget the command for optimizing JPEG images.  This evening,
-while I was writing this post, I googled “jpegtran command”, and I
-issued</p>
-
-<pre class="cli"><code>jpegtran -optimize input.jpg &gt; output.jpg
-</code></pre>
-
-<p>after I’d read the command example from <a href="http://junalontherun.com/2009/07/15/optimize-all-jpeg-images-with-jpegtran-utility/">this page</a>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ll">
-
-      <p><code>\ll</code> is the default keystroke for compiling a PDF document from
-the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
-<a href="http://www.vim.org">Vim</a> plugin for writing in $\rm \LaTeX$ efficiently. <a href="#fnref:ll" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:log">
-
-      <p>You may view the complete LOG file <a href="https://vincenttam.github.io/downloads/1eDoc.log">here</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
