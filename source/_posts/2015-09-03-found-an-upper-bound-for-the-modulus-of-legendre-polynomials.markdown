@@ -68,9 +68,9 @@ we can write
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-r_0 =& \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
-=& \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
-\le& \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+r_0 &= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
+&= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
+&\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
 \end{aligned}
 \label{fin}
 \end{equation}
@@ -98,10 +98,10 @@ Applying \eqref{lemma}, one gets
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-P_n(x) =& \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+P_n(x) &= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 \cos{\theta})^n \ud\theta\\
-\le& \frac{1}{\pi} \int_0^\pi \ud\theta\\
-=& 1
+&\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
+&= 1
 \end{aligned}
 \label{crux}
 \end{equation}
@@ -112,10 +112,10 @@ because
 <div class="myeqn">
 \begin{equation}
 \begin{aligned}
-& \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-=& \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-\le& \sqrt{x^2 + (1 - x^2)}\\
-=& 1.
+&\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+&= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+&\le \sqrt{x^2 + (1 - x^2)}\\
+&= 1.
 \end{aligned}
 \label{norm-ub}
 \end{equation}
