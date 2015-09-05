@@ -36,7 +36,7 @@ $\mathcal{P}$.  Usually, suppose that $(x_1,y_1),(x_2,y_2) \in f$,
 $x_1 = x_2 \implies y_1 = y_2$.  The book uses the contrapositive form
 of this statement.  I was stuck at the sentence <q>Now, for a set to
 be an element of $dom\cup\mathcal{T}$, it must be an element of some
-member of $\mathcal{K}$</q>.  At first, I omitted the phrase "some
+member of $\mathcal{T}$</q>.  At first, I omitted the phrase "some
 member of", and stopped for half an hour.  Reading the next sentence
 <q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
 how to interpret the sentence where I was stuck: if $S \in
