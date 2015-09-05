@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-06T00:45:26+08:00</updated>
+  <updated>2015-09-06T02:46:26+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Understood How Zorn's Lemma Implies the Axiom of Choice]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/"/>
+    
+    <updated>2015-09-06T01:26:06+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice</id>
+    
+      <content type="html"><![CDATA[<p>Many math books that I’ve read referred me to other books for the
+proof of the equivalence of the Axiom of Choice and Zorn’s Lemma.
+This afternoon, I spent more than two hours to understand the proof
+that the later implies and former in <cite>Topology</cite> written by
+Davis.</p>
+
+<ol>
+  <li>Set up a non-empty partially ordered set $(\mathcal{P},\le)$</li>
+  <li>Let $\mathcal{T}$ be any non-empty chain in $\mathcal{P}$.</li>
+  <li>Prove that $\cup \mathcal{T} \in \mathcal{P}$.</li>
+  <li>Apply Zorn’s Lemma to get a maximal element $g \in \mathcal{P}$.</li>
+  <li><span class="myeqn">Use the maximality of $g$ to claim
+that the domain of $g$ equals the family of non-empty subsets
+$(S_i)_{i \in I}$ from which elements $(x_i)_{i \in I}$ are chosen.
+</span></li>
+</ol>
+
+<p>In the book, $\le$ means function extension, and</p>
+
+<div class="myeqn">
+\[
+  \mathcal{P} = \{f: f \text{ is a function, } dom\,f \subseteq
+  (S_i)_{i \in I}, f(x) \in x \forall x \in dom\,f\}.
+\]
+</div>
+
+<p><span class="myeqn">
+Step (3) is proved step-by-step according to the definition of
+$\mathcal{P}$.  Usually, suppose that $(x_1,y_1),(x_2,y_2) \in f$,
+$x_1 = x_2 \implies y_1 = y_2$.  The book uses the contrapositive form
+of this statement.  I was stuck at the sentence <q>Now, for a set to
+be an element of $dom\cup\mathcal{T}$, it must be an element of some
+member of $\mathcal{K}$</q>.  At first, I omitted the phrase "some
+member of", and stopped for half an hour.  Reading the next sentence
+<q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
+how to interpret the sentence where I was stuck: if $S \in
+dom\cup\mathcal{T}$, $\exists f \in \mathcal{T}$ such that $S \in
+dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f \in
+\subseteq (S_i)_{i \in I}$.  Then $S \in \subseteq (S_i)_{i \in I}$,
+and thus $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
+</span></p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -740,47 +793,6 @@ f(\vect{x_0}+\Delta \vect{x})-f(\vect{x_0})$ and $\vect{\varepsilon}
 vector form is more concise than writing out each partial derivative
 in \eqref{fact}.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Found 2 Incomparable Topologies]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/25/found-2-incomparable-topologies/"/>
-    
-    <updated>2015-04-25T21:17:45+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/25/found-2-incomparable-topologies</id>
-    
-      <content type="html"><![CDATA[<ol>
-  <li>
-    <p>Lower limit topology ($\R_l$)</p>
-
-    <ul>
-      <li>Basis: $\{[a,b): a,b \in \R\text{ s.t. } a &lt; b\}$</li>
-    </ul>
-  </li>
-  <li>
-    <p>K-topology ($\R_K$)</p>
-
-    <ul>
-      <li>Basis: $\{(a,b), (a,b) - K: a,b \in \R\text{ s.t. } a &lt; b \}$,
- where $K = \{ 1/n : n \in \Z_+ \}$.</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="rl-nsubseteq-rk">$\R_l \nsubseteq \R_K$</h2>
-
-<p>Consider a base element $[a,b)$.  At the point $a$, <em>no</em> open interval
-$(c,d)$ containing $a$ is a subset of $[a,b)$.</p>
-
-<h2 id="rk-nsubseteq-rl">$\R_K \nsubseteq \R_l$</h2>
-
-<p>Let $B_2 = (-1, 1) - K$.  At $B_2 \notin \R_l$ because any base
-element $[0,b)$ containing 0 must hit $1/n$ for some $n \in \Z_+$ by
-Archimedean Property of $\Z_+$.  Thus, $\forall b &gt; 0, [0,b)
-\nsubseteq B_2$.</p>
 ]]></content>
     
   </entry>
