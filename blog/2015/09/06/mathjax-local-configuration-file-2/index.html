@@ -1,0 +1,603 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>MathJax Local Configuration File (2) - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="Background In my opinion, the default display of the $\rm \LaTeX$ command for
+$\Re z$ and $\Im z$ don’t look good. Problem I want to reset the \Im &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+  <meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+  <script type="text/javascript">
+  var host = "vincenttam.github.io";
+  if ((host == window.location.host) && (window.location.protocol != "https:")) {
+    window.location.protocol = "https";
+  }
+  </script>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46788371-2', 'auto');
+      ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">MathJax Local Configuration File (2)</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-06T19:29:42+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:29 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In my opinion, the default display of the $\rm \LaTeX$ command for
+$\Re z$ and $\Im z$ <em>don’t</em> look good.</p>
+
+<p><img src="/images/posts/MathJaxReIm/im110.png" alt="default Im(z) display" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I want to reset the <code>\Im</code> command in my local MathJax configuration
+file <code>source/javascripts/MathJaxLocal.js</code>.  I used a script inside the
+<code>&lt;body&gt;</code> tag to load my local MathJax configurations from GitHub.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>
+If I want to <em>test</em> the configurations, then I’ll have to push my
+changes to GitHub <em>before</em> I can see the effect and figure out the
+errors — this is incredibly <em>slow</em> and <em>inefficient</em>.</p>
+
+<p><strong>How can I locally debug my MathJax configurations?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>To <em>locally test</em> my MathJax configurations, I put <em>another</em> <code>&lt;script&gt;</code>
+tag containing the local configurations <em>before</em> the <code>&lt;script&gt;</code> that
+loads <code>MathJax.js</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+</span><span class="line">  <span class="nx">jax</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;input/TeX&quot;</span><span class="p">,</span> <span class="s2">&quot;output/HTML-CSS&quot;</span><span class="p">],</span>
+</span><span class="line">  <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">]],</span>
+</span><span class="line">    <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span><span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>
+</span><span class="line">    <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
+</span><span class="line">  <span class="p">},</span>
+</span><span class="line">  <span class="nx">messageStyle</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="s2">&quot;HTML-CSS&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">preferredFont</span><span class="o">:</span> <span class="s2">&quot;TeX&quot;</span><span class="p">,</span> <span class="nx">availableFonts</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;STIX&quot;</span><span class="p">,</span><span class="s2">&quot;TeX&quot;</span><span class="p">]</span> <span class="p">},</span>
+</span><span class="line">  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span><span class="s2">&quot;AMScd.js&quot;</span><span class="p">],</span>
+</span><span class="line">    <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">field</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{#1}&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">C</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{C}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">F</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{F}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">N</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{N}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Q</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Q}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">R</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{R}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Z</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Z}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">zeros</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbf{0}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">ud</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\,\\mathrm{d}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">vect</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\boldsymbol{\\mathbf{#1}}&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">abs</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lvert#1\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">abslr</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\left\\lvert#1\\right\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lVert#1\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">normlr</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">lcm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{lcm}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">interior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{int}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">exterior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{ext}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">volume</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{vol}}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">E</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;{\\rm I\\kern-.3em E}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Var</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Var}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Cov</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Cov}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Binom</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Binom}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Exp</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Exp}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Poi</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Poi}}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">GL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{GL}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">SL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{SL}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Aut</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{Aut}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">id</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{id}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="c1">// Test your code here</span>
+</span><span class="line">      <span class="nx">Re</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Re}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Im</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Im}}&#39;</span><span class="p">],</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
+</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
+</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">})();</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I think that rendering $\Re z$ and $\Im z$ with roman font is better.</p>
+
+<p><img src="/images/posts/MathJaxReIm/im-new120.png" alt="improved Im(z) display" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp">
+
+      <p>Refer to <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">my old post</a> titled <em>A Quick Markdown Syntax Error
+Detection for Writing MathJax Equations in Octopress Posts (3)</em>
+for details. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-09-06T19:29:42+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:29 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mathjax/'>mathjax</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/" data-via="" data-counturl="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/09/06/read-lucass-theorem/" title="Previous Post: Read Lucas's Theorem">&laquo; Read Lucas's Theorem</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <img src="/images/avatar256.png" alt="My Avatar"/>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (21)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (18)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (39)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (29)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (22)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/09/06/mathjax-local-configuration-file-2/">MathJax Local Configuration File (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/06/read-lucass-theorem/">Read Lucas's Theorem</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Understood How Zorn's Lemma Implies the Axiom of Choice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/05/revised-absolute-convergence/">Revised Absolute Convergence</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Stuck at Two Trigonometric Inequalities</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA_icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/modernizr-2.0.js",function() {});
+    getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js",function() {});
+
+    getScript("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",function(){
+      getScript("/javascripts/octopress.js",function() {});
+      getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {
+	getScript("/fancybox/source/helpers/all.js", function() {
+	  getScript("/javascripts/FancyBoxLocal.js", function() {});
+	  });
+	});
+      });
+})();
+
+var cb = function() {
+  var h = document.getElementsByTagName('head')[0];
+
+  // Fonts from Google's Web font directory at http://google.com/webfonts
+  var font1 = document.createElement("link");
+  font1.href = "//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic";
+  font1.rel = "stylesheet";
+  font1.type = "text/css";
+  h.parentNode.insertBefore(font1, h);
+
+  var font2 = document.createElement("link");
+  font2.href = "//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic";
+  font2.rel = "stylesheet";
+  font2.type = "text/css";
+  h.parentNode.insertBefore(font2, h);
+
+  var fontub = document.createElement("link");
+  fontub.href = "//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700";
+  fontub.rel = "stylesheet";
+  fontub.type = "text/css";
+  h.parentNode.insertBefore(fontub, h);
+
+  // screen.css
+  var l = document.createElement("link");
+  l.href = "/stylesheets/screen.css";
+  l.media = "screen, projection";
+  l.rel = "stylesheet";
+  l.type = "text/css";
+  h.parentNode.insertBefore(l, h);
+
+  // table css
+  var tcss = document.createElement("link");
+  tcss.href = "/stylesheets/data-table.css";
+  tcss.media = "screen, projection";
+  tcss.rel = "stylesheet";
+  tcss.type = "text/css";
+  h.parentNode.insertBefore(tcss, h);
+
+  // CSS files for FancyBox
+  var fbcss = document.createElement("link");
+  fbcss.href = "/fancybox/source/jquery.fancybox.css?v=2.1.5";
+  fbcss.rel = "stylesheet";
+  fbcss.type = "text/css";
+  fbcss.media = "screen, projection";
+  document.body.appendChild(fbcss);
+  var fbbtncss = document.createElement("link");
+  fbbtncss.href = "/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5";
+  fbbtncss.rel = "stylesheet";
+  fbbtncss.type = "text/css";
+  fbbtncss.media = "screen, projection";
+  document.body.appendChild(fbbtncss);
+  var fbthmcss = document.createElement("link");
+  fbthmcss.href = "/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7";
+  fbthmcss.rel = "stylesheet";
+  fbthmcss.type = "text/css";
+  fbthmcss.media = "screen, projection";
+  document.body.appendChild(fbthmcss);
+};
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(cb);
+else window.addEventListener('load', cb);
+</script>
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-06T19:14:38+08:00</updated>
+  <updated>2015-09-06T20:23:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,225 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MathJax Local Configuration File (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/"/>
+    
+    <updated>2015-09-06T19:29:42+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In my opinion, the default display of the $\rm \LaTeX$ command for
+$\Re z$ and $\Im z$ <em>don’t</em> look good.</p>
+
+<p><img src="https://vincenttam.github.io/images/posts/MathJaxReIm/im110.png" alt="default Im(z) display" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I want to reset the <code>\Im</code> command in my local MathJax configuration
+file <code>source/javascripts/MathJaxLocal.js</code>.  I used a script inside the
+<code>&lt;body&gt;</code> tag to load my local MathJax configurations from GitHub.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>
+If I want to <em>test</em> the configurations, then I’ll have to push my
+changes to GitHub <em>before</em> I can see the effect and figure out the
+errors — this is incredibly <em>slow</em> and <em>inefficient</em>.</p>
+
+<p><strong>How can I locally debug my MathJax configurations?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>To <em>locally test</em> my MathJax configurations, I put <em>another</em> <code>&lt;script&gt;</code>
+tag containing the local configurations <em>before</em> the <code>&lt;script&gt;</code> that
+loads <code>MathJax.js</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+</span><span class="line">  <span class="nx">jax</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;input/TeX&quot;</span><span class="p">,</span> <span class="s2">&quot;output/HTML-CSS&quot;</span><span class="p">],</span>
+</span><span class="line">  <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">]],</span>
+</span><span class="line">    <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span><span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>
+</span><span class="line">    <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
+</span><span class="line">  <span class="p">},</span>
+</span><span class="line">  <span class="nx">messageStyle</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+</span><span class="line">  <span class="s2">&quot;HTML-CSS&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">preferredFont</span><span class="o">:</span> <span class="s2">&quot;TeX&quot;</span><span class="p">,</span> <span class="nx">availableFonts</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;STIX&quot;</span><span class="p">,</span><span class="s2">&quot;TeX&quot;</span><span class="p">]</span> <span class="p">},</span>
+</span><span class="line">  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
+</span><span class="line">    <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span><span class="s2">&quot;AMScd.js&quot;</span><span class="p">],</span>
+</span><span class="line">    <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">field</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{#1}&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">C</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{C}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">F</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{F}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">N</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{N}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Q</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Q}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">R</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{R}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Z</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Z}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">zeros</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbf{0}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">ud</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\,\\mathrm{d}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">vect</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\boldsymbol{\\mathbf{#1}}&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">abs</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lvert#1\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">abslr</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\left\\lvert#1\\right\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lVert#1\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">normlr</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">lcm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{lcm}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">interior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{int}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">exterior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{ext}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">volume</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{vol}}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">E</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;{\\rm I\\kern-.3em E}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Var</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Var}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Cov</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Cov}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Binom</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Binom}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Exp</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Exp}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Poi</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Poi}}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="nx">GL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{GL}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">SL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{SL}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Aut</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{Aut}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">id</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{id}&#39;</span><span class="p">],</span>
+</span><span class="line">
+</span><span class="line">      <span class="c1">// Test your code here</span>
+</span><span class="line">      <span class="nx">Re</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Re}}&#39;</span><span class="p">],</span>
+</span><span class="line">      <span class="nx">Im</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Im}}&#39;</span><span class="p">],</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">});</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
+</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">      <span class="p">}</span>
+</span><span class="line">    <span class="p">};</span>
+</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
+</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">})();</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I think that rendering $\Re z$ and $\Im z$ with roman font is better.</p>
+
+<p><img src="https://vincenttam.github.io/images/posts/MathJaxReIm/im-new120.png" alt="improved Im(z) display" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp">
+
+      <p>Refer to <a href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">my old post</a> titled <em>A Quick Markdown Syntax Error
+Detection for Writing MathJax Equations in Octopress Posts (3)</em>
+for details. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -129,9 +348,9 @@ member of", and stopped for half an hour.  Reading the next sentence
 <q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
 how to interpret the sentence where I was stuck: if $S \in
 dom\cup\mathcal{T}$, $\exists f \in \mathcal{T}$ such that $S \in
-dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f \in
-\subseteq (S_i)_{i \in I}$.  Then $S \in \subseteq (S_i)_{i \in I}$,
-and thus $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
+dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f
+\subseteq (S_i)_{i \in I}$.  Then $S \in (S_i)_{i \in I}$, and thus
+$dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
 </span></p>
 ]]></content>
     
@@ -1896,278 +2115,6 @@ details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Some Thoughts on a Real-Valued Function]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/"/>
-    
-    <updated>2015-08-04T22:28:52+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Spending so much time to work out <a href="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">the locale support for dates</a>
-and <a href="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">valid HTML code</a> in my <a href="https://vincenttam.github.io/blog2">second blog</a> which was
-powered by Jekyll-Bootstrap, I <em>couldn’t</em> recall this fact.</p>
-
-<p>Suppose that $\mathcal{D}$ is a subset of $\R^2$ that contains an
-$\varepsilon$-neighbourhood of a point <span class="myeqn">$(x_0,y_0)$</span>.  If</p>
-
-<ol>
-  <li>$f: \mathcal{D} \to \R$ is has first-order partial derivatives in
-the $\varepsilon$-neighbourhood of <span class="myeqn">$(x_0,y_0)$</span>.</li>
-  <li>The first-order partial derivatives of $f$ are continuous at <span class="myeqn">$(x_0,y_0)$</span>.</li>
-</ol>
-
-<p>Then we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-  \Delta f = \frac{\partial f}{\partial x} (x_0,y_0) \Delta x +
-  \frac{\partial f}{\partial y} (x_0,y_0) \Delta y + \varepsilon_1
-  \Delta x + \varepsilon_2 \Delta y,
-  \label{fact}
-\end{equation}
-</div>
-
-<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
-x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
-0$</span> as $\Delta x$ and $\Delta y \to 0$.</p>
-
-<!-- more -->
-
-<h2 id="the-first-order-approximation-for-a-differentiable-function">The First-Order Approximation For a Differentiable Function</h2>
-
-<p>At first, I thought that equation \eqref{fact} followed from formula
-\eqref{thm}.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \lim_{\vect{h} \to \zeros}
-  \frac{f(\vect{x}+\vect{h})-[f(\vect{x})+\langle\nabla
-  f(\vect{x}),\vect{h}\rangle]}{\norm{\vect{h}}} = 0
-  \label{thm}
-\end{equation}
-</div>
-
-<p>I forgot that this statement assumed the continuous differentiability
-on <em>an open set</em>.  However, we only know that the first-order partial
-derivatives are continuous <em>at one point</em> <span class="myeqn">$(x_0,y_0)$</span>.</p>
-
-<h2 id="solve-an-easier-problem-first">Solve an easier problem first</h2>
-
-<p>This question should be much easier and much more intuitive if the
-domain of the function $f$ in \eqref{fact} is one-dimensional.  Then,
-by drawing a curve and sketching its tangent line at a point, one can
-intuitively realise that the geometric meaning of $\varepsilon$.</p>
-
-<p>In fact, one <em>constructs</em></p>
-
-<div class="myeqn">
-\begin{equation}
-  \varepsilon (\Delta x) :=
-    \begin{cases}
-      \frac{\Delta f}{\Delta x}-f'(x_0) &amp;\text{if }\Delta x \ne 0,\\
-      0 &amp;\text{if } \Delta x = 0,
-    \end{cases}
-  \label{def1}
-\end{equation}
-</div>
-
-<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
-x)-f(x_0)$</span> in this section since $f$ is now one-dimensional.</p>
-
-<p>Then one can make use of the differentiability of $f$ at $(x_0)$ to
-say that $\varepsilon \to 0$ as $\Delta x \to 0$.</p>
-
-<p>To get the one-dimensional version of \eqref{fact}, we get rid of the
-denominator by multiplying both sides by $\Delta x$ in the case of
-$\Delta x \ne 0$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    \varepsilon \Delta x &amp;= \Delta f - f' (x_0) \Delta x\\
-    \Delta f &amp;= f' (x_0) \Delta x + \varepsilon \Delta x
-  \end{aligned}
-  \label{mult1}
-\end{equation}
-</div>
-
-<p>Observe that equality \eqref{mult1} also holds when $\Delta x = 0$.</p>
-
-<h2 id="back-to-the-problem">Back to the problem</h2>
-
-<h3 id="make-use-of-the-previous-section">Make use of the previous section</h3>
-
-<p>From \eqref{def1}, we observe that $\varepsilon$ is defined as
-the difference between a difference quotient between two points
-<span class="myeqn">$x_0$</span> and <span class="myeqn">$x_0+\Delta x$</span> and the derivative <span class="myeqn">$f'(x_0)$</span>.  We can define <span class="myeqn">$\varepsilon_1$</span> and <span class="myeqn">$\varepsilon_2$</span> in a similar way.</p>
-
-<div class="myeqn">
-\begin{align}
-  &amp;\begin{split}
-    &amp; \varepsilon_1(\Delta x,\Delta y) :=\\
-    &amp;\begin{cases}
-      \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-      f}{\partial x}(x_0,y_0) &amp;{\small \text{if } \Delta x \ne 0},\\
-      0 &amp;\text{if } \Delta x = 0,
-    \end{cases}
-  \end{split}
-  \label{def2a}\\
-
-  &amp;\begin{split}
-    &amp; \varepsilon_2(\Delta x,\Delta y) :=\\
-    &amp;\begin{cases}
-      \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
-      y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
-      \Delta y \ne 0,\\
-      0 &amp;\text{if } \Delta y = 0,
-    \end{cases}
-  \end{split}
-  \label{def2b}
-\end{align}
-</div>
-
-<p>We then multiply \eqref{def2a} and \eqref{def2b} by $\Delta x$ and
-$\Delta y$ respectively, just like what we’ve done in \eqref{mult1}.</p>
-
-<div class="myeqn">
-\begin{align}
-  &amp;\begin{split}
-    \varepsilon_1(\Delta x,\Delta y) \Delta x =&amp; f(x_0+\Delta x,y_0) -
-    f(x_0,y_0)\\
-    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
-  \end{split}
-  \label{mult2a}\\
-  &amp;\begin{split}
-    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
-    &amp;- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
-  \end{split}
-  \label{mult2b}
-\end{align}
-</div>
-
-<p>The trick is to change the independent variables <em>one-by-one</em> since we
-can only make use of partial derivatives.  After defining
-\eqref{def2a}, there’s <em>no</em> need to scratch our head for \eqref{def2b}
-to fit the pizzle.  We may first try to use \eqref{def2a} to get
-\eqref{mult2a}.  Then by observing the term $\Delta f$ in
-\eqref{fact}, we realize that we should add the term <span class="myeqn">$f(x_0+\Delta x,y_0+\Delta y)$ and remove
-$f(x_0+\Delta x,y_0)$</span> so as to get $\Delta f$ in \eqref{fact}.</p>
-
-<h3 id="remaining-problem">Remaining problem</h3>
-
-<p>In \eqref{mult2b}, the partial derivative with respect to $y$ is taken
-at <span class="myeqn">$(x_0+\Delta x,y_0)$</span>, which
-<em>shouldn’t</em> appear in \eqref{fact}.  Therefore, we need a way to get
-rid of the $\Delta x$ inside the bracket.  That leads us to the one
-<em>unused</em> condition—the second given condition in \eqref{fact}.</p>
-
-<p>By the continuity of the first-order partial derivatives at <span class="myeqn">$(x_0,y_0)$</span>,</p>
-
-<div class="myeqn">
-\begin{equation}
-  \lim_{\Delta x \to 0} \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\
-  \lim_{\Delta x \to 0} \left ( \frac{\partial f}{\partial
-  y}(x_0+\Delta x,y_0)
-  - \frac{\partial f}{\partial y}(x_0,y_0) \right ) = 0
-  \label{cts1}
-\end{equation}
-</div>
-
-<p>Thus, we define</p>
-
-<div class="myeqn">
-\begin{equation}
-  \varepsilon_3(\Delta x) := \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) - \frac{\partial f}{\partial y}(x_0,y_0)
-  \label{cts2}
-\end{equation}
-</div>
-
-<p>so that <span class="myeqn">$\varepsilon_3 \to 0$</span>
-as $\Delta x \to 0$.  With \eqref{cts2}, we can replace the
-first-order partial derivative with respect to $y$ at <span class="myeqn">$(x_0+\Delta x,y_0)$</span> in
-\eqref{mult2b} by the one at <span class="myeqn">$(x_0,y_0)$</span>.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
-    &amp;- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
-    \varepsilon_3(\Delta x) \right ) \Delta y
-  \end{split}
-  \label{b4repl}
-\end{equation}
-</div>
-
-<p>Therefore, from \eqref{b4repl}, we see that it’s legitimate for us to
-rename <span class="myeqn">$\varepsilon_2-\varepsilon_3$
-as \varepsilon_2</span> to get an equation which looks more similar to
-\eqref{mult2a} than \eqref{mult2b} does.</p>
-
-<div class="myeqn">
-\begin{gather}
-  \begin{split}
-    &amp;\varepsilon_2(\Delta x,\Delta y) \Delta y\\
-    =&amp; f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
-  \end{split}
-  \label{mult2bb}\\
-  \begin{split}
-    &amp;\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)\\
-    =&amp; f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
-    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
-    \text{(\eqref{mult2a}+\eqref{mult2bb})}
-  \end{split}\\
-  \begin{split}
-    &amp;f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
-    =&amp; \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
-    \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)
-  \end{split}
-  \label{result}
-\end{gather}
-</div>
-
-<p>The result \eqref{result} is what we desired in \eqref{fact}.</p>
-
-<h2 id="generalisation-to-n-dimension">Generalisation to $n$-dimension</h2>
-
-<p>By reusing the trick of changing the variables once at a time from
-\eqref{def2a} to \eqref{mult2b}, and a suitable renaming and
-rearrangment of terms, one can generalise the result in \eqref{fact}
-to a function $f:\mathcal{D} \to \R$ defined on a subset $\mathcal{D}$
-of $\R^n$ containing a $\varepsilon$-neighbourhood of a point
-$\vect{x}_0 \in \R^n$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \Delta f = \langle \nabla f(\vect{x_0}) + \vect{\varepsilon},\Delta
-  \vect{x} \rangle,
-  \label{generalisation}
-\end{equation}
-</div>
-
-<p><span class="myeqn">where $\Delta f :=
-f(\vect{x_0}+\Delta \vect{x})-f(\vect{x_0})$ and $\vect{\varepsilon}
-\to \zeros$ as $\Delta \vect{x} \to \zeros$.</span></p>
-
-<p>As you can see in \eqref{generalisation}, writing the statement in its
-vector form is more concise than writing out each partial derivative
-in \eqref{fact}.</p>
-
 ]]></content>
     
   </entry>

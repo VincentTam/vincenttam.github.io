@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-06T19:14:38+08:00</updated>
+  <updated>2015-09-06T20:23:43+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,225 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[MathJax Local Configuration File (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/"/>
+    
+    <updated>2015-09-06T19:29:42+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In my opinion, the default display of the $\rm \LaTeX$ command for
+$\Re z$ and $\Im z$ <em>don’t</em> look good.</p>
+
+<p><img src="/images/posts/MathJaxReIm/im110.png" alt="default Im(z) display" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I want to reset the <code>\Im</code> command in my local MathJax configuration
+file <code>source/javascripts/MathJaxLocal.js</code>.  I used a script inside the
+<code>&lt;body&gt;</code> tag to load my local MathJax configurations from GitHub.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>
+If I want to <em>test</em> the configurations, then I’ll have to push my
+changes to GitHub <em>before</em> I can see the effect and figure out the
+errors — this is incredibly <em>slow</em> and <em>inefficient</em>.</p>
+
+<p><strong>How can I locally debug my MathJax configurations?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>To <em>locally test</em> my MathJax configurations, I put <em>another</em> <code>&lt;script&gt;</code>
+tag containing the local configurations <em>before</em> the <code>&lt;script&gt;</code> that
+loads <code>MathJax.js</code>.</p>
+
+<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+</span><span class='line'>  <span class="nx">jax</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;input/TeX&quot;</span><span class="p">,</span> <span class="s2">&quot;output/HTML-CSS&quot;</span><span class="p">],</span>
+</span><span class='line'>  <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">]],</span>
+</span><span class='line'>    <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span><span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>
+</span><span class='line'>    <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nx">messageStyle</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="s2">&quot;HTML-CSS&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">preferredFont</span><span class="o">:</span> <span class="s2">&quot;TeX&quot;</span><span class="p">,</span> <span class="nx">availableFonts</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;STIX&quot;</span><span class="p">,</span><span class="s2">&quot;TeX&quot;</span><span class="p">]</span> <span class="p">},</span>
+</span><span class='line'>  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
+</span><span class='line'>    <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span><span class="s2">&quot;AMScd.js&quot;</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">field</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{#1}&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">C</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{C}&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">F</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{F}&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">N</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{N}&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">Q</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Q}&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">R</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{R}&#39;</span><span class="p">],</span>
+</span><span class='line'>      <span class="nx">Z</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Z}&#39;</span><span class="p">],</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;pre&gt;&lt;code&gt;</span>  zeros: [&#39;\\mathbf{0}&#39;],
+</span><span class='line'>  ud: [&#39;\\,\\mathrm{d}&#39;],
+</span><span class='line'>
+</span><span class='line'>  vect:[&#39;\\boldsymbol{\\mathbf{#1}}&#39;,1],
+</span><span class='line'>  abs: [&#39;\\lvert#1\\rvert&#39;, 1],
+</span><span class='line'>  abslr:[&#39;\\left\\lvert#1\\right\\rvert&#39;, 1],
+</span><span class='line'>  norm: [&#39;\\lVert#1\\rVert&#39;, 1],
+</span><span class='line'>  normlr: [&#39;\\left\\lVert#1\\right\\rVert&#39;, 1],
+</span><span class='line'>
+</span><span class='line'>  lcm: [&#39;\\mathop{\\mathrm{lcm}}&#39;],
+</span><span class='line'>  interior: [&#39;\\mathop{\\mathrm{int}}&#39;],
+</span><span class='line'>  exterior: [&#39;\\mathop{\\mathrm{ext}}&#39;],
+</span><span class='line'>  volume: [&#39;\\mathop{\\mathrm{vol}}&#39;],
+</span><span class='line'>
+</span><span class='line'>  E: [&#39;{\\rm I\\kern-.3em E}&#39;],
+</span><span class='line'>  Var: [&#39;\\mathop{\\mathrm{Var}}&#39;],
+</span><span class='line'>  Cov: [&#39;\\mathop{\\mathrm{Cov}}&#39;],
+</span><span class='line'>  Binom: [&#39;\\mathop{\\mathrm{Binom}}&#39;],
+</span><span class='line'>  Exp: [&#39;\\mathop{\\mathrm{Exp}}&#39;],
+</span><span class='line'>  Poi: [&#39;\\mathop{\\mathrm{Poi}}&#39;],
+</span><span class='line'>
+</span><span class='line'>  GL: [&#39;\\mathrm{GL}&#39;],
+</span><span class='line'>  SL: [&#39;\\mathrm{SL}&#39;],
+</span><span class='line'>  Aut: [&#39;\\mathrm{Aut}&#39;],
+</span><span class='line'>  id: [&#39;\\mathrm{id}&#39;],
+</span><span class='line'>
+</span><span class='line'>  // Test your code here
+</span><span class='line'>  Re: [&#39;\\mathop{\\mathrm{Re}}&#39;],
+</span><span class='line'>  Im: [&#39;\\mathop{\\mathrm{Im}}&#39;],
+</span><span class='line'>}   } }); <span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+</span><span class='line'><span class="nt">&lt;/code&gt;&lt;/pre&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
+</span><span class='line'>    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">})();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>I think that rendering $\Re z$ and $\Im z$ with roman font is better.</p>
+
+<p><img src="/images/posts/MathJaxReIm/im-new120.png" alt="improved Im(z) display" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp">
+
+      <p>Refer to <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">my old post</a> titled <em>A Quick Markdown Syntax Error
+Detection for Writing MathJax Equations in Octopress Posts (3)</em>
+for details. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -562,42 +781,6 @@ details. <a href="#fnref:https" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:config_yml">
       <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/71ff4fb/_config.yml">71ff4fb</a>. <a href="#fnref:config_yml" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[An Error in Printing Equations in Chrome]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/09/10/an-error-in-printing-equations-in-chrome/"/>
-    
-    <updated>2014-09-10T16:27:02+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/09/10/an-error-in-printing-equations-in-chrome</id>
-    
-      <content type="html"><![CDATA[<p>This afternoon, I found that when I preview the print layout of the
-posts in <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>, some Mathjax block equations enclosed with
-<code>\begin{equation}</code> <em>weren’t</em> displayed properly.  I think it should be
-due to my settings in <code>sass/custom/_print.scss</code> because the contents
-in Mathjax’s official demo can be rendered properly in the print
-preview.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, I deleted some obsolete lines of code in that
-SCSS file .<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Actually, since it takes time for loading MathJax, if
-I open the print preview before the block equations are ready, then I
-will see the source code of those equations.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Refer to <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> in MathJax
-Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
