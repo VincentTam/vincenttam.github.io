@@ -41,7 +41,7 @@ member of", and stopped for half an hour.  Reading the next sentence
 <q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
 how to interpret the sentence where I was stuck: if $S \in
 dom\cup\mathcal{T}$, $\exists f \in \mathcal{T}$ such that $S \in
-dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f \in
-\subseteq (S_i)_{i \in I}$.  Then $S \in \subseteq (S_i)_{i \in I}$,
-and thus $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
+dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f
+\subseteq (S_i)_{i \in I}$.  Then $S \in (S_i)_{i \in I}$, and thus
+$dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
 </span>
