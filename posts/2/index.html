@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Goal The method for getting the Git object ID described in
-previous post in this series isn’t quick enough since it
-consists of several commands. The &hellip;">
+  <meta name="description" content="After spending hours to find out that I need to tap on “Settings” →
+“About” → … → “Build number” for enabling USB debugging in the
+“Developers &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,82 @@ consists of several commands. The &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Debug Apps on Real Devices in Android Studio</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-12T10:46:44+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:46 am</span></time>
+        
+           | <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After spending hours to find out that I need to tap on “Settings” →
+“About” → … → “Build number” for enabling USB debugging in the
+“Developers options” on an Android phone, I plugged the phone into a
+Mac desktop, but it <em>didn’t</em> show up in the “Devices” in Finder.  I
+thought that Mac <em>couldn’t</em> detect the phone, and I searched Google
+for a long time.  After having seen the name of an application for
+synchronising data between and phone and the computer for a few times,
+I finally decided to download it since I <em>didn’t</em> know what else to
+do.  Luckily, my app could be run on the phone with the help of
+Android Studio installed on the Mac desktop.</p>
+
+<p><span class="tex2jax_ignore">
+An hour later, I tried to setup the development environment on an M$
+Win* computer.  Its installed size is over 20GB!  After hours of
+installation work, I was <em>stuck</em> again on M$ Win*:  unlike the Mac
+computer, that M$ Win* machine could detect the Android mobile
+device and show it in “Computer” within a minute.  I added the
+following lines into <code>/{AppName}/app/build.gradle</code> according to
+<a href="https://developer.android.com/tools/device.html#setting-up">a page of the official website</a>.
+</span></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>To enable debugging on a real Android device </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">android</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">buildTypes</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">debug</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">debuggable</span> <span class="kc">true</span>
+</span><span class="line">        <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>However, the IDE said that <em>no debuggable device</em> could be found.  I
+guessed that the synchronising application made by the manufacturer of
+the phone was the cause of that undesirable result.  After fetching
+the application from the website of the phone manufacturer and
+restarting Android Studio, I could finally run the same application on
+a real Android device by clicking the little triangle on the top.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -785,55 +861,6 @@ x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/03/basic-jekyll-date-locale-support/">Basic Jekyll Date Locale Support</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-03T22:38:32+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:38 pm</span></time>
-        
-           | <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/03/basic-jekyll-date-locale-support/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I tried installing <code>_plugins/i18n_filter.rb</code> and <code>_locales/fr.yml</code>
-from <a href="https://github.com/jekyll/jekyll/issues/3406">GitHub</a>.  I mistakenly thought that I had finished
-changing the English dates on <a href="/blog2"><em>Blog 2</em></a> to their corresponding
-French version due to the successful results shown in the local
-preview.</p>
-
-<p><strong>How can one get the locale support for dates on Jekyll sites?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/03/basic-jekyll-date-locale-support/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -876,7 +903,7 @@ preview.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (38)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (39)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (13)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -895,6 +922,10 @@ preview.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/06/read-lucass-theorem/">Read Lucas's Theorem</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Understood How Zorn's Lemma Implies the Axiom of Choice</a>
       </li>
     
@@ -908,10 +939,6 @@ preview.</p>
     
       <li class="post">
         <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a>
       </li>
     
   </ul>

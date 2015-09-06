@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-06T02:46:26+08:00</updated>
+  <updated>2015-09-06T19:14:38+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Read Lucas's Theorem]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/06/read-lucass-theorem/"/>
+    
+    <updated>2015-09-06T18:31:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/06/read-lucass-theorem</id>
+    
+      <content type="html"><![CDATA[<p>Suppose that $P(z)$ is a polynomial in the complex plane.  The theorem
+says that <em>all</em> zeros of $P’(z)$ are inside a half plane in which all
+zeros of $P(z)$ lie.</p>
+
+<p>Ahlfors says that <q>a directed line $z = a + bt$ determines a right
+half plane consisting of all points with $\Im(z - a) / b &lt; 0$…</q>
+(see Chap. 1, Sec. 2.3)<sup id="fnref:ahlfors"><a href="#fn:ahlfors" class="footnote">1</a></sup>  After drawing the figure for the 
+drawing the figure for $z = -(1 + i)t$, I realized that I should pay
+attention to the word “directed” and interpret “right” as “to the
+right of the vector $b$ drawn on the line $z = a + bt$”.</p>
+
+<p>The following equation puzzled me for a while.  (see Chap. 2, Sec.
+1.3)<sup id="fnref:ibid"><a href="#fn:ibid" class="footnote">2</a></sup></p>
+
+<div class="myeqn">
+\begin{equation}
+  \Im\left( \frac{z - \alpha_k}{b} \right) = \Im\left( \frac{z - a}{b}
+  \right) - \Im\left( \frac{\alpha_k - a}{b} \right) &gt; 0
+  \label{stuck}
+\end{equation}
+</div>
+
+<p>I tried sketching a diagram to understand what’s going on, but this
+<em>isn’t</em> so helpful.  In fact, the above equation starts from
+<span class="myeqn">$z - \alpha_k = (z - a) - (\alpha_k -
+a)$</span>.</p>
+
+<p><span class="myeqn">
+The whole proof makes use of a half plane $H := \{z \in \C \mid \Im[(z
+- a) / b] &lt; 0\}$ in which all zeros $\alpha_1,\ldots,\alpha_n$ of
+$P(z)$ lie, and it follows the logic of proof by contradiction: each
+$\alpha_k$ is assumed to be in $H$ while $z$ isn't.  It ends with the
+conclusion that $\Im(b P'(z) / P(z)) &lt; 0$ by \eqref{stuck} and the
+equation
+</span></p>
+
+<div class="myeqn">
+\[
+  \frac{P'(z)}{P(z)} = \sum_{k = 1}^n \Im\left( \frac{1}{z - \alpha_k}
+  \right).
+\]
+</div>
+
+<p>Finally, I saw a corollary of this theorem: all zeros of $P’(z)$ are
+inside the smallest convex polygon in which all zeros of $P(z)$ lie.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ahlfors">
+
+      <p>Ahlfors, L. (1979). <em>Complex analysis</em>. Auckland: McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:ibid">
+      <p><em>ibid</em>. <a href="#fnref:ibid" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -53,7 +124,7 @@ $\mathcal{P}$.  Usually, suppose that $(x_1,y_1),(x_2,y_2) \in f$,
 $x_1 = x_2 \implies y_1 = y_2$.  The book uses the contrapositive form
 of this statement.  I was stuck at the sentence <q>Now, for a set to
 be an element of $dom\cup\mathcal{T}$, it must be an element of some
-member of $\mathcal{K}$</q>.  At first, I omitted the phrase "some
+member of $\mathcal{T}$</q>.  At first, I omitted the phrase "some
 member of", and stopped for half an hour.  Reading the next sentence
 <q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
 how to interpret the sentence where I was stuck: if $S \in
@@ -521,278 +592,6 @@ P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 \label{norm-ub}
 \end{equation}
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Some Thoughts on a Real-Valued Function]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/"/>
-    
-    <updated>2015-08-04T22:28:52+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Spending so much time to work out <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/">the locale support for dates</a>
-and <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">valid HTML code</a> in my <a href="/blog2">second blog</a> which was
-powered by Jekyll-Bootstrap, I <em>couldn’t</em> recall this fact.</p>
-
-<p>Suppose that $\mathcal{D}$ is a subset of $\R^2$ that contains an
-$\varepsilon$-neighbourhood of a point <span class="myeqn">$(x_0,y_0)$</span>.  If</p>
-
-<ol>
-  <li>$f: \mathcal{D} \to \R$ is has first-order partial derivatives in
-the $\varepsilon$-neighbourhood of <span class="myeqn">$(x_0,y_0)$</span>.</li>
-  <li>The first-order partial derivatives of $f$ are continuous at <span class="myeqn">$(x_0,y_0)$</span>.</li>
-</ol>
-
-<p>Then we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-  \Delta f = \frac{\partial f}{\partial x} (x_0,y_0) \Delta x +
-  \frac{\partial f}{\partial y} (x_0,y_0) \Delta y + \varepsilon_1
-  \Delta x + \varepsilon_2 \Delta y,
-  \label{fact}
-\end{equation}
-</div>
-
-<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
-x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
-0$</span> as $\Delta x$ and $\Delta y \to 0$.</p>
-
-<!-- more -->
-
-<h2 id="the-first-order-approximation-for-a-differentiable-function">The First-Order Approximation For a Differentiable Function</h2>
-
-<p>At first, I thought that equation \eqref{fact} followed from formula
-\eqref{thm}.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \lim_{\vect{h} \to \zeros}
-  \frac{f(\vect{x}+\vect{h})-[f(\vect{x})+\langle\nabla
-  f(\vect{x}),\vect{h}\rangle]}{\norm{\vect{h}}} = 0
-  \label{thm}
-\end{equation}
-</div>
-
-<p>I forgot that this statement assumed the continuous differentiability
-on <em>an open set</em>.  However, we only know that the first-order partial
-derivatives are continuous <em>at one point</em> <span class="myeqn">$(x_0,y_0)$</span>.</p>
-
-<h2 id="solve-an-easier-problem-first">Solve an easier problem first</h2>
-
-<p>This question should be much easier and much more intuitive if the
-domain of the function $f$ in \eqref{fact} is one-dimensional.  Then,
-by drawing a curve and sketching its tangent line at a point, one can
-intuitively realise that the geometric meaning of $\varepsilon$.</p>
-
-<p>In fact, one <em>constructs</em></p>
-
-<div class="myeqn">
-\begin{equation}
-  \varepsilon (\Delta x) :=
-    \begin{cases}
-      \frac{\Delta f}{\Delta x}-f'(x_0) &amp;\text{if }\Delta x \ne 0,\\
-      0 &amp;\text{if } \Delta x = 0,
-    \end{cases}
-  \label{def1}
-\end{equation}
-</div>
-
-<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
-x)-f(x_0)$</span> in this section since $f$ is now one-dimensional.</p>
-
-<p>Then one can make use of the differentiability of $f$ at $(x_0)$ to
-say that $\varepsilon \to 0$ as $\Delta x \to 0$.</p>
-
-<p>To get the one-dimensional version of \eqref{fact}, we get rid of the
-denominator by multiplying both sides by $\Delta x$ in the case of
-$\Delta x \ne 0$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    \varepsilon \Delta x &amp;= \Delta f - f' (x_0) \Delta x\\
-    \Delta f &amp;= f' (x_0) \Delta x + \varepsilon \Delta x
-  \end{aligned}
-  \label{mult1}
-\end{equation}
-</div>
-
-<p>Observe that equality \eqref{mult1} also holds when $\Delta x = 0$.</p>
-
-<h2 id="back-to-the-problem">Back to the problem</h2>
-
-<h3 id="make-use-of-the-previous-section">Make use of the previous section</h3>
-
-<p>From \eqref{def1}, we observe that $\varepsilon$ is defined as
-the difference between a difference quotient between two points
-<span class="myeqn">$x_0$</span> and <span class="myeqn">$x_0+\Delta x$</span> and the derivative <span class="myeqn">$f'(x_0)$</span>.  We can define <span class="myeqn">$\varepsilon_1$</span> and <span class="myeqn">$\varepsilon_2$</span> in a similar way.</p>
-
-<div class="myeqn">
-\begin{align}
-  &amp;\begin{split}
-    &amp; \varepsilon_1(\Delta x,\Delta y) :=\\
-    &amp;\begin{cases}
-      \frac{f(x_0+\Delta x,y_0)-f(x_0,y_0)}{\Delta x}-\frac{\partial
-      f}{\partial x}(x_0,y_0) &amp;{\small \text{if } \Delta x \ne 0},\\
-      0 &amp;\text{if } \Delta x = 0,
-    \end{cases}
-  \end{split}
-  \label{def2a}\\
-
-  &amp;\begin{split}
-    &amp; \varepsilon_2(\Delta x,\Delta y) :=\\
-    &amp;\begin{cases}
-      \frac{f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0)}{\Delta
-      y} - \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) &amp;\text{if }
-      \Delta y \ne 0,\\
-      0 &amp;\text{if } \Delta y = 0,
-    \end{cases}
-  \end{split}
-  \label{def2b}
-\end{align}
-</div>
-
-<p>We then multiply \eqref{def2a} and \eqref{def2b} by $\Delta x$ and
-$\Delta y$ respectively, just like what we’ve done in \eqref{mult1}.</p>
-
-<div class="myeqn">
-\begin{align}
-  &amp;\begin{split}
-    \varepsilon_1(\Delta x,\Delta y) \Delta x =&amp; f(x_0+\Delta x,y_0) -
-    f(x_0,y_0)\\
-    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x
-  \end{split}
-  \label{mult2a}\\
-  &amp;\begin{split}
-    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
-    &amp;- \frac{\partial f}{\partial y}(x_0+\Delta x,y_0) \Delta y
-  \end{split}
-  \label{mult2b}
-\end{align}
-</div>
-
-<p>The trick is to change the independent variables <em>one-by-one</em> since we
-can only make use of partial derivatives.  After defining
-\eqref{def2a}, there’s <em>no</em> need to scratch our head for \eqref{def2b}
-to fit the pizzle.  We may first try to use \eqref{def2a} to get
-\eqref{mult2a}.  Then by observing the term $\Delta f$ in
-\eqref{fact}, we realize that we should add the term <span class="myeqn">$f(x_0+\Delta x,y_0+\Delta y)$ and remove
-$f(x_0+\Delta x,y_0)$</span> so as to get $\Delta f$ in \eqref{fact}.</p>
-
-<h3 id="remaining-problem">Remaining problem</h3>
-
-<p>In \eqref{mult2b}, the partial derivative with respect to $y$ is taken
-at <span class="myeqn">$(x_0+\Delta x,y_0)$</span>, which
-<em>shouldn’t</em> appear in \eqref{fact}.  Therefore, we need a way to get
-rid of the $\Delta x$ inside the bracket.  That leads us to the one
-<em>unused</em> condition—the second given condition in \eqref{fact}.</p>
-
-<p>By the continuity of the first-order partial derivatives at <span class="myeqn">$(x_0,y_0)$</span>,</p>
-
-<div class="myeqn">
-\begin{equation}
-  \lim_{\Delta x \to 0} \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) = \frac{\partial f}{\partial y}(x_0,y_0)\\
-  \lim_{\Delta x \to 0} \left ( \frac{\partial f}{\partial
-  y}(x_0+\Delta x,y_0)
-  - \frac{\partial f}{\partial y}(x_0,y_0) \right ) = 0
-  \label{cts1}
-\end{equation}
-</div>
-
-<p>Thus, we define</p>
-
-<div class="myeqn">
-\begin{equation}
-  \varepsilon_3(\Delta x) := \frac{\partial f}{\partial y}(x_0+\Delta
-  x,y_0) - \frac{\partial f}{\partial y}(x_0,y_0)
-  \label{cts2}
-\end{equation}
-</div>
-
-<p>so that <span class="myeqn">$\varepsilon_3 \to 0$</span>
-as $\Delta x \to 0$.  With \eqref{cts2}, we can replace the
-first-order partial derivative with respect to $y$ at <span class="myeqn">$(x_0+\Delta x,y_0)$</span> in
-\eqref{mult2b} by the one at <span class="myeqn">$(x_0,y_0)$</span>.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{split}
-    \varepsilon_2(\Delta x,\Delta y) \Delta y =&amp; f(x_0+\Delta
-    x,y_0+\Delta y) - f(x_0+\Delta x,y_0)\\
-    &amp;- \left ( \frac{\partial f}{\partial y}(x_0,y_0) +
-    \varepsilon_3(\Delta x) \right ) \Delta y
-  \end{split}
-  \label{b4repl}
-\end{equation}
-</div>
-
-<p>Therefore, from \eqref{b4repl}, we see that it’s legitimate for us to
-rename <span class="myeqn">$\varepsilon_2-\varepsilon_3$
-as \varepsilon_2</span> to get an equation which looks more similar to
-\eqref{mult2a} than \eqref{mult2b} does.</p>
-
-<div class="myeqn">
-\begin{gather}
-  \begin{split}
-    &amp;\varepsilon_2(\Delta x,\Delta y) \Delta y\\
-    =&amp; f(x_0+\Delta x,y_0+\Delta y) - f(x_0+\Delta x,y_0) -
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y
-  \end{split}
-  \label{mult2bb}\\
-  \begin{split}
-    &amp;\varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)\\
-    =&amp; f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
-    &amp;- \frac{\partial f}{\partial x}(x_0,y_0) \Delta x -
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y \quad
-    \text{(\eqref{mult2a}+\eqref{mult2bb})}
-  \end{split}\\
-  \begin{split}
-    &amp;f(x_0+\Delta x, y_0+\Delta y) - f(x_0,y_0)\\
-    =&amp; \frac{\partial f}{\partial x}(x_0,y_0) \Delta x +
-    \frac{\partial f}{\partial y}(x_0,y_0) \Delta y +
-    \varepsilon_1(\Delta x,\Delta y) + \varepsilon_2(\Delta x,\Delta
-    y)
-  \end{split}
-  \label{result}
-\end{gather}
-</div>
-
-<p>The result \eqref{result} is what we desired in \eqref{fact}.</p>
-
-<h2 id="generalisation-to-n-dimension">Generalisation to $n$-dimension</h2>
-
-<p>By reusing the trick of changing the variables once at a time from
-\eqref{def2a} to \eqref{mult2b}, and a suitable renaming and
-rearrangment of terms, one can generalise the result in \eqref{fact}
-to a function $f:\mathcal{D} \to \R$ defined on a subset $\mathcal{D}$
-of $\R^n$ containing a $\varepsilon$-neighbourhood of a point
-$\vect{x}_0 \in \R^n$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \Delta f = \langle \nabla f(\vect{x_0}) + \vect{\varepsilon},\Delta
-  \vect{x} \rangle,
-  \label{generalisation}
-\end{equation}
-</div>
-
-<p><span class="myeqn">where $\Delta f :=
-f(\vect{x_0}+\Delta \vect{x})-f(\vect{x_0})$ and $\vect{\varepsilon}
-\to \zeros$ as $\Delta \vect{x} \to \zeros$.</span></p>
-
-<p>As you can see in \eqref{generalisation}, writing the statement in its
-vector form is more concise than writing out each partial derivative
-in \eqref{fact}.</p>
-
 ]]></content>
     
   </entry>
