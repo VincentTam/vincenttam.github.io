@@ -17,7 +17,7 @@ Problem
 ---
 
 If the search pattern contains multiple characters like `;`, `#`, `|`,
-` `, etc, and you're *too lazy* to look for
+` ` (white space), etc, and you're *too lazy* to look for
 [other choices of delimiters][ref], what can you do?
 
 <!-- more -->
