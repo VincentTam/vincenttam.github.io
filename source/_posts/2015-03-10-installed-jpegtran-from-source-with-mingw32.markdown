@@ -13,7 +13,7 @@ To reduce the bandwidth usage while viewing pictures in this blog,
 I've already run [OptiPNG] on PNG pictures in my new
 posts.[^pp_pagespeed]  For JPEG files optimization, Google developers
 suggest [jpegoptim] or [jpegtran].[^goo_dev]  Since the first tool
-*isn't* available for M\$ Win* 7, I installed the second one.  I
+*isn't* available for M\$ Win\* 7, I installed the second one.  I
 *couldn't* find a compiled version of the software, so I had to
 compile it from source code.
 
