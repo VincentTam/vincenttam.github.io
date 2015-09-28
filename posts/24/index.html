@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I suspect that after I write the blog with UltraBlog in Vim and
-editing the contents with the online editor, the changes done using
-the online editor &hellip;">
+  <meta name="description" content="Note: This post won’t make sense here. Refer to the
+original post. Note: I can now figure out a way to work with both UltraBlog and
+WordPress.com’s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,207 @@ the online editor &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/30/my-first-wordpress-post-using-gist/">My First WordPress Post Using Gist</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T16:25:03+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
+        
+           | <a href="/blog/2014/01/30/my-first-wordpress-post-using-gist/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/30/my-first-wordpress-post-using-gist/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/30/my-first-wordpress-post-using-gist/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><em>Note: This post won’t make sense here. Refer to the
+<a href="http://blogueun.wordpress.com/2014/01/30/1st-wp-post-using-gist/">original post</a>.</em></p>
+
+<p>Note: I can now figure out a way to work with <em>both</em> UltraBlog and
+WordPress.com’s built-in online code highlighter.  See my
+<a href="/blog/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/" title="Another Testing Page for WordPress.com's Built-in SyntaxHighlighter and UltraBlog">newer post</a> for details.</p>
+
+<p><a href="http://daringfireball.net/projects/markdown" title="Markdown">Markdown</a> is easy to write.  <del>However, writing code with <code>code</code>
+tag (surrounded with <code>[]</code>) using UltraBlog in Vim <em>doesn’t</em> work.  In
+order to post some code, one needs to
+<a href="http://en.support.wordpress.com/markdown/" title="WordPress's Markdown Support">use 3 backticks</a>.</del>  (I’ve found a way to use the
+built-in SyntaxHighlighter now because I’ve realised that a blank line
+in Markdown will be changed to a <code>&lt;p&gt;</code> tag in HTML.  Thus, <em>don’t</em> put
+any blank lines right above and below the the <code>&lt;code&gt;</code> tags.)</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="js"><span class="line"><span class="nx">element1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;foo&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">element1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;Hello world!&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There’s some shortcomings of the above method.  If you need to copy a
+list of source code, you’ll need to browse the source code, provided
+that the “gutter” option of the code list is “true”,
+<a href="http://en.support.wordpress.com/code/posting-source-code/#configuration-parameters" title="Configuartion Parameters">which is the default</a>.
+Moreover, if you include source code that consists of <code>&lt;angled
+blocks&gt;</code> in a blog post written in Markdown using the UltraBlog
+plugin, then the angled block may be interpreted as an HTML tag
+element, such as the statement <code>#include &lt;iostream&gt;</code> in a C++ program.
+<em>More importantly, I’ve found out that <a href="http://en.support.wordpress.com/markdown/" title="WordPress's Markdown Support">this apporach</a>
+<strong>doesn’t</strong> work with UltraBlog.</em>  <del>The above code list verifies
+this assertion.<del></del></del></p>
+
+<p><img src="/images/posts/1stWPGist/ultrablog.png" title="Screenshot of the &#34;code list&#34; in UltraBlog.vim" alt="Screenshot of the &#34;code list&#34; in UltraBlog.vim" /></p>
+
+<p><small>Figure 1: This is a screenshot of the “code list” in
+UltraBlog.vim.  <a href="http://en.support.wordpress.com/markdown-quick-reference/" title="Markdown quick reference">Markdown quick reference</a> suggests the
+use of 3 backticks.</small></p>
+
+<p><img class="fancybox" src="/images/posts/1stWPGist/interpreted.png" width="800" title="Screenshot of the interpreted code in WordPress.com online editor" alt="fig1" /></p>
+
+<p><small>Figure 2: The above figure shows how the source code for the
+“code list” (in lines 12–15 in UltraBlog.vim, see Figure 1) is
+interpreted.</small></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/30/my-first-wordpress-post-using-gist/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/30/posting-code-to-gist-efficiently/">Posting Code to Gist Efficiently</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-30T16:25:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
+        
+           | <a href="/blog/2014/01/30/posting-code-to-gist-efficiently/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/30/posting-code-to-gist-efficiently/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://gist.github.com">Gist</a> enables computer users to post their source code online. Since
+Gist is a <a href="https://github.com">GitHub</a> repository, they can view each change to the code.</p>
+
+<p>However, it is inconvenient to use the online editor in the homepage
+of Gist, especially for geeks. For example, Chen believes that
+<a href="http://aknow-work.blogspot.hk/2013/04/programmer-code-gist-vim.html">it’s <em>not</em> good to manually type or paste the code onto Gist</a>. I
+directly quote his words here.</p>
+
+<blockquote>
+  <p>但是阿，如果你是手動把 code 弄到 gist 上面，那這樣就太遜了，基本上各大編輯器都有跟 gist 互動的 plugin，如果你用 Vim，可以使用 gist-vim，可以讓你直接在 Vim 裡生成、編輯、讀取 gist，完成後還可以幫你把連結開起來。</p>
+</blockquote>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/30/posting-code-to-gist-efficiently/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Working With Vim's Autocommand Groups</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-26T02:07:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:07 am</span></time>
+        
+           | <a href="/blog/2014/01/26/working-with-vims-autocommand-groups/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/26/working-with-vims-autocommand-groups/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/26/working-with-vims-autocommand-groups/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Before including the autocommand group, I’d write about the reason of
+using it.</p>
+
+<p>In my post titled <a href="/blog/2013/12/11/links-to-good-posts/"><em>Links to Good Posts</em></a>, I’ve included some
+custom autocompletion keyboard mappings for the automatic completion
+of <code>{}</code>, <code>[]</code> and <code>()</code> blocks in my VIMRC file.</p>
+
+<p>Last Thursday, I extended them to blocks enclosed by single or double
+quotes.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="nb">inoremap</span> <span class="s2">&quot; &quot;</span>&quot;<span class="p">&lt;++&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;&lt;</span>Left<span class="p">&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> <span class="s2">&quot;&quot;</span> <span class="c">&quot;</span>
+</span><span class="line"><span class="c">inoremap &#39; &#39;&#39;&lt;++&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;</span>
+</span><span class="line"><span class="nb">inoremap</span> <span class="s1">&#39;&#39;</span> &#39;
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><a href="http://github.com/honza/vim-Snippets">Vim-Snippets</a> has saved me a lot of time while writing blogs in
+<a href="http://www.vim.org">Vim</a>. With Vim-snippets and <a href="http://github.com/tpope/vim-surround">Vim-surround</a>, the following question is
+<em>not</em> so useful.</p>
+
+<p><strong>How can Vim do the same type of job for angled block <em>for HTML files
+only</em>?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -416,146 +617,6 @@ by the compiler’s error message.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/09/stop-using-mic-star-star-soft-word/">Stop Using Mic**soft Word!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-09T19:55:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:55 pm</span></time>
-        
-           | <a href="/blog/2014/01/09/stop-using-mic-star-star-soft-word/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/09/stop-using-mic-star-star-soft-word/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/09/stop-using-mic-star-star-soft-word/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve found a great post in Charlie’s Diary showing reasons that
-“<a href="http://www.antipope.org/charlie/blog-static/2013/10/why-microsoft-word-must-die.html"><em>Why M$ W**d must Die</em></a>”. So I’m going to provide a
-link to <a href="http://coding2learn.org/blog/2013/07/29/kids-cant-use-computers/">a passage on Coding 2 Learn</a> that explains why
-M$ W**d is <em>still</em> dominant these days. The whole passage is long,
-but is worth spending time to read. The relevant section of the
-passage is <em>Schools</em>. From
-<a href="http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html">Cambridge’s $\rm \LaTeX$ Advocacy page</a>, we can find
-Taylor’s article titled <a href="http://www.ntg.nl/doc/taylor/wysiwyg.pdf"><em>What has WYSIWYG done to us?</em></a>.
-<del>I embed an <code>iframe</code> for your reference.</del></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/09/stop-using-mic-star-star-soft-word/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/09/write-blog-offline/">Write Blog Offline!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-09T19:38:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:38 pm</span></time>
-        
-           | <a href="/blog/2014/01/09/write-blog-offline/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/09/write-blog-offline/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/09/write-blog-offline/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When I’m writing blogs using the Blogger’s online editor, I found that
-it’s slow since the Vim’s keyboard shortcuts can’t be used. What’s
-worse, Blogger often threw me Error 503. I regret wasting so much time
-on this ineffective blogging process.</p>
-
-<p><img class="fancybox" src="/images/posts/WriteBlogOffline/23c75-paint.png" width="800" title="Example of an error experienced by user on Blogger" alt="fig1" /></p>
-
-<p>View Susan Gunelius’
-<a href="http://weblogs.about.com/od/offlineblogeditors/tp/ReasonstoUseOfflineBlogEditor.htm"><em>Top 5 Reasons to Use an Offline Blog Editor</em></a>.</p>
-
-<p>Just one will do. Then it’ll be good to have some physical exercises
-for the coordination of our eyes, brain and hand. I’ve learnt this
-from my teacher.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/09/testing-online-code-syntax-highlighters-for-blogs-6-multilingual-source-code-display-in-web-pages/">Testing Online Code Syntax Highlighters for Blogs (6): Multilingual Source Code Display in Web Pages</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-09T19:22:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:22 pm</span></time>
-        
-           | <a href="/blog/2014/01/09/testing-online-code-syntax-highlighters-for-blogs-6-multilingual-source-code-display-in-web-pages/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/09/testing-online-code-syntax-highlighters-for-blogs-6-multilingual-source-code-display-in-web-pages/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/09/testing-online-code-syntax-highlighters-for-blogs-6-multilingual-source-code-display-in-web-pages/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Note: This post won’t make sense here.  Refer to the
-<a href="http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html">original post</a>.</em></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/09/testing-online-code-syntax-highlighters-for-blogs-6-multilingual-source-code-display-in-web-pages/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/25">&larr; Older</a>
@@ -598,7 +659,7 @@ from my teacher.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (39)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (42)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -617,23 +678,23 @@ from my teacher.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Mountain Climbing in Lindelöf $T_3$ Spaces</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/09/28/normal-compact-t2-spaces/">Normal Compact $T_2$ Spaces</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/06/mathjax-local-configuration-file-2/">MathJax Local Configuration File (2)</a>
       </li>
     
       <li class="post">
         <a href="/blog/2015/09/06/read-lucass-theorem/">Read Lucas's Theorem</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Understood How Zorn's Lemma Implies the Axiom of Choice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/05/revised-absolute-convergence/">Revised Absolute Convergence</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Stuck at Two Trigonometric Inequalities</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-20T16:56:16+08:00</updated>
+  <updated>2015-09-28T19:05:10+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,181 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Queue in $T_1$ Spaces]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces/"/>
+    
+    <updated>2015-09-28T18:35:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces</id>
+    
+      <content type="html"><![CDATA[<p><span class="myeqn">
+To find a finite subcover of a countable open cover
+$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
+Bolzano–Weierstrass property, one has to pick a sequence in $X$ in
+order to apply the Bolzano–Weierstrass property.  In order to build a
+link between the sequence with the countable open cover, I picked a
+point $x_n$ from each $U_n$, and then build an infinite set $A$
+consisting of $x_n \forall n \in \N$.  I knew that $A$ is compact, but
+what does that do with the countable open cover?
+</span></p>
+
+<p>Reading my notes again, I realised the trick of choosing $x_q$: it
+<em>shouldn’t</em> be chosen from $U_k$ with index $k$ which is smaller than
+<span class="myeqn">$n_q$.  In other words, $x_q \in
+U_{n_q}$ and $x_q \notin U_k \forall k &lt; n_q$.  If we failed to make
+such choices, that means we don't have enough $U_k$'s and $x_q$'s,
+meaning that $X$ is the finite union of $U_k$'s and it's countably
+compact.  Otherwise, we continue this process to get an infinite set
+$A$ can be set up in the same way: $A := \left\{x_q \in X : q \in \N
+\right\}$.</span>  One will see that $A$ has <em>no</em> cluster point,
+contracdicting the Bolzano–Weierstrass property of $X$.</p>
+
+<p><span class="myeqn">
+Assume that $x \in X$.  $\exists m \in \N$ so that $x \in U_m$ and $x
+\notin U_j \forall j &lt; m$.  I was puzzled at the line $n_N &lt; m \le
+n_{N + 1}$.  Using the analogy of "queuing", I understood what's going
+on.
+</span></p>
+
+<picture class="fancybox" title="a queue of open sets in the open
+  countable cover">
+  <source srcset="/images/posts/QT1/q-800.jpg" media="(min-width: 800px)" />
+  <source srcset="/images/posts/QT1/q-600.jpg" media="(min-width: 600px)" />
+  <img alt="a queue of open sets in the open countable cover" src="https://vincenttam.github.io/images/posts/QT1/q-300.jpg" />
+</picture>
+
+<p><span class="myeqn">
+Since $X$ is $T_1$, which is equivalent to the closeness of
+singletons, deleting finitely many singletons from an open set won't
+change the openness of the set.  We have a neighbourhood $V := U_m
+\setminus \left\{x_j : j \le N \text{ and } x \ne x_j \right\}$ of $x$
+which intersects $A$ at no more than one point.  Thus, there exists a
+deleted neighbourhood $V \setminus \{x\}$ of $x$ so that $V \cap A
+\setminus \{x\} = \varnothing$.  Hence, $\forall x \in X, x \notin
+A'$.
+</span></p>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Mountain Climbing in Lindelöf $T_3$ Spaces]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/"/>
+    
+    <updated>2015-09-28T15:39:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>To deduce that <a href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
+the arguments of the proof in the previous post, but I <em>couldn’t</em> do
+it.  Therefore, I read another proof about the normality of regular
+Lindelöf spaces instead.</p>
+
+<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
+
+<p><span class="myeqn">
+Suppose that $X$ is the given space, and $H$ and $K$ are the given
+sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
+\omega\right\}$ are open countable subcovers of $H$ and $K$
+respectively.  On p.91 in Davis's Topology book, I saw the following
+equations.
+</span></p>
+
+<div class="myeqn">
+\begin{alignat*}{2}
+  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
+  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
+  (\overline{U_0} \cup \overline{U_1}) \\
+  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
+  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
+  \overline{U_2}) \\
+  \vdots \\
+  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
+  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
+  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
+  V_n
+\end{alignat*}
+</div>
+
+<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
+<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
+reading the symbols.  Luckily, an analogy of climbing mounts is given.
+Therefore, I finally understood how the open subsets $U_n$’s and
+$V_n$’s are built step-by-step while preserving disjointness and
+openness.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Normal Compact $T_2$ Spaces]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/"/>
+    
+    <updated>2015-09-28T14:39:06+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces</id>
+    
+      <content type="html"><![CDATA[<p>To show that any compact Hausdorff space is $T_4$, one may first show
+that it’s $T_3$.  To see this, using set theory notations may be quite
+<em>difficult</em>.  For mediocre students, the contents of the following
+seciton may sound <em>unnatural</em>.</p>
+
+<h2 id="a-sketch-of-the-proof">A sketch of the proof</h2>
+
+<p>Suppose that we want to separate a point $x \notin A$ and a closed set
+$A$ in a compact $T_2$ space $X$ by two <em>disjoint</em> open sets $U$ and
+$V$ so that $x \in U$ and $A \subseteq V$.  A standard proof is to
+apply the $T_2$ property of $X$ to $x$ and each $y \in A$ so as to
+yield two <em>disjoint</em> open sets <span class="myeqn">$U_y,V_y \in \mathcal{T}$ such that $x \in U_y$ and $y
+\in V_y$</span>.  Since $A$ should be contained in an open set $V$, in
+other words, an <em>open cover</em> of $A$ is needed, one might be tempted to
+construct the following union of open sets.</p>
+
+<div class="myeqn">
+\begin{equation}
+  V = \bigcup_{y \in A} V_y
+  \label{Vinf}
+\end{equation}
+</div>
+
+<p>However, one <em>can’t</em> ensure that the following <em>infinite</em> intersection
+of open sets is open.</p>
+
+<div class="myeqn">
+\begin{equation}
+  U = \bigcap_{y \in A} U_y
+  \label{Uinf}
+\end{equation}
+</div>
+
+<p>For instance, by the Nested Interval Theorem,</p>
+
+<div class="myeqn">
+\[
+  \{0\} = \bigcap_{n \in \N} \left( -\frac{1}{n},\frac{1}{n} \right).
+\]
+</div>
+
+<p>Thus, one applies the compactness of $X$ to get <em>finite</em> versions of
+\eqref{Vinf} and \eqref{Uinf}.</p>
+
+<h2 id="a-snapshot-of-this-fact">A snapshot of this fact</h2>
+
+<p>Since it’s so <em>difficult</em> to remember every detail of the proof, I
+love illustrating it using a picture.</p>
+
+<p><img src="https://vincenttam.github.io/images/posts/CptT2/cptT2-280.jpg" alt="snapshot capturing central idea of proof" /></p>
+
+<p>How can a compact regular space be regular?  See my next post.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1814,307 +1989,6 @@ order to include a list followed by a code block that <em>isn’t</em>
 contained inside the list, the boundary of the list has to be
 specified by a line consisting of a leading ‘^’ character.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (1): Blobs and Commits]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"/>
-    
-    <updated>2015-08-07T13:52:47+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits</id>
-    
-      <content type="html"><![CDATA[<p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
-is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
-be similarly generated.</p>
-
-<!-- more -->
-
-<p>For example, <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code> is a hash of
-the repository of this blog.</p>
-
-<p>Remark: The email shown below is <em>fake</em>, so the SHA-1 hash of <code>HEAD</code>
-<em>isn’t</em> real.  For the reason of displaying that email, you may refer
-to <a href="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">the remark in <em>Git Object Id Generation (4): General Trees</em></a>.</p>
-
-<pre class="cliUB"><code>$ git rev-parse head
-5b7b566b8a07d4813ba9f08a326e169cf38ca20f
-$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f | tee test.txt
-tree 2d864bcb7e4944e9d98b663649c79084692873c1
-parent afcb4d97cb447112bd2e930159966d92b8e4754a
-author vincent tam &lt;demo@example.com&gt; 1438859683 +0800
-committer vincent tam &lt;demo@example.com&gt; 1438864942 +0800
-
-a new post on some git low level commands
-
-I *don't* go over the details of the book *Pro Git*, which is available
-online.  I just select some important ones for quick reference.
-$ wc -c test.txt
-379 test.txt
-$ printf "commit 379\0" &gt; len.txt
-$ cat len.txt test.txt | shasum
-5b7b566b8a07d4813ba9f08a326e169cf38ca20f  -
-</code></pre>
-
-<p>We get the <em>same</em> SHA-1 hash.  Therefore, the ID for Git commit
-objects is just the SHA-1 hash of the contents of the Git commits with
-the string <code>commit {len}\0</code> inserted at the beginning, where <code>{len}</code>
-stands for the number of bytes of the Git commit object (which is
-stored in <code>test.txt</code> in the above situation).</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="the-printf-command">The printf command</h3>
-
-<p>The commands <code>printf "\0"</code> and <code>printf "\000"</code> <em>doesn’t</em> differ.
-Therefore, if a digit zero follows the null character, one may
-indicate the null character using hex digits: <code>printf "\x000"</code>.
-<code>printf</code> will interpret <code>\x00</code> as a null character and the trailing
-digit <code>0</code> <em>won’t</em> be mixed up with the characters on its left.</p>
-
-<h3 id="the-wc-command">The wc command</h3>
-
-<p>Apart from counting words, the <code>wc</code> command provide various flags
-which return the number of lines, characters, etc.  In the past, I
-knew three flags only: <code>-l</code>, <code>-w</code>, and <code>-c</code>.  I thought that they told
-<code>wc</code> to count the number of <strong>l</strong>ines, <strong>w</strong>ords and <strong>c</strong>haracters
-respectively.  After running the <code>wc</code> command on strings that include
-accents (e.g. “café”, “resumé”, etc), I realised that I misunderstood
-the function of the <code>-c</code> flag, which actually counts the number of
-<em>bytes</em> of the input.  To count the number of characters, use the <code>-m</code>
-flag instead.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Git Command List (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/"/>
-    
-    <updated>2015-08-06T17:39:08+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="overview">Overview</h2>
-
-<p>Unlike the Git commands found on the previous posts in this series, in
-this article, I’ll focus on <em>low-level</em> Git commands.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
-but I included them here because these commands help one understand
-the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
-
-<h2 id="the-list">The list</h2>
-
-<pre><code>$ find .git/objects       # Return all files/folders under `.git/objects'
-$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
-$ git hash-object {file}  # Return the hash of {file}
-$ git hash-object --stdin # Return the hash of the standard input
-$ git write-tree          # Return the hash of the tree of tracked contents
-$ git ls-files -s         # List all tracked files and their hash
-$ git ls-tree {hash}      # List the contents of a tree
-$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
-$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-$ git diff                # Show the difference between the working directory and the index
-$ git diff --cached       # Show the difference between HEAD and the index
-$ git diff HEAD           # Show the difference between HEAD and the working directory
-{:.cliUB}
-</code></pre>
-
-<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
-<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<ol>
-  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
-bytes.  When it’s displayed, it has 40 hex-digits.</li>
-  <li><em>The blob for a file is independent of the file name</em>, which was
-actually stored in a tree object.  For example, the object ID of a
-file which contains only a single line “hello world” is
-<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code>, so if the file is stored
-inside the <code>.git</code> directory as a blob, the blob will be named as
-<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
-  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
-entry will be created in the tree object corresponding to
-<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:tree_obj">
-
-      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
-in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
-<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/"/>
-    
-    <updated>2015-08-05T00:18:45+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I often write math in this blog.  After typing lots of characters,
-syntax errors are <em>inevitable</em>, but no one wants them to be published.
-Unluckily, the <code>rake generate</code> command takes <em>too long</em> to run.  In
-order to find them out more quickly, I quickly went over the
-<code>Gemfile</code> of the repository for this blog, and saw that the Markdown
-engine of Octopress is kramdown.  Therefore, I used the command line
-version of this Markdown parser to convert my Markdown source file to
-an HTML document by a Vim Ex command.</p>
-
-<pre><code>:!kramdown % &gt; %&lt;.html
-</code></pre>
-
-<p>For this, I’ve written two posts describing the workflow of producing
-HTML web pages consisting of math expressions from Markdown source
-files using kramdown and MathJax.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In <a href="https://vincenttam.github.io/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">the first post</a> in this series, I’ve made a list of steps
-in Vim.  However, jumping to other files is laborious.  More
-importantly, those steps involve browsing and copying of lines of
-HTML code of the <code>&lt;head&gt;</code>, which loads MathJax, in other HTML files.
-This can <em>seriously</em> slow down the editing process.  Unhappily, this
-problem <em>isn’t</em> solved in <a href="https://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="include-the-script-in-the-content">Include the script in the content</h3>
-
-<p>There might be some option for the kramdown command line utility to
-use accept an HTML template files during the code conversion.
-However, I’m <em>too lazy</em> to search for them as I need to work on
-math.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<p>Remembering that I defered the loading of JavaScripts in order to
-boost the PageSpeed score of this site, I adpated the script to load
-MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Put this at the bottom </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
-</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span>
-</span><span class="line">    <span class="kd">function</span><span class="p">(){});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">})();</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
-
-<p>By default, with the plugin <code>vim-markdown</code> installed, the sections are
-<em>folded</em>.  Before I can continue editing at the end of the file, I
-have to open the last fold, which contained more than 25 lines due to
-the script enabling MathJax at the bottom.  As a result, I have to
-move back to the middle of the last fold by pressing <code>k</code> for a while.
-That annoys me.  If the script is contained in a separate fold, it’s
-better.  Therefore, adding a blank line and then a line consisting of
-three hyphens will fix this problem.</p>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<hr />
-<p>(Added on SEP 3RD, 2015)</p>
-
-<p>Now I realised that kramdown will leave the trailing two backslashes
-at each line inside <code>&lt;div&gt;</code> tags in Markdown source files <em>untouched</em>.</p>
-
-<hr />
-
-<p>In <a href="https://vincenttam.github.io/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series, we know that <code>&lt;div&gt;</code> tag
-prevents kramdown from converting the code inside the tag to HTML,
-while in <a href="https://vincenttam.github.io/blog/2014/09/14/kramdowns-markdown-attributes/">another old post about kramdown’s Markdown attributes</a>,
-one can revert the above behaviour by simply adding an attribute
-<code>markdown="1"</code> to the <code>&lt;div&gt;</code> tag.  These can be reflected in the
-above test.</p>
-
-<p>Usually, in math environments inside a $\rm \LaTeX$ document, double
-backslashes <code>\\</code> start a new line, and it’s the same in MathJax.
-Typing <em>two</em> backslashes in the Markdown source down will suffice.
-Unluckily, in the <em>real Markdown source</em> for Octopress posts, <em>four</em>
-<code>\</code> are needed.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-
-      <p>For example, I have to think about
-<a href="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">multi-variable real-valued functions</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:pp2">
-
-      <p>Refer to my old post
-<a href="https://vincenttam.github.io/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a> in <em>Blog 1</em> for
-details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
