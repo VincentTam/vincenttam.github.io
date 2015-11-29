@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: I	don’t use Clapper’s image popup plugin anymore,
-so the settings below are now gone. Background Using the following plugin, I finished &hellip;">
+  <meta name="description" content="Last night, I wrote a post on editing a Ruby plugin file and an Atom
+Feed XML file for removing redundant images in Atom Feeds.1 To show
+how to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,68 @@ so the settings below are now gone. Background Using the following plugin, I fin
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Include Liquid Code Inside Octopress Codeblocks</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-12T13:58:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:58 pm</span></time>
+        
+           | <a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last night, I wrote a post on editing a Ruby plugin file and an Atom
+Feed <abbr title="EXtensible Markup Language">XML</abbr> file for removing redundant images in Atom Feeds.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> To show
+how to change the files, I put some codeblocks in my post.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample codeblock that contains Liquid code</span><a href="/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line">{% codeblock Change the <abbr title="EXtensible Markup Language">XML</abbr> file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}
+</span><span class="line"><span class="nt">&lt;entry&gt;</span>
+</span><span class="line">  <span class="c">&lt;!-- other elements --&gt;</span>
+</span><span class="line">  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]&gt;</span><span class="nt">&lt;/content&gt;</span>
+</span><span class="line"><span class="nt">&lt;/entry&gt;</span>
+</span><span class="line">{% endcodeblock %}
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>However, I <em>couldn’t</em> generate the site.  I tried HTML encoding the
+contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
+<code>{% codeblock %}</code> tag, but this approach also
+<em>failed</em>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -659,50 +722,6 @@ swap.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/05/putting-a-code-block-inside-a-list-in-octopress/">Putting a Code Block Inside a List in Octopress</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-05T01:23:05+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:23 am</span></time>
-        
-           | <a href="/blog/2014/06/05/putting-a-code-block-inside-a-list-in-octopress/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/05/putting-a-code-block-inside-a-list-in-octopress/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/05/putting-a-code-block-inside-a-list-in-octopress/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After writing my <a href="/blog/2014/06/04/resolving-jekylls-yaml-exception/" title="Resolving Jekyll's YAML Exception">previous post</a>, I found out that the
-<a href="http://daringfireball.net/projects/markdown/syntax#precode" title="Standard Markdown syntax for code blocks">standard Markdown syntax</a> for nesting a code block
-inside a list item <em>doesn’t</em> work.  I knew a limitation of the
-Markdown parser that Octopress uses.  This is well illustrated in
-<a href="https://github.com/imathis/octopress/issues/488" title="not support ordered lists(markdown) with code blocks">Octopress issue #488</a>.</p>
-
-<p>Brandon Mathis, the father of Octopress, suggested using HTML tags to
-include a code block in a list item.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/20">&larr; Older</a>
@@ -745,7 +764,7 @@ include a code block in a list item.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (42)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (43)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -764,6 +783,10 @@ include a code block in a list item.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a>
       </li>
     
@@ -777,10 +800,6 @@ include a code block in a list item.</p>
     
       <li class="post">
         <a href="/blog/2015/09/06/mathjax-local-configuration-file-2/">MathJax Local Configuration File (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/06/read-lucass-theorem/">Read Lucas's Theorem</a>
       </li>
     
   </ul>

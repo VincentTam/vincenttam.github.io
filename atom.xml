@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-28T19:05:10+08:00</updated>
+  <updated>2015-11-30T01:19:47+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[The $p$-th Root of a Convex Homogeneous Function of Degree $p$]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/"/>
+    
+    <updated>2015-11-30T01:17:25+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p</id>
+    
+      <content type="html"><![CDATA[<h2 id="backgroud">Backgroud</h2>
+
+<p>I was stuck at a question from a convex analysis book for more than a
+week.  I couldn’t directly find its solution.</p>
+
+<blockquote>
+  <p>Let $K$ be a convex cone in $\R^n$, $p \ge 1$.  The function $f: K
+\to [0,\infty)$ is homogeneous of degree $p$, i.e.</p>
+
+  <p>\[
+  f(\lambda x) = \lambda^p f(x),\quad \forall x \in K, \forall
+  \lambda \ge 0.
+\]</p>
+
+  <p>Suppose also that $f(x) &gt; 0 \,\forall x \in K \setminus \{x\}$.
+Show that $g(x) := [f(x)]^{\frac1p}$ is convex on K.</p>
+</blockquote>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>I saw a proof for the Minkowski inequality using the convexity of the
+function $x \mapsto x^p$ <a href="http://math.bard.edu/belk/math461/Inequalities.pdf">here</a>.  In fact, by replacing
+$\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we’re done.</p>
+
+<p>First, observe that</p>
+
+<div class="myeqn">
+\begin{equation}
+  g(\lambda x) = [f(\lambda x)]^{\frac1p} = \lambda g(x),\quad \forall
+  x \in K, \forall \lambda \ge 0
+  \label{homo}
+\end{equation}
+</div>
+
+<p>Therefore, it suffices to show that</p>
+
+<p>\begin{equation}
+  g(x + y) \le g(x) + g(y).
+  \label{goal}
+\end{equation}</p>
+
+<p>The assumption <span class="myeqn">$\norm{\vect{u}}_p =
+\norm{\vect{v}}_p = 1$</span> can be changed to <span class="myeqn">$g(x) = g(y) = 1$</span>.  Then we’ve <span class="myeqn">$f(x) = f(y) = 1$</span>.  By the convexity of $f$ on
+$K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
+
+<div class="myeqn">
+\begin{equation}
+  f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda)
+  f(y) \le 1.
+\end{equation}
+</div>
+
+<p>Since it’s given that $f(x) \ge 0 \,\forall x \in K$, we can say that</p>
+
+<p>\begin{equation}
+  g(\lambda x + (1 - \lambda) y) \le 1.
+  \label{trick}
+\end{equation}</p>
+
+<p>Finally, for any $u,v \in K$, we let</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{alignedat}{2}
+    \lambda &amp;{}= \frac{g(u)}{g(u) + g(v)} &amp;{} \qquad x &amp;{}= \frac
+    u{g(u)} \\
+    1 - \lambda &amp;{}= \frac{g(v)}{g(u) + g(v)}&amp;{} \qquad y &amp;{}= \frac
+    v{g(v)}.
+  \end{alignedat}
+  \label{coeff}
+\end{equation}
+</div>
+
+<p>Making use of \eqref{homo}, we substitute \eqref{coeff} into
+\eqref{trick}.</p>
+
+<div class="myeqn">
+\begin{align*}
+  g \left( \frac{g(u)}{g(u) + g(v)} \frac u{g(v)} + \frac{g(v)}{g(u) +
+  g(v)} \frac v{g(v)} \right) &amp;\le 1 \\
+  g \left(\frac u{g(u)+g(v)} + \frac v{g(u)+g(v)} \right) &amp;\le 1 \\
+  g \left(\frac{u + v}{g(u) + g(v)} \right) &amp;\le 1 \\
+  g(u + v) &amp;\le g(u) + g(v)
+\end{align*}
+</div>
+
+<p>We get \eqref{goal} at last.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1892,102 +1992,6 @@ c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
     </ul>
   </li>
 </ul>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[How Does Git Commit Amend Work?]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/"/>
-    
-    <updated>2015-08-07T17:15:29+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work</id>
-    
-      <content type="html"><![CDATA[<h2 id="situation">Situation</h2>
-
-<p>I’ve written and commited the post <a href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
-but after a while, I changed that post.  In order not to complexify
-my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
-simple and convenient.  I observed that the displayed time in the
-amended commit was the <em>same</em> as the original one, whereas the SHA-1
-hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
-However, from
-<a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
-that the ID of Git commit objects is totally determined by</p>
-
-<ol>
-  <li>the content of the commit message</li>
-  <li>the commit time</li>
-  <li>the author</li>
-</ol>
-
-<p>In this case, no difference of the above factors between the original
-commit and the amended commit can be observed with <code>git show</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
-
-<!-- more -->
-
-<h2 id="difference">Difference</h2>
-
-<p>To solve this problem, I scrolled up the screen and captured the SHA-1
-hashes fo the two commits.</p>
-
-<ul>
-  <li>the original commit’s hash: <code>9de8974b93a2e4032b608c0de17ea5ed0c55524b</code></li>
-  <li>the amended commit’s hash: <code>5b7b566b8a07d4813ba9f08a326e169cf38ca20f</code></li>
-</ul>
-
-<p>Note: I just <em>make up</em> the email address <code>demo@example.com</code> to replace
-my real email address to <a href="http://www.problogger.net/archives/2008/12/06/10-reasons-to-avoid-mailto-links/">avoid email spams</a>.  Therefore,
-<strong>the above commit hashes don’t correspond to the content displayed
-below</strong>.  In fact, they correspond to the commits in the Git
-repository for this blog.</p>
-
-<pre class="cliUB"><code>$ git cat-file -p 9de8974b93a2e4032b608c0de17ea5ed0c55524b
-tree b9f4fb708327e25c8b1b822711ec7dda9c5b2198
-parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
-author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
-committer Vincent Tam &lt;demo@example.com&gt; <span class="UBHLCode">1438859683</span> +0800
-
-A new post on some Git low level commands
-
-I *don't* go over the details of the book *Pro Git*, which is available
-online.  I just select some important ones for quick reference.
-$ git cat-file -p 5b7b566b8a07d4813ba9f08a326e169cf38ca20f
-tree 2d864bcb7e4944e9d98b663649c79084692873c1
-parent <a href="https://github.com/VincentTam/vincenttam.github.io/commit/afcb4d97cb447112bd2e930159966d92b8e4754a">afcb4d97cb447112bd2e930159966d92b8e4754a</a>
-author Vincent Tam &lt;demo@example.com&gt; 1438859683 +0800
-committer Vincent Tam &lt;demo@example.com&gt; 1438864942 +0800
-
-A new post on some Git low level commands
-
-I *don't* go over the details of the book *Pro Git*, which is available
-online.  I just select some important ones for quick reference.</code>
-</pre>
-
-<p>Hence, the difference of the timestamp of the <code>committer</code> causes the
-difference in the hashes, whereas the timestamp of the <code>author</code> is
-converted to a human readable date for display.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="unix-timestamp">Unix timestamp</h3>
-
-<p>A Unix timestamp is the number of seconds elasped since the start of
-the year 1970 in <abbr title="Global Mean Time">GMT</abbr>.</p>
-
-<h3 id="a-little-bit-kramdown-syntax-eob-marker">A little bit kramdown syntax: <abbr title="End-Of-Block">EOB</abbr> marker</h3>
-
-<p>According to kramdown’s syntax guide,
-<a href="http://kramdown.gettalong.org/syntax.html#eob-marker">the <abbr title="End-Of-Block">EOB</abbr> marker <em>won’t</em> be found in most Markdown documents</a>.  In
-order to include a list followed by a code block that <em>isn’t</em>
-contained inside the list, the boundary of the list has to be
-specified by a line consisting of a leading ‘^’ character.</p>
 
 ]]></content>
     

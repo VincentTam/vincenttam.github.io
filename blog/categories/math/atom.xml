@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-09-28T19:05:10+08:00</updated>
+  <updated>2015-11-30T01:19:47+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[The $p$-th Root of a Convex Homogeneous Function of Degree $p$]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/"/>
+    
+    <updated>2015-11-30T01:17:25+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p</id>
+    
+      <content type="html"><![CDATA[<h2 id="backgroud">Backgroud</h2>
+
+<p>I was stuck at a question from a convex analysis book for more than a
+week.  I couldn’t directly find its solution.</p>
+
+<blockquote>
+  <p>Let $K$ be a convex cone in $\R^n$, $p \ge 1$.  The function $f: K
+\to [0,\infty)$ is homogeneous of degree $p$, i.e.</p>
+
+  <p>\[
+  f(\lambda x) = \lambda^p f(x),\quad \forall x \in K, \forall
+  \lambda \ge 0.
+\]</p>
+
+  <p>Suppose also that $f(x) &gt; 0 \,\forall x \in K \setminus \{x\}$.
+Show that $g(x) := [f(x)]^{\frac1p}$ is convex on K.</p>
+</blockquote>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>I saw a proof for the Minkowski inequality using the convexity of the
+function $x \mapsto x^p$ <a href="http://math.bard.edu/belk/math461/Inequalities.pdf">here</a>.  In fact, by replacing
+$\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we’re done.</p>
+
+<p>First, observe that</p>
+
+<div class="myeqn">
+\begin{equation}
+  g(\lambda x) = [f(\lambda x)]^{\frac1p} = \lambda g(x),\quad \forall
+  x \in K, \forall \lambda \ge 0
+  \label{homo}
+\end{equation}
+</div>
+
+<p>Therefore, it suffices to show that</p>
+
+<p>\begin{equation}
+  g(x + y) \le g(x) + g(y).
+  \label{goal}
+\end{equation}</p>
+
+<p>The assumption <span class="myeqn">$\norm{\vect{u}}_p =
+\norm{\vect{v}}_p = 1$</span> can be changed to <span class="myeqn">$g(x) = g(y) = 1$</span>.  Then we’ve <span class="myeqn">$f(x) = f(y) = 1$</span>.  By the convexity of $f$ on
+$K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
+
+<div class="myeqn">
+\begin{equation}
+  f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda)
+  f(y) \le 1.
+\end{equation}
+</div>
+
+<p>Since it’s given that $f(x) \ge 0 \,\forall x \in K$, we can say that</p>
+
+<p>\begin{equation}
+  g(\lambda x + (1 - \lambda) y) \le 1.
+  \label{trick}
+\end{equation}</p>
+
+<p>Finally, for any $u,v \in K$, we let</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{alignedat}{2}
+    \lambda &amp;{}= \frac{g(u)}{g(u) + g(v)} &amp;{} \qquad x &amp;{}= \frac
+    u{g(u)} \\
+    1 - \lambda &amp;{}= \frac{g(v)}{g(u) + g(v)}&amp;{} \qquad y &amp;{}= \frac
+    v{g(v)}.
+  \end{alignedat}
+  \label{coeff}
+\end{equation}
+</div>
+
+<p>Making use of \eqref{homo}, we substitute \eqref{coeff} into
+\eqref{trick}.</p>
+
+<div class="myeqn">
+\begin{align*}
+  g \left( \frac{g(u)}{g(u) + g(v)} \frac u{g(v)} + \frac{g(v)}{g(u) +
+  g(v)} \frac v{g(v)} \right) &amp;\le 1 \\
+  g \left(\frac u{g(u)+g(v)} + \frac v{g(u)+g(v)} \right) &amp;\le 1 \\
+  g \left(\frac{u + v}{g(u) + g(v)} \right) &amp;\le 1 \\
+  g(u + v) &amp;\le g(u) + g(v)
+\end{align*}
+</div>
+
+<p>We get \eqref{goal} at last.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -255,59 +355,6 @@ inside the smallest convex polygon in which all zeros of $P(z)$ lie.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Understood How Zorn's Lemma Implies the Axiom of Choice]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/"/>
-    
-    <updated>2015-09-06T01:26:06+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice</id>
-    
-      <content type="html"><![CDATA[<p>Many math books that I’ve read referred me to other books for the
-proof of the equivalence of the Axiom of Choice and Zorn’s Lemma.
-This afternoon, I spent more than two hours to understand the proof
-that the later implies and former in <cite>Topology</cite> written by
-Davis.</p>
-
-<ol>
-  <li>Set up a non-empty partially ordered set $(\mathcal{P},\le)$</li>
-  <li>Let $\mathcal{T}$ be any non-empty chain in $\mathcal{P}$.</li>
-  <li>Prove that $\cup \mathcal{T} \in \mathcal{P}$.</li>
-  <li>Apply Zorn’s Lemma to get a maximal element $g \in \mathcal{P}$.</li>
-  <li><span class="myeqn">Use the maximality of $g$ to claim
-that the domain of $g$ equals the family of non-empty subsets
-$(S_i)_{i \in I}$ from which elements $(x_i)_{i \in I}$ are chosen.
-</span></li>
-</ol>
-
-<p>In the book, $\le$ means function extension, and</p>
-
-<div class="myeqn">
-\[
-  \mathcal{P} = \{f: f \text{ is a function, } dom\,f \subseteq
-  (S_i)_{i \in I}, f(x) \in x \forall x \in dom\,f\}.
-\]
-</div>
-
-<p><span class="myeqn">
-Step (3) is proved step-by-step according to the definition of
-$\mathcal{P}$.  Usually, suppose that $(x_1,y_1),(x_2,y_2) \in f$,
-$x_1 = x_2 \implies y_1 = y_2$.  The book uses the contrapositive form
-of this statement.  I was stuck at the sentence <q>Now, for a set to
-be an element of $dom\cup\mathcal{T}$, it must be an element of some
-member of $\mathcal{T}$</q>.  At first, I omitted the phrase "some
-member of", and stopped for half an hour.  Reading the next sentence
-<q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
-how to interpret the sentence where I was stuck: if $S \in
-dom\cup\mathcal{T}$, $\exists f \in \mathcal{T}$ such that $S \in
-dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f
-\subseteq (S_i)_{i \in I}$.  Then $S \in (S_i)_{i \in I}$, and thus
-$dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
-</span></p>
 ]]></content>
     
   </entry>
