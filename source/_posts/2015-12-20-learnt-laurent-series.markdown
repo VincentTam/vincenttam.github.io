@@ -39,7 +39,6 @@ width="88">
 </a>
 
 <small>Source code: [$\rm \LaTeX$][tex_src], [SVG][svg_src]</small>
-</small>
 
 I was stuck at this point.
 
