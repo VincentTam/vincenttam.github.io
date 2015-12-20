@@ -38,6 +38,9 @@ src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
 width="88">
 </a>
 
+<small>Source code: [$\rm \LaTeX$][tex_src], [SVG][svg_src]</small>
+</small>
+
 I was stuck at this point.
 
 <div class="myeqn">
@@ -64,6 +67,9 @@ of the integrand.
     Brown, J. W., Churchill, R. V., & Lapidus, M. (1996). *Complex
     variables and applications (Vol. 7)*. (pp. 17). New York:
     McGraw-Hill.
+
+[tex_src]: /downloads/code/Laurent/laurent.tex
+[svg_src]: /downloads/code/Laurent/laurent.svg
 
 <!-- Defer loading of JavaScripts -->
 <script type="text/javascript" charset="utf-8">
