@@ -14,6 +14,7 @@ HTML, etc.
 "a   cout << "i: " << i << endl;
 "b   \mathbf
 "c   \mathcal
+"d   \,\mathrm{d}
 "e   \exists
 "f   \forall
 "g   &gt;
