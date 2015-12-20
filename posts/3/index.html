@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Situation I’ve written and commited the post My Git Command List (3),
-but after a while, I changed that post. In order not to complexify
-my Git &hellip;">
+  <meta name="description" content="Background In the first post in this series, I’ve claimed that the
+generation of object IDs in Git is the SHA-1 hash of the string &lt;object type &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,104 @@ my Git &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T19:36:21+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:36 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
+generation of object IDs in Git is the SHA-1 hash of the string</p>
+
+<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
+</code></pre>
+
+<p>,where</p>
+
+<ul>
+  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
+  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
+  command <code>wc -c</code>.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
+Control with Git</em>.</p>
+
+<ol>
+  <li>Create a folder named <code>hello</code> and go to that directory.</li>
+  <li>Initialise an empty Git repository.</li>
+  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
+  <li>Add the file to Git’s object storage.</li>
+  <li>Get a tree object from the index.</li>
+  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
+  <li>Count the number of bytes in <code>test.txt</code>.</li>
+  <li>
+    <p>Create the file <code>len.txt</code> consisting of</p>
+
+    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
+</code></pre>
+
+    <p><em>without</em> the line terminator.</p>
+  </li>
+  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
+compute its SHA-1 hash.</li>
+</ol>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
+$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
+<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
+$ wc -c test.txt
+63 test.txt
+$ printf "tree 63\0" &gt; len.txt
+$ cat len.txt test.txt | shasum
+<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
+</code></pre>
+
+<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
+hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -673,67 +770,6 @@ when you need to browse <code>info</code> pages on *nix.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/01/w3c-validator-and-svgpan/">W3C Validator and SVGPan</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-01T18:08:54+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:08 pm</span></time>
-        
-           | <a href="/blog/2015/06/01/w3c-validator-and-svgpan/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/w3c-validator-and-svgpan/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/01/w3c-validator-and-svgpan/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Similar to that of my recent post
-<a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"><em>Added <abbr title="World Wide Web Consortium">W3C</abbr> Validated Logos to Some Pages</em></a>—to get my SVG code
-validated by <abbr title="World Wide Web Consortium">W3C</abbr>.</p>
-
-<p>I’m now using <a href="https://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/">SVGPan</a> for the zoom and drag functionality in SVG
-images generated from PDF files which are generated by <code>xelatex</code> from
-$\rm \LaTeX$ source code for <a href="http://www.texample.net/tikz/">TikZ</a> pictures.<sup id="fnref:pp_svgpan"><a href="#fn:pp_svgpan" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I submited my SVG file to the <abbr title="World Wide Web Consortium">W3C</abbr>’s validator, which showed me one
-error.  To illustrate this, I used an sample SVG in the official web
-site of SVGPan as an example.</p>
-
-<picture class="fancybox" title="SVGPan's SVG validation test result">
-<source srcset="/images/posts/W3CSVG/err1292.png" media="(min-width: 1292px)" />
-<source srcset="/images/posts/W3CSVG/err471.png" media="(min-width: 471px)" />
-<img alt="SVGPan's SVG validation fails" src="/images/posts/W3CSVG/err300.png" />
-</picture>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/01/w3c-validator-and-svgpan/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -776,7 +812,7 @@ site of SVGPan as an example.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (43)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (44)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -795,6 +831,10 @@ site of SVGPan as an example.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/20/learnt-laurent-series/">Learnt Laurent Series</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a>
       </li>
     
@@ -808,10 +848,6 @@ site of SVGPan as an example.</p>
     
       <li class="post">
         <a href="/blog/2015/09/28/normal-compact-t2-spaces/">Normal Compact $T_2$ Spaces</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/09/06/mathjax-local-configuration-file-2/">MathJax Local Configuration File (2)</a>
       </li>
     
   </ul>

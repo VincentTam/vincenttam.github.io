@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-11-30T01:19:47+08:00</updated>
+  <updated>2015-12-20T20:01:51+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Learnt Laurent Series]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/"/>
+    
+    <updated>2015-12-20T18:51:05+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series</id>
+    
+      <content type="html"><![CDATA[<p>Yesterday, I read the proof of Laurent’s Theorem in my complex
+variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
+
+<p><span class="myeqn">
+Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
+z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
+surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
+
+<div class="myeqn">
+\[
+  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
+  \abs{z - z_0} &lt; R_2).
+\]
+</div>
+
+<p><span>Image size:</span>
+<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
+<span id="lbl">300</span></p>
+
+<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
+  Your browser does not support SVG
+</object>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p>I was stuck at this point.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
+  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
+  = 0
+  \label{int}
+\end{equation}
+</div>
+
+<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
+including the circumference of $\gamma$.  Then the boundary of the
+region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
+third term in $\eqref{int}$ was needed.  I took me half an hour to
+figure out that the integrand is <em>not</em> simply $f(s)$, but with a
+denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
+I need to also include it as the boundary of the region of analyticity
+of the integrand.</p>
+
+<hr />
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/svg_resize_bar.js",function() {});
+})();
+</script>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:churchill">
+
+      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
+variables and applications (Vol. 7)</em>. (pp. 17). New York:
+McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -284,77 +377,6 @@ love illustrating it using a picture.</p>
 
 <p>How can a compact regular space be regular?  See my next post.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Read Lucas's Theorem]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/06/read-lucass-theorem/"/>
-    
-    <updated>2015-09-06T18:31:57+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/06/read-lucass-theorem</id>
-    
-      <content type="html"><![CDATA[<p>Suppose that $P(z)$ is a polynomial in the complex plane.  The theorem
-says that <em>all</em> zeros of $P’(z)$ are inside a half plane in which all
-zeros of $P(z)$ lie.</p>
-
-<p>Ahlfors says that <q>a directed line $z = a + bt$ determines a right
-half plane consisting of all points with $\Im(z - a) / b &lt; 0$…</q>
-(see Chap. 1, Sec. 2.3)<sup id="fnref:ahlfors"><a href="#fn:ahlfors" class="footnote">1</a></sup>  After drawing the figure for the 
-drawing the figure for $z = -(1 + i)t$, I realized that I should pay
-attention to the word “directed” and interpret “right” as “to the
-right of the vector $b$ drawn on the line $z = a + bt$”.</p>
-
-<p>The following equation puzzled me for a while.  (see Chap. 2, Sec.
-1.3)<sup id="fnref:ibid"><a href="#fn:ibid" class="footnote">2</a></sup></p>
-
-<div class="myeqn">
-\begin{equation}
-  \Im\left( \frac{z - \alpha_k}{b} \right) = \Im\left( \frac{z - a}{b}
-  \right) - \Im\left( \frac{\alpha_k - a}{b} \right) &gt; 0
-  \label{stuck}
-\end{equation}
-</div>
-
-<p>I tried sketching a diagram to understand what’s going on, but this
-<em>isn’t</em> so helpful.  In fact, the above equation starts from
-<span class="myeqn">$z - \alpha_k = (z - a) - (\alpha_k -
-a)$</span>.</p>
-
-<p><span class="myeqn">
-The whole proof makes use of a half plane $H := \{z \in \C \mid \Im[(z
-- a) / b] &lt; 0\}$ in which all zeros $\alpha_1,\ldots,\alpha_n$ of
-$P(z)$ lie, and it follows the logic of proof by contradiction: each
-$\alpha_k$ is assumed to be in $H$ while $z$ isn't.  It ends with the
-conclusion that $\Im(b P'(z) / P(z)) &lt; 0$ by \eqref{stuck} and the
-equation
-</span></p>
-
-<div class="myeqn">
-\[
-  \frac{P'(z)}{P(z)} = \sum_{k = 1}^n \Im\left( \frac{1}{z - \alpha_k}
-  \right).
-\]
-</div>
-
-<p>Finally, I saw a corollary of this theorem: all zeros of $P’(z)$ are
-inside the smallest convex polygon in which all zeros of $P(z)$ lie.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ahlfors">
-
-      <p>Ahlfors, L. (1979). <em>Complex analysis</em>. Auckland: McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:ibid">
-      <p><em>ibid</em>. <a href="#fnref:ibid" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

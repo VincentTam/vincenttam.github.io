@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-11-30T01:19:47+08:00</updated>
+  <updated>2015-12-20T20:01:51+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,99 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Learnt Laurent Series]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/"/>
+    
+    <updated>2015-12-20T18:51:05+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series</id>
+    
+      <content type="html"><![CDATA[<p>Yesterday, I read the proof of Laurent’s Theorem in my complex
+variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
+
+<p><span class="myeqn">
+Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
+z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
+surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
+
+<div class="myeqn">
+\[
+  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
+  \abs{z - z_0} &lt; R_2).
+\]
+</div>
+
+<p><span>Image size:</span>
+<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
+<span id="lbl">300</span></p>
+
+<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
+  Your browser does not support SVG
+</object>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p>I was stuck at this point.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
+  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
+  = 0
+  \label{int}
+\end{equation}
+</div>
+
+<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
+including the circumference of $\gamma$.  Then the boundary of the
+region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
+third term in $\eqref{int}$ was needed.  I took me half an hour to
+figure out that the integrand is <em>not</em> simply $f(s)$, but with a
+denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
+I need to also include it as the boundary of the region of analyticity
+of the integrand.</p>
+
+<hr />
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/svg_resize_bar.js",function() {});
+})();
+</script>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:churchill">
+
+      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
+variables and applications (Vol. 7)</em>. (pp. 17). New York:
+McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1867,131 +1960,6 @@ b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
 </code></pre>
 
 <p>We’re done!</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (2): Trees With One Single Blob]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/"/>
-    
-    <updated>2015-08-07T19:36:21+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In <a href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
-generation of object IDs in Git is the SHA-1 hash of the string</p>
-
-<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
-</code></pre>
-
-<p>,where</p>
-
-<ul>
-  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
-  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
-  command <code>wc -c</code>.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
-Control with Git</em>.</p>
-
-<ol>
-  <li>Create a folder named <code>hello</code> and go to that directory.</li>
-  <li>Initialise an empty Git repository.</li>
-  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
-  <li>Add the file to Git’s object storage.</li>
-  <li>Get a tree object from the index.</li>
-  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
-  <li>Count the number of bytes in <code>test.txt</code>.</li>
-  <li>
-    <p>Create the file <code>len.txt</code> consisting of</p>
-
-    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
-</code></pre>
-
-    <p><em>without</em> the line terminator.</p>
-  </li>
-  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
-compute its SHA-1 hash.</li>
-</ol>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
-$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
-<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
-$ wc -c test.txt
-63 test.txt
-$ printf "tree 63\0" &gt; len.txt
-$ cat len.txt test.txt | shasum
-<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
-</code></pre>
-
-<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
-hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>I googled “git tree hash id”, and I found the chosen answer of
-<a href="http://stackoverflow.com/a/13977017">this Stack Overflow question</a> very explanative.  One may
-shorten the included command by replacing <code>echo -en</code> with <code>printf</code>.</p>
-
-<h3 id="get-the-object-size-right">Get the object size right</h3>
-
-<p>In this case, the object size of the tree
-<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code> containg the blob
-<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code> which corresponds to the
-file <code>hello.txt</code> should be 37 (= 6 + 1 + 9 + 1 + 20).</p>
-
-<h3 id="get-the-object-content-right">Get the object content right</h3>
-
-<p>As the blob ID is stored as binary value, I copied it and pasted it
-Vim so that I could easily insert <code>\x</code> in front of a pair of hex
-digits in the blob ID.  I then put the things together in a command.</p>
-
-<pre class="cliUB"><code># Contents of `testing.sh' as seen inside Vim
-# Note that there's NO newline character in the following command
-printf "tree 37\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4
-c\x83\x00\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad" | shasum
-</code></pre>
-
-<h3 id="result">Result</h3>
-
-<p>By executing the above command, I got <strong>the right SHA-1 hash</strong>:
-<code>68aba62e560c0ebc3396e8ae9335232cd93a3f60</code>.</p>
-
-<h2 id="fact-learnt-formatting-printfs-output">Fact learnt: formatting printf’s output</h2>
-
-<p>In the Stack Overflow question, there’s a command</p>
-
-<pre><code>find .git/objects/ -type f -printf "%h%f %s\n" {.cliUB}
-</code></pre>
-
-<ul>
-  <li>The flag <code>-type f</code> stands for files.  <em>Without</em> this flag,
-  directories like <code>.git/objects</code> will be displayed.</li>
-  <li>The flag <code>-printf</code> formats the output.
-    <ul>
-      <li><code>%h</code> means the head of the file name <em>without</em> the last
-  component of the file name.  Thus, it expands to a the path of
-  a directory <em>without</em> the trailing <code>/</code>.</li>
-      <li><code>%f</code> means the last component of the file name.  As a result,
-  the <code>/</code> inside the displayed SHA-1 hashes are taken away.</li>
-      <li><code>%s</code> means the file size</li>
-    </ul>
-  </li>
-</ul>
 
 ]]></content>
     
