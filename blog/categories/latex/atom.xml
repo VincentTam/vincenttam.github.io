@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-12-20T20:17:35+08:00</updated>
+  <updated>2015-12-20T20:37:01+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,66 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Simplex Tableaux]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/12/20/latex-template-for-simplex-tableaux/"/>
+    
+    <updated>2015-12-20T20:19:54+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/12/20/latex-template-for-simplex-tableaux</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To provide a good-looking template of simplex tableaux for users of
+<a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
+
+<div class="myeqn">
+\[
+  \begin{array}{rrrrrrrr|l}
+               &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \\ \hline
+           x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 \\
+           x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 \\
+           x_6 &amp;   0 &amp;   6 &amp;  -1 &amp;   0 &amp;   0 &amp;   1 &amp; -4^* &amp; -4M +8 \\
+           x_1 &amp;   1 &amp;   0 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    1 &amp;      M \\ \hline
+               &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    2 &amp;     2M \\
+  \text{ratio} &amp;     &amp;     &amp;   1 &amp;     &amp;     &amp;     &amp;  1/2 &amp;
+  \end{array}
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>equation&lt;em&gt;<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rrrrrrrr|l<span class="nb">}</span>
+</span><span class='line'>               <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>3 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;  x<span class="nb">_</span>7 <span class="nb">&amp;</span>amp;        <span class="k">\ \hline</span>
+</span><span class='line'>           x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -3 <span class="nb">&amp;</span>amp;   7 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp; 2M  -4 &lt;br /&gt;
+</span><span class='line'>           x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -9 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   -1 <span class="nb">&amp;</span>amp; -M  -3 &lt;br /&gt;
+</span><span class='line'>           x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   6 <span class="nb">&amp;</span>amp;  -1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp; -4<span class="nb">^</span>&lt;/em&gt; <span class="nb">&amp;</span>amp; -4M +8 &lt;br /&gt;
+</span><span class='line'>           x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    1 <span class="nb">&amp;</span>amp;      M <span class="k">\ \hline</span>
+</span><span class='line'>               <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp;     2M &lt;br /&gt;
+</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>ratio<span class="nb">}</span> <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;  1/2 <span class="nb">&amp;</span>amp;
+</span><span class='line'>  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -383,59 +443,6 @@ details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Typeset Acute Accents]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/10/26/typeset-acute-accents/"/>
-    
-    <updated>2014-10-26T00:13:27+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/10/26/typeset-acute-accents</id>
-    
-      <content type="html"><![CDATA[<h2 id="target">Target</h2>
-
-<p>Typeset ‘é’ with in $\rm \LaTeX$.</p>
-
-<p><img src="/images/posts/TypesetAccents/target.jpg" alt="target" /></p>
-
-<!-- more -->
-
-<h2 id="problem">Problem</h2>
-
-<p><img src="/images/posts/TypesetAccents/problem.jpg" alt="failed" /></p>
-
-<p><figure class='code'><figcaption><span>A failed attempt </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'>I went to café yesterday.
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h2 id="method">Method</h2>
-
-<p>Add the <code>babel</code> package.</p>
-
-<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class='line'><span class="k">\usepackage</span><span class="na">[french]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'>I went to café yesterday.
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
     
   </entry>
