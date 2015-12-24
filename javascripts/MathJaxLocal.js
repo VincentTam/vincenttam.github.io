@@ -49,6 +49,7 @@ MathJax.Hub.Config({
 
       Re: ['\\mathop{\\mathrm{Re}}'],
       Im: ['\\mathop{\\mathrm{Im}}'],
+      Res: ['\\mathop{\\mathrm{Res}}'],
     }
   }
 });
