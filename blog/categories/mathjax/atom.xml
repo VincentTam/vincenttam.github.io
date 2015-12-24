@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mathjax | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/mathjax/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-12-24T12:49:35+08:00</updated>
+  <updated>2015-12-25T00:59:30+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,342 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Display of Calligraphic Font by MathJax in Chromium]]></title>
+      <link href="https://vincenttam.github.io/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/"/>
+    
+    <updated>2015-12-24T13:05:30+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<h3 id="css-style-of-this-blog">CSS style of this blog</h3>
+
+<p>I use <a href="http://erikzaadi.com/2012/04/22/solarized-color-scheme-for-octopress/" title="Source code of Solarized theme for Octopress">Solarized</a> theme with light background.  <abbr title="In my humble opinion">IMHO</abbr>, it is less
+tiring to look at a light background.  I’ve chosen pink as the text
+colour.</p>
+
+<h3 id="contents-of-this-blog">Contents of this blog</h3>
+
+<p>Apart from technical stuff, I often post math containing calligraphic
+font, for example</p>
+
+<ol>
+  <li><a href="/blog/2014/06/17/injectivity-of-stable-mappings/"><em>Injectivity of Stable Mappings</em></a></li>
+  <li><a href="/blog/2014/06/18/definition-of-content-0-sets/"><em>Definition of Content 0 Sets</em></a></li>
+  <li><a href="/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/"><em>Archimedean Sequence of Partitions of a Square</em></a></li>
+  <li><a href="/blog/2014/11/08/composition-of-limits/"><em>Composition of Limits</em></a></li>
+</ol>
+
+<p>I used Mozilla Firefox, and I <em>didn’t</em> see problem on the display of
+<code>\mathcal</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Three months ago, I wrote something about Zorn’s Lemma and Hausdorff
+spaces.  In the post <a href="/blog/2015/09/28/normal-compact-t2-spaces/"><em>Normal Compact $T_2$ Spaces</em></a>, I observed
+that the math display was <em>abnormal</em>.  Due to homework and exams, I
+delayed the investigation into this technical problem.</p>
+
+<p><img src="/images/posts/Mathcal/err.png" alt="mathcal display error" title="mathcal display error" /></p>
+
+<p>Normally, the foreground colour of the math expression is the <em>same</em>
+as that of normal inline text.  In the above figure, <span class="myeqn">"$T_2$" is in pink.  However, $U_y,
+V_y$</span> <em>aren’t</em>.</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<h3 id="look-into-the-code">Look into the code</h3>
+
+<p>It is normal for me to inspect the HTML elements.</p>
+
+<h4 id="element-inspected">Element inspected</h4>
+
+<p><img src="/images/posts/Mathcal/img.png" alt="HTML element inspected" title="HTML element inspected" /></p>
+
+<h4 id="interpreted-html-in-chromium">Interpreted HTML in Chromium</h4>
+
+<p><img src="/images/posts/Mathcal/inspect.png" alt="HTML code in the inspector" title="HTML code shown" /></p>
+
+<p>The above math expression is in <em>black</em> rather than <em>pink</em> because it
+is rendered as a <abbr title="Portable Network Graphics">PNG</abbr> <em>image</em>.</p>
+
+<p>I confirmed this by looking at the list of loaded resources.</p>
+
+<p><img src="/images/posts/Mathcal/png-list.png" alt="list of loaded PNG" title="list of loaded PNG" /></p>
+
+<h3 id="is-this-problem-browser-specific">Is this problem browser-specific?</h3>
+
+<p>I tried opening <a href="/blog/2015/09/28/normal-compact-t2-spaces/">the blog article</a> in Mozilla Firefox, and I
+<em>didn’t</em> see any problem.</p>
+
+<picture class="fancybox" title="result in Firefox">
+  <source srcset="/images/posts/Mathcal/ff487.png" media="(min-width: 490px)" />
+  <img alt="result in Firefox" src="https://vincenttam.github.io/images/posts/Mathcal/ff300.png" />
+</picture>
+
+<h2 id="cause">Cause</h2>
+
+<p>Based on the above observations, I suspected that the presence of a
+calligraphic font triggered this fallback of fonts.  In order to test
+this, I did an experiment on my local MathJax test page:  I had a math
+expression containing <code>\mathcal</code> and one without.  I put them in
+different order, and observed the difference in the loaded <abbr title="Portable Network Graphics">PNG</abbr>.</p>
+
+<h3 id="calligraphic-font-at-the-bottom">Calligraphic font at the bottom</h3>
+
+<picture class="fancybox" title="Visual effect of \mathcal at the
+bottom">
+  <source srcset="/images/posts/Mathcal/view1-364.png" media="(min-width: 370px)" />
+  <img alt="Visual effect of \mathcal at the bottom" src="https://vincenttam.github.io/images/posts/Mathcal/view1-300.png" />
+</picture>
+
+<p><img src="/images/posts/Mathcal/b4cal.png" alt="PNG list when \mathcal at last" title="PNG list when \mathcal at last" /></p>
+
+<p>Only the curly ‘C’ is loaded as <abbr title="Portable Network Graphics">PNG</abbr>, while the rest <em>aren’t</em>.</p>
+
+<p><figure class='code'><figcaption><span>Source code for the above sample page (b4cal.html)</span> <a href='/downloads/code/mathcal/b4cal.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
+</span><span class='line'><span class="cp">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>\begin{align*}
+</span><span class='line'>  <span class="ni">&amp;\quad\;</span> \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+</span><span class='line'>  =<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+</span><span class='line'>  \le<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2)}\\
+</span><span class='line'>  =<span class="err">&amp;</span> 1.
+</span><span class='line'>\end{align*}
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Don&#39;t need to go to MathJax CDN Sample --&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>$\mathcal{C}$<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span>
+</span><span class='line'>          <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
+</span><span class='line'>    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span> <span class="o">+</span>
+</span><span class='line'>    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="kd">function</span><span class="p">(){});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">})();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h3 id="calligraphic-font-at-the-bottom-1">Calligraphic font at the bottom</h3>
+
+<picture class="fancybox" title="Visual effect of \mathcal at the
+top">
+  <source srcset="/images/posts/Mathcal/view2-364.png" media="(min-width: 370px)" />
+  <img alt="Visual effect of \mathcal at the top" src="https://vincenttam.github.io/images/posts/Mathcal/view2-300.png" />
+</picture>
+
+<p><img src="/images/posts/Mathcal/cal1st.png" alt="PNG list when \mathcal at first" title="PNG list when \mathcal at first" /></p>
+
+<p>Everything (after the curly ‘C’) are loaded as <abbr title="Portable Network Graphics">PNG</abbr>.</p>
+
+<p><figure class='code'><figcaption><span>Source code for the above sample page (cal1st.html)</span> <a href='/downloads/code/mathcal/cal1st.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
+</span><span class='line'><span class="cp">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;html&gt;</span>
+</span><span class='line'><span class="nt">&lt;head&gt;</span>
+</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
+</span><span class='line'><span class="nt">&lt;/head&gt;</span>
+</span><span class='line'><span class="nt">&lt;body&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&lt;!-- Don&#39;t need to go to MathJax CDN Sample --&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>$\mathcal{C}$<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>\begin{align*}
+</span><span class='line'>  <span class="ni">&amp;\quad\;</span> \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+</span><span class='line'>  =<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+</span><span class='line'>  \le<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2)}\\
+</span><span class='line'>  =<span class="err">&amp;</span> 1.
+</span><span class='line'>\end{align*}
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span>
+</span><span class='line'>          <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
+</span><span class='line'>    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span> <span class="o">+</span>
+</span><span class='line'>    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="kd">function</span><span class="p">(){});</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">})();</span>
+</span><span class='line'><span class="nt">&lt;/script&gt;</span>
+</span><span class='line'><span class="nt">&lt;/body&gt;</span>
+</span><span class='line'><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Therefore, my claim is verified.  <em>Unluckily</em>, I failed to find any
+solution to this problem on Google.</p>
+
+<h2 id="reasons-for-not-finding-a-solution">Reasons for <em>not</em> finding a solution</h2>
+
+<ol>
+  <li>This problem <em>doesn’t</em> affect the content.</li>
+  <li>This problem is browser-specific—it <em>doesn’t</em> appear in Mozilla
+Firefox.</li>
+  <li>It is possible that this issue will be automatically fixed by a
+future upgrade, and a solution of this problem will be transient.</li>
+</ol>
+
+<p>I’ve better solve math problems instead of technical ones since math
+is always true.</p>
+
+<h2 id="some-off-topic-stuff">Some off-topic stuff</h2>
+
+<p>I started writing this post on Christmas Eve, and I finished it at
+Christmas.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -526,261 +862,6 @@ Markdown source file for an Octopress post.</li>
     <li id="fn:8backslash">
 
       <p>See <a href="/blog/2014/09/07/mathjax-and-rss/index.html#method"><em>MathJax and RSS</em></a> in Blog 1 for details. <a href="#fnref:8backslash" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MathJax Local Configuration File]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file/"/>
-    
-    <updated>2014-11-09T01:06:46+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/11/09/mathjax-local-configuration-file</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>Before I changed the HTML syntax for embedding MathJax with a local
-configuration file, I often encountered error while viewing the math
-rendered by MathJax.<sup id="fnref:12d38c1"><a href="#fn:12d38c1" class="footnote">1</a></sup>  The custom commands defined in the
-local configuration file sometimes <em>wouldn’t</em> be converted to
-mathematical expressions in a post while browsing the page for the
-first time.  Though refreshing the page can get the math shown, it’s
-quite troublesome.  Therefore, I searched for a better way in the
-official manual.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried following the instructions in MathJax’s official Wiki for
-using a local configuration file.<sup id="fnref:mathjax_doc"><a href="#fn:mathjax_doc" class="footnote">2</a></sup></p>
-
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML, 	/javascripts/MathJaxLocal.js &quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>Things seems worked, but undesirably <em>slow</em>.</p>
-
-<p><img src="/images/posts/MathJaxLocalConfigSlow/slow1.png" alt="loading time graph" class="fancybox" /></p>
-
-<p><img src="/images/posts/MathJaxLocalConfigSlow/slow2.png" alt="loading time graph" class="fancybox" /></p>
-
-<p>It took about <em>16 seconds</em> for loading the math.  <strong>How can they load
-quicker with a local configuration file</strong>, like <a href="http://drz.ac">http://drz.ac</a>?</p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>I googled “mathjax local config long”, and found a message from
-<a href="https://groups.google.com/forum/#!msg/mathjax-users/iIvf2RkNdF4/Bi_TFDR3AsUJ">this page</a> extremely useful.</p>
-
-<p><blockquote><p></p><br/><p>You are missing the <code>loacComplete()</code> line in your configuration file, so MathJax waits 15 seconds before timing out and going on without it.  Add</p><br/><pre><code>Mathjax.Ajax.loadComplete("[Mathjax]/config/local/font.js");</code></pre><br/><p>at the bottom of your font configuration file and that should take care of it for you.</p><br/><p></p><footer><strong>Davide P. Cervone</strong> <cite><a href='http://goo.gl/WzV2w3'>Re: Local Configuration File Processing Is Extremely Slow (~15 Sec)</a></cite></footer></blockquote></p>
-
-<h2 id="failed-attempts">Failed attempts</h2>
-
-<p>I tried using relative paths in <code>source/_includes/custom/head.html</code>
-, <code>{{ root_url }}</code> in the <code>&lt;script&gt;</code> tag that
-calls MathJax with a local configuration file and in the local
-configuration file <code>source/javascripts/MathJaxLocal.js</code>.  Since this
-blog has more than 200 pages, it took about a minute for regeneration
-of contents after each slight modification in the code.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>I typed full paths manually for the above <code>&lt;script&gt;</code> tag in the custom
-head of a page and the local configuration file.  To avoid loading
-“insecure contents”, I used full URLs instead of
-<code>{{ site.url }}</code> since the URL of this site
-<em>doesn’t</em> start with “https” in <code>_config.yml</code>.<sup id="fnref:https"><a href="#fn:https" class="footnote">3</a></sup><sup id="fnref:config_yml"><a href="#fn:config_yml" class="footnote">4</a></sup>
-Then the equations should load quickly.</p>
-
-<p><img src="/images/posts/MathJaxLocalConfigSlow/ok.png" alt="loading time graph" class="fancybox" /></p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>If I could do the same job again, I’d first change the local
-configuration file and upload it to GitHub, so that I could test it in
-a local HTML file <code>file:///path/to/test_mathjax.html</code></p>
-
-<p><figure class='code'><figcaption><span>A local testing page for using the MathJax macros (test_mathjax.html)</span> <a href='/downloads/code/test_mathjax.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-<span class='line-number'>39</span>
-<span class='line-number'>40</span>
-<span class='line-number'>41</span>
-<span class='line-number'>42</span>
-<span class='line-number'>43</span>
-<span class='line-number'>44</span>
-<span class='line-number'>45</span>
-<span class='line-number'>46</span>
-<span class='line-number'>47</span>
-<span class='line-number'>48</span>
-<span class='line-number'>49</span>
-<span class='line-number'>50</span>
-<span class='line-number'>51</span>
-<span class='line-number'>52</span>
-<span class='line-number'>53</span>
-<span class='line-number'>54</span>
-<span class='line-number'>55</span>
-<span class='line-number'>56</span>
-<span class='line-number'>57</span>
-<span class='line-number'>58</span>
-<span class='line-number'>59</span>
-<span class='line-number'>60</span>
-<span class='line-number'>61</span>
-<span class='line-number'>62</span>
-<span class='line-number'>63</span>
-<span class='line-number'>64</span>
-<span class='line-number'>65</span>
-<span class='line-number'>66</span>
-<span class='line-number'>67</span>
-<span class='line-number'>68</span>
-<span class='line-number'>69</span>
-<span class='line-number'>70</span>
-<span class='line-number'>71</span>
-<span class='line-number'>72</span>
-<span class='line-number'>73</span>
-<span class='line-number'>74</span>
-<span class='line-number'>75</span>
-<span class='line-number'>76</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot; &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
-</span><span class='line'><span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;head&gt;</span>
-</span><span class='line'><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
-</span><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">charset=</span><span class="s">&quot;utf-8&quot;</span> <span class="na">src=</span><span class="s">&quot;</span>
-</span><span class='line'><span class="s">https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,</span>
-</span><span class='line'><span class="s">https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
-</span><span class='line'><span class="nt">&lt;/head&gt;</span>
-</span><span class='line'><span class="nt">&lt;body&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>This page is for testing MathJax in my blog.  I wrote some custom
-</span><span class='line'>shorthand like $\zeros \in \R^n$.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;h2&gt;</span>Problem<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>For sequences of numbers, <span class="nt">&lt;em&gt;</span>limit inferior<span class="nt">&lt;/em&gt;</span> and <span class="nt">&lt;em&gt;</span>limit
-</span><span class='line'>superior<span class="nt">&lt;/em&gt;</span> are defined as $\liminf (a_n):=\sup\{\inf\{a_k:k \ge
-</span><span class='line'>n\}\}$ and $\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$ respectively;
-</span><span class='line'>for sequences of sets, they are defined as $\displaystyle
-</span><span class='line'>\bigcup_{n=1}^{\infty} \bigcap_{k=n}^{\infty} A_k$ and $\displaystyle
-</span><span class='line'>\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k$ respectively.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;strong&gt;</span>Why are they consistent?<span class="nt">&lt;/strong&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;h2&gt;</span>Discussion<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>It suffices to find a relation between &#39;<span class="ni">&amp;lt;</span>&#39; and &#39;<span class="ni">&amp;sube;</span>&#39;: $\{x
-</span><span class='line'>\le a\} \subseteq \{x \le b\} \iff a \le b$.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x \le \sup
-</span><span class='line'>A\}$.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;&lt;em&gt;</span>Proof<span class="nt">&lt;/em&gt;</span>:<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>\[
-</span><span class='line'>  \begin{aligned}
-</span><span class='line'>    <span class="err">&amp;</span> x \in \bigcup_{a \in A} \{x \le a\} \\
-</span><span class='line'>    \iff<span class="err">&amp;</span> x \le a \;\forall a \in A \\
-</span><span class='line'>    \iff<span class="err">&amp;</span> x \text{ is a lower bound of } A \\
-</span><span class='line'>    \iff<span class="err">&amp;</span> x \le \inf A
-</span><span class='line'>  \end{aligned}
-</span><span class='line'>\]
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>The last step is due to the defintion of infimum (<span class="nt">&lt;em&gt;</span>greatest<span class="nt">&lt;/em&gt;</span>
-</span><span class='line'>lower bound).<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>With the above claim, one has<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>\[
-</span><span class='line'>  \begin{aligned}
-</span><span class='line'>    <span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} \{x \le a_k\} \\
-</span><span class='line'>    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \bigcup_{a \in \{a_k:k \ge n\}} \{x \le a\} \\
-</span><span class='line'>    =<span class="err">&amp;</span> \bigcap_{n=1}^{\infty} \{ x \le \sup \{a_k:k \ge n\}\} \\
-</span><span class='line'>    =<span class="err">&amp;</span> \{x \le \inf\sup \{a_k:k \ge n\}\}
-</span><span class='line'>  \end{aligned}
-</span><span class='line'>\]
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le \inf\sup
-</span><span class='line'>\{a_k:k \ge n\}$ and $\displaystyle \bigcup_{n=1}^{\infty}
-</span><span class='line'>\bigcap_{k=n}^{\infty} \{x \le a_k\} \subseteq \bigcap_{n=1}^{\infty}
-</span><span class='line'>\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in common.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-html401.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
-</span><span class='line'>  <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class='line'>  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;/body&gt;</span>
-</span><span class='line'><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:12d38c1">
-      <p>Refer to commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/12d38c1#diff-0">12d38c1</a>. <a href="#fnref:12d38c1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:mathjax_doc">
-
-      <p><a href="http://docs.mathjax.org/en/latest/configuration.html#using-a-local-configuration-file-with-the-cdn">Using a local configuration file with the CDN</a> in
-<em>MathJax Documentation</em>. <a href="#fnref:mathjax_doc" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:https">
-
-      <p>Refer to <a href="/blog/2014/06/05/mathjax-in-octopress-via-https/"><em>MathJax in Octopress via HTTPS</em></a> in Blog 1 for
-details. <a href="#fnref:https" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:config_yml">
-      <p><code>_config.yml</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/71ff4fb/_config.yml">71ff4fb</a>. <a href="#fnref:config_yml" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

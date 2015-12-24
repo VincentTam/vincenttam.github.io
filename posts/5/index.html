@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I use Vundle for managing my Vim plugins.1 Problem I typed :PluginUpdate in Vim as usual for keeping all of the plugins
-up-to-date, and &hellip;">
+  <meta name="description" content="Motivation While I was writing the post about a recent GitHub page build failure
+ten days ago, I prepared two screenshots of the email from
+GitHub.1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,68 @@ up-to-date, and &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Concatenate Loop Variable's Value and a String in Bash</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-16T18:41:18+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
+        
+           | <a href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>While I was writing the post about a recent GitHub page build failure
+ten days ago, I prepared two screenshots of the email from
+GitHub.<sup id="fnref:pp_motiv"><a href="#fn:pp_motiv" class="footnote">1</a></sup>  I would like to resize them to 300px wide so that
+they <em>wouldn’t</em> be too wide for mobile devices.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>There’re 2 image files in a folder: <code>fail1.png</code> and <code>fail2.png</code>.  I
+wanted to create a scaled-down version of both pictures, and name the
+smaller ones as <code>fail1_300.png</code> and <code>fail2_300.png</code>.</p>
+
+<h2 id="failed-attempt">Failed attempt</h2>
+
+<pre class="cliUB"><code>$ file *
+fail1.png: PNG image data, 467 x 243, 8-bit/color RGB, non-interlaced
+fail2.png: PNG image data, 464 x 242, 8-bit/color RGB, non-interlaced
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i_300.png; done
+$ ls
+fail1.png  fail2.png  fail.png
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -202,9 +265,9 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
 <p>I received two emails from GitHub today at 01:15.  The emails says
 that a recent GitHub Page build failed.</p>
 
-<p><img src="/images/posts/GHPagesBuild/fail1_300.png" alt="fail build 1" /></p>
+<p><img src="/images/posts/GHPagesBuild/fail1-300.png" alt="fail build 1" /></p>
 
-<p><img src="/images/posts/GHPagesBuild/fail2_300.png" alt="fail build 2" /></p>
+<p><img src="/images/posts/GHPagesBuild/fail2-300.png" alt="fail build 2" /></p>
 
 <h2 id="cause">Cause</h2>
 
@@ -283,8 +346,8 @@ PlanetMath before I understood part of the proof of a very useful
 theorem in topology: Brouwer’s Fixed Point Theorem.</p>
 
 <picture class="fancybox" title="An error triggered by clicking &quot;Commnents&quot;">
-  <source srcset="/images/posts/PlanetMath/socket_err.png" media="(min-width: 755px)" />
-  <img alt="socket error" src="/images/posts/PlanetMath/socket_err300.png" />
+  <source srcset="/images/posts/PlanetMath/socket-err.png" media="(min-width: 755px)" />
+  <img alt="socket error" src="/images/posts/PlanetMath/socket-err300.png" />
 </picture>
 
 <p>Unluckily, if I click “Coauthors”, I got the error shown in the above
@@ -436,7 +499,7 @@ Archimedean Property of $\Z_+$.  Thus, $\forall b &gt; 0, [0,b)
 
 <picture class="fancybox" title="Move the mouse to the right and click for the solution">
   <source srcset="/images/posts/YouTubeHTML5Player/no10pot.png" media="(min-width: 1030px)" />
-  <img alt="old Firefox can't browse YouTube?" src="/images/posts/YouTubeHTML5Player/no10pot_s.png" />
+  <img alt="old Firefox can't browse YouTube?" src="/images/posts/YouTubeHTML5Player/no10pot-s.png" />
 </picture>
 
 <p>I went to YouTube with the old version Firefox.</p>
@@ -447,12 +510,12 @@ Archimedean Property of $\Z_+$.  Thus, $\forall b &gt; 0, [0,b)
 
 <picture class="fancybox" title="Click the blue button at the bottom.">
   <source srcset="/images/posts/YouTubeHTML5Player/reqHTML5.png" media="(min-width: 1030px)" />
-  <img alt="require YouTube's HTML5 player" src="/images/posts/YouTubeHTML5Player/reqHTML5_s.png" />
+  <img alt="require YouTube's HTML5 player" src="/images/posts/YouTubeHTML5Player/reqHTML5-s.png" />
 </picture>
 
 <picture class="fancybox noscr" title="A video of a lawmaker in the LegCo">
   <source srcset="/images/posts/YouTubeHTML5Player/treegun.png" media="(min-width: 1030px)" />
-  <img alt="tree gun" src="/images/posts/YouTubeHTML5Player/treegun_s.png" />
+  <img alt="tree gun" src="/images/posts/YouTubeHTML5Player/treegun-s.png" />
 </picture>
 
 <h2 id="lessons-learnt">Lessons learnt</h2>
@@ -639,11 +702,11 @@ in this blog for example.</p>
 <p>In the linked post, if the zoom level is too <em>large</em>, then part of the
 image will be hidden.</p>
 
-<object type="image/svg+xml" class="boxed" data="/downloads/code/svgpan_1.2.2/IET.svg" width="200" height="200">
+<object type="image/svg+xml" class="boxed" data="/downloads/code/svgpan-1.2.2/IET.svg" width="200" height="200">
   Your browser does not support SVG
 </object>
 
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan_1.2.2%2FIET.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan-1.2.2%2FIET.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
 </a></p>
 
 <p>This is quite <em>inconvenient</em> for users who want a <em>whole</em> picture.</p>
@@ -771,90 +834,6 @@ auto-closing it
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/04/10/looping-through-lines/">Looping Through Lines</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-10T15:01:48+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
-        
-           | <a href="/blog/2015/04/10/looping-through-lines/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/10/looping-through-lines/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/04/10/looping-through-lines/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I copied lines from an enumerated list in this blog and pasted it to
-Vim.  The content in each list item was seen in the current Vim
-buffer, but <em>not</em> the numbers.</p>
-
-<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
-
-<p>A sample ordered list with 2015 items</p>
-
-<ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-</ol>
-
-<p>…</p>
-
-<ol start="2015"><li>Item 2015</li></ol>
-
-<p>What is seen in Vim after copy and paste</p>
-
-<pre><code>Item one
-Item two
-Item three
-...
-Item 2015
-</code></pre>
-
-<p>If one writes in Markdown and he/she copies a numbered list from
-elsewhere to a text editor, then it will be very <em>inconvenient</em> to
-manually add back the numbers.  To exaggerate this inconvenience, I
-put “2015” above.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>Insert the item number at the beginning.</p>
-
-<pre><code>1. Item one
-2. Item two
-3. Item three
-...
-2015. Item 2015
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/04/10/looping-through-lines/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -898,7 +877,7 @@ put “2015” above.</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (15)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -916,6 +895,10 @@ put “2015” above.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/">Display of Calligraphic Font by MathJax in Chromium</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/24/residue-at-infinity/">Residue at Infinity</a>
       </li>
     
@@ -931,10 +914,6 @@ put “2015” above.</p>
         <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -948,7 +927,7 @@ put “2015” above.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA_icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA-icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
 <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

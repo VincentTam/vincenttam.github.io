@@ -9,7 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Hint: Do not try to learn all shortcuts at once! The human brain isn't made for that kind of stuff, so you will forget almost all of them. Rather, we &hellip;">
+  <meta name="description" content="As the saying goes, a picture is worth a thousand words. Some netizens
+believe that if a picture tells the truth. If you want to take a screenshot in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +79,89 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files/">Don't Kill a Fly With a Cannon—Console Creation of GIF Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-29T16:30:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:30 pm</span></time>
+        
+           | <a href="/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/29/dont-kill-a-fly-with-a-cannon-console-creation-of-gif-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As the saying goes, a picture is worth a thousand words. Some netizens
+believe that if a picture tells the truth.</p>
+
+<p>If you want to take a screenshot in GNU/Linux text mode, you may use
+<code>fbgrab</code> to get a <abbr title="Portable Network Graphics">PNG</abbr> file (<code>fbcat</code> gives you a <abbr title="Portable Pix Map">PPM</abbr> file).</p>
+
+<p>If you want to illustrate a process with a series of pictures, then
+you’ll probably need a <abbr title="Graphics Interchange Format">GIF</abbr> file. <abbr title="GNU Image Manipulation Program">GIMP</abbr> provides an easy way of creating
+<abbr title="Graphics Interchange Format">GIF</abbr> files by selecting menu items and clicking a few buttons, but for
+geeks who are used to <abbr title="Command Line Interfaces">CLI</abbr>, this is not the final answer for them.</p>
+
+<p>If your source <abbr title="Portable Network Graphics">PNG</abbr> files are named as <code>[name]%s.png</code>, then the right
+command is:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cliUB"><code>$ convert $(for ((a=0; a&lt;700; a++)); do printf -- "-delay 10 \
+&gt; [name]%s.png" $a; done;) [result].gif
+</code></pre>
+
+<ul>
+  <li><code>-delay 10</code> means that each image is displayed for 0.1s.</li>
+  <li><code>[name]</code>: file name of the source <abbr title="Portable Network Graphics">PNG</abbr> files without the ordinal
+  number.</li>
+  <li><code>%s</code>: the n-th <abbr title="Portable Network Graphics">PNG</abbr> file.</li>
+  <li><code>[result]</code>: file name of the target <abbr title="Graphics Interchange Format">GIF</abbr> file.</li>
+</ul>
+
+<p>Without the whitespace between <code>png</code> and the ending <code>"</code>, things
+<em>won’t</em> work.</p>
+
+<p>If the <abbr title="Graphics Interchange Format">GIF</abbr> animation has not been finished and intermediate files need
+to be saved, <em>don’t</em> use the <abbr title="Graphics Interchange Format">GIF</abbr> format, use <abbr title="Magick Image File Format">MIFF</abbr> instead.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p><a href="http://unix.stackexchange.com/q/24014/">Creating a GIF animation from PNG files</a> on Unix &amp;
+Linux Stack Exchange <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p><a href="http://www.imagemagick.org/Usage/anim_basics/#gif_anim">GIF Animations and Animation Meta-data</a> in <em>Examples of
+ImageMagick Usage (Version 6)</em> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -645,51 +729,6 @@ Savill in Windows IT Pro. <a href="#fnref:ms_all_arg" class="reversefootnote">&#
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Using Vim Keystrokes in Web Browser</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-12-11T04:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:01 am</span></time>
-        
-           | <a href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.vim.org">Vim</a> fans will be delighted and amazed for knowing this the first
-time: <a href="https://github.com/vimperator/vimperator-labs">Vimperator</a> is the plugin for <a href="http://www.vim.org">Vim</a>-like behaviour on
-<a href="http://mozilla.com">Firefox</a>.  It’s the original one and it focuses on usability.
-Following the hints with <code>f</code> is great!  Here’re some useful
-keystrokes:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/12/11/using-vim-keystrokes-in-web-browser/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/28">&larr; Older</a>
@@ -733,7 +772,7 @@ keystrokes:</p>
 <li class='category'><a href='/blog/categories/linux/'>linux (45)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (14)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (15)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -751,6 +790,10 @@ keystrokes:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/">Display of Calligraphic Font by MathJax in Chromium</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/24/residue-at-infinity/">Residue at Infinity</a>
       </li>
     
@@ -766,10 +809,6 @@ keystrokes:</p>
         <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a>
-      </li>
-    
   </ul>
 </section>
 
@@ -783,7 +822,7 @@ keystrokes:</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA_icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA-icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
 <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
