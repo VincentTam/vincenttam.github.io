@@ -85,7 +85,7 @@ Source code for the macros
 
 {% include_code My custom macros lang:tex mymacros/mymacros.sty %}
 
-{% include_code Sample output lang:tex mymacros/test_macros.tex %}
+{% include_code Sample output lang:tex mymacros/test-macros.tex %}
 
 The use of the `varwidth` option before the `standalone` class is for
 line breaks and the displayed equation at the first line in the sample

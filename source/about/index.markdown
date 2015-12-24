@@ -78,11 +78,11 @@ here.
 - Derivation of Vendermonde Determinant: [PDF][vendermonde],
   [source][vendermonde_src]
 
-[ODE]: /downloads/var_of_param.pdf
-[ODE_src]: /about/ode_src.html
+[ODE]: /downloads/var-of-param.pdf
+[ODE_src]: /about/ode-src.html
 [ncr]: /downloads/diagram.pdf
 [ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
-[vendermonde]: /downloads/vendermonde_det.pdf
+[vendermonde]: /downloads/vendermonde-det.pdf
 [vendermonde_src]: /about/src-of-ven-det.html
 
 My Old Blogs

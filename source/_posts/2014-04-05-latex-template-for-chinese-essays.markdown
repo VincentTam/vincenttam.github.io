@@ -38,5 +38,5 @@ Octopress[^fixed_gist], I will include the [Gist] in this post now.
 [Gist]: https://gist.github.com
 [Octopress]: http://octopress.org
 [pp]: /blog/2014/03/16/latex-template-for-essays/ "LaTeX Template for Essays"
-[pdf]: /downloads/latex_chin_sample.pdf
+[pdf]: /downloads/latex-chin-sample.pdf
 [e5668de]: https://github.com/VincentTam/vincenttam.github.io/commit/e5668de

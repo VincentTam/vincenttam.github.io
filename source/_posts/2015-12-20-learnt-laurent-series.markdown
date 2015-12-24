@@ -89,6 +89,6 @@ of the integrand.
         head.appendChild(script);
     }
 
-    getScript("{{ root_url }}/javascripts/svg_resize_bar.js",function() {});
+    getScript("{{ root_url }}/javascripts/svg-resize-bar.js",function() {});
 })();
 </script>

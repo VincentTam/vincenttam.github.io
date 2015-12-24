@@ -15,7 +15,7 @@ Problem
 
     <pre class="cli">YAML Exception reading [filename].markdown: invalid byte sequence in UTF-8</pre>
 
-{% img center /images/posts/YAMLException/yaml_exception.png %}
+{% img center /images/posts/YAMLException/yaml-exception.png %}
 
 <!-- more -->
 
@@ -30,7 +30,7 @@ Solution
 Finally, after glimpsing the above web pages, I realized that the file
 enconding should be UTF-8.
 
-{% img center /images/posts/YAMLException/fenc_cp950.png %}
+{% img center /images/posts/YAMLException/fenc-cp950.png %}
 
 Thus, the editor command `:se fenc=utf8 | wq` will do.
 

@@ -172,7 +172,7 @@ compiler so as to let the completion list to show up.
 {% img fancybox /images/posts/OmniCpp/ClangComplete1.png 'Missing a line' 'missing iostream' %}  
 Missing `#include <iostream>`
 
-{% img fancybox /images/posts/OmniCpp/std_err.png 'Still wrong position of the input' 'wrong place for std::' %}
+{% img fancybox /images/posts/OmniCpp/std-err.png 'Still wrong position of the input' 'wrong place for std::' %}
 
 {% img fancybox /images/posts/OmniCpp/ClangComplete2.png 'Cannot figure out difference - omnicppcomplete versus clang' 'clang_complete work for correct code' %}
 

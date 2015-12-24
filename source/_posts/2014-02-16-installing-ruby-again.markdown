@@ -33,5 +33,5 @@ Posted via [UltraBlog.vim][4].
 [3]: https://gist.github.com/aahan/5226975
 [4]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/
 
-[fig1]: /images/posts/RubyInstall2/rvm_install_iconv.png
-[fig2]: /images/posts/RubyInstall2/rvm_install_ruby1.png
+[fig1]: /images/posts/RubyInstall2/rvm-install-iconv.png
+[fig2]: /images/posts/RubyInstall2/rvm-install-ruby1.png

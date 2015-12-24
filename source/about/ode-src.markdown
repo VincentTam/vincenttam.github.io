@@ -7,4 +7,4 @@ sharing: true
 footer: false
 ---
 
-{% include_code Explanation to Wikipedia's Variation of Parameters var_of_param.tex %}
+{% include_code Explanation to Wikipedia's Variation of Parameters var-of-param.tex %}

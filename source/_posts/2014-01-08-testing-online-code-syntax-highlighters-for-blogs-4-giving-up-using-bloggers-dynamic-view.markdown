@@ -39,7 +39,7 @@ difficulty of installing external scripts in the dynamic view, the
 static view enables users to click "Layout" → "Add a Gadget" to do the
 job.
 
-{% img /images/posts/CodeDisplay4/465ff-add_gadget.png 'fig1' 'Blogger's pop-up windown for adding a gadget' %}
+{% img /images/posts/CodeDisplay4/465ff-add-gadget.png 'fig1' 'Blogger's pop-up windown for adding a gadget' %}
 
 By doing so, the user doesn't need to edit HTML template every time.
 

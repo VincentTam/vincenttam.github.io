@@ -19,12 +19,12 @@ paragraph is gone! I *was* disappointed for a while, and googled
 "ultrablog update database". However, there are too few websites about
 UltraBlog.vim. Its ineffective to use Google to solve this problem.
 
-{% img fancybox /images/posts/UBWPEdit/posted_via_ultrablog.png 'Screenshot of the first Google search result' 'fig1' %}
+{% img fancybox /images/posts/UBWPEdit/posted-via-ultrablog.png 'Screenshot of the first Google search result' 'fig1' %}
 
 From the above figure, it seems that there's 544 search results that
 contain the *entire* string "posted via ultrablog.vim".
 
-{% img fancybox /images/posts/UBWPEdit/posted_via_ultrablog3.png 'screenshot of the last Google search result' 'fig2' %}
+{% img fancybox /images/posts/UBWPEdit/posted-via-ultrablog3.png 'screenshot of the last Google search result' 'fig2' %}
 
 However, I go to the third page and find out that hundreds of search
 results have been omitted.

@@ -25,13 +25,13 @@ In the linked post, if the zoom level is too *large*, then part of the
 image will be hidden.
 
 <object type="image/svg+xml" class="boxed"
-  data="/downloads/code/svgpan_1.2.2/IET.svg"
+  data="/downloads/code/svgpan-1.2.2/IET.svg"
   width="200" height="200">
   Your browser does not support SVG
 </object>
 
 <a
-href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan_1.2.2%2FIET.svg;ss=1"><img
+href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan-1.2.2%2FIET.svg;ss=1"><img
 src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
 width="88">
 </a>
@@ -112,6 +112,6 @@ finally succeeded in getting the *contents* of the image enlarged.
         head.appendChild(script);
     }
 
-    getScript("{{ root_url }}/javascripts/svg_resize_bar.js",function() {});
+    getScript("{{ root_url }}/javascripts/svg-resize-bar.js",function() {});
 })();
 </script>

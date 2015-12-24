@@ -97,7 +97,7 @@ it using your *new* computer, Scott Cheng has provided detailed
 instructions in his post.[^2]  Unluckily, I failed to understand point
 5 in his post, and got some errors.[^3]
 
-{% img center /images/posts/OctopressOnOtherDev/push_rejected.png 800 470 Git push rejected %}
+{% img center /images/posts/OctopressOnOtherDev/push-rejected.png 800 470 Git push rejected %}
 
 Now, I still *don't* understand why the `master` branch needs to be
 deleted after I cloned the repository from GitHub, and I can't

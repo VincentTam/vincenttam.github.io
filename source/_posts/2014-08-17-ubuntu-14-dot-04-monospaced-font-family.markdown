@@ -295,7 +295,7 @@ really fix the problem.
     Retrieved from <https://emitvoice.github.io/2014/06/diy-ubuntu/>
 
 [pp]: /blog/2014/08/13/upgraded-ubuntu/
-[src_code]: /images/posts/UbuntuDistUpgrade2/src_code.png
+[src_code]: /images/posts/UbuntuDistUpgrade2/src-code.png
 [src_code2]: /images/posts/Ubuntu1404Mono/FFViewSrc.png
 [GNOMETer]: /images/posts/Ubuntu1404Mono/GnomeTerminal.png
 [fontfamily]: http://www.cnblogs.com/youxia/p/linux004.html

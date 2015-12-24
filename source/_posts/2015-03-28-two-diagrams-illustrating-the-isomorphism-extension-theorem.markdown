@@ -13,13 +13,13 @@ Extension Theorem (IET) drawn before I had understood the proof of the
 existence of algebraic closure.[^pp-eac]
 
 <object type="image/svg+xml"
-  data="/downloads/code/svgpan_1.2.2/IET.svg"
+  data="/downloads/code/svgpan-1.2.2/IET.svg"
   width="300" height="300">
   Your browser does not support SVG
 </object>
 
 <a
-href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan_1.2.2%2FIET.svg;ss=1"><img
+href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan-1.2.2%2FIET.svg;ss=1"><img
 src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
 width="88">
 </a>
@@ -74,7 +74,7 @@ a tower of five levels of algebraic extensions.
 
 [pp1]: /blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/
 [tex_src]: /downloads/code/IET.tex
-[svg_src]: /downloads/code/svgpan_1.2.2/IET.svg
+[svg_src]: /downloads/code/svgpan-1.2.2/IET.svg
 [cd_guide]: http://www.jmilne.org/not/CDGuide.html
 [pp2]: /blog/2014/06/21/export-pdf-to-svg/ "Export PDF to SVG"
 [pp3]: /blog/2014/08/02/zooming-svg-in-web-browsers/

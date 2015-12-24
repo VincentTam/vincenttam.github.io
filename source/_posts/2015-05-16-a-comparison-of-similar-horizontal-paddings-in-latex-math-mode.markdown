@@ -22,34 +22,34 @@ Comparison and conclusion
 
 <picture class="fancybox"
   title="1. Original equal sign">
-  <source srcset="/images/posts/flalign_spacing/1_crop.png"
+  <source srcset="/images/posts/flalign-spacing/1-crop.png"
     media="(min-width: 940px)"></source>
   <img alt="1. Original equal sign"
-    src="/images/posts/flalign_spacing/1_crop300.png" />
+    src="/images/posts/flalign-spacing/1-crop300.png" />
 </picture>
 
 <picture class="fancybox noscr"
   title='2. "\quad" and "\,"'>
-  <source srcset="/images/posts/flalign_spacing/2_crop.png"
+  <source srcset="/images/posts/flalign-spacing/2-crop.png"
     media="(min-width: 940px)"></source>
   <img alt='2. "\quad" and "\,"'
-    src="/images/posts/flalign_spacing/2_crop300.png" />
+    src="/images/posts/flalign-spacing/2-crop300.png" />
 </picture>
 
 <picture class="fancybox noscr"
   title='3. "\quad" and "\:"'>
-  <source srcset="/images/posts/flalign_spacing/3_crop.png"
+  <source srcset="/images/posts/flalign-spacing/3-crop.png"
     media="(min-width: 940px)"></source>
   <img alt='3. "\quad" and "\:"'
-    src="/images/posts/flalign_spacing/3_crop300.png" />
+    src="/images/posts/flalign-spacing/3-crop300.png" />
 </picture>
 
 <picture class="fancybox noscr"
   title='4. "\quad" and "\;"'>
-  <source srcset="/images/posts/flalign_spacing/4_crop.png"
+  <source srcset="/images/posts/flalign-spacing/4-crop.png"
     media="(min-width: 940px)"></source>
   <img alt='4. "\quad" and "\;"'
-    src="/images/posts/flalign_spacing/4_crop300.png" />
+    src="/images/posts/flalign-spacing/4-crop300.png" />
 </picture>
 
 <!-- more -->

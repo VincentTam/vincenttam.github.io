@@ -13,10 +13,10 @@ theorem in topology: Brouwer's Fixed Point Theorem.
 
 <picture class="fancybox"
   title='An error triggered by clicking "Commnents"'>
-  <source srcset="/images/posts/PlanetMath/socket_err.png"
+  <source srcset="/images/posts/PlanetMath/socket-err.png"
     media="(min-width: 755px)"></source>
   <img alt="socket error"
-    src="/images/posts/PlanetMath/socket_err300.png" />
+    src="/images/posts/PlanetMath/socket-err300.png" />
 </picture>
 
 Unluckily, if I click "Coauthors", I got the error shown in the above

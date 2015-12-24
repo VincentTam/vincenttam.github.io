@@ -7,4 +7,4 @@ sharing: true
 footer: false
 ---
 
-{% include_code Formula of Verdermonde Determinant vendermonde_det.tex %}
+{% include_code Formula of Verdermonde Determinant vendermonde-det.tex %}

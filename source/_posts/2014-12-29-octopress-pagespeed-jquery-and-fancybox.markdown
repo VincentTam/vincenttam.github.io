@@ -24,13 +24,13 @@ As shown in the following two pictures, the [PageSpeed] scores of the
 homepage of this blog for "Mobile" and "Desktop" were very *low*.
 
 <picture class="fancybox center" title='PageSpeed score for "Mobile"'>
-  <source srcset="/images/posts/PageSpeed/m_score1.png" media="(min-width: 980px)"></source>
-  <img alt="pagespeed score mobile" src="/images/posts/PageSpeed/m_score1_s.png" />
+  <source srcset="/images/posts/PageSpeed/m-score1.png" media="(min-width: 980px)"></source>
+  <img alt="pagespeed score mobile" src="/images/posts/PageSpeed/m-score1-s.png" />
 </picture>
 
 <picture class="fancybox center" title='PageSpeed score for "Desktop"'>
-  <source srcset="/images/posts/PageSpeed/d_score1.png" media="(min-width: 650px)"></source>
-  <img alt="pagespeed score desktop" src="/images/posts/PageSpeed/d_score1_s.png" />
+  <source srcset="/images/posts/PageSpeed/d-score1.png" media="(min-width: 650px)"></source>
+  <img alt="pagespeed score desktop" src="/images/posts/PageSpeed/d-score1-s.png" />
 </picture>
 
 Solution
@@ -43,11 +43,11 @@ JavaScripts.
 
 After a week's work, the PageSpeed has risen.
 
-{% img fancybox center /images/posts/PageSpeed/m_score3.png 'PageSpeed score for Mobile' 'mobile pagespeed score' %}
+{% img fancybox center /images/posts/PageSpeed/m-score3.png 'PageSpeed score for Mobile' 'mobile pagespeed score' %}
 
 <picture class="fancybox center" title='PageSpeed score for "Desktop"'>
-  <source srcset="/images/posts/PageSpeed/d_score3.png" media="(min-width: 360px)"></source>
-  <img alt="pagespeed score desktop" src="/images/posts/PageSpeed/d_score3_s.png" />
+  <source srcset="/images/posts/PageSpeed/d-score3.png" media="(min-width: 360px)"></source>
+  <img alt="pagespeed score desktop" src="/images/posts/PageSpeed/d-score3-s.png" />
 </picture>
 
 <!-- more -->

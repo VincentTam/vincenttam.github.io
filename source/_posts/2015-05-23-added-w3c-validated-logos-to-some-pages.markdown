@@ -106,7 +106,7 @@ more convenient than the manual way.
     on *W3c Discussion Forums*.
 
 [valid_icons]: http://www.w3.org/QA/Tools/Icons
-[Here]: /images/posts/W3C/valid_code.png
+[Here]: /images/posts/W3C/valid-code.png
 [FAQ]: http://validator.w3.org/docs/help.html#faq-referer
 [blog]: http://bryanhadaway.com/how-to-link-to-the-w3c-css3-validation-page/
 [forum]: http://t29233.org-w3c-validator.w3ctalk.info/what-happend-to-http-validator-w3-org-check-referer-t29233.html#91166

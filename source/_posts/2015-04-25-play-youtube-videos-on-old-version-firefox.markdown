@@ -11,7 +11,7 @@ Problem
 
 <picture class="fancybox" title="Move the mouse to the right and click for the solution">
   <source srcset="/images/posts/YouTubeHTML5Player/no10pot.png" media="(min-width: 1030px)"></source>
-  <img alt="old Firefox can't browse YouTube?" src="/images/posts/YouTubeHTML5Player/no10pot_s.png" />
+  <img alt="old Firefox can't browse YouTube?" src="/images/posts/YouTubeHTML5Player/no10pot-s.png" />
 </picture>
 
 I went to YouTube with the old version Firefox.
@@ -23,12 +23,12 @@ Request YouTube's HTML5 player and enjoy watching videos.
 
 <picture class="fancybox" title="Click the blue button at the bottom.">
   <source srcset="/images/posts/YouTubeHTML5Player/reqHTML5.png" media="(min-width: 1030px)"></source>
-  <img alt="require YouTube's HTML5 player" src="/images/posts/YouTubeHTML5Player/reqHTML5_s.png" />
+  <img alt="require YouTube's HTML5 player" src="/images/posts/YouTubeHTML5Player/reqHTML5-s.png" />
 </picture>
 
 <picture class="fancybox noscr" title="A video of a lawmaker in the LegCo">
   <source srcset="/images/posts/YouTubeHTML5Player/treegun.png" media="(min-width: 1030px)"></source>
-  <img alt="tree gun" src="/images/posts/YouTubeHTML5Player/treegun_s.png" />
+  <img alt="tree gun" src="/images/posts/YouTubeHTML5Player/treegun-s.png" />
 </picture>
 
 Lessons learnt

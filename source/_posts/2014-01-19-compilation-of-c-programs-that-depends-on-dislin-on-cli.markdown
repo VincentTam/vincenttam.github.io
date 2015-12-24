@@ -200,7 +200,7 @@ $ g++ <span class="err">-lXt -ldislin -lm</span> -I$(DISLIN) foo.cpp -o foo.out 
 $ g++ foo.cpp -o foo.out <span class="UBHLCode">-lXt -ldislin -lm</span> -I$(DISLIN) # Correct!
 </code></pre>
 
-![message_from_g++](/images/posts/DISLIN/dislin_compile-140119.png)
+![message_from_g++](/images/posts/DISLIN/dislin-compile-140119.png)
 
 I conclude this post with the fact that the flags `-g -Wall` can be
 put either before or after `foo.cpp`.

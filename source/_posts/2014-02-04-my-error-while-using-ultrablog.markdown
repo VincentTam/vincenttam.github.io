@@ -33,15 +33,15 @@ of course, but I can "keep calm and continue blogging".
 
 I've run into this situation for the first time today.
 
-{% img fancybox /images/posts/UBErr/ub_q1.png 800 'First UltraBlog screenshot' 'fig1' %}
+{% img fancybox /images/posts/UBErr/ub-q1.png 800 'First UltraBlog screenshot' 'fig1' %}
 
 I tried to quit the new list with `:q`.
 
-{% img fancybox /images/posts/UBErr/ub_q2.png 800 'Second UltraBlog screenshot' 'fig2' %}
+{% img fancybox /images/posts/UBErr/ub-q2.png 800 'Second UltraBlog screenshot' 'fig2' %}
 
 Vim told me to use `:q!` instead.
 
-{% img fancybox /images/posts/UBErr/ub_error.png 800 'Third UltraBlog screenshot' 'fig3' %}
+{% img fancybox /images/posts/UBErr/ub-error.png 800 'Third UltraBlog screenshot' 'fig3' %}
 
 UltraBlog threw a host of errors that I wouldn't be interested to find
 out more.

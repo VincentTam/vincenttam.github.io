@@ -23,9 +23,9 @@ be displayed
 
 + Using HTTP instead of HTTPS, I can see the blocked contents.
 
-{% img fancybox /images/posts/OctopressHTTPS/disable_blocking.png 800 'Disable Protection on This Page' 'fig3' %}
+{% img fancybox /images/posts/OctopressHTTPS/disable-blocking.png 800 'Disable Protection on This Page' 'fig3' %}
 
-{% img fancybox /images/posts/OctopressHTTPS/blocking_disabled.png 800 'Blocked contents can be displayed.' 'fig4' %}
+{% img fancybox /images/posts/OctopressHTTPS/blocking-disabled.png 800 'Blocked contents can be displayed.' 'fig4' %}
 
 **How can those blocked contents be displayed automatically?**
 
@@ -260,7 +260,7 @@ Lessons learnt
 [JPBlog]: https://yamanetoshi.github.io/ "A Japanese Octopress Blog browsed via HTTPS"
 [HTTPSEverywhere]: https://www.eff.org/https-everywhere "HTTPS Everywhere"
 [CarpeDiem]: http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/ "Writing Math Equations on Octopress"
-[ff_shield]: /images/posts/OctopressHTTPS/ff_shield.png "Firefox 29's message about insecure mixed contents"
+[ff_shield]: /images/posts/OctopressHTTPS/ff-shield.png "Firefox 29's message about insecure mixed contents"
 [MozSuppImgSrc]: https://support.cdn.mozilla.net/media/uploads/gallery/images/2014-03-25-07-10-44-1aa0ef.png "Image source"
 [MozSupp]: http://mzl.la/13jCUSU "How does content that isn't secure affect my safety?"
 [MozEnggBlog]: https://blog.mozilla.org/tanvi/2013/04/10/mixed-content-blocking-enabled-in-firefox-23/ "Mixed Content Blocking Enabled in Firefox 23!"

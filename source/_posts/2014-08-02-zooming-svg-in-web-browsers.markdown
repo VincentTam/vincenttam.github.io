@@ -24,17 +24,17 @@ width="88">
 **How can one enlarge SVG images *only* within web browsers?**
 
 <object type="image/svg+xml"
-  data="/downloads/code/svgpan_1.2.2/PappusHexThm4.svg"
+  data="/downloads/code/svgpan-1.2.2/PappusHexThm4.svg"
   width="800" height="600">
   Your browser does not support SVG
 </object>
 <small>A working example showing the zooming, panning and dragging
 functions of SVG graphics.  Drag the figure to translate it, and
 scroll to enlarge/reduce it.  
-[Source code](/downloads/code/svgpan_1.2.2/PappusHexThm4.svg)</small>
+[Source code](/downloads/code/svgpan-1.2.2/PappusHexThm4.svg)</small>
 
 <a
-href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan_1.2.2/PappusHexThm4.svg;ss=1"><img
+href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan-1.2.2/PappusHexThm4.svg;ss=1"><img
 src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31"
 width="88">
 </a>

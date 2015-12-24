@@ -12,7 +12,7 @@ screen.
 
 <picture class="fancybox" title="Recoverd from a BoD">
   <source srcset="/images/posts/BoD/fig1.png" media="(min-width: 450px)"></source>
-  <img alt="got a BoD" src="/images/posts/BoD/fig1_s.png" />
+  <img alt="got a BoD" src="/images/posts/BoD/fig1-s.png" />
 </picture>
 
 I compared this dialog box with the one that I saw on my laptap a
@@ -20,7 +20,7 @@ month ago.
 
 <picture class="fancybox" title="Recoverd from a BoD">
   <source srcset="/images/posts/BoD/fig.png" media="(min-width: 370px)"></source>
-  <img alt="got a BoD" src="/images/posts/BoD/fig_s.png" />
+  <img alt="got a BoD" src="/images/posts/BoD/fig-s.png" />
 </picture>
 
 The difference between these two dialog boxes is the button "Check for

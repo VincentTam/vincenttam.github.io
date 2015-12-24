@@ -83,7 +83,7 @@ disappear even though something went wrong.  If everything proceeds
 smoothly, then the old files in the home folder can then be safely
 deleted.
 
-{% include_code A little script for moving the files lang:sh custom_move.sh %}
+{% include_code A little script for moving the files lang:sh custom-move.sh %}
 
 If I use single quotes to surround the destination (e.g.
 `'~/.../$newf'`), the syntax highlighting for `$newf` will be *gone*

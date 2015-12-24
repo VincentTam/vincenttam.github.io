@@ -137,7 +137,7 @@ version from 3.3 to 2.7.  After downgrading Python, I believe that I
 could quickly preview the results.  Nonetheless, I was shocked by
 `rake`'s output.
 
-{% img center /images/posts/LiquidExceptionOnWin7/mini_magick.png 800 1041 My second exception %}
+{% img center /images/posts/LiquidExceptionOnWin7/mini-magick.png 800 1041 My second exception %}
 
 Thinking that the gem `mini_magick` was the cause of this problem, I
 realised that there would be *fewer* web pages about this problem.  To

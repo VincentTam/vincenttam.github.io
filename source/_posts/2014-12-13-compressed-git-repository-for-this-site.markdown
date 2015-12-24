@@ -19,7 +19,7 @@ command `git status` gradually *decreased*.
 
 <picture class="fancybox" title="Git GUI">
   <source srcset="/images/posts/GitGc/gui.png" media="(min-width: 800px)"></source> 
-  <img alt="git gui prompt" src="/images/posts/GitGc/gui_s.png" />
+  <img alt="git gui prompt" src="/images/posts/GitGc/gui-s.png" />
 </picture>
 
 <!-- more -->

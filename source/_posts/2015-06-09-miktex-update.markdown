@@ -27,10 +27,10 @@ a result, I opened the package manager, and called the "Update Wizard"
 inside.
 
 <picture class="fancybox" title="No update helper found">
-  <source srcset="/images/posts/MikTeXUpdate/no_helper460.png"
+  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png"
     media="(min-width: 460px)"></source>
   <img alt="update helper disappered?"
-    src="/images/posts/MikTeXUpdate/no_helper300.png" />
+    src="/images/posts/MikTeXUpdate/no-helper300.png" />
 </picture>
 
 **How can I get the packages updated *without* manually creating

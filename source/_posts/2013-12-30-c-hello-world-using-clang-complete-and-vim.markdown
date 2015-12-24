@@ -74,7 +74,7 @@ water" in Cantonese.
 
 The following "hello world" procedure contains some *wrong* steps.
 
-{% img fancybox /images/posts/ClangComplete/inc_complete.gif 800 'Figure 1' 'fig1' %}
+{% img fancybox /images/posts/ClangComplete/inc-complete.gif 800 'Figure 1' 'fig1' %}
 
 1.  Type `inc<Tab>`.
 2.  [Vim-snippets] complete the code, with `stdio.h` as default.  The
@@ -98,7 +98,7 @@ personally think that the steps can be more beautiful.
 This is just a *part* of correct steps.  I leave the remaining parts
 of codes of this simple program into later sections.
 
-{% img fancybox /images/posts/ClangComplete/inc_complete_clang.gif 800 'Figure 2' 'fig2' %}
+{% img fancybox /images/posts/ClangComplete/inc-complete-clang.gif 800 'Figure 2' 'fig2' %}
 
 This time, after typing `#` at the beginning of the line, press
 `<C-x><C-u>` to use the automatic completion list, and choose the `#
@@ -131,9 +131,9 @@ typing the code directly may lead to syntax errors.  This problem can
 be overcome if one has the capability to read the error message from
 the compiler and to browse code quickly.
 
-{% img fancybox /images/posts/ClangComplete/using_complete.png 800 'Without clang_complete: word-by-word completion' 'fig3' %}
+{% img fancybox /images/posts/ClangComplete/using-complete.png 800 'Without clang_complete: word-by-word completion' 'fig3' %}
 
-{% img fancybox /images/posts/ClangComplete/using_clang.gif 800 'With clang_complete: completion of the whole line' 'fig4' %}
+{% img fancybox /images/posts/ClangComplete/using-clang.gif 800 'With clang_complete: completion of the whole line' 'fig4' %}
 
 The remaining parts of this post *doesn't* make use of the
 [clang_complete] plugin.

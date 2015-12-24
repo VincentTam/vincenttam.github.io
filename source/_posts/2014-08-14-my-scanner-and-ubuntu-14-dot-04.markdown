@@ -91,8 +91,8 @@ images.
 [pp1]: /blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/
 [pp2]: /blog/2014/08/13/upgraded-ubuntu/
 [ecscan]: /images/posts/Ubuntu1404Scan/ecscan.png
-[DelMod1]: /images/posts/Ubuntu1404Scan/AWT_ActionListener.png
-[DelMod2]: /images/posts/Ubuntu1404Scan/AWT_WindowEventSeqDiagram.png
+[DelMod1]: /images/posts/Ubuntu1404Scan/AWT-ActionListener.png
+[DelMod2]: /images/posts/Ubuntu1404Scan/AWT-WindowEventSeqDiagram.png
 [^img_src]:
     Chua Hock-Chuan.  (2014, March).  *Java Programming Tutorial*.
     Retrieved 12:25, August 14, 2014, from

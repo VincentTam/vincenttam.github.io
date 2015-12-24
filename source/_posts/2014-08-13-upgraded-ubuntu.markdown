@@ -38,5 +38,5 @@ I have now worked out a solution to this problem.  Refer to
 [tty1]: /images/posts/UbuntuDistUpgrade2/tty1.png
 [Firefox]: https://www.mozilla.org/en-US/firefox/new/ "Mozilla Firefox"
 [Unity]: https://unity.ubuntu.com "Ubuntu's default desktop environment"
-[src_code]: /images/posts/UbuntuDistUpgrade2/src_code.png
+[src_code]: /images/posts/UbuntuDistUpgrade2/src-code.png
 [rp]: /blog/2014/08/17/ubuntu-14-dot-04-monospaced-font-family/

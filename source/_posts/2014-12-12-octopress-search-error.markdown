@@ -14,7 +14,7 @@ this blog.
 
 <picture class="fancybox center" title="Searched with the search box for pages in this blog">
   <source srcset="/images/posts/OctSearchErr/err1.png" media="(min-width: 880px)"></source>
-  <img alt="err1" src="/images/posts/OctSearchErr/err1_s.png" />
+  <img alt="err1" src="/images/posts/OctSearchErr/err1-s.png" />
 </picture>
 
 It had been working well, but a month ago, the box searched for
@@ -22,7 +22,7 @@ webpages *other* than those in this blog.
 
 <picture class="fancybox center" title="Custom search failed">
   <source srcset="/images/posts/OctSearchErr/err2.png" media="(min-width: 880px)"></source>
-  <img alt="err2" src="/images/posts/OctSearchErr/err2_s.png" />
+  <img alt="err2" src="/images/posts/OctSearchErr/err2-s.png" />
 </picture>
 
 **How to limit the search to pages within this site only**?
@@ -46,11 +46,11 @@ commit which had been written on M\$ Win\* 7.[^befd4a7]  Therefore,
 when I was using my \*nix desktop, I re-generated this site and
 previewed it.
 
-{% img fancybox center /images/posts/OctSearchErr/temp_fix1.png 800 'Locally generated site on Ubuntu' 'temp_fix1' %}
+{% img fancybox center /images/posts/OctSearchErr/temp-fix1.png 800 'Locally generated site on Ubuntu' 'temp_fix1' %}
 
 I saw that The search box worked fine this time.
 
-{% img fancybox center /images/posts/OctSearchErr/temp_fix2.png 800 'The problem was gone!' 'temp_fix2' %}
+{% img fancybox center /images/posts/OctSearchErr/temp-fix2.png 800 'The problem was gone!' 'temp_fix2' %}
 
 Then, I *didn't* hesitate to deploy this site to GitHub
 Pages.[^2e56754]
@@ -60,8 +60,8 @@ Pages.[^2e56754]
 I browsed this blog on GitHub Pages to make sure that the problem had
 been "fixed".
 
-{% img fancybox center /images/posts/OctSearchErr/temp_fix3.png 800 'Test the fix on GitHub Pages' 'temp_fix3' %}  
-{% img fancybox center /images/posts/OctSearchErr/temp_fix4.png 800 'The problem was really gone!' 'temp_fix4' %}
+{% img fancybox center /images/posts/OctSearchErr/temp-fix3.png 800 'Test the fix on GitHub Pages' 'temp_fix3' %}  
+{% img fancybox center /images/posts/OctSearchErr/temp-fix4.png 800 'The problem was really gone!' 'temp_fix4' %}
 
 ### Failed to find the cause
 

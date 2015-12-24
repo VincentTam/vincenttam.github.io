@@ -12,9 +12,9 @@ Problem
 I tried editing in M\$ Word, but *failed*.
 
 <picture class="fancybox" title="M$ Word not responding">
-  <source srcset="/images/posts/MSWordHanged/word_hang926.png"
+  <source srcset="/images/posts/MSWordHanged/word-hang926.png"
     media="(min-width: 926px)"></source>
-  <img alt="M$ Word hanged" src="/images/posts/MSWordHanged/word_hang250.png"
+  <img alt="M$ Word hanged" src="/images/posts/MSWordHanged/word-hang250.png"
     />
 </picture>
 

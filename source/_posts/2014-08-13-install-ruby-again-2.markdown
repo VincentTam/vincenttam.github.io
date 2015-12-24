@@ -46,5 +46,5 @@ tired of reading Ruby's documentation, so I decided to reset my commit
 history to the tip of `origin/source`, and revert the default RVM
 version to 1.9.3 *again* by `rvm use --default 1.9.3`.
 
-[RubyCliInstl]: /images/posts/Ruby212/rvm_install.png
-[RakeGenFail]: /images/posts/Ruby212/gen_failed.png
+[RubyCliInstl]: /images/posts/Ruby212/rvm-install.png
+[RakeGenFail]: /images/posts/Ruby212/gen-failed.png

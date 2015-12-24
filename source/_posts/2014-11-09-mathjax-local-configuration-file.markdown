@@ -80,9 +80,9 @@ Lessons learnt
 
 If I could do the same job again, I'd first change the local
 configuration file and upload it to GitHub, so that I could test it in
-a local HTML file `file:///path/to/test_mathjax.html`
+a local HTML file `file:///path/to/test-mathjax.html`
 
-{% include_code A local testing page for using the MathJax macros test_mathjax.html %}
+{% include_code A local testing page for using the MathJax macros test-mathjax.html %}
 
 ---
 [^12d38c1]: Refer to commit [12d38c1].

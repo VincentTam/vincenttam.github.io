@@ -40,7 +40,7 @@ n = size(a);
 end
 {% endcodeblock %}
 
-{% img /images/posts/CodeDisplay6/d8435-matlab_correct.png 'highlight.js works on some computer(s)' 'result of highlight.js' %}
+{% img /images/posts/CodeDisplay6/d8435-matlab-correct.png 'highlight.js works on some computer(s)' 'result of highlight.js' %}
 
 When I was writing the post, [highlight.js] didn't worked right, but
 as I gave up trying it and view this post on the next day, things just
