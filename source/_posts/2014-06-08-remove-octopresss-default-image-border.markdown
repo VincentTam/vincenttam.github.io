@@ -87,7 +87,7 @@ better printing experience.
 [PrevPost]: /blog/2014/06/05/mathjax-in-octopress-via-https/ "MathJax in Octopress via HTTPS"
 [MozSupp]: http://mzl.la/13jCUSU "How does content that isn't secure affect my safety?"
 [imgpop]: http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/ "A Simple Octopress Image Popup Plugin"
-[Solarized]: http://erikzaadi.com/2012/04/22/solarized-for-octopress/ " Source code of Solarized theme for Octopress"
+[Solarized]: http://erikzaadi.com/2012/04/22/solarized-for-octopress/ "Source code of Solarized theme for Octopress"
 [LarryNung]: https://github.com/larrynung/larrynung.github.io/tree/source " Source code of Larry Nung's GitHub page"
 [OctopressDocImg]: http://octopress.org/docs/plugins/image-tag/ "Image Tag"
 [StackExchange1987926]: http://stackoverflow.com/questions/1987926/ "How do I grep recursively?"
