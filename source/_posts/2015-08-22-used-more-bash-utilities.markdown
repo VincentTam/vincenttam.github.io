@@ -122,5 +122,15 @@ follow error message.
     origin	https://github.com/VincentTam/StudentList4.git (push)
 {:.cliUB}
 
+* * * * *
+(ADDED ON DEC 26TH, 2015)
+
+#### The highlighting of grep after find
+
+In Gnome Terminal, the `grep` command alone highlights the matched
+text in red by default.  However, if it's placed after `find ...
+-exec`, then the highlighting will be *disabled*.  In order to enable
+it again, add the option `--color=auto` to `grep`.
+
 [pp_xclip]: /blog/2014/12/12/using-xclip/
 [awk_tut]: http://www.hcs.harvard.edu/~dholland/computers/awk.html
