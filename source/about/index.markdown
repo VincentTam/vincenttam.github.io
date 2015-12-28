@@ -43,11 +43,13 @@ Useful sites:
     like '&sub;' and '&notin;'.
 - [Javascript Regular Expressions][js_regex] in Mozilla Developer
     Network
+- [Octave Online][octave]
 
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
 [js_regex]: http://goo.gl/2jLPH
+[octave]: http://octave-online.net/
 
 My custom settings
 ---
@@ -77,6 +79,7 @@ here.
 - My thoughts on ${_nC_r}$: [PDF][ncr], [source][ncr_src]
 - Derivation of Vendermonde Determinant: [PDF][vendermonde],
   [source][vendermonde_src]
+- Find more math posts in my [Math Stack Exchange Profile][mymathse]
 
 [ODE]: /downloads/var-of-param.pdf
 [ODE_src]: /about/ode-src.html
@@ -84,6 +87,7 @@ here.
 [ncr_src]: /about/source-code-of-my-thoughts-on-ncr.html
 [vendermonde]: /downloads/vendermonde-det.pdf
 [vendermonde_src]: /about/src-of-ven-det.html
+[mymathse]: http://math.stackexchange.com/users/290189/gnu-supporter
 
 My Old Blogs
 ---
