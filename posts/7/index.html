@@ -9,10 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="When I was a secondary school student, I was quite satisfied with this
-proof of Cauchy–Schwarz Inequality. \[
-\begin{aligned}
-&amp; (\sum_{i = 1}^n &hellip;">
+  <meta name="description" content="Problem Markdown encountered an error when I ran rake generate. $ rake generate &amp;&amp; rake preview
+## Generating Site with Jekyll write source/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +79,79 @@ proof of Cauchy–Schwarz Inequality. \[
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/03/08/another-jekyll-error/">Another Jekyll Error</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-08T17:08:53+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:08 pm</span></time>
+        
+           | <a href="/blog/2015/03/08/another-jekyll-error/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/03/08/another-jekyll-error/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/03/08/another-jekyll-error/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>Markdown encountered an error when I ran <code>rake generate</code>.</p>
+
+<pre class="cliUB"><code>$ rake generate &amp;&amp; rake preview
+## Generating Site with Jekyll
+    write source/stylesheets/screen.css
+Configuration file: /home/owner/octopress/_config.yml
+            Source: source
+       Destination: public
+      Generating... 
+  Conversion error: Jekyll::Converters::Markdown encountered an error while conv
+erting '_posts/2014-01-31-comparison-of-latexs-quote-and-quotation-environments.
+markdown/#excerpt':
+                    "\xC2" from ASCII-8BIT to UTF-8
+jekyll 2.5.3 | Error:  "\xC2" from ASCII-8BIT to UTF-8
+Starting to watch source with Jekyll and Compass. Starting Rack on port 4000
+Configuration file: /home/owner/octopress/_config.yml
+[2015-03-08 15:49:51] INFO  WEBrick 1.3.1
+[2015-03-08 15:49:51] INFO  ruby 2.1.2 (2014-05-08) [i686-linux]
+[2015-03-08 15:49:51] INFO  WEBrick::HTTPServer#start: pid=5560 port=4000
+&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+directory public/stylesheets
+    write public/stylesheets/print.css
+            Source: source
+       Destination: public
+      Generating... 
+    write public/stylesheets/screen.css
+  Conversion error: Jekyll::Converters::Markdown encountered an error while conv
+erting '_posts/2014-04-05-latex-template-for-chinese-essays.markdown/#excerpt':
+                    "\xE6" from ASCII-8BIT to UTF-8
+jekyll 2.5.3 | Error:  "\xE6" from ASCII-8BIT to UTF-8
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/03/08/another-jekyll-error/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -783,78 +854,6 @@ already <em>published</em>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/14/use-tmux-for-previewing-posts/">Use Tmux for Previewing Posts</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-14T14:04:38+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:04 pm</span></time>
-        
-           | <a href="/blog/2015/02/14/use-tmux-for-previewing-posts/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/14/use-tmux-for-previewing-posts/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/14/use-tmux-for-previewing-posts/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>After I finished an Octopress post, one may check if there’s any error
-by previewing the post.  In GUI, it’s easy: just open a new window.
-<strong>How about in Linux text mode?</strong></p>
-
-<h2 id="a-so-called-method">A so-called method</h2>
-
-<p>Add an ampersand ‘&amp;’ behind the command for previewing the blog.
-However, while viewing the site in a browser, the contents would be
-<em>covered</em> by some lines.</p>
-
-<pre class="cliUB"><code>127.0.0.1 - - [14/Feb/2015:13:46:08 +0800] "GET / HTTP/1.1" 200 39685 0.0024
-127.0.0.1 - - [14/Feb/2015:13:46:14 +0800] "GET /blog/2015/02/14/tried-range-bas
-ed-for-loop/ HTTP/1.1" 200 21821 0.0028
-127.0.0.1 - - [14/Feb/2015:13:46:59 +0800] "GET /atom.xml HTTP/1.1" 200 131801 0
-.0071
-</code></pre>
-
-<p>This can be an inconvenience.  It <em>isn’t</em> hard to log on <em>another TTY</em>
-and open the browser there, but one has to type the password
-<em>twice</em>—this is <em>still</em> inconvenient.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I now use <a href="http://byobu.co" title="a free terminal multiplexer">Byobu</a>, which depends on <a href="http://tmux.sourceforge.net" title="a terminal multiplexer">Tmux</a>, to preview the generated
-blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:fig">
-      <p>The <a href="/images/posts/Tmux/tmux.png" title="Tmux on Ubuntu" class="fancybox">screenshot</a> of Tmux. <a href="#fnref:fig" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -899,6 +898,7 @@ blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (15)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (1)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -916,6 +916,10 @@ blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/12/28/got-a-warning-from-octave/">Got a Warning From Octave</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/">Display of Calligraphic Font by MathJax in Chromium</a>
       </li>
     
@@ -929,10 +933,6 @@ blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
     
       <li class="post">
         <a href="/blog/2015/12/20/learnt-laurent-series/">Learnt Laurent Series</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a>
       </li>
     
   </ul>
