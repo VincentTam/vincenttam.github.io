@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-12-28T23:31:15+08:00</updated>
+  <updated>2016-01-02T14:39:28+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Ubuntu Grey Screen]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen/"/>
+    
+    <updated>2016-01-02T14:05:54+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen</id>
+    
+      <content type="html"><![CDATA[<p>A few days ago, I was browsing questions on
+<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> on <a href="http://www.ubuntu.com/desktop">Ubuntu</a> 14.04 <abbr title="long-term support">LTS</abbr>.  I opened
+lots of tabs in <a href="https://www.chromium.org">Google Chromium</a>.  Suddenly, the screen
+went grey.  I <em>don’t</em> know the cause.  I <em>hadn’t</em> seen such problem
+before.  I waited for about one minute, and I switched to the terminal
+<code>tty3</code>.  The grey screen became black <em>without any text</em>.  I pressed
+<code>&lt;Ctrl&gt;-&lt;Alt&gt;-&lt;F7&gt;</code>, then the monitor showed the grey screen again.</p>
+
+<p>I looked at the light (not the power button) in the desktop.  I
+thought it represented the hard disk activity.  Its blinking was
+normal.  As a result, I <em>guessed</em> the problem was related to the
+display.  I <em>pretended</em> I could normally see things, and I <em>imagined</em>
+the picture.  I logged on <code>tty3</code> without logging off <code>tty7</code>.  Then I
+typed <code>sudo reboot</code> and supplied the password.  Within several
+seconds, I heard a <em>beep</em> sound and the system rebooted.</p>
+
+<p>Certainly, all unsaved works on <code>tty7</code> had been <em>lost</em>.  Therefore, it
+was very important to save your work.  As I’m no longer an IT worker,
+I <em>won’t</em> try to find a solution after reading a few related posts
+which I have difficulty to understand.  Within six months, a new <abbr title="long-term support">LTS</abbr>
+version of Ubuntu will be launched.  The price of a <abbr title="solid-state drive">SSD</abbr> will drop, so
+perhaps I will clean install Ubuntu on a <abbr title="solid-state drive">SSD</abbr>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -25,10 +60,12 @@
 
 <p>To verify <a href="http://math.stackexchange.com/q/1591435">the inequality</a></p>
 
-<p>[
+<div class="myeqn">
+\[
   \left(\sqrt{\frac{a+b}{c}}+\sqrt{\frac{b+c}{a}}+\sqrt{\frac{c+a}{b}}
   \right)^2\ge\frac{16}{3(a+b)(b+c)(c+a)}
-]</p>
+\]
+</div>
 
 <p>found on Math Stack Exchange, I wrote the following Octave script.</p>
 
@@ -44,8 +81,8 @@
 </span><span class="line"><span class="n">C</span> <span class="p">=</span> <span class="p">(</span><span class="nb">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">c</span><span class="o">+</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">))</span>^<span class="mi">2</span>
 </span><span class="line"><span class="mi">16</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">A</span>^<span class="mi">3</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>Problem
-—</p>
+
+<h2 id="problem">Problem</h2>
 
 <p>The above script did the calculations, but <em>a warning message
 appeared</em>.</p>
@@ -2074,50 +2111,6 @@ text in red by default.  However, if it’s placed after <code>find ...
 -exec</code>, then the highlighting will be <em>disabled</em>.  In order to enable
 it again, add the option <code>--color=auto</code> to <code>grep</code>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Upgrade to Java 8 on Ubuntu 14.04]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04/"/>
-    
-    <updated>2015-08-13T00:14:01+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/13/upgrade-to-java-8-on-ubuntu-14-dot-04</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Before writing <a href="https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">the previous post</a>, I had noticed that the version
-number of the current stable release of Java is 1.8 update 51.</p>
-
-<h2 id="method">Method</h2>
-
-<ol>
-  <li>Google “ubuntu 14.04 java 8”.</li>
-  <li>Click on <a href="http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/">the first search result</a>.</li>
-  <li>
-    <p>Follow the instructions there.</p>
-
-    <p>Note that the command in the section “Configuring Java
- Environment” should be run <em>before</em> the one in “Verify Installed
- Java Version”.<sup id="fnref:result"><a href="#fn:result" class="footnote">1</a></sup></p>
-  </li>
-</ol>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p><a href="https://www.linuxquestions.org/questions/programming-9/convert-file-from-utf8-to-ascii-encoding-458839/">The encoding of files can be converted</a> using <code>iconv</code>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:result">
-      <p>You may see <a href="https://vincenttam.github.io/downloads/code/term.html">the results from the terminal</a>. <a href="#fnref:result" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

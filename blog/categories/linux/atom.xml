@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2015-12-28T23:31:15+08:00</updated>
+  <updated>2016-01-02T14:39:28+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Ubuntu Grey Screen]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen/"/>
+    
+    <updated>2016-01-02T14:05:54+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen</id>
+    
+      <content type="html"><![CDATA[<p>A few days ago, I was browsing questions on
+<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> on <a href="http://www.ubuntu.com/desktop">Ubuntu</a> 14.04 <abbr title="long-term support">LTS</abbr>.  I opened
+lots of tabs in <a href="https://www.chromium.org">Google Chromium</a>.  Suddenly, the screen
+went grey.  I <em>don’t</em> know the cause.  I <em>hadn’t</em> seen such problem
+before.  I waited for about one minute, and I switched to the terminal
+<code>tty3</code>.  The grey screen became black <em>without any text</em>.  I pressed
+<code>&lt;Ctrl&gt;-&lt;Alt&gt;-&lt;F7&gt;</code>, then the monitor showed the grey screen again.</p>
+
+<p>I looked at the light (not the power button) in the desktop.  I
+thought it represented the hard disk activity.  Its blinking was
+normal.  As a result, I <em>guessed</em> the problem was related to the
+display.  I <em>pretended</em> I could normally see things, and I <em>imagined</em>
+the picture.  I logged on <code>tty3</code> without logging off <code>tty7</code>.  Then I
+typed <code>sudo reboot</code> and supplied the password.  Within several
+seconds, I heard a <em>beep</em> sound and the system rebooted.</p>
+
+<p>Certainly, all unsaved works on <code>tty7</code> had been <em>lost</em>.  Therefore, it
+was very important to save your work.  As I’m no longer an IT worker,
+I <em>won’t</em> try to find a solution after reading a few related posts
+which I have difficulty to understand.  Within six months, a new <abbr title="long-term support">LTS</abbr>
+version of Ubuntu will be launched.  The price of a <abbr title="solid-state drive">SSD</abbr> will drop, so
+perhaps I will clean install Ubuntu on a <abbr title="solid-state drive">SSD</abbr>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -388,84 +423,6 @@ number of the current stable release of Java is 1.8 update 51.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (5): Predict ID]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/"/>
-    
-    <updated>2015-08-11T10:52:56+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>The method for getting the Git object ID described in
-<a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
-consists of <em>several</em> commands.</p>
-
-<h2 id="the-one-line-command">The one-line command</h2>
-
-<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
-ash}) | shasum
-</code></pre>
-
-<ul>
-  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
-  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
-</ul>
-
-<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
-
-<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
-<p>Hence, we can modify the above command to predict the Git object ID of
-a <code>{file}</code>.</p>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
-</code></pre>
-
-<p>In order to verify the result for files, one can quickly get the blob
-ID from Git by <code>git log -1 -p -- {file}</code>.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
-
-<p>I typed “linux extract number” on Google, and the autocompletion gave
-me “from string”.  I finally saw two commands for doing this.</p>
-
-<ol>
-  <li><code>sed 's/[^0-9]//g'</code></li>
-  <li><code>tr -dc '0-9'</code></li>
-</ol>
-
-<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
-complement of the characters marked by <code>-d</code>.</p>
-
-<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
-
-<p>Using the command in the section “Predict Git object IDs” gives users
-a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
-of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
-byte count of the files with <code>\r\n</code> as the line terminator in that
-command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
-
-<h3 id="using-git-for-win">Using Git for Win*</h3>
-
-<p>For the installed version of Git on M$ Win*, one needs to use
-<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
-it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
-
-<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
-
-<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
-instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
-hexadecimal number.)</p>
-
 ]]></content>
     
   </entry>
