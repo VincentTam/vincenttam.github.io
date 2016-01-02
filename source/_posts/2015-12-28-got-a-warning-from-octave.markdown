@@ -11,10 +11,12 @@ Background
 
 To verify [the inequality][1591435]
 
+<div class="myeqn">
 \[
   \left(\sqrt{\frac{a+b}{c}}+\sqrt{\frac{b+c}{a}}+\sqrt{\frac{c+a}{b}}
   \right)^2\ge\frac{16}{3(a+b)(b+c)(c+a)}
 \]
+</div>
 
 found on Math Stack Exchange, I wrote the following Octave script.
 
