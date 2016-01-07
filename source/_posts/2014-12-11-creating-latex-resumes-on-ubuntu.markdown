@@ -16,7 +16,7 @@ smoothly in Mik$\rm \TeX$.
 Problem
 ---
 
-{% img fancybox center /images/posts/LaTeXResume/err.png 800 'Figure 1' 'err' %}
+{% img fancybox center /images/posts/LaTeXResume/err.png 300 'Figure 1' 'err' %}
 
 <!-- more -->
 
