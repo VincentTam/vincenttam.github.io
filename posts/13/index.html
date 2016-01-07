@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why? With detailed output from the terminal, other users can understand the
-problem better. This helps them come up with a solution to the
-problem. &hellip;">
+  <meta name="description" content="In the second example, the command only produces one image. In the
+past, without knowing the use of +[x-pos]+[y-pos], I got more
+than one image, and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,190 @@ problem. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title external"><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick Command Line Examples–part 1</a> &#9733;</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T17:58:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:58 pm</span></time>
+        
+           | <a href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the second example, the command only produces <em>one</em> image.  In the
+past, <em>without</em> knowing the use of <code>+[x-pos]+[y-pos]</code>, I got <em>more
+than one</em> image, and needed to delete them <em>except</em> the desired
+one.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>When I wrote a post about <code>screendump</code>, I took a screenshot of TTY1 so
+as to prove that the text that followed the screenshot was <em>really</em>
+contents in TTY1.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  The width and height of the screenshot was
+1280 px and 1024 px respectively.  I then used my old way to crop it
+to an image with width 520 px and height 230 px, and got similar error
+message described in ImageMagick’s examples.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>In “<a href="/blog/2014/06/30/basic-use-of-aptitude/#imagemagick-commands-learnt">ImageMagick commands learnt</a>” in <em>Basic Use of
+Aptitude</em>, I got <em>four</em> images because I <em>didn’t</em> append <code>+0+0</code>
+after <code>640x512</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>There’s an image cropped with ImageMagick in “<a href="/blog/2014/09/14/record-linux-terminal/">Usage</a>” in
+<em>Record Linux Terminal</em>.</p>
+
+      <pre class="cliUB"><code>$ convert src.png -crop 512x225+0+0 tty1.png
+</code></pre>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>In “<a href="http://www.imagemagick.org/Usage/crop/#crop_missed">The Missed Image (from a bad crop)</a>” in <em>Examples of
+ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/14/kramdowns-markdown-attributes/">Kramdown's Markdown Attributes</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T16:37:49+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:37 pm</span></time>
+        
+           | <a href="/blog/2014/09/14/kramdowns-markdown-attributes/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/14/kramdowns-markdown-attributes/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/kramdowns-markdown-attributes/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While writing a post about purging old Linux kernels, I made use of
+<a href="http://fancyapps.com/fancybox/">fancybox</a>’s plugin to show a popup window which contains some <abbr title="HyperText Markup Language">HTML</abbr>
+elements.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Original container for popup contents</span><a href="http://goo.gl/rdMWNf">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>The <span class="nt">&lt;strong&gt;</span>bolded<span class="nt">&lt;/strong&gt;</span> lines represent the packages that are
+</span><span class="line">going to be completely removed.<span class="nt">&lt;/p&gt;</span>
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>There&#39;s <span class="nt">&lt;em&gt;</span>no<span class="nt">&lt;/em&gt;</span> lines beginning with <span class="nt">&lt;code&gt;</span>rc<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I tried writing Markdown code inside these <code>&lt;div&gt;</code> containers, but the
+Markdown code <em>failed</em> to be changed to <abbr title="HyperText Markup Language">HTML</abbr>.  As a result, <em>not</em>
+being familiar with much of the Markdown syntax specified by
+<a href="http://kramdown.gettalong.org/" title="fast, pure-Ruby Markdown-superset converter">kramdown</a>, I simply write <abbr title="HyperText Markup Language">HTML</abbr> inside these <code>&lt;div&gt;</code> elements.</p>
+
+<p>Fancybox is great, but if I need to give up Markdown, then what’s the
+point of overcoming so many technical problems related to Octopress?
+<em>Without</em> <a href="http://daringfireball.net/projects/markdown/">Markdown</a> and <a href="http://www.vim.org"><abbr title="VIsual editor, iMproved">Vim</abbr></a>, blogging will be <em>incredibly</em>
+difficult for me.  For the former, when compared with <abbr title="HyperText Markup Language">HTML</abbr>, it’s much
+easier to read and write; for the latter, it offers an efficient text
+editing experience.</p>
+
+<p>Therefore, this afternoon, I browsed <em>kramdown Syntax</em> in kramdown’s
+official website, and found out that the <code>markdown="1"</code> attribute can
+solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Current container for popup contents</span><a href="http://goo.gl/53zo2d">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list1&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">The **bolded** lines represent the packages that are going to be
+</span><span class="line">completely removed.
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;list2&quot;</span> <span class="na">class=</span><span class="s">&quot;noscr&quot;</span> <span class="na">markdown=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">There&#39;s *no* lines beginning with `rc`.
+</span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="/blog/2014/09/13/completely-remove-linux-kernels/"><em>Completely Remove Linux Kernels</em></a> in Blog 1. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://kramdown.gettalong.org/syntax.html#html-blocks">HTML Blocks</a> in <em>kramdown Syntax</em>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -636,100 +820,6 @@ equations.  As a result, readers <em>couldn’t</em> see them in <a href="https:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://jblevins.org/notes/greek">The Greek Alphabet in $\rm \LaTeX$</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T22:01:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:01 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/the-greek-alphabet-in-latex/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-latex/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/the-greek-alphabet-in-latex/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve found a list of $\rm \LaTeX$ commands for Greek alphabets.
-Unluckily, when I right-clicked each alphabet, the popped-up menu
-could only show the MathML code, but <em>not</em> the $\rm \LaTeX$ code.
-Therefore, I have to use <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-dynamic.html" title="Display an equation typed in by a user">MathJax’s previewer</a> to
-verify the commands.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://detexify.kirelabs.org/classify.html">Detexify $\rm \LaTeX$ Handwritten Symbol Recogntion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T17:07:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:07 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/detexify-latex-handwritten-symbol-recogntion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Searching symbols in
-<a href="http://www.ctan.org/tex-archive/info/symbols/comprehensive/"><abbr title="Comprehensive TeX Archive Network">CTAN</abbr>’s Comprehensive $\rm \LaTeX$ Symbol List</a> is
-time-consuming.  For example, when I was writing my
-<a href="/blog/2014/09/07/a-fake-function/" title="A Fake Function">previous post</a> about groups, I made use of angle brackets and the
-‘$\circ$’ symbol for composition of two functions.  At first, I typed
-<code>&lt;</code> and <code>&gt;</code>, but they <em>didn’t</em> look good.  In fact, one should use
-‘$\langle$’.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  How can one find the commands for those characters?
-Detexify is the answer for commonly used symbols.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See Robert Dale’s <a href="http://web.science.mq.edu.au/~rdale/resources/writingnotes/latexstyle.html#anglebrackets"><em>$\rm \LaTeX$ Style Tips</em></a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/14">&larr; Older</a>
@@ -774,11 +864,12 @@ Detexify is the answer for commonly used symbols.</p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (15)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octave/'>octave (1)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (2)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -792,6 +883,14 @@ Detexify is the answer for commonly used symbols.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange/">Distribution of User Reputation on Math Stack Exchange</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/02/ubuntu-grey-screen/">Ubuntu Grey Screen</a>
       </li>
     
@@ -801,14 +900,6 @@ Detexify is the answer for commonly used symbols.</p>
     
       <li class="post">
         <a href="/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/">Display of Calligraphic Font by MathJax in Chromium</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/24/residue-at-infinity/">Residue at Infinity</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/20/latex-template-for-simplex-tableaux/">$\rm \LaTeX$ Template for Simplex Tableaux</a>
       </li>
     
   </ul>

@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="In a $\rm \LaTeX$ guide found on the website of George Mason
-University, it’s said that Computer Modern fonts can look ugly.1
-Like most Computer &hellip;">
+  <meta name="description" content="In my post about proving Pappus’s Hexagon Theorem1, I inserted some
+SVG graphics to illustrate the ideas. An example illustrating the difficulty of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,134 @@ Like most Computer &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/zooming-svg-in-web-browsers/">Zooming SVG in Web Browsers</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T18:07:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/zooming-svg-in-web-browsers/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/zooming-svg-in-web-browsers/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my post about proving Pappus’s Hexagon Theorem<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I inserted some
+SVG graphics to illustrate the ideas.</p>
+
+<p><img class="center" src="/images/posts/PappusHexThm/PappusHexThm4.svg" width="600" /><br />
+<small>An example illustrating the difficulty of enlarging an SVG
+graphics for ordinary users.  The image is borrowed from the post
+about proving Pappus’s Hexagon Theorem.<br />
+<a href="/downloads/code/pappus/PappusHexThm4.tex">$\rm \LaTeX$ Source code</a></small></p>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fimages%2Fposts%2FPappusHexThm%2FPappusHexThm4.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p><strong>How can one enlarge SVG images <em>only</em> within web browsers?</strong></p>
+
+<object type="image/svg+xml" data="/downloads/code/svgpan-1.2.2/PappusHexThm4.svg" width="800" height="600">
+  Your browser does not support SVG
+</object>
+<p><small>A working example showing the zooming, panning and dragging
+functions of SVG graphics.  Drag the figure to translate it, and
+scroll to enlarge/reduce it.<br />
+<a href="/downloads/code/svgpan-1.2.2/PappusHexThm4.svg">Source code</a></small></p>
+
+<p><a href="https://validator.w3.org/check?uri=https://vincenttam.github.io/downloads/code/svgpan-1.2.2/PappusHexThm4.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/08/02/zooming-svg-in-web-browsers/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -604,101 +731,6 @@ $\vect{P}^*_k$ was.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Fixing Broken URLs in the Catetory List</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T23:51:06+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:51 pm</span></time>
-        
-           | <a href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>(Added on AUG 20, 2014)</p>
-
-<p>Since the update of Octopress source code, this post <em>won’t</em> make
-sense anymore.  I <em>can’t</em> find a way to use MathJax in category list
-entries anymore because <code>category</code> in <code>plugins/category_generator.rb</code>
-and <code>plugins/category_list_tag.rb</code> have both been changed to <em>lower
-case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://lanyrd.com/2011/houcodecamp/sgwhy/">Stop Using Git Like Subversion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T15:22:11+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/06/20/stop-using-git-like-subversion/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/stop-using-git-like-subversion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I saw a sentence like “Git does SVN better than SVN does” long ago,
-but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
-double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
-to use it just like SVN, but to explore more powerful commands for
-branching.</p>
-
-<p>Reasons for using branches:</p>
-
-<ul>
-  <li>Working with multiple features</li>
-  <li>Sharing with others</li>
-  <li>Merging others work conveniently</li>
-</ul>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/18">&larr; Older</a>
@@ -743,11 +775,12 @@ branching.</p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (15)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octave/'>octave (1)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (2)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -761,6 +794,14 @@ branching.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange/">Distribution of User Reputation on Math Stack Exchange</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/02/ubuntu-grey-screen/">Ubuntu Grey Screen</a>
       </li>
     
@@ -770,14 +811,6 @@ branching.</p>
     
       <li class="post">
         <a href="/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/">Display of Calligraphic Font by MathJax in Chromium</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/24/residue-at-infinity/">Residue at Infinity</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/20/latex-template-for-simplex-tableaux/">$\rm \LaTeX$ Template for Simplex Tableaux</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octave | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octave/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-02T14:39:28+08:00</updated>
+  <updated>2016-01-07T19:06:31+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Distribution of User Reputation on Math Stack Exchange]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange/"/>
+    
+    <updated>2016-01-07T17:34:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Recently, I post math on <a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> instead
+of here.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How can one get a table for the distribution of reputation on that
+site?</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Write a SQL query on <a href="http://data.stackexchange.com">Stack Exchange Data Explorer</a>.</p>
+
+<p><figure class='code'><figcaption><span>User’s Total Reputation Distribution</span><a href='http://goo.gl/Kqwepp'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">u</span><span class="p">.</span><span class="n">range</span> <span class="k">as</span> <span class="p">[</span><span class="n">prev</span> <span class="k">row</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">Reputation</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">this</span> <span class="k">row</span><span class="p">],</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="p">[</span><span class="n">Users</span><span class="p">]</span>
+</span><span class='line'><span class="k">from</span> <span class="p">(</span>
+</span><span class='line'>    <span class="k">select</span> <span class="k">case</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">1</span> <span class="k">and</span> <span class="mi">4</span> <span class="k">then</span> <span class="mi">4</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">5</span> <span class="k">and</span> <span class="mi">9</span> <span class="k">then</span> <span class="mi">9</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">10</span> <span class="k">and</span> <span class="mi">14</span> <span class="k">then</span> <span class="mi">14</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">15</span> <span class="k">and</span> <span class="mi">19</span> <span class="k">then</span> <span class="mi">19</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">20</span> <span class="k">and</span> <span class="mi">49</span> <span class="k">then</span> <span class="mi">49</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">50</span> <span class="k">and</span> <span class="mi">74</span> <span class="k">then</span> <span class="mi">74</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">75</span> <span class="k">and</span> <span class="mi">99</span> <span class="k">then</span> <span class="mi">99</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">100</span> <span class="k">and</span> <span class="mi">124</span> <span class="k">then</span> <span class="mi">124</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">125</span> <span class="k">and</span> <span class="mi">249</span> <span class="k">then</span> <span class="mi">249</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">250</span> <span class="k">and</span> <span class="mi">499</span> <span class="k">then</span> <span class="mi">499</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">500</span> <span class="k">and</span> <span class="mi">999</span> <span class="k">then</span> <span class="mi">999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">1000</span> <span class="k">and</span> <span class="mi">1999</span> <span class="k">then</span> <span class="mi">1999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">2000</span> <span class="k">and</span> <span class="mi">2499</span> <span class="k">then</span> <span class="mi">2499</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">2500</span> <span class="k">and</span> <span class="mi">2999</span> <span class="k">then</span> <span class="mi">2999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">3000</span> <span class="k">and</span> <span class="mi">4999</span> <span class="k">then</span> <span class="mi">4999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">5000</span> <span class="k">and</span> <span class="mi">9999</span> <span class="k">then</span> <span class="mi">9999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">10000</span> <span class="k">and</span> <span class="mi">14999</span> <span class="k">then</span> <span class="mi">14999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">15000</span> <span class="k">and</span> <span class="mi">19999</span> <span class="k">then</span> <span class="mi">19999</span>
+</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">20000</span> <span class="k">and</span> <span class="mi">24999</span> <span class="k">then</span> <span class="mi">24999</span>
+</span><span class='line'>    <span class="k">else</span> <span class="mi">400000</span> <span class="k">end</span> <span class="k">as</span> <span class="n">range</span>
+</span><span class='line'>        <span class="k">from</span> <span class="n">Users</span><span class="p">)</span> <span class="n">u</span>
+</span><span class='line'>    <span class="k">group</span> <span class="k">by</span> <span class="n">u</span><span class="p">.</span><span class="n">range</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>The indentation is automatically done by <a href="http://www.vim.org">Vim</a>.  I know that the
+syntax is <em>ugly</em>.  If I assign text string to the column <code>u.range</code>,
+then the table is sorted in <em>alphabetical order</em> of that column
+instead of numerical order.  This <em>doesn’t</em> make sense.  Therefore, I
+use a dirty way to get the statistics, and played with the built-in
+graphing function.  However, the visual result <em>isn’t</em> so
+satisfactory.</p>
+
+<p><img class="fancybox" src="/images/posts/MathSE/reputation985.png" width="300" title="‘Reputation v.s. Users on Math Stack Exchange’ ‘MathSE reputation statistics’" ></p>
+
+<p>Anyone who has completed high school will realise that a log graph is
+better.  Asking for this feature on <a href="http://meta.stackexchange.com">Meta Stack Exchange</a>
+takes time.  I believe that such feature request will be rejected by
+the moderator to reduce the workload of Stack Exchange company.
+Therefore, I plot the log graph using <a href="https://www.gnu.org/software/octave">GNU Octave</a>.</p>
+
+<ol>
+  <li>Download the CSV file to get the data.</li>
+  <li>Change it to an GNU Octave script file.</li>
+  <li>Open it using Vim.</li>
+  <li>Do the necessary text substitutions so that the data becomes a
+matrix.</li>
+  <li>Complete the script file by adding the plot commands.
+    <ul>
+      <li><a href="https://www.gnu.org/software/octave/doc/interpreter/Two_002dDimensional-Plots.html">Line format arguments</a></li>
+      <li><a href="http://stackoverflow.com/a/22822575/3184351">Add coordinates to points</a></li>
+    </ul>
+  </li>
+</ol>
+
+<p><figure class='code'><figcaption><span>The source code for the log plot  (mathse-rep.m)</span> <a href='/downloads/code/mathse-rep.m'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='octave'><span class='line'><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>
+</span><span class='line'><span class="mi">4</span><span class="p">,</span><span class="mi">86698</span><span class="p">;</span>
+</span><span class='line'><span class="mi">9</span><span class="p">,</span><span class="mi">23074</span><span class="p">;</span>
+</span><span class='line'><span class="mi">14</span><span class="p">,</span><span class="mi">17793</span><span class="p">;</span>
+</span><span class='line'><span class="mi">19</span><span class="p">,</span><span class="mi">9897</span><span class="p">;</span>
+</span><span class='line'><span class="mi">49</span><span class="p">,</span><span class="mi">22201</span><span class="p">;</span>
+</span><span class='line'><span class="mi">74</span><span class="p">,</span><span class="mi">5852</span><span class="p">;</span>
+</span><span class='line'><span class="mi">99</span><span class="p">,</span><span class="mi">3187</span><span class="p">;</span>
+</span><span class='line'><span class="mi">124</span><span class="p">,</span><span class="mi">39216</span><span class="p">;</span>
+</span><span class='line'><span class="mi">249</span><span class="p">,</span><span class="mi">9960</span><span class="p">;</span>
+</span><span class='line'><span class="mi">499</span><span class="p">,</span><span class="mi">4471</span><span class="p">;</span>
+</span><span class='line'><span class="mi">999</span><span class="p">,</span><span class="mi">2496</span><span class="p">;</span>
+</span><span class='line'><span class="mi">1999</span><span class="p">,</span><span class="mi">1416</span><span class="p">;</span>
+</span><span class='line'><span class="mi">2499</span><span class="p">,</span><span class="mi">319</span><span class="p">;</span>
+</span><span class='line'><span class="mi">2999</span><span class="p">,</span><span class="mi">223</span><span class="p">;</span>
+</span><span class='line'><span class="mi">4999</span><span class="p">,</span><span class="mi">482</span><span class="p">;</span>
+</span><span class='line'><span class="mi">9999</span><span class="p">,</span><span class="mi">356</span><span class="p">;</span>
+</span><span class='line'><span class="mi">14999</span><span class="p">,</span><span class="mi">155</span><span class="p">;</span>
+</span><span class='line'><span class="mi">19999</span><span class="p">,</span><span class="mi">81</span><span class="p">;</span>
+</span><span class='line'><span class="mi">24999</span><span class="p">,</span><span class="mi">45</span><span class="p">;</span>
+</span><span class='line'><span class="mi">400000</span><span class="p">,</span><span class="mi">152</span><span class="p">];</span>
+</span><span class='line'><span class="nb">loglog</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&quot;.-k&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span>
+</span><span class='line'>  <span class="nb">text</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span><span class="s">&#39;(&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="s">&#39;,&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="s">&#39;)&#39;</span><span class="p">],</span> <span class="p">...</span>
+</span><span class='line'>  <span class="s">&quot;fontsize&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">title</span><span class="p">(</span><span class="s">&quot;User&#39;s Total Reputation Distribution on Math Stack Exchange&quot;</span><span class="p">,</span> <span class="p">...</span>
+</span><span class='line'><span class="s">&quot;fontsize&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>I choose <code>loglog</code> because <code>semilogx</code> causes the labels on tail to
+overlap.  Here’s the results.</p>
+
+<picture class="fancybox" title="Target log graph">
+  <source srcset="/images/posts/MathSE/loglog1215.svg" media="(min-width: 800px)" />
+  <img alt="Target log graph" width="300" src="https://vincenttam.github.io/images/posts/MathSE/loglog576.svg" />
+</picture>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I can save plots in GNU Octave as a SVG file.  I know this after
+searching “octave export svg”.  From
+<a href="https://www.gnu.org/software/octave/doc/interpreter/Printing-and-Saving-Plots.html"><em>Printing and Saving Plots</em></a>, I see <code>print -d[device]</code>,
+in which one can substitute the output format.  For example, I used
+<code>print -dsvg</code> to generate the SVG’s shown above.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
