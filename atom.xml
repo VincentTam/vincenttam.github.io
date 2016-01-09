@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-07T19:06:31+08:00</updated>
+  <updated>2016-01-09T23:27:54+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Simple MathJax Template for Basic Linear Programs]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/"/>
+    
+    <updated>2016-01-09T23:12:24+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To provide a good-looking template of basic linear programs for users
+of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
+
+<div class="myeqn">
+\[
+  \begin{array}{cccll}
+    \max &amp;z=&amp;x_1&amp;+x_2 &amp; \\
+    \text{s.t.}&amp; &amp; &amp; \phantom{+}x_2 + s_1 &amp;= 8 \\
+    &amp; &amp; -x_1&amp;+x_2 - s_2&amp;=-4 \\
+    &amp; &amp; x_1&amp;+x_2+s_3&amp;= 12 \\
+    &amp; &amp; &amp; s_1,s_2,s_3 &amp;\ge 0
+  \end{array}
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example on Math Stack Exchange </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cccll<span class="nb">}</span>
+</span><span class="line">  <span class="k">\max</span> <span class="nb">&amp;</span>z=<span class="nb">&amp;</span>x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2 <span class="nb">&amp;</span> <span class="k">\\</span>
+</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>s.t.<span class="nb">}&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\phantom</span><span class="nb">{</span>+<span class="nb">}</span>x<span class="nb">_</span>2 + s<span class="nb">_</span>1 <span class="nb">&amp;</span>= 8 <span class="k">\\</span>
+</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> -x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2 - s<span class="nb">_</span>2<span class="nb">&amp;</span>=-4 <span class="k">\\</span>
+</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2+s<span class="nb">_</span>3<span class="nb">&amp;</span>= 12 <span class="k">\\</span>
+</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> s<span class="nb">_</span>1,s<span class="nb">_</span>2,s<span class="nb">_</span>3 <span class="nb">&amp;</span><span class="k">\ge</span> 0
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>If you want a prettier template, you may see
+<a href="http://tex.stackexchange.com/q/75108">this $\rm TeX$–$\rm \LaTeX$ Stack Exchange question</a>.  I
+tried added <code>@{}</code> in the first argument of the <code>array</code> environment to
+eliminate the excessive inter-column space—this works great in $\rm
+\LaTeX$.  However, neither <code>@{}</code> nor <code>\multicolumn{4}{l}{...}</code> is
+processed by <a href="https://mathjax.org">MathJax</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -766,7 +825,7 @@ bounded by $C$ except for finitely many points,</p>
 
 <div class="myeqn">
 \[
-  \begin{array}{rrrrrrrr|l}
+  \begin{array}{crrrrrrr|l}
                &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \\ \hline
            x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 \\
            x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 \\
@@ -795,7 +854,7 @@ bounded by $C$ except for finitely many points,</p>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
 </pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>equation*<span class="nb">}</span>
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rrrrrrrr|l<span class="nb">}</span>
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>crrrrrrr|l<span class="nb">}</span>
 </span><span class="line">               <span class="nb">&amp;</span> x<span class="nb">_</span>1 <span class="nb">&amp;</span> x<span class="nb">_</span>2 <span class="nb">&amp;</span> x<span class="nb">_</span>3 <span class="nb">&amp;</span> x<span class="nb">_</span>4 <span class="nb">&amp;</span> x<span class="nb">_</span>5 <span class="nb">&amp;</span> x<span class="nb">_</span>6 <span class="nb">&amp;</span>  x<span class="nb">_</span>7 <span class="nb">&amp;</span>        <span class="k">\\</span> <span class="k">\hline</span>
 </span><span class="line">           x<span class="nb">_</span>4 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>  -3 <span class="nb">&amp;</span>   7 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>    2 <span class="nb">&amp;</span> 2M  -4 <span class="k">\\</span>
 </span><span class="line">           x<span class="nb">_</span>5 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>  -9 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   -1 <span class="nb">&amp;</span> -M  -3 <span class="k">\\</span>
@@ -2025,98 +2084,6 @@ original version. <a href="#fnref:remote" class="reversefootnote">&#8617;</a></p
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Rare Sed Delimiters]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/"/>
-    
-    <updated>2015-08-25T10:47:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
-Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
-have to be escaped by backslashes, which makes the whole command ugly.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
-<code> </code> (white space), etc, and you’re <em>too lazy</em> to look for
-<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
-
-<!-- more -->
-
-<h2 id="discussion-on-the-custom-delimiter">Discussion on the custom delimiter</h2>
-
-<p>When I read article at the above link, I was stuck at the last part,
-which was about using a custom delimiter.  I <em>mistakenly</em> thought that
-this was for the search pattern and the replacement.  In fact, reading
-<a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">GNU’s manual</a> and trying some commands repeatedly, I realized
-that prepending the custom delimiter with a backslash was for
-specifying the range of the following expresion.</p>
-
-<p>Therefore, I finally understand what <code>somevar</code> is in
-<a href="http://stackoverflow.com/a/20808364">this Stack Overflow question</a>.</p>
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="customizing-the-delimiter-in-a-replacement">Customizing the delimiter in a replacement</h3>
-
-<p>To begin with, I tried the following command.</p>
-
-<pre class="cliUB"><code>$ echo strange | sed s/'[a-e]'/#/g
-str#ng#
-</code></pre>
-
-<p>After that, I know that surrounding the whole <code>s</code> command <em>isn’t</em> a
-must, just the <code>regex</code> and <code>replacement</code> will do.</p>
-
-<p>Then I replaced all <code>/</code> with <code>y</code> in the above command.</p>
-
-<pre class="cliUB"><code>$ echo strange | sed sy'[a-e]'y#yg
-str#ng#
-</code></pre>
-
-<p>Now, it’s clear that the custom delimiter in the <code>s</code> command <em>doesn’t</em>
-need to be escaped.</p>
-
-<h3 id="towards-the-goal">Towards the goal</h3>
-
-<p>The goal in this post is to use bizarre characters as the delimiter in
-the <code>s</code> command, and I believe that if you’ve reached here, you’ll
-probably understand what <a href="https://stackoverflow.com/a/4844945">this command</a> is doing, provided
-that you know the way to
-<a href="https://stackoverflow.com/a/10571642">input control characters as arguments in bash commands</a>.</p>
-
-<h2 id="more-examples">More examples</h2>
-
-<p>I’ve just tried to delete a <code>&lt;script&gt;</code> tag in the <code>master</code> branch of a
-repository for <a href="https://vincenttam.github.io/SampleWebPage/ex0.html">my sample W3CSS page</a> using the in-place
-editing option of <code>sed</code>.  Before making <em>real</em> changes to the file, I
-tested my command syntax with the standard output first.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ git branch -a
-* master
-  remotes/origin/HEAD -&gt; origin/master
-  remotes/origin/gh-pages
-  remotes/origin/master
-[owner@localhost ~/SampleWebPage]$ sed -nr '\#&lt;scr#,#&lt;/scr#p' ex0.html
-sed: -e expression #1, char 9: unexpected `,'
-</code></pre>
-
-<p>Looking at <a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">the manual</a> <em>again</em>, I thought that <code>\%regex%</code>
-represented <em>one</em> address only.  The pattern after the comma was
-<em>another</em> address, so I should have used <em>two</em> backslashes in the last
-command.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ sed -ir '\#&lt;scr#,\#&lt;/scr#' ex0.html
-</code></pre>
-
 ]]></content>
     
   </entry>

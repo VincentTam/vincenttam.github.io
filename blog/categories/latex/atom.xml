@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-07T19:06:31+08:00</updated>
+  <updated>2016-01-09T23:27:54+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,65 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Simple MathJax Template for Basic Linear Programs]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/"/>
+    
+    <updated>2016-01-09T23:12:24+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To provide a good-looking template of basic linear programs for users
+of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
+
+<div class="myeqn">
+\[
+  \begin{array}{cccll}
+    \max &amp;z=&amp;x_1&amp;+x_2 &amp; \\
+    \text{s.t.}&amp; &amp; &amp; \phantom{+}x_2 + s_1 &amp;= 8 \\
+    &amp; &amp; -x_1&amp;+x_2 - s_2&amp;=-4 \\
+    &amp; &amp; x_1&amp;+x_2+s_3&amp;= 12 \\
+    &amp; &amp; &amp; s_1,s_2,s_3 &amp;\ge 0
+  \end{array}
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p><figure class='code'><figcaption><span>A minimum working example on Math Stack Exchange </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cccll<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\max</span> <span class="nb">&amp;</span>amp;z=<span class="nb">&amp;</span>amp;x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; &lt;br /&gt;
+</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>s.t.<span class="nb">}&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="k">\phantom</span><span class="nb">{</span>+<span class="nb">}</span>x<span class="nb">_</span>2 + s<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;= 8 &lt;br /&gt;
+</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; -x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 - s<span class="nb">_</span>2<span class="nb">&amp;</span>amp;=-4 &lt;br /&gt;
+</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2+s<span class="nb">_</span>3<span class="nb">&amp;</span>amp;= 12 &lt;br /&gt;
+</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; s<span class="nb">_</span>1,s<span class="nb">_</span>2,s<span class="nb">_</span>3 <span class="nb">&amp;</span>amp;<span class="k">\ge</span> 0
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>If you want a prettier template, you may see
+<a href="http://tex.stackexchange.com/q/75108">this $\rm TeX$–$\rm \LaTeX$ Stack Exchange question</a>.  I
+tried added <code>@{}</code> in the first argument of the <code>array</code> environment to
+eliminate the excessive inter-column space—this works great in $\rm
+\LaTeX$.  However, neither <code>@{}</code> nor <code>\multicolumn{4}{l}{...}</code> is
+processed by <a href="https://mathjax.org">MathJax</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -28,7 +87,7 @@
 
 <div class="myeqn">
 \[
-  \begin{array}{rrrrrrrr|l}
+  \begin{array}{crrrrrrr|l}
                &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \\ \hline
            x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 \\
            x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 \\
@@ -57,7 +116,7 @@
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 </pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>equation&lt;em&gt;<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rrrrrrrr|l<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>crrrrrrr|l<span class="nb">}</span>
 </span><span class='line'>               <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>3 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;  x<span class="nb">_</span>7 <span class="nb">&amp;</span>amp;        <span class="k">\ \hline</span>
 </span><span class='line'>           x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -3 <span class="nb">&amp;</span>amp;   7 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp; 2M  -4 &lt;br /&gt;
 </span><span class='line'>           x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -9 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   -1 <span class="nb">&amp;</span>amp; -M  -3 &lt;br /&gt;
@@ -346,103 +405,6 @@ However, I <em>didn’t</em> expect that the ‘^M’ character would give an ex
 horizontal space in the resulting PDF document compiled by $\rm
 \LaTeX$.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Plot Polar Coordinates Graphs]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/11/13/plot-polar-coordinates-graphs/"/>
-    
-    <updated>2014-11-13T23:23:04+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/11/13/plot-polar-coordinates-graphs</id>
-    
-      <content type="html"><![CDATA[<p>Googling “tikz tutorial”, one can find several useful PDF documents
-which are easy to follow, such as the first two results.</p>
-
-<ol>
-  <li><a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf"><em>PGF/TikZ - Graphics for</em> $\rm \LaTeX$ <em>—A tutorial</em></a> by
-Meik Hellmund</li>
-  <li><a href="http://cremeronline.com/LaTeX/minimaltikz.pdf"><em>A very minimal introduction to TikZ</em></a> by Jacques Crémer</li>
-</ol>
-
-<p>The second PDF document covers plotting graphs in rectangular
-coordinates.  <strong>How about polar coordinates?</strong></p>
-
-<p>It’s easy to find a solution online, but understanding the code and
-adapting them according to your needs are <em>much</em> harder.  One has to
-make use of “cs”, which stands for “coordinate system”.  If one is too
-lazy to read more webpages, then one may use the code below.</p>
-
-<p>When I drew figures with <a href="http://www.texample.net/tikz/">Ti<em>k</em>Z</a> a recent post on limits of composite
-functions on $\R^n$, I found a way to construct random region with
-Ti<em>k</em>Z in a $\rm \TeX$–$\rm \LaTeX$ Stack Exchange
-question.<sup id="fnref:rand_region"><a href="#fn:rand_region" class="footnote">1</a></sup>  This inspired me to come up with the
-following graph.</p>
-
-<h2 id="output">Output</h2>
-
-<p><img class="center" src="/images/posts/TikZPolar/graph.svg" width="750" title="‘fig1’ ‘polar plot’" ></p>
-
-<h2 id="source-code">Source code</h2>
-
-<p><figure class='code'><figcaption><span>The $\rm \LaTeX$ source code for the above graph  (TikZPolar.tex)</span> <a href='/downloads/code/TikZPolar.tex'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'>  <span class="c">% drawing grid lines</span>
-</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>1,...,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (0,0) circle (<span class="k">\r</span>);<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\draw</span> (-6.5,0) -- (6.5,0);
-</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\theta</span> in <span class="nb">{</span>15,30,...,165<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (<span class="k">\theta</span>:6.5) -- (<span class="k">\theta</span>+180:6.5);<span class="nb">}</span>
-</span><span class='line'>  <span class="c">% labelling them</span>
-</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
-</span><span class='line'>    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="nb">^</span><span class="nv">\circ</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'>  <span class="nb">}</span>
-</span><span class='line'>  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
-</span><span class='line'>  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
-</span><span class='line'>  plot (<span class="k">\x</span>:<span class="nb">{</span>5-sin(3*<span class="k">\x</span>)<span class="nb">}</span>);
-</span><span class='line'>  <span class="k">\node</span> at (270:8) <span class="nb">{</span>The graph of <span class="s">$</span><span class="nb">r </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="o">(</span><span class="m">3</span><span class="nv">\theta</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span>;
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<ul>
-  <li>I got the idea of for loop in TikZ from
-  <a href="http://stuff.mit.edu/afs/athena/contrib/tex-contrib/beamer/pgf-1.01/doc/generic/pgf/version-for-tex4ht/en/pgfmanualse15.html"><em>TikZ and PGF Manual</em></a>.</li>
-  <li>I learnt the syntax for plotting functions from the PDF in item (2).</li>
-</ul>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:rand_region">
-
-      <p>Refer to <a href="http://tex.stackexchange.com/a/60707"><em>TikZ: Arbitrary shapes and filling?</em></a> for
-details. <a href="#fnref:rand_region" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
