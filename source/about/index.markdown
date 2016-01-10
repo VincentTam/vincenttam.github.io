@@ -44,12 +44,14 @@ Useful sites:
 - [Javascript Regular Expressions][js_regex] in Mozilla Developer
     Network
 - [Octave Online][octave]
+- [TLDR Pages][tldr]
 
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
 [js_regex]: http://goo.gl/2jLPH
 [octave]: http://octave-online.net/
+[tldr]: http://tldr-pages.github.io/
 
 My custom settings
 ---
