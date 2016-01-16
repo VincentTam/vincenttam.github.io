@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-10T22:55:27+08:00</updated>
+  <updated>2016-01-16T17:03:50+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,253 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Search Result on HKHeadline]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/16/a-search-result-on-hkheadline/"/>
+    
+    <updated>2016-01-16T17:03:49+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/16/a-search-result-on-hkheadline</id>
+    
+      <content type="html"><![CDATA[<p>After writing three posts, I would like to stop doing so and watch
+some news.  Therefore, I browse the home page of <a href="http://hd.stheadline.com/">HKHeadline</a>.  I see
+a hot topic on the right of the search button: “Taiwan presidential
+election” (台灣大選).  I click on that but no results are returned.</p>
+
+<picture class="fancybox" title="Search results for a hot topic">
+  <source srcset="/images/posts/Tw/tw392.png" media="(min-width: 400px)" />
+  <img alt="Search results for a hot topic" src="https://vincenttam.github.io/images/posts/Tw/tw300.png" />
+</picture>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
+    
+    <updated>2016-01-16T15:33:39+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<ul>
+  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
+  typeset math expressions.</li>
+  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
+  calculations for a quick and correct response on Mathematics Stack
+  Exchange.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
+Mathematics Stack Exchange.</p>
+
+<p>For any given matrix $A$ in Octave,</p>
+
+<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
+A =
+
+   1   2   2
+   2   3   4
+   4   4   2
+</code></pre>
+
+<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>so that one gets</p>
+
+<div class="myeqn">
+\[
+  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
+quite useful.  I issued the first command to see the result.</p>
+
+<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
+ans = 1 2 2\\
+2 3 4\\
+4 4 2
+</code></pre>
+
+<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
+verified that I was right.  To fix this, I extracted the function
+<code>mat2str(A)</code> in the middle of this command to see the results.  From
+its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
+standed for “string replace”.  Then, I changed the double-quoted comma
+in the second argument of function <code>strrep</code> to a double-quoted
+whitespace character, and got the anticipated result.</p>
+
+<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
+";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
+ans = \begin{bmatrix}
+1&amp;2&amp;2\\
+2&amp;3&amp;4\\
+4&amp;4&amp;2
+\end{bmatrix}
+</code></pre>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
+can work it out by searching and testing in several hours, but I
+<em>don’t</em> have the time to do so.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="math">Math</h3>
+
+<p>I revised some definitions in linear algebra.</p>
+
+<ul>
+  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
+  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
+</ul>
+
+<h3 id="gnu-octave">GNU Octave</h3>
+
+<ul>
+  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
+  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
+  multiple replacements.</li>
+  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
+  inside.</li>
+</ul>
+
+<h3 id="grep">Grep</h3>
+
+<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
+(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
+over 1270 results.  I tried adding single/double quotes and escaping
+the square brackets with a backslash, but I faied again.  Finally, I
+googled “grep escape character” for a solution.  Since then, I know
+that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
+string.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Generate Simplex Tableaux With Octave]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave/"/>
+    
+    <updated>2016-01-16T14:53:15+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>It’s easy that one makes <a href="http://chat.stackexchange.com/transcript/message/26730376#26730376">careless mistakes</a> in a pivot
+operation.  As a result, in test/exams in which calculators are
+allowed, I used a simple program to save time.</p>
+
+<p>Answering linear programming question on
+<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a>, I used <a href="http://www.gnu.org/software/octave">GNU Octave</a> to
+do the tedious work.</p>
+
+<h2 id="initial-tableau">Initial tableau</h2>
+
+<p>First write the LPP in standard form.  I assume that $b$ and $c$ are
+column vectors.</p>
+
+<ul>
+  <li><code>c</code> is the objective function.</li>
+  <li><code>A</code> is the coefficient matrix of the constraints.  (a.k.a technology
+  matrix)</li>
+  <li><code>b</code> is the RHS of the constraints.</li>
+  <li><code>T0</code> is the initial tableau.</li>
+</ul>
+
+<p>My habit is to</p>
+
+<ol>
+  <li>place $b$ on the RHS;</li>
+  <li>place the objective function row at the bottom;</li>
+  <li>omit the coefficient for $z$ since it’ll <em>never</em> be changed.</li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the initial tableau</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">format</span> <span class="nb">rat</span><span class="p">;</span>
+</span><span class="line"><span class="n">c</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span> <span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">11</span> <span class="mi">0</span> <span class="mi">8</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class="line"><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>
+</span><span class="line"><span class="mi">1</span> <span class="o">-</span><span class="p">.</span><span class="mi">5</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="mi">0</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class="line"><span class="n">T0</span> <span class="p">=</span> <span class="p">[</span><span class="n">A</span> <span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="mi">0</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="current-simplex-tableau">Current simplex tableau</h2>
+
+<p>The command <code>basis = [3 2 6]</code> is used to choose the decision variables
+<span class="myeqn">$x_3,x_2$ and $x_6$</span> as the
+basis.  Note that the order of the entries in the array <code>basis</code> is
+very <em>important</em>.  By setting this array, I <em>don’t</em> need to repeat
+typing the same set of numbers for $B$ and <span class="myeqn">$c_B$</span>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the tableau from the current basis</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">basis</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">6</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span><span class="n">basis</span><span class="p">);</span> <span class="n">cB</span> <span class="p">=</span> <span class="n">c</span><span class="p">(</span><span class="n">basis</span><span class="p">);</span>
+</span><span class="line"><span class="n">T</span> <span class="p">=</span> <span class="p">[</span><span class="n">B</span><span class="o">\</span><span class="n">A</span> <span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">)]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>Since I’m no longer in an LP course, I’m too lazy to write the code
+for finding the suitable elements for a pivot operation.  We <em>don’t</em>
+need to re-develop something that has been well-developed.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Some Families of Open Sets in $\Bbb R$]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r/"/>
+    
+    <updated>2016-01-15T20:22:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r</id>
+    
+      <content type="html"><![CDATA[<p>Two days ago, I read a proof about a basic property of open sets in
+Royden’s <em>Real Analysis</em>.  It says that each open set in $\Bbb R$ is a
+countable union of disjoint open intervals.  Reading the book, I got
+stuck at the countability.  I tried to think of a map between each
+open interval and a rational number, but I <em>didn’t</em> know <em>which one to
+choose</em>.  It took me half an hour to understand from the words that
+the <em>one single</em> rational number inside the open interval can be
+arbitrarily chosen.</p>
+
+<p>Yesterday, I was puzzled at $\mathcal{T} \subseteq \mathcal{B}$ for a
+while.  On the LHS, I came up with “arbitrary union”; on the RHS, I
+thought of “countable union”.  It seemed that “countable union” is
+more restrictive than “arbitrarily union”.  My teacher said that this
+is <em>by definition</em>, and I realized that I forgot the definition of
+Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
+\mathcal{T}$.  Finally, I get it.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1579,511 +1826,6 @@ dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f
 \subseteq (S_i)_{i \in I}$.  Then $S \in (S_i)_{i \in I}$, and thus
 $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
 </span></p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Revised Absolute Convergence]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence/"/>
-    
-    <updated>2015-09-05T22:05:03+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence</id>
-    
-      <content type="html"><![CDATA[<p>I am <em>not</em> so satisfied with this the following
-<em>definition</em>.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
-
-<div class="myeqn">
-\[
-  e^{i\theta} := \cos \theta + i \sin \theta
-\]
-</div>
-
-<p>I remembered the proof for convergence of</p>
-
-<div class="myeqn">
-\[
-  e^{x} := \sum_{i = 0}^{\infty} \frac{x^i}{i!}
-\]
-</div>
-
-<p>for real numbers.  I <em>didn’t</em> know if this can be extended to complex
-numbers.  Therefore, I thought about the absolute convergence of
-complex-valued series.  It’s expected that many proofs are similar to
-their real counterparts, such as the result that absolute convergence
-implies convergence.  In real numbers, this result makes use of the
-Triangle Inequalty and Cauchy Convergence Criterion, and the key step
-is</p>
-
-<div class="myeqn">
-\[
-  \abslr{\sum_{k = m + 1}^{n} a_k} \le \sum_{k = m + 1}^{n} \abs{a_k}.
-\]
-</div>
-
-<p>Since the proof of the above statement for real numbers requires
-Bolzano–Weierstrass Theorem, which is about the sequential
-compactness of sequences of real numbers, I was <em>stuck</em> at this point.</p>
-
-<p><span class="myeqn">
-Finally, I read another book, which said that if $(z_n)$ is a Cauchy
-sequence, and $\forall n \in \N$, $u_n := \Re(z_n)$ and $v_n :=
-\Im(z_n)$, $\forall \varepsilon &gt; 0, \exists N \in \N$ such that
-$\forall m,n \le N$,
-</span></p>
-
-<div class="myeqn">
-\begin{align*}
-  \abs{u_n - u_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon, \\
-  \abs{v_n - v_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon.
-\end{align*}
-</div>
-
-<p>Then $(u_n)$ and $(v_n)$ are real-valued Cauchy sequences, which are
-convergent.<sup id="fnref:ahlfors"><a href="#fn:ahlfors" class="footnote">2</a></sup>  This guarantees the convergence of $(z_n)$ in
-the complex plane.</p>
-
-<p>To establish the absolute convergence of $\exp z$, we need the root
-test.  The proofs can be borrowed from their counterparts in the set
-of real numbers.  Ahlfors leaves the proof for <span class="myeqn">$\sqrt[n]{n!} \to \infty$</span> to readers.  I find
-<a href="http://math.stackexchange.com/a/514397">Dan’s proof</a> pretty easy.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:churchill">
-
-      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
-variables and applications (Vol. 7)</em>. (pp. 17). New York:
-McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:ahlfors">
-
-      <p>Ahlfors, L. (1979). <em>Complex analysis</em>. (pp. 34). Auckland:
-McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Stuck at Two Trigonometric Inequalities]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/"/>
-    
-    <updated>2015-09-04T18:26:48+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Suppose that $z = x + iy, x,y \in \R$.  Then $\abs{\sin z} \ge
-\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$.</p>
-
-<!-- more -->
-
-<h2 id="forgotten-facts">Forgotten facts</h2>
-
-<p>I’ve forgotten many facts about complex variables learnt almost two
-years ago.  For example, the defhinition of sines and cosines.  Eight
-years ago, I can memorize well the trigonometric formulae.  Now, I
-have difficulties in proving them.</p>
-
-<div class="myeqn">
-\begin{align}
-  \cos z &amp;= \frac{e^{iz}+e^{-iz}}{2} \label{defa} \\
-  \sin z &amp;= \frac{e^{iz}-e^{-iz}}{2i} \label{defb}
-\end{align}
-</div>
-
-<h2 id="look-at-the-hint">Look at the hint</h2>
-
-<p>In the book that I’m reading, there’re two formulae.</p>
-
-<div class="myeqn">
-\begin{align}
-  \abs{\sin z}^2 &amp;= \sin^2 x + \sinh^2 y \label{hint1a} \\
-  \abs{\cos z}^2 &amp;= \cos^2 x + \sinh^2 y \label{hint1b}
-\end{align}
-</div>
-
-<p>Even though the problem can be solved once these two formulae are
-accepted, I <em>don’t</em> know why they’re true.</p>
-
-<h2 id="look-further-up">Look further up</h2>
-
-<p>I found another two formulae.</p>
-
-<div class="myeqn">
-\begin{align}
-  \sin z &amp;= \sin x \cosh y + i \cos x \sinh y \label{hint2a} \\
-  \cos z &amp;= \cos x \cosh y - i \sin x \sinh y \label{hint2b}
-\end{align}
-</div>
-
-<p>I tried to verify \eqref{hint2a} after having read \eqref{defhb}.</p>
-
-<h2 id="first-failed-attempt">First failed attempt</h2>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    &amp;\quad\: \sin z \\
-    &amp;= \frac{e^{iz} - e^{-iz}}{2i} \\
-    &amp;= \frac{e^{i(x + iy)} - e^{-i(x + iy)}}{2i} \\
-    &amp;= \frac{e^{ix} e^{-y} - e^{-ix} e^{y}}{2i} \\
-    &amp;= \frac{e^{ix} - e^{-ix}}{2i} e^{-y} + \frac{e^{-ix - y}}{2i} -
-    \frac{e^{-ix} e^{y}}{2i} \\
-    &amp;= \sin x \cdot e^{-y} + \frac{e^{-ix}}{i} \cdot
-    \frac{e^{-y} - e^{y}}{2}\\
-    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \frac{e^{y} - e^{-y}}{2} \\
-    &amp;= \sin x \cdot e^{-y} + i e^{-ix} \sinh y
-  \end{aligned}
-  \label{fail1}
-\end{equation}
-</div>
-
-<p>I was <em>stuck</em> at this point because I <em>didn’t</em> know how to change
-\eqref{fail1} to \eqref{hint2a}.</p>
-
-<h2 id="more-forgotten-facts">More forgotten facts</h2>
-
-<p>In fact, some simple identities involving hyperbolic functions can
-simplify matters.</p>
-
-<div class="myeqn">
-\begin{align}
-  \cosh z &amp;= \frac{e^{y}+e^{-y}}{2} \label{defha} \\
-  \sinh z &amp;= \frac{e^{y}-e^{-y}}{2} \label{defhb} \\
-  \cos(iy) &amp;= \cosh y \label{idha} \\
-  \sin(iy) &amp;= i \sinh y \label{idhb}
-\end{align}
-</div>
-
-<p>Then I realised that \eqref{hint2a} follows from the compound angle
-formula.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    \sin(x + iy) &amp;= \sin x \cos(iy) + \cos x \sin(iy) \\
-    &amp;= \sin x \cosh y + i \cos x \sinh y
-  \end{aligned}
-  \label{link}
-\end{equation}
-</div>
-
-<p>Thus, I need to prove something more general.</p>
-
-<h2 id="compound-angle-formulae">Compound angle formulae</h2>
-
-<div class="myeqn">
-\begin{align}
-  \cos(z_1 + z_2) &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
-  \label{cpda} \\
-  \sin(z_1 + z_2) &amp;= \sin z_1 \cos z_2 + \cos z_1 \sin z_2
-  \label{cpdb}
-\end{align}
-</div>
-
-<p>I tried proving \eqref{cpdb} in the <em>same</em> way like \eqref{fail1}.</p>
-
-<h2 id="second-failed-attempt">Second failed attempt</h2>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    &amp;\quad\: \sin(z_1 + z_2) \\
-    &amp;= \frac{e^{i(x_1 + iy_1 + x_2 + iy_2)} - e^{-i(x_1 + iy_1 + x_2 +
-    iy_2)}}{2i} \\
-    &amp;= \frac{1}{2i} [e^{i(x_1 + x_2)} e^{-(y_1 + y_2)}
-    - e^{-i(x_1 + x_2)} e^{y_1 + y_2}]
-  \end{aligned}
-  \label{fail2}
-\end{equation}
-</div>
-
-<p>Then I <em>didn’t</em> know how to continue.</p>
-
-<h2 id="reasons-for-the-above-failures">Reasons for the above failures</h2>
-
-<ul>
-  <li>\eqref{fail1} and \eqref{fail2} involve fractions, which are more
-difficult to deal with than those <em>without</em> fractions.</li>
-  <li>In order to change \eqref{fail1} to \eqref{hint2a}, some sort of
-factorisation is needed, and this requires creating a term that fits
-the puzzle.  Again, this <em>isn’t</em> so easy.</li>
-</ul>
-
-<h2 id="just-use----and--no-">Just use ‘+’, ‘-‘ and ‘×’, no ‘÷’</h2>
-
-<p>From \eqref{defa} and \eqref{defb}, one should know that cosines,
-sines and exponents are <em>related</em>.  For any $z_1, z_2 \in \C$, the
-formula for $\sin(z_1 + z_2)$ and $\cos(z_1 + z_2)$ <em>aren’t</em> so easy,
-but the one for $e^{z_1 + z_2}$ is <em>simple</em>.  Making use of the
-Euler’s formula for complex numbers, one has</p>
-
-<div class="myeqn">
-\begin{align}
-  e^{iz_1} &amp;= \cos z_1 + i \sin z_1 \label{eulerz1} \\
-  e^{iz_2} &amp;= \cos z_2 + i \sin z_2 \label{eulerz2}
-\end{align}
-</div>
-
-<p>Multiply \eqref{eulerz1} by \eqref{eulerz2}.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    &amp;\quad\: e^{i(z_1 + z_2)} \\
-    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
-    &amp;\quad\: + i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
-  \end{aligned}
-  \label{eiz12a}
-\end{equation}
-</div>
-
-<p>Remembering Euler’s formula</p>
-
-<div class="myeqn">
-\[
-  e^{i(z_1 + z_2)} = \cos(z_1 + z_2) + i \sin(z_1 + z_2),
-\]
-</div>
-
-<p>can we say immediately that \eqref{hint2a} and \eqref{hint2b} are
-true?  No, since there’s <em>no</em> guarantee that $\cos(z_1 + z_2)$ and
-$\sin(z_1 + z_2)$ are real.  However, I kept working on \eqref{eiz12a}
-so that \eqref{hint2a} and \eqref{hint2b} were proved.</p>
-
-<p>From \eqref{defa} and \eqref{defb}, it’s trivial that</p>
-
-<div class="myeqn">
-\[
-  \sin(-z) = -\sin z \text{ and } \cos(-z) = \cos z.
-\]
-</div>
-
-<p>Therefore, we write an analog of \eqref{eiz12a} for $e^{-i(z_1 +
-z_2)}$.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{aligned}
-    &amp;\quad\: e^{-i(z_1 + z_2)} \\
-    &amp;= [\cos (-z_1) \cos (-z_2) - \sin (-z_1) \sin (-z_2)] \\
-    &amp;\quad\: + i[\cos (-z_1) \sin (-z_2) + \sin (-z_1) \cos (-z_2)] \\
-    &amp;= (\cos z_1 \cos z_2 - \sin z_1 \sin z_2) \\
-    &amp;\quad\: - i(\cos z_1 \sin z_2 + \sin z_1 \cos z_2)
-  \end{aligned}
-  \label{eiz12b}
-\end{equation}
-</div>
-
-<div class="myeqn">
-\[
-  \begin{aligned}
-    &amp;\quad\: \cos(z_1 + z_2) \quad
-    (\text{by } \frac{\eqref{eiz12a} + \eqref{eiz12b}}{2}) \\
-    &amp;= \frac{e^{i(z_1 + z_2) - e^{-i(z_1 + z_2)}}}{2} \\
-    &amp;= \cos z_1 \cos z_2 - \sin z_1 \sin z_2
-  \end{aligned}
-\]
-</div>
-
-<p>\eqref{hint2a} can be derived in a similar way.</p>
-
-<h2 id="remaining-work">Remaining work</h2>
-
-<p>\eqref{hint1b} can be derived from \eqref{hint2b} by using $\sin^2 x +
-\cos^2 x = 1$ and $\cosh^2 x - \sinh^2 x = 1$.</p>
-
-<div class="myeqn">
-\[
-  \begin{aligned}
-    &amp;\quad\, \abs{\cos z}^2 \\
-    &amp;= \cos^2 x \cosh^2 y + \sin^2 x \sinh^2 y \\
-    &amp;= \cos^2 x (1 + \sinh^2 y) + (1 - \cos^2 x) \sinh^2 y \\
-    &amp;= \cos^2 x + \sinh^2 y
-  \end{aligned}
-\]
-</div>
-
-<p>The derivation of \eqref{hint1a} from \eqref{hint2a} is left as
-exercise.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Found an Upper Bound for the Modulus of Legendre Polynomials]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/"/>
-    
-    <updated>2015-09-03T16:35:01+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials</id>
-    
-      <content type="html"><![CDATA[<h2 id="lemma">Lemma</h2>
-
-<p>Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have</p>
-
-<div class="myeqn">
-\begin{equation}
-\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{lemma}
-\end{equation}
-</div>
-
-<p>The trick is to treat the integral on the L.H.S. of \eqref{lemma} as a
-number.</p>
-
-<div class="myeqn">
-\begin{align}
-\int_{a}^{b} w(t) \ud t &amp;= r_0 e^{i\theta_0} \text{ for some } r \in
-\R \text{ and } \theta_0 \in [-\pi,\pi)
-\label{trick1}\\
-r_0 &amp;= \int_{a}^{b} e^{-i\theta_0} w(t) \ud t
-\label{trick2}
-\end{align}
-</div>
-
-<p>Then from \eqref{lemma} and \eqref{trick1}, it suffices to show that</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 = \abslr{r_0 e^{i\theta_0}} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{new_goal1}
-\end{equation}
-</div>
-
-<p>Since \eqref{trick2} consists of $e^{-i\theta_0}$, which is <em>absent</em>
-on the R.H.S. of \eqref{lemma} and \eqref{new_goal1}, we add it back.
-Thus, we need to show</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 \le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\label{new_goal2}
-\end{equation}
-</div>
-
-<p>Looking at \eqref{trick2} again, we’re almost there!  Using elementary
-properties of complex numbers and definite integrals for real-valued
-functions and the fact/definition that</p>
-
-<div class="myeqn">
-\begin{equation}
-\Re\left(\int_{a}^{b} w(t) \ud t\right) = \int_{a}^{b} \Re[w(t)] \ud
-t,
-\label{Re-int}
-\end{equation}
-</div>
-
-<p>we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-r_0 &amp;= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
-&amp;= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
-&amp;\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\end{aligned}
-\label{fin}
-\end{equation}
-</div>
-
-<p>Therefore, \eqref{new_goal2} is satisfied, so as \eqref{lemma}.</p>
-
-<h2 id="an-upper-bound-for-legendre-polynomials">An upper bound for Legendre polynomials</h2>
-
-<p>I have <em>never</em> evaluated</p>
-
-<div class="myeqn">
-\begin{equation}
-P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta,
-\label{pnx}
-\end{equation}
-</div>
-
-<p>where $-1 \le x \le 1$ and $n = 0,1,2,\dots$</p>
-
-<p>Applying \eqref{lemma}, one gets</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta\\
-&amp;\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
-&amp;= 1
-\end{aligned}
-\label{crux}
-\end{equation}
-</div>
-
-<p>because</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-&amp;\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-&amp;= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-&amp;\le \sqrt{x^2 + (1 - x^2)}\\
-&amp;= 1.
-\end{aligned}
-\label{norm-ub}
-\end{equation}
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Merge Failed?]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/"/>
-    
-    <updated>2015-09-03T14:34:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/03/git-merge-failed</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Octopress has recently removed Rubypants, so the automatic smartquotes
-<em>aren’t</em> supported any more.  However, after typing <code>git pull
-octopress master</code> on the <code>source</code> branch of the local working
-directory for this blog, <code>git</code> simply said that it’s “already
-up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
-show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
-If the former has the commits of the later, then
-<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
-the command <code>git merge octopress/master</code> again, and the version
-control system still said that there’s <em>no</em> unmerged commits from the
-<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>By using <code>git log --abbrev-commit --pretty=oneline --graph</code> and <code>git
-merge-base octopress/master HEAD</code>, I can quickly browse through the
-commits.  Finally, I identified the reason for this failed merge: I
-reverted the first merge of those two branches three months ago.  I
-belive that I can revert this reversion to achieve my desired merge.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:remote">
-
-      <p>Since Octopress 3 is currently in development, I still use the
-original version. <a href="#fnref:remote" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="To find a finite subcover of a countable open cover
-$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
-Bolzano–Weierstrass property &hellip;">
+  <meta name="description" content="In the derivation of the formula \[ \Res_{z=\infty} f(z) = -\Res_{z=0} \left [ \frac{1}{z^2} f \left ( \frac{1}{z} \right) \right ],
+\] I didn’t know &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,379 @@ Bolzano–Weierstrass property &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/12/24/residue-at-infinity/">Residue at Infinity</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-24T12:25:42+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:25 pm</span></time>
+        
+           | <a href="/blog/2015/12/24/residue-at-infinity/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/12/24/residue-at-infinity/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/12/24/residue-at-infinity/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the derivation of the formula</p>
+
+<div class="myeqn">
+\[
+  \Res_{z=\infty} f(z) = -\Res_{z=0} \left [ \frac{1}{z^2} f \left (
+  \frac{1}{z} \right) \right ],
+\]
+</div>
+
+<p>I <em>didn’t</em> know why the factor $\dfrac{1}{z^2}$ was needed.  Luckily,
+googling the title of this post, I quickly found two posts on
+Mathematics Stack Exchange about the intuition behind.<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup></p>
+
+<p>In fact, this factor appears when we make the substitution $z \mapsto
+\dfrac{1}{z}$.  For any simple closed contour $C$ and a complex-valued
+function $f$ which is analytic at the interior points of the region
+bounded by $C$ except for finitely many points,</p>
+
+<div class="myeqn">
+\[
+  \int_C f(z) \ud z = -\int_C \frac{1}{z^2} f \left ( \frac{1}{z}
+  \right) \ud z.
+\]
+</div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+
+      <ul>
+        <li><a href="http://math.stackexchange.com/q/571510">The residue at $\infty$</a></li>
+        <li><a href="http://math.stackexchange.com/q/629495">Intuition behind the residue at infinity</a></li>
+      </ul>
+      <p><a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/12/20/latex-template-for-simplex-tableaux/">$\rm \LaTeX$ Template for Simplex Tableaux</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-20T20:19:54+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:19 pm</span></time>
+        
+           | <a href="/blog/2015/12/20/latex-template-for-simplex-tableaux/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/12/20/latex-template-for-simplex-tableaux/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/12/20/latex-template-for-simplex-tableaux/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="goal">Goal</h2>
+
+<p>To provide a good-looking template of simplex tableaux for users of
+<a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
+
+<div class="myeqn">
+\[
+  \begin{array}{crrrrrrr|l}
+               &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \\ \hline
+           x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 \\
+           x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 \\
+           x_6 &amp;   0 &amp;   6 &amp;  -1 &amp;   0 &amp;   0 &amp;   1 &amp; -4^* &amp; -4M +8 \\
+           x_1 &amp;   1 &amp;   0 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    1 &amp;      M \\ \hline
+               &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    2 &amp;     2M \\
+  \text{ratio} &amp;     &amp;     &amp;   1 &amp;     &amp;     &amp;     &amp;  1/2 &amp;
+  \end{array}
+\]
+</div>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/12/20/latex-template-for-simplex-tableaux/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/12/20/learnt-laurent-series/">Learnt Laurent Series</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-20T18:51:05+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:51 pm</span></time>
+        
+           | <a href="/blog/2015/12/20/learnt-laurent-series/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/12/20/learnt-laurent-series/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday, I read the proof of Laurent’s Theorem in my complex
+variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
+
+<p><span class="myeqn">
+Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
+z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
+surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
+
+<div class="myeqn">
+\[
+  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
+  \abs{z - z_0} &lt; R_2).
+\]
+</div>
+
+<p><span>Image size:</span>
+<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
+<span id="lbl">300</span></p>
+
+<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
+  Your browser does not support SVG
+</object>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p><small>Source code: <a href="/downloads/code/Laurent/laurent.tex">$\rm \LaTeX$</a>, <a href="/downloads/code/Laurent/laurent.svg">SVG</a></small></p>
+
+<p>I was stuck at this point.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
+  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
+  = 0
+  \label{int}
+\end{equation}
+</div>
+
+<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
+including the circumference of $\gamma$.  Then the boundary of the
+region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
+third term in $\eqref{int}$ was needed.  I took me half an hour to
+figure out that the integrand is <em>not</em> simply $f(s)$, but with a
+denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
+I need to also include it as the boundary of the region of analyticity
+of the integrand.</p>
+
+<hr />
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/svg-resize-bar.js",function() {});
+})();
+</script>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:churchill">
+
+      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
+variables and applications (Vol. 7)</em>. (pp. 17). New York:
+McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">The $p$-th Root of a Convex Homogeneous Function of Degree $p$</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-11-30T01:17:25+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:17 am</span></time>
+        
+           | <a href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="backgroud">Backgroud</h2>
+
+<p>I was stuck at a question from a convex analysis book for more than a
+week.  I couldn’t directly find its solution.</p>
+
+<blockquote>
+  <p>Let $K$ be a convex cone in $\R^n$, $p \ge 1$.  The function $f: K
+\to [0,\infty)$ is homogeneous of degree $p$, i.e.</p>
+
+  <p>\[
+  f(\lambda x) = \lambda^p f(x),\quad \forall x \in K, \forall
+  \lambda \ge 0.
+\]</p>
+
+  <p>Suppose also that $f(x) &gt; 0 \,\forall x \in K \setminus \{x\}$.
+Show that $g(x) := [f(x)]^{\frac1p}$ is convex on K.</p>
+</blockquote>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>I saw a proof for the Minkowski inequality using the convexity of the
+function $x \mapsto x^p$ <a href="http://math.bard.edu/belk/math461/Inequalities.pdf">here</a>.  In fact, by replacing
+$\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we’re done.</p>
+
+<p>First, observe that</p>
+
+<div class="myeqn">
+\begin{equation}
+  g(\lambda x) = [f(\lambda x)]^{\frac1p} = \lambda g(x),\quad \forall
+  x \in K, \forall \lambda \ge 0
+  \label{homo}
+\end{equation}
+</div>
+
+<p>Therefore, it suffices to show that</p>
+
+<p>\begin{equation}
+  g(x + y) \le g(x) + g(y).
+  \label{goal}
+\end{equation}</p>
+
+<p>The assumption <span class="myeqn">$\norm{\vect{u}}_p =
+\norm{\vect{v}}_p = 1$</span> can be changed to <span class="myeqn">$g(x) = g(y) = 1$</span>.  Then we’ve <span class="myeqn">$f(x) = f(y) = 1$</span>.  By the convexity of $f$ on
+$K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
+
+<div class="myeqn">
+\begin{equation}
+  f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda)
+  f(y) \le 1.
+\end{equation}
+</div>
+
+<p>Since it’s given that $f(x) \ge 0 \,\forall x \in K$, we can say that</p>
+
+<p>\begin{equation}
+  g(\lambda x + (1 - \lambda) y) \le 1.
+  \label{trick}
+\end{equation}</p>
+
+<p>Finally, for any $u,v \in K$, we let</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{alignedat}{2}
+    \lambda &amp;{}= \frac{g(u)}{g(u) + g(v)} &amp;{} \qquad x &amp;{}= \frac
+    u{g(u)} \\
+    1 - \lambda &amp;{}= \frac{g(v)}{g(u) + g(v)}&amp;{} \qquad y &amp;{}= \frac
+    v{g(v)}.
+  \end{alignedat}
+  \label{coeff}
+\end{equation}
+</div>
+
+<p>Making use of \eqref{homo}, we substitute \eqref{coeff} into
+\eqref{trick}.</p>
+
+<div class="myeqn">
+\begin{align*}
+  g \left( \frac{g(u)}{g(u) + g(v)} \frac u{g(v)} + \frac{g(v)}{g(u) +
+  g(v)} \frac v{g(v)} \right) &amp;\le 1 \\
+  g \left(\frac u{g(u)+g(v)} + \frac v{g(u)+g(v)} \right) &amp;\le 1 \\
+  g \left(\frac{u + v}{g(u) + g(v)} \right) &amp;\le 1 \\
+  g(u + v) &amp;\le g(u) + g(v)
+\end{align*}
+</div>
+
+<p>We get \eqref{goal} at last.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -552,360 +924,6 @@ $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/05/revised-absolute-convergence/">Revised Absolute Convergence</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-05T22:05:03+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:05 pm</span></time>
-        
-           | <a href="/blog/2015/09/05/revised-absolute-convergence/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/05/revised-absolute-convergence/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I am <em>not</em> so satisfied with this the following
-<em>definition</em>.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
-
-<div class="myeqn">
-\[
-  e^{i\theta} := \cos \theta + i \sin \theta
-\]
-</div>
-
-<p>I remembered the proof for convergence of</p>
-
-<div class="myeqn">
-\[
-  e^{x} := \sum_{i = 0}^{\infty} \frac{x^i}{i!}
-\]
-</div>
-
-<p>for real numbers.  I <em>didn’t</em> know if this can be extended to complex
-numbers.  Therefore, I thought about the absolute convergence of
-complex-valued series.  It’s expected that many proofs are similar to
-their real counterparts, such as the result that absolute convergence
-implies convergence.  In real numbers, this result makes use of the
-Triangle Inequalty and Cauchy Convergence Criterion, and the key step
-is</p>
-
-<div class="myeqn">
-\[
-  \abslr{\sum_{k = m + 1}^{n} a_k} \le \sum_{k = m + 1}^{n} \abs{a_k}.
-\]
-</div>
-
-<p>Since the proof of the above statement for real numbers requires
-Bolzano–Weierstrass Theorem, which is about the sequential
-compactness of sequences of real numbers, I was <em>stuck</em> at this point.</p>
-
-<p><span class="myeqn">
-Finally, I read another book, which said that if $(z_n)$ is a Cauchy
-sequence, and $\forall n \in \N$, $u_n := \Re(z_n)$ and $v_n :=
-\Im(z_n)$, $\forall \varepsilon &gt; 0, \exists N \in \N$ such that
-$\forall m,n \le N$,
-</span></p>
-
-<div class="myeqn">
-\begin{align*}
-  \abs{u_n - u_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon, \\
-  \abs{v_n - v_m} &amp;\le \abs{z_n - z_m} &lt; \varepsilon.
-\end{align*}
-</div>
-
-<p>Then $(u_n)$ and $(v_n)$ are real-valued Cauchy sequences, which are
-convergent.<sup id="fnref:ahlfors"><a href="#fn:ahlfors" class="footnote">2</a></sup>  This guarantees the convergence of $(z_n)$ in
-the complex plane.</p>
-
-<p>To establish the absolute convergence of $\exp z$, we need the root
-test.  The proofs can be borrowed from their counterparts in the set
-of real numbers.  Ahlfors leaves the proof for <span class="myeqn">$\sqrt[n]{n!} \to \infty$</span> to readers.  I find
-<a href="http://math.stackexchange.com/a/514397">Dan’s proof</a> pretty easy.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:churchill">
-
-      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
-variables and applications (Vol. 7)</em>. (pp. 17). New York:
-McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:ahlfors">
-
-      <p>Ahlfors, L. (1979). <em>Complex analysis</em>. (pp. 34). Auckland:
-McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Stuck at Two Trigonometric Inequalities</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-04T18:26:48+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:26 pm</span></time>
-        
-           | <a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>Suppose that $z = x + iy, x,y \in \R$.  Then $\abs{\sin z} \ge
-\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-03T16:35:01+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:35 pm</span></time>
-        
-           | <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="lemma">Lemma</h2>
-
-<p>Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have</p>
-
-<div class="myeqn">
-\begin{equation}
-\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{lemma}
-\end{equation}
-</div>
-
-<p>The trick is to treat the integral on the L.H.S. of \eqref{lemma} as a
-number.</p>
-
-<div class="myeqn">
-\begin{align}
-\int_{a}^{b} w(t) \ud t &amp;= r_0 e^{i\theta_0} \text{ for some } r \in
-\R \text{ and } \theta_0 \in [-\pi,\pi)
-\label{trick1}\\
-r_0 &amp;= \int_{a}^{b} e^{-i\theta_0} w(t) \ud t
-\label{trick2}
-\end{align}
-</div>
-
-<p>Then from \eqref{lemma} and \eqref{trick1}, it suffices to show that</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 = \abslr{r_0 e^{i\theta_0}} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{new_goal1}
-\end{equation}
-</div>
-
-<p>Since \eqref{trick2} consists of $e^{-i\theta_0}$, which is <em>absent</em>
-on the R.H.S. of \eqref{lemma} and \eqref{new_goal1}, we add it back.
-Thus, we need to show</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 \le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\label{new_goal2}
-\end{equation}
-</div>
-
-<p>Looking at \eqref{trick2} again, we’re almost there!  Using elementary
-properties of complex numbers and definite integrals for real-valued
-functions and the fact/definition that</p>
-
-<div class="myeqn">
-\begin{equation}
-\Re\left(\int_{a}^{b} w(t) \ud t\right) = \int_{a}^{b} \Re[w(t)] \ud
-t,
-\label{Re-int}
-\end{equation}
-</div>
-
-<p>we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-r_0 &amp;= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
-&amp;= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
-&amp;\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\end{aligned}
-\label{fin}
-\end{equation}
-</div>
-
-<p>Therefore, \eqref{new_goal2} is satisfied, so as \eqref{lemma}.</p>
-
-<h2 id="an-upper-bound-for-legendre-polynomials">An upper bound for Legendre polynomials</h2>
-
-<p>I have <em>never</em> evaluated</p>
-
-<div class="myeqn">
-\begin{equation}
-P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta,
-\label{pnx}
-\end{equation}
-</div>
-
-<p>where $-1 \le x \le 1$ and $n = 0,1,2,\dots$</p>
-
-<p>Applying \eqref{lemma}, one gets</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta\\
-&amp;\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
-&amp;= 1
-\end{aligned}
-\label{crux}
-\end{equation}
-</div>
-
-<p>because</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-&amp;\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-&amp;= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-&amp;\le \sqrt{x^2 + (1 - x^2)}\\
-&amp;= 1.
-\end{aligned}
-\label{norm-ub}
-\end{equation}
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-03T14:34:31+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:34 pm</span></time>
-        
-           | <a href="/blog/2015/09/03/git-merge-failed/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/03/git-merge-failed/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>Octopress has recently removed Rubypants, so the automatic smartquotes
-<em>aren’t</em> supported any more.  However, after typing <code>git pull
-octopress master</code> on the <code>source</code> branch of the local working
-directory for this blog, <code>git</code> simply said that it’s “already
-up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
-show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
-If the former has the commits of the later, then
-<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
-the command <code>git merge octopress/master</code> again, and the version
-control system still said that there’s <em>no</em> unmerged commits from the
-<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/09/03/git-merge-failed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -920,7 +938,12 @@ control system still said that there’s <em>no</em> unmerged commits from the
   
     <section>
   <h1>About Me (Brief)</h1>
-  <img src="/images/avatar256.png" alt="My Avatar"/>
+  <a href="http://stackexchange.com/users/3841408/gnu-supporter">
+    <img src="http://stackexchange.com/users/flair/3841408.png"
+    width="208" height="58" alt="profile for GNU Supporter on Stack
+    Exchange, a network of free, community-driven Q&amp;A sites"
+    title="profile for GNU Supporter on Stack Exchange, a network of
+    free, community-driven Q&amp;A sites" /></a>
   <p><a href="/about">Here</a>'s a more detailed version.</p>
   <ol>
     <li>A free software supporter</li>
@@ -944,13 +967,13 @@ control system still said that there’s <em>no</em> unmerged commits from the
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (20)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (21)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (46)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (47)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octave/'>octave (2)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -969,23 +992,23 @@ control system still said that there’s <em>no</em> unmerged commits from the
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/16/generate-latex-code-for-octave-matrices/">Generate $\rm \LaTeX$ Code for Octave Matrices</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/">Generate Simplex Tableaux With Octave</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/">Simple MathJax Template for Basic Linear Programs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange/">Distribution of User Reputation on Math Stack Exchange</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/02/ubuntu-grey-screen/">Ubuntu Grey Screen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/28/got-a-warning-from-octave/">Got a Warning From Octave</a>
       </li>
     
   </ul>

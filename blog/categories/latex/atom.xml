@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-10T22:55:27+08:00</updated>
+  <updated>2016-01-16T17:03:50+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,124 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
+    
+    <updated>2016-01-16T15:33:39+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<ul>
+  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
+  typeset math expressions.</li>
+  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
+  calculations for a quick and correct response on Mathematics Stack
+  Exchange.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
+Mathematics Stack Exchange.</p>
+
+<p>For any given matrix $A$ in Octave,</p>
+
+<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
+A =
+
+   1   2   2
+   2   3   4
+   4   4   2
+</code></pre>
+
+<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
+
+<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>so that one gets</p>
+
+<div class="myeqn">
+\[
+  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
+quite useful.  I issued the first command to see the result.</p>
+
+<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
+ans = 1 2 2\\
+2 3 4\\
+4 4 2
+</code></pre>
+
+<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
+verified that I was right.  To fix this, I extracted the function
+<code>mat2str(A)</code> in the middle of this command to see the results.  From
+its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
+standed for “string replace”.  Then, I changed the double-quoted comma
+in the second argument of function <code>strrep</code> to a double-quoted
+whitespace character, and got the anticipated result.</p>
+
+<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
+";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
+ans = \begin{bmatrix}
+1&amp;2&amp;2\\
+2&amp;3&amp;4\\
+4&amp;4&amp;2
+\end{bmatrix}
+</code></pre>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
+can work it out by searching and testing in several hours, but I
+<em>don’t</em> have the time to do so.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="math">Math</h3>
+
+<p>I revised some definitions in linear algebra.</p>
+
+<ul>
+  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
+  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
+</ul>
+
+<h3 id="gnu-octave">GNU Octave</h3>
+
+<ul>
+  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
+  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
+  multiple replacements.</li>
+  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
+  inside.</li>
+</ul>
+
+<h3 id="grep">Grep</h3>
+
+<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
+(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
+over 1270 results.  I tried adding single/double quotes and escaping
+the square brackets with a backslash, but I faied again.  Finally, I
+googled “grep escape character” for a solution.  Since then, I know
+that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
+string.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -358,53 +476,6 @@ backslash ‘\’ behind the loop variable. <a href="#fnref:pp_for" class="rever
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Creating $\rm \LaTeX$ Résumés on Ubuntu]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/12/11/creating-latex-resumes-on-ubuntu/"/>
-    
-    <updated>2014-12-11T19:31:23+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/12/11/creating-latex-resumes-on-ubuntu</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I created a résumé using <a href="http://miktex.org">Mik$\rm \TeX$</a>.  Simply copy any
-sample document of the “res” class and compile it.  Things will run
-smoothly in Mik$\rm \TeX$.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="fancybox center" src="/images/posts/LaTeXResume/err.png" width="300" title="‘Figure 1’ ‘err’" ></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I glanced through the section “<a href="https://help.ubuntu.com/community/LaTeX#Installing_packages_manually">Installing packages manually</a>” in
-Ubuntu’s <em>Community Help Wiki</em>, and issued the following commands,
-after having <code>res.cls</code> <a href="http://www.ctan.org/pkg/res" title="res -- A résumé class">downloaded from CTAN</a>.</p>
-
-<pre class="cliUB"><code>$ mkdir -p ~/texmf/res
-$ mv res.cls ~/texmf/res/
-$ texhash ~/texmf
-texhash: Updating /home/owner/texmf/ls-R... 
-texhash: Done.
-</code></pre>
-
-<h2 id="another-problem-experienced">Another problem experienced</h2>
-
-<p>I used Git to manage <code>res2.tex</code> on both *nix and M$ Win*.
-Sometimes, I used public computers which <em>didn’t</em> have Git and Vim.
-As a result, I edit the $\rm \LaTeX$ résumé with M$ Notepad.  I know
-that the *nix newline character <em>won’t</em> break a line in M$ Notepad.
-However, I <em>didn’t</em> expect that the ‘^M’ character would give an extra
-horizontal space in the resulting PDF document compiled by $\rm
-\LaTeX$.</p>
-
 ]]></content>
     
   </entry>

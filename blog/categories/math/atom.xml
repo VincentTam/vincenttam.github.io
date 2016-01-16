@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-01-10T22:55:27+08:00</updated>
+  <updated>2016-01-16T17:03:50+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,152 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
+    
+    <updated>2016-01-16T15:33:39+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<ul>
+  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
+  typeset math expressions.</li>
+  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
+  calculations for a quick and correct response on Mathematics Stack
+  Exchange.</li>
+</ul>
+
+<h2 id="problem">Problem</h2>
+
+<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
+Mathematics Stack Exchange.</p>
+
+<p>For any given matrix $A$ in Octave,</p>
+
+<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
+A =
+
+   1   2   2
+   2   3   4
+   4   4   2
+</code></pre>
+
+<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
+
+<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
+
+<p>so that one gets</p>
+
+<div class="myeqn">
+\[
+  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
+\]
+</div>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
+quite useful.  I issued the first command to see the result.</p>
+
+<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
+ans = 1 2 2\\
+2 3 4\\
+4 4 2
+</code></pre>
+
+<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
+verified that I was right.  To fix this, I extracted the function
+<code>mat2str(A)</code> in the middle of this command to see the results.  From
+its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
+standed for “string replace”.  Then, I changed the double-quoted comma
+in the second argument of function <code>strrep</code> to a double-quoted
+whitespace character, and got the anticipated result.</p>
+
+<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
+";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
+ans = \begin{bmatrix}
+1&amp;2&amp;2\\
+2&amp;3&amp;4\\
+4&amp;4&amp;2
+\end{bmatrix}
+</code></pre>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
+can work it out by searching and testing in several hours, but I
+<em>don’t</em> have the time to do so.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="math">Math</h3>
+
+<p>I revised some definitions in linear algebra.</p>
+
+<ul>
+  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
+  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
+</ul>
+
+<h3 id="gnu-octave">GNU Octave</h3>
+
+<ul>
+  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
+  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
+  multiple replacements.</li>
+  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
+  inside.</li>
+</ul>
+
+<h3 id="grep">Grep</h3>
+
+<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
+(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
+over 1270 results.  I tried adding single/double quotes and escaping
+the square brackets with a backslash, but I faied again.  Finally, I
+googled “grep escape character” for a solution.  Since then, I know
+that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
+string.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Some Families of Open Sets in $\Bbb R$]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r/"/>
+    
+    <updated>2016-01-15T20:22:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r</id>
+    
+      <content type="html"><![CDATA[<p>Two days ago, I read a proof about a basic property of open sets in
+Royden’s <em>Real Analysis</em>.  It says that each open set in $\Bbb R$ is a
+countable union of disjoint open intervals.  Reading the book, I got
+stuck at the countability.  I tried to think of a map between each
+open interval and a rational number, but I <em>didn’t</em> know <em>which one to
+choose</em>.  It took me half an hour to understand from the words that
+the <em>one single</em> rational number inside the open interval can be
+arbitrarily chosen.</p>
+
+<p>Yesterday, I was puzzled at $\mathcal{T} \subseteq \mathcal{B}$ for a
+while.  On the LHS, I came up with “arbitrary union”; on the RHS, I
+thought of “countable union”.  It seemed that “countable union” is
+more restrictive than “arbitrarily union”.  My teacher said that this
+is <em>by definition</em>, and I realized that I forgot the definition of
+Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
+\mathcal{T}$.  Finally, I get it.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -254,116 +400,6 @@ $K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
 </div>
 
 <p>We get \eqref{goal} at last.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Queue in $T_1$ Spaces]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces/"/>
-    
-    <updated>2015-09-28T18:35:57+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces</id>
-    
-      <content type="html"><![CDATA[<p><span class="myeqn">
-To find a finite subcover of a countable open cover
-$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
-Bolzano–Weierstrass property, one has to pick a sequence in $X$ in
-order to apply the Bolzano–Weierstrass property.  In order to build a
-link between the sequence with the countable open cover, I picked a
-point $x_n$ from each $U_n$, and then build an infinite set $A$
-consisting of $x_n \forall n \in \N$.  I knew that $A$ is compact, but
-what does that do with the countable open cover?
-</span></p>
-
-<p>Reading my notes again, I realised the trick of choosing $x_q$: it
-<em>shouldn’t</em> be chosen from $U_k$ with index $k$ which is smaller than
-<span class="myeqn">$n_q$.  In other words, $x_q \in
-U_{n_q}$ and $x_q \notin U_k \forall k &lt; n_q$.  If we failed to make
-such choices, that means we don't have enough $U_k$'s and $x_q$'s,
-meaning that $X$ is the finite union of $U_k$'s and it's countably
-compact.  Otherwise, we continue this process to get an infinite set
-$A$ can be set up in the same way: $A := \left\{x_q \in X : q \in \N
-\right\}$.</span>  One will see that $A$ has <em>no</em> cluster point,
-contracdicting the Bolzano–Weierstrass property of $X$.</p>
-
-<p><span class="myeqn">
-Assume that $x \in X$.  $\exists m \in \N$ so that $x \in U_m$ and $x
-\notin U_j \forall j &lt; m$.  I was puzzled at the line $n_N &lt; m \le
-n_{N + 1}$.  Using the analogy of "queuing", I understood what's going
-on.
-</span></p>
-
-<picture class="fancybox" title="a queue of open sets in the open
-  countable cover">
-  <source srcset="/images/posts/QT1/q-800.jpg" media="(min-width: 800px)" />
-  <source srcset="/images/posts/QT1/q-600.jpg" media="(min-width: 600px)" />
-  <img alt="a queue of open sets in the open countable cover" src="https://vincenttam.github.io/images/posts/QT1/q-300.jpg" />
-</picture>
-
-<p><span class="myeqn">
-Since $X$ is $T_1$, which is equivalent to the closeness of
-singletons, deleting finitely many singletons from an open set won't
-change the openness of the set.  We have a neighbourhood $V := U_m
-\setminus \left\{x_j : j \le N \text{ and } x \ne x_j \right\}$ of $x$
-which intersects $A$ at no more than one point.  Thus, there exists a
-deleted neighbourhood $V \setminus \{x\}$ of $x$ so that $V \cap A
-\setminus \{x\} = \varnothing$.  Hence, $\forall x \in X, x \notin
-A'$.
-</span></p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Mountain Climbing in Lindelöf $T_3$ Spaces]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/"/>
-    
-    <updated>2015-09-28T15:39:38+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>To deduce that <a href="/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
-the arguments of the proof in the previous post, but I <em>couldn’t</em> do
-it.  Therefore, I read another proof about the normality of regular
-Lindelöf spaces instead.</p>
-
-<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
-
-<p><span class="myeqn">
-Suppose that $X$ is the given space, and $H$ and $K$ are the given
-sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
-\omega\right\}$ are open countable subcovers of $H$ and $K$
-respectively.  On p.91 in Davis's Topology book, I saw the following
-equations.
-</span></p>
-
-<div class="myeqn">
-\begin{alignat*}{2}
-  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
-  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
-  (\overline{U_0} \cup \overline{U_1}) \\
-  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
-  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
-  \overline{U_2}) \\
-  \vdots \\
-  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
-  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
-  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
-  V_n
-\end{alignat*}
-</div>
-
-<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
-<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
-reading the symbols.  Luckily, an analogy of climbing mounts is given.
-Therefore, I finally understood how the open subsets $U_n$’s and
-$V_n$’s are built step-by-step while preserving disjointness and
-openness.</p>
 
 ]]></content>
     

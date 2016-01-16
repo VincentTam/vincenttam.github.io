@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="A week ago, I came up with an injective, but not surjective
-homomorphism which mapped a field to the same field: $\phi: \Q(e) \to
-\Q(e)$ defined by &hellip;">
+  <meta name="description" content="Background Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,616 @@ homomorphism which mapped a field to the same field: $\phi: \Q(e) \to
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/04/10/compared-two-poisson-variables/">Compared Two Poisson Variables</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-10T13:21:37+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:21 pm</span></time>
+        
+           | <a href="/blog/2015/04/10/compared-two-poisson-variables/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/04/10/compared-two-poisson-variables/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<div><script src="https://gist.github.com/c27c38c49fe8de17c815.js"></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
+
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
+
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
+
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/">Calculating the Volume of a Triangular Pyramid in a Hard Way</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-07T16:07:49+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:07 pm</span></time>
+        
+           | <a href="/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/04/07/calculating-the-volume-of-a-triangular-pyramid-in-a-hard-way/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>There is an easy way of calculating the volume of $\{(x,y,z) \in
+\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
+permutation of $x,y,z$.<sup id="fnref:easy_vol"><a href="#fn:easy_vol" class="footnote">1</a></sup>  This can be easily generalized to
+$n$ dimension.</p>
+
+<h2 id="another-way-using-multiple-integrals">Another way using multiple integrals</h2>
+
+<div class="myeqn">
+\[
+\begin{split}
+&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
+\forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
+\\
+&amp; \text{Volume of } A \\
+=&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
+\ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
+\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
+\ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
+2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
+x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
+\int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
+3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+&amp; \vdots \\
+=&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\
+=&amp; \frac{t^n}{n!}
+\end{split}
+\]
+</div>
+
+<h2 id="why-use-this-method">Why use this method?</h2>
+
+<p>To calculate its centre of mass.</p>
+
+<div class="myeqn">
+\[
+\begin{split}
+&amp; \text{First component of its centre of mass} \\
+=&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
+x_2 \ud x_1 \\
+=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
+x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
+\cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
+\ud x_1 \\
+=&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
+1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
+\right) \\
+=&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\
+=&amp; \frac{t}{n + 1}
+\end{split}
+\]
+</div>
+
+<p>By symmetry, we conclude that the center of mass is $(\frac{t}{n + 1},
+\frac{t}{n + 1}, \ldots, \frac{t}{n + 1}) \in \R^n$.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:easy_vol">
+
+      <p>Simplex. (2015, March 29). In <em>Wikipedia, The Free Encyclopedia</em>.
+Retrieved 15:34, April 6, 2015, from
+<a href="http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423">http://en.wikipedia.org/w/index.php?title=Simplex&amp;oldid=654074423</a> <a href="#fnref:easy_vol" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Calculate the Expected Waiting Time in a Hard Way</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-06T22:18:03+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:18 pm</span></time>
+        
+           | <a href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/04/06/calculate-the-expected-waiting-time-in-a-hard-way/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>If one assumes that servers $X_1$ and $X_2$ has exponential service
+times with rate $\lambda_1$ and $\lambda_2$ respectively, (i.e.
+$X_i \sim \Exp(\lambda_i), i = 1,2$), then one can follow the
+standard arguments and say that the waiting time $\min\left\{ X_1,
+X_2 \right\} \sim \Exp(\lambda_1 + \lambda_2)$, so the expected
+waiting time is $1/(\lambda_1 + \lambda_2)$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried finding the expected waiting time by conditioning on $X_1 - X_2$.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \Pr(X_1 &gt; X_2) \\
+    =&amp; \int_{0}^{\infty} p_{X_1}(x_1) \Pr(X_2 &lt; x_1) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} (1 -
+    e^{-\lambda_2 x_1}) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 e^{-\lambda_1 x_1} \ud x_1 -
+    \int_{0}^{\infty} \lambda_1 e^{-(\lambda_1 + \lambda_2) x_1} \ud
+    x_1 \\
+    =&amp; 1 + \left. \frac{\lambda_1}{\lambda_1 + \lambda_2}
+    e^{-(\lambda_1 + \lambda_2) x_1} \right|_{0}^{\infty} \\
+    =&amp; 1 - \frac{\lambda_1}{\lambda_1 + \lambda_2} \\
+    =&amp; \frac{\lambda_2}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:pr_min}
+\end{equation}
+</div>
+
+<p>Similarly, one has $\Pr(X_1 \le X_2) = \lambda_1/(\lambda_1 +
+\lambda_2)$.</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{split}
+&amp; \E[\left\{ X_1, X_2 \right\}] \\
+=&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] \Pr(X_1 &gt; X_2)
+\\
++&amp; \E[\min\left\{ X_1, X_2 \right\} \mid X_1 \le X_2] \Pr(X_1 \le X_2)
+\\
+=&amp; \E[X_2] \Pr(X_1 &gt; X_2) + \E[X_1] \Pr(X_1 \le X_2) \\
+=&amp; \frac{1}{\lambda_2} \frac{\lambda_2}{\lambda_1 + \lambda_2} +
+\frac{1}{\lambda_1} \frac{\lambda_1}{\lambda_2 + \lambda_1} \\
+=&amp; \frac{2}{\lambda_1 + \lambda_2}
+\end{split}
+\label{eq:wrong}
+\end{equation}
+</div>
+
+<p>This is <em>different</em> from what we expect.  <strong>What’s wrong with the
+above calculation?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I really thought about the meaning of $\E[\min\left\{ X_1, X_2
+\right\} \mid X_1 &gt; X_2]$, and find out that this conditional
+expectation <em>won’t</em> be helpful because</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, X_2 \right\} \mid X_1 &gt; X_2] =
+  \frac{\int_{0}^{\infty} \int_{0}^{x_1} x_2 \ud x_2 \ud x_1}{\Pr(X_1
+  &gt; X_2)}
+\]
+</div>
+
+<p>Actually, one can divide it into two halves.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\
+    =&amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
+    +&amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+	e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2
+  \end{split}
+  \label{eq:head}
+\end{equation}
+</div>
+
+<p>By observing the symmetry between the subscripts ‘1’ and ‘2’ in the
+above equation, we only need to evaluate <em>one</em> of them.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_1} x_2 \lambda_1 \lambda_2
+    e^{-\lambda_1 x_1 - \lambda_2 x_2} \ud x_2  \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \int_{0}^{x_1} x_2 e^{-\lambda_2 x_2} \ud x_2 \right) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    \left. -x_2 \cdot \frac{e^{-\lambda_2 x_2}}{\lambda_2}
+    \right|_{x_2 = 0}^{x_2 = x_1} + \int_{0}^{x_1} \frac{e^{-\lambda_2
+    x_2}}{\lambda_2} \ud x_2 \right) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} - \left.
+    \frac{e^{-\lambda_2 x_2}}{\lambda_2^2} \right|_{x_2 = 0}^{x_2 =
+    x_1} \right) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} \lambda_1 \lambda_2 e^{-\lambda_1 x_1} \left(
+    -x_1 \cdot \frac{e^{-\lambda_2 x_1}}{\lambda_2} + \frac{1 -
+    e^{-\lambda_2 x_1}}{\lambda_2^2} \right) \ud x_1 \\
+    =&amp; \int_{0}^{\infty} -\lambda_1 x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1} \ud x_1 + \int_{0}^{\infty} \frac{\lambda_1}{\lambda_2}
+    (e^{-\lambda_1 x_1} - e^{-(\lambda_1 + \lambda_2) x_1}) \ud x_1
+    \\
+    =&amp; \lambda_1 \left( \left. \frac{x_1 e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right|_{0}^{\infty} -
+    \int_{0}^{\infty} \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{\lambda_1 + \lambda_2} \right) \\
+    +&amp; \frac{\lambda_1}{\lambda_2} \left( \left. -\frac{e^{\lambda_1
+    x_1}}{\lambda_1} \right|_{0}^{\infty} + \left.
+    \frac{e^{-(\lambda_1 + \lambda_2) x_1}}{\lambda_1 + \lambda_2}
+    \right|_{0}^{\infty} \right) \\
+    =&amp; \lambda_1 \left( 0 + \left. \frac{e^{-(\lambda_1 + \lambda_2)
+    x_1}}{(\lambda_1 + \lambda_2)^2} \right|_{0}^{\infty} \right) +
+    \frac{\lambda_1}{\lambda_2} \left( \frac{1}{\lambda_1} -
+    \frac{1}{\lambda_1 + \lambda_2} \right) \\
+    =&amp; -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)}
+  \end{split}
+  \label{eq:half_int}
+\end{equation}
+</div>
+
+<p>Similarly, one has</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \int_{0}^{\infty} \int_{0}^{x_2} x_1 \lambda_2 \lambda_1
+    e^{-\lambda_2 x_2 - \lambda_1 x_1} \ud x_1  \ud x_2 \\
+    =&amp; -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+    \lambda_1)}.
+  \end{split}
+  \label{eq:half_int2}
+\end{equation}
+</div>
+
+<p>Substitute \eqref{eq:half_int} and \eqref{eq:half_int2} into
+\eqref{eq:head}.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \begin{split}
+    &amp; \E[\min\left\{ X_1, X_2 \right\}] \\
+    =&amp; \left( -\frac{\lambda_1}{(\lambda_1 + \lambda_2)^2} +
+    \frac{1}{\lambda_2} - \frac{\lambda_1}{\lambda_2 (\lambda_1 +
+    \lambda_2)} \right) \\
+    +&amp; \left( -\frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} +
+    \frac{1}{\lambda_1} - \frac{\lambda_2}{\lambda_1 (\lambda_2 +
+    \lambda_1)} \right) \\
+    =&amp; -\left( \frac{\lambda_1}{(\lambda_2 + \lambda_1)^2} +
+    \frac{\lambda_2}{(\lambda_2 + \lambda_1)^2} \right) + \left(
+    \frac{1}{\lambda_1} + \frac{1}{\lambda_2} \right) \\
+    -&amp; \left( \frac{\lambda_1}{\lambda_2 (\lambda_1 + \lambda_2)} +
+    \frac{\lambda_2}{\lambda_1 (\lambda_2 + \lambda_1)} \right) \\
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{\lambda_1 +
+    \lambda_2}{\lambda_1 \lambda_2} - \frac{\lambda_1^2 +
+    \lambda_2^2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{(\lambda_1 +
+    \lambda_2)^2 - (\lambda_1^2 + \lambda_2^2)}{\lambda_1 \lambda_2
+    (\lambda_1 + \lambda_2)} \\
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2\lambda_1
+    \lambda_2}{\lambda_1 \lambda_2 (\lambda_1 + \lambda_2)} \\
+    =&amp; -\frac{1}{\lambda_1 + \lambda_2} + \frac{2}{\lambda_1 +
+    \lambda_2} \\
+    =&amp; \frac{1}{\lambda_1 + \lambda_2}
+  \end{split}
+  \label{eq:fin}
+\end{equation}
+</div>
+
+<p>This is consistent with what we expect.  I finally understand what’s
+wrong in \eqref{eq:wrong}: $X_1$ <em>isn’t</em> independent from $X_1 -
+X_2$.</p>
+
+<h2 id="generalization">Generalization</h2>
+
+<p>By induction, we can generalize \eqref{eq:fin} to the expected waiting
+time for $n$ servers in parallel: if $X_i \sim \Exp(\lambda_i)
+\forall 1 \le i \le n$, then</p>
+
+<div class="myeqn">
+\[
+  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
+  \lambda_k}.
+\]
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/">Two Diagrams Illustrating the Isomorphism Extension Theorem</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-28T17:33:58+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:33 pm</span></time>
+        
+           | <a href="/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/03/28/two-diagrams-illustrating-the-isomorphism-extension-theorem/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two weeks ago, I had proved that any two algebraic closures of a field
+are isomorphic to each other in a homework problem.  To finish this
+problem, I opened my note book to view the diagram for the Isomorphism
+Extension Theorem (<abbr title="Isomorphism Extension Theorem">IET</abbr>) drawn before I had understood the proof of the
+existence of algebraic closure.<sup id="fnref:pp-eac"><a href="#fn:pp-eac" class="footnote">1</a></sup></p>
+
+<object type="image/svg+xml" data="/downloads/code/svgpan-1.2.2/IET.svg" width="300" height="300">
+  Your browser does not support SVG
+</object>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2Fsvgpan-1.2.2%2FIET.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p><small>Drag the figure to translate it, and scroll to enlarge/reduce
+it.<sup id="fnref:tech"><a href="#fn:tech" class="footnote">2</a></sup><br />
+Source code: <a href="/downloads/code/IET.tex">$\rm \LaTeX$</a>, <a href="/downloads/code/svgpan-1.2.2/IET.svg">SVG</a></small></p>
+
+<p>After I had read E. Artin’s construction of an algebraic closure of a
+field, I had also read the proof of <abbr title="Isomorphism Extension Theorem">IET</abbr>.<sup id="fnref:pp-artin"><a href="#fn:pp-artin" class="footnote">3</a></sup>  After that, I
+thought I understood this theorem.  However, I <em>couldn’t</em> figure out
+how to make use of the above diagram to do this question.</p>
+
+<div class="myeqn">
+\begin{equation*}\begin{CD}
+     @.              \overline{F'}\\
+@.                   @AAA\\
+E    @&gt;\tau&gt;\cong&gt;   \tau[E]\\
+@AAA                 @AAA\\
+F    @&gt;\sigma&gt;\cong&gt; F'
+\end{CD}\end{equation*}
+</div>
+
+<p><small>I <em>can’t</em> add dashed arrow for $\tau$.</small></p>
+
+<p>I then opened John B. Fraleigh’s <em>A First Course in Abstract Algebra</em>
+and saw two diagrams which illustrated the <abbr title="Isomorphism Extension Theorem">IET</abbr>.  In those two figures,
+there’re only vertical and horizontal lines, <em>no</em> oblique lines were
+found.</p>
+
+<p>Using these diagrams, I successfully answered this question by drawing
+a tower of five levels of algebraic extensions.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp-eac">
+
+      <p><a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/"><em>Read a Proof of Existence of Algebraic Closure</em></a> on Blog 1. <a href="#fnref:pp-eac" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:tech">
+
+      <p>When it comes to drawing commutative diagrams, MathJax only
+supports AMScd, which <em>doesn’t</em> support diagonal arrows.
+Therefore, I used <code>tikz-cd</code> according to the last sentence of
+<a href="http://www.jmilne.org/not/CDGuide.html"><em>Guide to Commutative Diagram Packages</em></a> by J.S. Milne
+to produce a standalone diagram in PDF format first.  Then I
+converted it to an SVG file using the procedures described in the
+last paragraph in <a href="/blog/2014/06/21/export-pdf-to-svg/" title="Export PDF to SVG">my earlier post about pdf2svg</a> on Blog 1.
+Finally, I added the dragging and scrolling features to the SVG
+files after re-reading <a href="/blog/2014/08/02/zooming-svg-in-web-browsers/"><em>Zooming SVG in Web Browsers</em></a> on
+Blog 1. <a href="#fnref:tech" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:pp-artin">
+
+      <p>Same as footnote 1. <a href="#fnref:pp-artin" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -582,276 +1191,6 @@ that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T19:26:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/evaluated-a-convolution-integral/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/evaluated-a-convolution-integral/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{\infty} f_{X_{i_1}}(z)
-f_{X_{i_2}}(x - z) \ud z \\
-=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
-z)}) \ud z \\
-=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z \\
-=&amp; \lambda^2 x e^{-\lambda x}
-\end{aligned}
-\]
-</div>
-
-<p>Using the same technique, one can prove the claim by induction.
-What’s written above is the base case.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
-X_{i_{k + 1}}}(x) \\
-=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) \\
-=&amp; \int_{-\infty}^{\infty} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k
-+ 1}}}(x - z) \ud z \\
-=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
-1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z \\
-=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
-1} \ud z \\
-=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} \\
-=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
-\end{aligned}
-\]
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/another-bod-on-win-star-7/">Another BoD on Win* 7</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T19:01:39+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:01 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/another-bod-on-win-star-7/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/another-bod-on-win-star-7/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/another-bod-on-win-star-7/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday afternoon, I switched on a public computer.  After the
-desktop had been loaded, a dialog box popped up in the middle of the
-screen.</p>
-
-<picture class="fancybox" title="Recoverd from a BoD">
-  <source srcset="/images/posts/BoD/fig1.png" media="(min-width: 450px)" />
-  <img alt="got a BoD" src="/images/posts/BoD/fig1-s.png" />
-</picture>
-
-<p>I compared this dialog box with the one that I saw on my laptap a
-month ago.</p>
-
-<picture class="fancybox" title="Recoverd from a BoD">
-  <source srcset="/images/posts/BoD/fig.png" media="(min-width: 370px)" />
-  <img alt="got a BoD" src="/images/posts/BoD/fig-s.png" />
-</picture>
-
-<p>The difference between these two dialog boxes is the button “Check for
-solution” on the left of the “Close” button.  I <em>don’t</em> know whether
-this is a difference between M$ Win* 7 Home Edition and Enterprise.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/saw-a-new-type-of-ring/">Saw a New Type of Ring</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T17:56:44+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:56 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/saw-a-new-type-of-ring/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/saw-a-new-type-of-ring/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/saw-a-new-type-of-ring/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This Thursday evening, I saw a <strong>local ring</strong> in a commutative ring
-with unity for the first time.  At the first glance, I <em>didn’t</em> know
-how to make use of it’s definition — a ring that has only one
-maximal ideal — to answer a question.  If I was given a local ring
-$R$, then should I first assume that there’s a maximal ideal $M$, and
-then construct another proper ideal $I$ of $R$ so that no proper
-ideals of $R$ contained $I$ except for $I$ itself?  I got stuck at
-this point for almost an hour, and <em>couldn’t</em> write down something
-more for that question.</p>
-
-<p>I finally read another half of the question, and understood the
-statement of the whole question.  It would be impossible for me to do
-the question <em>without</em> knowing the proper ideal that consisted merely
-of elements of R which <em>don’t</em> have a multiplicative inverse.</p>
-
-<p>After I had proved the statement in that question, I was still not
-sure whether such a ring <em>exists</em>.  I <em>couldn’t</em> give an example of a
-local ring.  This evening, I found it in Wikipedia, and realised that
-even though I had already convinced myself that a finite field $F$ of
-prime characteristic $p$ has an algebraic closure <span class="myeqn">$\displaystyle \overline{F} = \bigcup_{i = 1}^\infty
-\F_{p^i}$</span>, I still <em>didn’t</em> know many properties of the
-structure of fields.<sup id="fnref:alg_closure"><a href="#fn:alg_closure" class="footnote">1</a></sup>  The simplest example of a local
-ring is a field, which has only the trivial ideal <span class="myeqn">$\{0\}$</span> as its proper ideal.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:alg_closure">
-
-      <p>See <a href="/blog/2015/02/21/read-a-proof-of-existence-of-algebraic-closure/"><em>Read a Proof of Existence of Algebraic Closure</em></a> in
-Blog 1 for details. <a href="#fnref:alg_closure" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/updated-vimrc-for-vundle/">Updated VIMRC for Vundle</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T16:30:16+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:30 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/updated-vimrc-for-vundle/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/updated-vimrc-for-vundle/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/updated-vimrc-for-vundle/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Three days ago, I made a change in <a href="https://gist.github.com/VincentTam/2379ba75d6ad703a3786">my VIMRC on *nix</a> due to
-<a href="https://github.com/gmarik/Vundle.vim" title="A Vim plugin manager">Vundle</a>’s interface change a year ago.<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup><sup id="fnref:vundle_change"><a href="#fn:vundle_change" class="footnote">2</a></sup></p>
-
-<p>With the following <a href="http://www.vim.org">Vim</a> editor command, the replacement was done
-quickly.</p>
-
-<pre><code>:%s/\(Plugin \)\@&lt;="\([^"]*\)"/'\2'/
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I got some errors when I opened Vim again.</p>
-
-<pre class="cliUB"><code>Error detected while processing /home/owner/.vimrc:
-line   38:
-E471: Argument required: Plugin 
-line   39:
-E471: Argument required: Plugin 
-line   40:
-E471: Argument required: Plugin 
-line   42:
-E471: Argument required: Plugin 
-line   45:
-E471: Argument required: Plugin 
-line   46:
-E471: Argument required: Plugin 
-line   47:
-E471: Argument required: Plugin 
-line   48:
-E471: Argument required: Plugin 
-Press ENTER or type command to continue
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/28/updated-vimrc-for-vundle/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -866,7 +1205,12 @@ Press ENTER or type command to continue
   
     <section>
   <h1>About Me (Brief)</h1>
-  <img src="/images/avatar256.png" alt="My Avatar"/>
+  <a href="http://stackexchange.com/users/3841408/gnu-supporter">
+    <img src="http://stackexchange.com/users/flair/3841408.png"
+    width="208" height="58" alt="profile for GNU Supporter on Stack
+    Exchange, a network of free, community-driven Q&amp;A sites"
+    title="profile for GNU Supporter on Stack Exchange, a network of
+    free, community-driven Q&amp;A sites" /></a>
   <p><a href="/about">Here</a>'s a more detailed version.</p>
   <ol>
     <li>A free software supporter</li>
@@ -890,13 +1234,13 @@ Press ENTER or type command to continue
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (20)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (21)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (46)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (45)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (47)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octave/'>octave (2)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -915,23 +1259,23 @@ Press ENTER or type command to continue
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/16/generate-latex-code-for-octave-matrices/">Generate $\rm \LaTeX$ Code for Octave Matrices</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/">Generate Simplex Tableaux With Octave</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/">Simple MathJax Template for Basic Linear Programs</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/07/distribution-of-user-reputation-on-math-stack-exchange/">Distribution of User Reputation on Math Stack Exchange</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/02/ubuntu-grey-screen/">Ubuntu Grey Screen</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/12/28/got-a-warning-from-octave/">Got a Warning From Octave</a>
       </li>
     
   </ul>
