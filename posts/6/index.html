@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I use Vundle for managing my Vim plugins.1 Problem I typed :PluginUpdate in Vim as usual for keeping all of the plugins
-up-to-date, and &hellip;">
+  <meta name="description" content="Motivation While I was writing the post about a recent GitHub page build failure
+ten days ago, I prepared two screenshots of the email from
+GitHub.1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,68 @@ up-to-date, and &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Concatenate Loop Variable's Value and a String in Bash</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-16T18:41:18+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:41 pm</span></time>
+        
+           | <a href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>While I was writing the post about a recent GitHub page build failure
+ten days ago, I prepared two screenshots of the email from
+GitHub.<sup id="fnref:pp_motiv"><a href="#fn:pp_motiv" class="footnote">1</a></sup>  I would like to resize them to 300px wide so that
+they <em>wouldn’t</em> be too wide for mobile devices.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>There’re 2 image files in a folder: <code>fail1.png</code> and <code>fail2.png</code>.  I
+wanted to create a scaled-down version of both pictures, and name the
+smaller ones as <code>fail1_300.png</code> and <code>fail2_300.png</code>.</p>
+
+<h2 id="failed-attempt">Failed attempt</h2>
+
+<pre class="cliUB"><code>$ file *
+fail1.png: PNG image data, 467 x 243, 8-bit/color RGB, non-interlaced
+fail2.png: PNG image data, 464 x 242, 8-bit/color RGB, non-interlaced
+$ for i in {1..2}; do convert fail$i.png -resize 300 fail$i_300.png; done
+$ ls
+fail1.png  fail2.png  fail.png
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -771,90 +834,6 @@ auto-closing it
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/04/10/looping-through-lines/">Looping Through Lines</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-04-10T15:01:48+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:01 pm</span></time>
-        
-           | <a href="/blog/2015/04/10/looping-through-lines/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/10/looping-through-lines/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/04/10/looping-through-lines/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I copied lines from an enumerated list in this blog and pasted it to
-Vim.  The content in each list item was seen in the current Vim
-buffer, but <em>not</em> the numbers.</p>
-
-<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
-
-<p>A sample ordered list with 2015 items</p>
-
-<ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-</ol>
-
-<p>…</p>
-
-<ol start="2015"><li>Item 2015</li></ol>
-
-<p>What is seen in Vim after copy and paste</p>
-
-<pre><code>Item one
-Item two
-Item three
-...
-Item 2015
-</code></pre>
-
-<p>If one writes in Markdown and he/she copies a numbered list from
-elsewhere to a text editor, then it will be very <em>inconvenient</em> to
-manually add back the numbers.  To exaggerate this inconvenience, I
-put “2015” above.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>Insert the item number at the beginning.</p>
-
-<pre><code>1. Item one
-2. Item two
-3. Item three
-...
-2015. Item 2015
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/04/10/looping-through-lines/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -923,6 +902,10 @@ put “2015” above.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/17/become-an-unsung-hero/">Become an Unsung Hero</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
       </li>
     
@@ -936,10 +919,6 @@ put “2015” above.</p>
     
       <li class="post">
         <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/">Simple MathJax Template for Basic Linear Programs</a>
       </li>
     
   </ul>

@@ -9,9 +9,10 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed. \[
-\begin{ &hellip;">
+  <meta name="description" content="When I was a secondary school student, I was quite satisfied with this
+proof of Cauchy–Schwarz Inequality. \[
+\begin{aligned}
+&amp; (\sum_{i = 1}^n &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,103 @@ finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed. \[
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/">Learnt Cauchy--Bunyakovsky--Schwarz Inequality for Definite Integrals</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-28T22:37:59+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 pm</span></time>
+        
+           | <a href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/02/28/learnt-cauchy-bunyakovsky-schwarz-inequality-for-definite-integrals/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I was a secondary school student, I was quite satisfied with this
+proof of Cauchy–Schwarz Inequality.</p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+&amp; (\sum_{i = 1}^n a_i b_i)^2 \le (\sum_{i = 1}^n a_i^2)(\sum_{j = 1}^n
+b_j^2) \\
+\iff&amp; (\sum_{i = 1}^n a_i b_i) (\sum_{j = 1}^n a_j b_j) \le (\sum_{i =
+1}^n a_i^2)(\sum_{j = 1}^n b_j^2) \\
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n a_i^2 b_j^2 \\
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
+\sum_{j = 1}^n \frac{1}{2} \left(a_i^2 b_j^2 + a_j^2 b_i^2 \right)\\
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i^2 b_j^2 - 2 a_i
+b_j \cdot a_j b_i + a_j^2 b_i^2) \ge 0 \\
+\iff&amp; \sum_{i = 1}^n \sum_{j = 1}^n \frac{1}{2} (a_i b_j - a_j b_i)^2
+\ge 0
+\end{aligned}
+\]
+</div>
+
+<p>Equality holds if and only if <span class="myeqn">$\forall i,j = 1,\dots,n, a_i b_j - a_j b_i = 0$</span>.
+I was so happy that I <em>didn’t</em> think of further generalisations.  I
+<em>didn’t</em> realise that the inequality can be more concisely written as
+$\langle \vect{a}, \vect{b} \rangle^2 \le \norm{\vect{a}}^2
+\norm{\vect{b}}^2$, where <span class="myeqn">$\vect{a} =
+(a_1,\cdots,a_n), \vect{b} = (b_1,\cdots,b_n) \in \R^n$</span></p>
+
+<p>This Friday evening, I did a question about the integral version of
+the inequality.  After spending hours to come up with an idea, I
+realised why I needed to learn inner product spaces.  The very first
+version of the inequality that I learnt has too many summation signs,
+and it <em>can’t</em> be easily generalised to other spaces.  The second
+proof of the <em>same</em> inequality that I learnt makes use of the
+determinant of a quadratic polynomial $p(t) = \norm{\vect{u} - t
+\vect{v}}^2$.  That proof is much more elegant, and it helped me a lot
+while I was doing that question.  When equality holds, it’s very hard
+to imagine what happens by looking at the original equality.  However,
+if we convert it into the determinant of $p(t)$, then one quickly
+knows that this is equivalent to $p(t) = 0$, and can easily conclude
+that equality holds if and only if the two functions $f$ and $g$
+satisfy $f \equiv k g$ for some $k \in \R$ for almost all
+points.<sup id="fnref:rmk"><a href="#fn:rmk" class="footnote">1</a></sup></p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:rmk">
+
+      <p>To be more precise, if one accepts that the space $C([a,b])$ of
+continuous functions defined on a closed and bounded interval
+$[a,b]$ in an inner product space, and $f,g \in C([a,b])$,
+then the condition “for almost all points” can be dropped.  If we
+<em>don’t</em> to want be to so strict on the functions $f$ and $g$
+defined on $[a,b]$, and we just say that $f$ and $g$ are
+integrable functions defined on $[a,b]$, then we have to accept
+the fact that $\displaystyle \int_a^b f^2 = 0$ <em>doesn’t</em> imply
+that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -757,61 +855,6 @@ blog.<sup id="fnref:fig"><a href="#fn:fig" class="footnote">1</a></sup></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/14/tried-range-based-for-loop/">Tried Range-based for Loop</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-14T12:42:21+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:42 pm</span></time>
-        
-           | <a href="/blog/2015/02/14/tried-range-based-for-loop/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/14/tried-range-based-for-loop/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/14/tried-range-based-for-loop/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I saw an example for range-based for loop in a Stack Overflow question
-and I compiled it in my own computer.<sup id="fnref:eg"><a href="#fn:eg" class="footnote">1</a></sup>  Then I got an error.</p>
-
-<pre class="cliUB"><code>$ g++ temp1.cpp
-temp1.cpp: In function ‘int main()’:
-temp1.cpp:9:18: error: range-based ‘for’ loops are not allowed in C++98 mode
-    for (int i : bar) {
-                  ^
-temp1.cpp: In function ‘void foo(int (&amp;)[3])’:
-temp1.cpp:16:18: error: range-based ‘for’ loops are not allowed in C++98 mode
-    for (int i : bar) {
-                  ^
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/14/tried-range-based-for-loop/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -880,6 +923,10 @@ temp1.cpp:16:18: error: range-based ‘for’ loops are not allowed in C++98 mod
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/17/become-an-unsung-hero/">Become an Unsung Hero</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
       </li>
     
@@ -893,10 +940,6 @@ temp1.cpp:16:18: error: range-based ‘for’ loops are not allowed in C++98 mod
     
       <li class="post">
         <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/">Simple MathJax Template for Basic Linear Programs</a>
       </li>
     
   </ul>

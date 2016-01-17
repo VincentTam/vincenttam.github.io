@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background After I’ve written the third post in this series, I believed
-that I could generate the SHA-1 hash of all Git objects. Problem In order to &hellip;">
+  <meta name="description" content="Goal The method for getting the Git object ID described in
+previous post in this series isn’t quick enough since it
+consists of several commands. The &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,107 @@ that I could generate the SHA-1 hash of all Git objects. Problem In order to &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/">Git Object ID Generation (5): Predict ID</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-11T10:52:56+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:52 am</span></time>
+        
+           | <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/11/git-object-id-generation-5-predict-id/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="goal">Goal</h2>
+
+<p>The method for getting the Git object ID described in
+<a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
+consists of <em>several</em> commands.</p>
+
+<h2 id="the-one-line-command">The one-line command</h2>
+
+<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
+ash}) | shasum
+</code></pre>
+
+<ul>
+  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
+  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
+</ul>
+
+<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
+
+<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
+<p>Hence, we can modify the above command to predict the Git object ID of
+a <code>{file}</code>.</p>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
+</code></pre>
+
+<p>In order to verify the result for files, one can quickly get the blob
+ID from Git by <code>git log -1 -p -- {file}</code>.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
+
+<p>I typed “linux extract number” on Google, and the autocompletion gave
+me “from string”.  I finally saw two commands for doing this.</p>
+
+<ol>
+  <li><code>sed 's/[^0-9]//g'</code></li>
+  <li><code>tr -dc '0-9'</code></li>
+</ol>
+
+<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
+complement of the characters marked by <code>-d</code>.</p>
+
+<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
+
+<p>Using the command in the section “Predict Git object IDs” gives users
+a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
+of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
+byte count of the files with <code>\r\n</code> as the line terminator in that
+command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
+
+<h3 id="using-git-for-win">Using Git for Win*</h3>
+
+<p>For the installed version of Git on M$ Win*, one needs to use
+<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
+it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
+
+<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
+
+<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
+instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
+hexadecimal number.)</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -732,75 +834,6 @@ preview.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Octoshape on Ubuntu 14.04</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-13T22:26:34+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 pm</span></time>
-        
-           | <a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
-A year ago, I <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried running Octoshape streaming service on
-<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
-work.  On the test page, the output on the right-hand side was similar
-to the one listed below.</p>
-
-<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
-20:35:57.382: Player is waiting for a link input (this does not mean
-that Octoshape is ready).
-20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
-20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
-20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
-20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
-20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
-20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
-20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
-20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
-20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
-20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
-20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
-20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
-20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -869,6 +902,10 @@ that Octoshape is ready).
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/01/17/become-an-unsung-hero/">Become an Unsung Hero</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
       </li>
     
@@ -882,10 +919,6 @@ that Octoshape is ready).
     
       <li class="post">
         <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/">Simple MathJax Template for Basic Linear Programs</a>
       </li>
     
   </ul>
