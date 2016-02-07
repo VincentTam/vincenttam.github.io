@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-05T21:06:06+08:00</updated>
+  <updated>2016-02-07T19:03:02+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Closedness vs Completeness]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness/"/>
+    
+    <updated>2016-02-07T17:50:37+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>To prove a limit, we need to find a number before.  The definition
+gives us <em>no</em> hints on how to find it.  Cauchy’s Criterion for
+convergence is a good method for finding it numerically in “certain
+spaces” (e.g. $\R,L^p,L^\infty$) because the definition is
+<em>intrinsic</em>.</p>
+
+<p>Unluckily, there’re some “strange spaces” where Cauchy’s Criterion
+<em>isn’t</em> enough to give a convergence.  The simplest one is $\Q$
+equipped with the usual metric in $\R$.</p>
+
+<p><span class="myeqn">
+One knows that an incomplete metric space $X$ can extended to form a
+complete one $X^*$ (which is unique up to isometric isomorphism) so
+that $\iota(X)$ is dense in $X^*$.  That is, $\overline{\iota(X)} =
+X^*$.
+</span></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I confused $\overline{X}$ with $X^*$.  In other words, what’s the
+difference between the completion of $X$ and the closure of $X$?</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<h3 id="general-answer">General answer</h3>
+
+<p>To see this, we note that the closedness of a set is discussed
+<em>relative to another set</em>, so if one stays inside the incomplete space
+$X$, then one notices that <strong>$X$ is closed in $X$</strong>.  However, even
+though one <em>doesn’t</em> know about $X^*$, one still realises that $X$ is
+incomplete.</p>
+
+<p>If one becomes wiser and seeks to “complete a given Cauchy sequence”
+(i.e. find a limit for a Cauchy sequence in $X$), it’s <em>impossible to
+live inside $X$</em>—one needs to escape from $X$ to $X^*$ so as to
+enjoy more freedom.</p>
+
+<blockquote>
+  <p>Claim: $X$ <em>isn’t</em> closed in $X^*$.</p>
+
+  <p>Approach: We <em>won’t</em> start from the topological definition (open
+complement).  Instead, we’ll argue with sequences.</p>
+
+  <p>Proof: Since $X$ is <em>incomplete</em>, there exists a Cauchy sequence
+$(x_n)$ in $X$ so that it has <em>no</em> limit in $X$.  The completeness
+of $X^*$ is applied to construct a limit $x$ in $X^*$.  If one
+allows $X$ to be closed, then $x$ will stay inside $X$, which
+contradicts the fact that $(x_n)$ has <em>no</em> limit in $X$.</p>
+</blockquote>
+
+<p>Even though living in $X$ is sad, and it seems to be hard to escape
+(because $X$ is closed in $X$), if one has a chance to travel outside,
+one will see that $X$ is <em>not</em> really closed—it is possible to find
+a sequence $(x_n)$ to escape from $X$.</p>
+
+<h3 id="specific-example">Specific example</h3>
+
+<p>$\Q$ is closed in $\Q$, but it <em>isn’t</em> closed in $\R$.  Therefore, the
+concept of closedness depends on the bigger space.  However, the
+concept of completeness only depends on $\Q$ itself.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1537,225 +1611,6 @@ love illustrating it using a picture.</p>
 
 <p>How can a compact regular space be regular?  See my next post.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MathJax Local Configuration File (2)]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/"/>
-    
-    <updated>2015-09-06T19:29:42+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In my opinion, the default display of the $\rm \LaTeX$ command for
-$\Re z$ and $\Im z$ <em>don’t</em> look good.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/MathJaxReIm/im110.png" alt="default Im(z) display" /></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I want to reset the <code>\Im</code> command in my local MathJax configuration
-file <code>source/javascripts/MathJaxLocal.js</code>.  I used a script inside the
-<code>&lt;body&gt;</code> tag to load my local MathJax configurations from GitHub.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>
-If I want to <em>test</em> the configurations, then I’ll have to push my
-changes to GitHub <em>before</em> I can see the effect and figure out the
-errors — this is incredibly <em>slow</em> and <em>inefficient</em>.</p>
-
-<p><strong>How can I locally debug my MathJax configurations?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>To <em>locally test</em> my MathJax configurations, I put <em>another</em> <code>&lt;script&gt;</code>
-tag containing the local configurations <em>before</em> the <code>&lt;script&gt;</code> that
-loads <code>MathJax.js</code>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Put this at the bottom </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-<span class="line-number">56</span>
-<span class="line-number">57</span>
-<span class="line-number">58</span>
-<span class="line-number">59</span>
-<span class="line-number">60</span>
-<span class="line-number">61</span>
-<span class="line-number">62</span>
-<span class="line-number">63</span>
-<span class="line-number">64</span>
-<span class="line-number">65</span>
-<span class="line-number">66</span>
-<span class="line-number">67</span>
-<span class="line-number">68</span>
-<span class="line-number">69</span>
-<span class="line-number">70</span>
-<span class="line-number">71</span>
-<span class="line-number">72</span>
-<span class="line-number">73</span>
-<span class="line-number">74</span>
-<span class="line-number">75</span>
-<span class="line-number">76</span>
-<span class="line-number">77</span>
-<span class="line-number">78</span>
-<span class="line-number">79</span>
-<span class="line-number">80</span>
-<span class="line-number">81</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/x-mathjax-config&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
-</span><span class="line">  <span class="nx">jax</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;input/TeX&quot;</span><span class="p">,</span> <span class="s2">&quot;output/HTML-CSS&quot;</span><span class="p">],</span>
-</span><span class="line">  <span class="nx">tex2jax</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">]],</span>
-</span><span class="line">    <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span><span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>
-</span><span class="line">    <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-</span><span class="line">    <span class="nx">skipTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;noscript&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;textarea&#39;</span><span class="p">,</span> <span class="s1">&#39;pre&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">]</span>
-</span><span class="line">  <span class="p">},</span>
-</span><span class="line">  <span class="nx">messageStyle</span><span class="o">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
-</span><span class="line">  <span class="s2">&quot;HTML-CSS&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="nx">preferredFont</span><span class="o">:</span> <span class="s2">&quot;TeX&quot;</span><span class="p">,</span> <span class="nx">availableFonts</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;STIX&quot;</span><span class="p">,</span><span class="s2">&quot;TeX&quot;</span><span class="p">]</span> <span class="p">},</span>
-</span><span class="line">  <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="line">    <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">},</span>
-</span><span class="line">    <span class="nx">extensions</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;AMSmath.js&quot;</span><span class="p">,</span> <span class="s2">&quot;AMSsymbols.js&quot;</span><span class="p">,</span><span class="s2">&quot;AMScd.js&quot;</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">TagSide</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span>
-</span><span class="line">    <span class="nx">Macros</span><span class="o">:</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">field</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbb{#1}&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">C</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{C}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">F</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{F}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">N</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{N}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Q</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Q}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">R</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{R}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Z</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\field{Z}&#39;</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">zeros</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathbf{0}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">ud</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\,\\mathrm{d}&#39;</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">vect</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\boldsymbol{\\mathbf{#1}}&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">abs</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lvert#1\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">abslr</span><span class="o">:</span><span class="p">[</span><span class="s1">&#39;\\left\\lvert#1\\right\\rvert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">norm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\lVert#1\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">normlr</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\left\\lVert#1\\right\\rVert&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">lcm</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{lcm}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">interior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{int}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">exterior</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{ext}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">volume</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{vol}}&#39;</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">E</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;{\\rm I\\kern-.3em E}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Var</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Var}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Cov</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Cov}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Binom</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Binom}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Exp</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Exp}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Poi</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Poi}}&#39;</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="nx">GL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{GL}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">SL</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{SL}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Aut</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{Aut}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">id</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathrm{id}&#39;</span><span class="p">],</span>
-</span><span class="line">
-</span><span class="line">      <span class="c1">// Test your code here</span>
-</span><span class="line">      <span class="nx">Re</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Re}}&#39;</span><span class="p">],</span>
-</span><span class="line">      <span class="nx">Im</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;\\mathop{\\mathrm{Im}}&#39;</span><span class="p">],</span>
-</span><span class="line">    <span class="p">}</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line"><span class="p">});</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
-</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">})();</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I think that rendering $\Re z$ and $\Im z$ with roman font is better.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/MathJaxReIm/im-new120.png" alt="improved Im(z) display" /></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp">
-
-      <p>Refer to <a href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">my old post</a> titled <em>A Quick Markdown Syntax Error
-Detection for Writing MathJax Equations in Octopress Posts (3)</em>
-for details. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

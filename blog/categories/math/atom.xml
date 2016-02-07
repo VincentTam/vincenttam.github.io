@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-05T21:06:06+08:00</updated>
+  <updated>2016-02-07T19:03:02+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Closedness vs Completeness]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness/"/>
+    
+    <updated>2016-02-07T17:50:37+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>To prove a limit, we need to find a number before.  The definition
+gives us <em>no</em> hints on how to find it.  Cauchy’s Criterion for
+convergence is a good method for finding it numerically in “certain
+spaces” (e.g. $\R,L^p,L^\infty$) because the definition is
+<em>intrinsic</em>.</p>
+
+<p>Unluckily, there’re some “strange spaces” where Cauchy’s Criterion
+<em>isn’t</em> enough to give a convergence.  The simplest one is $\Q$
+equipped with the usual metric in $\R$.</p>
+
+<p><span class="myeqn">
+One knows that an incomplete metric space $X$ can extended to form a
+complete one $X^*$ (which is unique up to isometric isomorphism) so
+that $\iota(X)$ is dense in $X^*$.  That is, $\overline{\iota(X)} =
+X^*$.
+</span></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I confused $\overline{X}$ with $X^*$.  In other words, what’s the
+difference between the completion of $X$ and the closure of $X$?</p>
+
+<h2 id="explanation">Explanation</h2>
+
+<h3 id="general-answer">General answer</h3>
+
+<p>To see this, we note that the closedness of a set is discussed
+<em>relative to another set</em>, so if one stays inside the incomplete space
+$X$, then one notices that <strong>$X$ is closed in $X$</strong>.  However, even
+though one <em>doesn’t</em> know about $X^*$, one still realises that $X$ is
+incomplete.</p>
+
+<p>If one becomes wiser and seeks to “complete a given Cauchy sequence”
+(i.e. find a limit for a Cauchy sequence in $X$), it’s <em>impossible to
+live inside $X$</em>—one needs to escape from $X$ to $X^*$ so as to
+enjoy more freedom.</p>
+
+<blockquote>
+  <p>Claim: $X$ <em>isn’t</em> closed in $X^*$.</p>
+
+  <p>Approach: We <em>won’t</em> start from the topological definition (open
+complement).  Instead, we’ll argue with sequences.</p>
+
+  <p>Proof: Since $X$ is <em>incomplete</em>, there exists a Cauchy sequence
+$(x_n)$ in $X$ so that it has <em>no</em> limit in $X$.  The completeness
+of $X^*$ is applied to construct a limit $x$ in $X^*$.  If one
+allows $X$ to be closed, then $x$ will stay inside $X$, which
+contradicts the fact that $(x_n)$ has <em>no</em> limit in $X$.</p>
+</blockquote>
+
+<p>Even though living in $X$ is sad, and it seems to be hard to escape
+(because $X$ is closed in $X$), if one has a chance to travel outside,
+one will see that $X$ is <em>not</em> really closed—it is possible to find
+a sequence $(x_n)$ to escape from $X$.</p>
+
+<h3 id="specific-example">Specific example</h3>
+
+<p>$\Q$ is closed in $\Q$, but it <em>isn’t</em> closed in $\R$.  Therefore, the
+concept of closedness depends on the bigger space.  However, the
+concept of completeness only depends on $\Q$ itself.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -301,106 +375,6 @@ McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[The $p$-th Root of a Convex Homogeneous Function of Degree $p$]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/"/>
-    
-    <updated>2015-11-30T01:17:25+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p</id>
-    
-      <content type="html"><![CDATA[<h2 id="backgroud">Backgroud</h2>
-
-<p>I was stuck at a question from a convex analysis book for more than a
-week.  I couldn’t directly find its solution.</p>
-
-<blockquote>
-  <p>Let $K$ be a convex cone in $\R^n$, $p \ge 1$.  The function $f: K
-\to [0,\infty)$ is homogeneous of degree $p$, i.e.</p>
-
-  <p>\[
-  f(\lambda x) = \lambda^p f(x),\quad \forall x \in K, \forall
-  \lambda \ge 0.
-\]</p>
-
-  <p>Suppose also that $f(x) &gt; 0 \,\forall x \in K \setminus \{x\}$.
-Show that $g(x) := [f(x)]^{\frac1p}$ is convex on K.</p>
-</blockquote>
-
-<h2 id="resolution">Resolution</h2>
-
-<p>I saw a proof for the Minkowski inequality using the convexity of the
-function $x \mapsto x^p$ <a href="http://math.bard.edu/belk/math461/Inequalities.pdf">here</a>.  In fact, by replacing
-$\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we’re done.</p>
-
-<p>First, observe that</p>
-
-<div class="myeqn">
-\begin{equation}
-  g(\lambda x) = [f(\lambda x)]^{\frac1p} = \lambda g(x),\quad \forall
-  x \in K, \forall \lambda \ge 0
-  \label{homo}
-\end{equation}
-</div>
-
-<p>Therefore, it suffices to show that</p>
-
-<p>\begin{equation}
-  g(x + y) \le g(x) + g(y).
-  \label{goal}
-\end{equation}</p>
-
-<p>The assumption <span class="myeqn">$\norm{\vect{u}}_p =
-\norm{\vect{v}}_p = 1$</span> can be changed to <span class="myeqn">$g(x) = g(y) = 1$</span>.  Then we’ve <span class="myeqn">$f(x) = f(y) = 1$</span>.  By the convexity of $f$ on
-$K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
-
-<div class="myeqn">
-\begin{equation}
-  f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda)
-  f(y) \le 1.
-\end{equation}
-</div>
-
-<p>Since it’s given that $f(x) \ge 0 \,\forall x \in K$, we can say that</p>
-
-<p>\begin{equation}
-  g(\lambda x + (1 - \lambda) y) \le 1.
-  \label{trick}
-\end{equation}</p>
-
-<p>Finally, for any $u,v \in K$, we let</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{alignedat}{2}
-    \lambda &amp;{}= \frac{g(u)}{g(u) + g(v)} &amp;{} \qquad x &amp;{}= \frac
-    u{g(u)} \\
-    1 - \lambda &amp;{}= \frac{g(v)}{g(u) + g(v)}&amp;{} \qquad y &amp;{}= \frac
-    v{g(v)}.
-  \end{alignedat}
-  \label{coeff}
-\end{equation}
-</div>
-
-<p>Making use of \eqref{homo}, we substitute \eqref{coeff} into
-\eqref{trick}.</p>
-
-<div class="myeqn">
-\begin{align*}
-  g \left( \frac{g(u)}{g(u) + g(v)} \frac u{g(v)} + \frac{g(v)}{g(u) +
-  g(v)} \frac v{g(v)} \right) &amp;\le 1 \\
-  g \left(\frac u{g(u)+g(v)} + \frac v{g(u)+g(v)} \right) &amp;\le 1 \\
-  g \left(\frac{u + v}{g(u) + g(v)} \right) &amp;\le 1 \\
-  g(u + v) &amp;\le g(u) + g(v)
-\end{align*}
-</div>
-
-<p>We get \eqref{goal} at last.</p>
-
 ]]></content>
     
   </entry>
