@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-07T19:03:02+08:00</updated>
+  <updated>2016-02-08T01:57:49+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Jekyll Blog Page Build Warning]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/"/>
+    
+    <updated>2016-02-08T01:45:25+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>The page build of Jekyll is quite easy because one <em>doesn’t</em> need to
+locally generate the HTML code of the Markdown source with <code>rake</code>.
+One just needs to directly save, commit and push the source code
+online.  The GitHub page support will handle the rest for you.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I wrote <a href="https://vincenttam.github.io/blog2/essai/2016/02/07/bon-nouvel-an-chinois">an article in my Jekyll blog</a> yesterday afternoon.  From
+what was shown in the terminal, the page build was smooth as expected.
+Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
+
+<picture class="fancybox" title="The warning email from GitHub">
+  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" /> 
+  <img alt="The warning email from GitHub" src="https://vincenttam.github.io/images/posts/Blog2/email300.png" />
+</picture>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>The problem can be easily solved: just follow what the email says.
+I’ve visited <a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">this blog article on GitHub</a> to know more about the
+GitHub Pages upgrade.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Flair in Octopress via HTTPS]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https/"/>
+    
+    <updated>2016-02-07T23:52:33+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I replaced <a href="https://vincenttam.github.io/images/avatar256.png">the big avatar</a> of my self intro in the sidebar
+with my Stack Exchange flair, which summarized my reputation and
+badges on <a href="https://math.stackexchange.com">Mathematics Stack Exchange</a>.  Since then, it’s
+easier to see my profile there.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>When I browsed my blog, I saw a lock with a yellow triangle on the
+left of the URL.</p>
+
+<picture class="fancybox" title="An abnormal icon on the left of the
+URL">
+  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" /> 
+  <img alt="An abnormal icon on the left of the URL" src="https://vincenttam.github.io/images/posts/Flair/mixed-300.png" />
+</picture>
+
+<p>This indicated the presence of insecure contents.</p>
+
+<picture class="fancybox" title="Firefox's error console message">
+  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" /> 
+  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" /> 
+  <img alt="Firefox's error console message" src="https://vincenttam.github.io/images/posts/Flair/log-300.png" />
+</picture>
+
+<p><strong>How can I get rid of this error message?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Even though I focus on math analysis now and I’m <em>not</em> going to write
+any programming code, the advice of
+<a href="http://polymerhk.com/articles/2016/02/03/27363/">this article about programming</a> still applies.  Reading the
+error message, I recalled one of my old posts written more than one
+year ago.  It was titled <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/"><em>MathJax in Octopress via HTTPS</em></a>.
+Therefore, the only thing that I needed to do was to add an <code>s</code>
+between <code>http</code> and <code>:</code> in the URL of the image for the flair.</p>
+
+<h2 id="a-command-learnt">A command learnt</h2>
+
+<p>I typed the command <code>git log -g --grep "flair"</code> in the repository for
+this blog, and I quickly see the results.</p>
+
+<pre class="cliUB"><code>commit 5b9a757484314658458d86aa4613c75e5beb65e6
+Reflog: HEAD@{0} (Vincent Tam &lt;fake@live.hk&gt;)
+Reflog message: commit: Improved the code for my Stack Exchange flair
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Mon Feb 8 01:04:06 2016 +0800
+
+    Improved the code for my Stack Exchange flair
+    
+    1. Avoid the problem described in b6f4f1f.
+    2. Get rid of the line break in the popup tooltip text of the image.
+
+commit 8800fa646fb8d6f22dd924b43a38e4ef3460e63e
+Reflog: HEAD@{6} (Vincent Tam &lt;fake@live.hk&gt;)
+Reflog message: commit: Changed the picture on the RHS in self-intro
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Sat Jan 16 16:43:33 2016 +0800
+
+    Changed the picture on the RHS in self-intro
+    
+    Replaced the avatar with a flair so that it's more convenient to view my
+    Stack Exchange profile.
+</code></pre>
+
+<p>Unluckily, the normal flags in the <code>grep</code> utility <em>aren’t</em> supported,
+say the case insensitive search.</p>
+
+<p>P.S. I replaced my email with <code>fake@live.hk</code> to avoid junk mail.  If
+you fork any one of <a href="https://github.com/VincentTam">my repositories on GitHub</a>, you’ll
+know what it is.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1494,123 +1619,6 @@ deleted neighbourhood $V \setminus \{x\}$ of $x$ so that $V \cap A
 \setminus \{x\} = \varnothing$.  Hence, $\forall x \in X, x \notin
 A'$.
 </span></p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Mountain Climbing in Lindelöf $T_3$ Spaces]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/"/>
-    
-    <updated>2015-09-28T15:39:38+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>To deduce that <a href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
-the arguments of the proof in the previous post, but I <em>couldn’t</em> do
-it.  Therefore, I read another proof about the normality of regular
-Lindelöf spaces instead.</p>
-
-<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
-
-<p><span class="myeqn">
-Suppose that $X$ is the given space, and $H$ and $K$ are the given
-sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
-\omega\right\}$ are open countable subcovers of $H$ and $K$
-respectively.  On p.91 in Davis's Topology book, I saw the following
-equations.
-</span></p>
-
-<div class="myeqn">
-\begin{alignat*}{2}
-  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
-  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
-  (\overline{U_0} \cup \overline{U_1}) \\
-  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
-  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
-  \overline{U_2}) \\
-  \vdots \\
-  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
-  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
-  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
-  V_n
-\end{alignat*}
-</div>
-
-<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
-<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
-reading the symbols.  Luckily, an analogy of climbing mounts is given.
-Therefore, I finally understood how the open subsets $U_n$’s and
-$V_n$’s are built step-by-step while preserving disjointness and
-openness.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Normal Compact $T_2$ Spaces]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/"/>
-    
-    <updated>2015-09-28T14:39:06+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces</id>
-    
-      <content type="html"><![CDATA[<p>To show that any compact Hausdorff space is $T_4$, one may first show
-that it’s $T_3$.  To see this, using set theory notations may be quite
-<em>difficult</em>.  For mediocre students, the contents of the following
-seciton may sound <em>unnatural</em>.</p>
-
-<h2 id="a-sketch-of-the-proof">A sketch of the proof</h2>
-
-<p>Suppose that we want to separate a point $x \notin A$ and a closed set
-$A$ in a compact $T_2$ space $X$ by two <em>disjoint</em> open sets $U$ and
-$V$ so that $x \in U$ and $A \subseteq V$.  A standard proof is to
-apply the $T_2$ property of $X$ to $x$ and each $y \in A$ so as to
-yield two <em>disjoint</em> open sets <span class="myeqn">$U_y,V_y \in \mathcal{T}$ such that $x \in U_y$ and $y
-\in V_y$</span>.  Since $A$ should be contained in an open set $V$, in
-other words, an <em>open cover</em> of $A$ is needed, one might be tempted to
-construct the following union of open sets.</p>
-
-<div class="myeqn">
-\begin{equation}
-  V = \bigcup_{y \in A} V_y
-  \label{Vinf}
-\end{equation}
-</div>
-
-<p>However, one <em>can’t</em> ensure that the following <em>infinite</em> intersection
-of open sets is open.</p>
-
-<div class="myeqn">
-\begin{equation}
-  U = \bigcap_{y \in A} U_y
-  \label{Uinf}
-\end{equation}
-</div>
-
-<p>For instance, by the Nested Interval Theorem,</p>
-
-<div class="myeqn">
-\[
-  \{0\} = \bigcap_{n \in \N} \left( -\frac{1}{n},\frac{1}{n} \right).
-\]
-</div>
-
-<p>Thus, one applies the compactness of $X$ to get <em>finite</em> versions of
-\eqref{Vinf} and \eqref{Uinf}.</p>
-
-<h2 id="a-snapshot-of-this-fact">A snapshot of this fact</h2>
-
-<p>Since it’s so <em>difficult</em> to remember every detail of the proof, I
-love illustrating it using a picture.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/CptT2/cptT2-280.jpg" alt="snapshot capturing central idea of proof" /></p>
-
-<p>How can a compact regular space be regular?  See my next post.</p>
-
 ]]></content>
     
   </entry>

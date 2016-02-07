@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Information Security | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/information-security/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-07T19:03:02+08:00</updated>
+  <updated>2016-02-08T01:57:49+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,93 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Flair in Octopress via HTTPS]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https/"/>
+    
+    <updated>2016-02-07T23:52:33+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I replaced <a href="/images/avatar256.png">the big avatar</a> of my self intro in the sidebar
+with my Stack Exchange flair, which summarized my reputation and
+badges on <a href="https://math.stackexchange.com">Mathematics Stack Exchange</a>.  Since then, it’s
+easier to see my profile there.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>When I browsed my blog, I saw a lock with a yellow triangle on the
+left of the URL.</p>
+
+<picture class="fancybox" title="An abnormal icon on the left of the
+URL">
+  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" /> 
+  <img alt="An abnormal icon on the left of the URL" src="https://vincenttam.github.io/images/posts/Flair/mixed-300.png" />
+</picture>
+
+<p>This indicated the presence of insecure contents.</p>
+
+<picture class="fancybox" title="Firefox's error console message">
+  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" /> 
+  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" /> 
+  <img alt="Firefox's error console message" src="https://vincenttam.github.io/images/posts/Flair/log-300.png" />
+</picture>
+
+<p><strong>How can I get rid of this error message?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Even though I focus on math analysis now and I’m <em>not</em> going to write
+any programming code, the advice of
+<a href="http://polymerhk.com/articles/2016/02/03/27363/">this article about programming</a> still applies.  Reading the
+error message, I recalled one of my old posts written more than one
+year ago.  It was titled <a href="/blog/2014/06/05/mathjax-in-octopress-via-https/"><em>MathJax in Octopress via HTTPS</em></a>.
+Therefore, the only thing that I needed to do was to add an <code>s</code>
+between <code>http</code> and <code>:</code> in the URL of the image for the flair.</p>
+
+<h2 id="a-command-learnt">A command learnt</h2>
+
+<p>I typed the command <code>git log -g --grep "flair"</code> in the repository for
+this blog, and I quickly see the results.</p>
+
+<pre class="cliUB"><code>commit 5b9a757484314658458d86aa4613c75e5beb65e6
+Reflog: HEAD@{0} (Vincent Tam &lt;fake@live.hk&gt;)
+Reflog message: commit: Improved the code for my Stack Exchange flair
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Mon Feb 8 01:04:06 2016 +0800
+
+    Improved the code for my Stack Exchange flair
+    
+    1. Avoid the problem described in b6f4f1f.
+    2. Get rid of the line break in the popup tooltip text of the image.
+
+commit 8800fa646fb8d6f22dd924b43a38e4ef3460e63e
+Reflog: HEAD@{6} (Vincent Tam &lt;fake@live.hk&gt;)
+Reflog message: commit: Changed the picture on the RHS in self-intro
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Sat Jan 16 16:43:33 2016 +0800
+
+    Changed the picture on the RHS in self-intro
+    
+    Replaced the avatar with a flair so that it's more convenient to view my
+    Stack Exchange profile.
+</code></pre>
+
+<p>Unluckily, the normal flags in the <code>grep</code> utility <em>aren’t</em> supported,
+say the case insensitive search.</p>
+
+<p>P.S. I replaced my email with <code>fake@live.hk</code> to avoid junk mail.  If
+you fork any one of <a href="https://github.com/VincentTam">my repositories on GitHub</a>, you’ll
+know what it is.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -339,47 +426,6 @@ Processing triggers for hicolor-icon-theme (0.13-1) ...
 
       <p>See <a href="https://sites.google.com/site/easylinuxtipsproject/fatalmistakes#TOC-High-danger-level-orange-alert-:-Ubuntu-Tweak-and-Ubuntu-Sources-List-Generator"><em>Avoid 10 fatal mistakes in Ubuntu and Linux Mint</em></a> in
 Easy Linux tips project. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Change of Encrypted MathJax CDN Access]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/"/>
-    
-    <updated>2014-08-02T16:21:47+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access</id>
-    
-      <content type="html"><![CDATA[<p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
-my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
-post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
-load.  I found out what’s wrong in a minute—at line 21 of in
-<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
-96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
-official MathJax script via HTTPS, and my local settings and macros in
-<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
-discovered that in the official documentation of MathJax, the address
-for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
-opinion, the new URL is better because it’s more easy to remember.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

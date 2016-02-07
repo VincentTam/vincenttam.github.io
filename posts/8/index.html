@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Motivation Same as the raison d’être in Using Octopress on Another Device
-in Blog 1. Problem When I wrote that post last year, I gave too little &hellip;">
+  <meta name="description" content="Suppose we have a field $F$ of characteristic $p$ and a degree $n$
+irreducible polynomial $f \in F[x]$. \[
+f(x) = \sum_{i = 0}^n a_i x^i \text{, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,225 @@ in Blog 1. Problem When I wrote that post last year, I gave too little &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/">Powers of Roots of Irreducible Polynomials in a Field With Characteristic $p$</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-15T13:53:12+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:53 pm</span></time>
+        
+           | <a href="/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/03/15/powers-of-roots-of-irreducible-polynomials-in-a-field-with-characteristic-p/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Suppose we have a field $F$ of characteristic $p$ and a degree $n$
+irreducible polynomial $f \in F[x]$.</p>
+
+<div class="myeqn">
+\[
+f(x) = \sum_{i = 0}^n a_i x^i \text{, where } a_i \in F \,\forall i =
+0,1,\dots,n.
+\]
+</div>
+
+<p>One can find a root $\alpha \notin F$ of $f$ in a field extension $E$
+of $F$ by Kronecker’s Theorem.  Then $f(\alpha) = 0$. <strong>How about the
+other $n - 1$ roots of $f$?</strong></p>
+
+<p>Half a month ago, I <em>couldn’t</em> find out the answer directly — I used
+the fact that all finite fields of order $p^n$ were isomorphic to
+$\F_{p^n}$, which was the collection of roots of $x^{p^n} - x$ in
+$\Z_p$ in $\overline{\Z_p}$.  However, this makes use of <em>too many</em>
+abstract facts.</p>
+
+<p>Yesterday night, by computing the $p$-th power of an element $\beta$
+in $E$, I finally know the direct way of finding the other $n - 1$
+roots of $f$ in $E$.  Let $b_0,\dots,b_n \in F$ such that</p>
+
+<div class="myeqn">
+\[
+\beta = \sum_{i = 0}^{n - 1} b_i \alpha^i.
+\]
+</div>
+
+<p>Compute the $p$-th power of $\beta$.</p>
+
+<div class="myeqn">
+\[
+\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{k_0,\dots,k_{n
+- 1}} \frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
+  \alpha^i)^{k_i},
+\]
+</div>
+
+<div class="myeqn">
+\begin{equation}
+\text{ where } 0 \le k_i \le p \,\forall i = 0,\dots,n \text{ and }
+\sum_{i = 0}^{n - 1} k_i = p. \label{eq:cond}
+\end{equation}
+</div>
+
+<p>Case 1: $\exists k_j = p$, then $k_i = 0 \,\forall i \ne j$.</p>
+
+<div class="myeqn">
+\[
+\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} \prod_{i = 0}^{n - 1} (b_i
+\alpha^i)^{k_i} = 1 \cdot (b_j \alpha^j)^{k_j} = b_j \alpha^{pj}
+\]
+</div>
+
+<p>Note that one can prove that $\forall b \in F, b^p = b$ by induction.</p>
+
+<p>Case 2: $k_i \ne p \,\forall i = 0,\dots,n$.  Since $p$ is a prime,</p>
+
+<div class="myeqn">
+\[
+\frac{p!}{\prod_{i = 0}^{n - 1} k_i!} = 0 \text{ in } \Z_p
+\]
+</div>
+
+<p>Since one only has $n$ choices of $k_0,\dots,k_{n - 1}$ which
+satisfy \eqref{eq:cond}, we conclude that</p>
+
+<div class="myeqn">
+\begin{equation}
+\beta^p = (\sum_{i = 0}^{n - 1} b_i \alpha^i)^p = \sum_{i = 0}^{n - 1}
+b_i^p \alpha^{pi} \label{eq:powp}
+\end{equation}
+</div>
+
+<p>Since $\alpha$ is a root of $f$ in $E$, $(f(\alpha))^p = 0$.
+Replacing “$n - 1$” by “$n$” in the derivation of \eqref{eq:powp}, one
+gets</p>
+
+<div class="myeqn">
+\[
+(f(\alpha))^p = (\sum_{i = 0}^n a_i \alpha^i)^p = \sum_{i = 0}^n a_i
+\alpha^{pi} = f(\alpha^p) = 0
+\]
+</div>
+
+<p>Therefore, <em>without</em> learning induction, one can sense that
+$f(\alpha^{p^m}) = 0 \,\forall m \in \N$.  That’s not the end.  Since
+the degree of $f$ is $n$, we expect to that the number of roots of $f$
+is <em>finite</em>.  Since we expect $n$ roots of $f$, we hope that
+$\alpha^{p^m}$ will repeat itself for sufficiently large $m$.  This
+hope comes true due to Lagrange’s Theorem — $|F^\times| = p^n -
+1$, so $\alpha^{p^n - 1} = 1$.</p>
+
+<p><del>
+Unluckily, I’ve just found out that $f$ <em>has</em> some root $\alpha’$
+which <em>doesn’t</em> hit either one of
+$\alpha,\alpha^p,\alpha^{p^2},\dots,\alpha^{p^{n - 1}}$.  For example,
+if one sets $f(x) := x^{p^2} - x \in \Z_p[x]$ and let $\alpha$ be a
+root of $f$ in $\overline{\Z_p}$, then it’s trivial that
+$\alpha^{p^2} = \alpha$, thus the collection of the $p^m$-th power of
+$\alpha$ is just $\left\{ \alpha,\alpha^p \right\}$.  (i.e.
+$\left\{ \alpha^{p^m} \mid m \in \N \right\} = \left\{
+\alpha,\alpha^p \right\}$)  Nevertheless, $f$ should have $p^2$ roots
+in $\overline{\Z_p}$.
+</del></p>
+
+<p>Hence, I <em>didn’t</em> succeed in answering <strong>the above bolded question</strong>,
+but I still learn something about the roots of an irreducible
+polynomial in an algebraic extension.</p>
+
+<hr />
+<p>(Edited on MAR 28, 2015)</p>
+
+<p>With the results from perfect fields, we <em>immediately</em> know that $f$
+has $n$ different roots.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Installed Jpegtran From Source With MinGW32</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-03-10T07:14:28+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:14 am</span></time>
+        
+           | <a href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>To reduce the bandwidth usage while viewing pictures in this blog,
+I’ve already run <a href="http://optipng.sourceforge.net/">OptiPNG</a> on PNG pictures in my new
+posts.<sup id="fnref:pp_pagespeed"><a href="#fn:pp_pagespeed" class="footnote">1</a></sup>  For JPEG files optimization, Google developers
+suggest <a href="http://freshmeat.net/projects/jpegoptim/">jpegoptim</a> or <a href="http://jpegclub.org/">jpegtran</a>.<sup id="fnref:goo_dev"><a href="#fn:goo_dev" class="footnote">2</a></sup>  Since the first tool
+<em>isn’t</em> available for M$ Win* 7, I installed the second one.  I
+<em>couldn’t</em> find a compiled version of the software, so I had to
+compile it from source code.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Since there’re <em>too many</em> words following the instructions for a *nix
+machine below the table of contents in <code>install.txt</code>, I tried
+installing it with <a href="https://www.gnu.org/software/make/">Make</a> like *nix, so that the installation could
+be finished in four simple commands: <code>./configure</code>, <code>make</code>, <code>make
+test</code> and <code>make install</code>.  The output of the first command was
+fine.<sup id="fnref:config"><a href="#fn:config" class="footnote">3</a></sup></p>
+
+<p>Unluckily, I got trouble when I moved on to the next command.</p>
+
+<pre class="cli"><code>$ make
+c:/Temp/gnuwin32/bin/make  all-am
+c:/Temp/gnuwin32/bin/make: Interrupt/Exception caught (code = 0xc00000fd, addr =
+ 0x4227d3)
+make: *** [all] Error 255
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -646,178 +866,6 @@ Available at <a href="http://www.jmilne.org/math/">http://www.jmilne.org/math/</
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/">Switch Tmux Panes and Vim-$\rm \LaTeX$</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-19T10:37:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 am</span></time>
-        
-           | <a href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I use <a href="http://byobu.co">Byobu</a> with <a href="http://tmux.sourceforge.net">Tmux</a> backend.<sup id="fnref:pp_tmux"><a href="#fn:pp_tmux" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<ul>
-  <li>Moving across panes is inconvenient.</li>
-  <li>If I have a Vim vertical/horizontal split in a Tmux pane, I need to
-  use <em>two</em> different sets of key bindings to navigate the adjacent
-  panes.</li>
-  <li>In the copy mode, it’s great that most of the key bindings follow
-  from those of <a href="http://www.vim.org">Vim</a>, <em>but not the most important two</em>:
-    <ul>
-      <li>start selection</li>
-      <li>copy</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="solution">Solution</h2>
-
-<p>I find two articles on <em>Giant Robots</em> very useful.</p>
-
-<ol>
-  <li><a href="http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits"><em>Seamlessly Navigate Vim and tmux Splits</em></a></li>
-  <li><a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"><em>Tmux Copy &amp; Paste on OS X: A Better Future</em></a></li>
-</ol>
-
-<p>Therefore, I followed the steps in the first blog post, and installed
-<a href="https://github.com/christoomey/vim-tmux-navigator">Vim Tmux Navigator</a>.</p>
-
-<h2 id="another-problem">Another problem</h2>
-
-<p>After the installation of the Vim plugin, I got another problem while
-editing my VIMRC: The <code>{Down-Mapping}</code> <em>didn’t</em> work.
-<a href="https://github.com/vim-latex/vim-latex">Vim-$\rm \LaTeX$</a> should know the reason.  I found an
-article describing a similar problem.<sup id="fnref:choy"><a href="#fn:choy" class="footnote">2</a></sup>  However, I <em>wouldn’t</em>
-like to change <code>~/.vim/bundle/vim-latex/plugin/imaps.vim</code>, so I got
-stuck at this point for hours.  I tried to substitute <code>{Down-Mapping}</code>
-with <code>&lt;C-a&gt;j</code> in VIMRC, but it <em>didn’t</em> work.</p>
-
-<h2 id="lessons-learnt">Lessons Learnt</h2>
-
-<ol>
-  <li>
-    <p>Accept simple ways to do things</p>
-
-    <p>Even though I <em>can’t</em> set <code>{Down-Mapping}</code> to <code>&lt;C-j&gt;</code>, the Vim
- editor command <code>:TmuxNavigateDown</code> <em>isn’t</em> so hard to type.  I
- failed to realise that typing <code>:tm&lt;Tab&gt;</code> will do, and wasted time
- on that.  Now I accept the use of <em>two</em> different sets of
- keystrokes for switching to the Tmux pane/Vim buffer below.  We
- can look at this problem from another angle.</p>
-  </li>
-  <li>
-    <p>Store a list of windows in a file</p>
-
-    <p>A sample file can be found on Super User.<sup id="fnref:su"><a href="#fn:su" class="footnote">3</a></sup>  I found that if I
- had run Byobu before, a session <code>0</code> would <em>also</em> be created on top
- of <code>tmuxs</code>.  To avoid this problem, remove the first line in the
- sample window list and type <code>byobu attach -t 0</code> starting from the
- second time of opening Byobu.</p>
-  </li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp_tmux">
-
-      <p>See <a href="/blog/2015/02/14/use-tmux-for-previewing-posts/"><em>Use Tmux for Previewing Posts</em></a> in this blog for
-details. <a href="#fnref:pp_tmux" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:choy">
-
-      <p>See <a href="https://chrischoy.github.io/blog/notes/vim-tmux-navigation-and-vim-latex/"><em>Key mapping collision between vim-navigation and vim-latex</em></a>
-by Chris Choy for details. <a href="#fnref:choy" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:su">
-
-      <p>See <a href="http://superuser.com/a/747819"><em>Proper Format for Byobu’s windows.tmux?</em></a> on Super
-User. <a href="#fnref:su" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/">Let TTY Remember SSH Passphrase</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-15T09:20:08+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:20 am</span></time>
-        
-           | <a href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/15/let-tty-remember-ssh-passphrase/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>After I’ve written posts for this blog, I would like to publish them
-by <code>rake deploy</code>, but I was prompted to type my passphrase for
-<code>~/.ssh/id_rsa</code> for <em>multiple times</em> in Linux text mode.<sup id="fnref:problem"><a href="#fn:problem" class="footnote">1</a></sup>
-(In GNOME shell, this <em>won’t</em> be a problem.)</p>
-
-<p>In fact, this problem can be generalised to the following one: <strong>What
-can be done so that the terminal <em>only</em> asks for the <abbr title="Secure SHell">SSH</abbr> passphrase
-for the <em>first</em> Git push to a remote server</strong>?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/15/let-tty-remember-ssh-passphrase/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -833,11 +881,10 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
     <section>
   <h1>About Me (Brief)</h1>
   <a href="http://stackexchange.com/users/3841408/gnu-supporter">
-    <img src="http://stackexchange.com/users/flair/3841408.png"
+    <img src="https://stackexchange.com/users/flair/3841408.png"
     width="208" height="58" alt="profile for GNU Supporter on Stack
     Exchange, a network of free, community-driven Q&amp;A sites"
-    title="profile for GNU Supporter on Stack Exchange, a network of
-    free, community-driven Q&amp;A sites" /></a>
+    title="profile for GNU Supporter on Stack Exchange, a network of free, community-driven Q&amp;A sites" /></a>
   <p><a href="/about">Here</a>'s a more detailed version.</p>
   <ol>
     <li>A free software supporter</li>
@@ -850,7 +897,7 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (9)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (10)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -859,7 +906,7 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/information-security/'>information security (14)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (21)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -868,7 +915,7 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
 <li class='category'><a href='/blog/categories/math/'>math (48)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (47)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (48)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -877,13 +924,21 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (29)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (22)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (23)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Jekyll Blog Page Build Warning</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/07/flair-in-octopress-via-https/">Flair in Octopress via HTTPS</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/02/07/closedness-vs-completeness/">Closedness vs Completeness</a>
@@ -895,14 +950,6 @@ for the <em>first</em> Git push to a remote server</strong>?</p>
     
       <li class="post">
         <a href="/blog/2016/01/17/become-an-unsung-hero/">Become an Unsung Hero</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/16/a-search-result-on-hkheadline/">A Search Result on HKHeadline</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/16/generate-latex-code-for-octave-matrices/">Generate $\rm \LaTeX$ Code for Octave Matrices</a>
       </li>
     
   </ul>

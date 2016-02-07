@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-07T19:03:02+08:00</updated>
+  <updated>2016-02-08T01:57:49+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,44 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Jekyll Blog Page Build Warning]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/"/>
+    
+    <updated>2016-02-08T01:45:25+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>The page build of Jekyll is quite easy because one <em>doesn’t</em> need to
+locally generate the HTML code of the Markdown source with <code>rake</code>.
+One just needs to directly save, commit and push the source code
+online.  The GitHub page support will handle the rest for you.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I wrote <a href="/blog2/essai/2016/02/07/bon-nouvel-an-chinois">an article in my Jekyll blog</a> yesterday afternoon.  From
+what was shown in the terminal, the page build was smooth as expected.
+Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
+
+<picture class="fancybox" title="The warning email from GitHub">
+  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" /> 
+  <img alt="The warning email from GitHub" src="https://vincenttam.github.io/images/posts/Blog2/email300.png" />
+</picture>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>The problem can be easily solved: just follow what the email says.
+I’ve visited <a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">this blog article on GitHub</a> to know more about the
+GitHub Pages upgrade.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -350,90 +388,6 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
 write if-else statements should be able to solve this in a few
 seconds: surround the part <code>bar.onchange = function () { ... }</code> by the
 if-else statement <code>if (bar != null ) { ... }</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixed Disqus Comments When Loaded With HTTPS]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/"/>
-    
-    <updated>2015-05-26T22:12:24+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ol>
-  <li><a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">GitHub Pages now supports HTTPS</a>.</li>
-  <li>I saw that Google search showed the HTTP version of the hyperlinks.</li>
-  <li>I want to convert add the existing “http://” to “https://”.</li>
-</ol>
-
-<h2 id="problem">Problem</h2>
-
-<ol>
-  <li>I changed “http://…” to “https://…” in the Admin settings for
-the disqus site of this blog.</li>
-  <li>The original comments <em>disappeared</em>!</li>
-</ol>
-
-<p><strong>How can I get back the original comments and correct the URLs of the
-links to my blog articles on Disqus?</strong></p>
-
-<!-- more -->
-
-<h2 id="failed-attempt">Failed attempt</h2>
-
-<p>I tried to use the “Domain Migration Wizard”.  <em>Lacking</em> knowledge in
-terms like “host”, I just clicked the button to proceed even though I
-saw that the original host name was recognised as “http://https://.”.</p>
-
-<p>In the end, I messed up the URLs of the forum threads.  After using
-the “Wizard”, I waited for about 20 hours, and then I saw that
-hundreds of links started with
-“http://https://vincentam.githhub.io/…”.</p>
-
-<p>I read a lot of articles from the Web, but the problem that they’re
-facing <em>weren’t</em> the same as mine.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I finally decided to use the “URL Mapper”.  When I read the official
-onine help page about this migration tool, I realised that I should
-give it a try.  The moment that I opened the generated CSV file in a
-spreadsheet program, I knew that I had chosen the right way because
-this gave me more control over the URL of the posts on my blog.</p>
-
-<p>I also added a script copied from <a href="https://gist.github.com/konklone/9968713">konklone’s Gist</a> for using
-HTTPS by defalut.</p>
-
-<p>In the official documentation, a spreadsheet program is used to modify
-CSV files.  In fact, if one knows regular expression, one would do
-batch text editing using some tools available in the CLI.  For
-instance, I used Vim to do this last night.</p>
-
-<p>This morning, I discovered that the URLs in the box “Promoted
-Discovery” were <em>still</em> wrong!  This afternoon, I read a lot of
-related websites, just like what I did yesterday.  I <em>wasn’t</em> sure
-what to do next.  The URLs shown in the “Admin” page were finally
-correct, but those hyperlinks on the pages “View in discussion” on the
-white-backgrounded Disqus site <em>weren’t</em>.</p>
-
-<p>Then I worked on something else, and at about 8pm tonight, all the
-URLs have finally been corrected.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I need to be patient and work on other things first after I’ve already
-tried all possible ways to solve the problem.</p>
-
-<h2 id="final-remarks">Final remarks</h2>
-
-<p>During the site migration, one <em>couldn’t</em> see the comments and the
-“Also on” box took one to <em>wrong</em> pages.  I apologize for any
-inconvenience caused.</p>
 
 ]]></content>
     
