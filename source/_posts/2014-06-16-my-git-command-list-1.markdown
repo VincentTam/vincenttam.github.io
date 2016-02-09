@@ -224,14 +224,20 @@ the above section.
 
 ### fugitive.vim
 
+(EDITED ON FEB 09TH, 2016)
+
 [fugitive.vim] is a great Vim plugin.
 
     :Gst[atus]      # Show the `git status' on a horizontal split window
     :Git <command>  # Equivalent to `:!git <command>'
-    :Glog           # Show the commit messages within Vim
+    :Glog           # Show commits of the current file in a quickfix list
+    :Gllog          # Show commits of the current file in a location list
+    :Glog --        # Show all commits of the current branch as diff hunks
+    :Glog -- %      # Show all commits containing the current file as diff hunks
+    :Glog -- foo    # Show all commits containing the file `foo' as diff hunks
 {:.cliUB}
 
-I *don't* know the use of `:Glog`.
+<del>I *don't* know the use of `:Glog`.</del>
 
 Within `Gstatus`, you can conveniently add/remove files from the
 staging area.
