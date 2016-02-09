@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: In a Stack Overflow question, it is suggested
-that clang_complete is better. For its installation, refer to its
-another fan’s blog. ">
+  <meta name="description" content="Changing environment variables in vimrc Refer to Vim Wiki’s page on environment variables. The tips
+uses paths in *nix in the examples. However, for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,80 @@ another fan’s blog. ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/13/writing-vims-output-to-files/">Writing Vim's Output to Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-13T01:01:00+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>1:01 am</span></time>
+        
+           | <a href="/blog/2013/12/13/writing-vims-output-to-files/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/13/writing-vims-output-to-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/13/writing-vims-output-to-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="changing-environment-variables-in-vimrc">Changing environment variables in vimrc</h2>
+
+<p>Refer to <a href="http://vim.wikia.com/wiki/Environment_variables">Vim Wiki’s page on environment variables</a>. The tips
+uses paths in <em>*nix in the examples. However, for Win*</em>, some
+inexperienced users don’t know whether slashes or backslashes should
+be used. In fact, backslashes should be used, and the string should be
+enclosed by a pair of single quote (I don’t know if double quotes
+work.) Then things should run. If you’re unlucky and receive a runtime
+error in the next time you start Vim, then it may be due to the
+missing space characters around the equal sign.</p>
+
+<h2 id="writing-external-commands-to-files">Writing external commands to files</h2>
+
+<p>It’s easy! (<code>:r ![command]</code> will do.)</p>
+
+<h2 id="writing-variables-to-files">Writing variables to files</h2>
+
+<p>Use the <code>=</code> register. First get into normal mode, then type the
+following command.</p>
+
+<pre><code>"=sin(1)p
+</code></pre>
+
+<p>The <code>p</code> have to be typed before any further changes of contents.
+Otherwise, it may not work. For details, see
+<a href="http://unix.stackexchange.com/q/8101/">Unix &amp; Linux Stack Exchange question 8101</a>.</p>
+
+<h2 id="writing-internal-commands-to-files">Writing internal commands to files</h2>
+
+<p>A forum post has answered my doubt. I redirect interested readers to
+<a href="http://objectmix.com/editors/786190-how-redirect-vim-internal-command-output-current-buffer.html">here</a>.</p>
+
+<h2 id="quick-reference-lists-of-some-easy-vim-commands">Quick reference lists of some easy Vim commands</h2>
+
+<ul>
+  <li><a href="http://www.catswhocode.com/blog/100-vim-commands-every-programmer-should-know">100 Vim commands every programmers should know</a></li>
+  <li><a href="http://php.dzone.com/articles/130-essential-vim-commands">130+ Essential Vim Commands</a></li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -627,60 +700,6 @@ bibliography.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/11/06/this-weekends-work-on-vim/">This Weekend's Work on Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-11-06T02:22:00+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>2:22 am</span></time>
-        
-           | <a href="/blog/2013/11/06/this-weekends-work-on-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2013/11/06/this-weekends-work-on-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/11/06/this-weekends-work-on-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-  <li>Installed some useful <a href="http://www.vim.org">Vim</a> plugins, such as
-    <ul>
-      <li><a href="http://github.com/gmarik/vundle">Vundle</a>: (<a href="http://www.vim.org">Vim</a> plugins management tool).</li>
-      <li><a href="http://github.com/scrooloose/nerdtree">NERDTree</a>: (file browser).</li>
-      <li><a href="http://github.com/Lokaltog/vim-easymotion">EasyMotion</a></li>
-      <li><a href="http://github.com/vim-scripts/loremipsum">Loremipsum</a>: (random text generator).</li>
-      <li><a href="http://github.com/tpope/vim-surround">surround.vim</a>: (surround text with brackets).</li>
-      <li><a href="http://github.com/msanders/snipmate.vim">SnipMate</a>: (for autogenerated code).</li>
-      <li><a href="http://github.com/marcweber/vim-addon-mw-utils">Vim-addon-mw-utils</a></li>
-      <li><a href="http://github.com/tomtom/tlib_vim">Tlib_vim</a>: (dependency for <a href="http://github.com/msanders/snipmate.vim">SnipMate</a>).</li>
-      <li><a href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a>: (quick finding tool for files, etc).</li>
-      <li><a href="http://github.com/vim-scripts/L9">L9</a>: (dependency for <a href="http://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a>).</li>
-    </ul>
-  </li>
-  <li>Do some custom insert mode keyboard mapping.
-(<a href="http://vim.wikia.com/wiki/Automatically_append_closing_characters">automatical completion of brackets</a>)</li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/30">&larr; Older</a>
@@ -730,7 +749,7 @@ bibliography.</p>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (48)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (49)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -738,7 +757,7 @@ bibliography.</p>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (29)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (30)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (23)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -746,6 +765,10 @@ bibliography.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/02/09/my-venn-diagram-mistake/">My Venn Diagram Mistake</a>
@@ -761,10 +784,6 @@ bibliography.</p>
     
       <li class="post">
         <a href="/blog/2016/02/07/closedness-vs-completeness/">Closedness vs Completeness</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/01/24/a-dirty-trick-to-finish-googles-game-about-scoville/">A Dirty Trick to Finish Google's Game About Scoville</a>
       </li>
     
   </ul>

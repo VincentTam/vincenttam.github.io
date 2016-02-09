@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-09T20:12:44+08:00</updated>
+  <updated>2016-02-09T22:57:58+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,122 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Rake Aborted Due to a Vim Swap File]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/"/>
+    
+    <updated>2016-02-09T20:49:29+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Tonight, I wrote <a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
+to publish it using the Vim editor command</p>
+
+<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
+</code></pre>
+
+<p>After that, the following error message popped up.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
+To git@github.com:VincentTam/vincenttam.github.io.git
+   c6c422a..fc8d6b8  source -&gt; source
+
+## Generating Site with Jekyll
+    write source/stylesheets/screen.css
+Configuration file: /home/owner/octopress/_config.yml
+            Source: source
+       Destination: public
+      Generating... 
+                    done.
+ Auto-regeneration: disabled. Use --watch to enable.
+cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+rake aborted!
+Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
+Tasks: TOP =&gt; copydot
+(See full trace by running task with --trace)
+
+shell returned 1
+
+Press ENTER or type command to continue
+</code></pre>
+
+<p>When one sees an error message like above for the first time, one
+needs <em>not</em> look directly into code, even though one is writing code
+in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
+wrong.</p>
+
+<p>From the command <code>cp -r ...</code>, I realised that the problem came from
+<code>Rakefile</code>, which tried to copy the non-existent
+<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
+folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
+<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
+
+<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “rake generate ignore swp”, and clicked on
+<a href="https://github.com/imathis/octopress/issues/1073">the first search result</a>, which is Octopress issue #1073.  It
+provided a link to <a href="https://github.com/imathis/octopress/issues/600">issue #600</a>.  Bradon Mathis said that <q cite="https://github.com/imathis/octopress/blob/2.1/Rakefile#L265">this
+has been <a href="https://github.com/imathis/octopress/blob/2.1/Rakefile#L265">fixed in 2.1</a></q>.  Unluckily, after hitting that
+hyperlink, I found that the version of <code>Rakefile</code> shown online was
+<em>different</em> from mine. Finally, I installed <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> to solve
+this problem.<sup id="fnref:installation"><a href="#fn:installation" class="footnote">3</a></sup>  If this plugin supports background tasks
+like <code>rake preview</code>, the blogging experience using <a href="http://octopress.org">Octopress</a> within
+<a href="http://www.vim.org">Vim</a> will be further enhanced.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I’ve learnt to use <a href="http://www.w3schools.com/tags/att_q_cite.asp">the HTML cite tag</a> when I directly quote
+a short phrase from others to avoid being penalised by the Google
+search engine for lacking originality.</p>
+
+<p>Moreover, I revised the usage of these two Vim plugins.</p>
+
+<ol>
+  <li><a href="https://github.com/bronson/vim-visual-star-search">Visual Star Search</a>: Select text in visual
+mode and search it with an asterisk <code>*</code>.</li>
+  <li><a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a>: Add the last search pattern as an text
+object.</li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+      <p>I’ve used this Vim plugin <a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/#fugitivevim">for more than a year</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:gitrepo">
+
+      <p>Strictly speaking, the <code>public</code> folder <em>isn’t</em> in the <em>Git
+repository</em> because <em>this folder isn’t *tracked by the version
+control system</em> (VCS). <a href="#fnref:gitrepo" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:installation">
+
+      <p>For more details, you may see my gist for the <code>.vimrc</code> on Ubuntu
+at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installation" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -79,7 +195,7 @@ what was shown in the terminal, the page build was smooth as expected.
 Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
 
 <picture class="fancybox" title="The warning email from GitHub">
-  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" /> 
+  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" />
   <img alt="The warning email from GitHub" src="https://vincenttam.github.io/images/posts/Blog2/email300.png" />
 </picture>
 
@@ -1505,106 +1621,6 @@ McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[The $p$-th Root of a Convex Homogeneous Function of Degree $p$]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p/"/>
-    
-    <updated>2015-11-30T01:17:25+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/11/30/the-p-th-root-of-a-convex-homogeneous-function-of-degree-p</id>
-    
-      <content type="html"><![CDATA[<h2 id="backgroud">Backgroud</h2>
-
-<p>I was stuck at a question from a convex analysis book for more than a
-week.  I couldn’t directly find its solution.</p>
-
-<blockquote>
-  <p>Let $K$ be a convex cone in $\R^n$, $p \ge 1$.  The function $f: K
-\to [0,\infty)$ is homogeneous of degree $p$, i.e.</p>
-
-  <p>\[
-  f(\lambda x) = \lambda^p f(x),\quad \forall x \in K, \forall
-  \lambda \ge 0.
-\]</p>
-
-  <p>Suppose also that $f(x) &gt; 0 \,\forall x \in K \setminus \{x\}$.
-Show that $g(x) := [f(x)]^{\frac1p}$ is convex on K.</p>
-</blockquote>
-
-<h2 id="resolution">Resolution</h2>
-
-<p>I saw a proof for the Minkowski inequality using the convexity of the
-function $x \mapsto x^p$ <a href="http://math.bard.edu/belk/math461/Inequalities.pdf">here</a>.  In fact, by replacing
-$\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we’re done.</p>
-
-<p>First, observe that</p>
-
-<div class="myeqn">
-\begin{equation}
-  g(\lambda x) = [f(\lambda x)]^{\frac1p} = \lambda g(x),\quad \forall
-  x \in K, \forall \lambda \ge 0
-  \label{homo}
-\end{equation}
-</div>
-
-<p>Therefore, it suffices to show that</p>
-
-<p>\begin{equation}
-  g(x + y) \le g(x) + g(y).
-  \label{goal}
-\end{equation}</p>
-
-<p>The assumption <span class="myeqn">$\norm{\vect{u}}_p =
-\norm{\vect{v}}_p = 1$</span> can be changed to <span class="myeqn">$g(x) = g(y) = 1$</span>.  Then we’ve <span class="myeqn">$f(x) = f(y) = 1$</span>.  By the convexity of $f$ on
-$K$, $\forall x,y \in K, \forall \lambda \in [0,1]$,</p>
-
-<div class="myeqn">
-\begin{equation}
-  f(\lambda x + (1 - \lambda) y) \le \lambda f(x) + (1 - \lambda)
-  f(y) \le 1.
-\end{equation}
-</div>
-
-<p>Since it’s given that $f(x) \ge 0 \,\forall x \in K$, we can say that</p>
-
-<p>\begin{equation}
-  g(\lambda x + (1 - \lambda) y) \le 1.
-  \label{trick}
-\end{equation}</p>
-
-<p>Finally, for any $u,v \in K$, we let</p>
-
-<div class="myeqn">
-\begin{equation}
-  \begin{alignedat}{2}
-    \lambda &amp;{}= \frac{g(u)}{g(u) + g(v)} &amp;{} \qquad x &amp;{}= \frac
-    u{g(u)} \\
-    1 - \lambda &amp;{}= \frac{g(v)}{g(u) + g(v)}&amp;{} \qquad y &amp;{}= \frac
-    v{g(v)}.
-  \end{alignedat}
-  \label{coeff}
-\end{equation}
-</div>
-
-<p>Making use of \eqref{homo}, we substitute \eqref{coeff} into
-\eqref{trick}.</p>
-
-<div class="myeqn">
-\begin{align*}
-  g \left( \frac{g(u)}{g(u) + g(v)} \frac u{g(v)} + \frac{g(v)}{g(u) +
-  g(v)} \frac v{g(v)} \right) &amp;\le 1 \\
-  g \left(\frac u{g(u)+g(v)} + \frac v{g(u)+g(v)} \right) &amp;\le 1 \\
-  g \left(\frac{u + v}{g(u) + g(v)} \right) &amp;\le 1 \\
-  g(u + v) &amp;\le g(u) + g(v)
-\end{align*}
-</div>
-
-<p>We get \eqref{goal} at last.</p>
-
 ]]></content>
     
   </entry>
