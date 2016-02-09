@@ -15,8 +15,8 @@ revisions [or branches]".
 <!-- more -->
 
 For example, if a developer relies on [this Git cheatsheet][GitSheet]
-for blogging with Octopress, then he/she will learn to some Git
-commands, for example:
+for blogging with Octopress, then he/she will learn some Git commands,
+for example:
 
 1. `git diff <branch>` to view the uncommitted changes;
 2. `git diff <path>` to show the uncommitted changes in files under
