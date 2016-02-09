@@ -153,7 +153,7 @@ Solution
 (Added on SEP 3RD, 2015)
 
 Now, I know [how to tell kramdown to ignore MathJax code][sol].  This
-is *much more convenient* than the method describe below.
+is *much more convenient* than the method described below.
 
 ---
 
