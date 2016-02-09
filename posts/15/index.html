@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I changed my way of writing block equations for RSS.1 However, in
-my old post about the Contraction Mapping Principles, there’s an &hellip;">
+  <meta name="description" content="When I set up Blog 1 for MathJax and fancybox, I included some
+custom code in source/_includes/custom/head.html. I moved them to
+source/javascripts/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,138 @@ my old post about the Contraction Mapping Principles, there’s an &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Custom JavaScripts in the Head of Octopress Pages</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-12T21:51:59+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:51 pm</span></time>
+        
+           | <a href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/12/custom-javascripts-in-the-head-of-octopress-pages/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When I set up <em>Blog 1</em> for MathJax and fancybox, I included some
+custom code in <code>source/_includes/custom/head.html</code>.  I moved them to
+<code>source/javascripts/MathJaxLocal.js</code> and
+<code>source/javascripts/FancyBoxLocal.js</code> because I <em>don’t</em> like
+JavaScript code inside HTML files.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>In the past, I put those code in <code>source/_includes/custom/head.html</code>
+because of Felix Chern’s post.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  However, there’s another better
+way.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  Why is it better?  It saves thousands of lines of code.
+Apart from that, it’s a way to separate the behaviour of a document
+from the contents.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
+
+<p><img class="fancybox" src="/images/posts/OctHead/MasterPull.png" width="900" title="Statistics on the changes" alt="git-diff --stat" /></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Commits <a href="https://github.com/VincentTam/vincenttam.github.io/commit/697d086" title="Moved javascript code from a HTML file">697d086</a> and <a href="https://github.com/VincentTam/vincenttam.github.io/commit/d6d3633" title="Added two new posts, and updated MathJax equations">d6d3633</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>See <a href="http://www.idryman.org/blog/2012/03/10/writing-math-equations-on-octopress/"><em>Writing Math Equations on Octopress</em></a> in Carpe Diem. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>See <a href="http://drz.ac/2013/01/03/blogging-with-math/"><em>Blogging With Math: Octopress, MathJax, and Pandoc</em></a> in
+DrZ.ac. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+
+      <p>See
+<a href="http://www.w3.org/2001/tag/doc/contentPresentation-26.html"><em>Separation of semantic and presentational markup, to the extent possible, is architecturally sound</em></a>
+in W3C. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">An Error in Printing Equations in Chrome</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-10T16:27:02+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:27 pm</span></time>
+        
+           | <a href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/10/an-error-in-printing-equations-in-chrome/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/10/an-error-in-printing-equations-in-chrome/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This afternoon, I found that when I preview the print layout of the
+posts in <a href="https://www.google.com/chrome/" title="Google Chrome">Chrome</a>, some Mathjax block equations enclosed with
+<code>\begin{equation}</code> <em>weren’t</em> displayed properly.  I think it should be
+due to my settings in <code>sass/custom/_print.scss</code> because the contents
+in Mathjax’s official demo can be rendered properly in the print
+preview.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, I deleted some obsolete lines of code in that
+SCSS file .<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Actually, since it takes time for loading MathJax, if
+I open the print preview before the block equations are ready, then I
+will see the source code of those equations.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Refer to <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-eqnum.html"><em>A Test of Equation Numbering</em></a> in MathJax
+Example Pages for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/48b131c" title="Deleted obsolete CSS code for printing equations">48b131c</a>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -578,102 +711,6 @@ in M$ Win* unless I’m “running it with an installed … gvim.bat”.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Testing Octopress and Ruby 2.0 on Windows 7 (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T23:39:57+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>11:39 pm</span></time>
-        
-           | <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="/images/posts/OctRuby2b/err.png" title="A compilation error" alt="solved problem" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Testing Octopress and Ruby 2.0 on Windows 7 (1)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-02T15:22:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>This Sunday, I tried to do something similar to what I did in
-May—install Octopresss on Windows 7.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Different from last time,
-I used Ruby 2.0.0, the newest version of RubyInstaller for Windows
-that I could find.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
-
-<p>I could use Octopress with Ruby 1.9.3, so I expected that I could
-easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><img class="fancybox" src="/images/posts/OctRuby2a/err.png" title="A compilation error" alt="Screenshot of problem" /></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/16">&larr; Older</a>
@@ -715,7 +752,7 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (5)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (21)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -731,7 +768,7 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (30)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (32)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (23)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -739,6 +776,14 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/">Hyperlinks in Ordered Lists in Markdown in Vim</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/">Indentation of Titles in Markdown Files in Vim</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a>
@@ -750,14 +795,6 @@ easily deploy things with Ruby 2.0.0.  However, I was mistaken.</p>
     
       <li class="post">
         <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Jekyll Blog Page Build Warning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/07/flair-in-octopress-via-https/">Flair in Octopress via HTTPS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/07/closedness-vs-completeness/">Closedness vs Completeness</a>
       </li>
     
   </ul>

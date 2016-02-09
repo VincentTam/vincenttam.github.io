@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Template | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/template/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-10T00:46:09+08:00</updated>
+  <updated>2016-02-10T01:46:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -46,11 +46,48 @@ following graph.</p>
 
 <h2 id="output">Output</h2>
 
-<p>{% img center /images/posts/TikZPolar/graph.svg 750 ‘fig1’ ‘polar plot’ %}</p>
+<p><img class="center" src="/images/posts/TikZPolar/graph.svg" width="750" title="‘fig1’ ‘polar plot’" ></p>
 
 <h2 id="source-code">Source code</h2>
 
-<p>{% include_code The $\rm \LaTeX$ source code for the above graph lang:tex TikZPolar.tex %}</p>
+<p><figure class='code'><figcaption><span>The $\rm \LaTeX$ source code for the above graph  (TikZPolar.tex)</span> <a href='/downloads/code/TikZPolar.tex'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'>  <span class="c">% drawing grid lines</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>1,...,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (0,0) circle (<span class="k">\r</span>);<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\draw</span> (-6.5,0) -- (6.5,0);
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\theta</span> in <span class="nb">{</span>15,30,...,165<span class="nb">}</span> <span class="nb">{</span><span class="k">\draw</span> (<span class="k">\theta</span>:6.5) -- (<span class="k">\theta</span>+180:6.5);<span class="nb">}</span>
+</span><span class='line'>  <span class="c">% labelling them</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\r</span> in <span class="nb">{</span>2,4,6<span class="nb">}</span> <span class="nb">{</span><span class="k">\node</span><span class="na">[below left]</span> (lbl<span class="k">\r</span>) at (<span class="k">\r</span>,0) <span class="nb">{</span><span class="k">\r</span><span class="nb">}</span>;<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\foreach</span> <span class="k">\t</span> in <span class="nb">{</span>0,30,...,330<span class="nb">}</span> <span class="nb">{</span>
+</span><span class='line'>    <span class="k">\node</span> [draw,fill=white] (lbl<span class="k">\t</span>) at (<span class="k">\t</span>:7) <span class="nb">{</span><span class="s">$</span><span class="nv">\theta</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\t</span><span class="nb">^</span><span class="nv">\circ</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'>  <span class="nb">}</span>
+</span><span class='line'>  <span class="c">% graph of $r = 5 - \sin(3\theta)$</span>
+</span><span class='line'>  <span class="k">\draw</span><span class="na">[red,ultra thick,smooth cycle,samples=200,domain=0:359]</span>
+</span><span class='line'>  plot (<span class="k">\x</span>:<span class="nb">{</span>5-sin(3*<span class="k">\x</span>)<span class="nb">}</span>);
+</span><span class='line'>  <span class="k">\node</span> at (270:8) <span class="nb">{</span>The graph of <span class="s">$</span><span class="nb">r </span><span class="o">=</span><span class="nb"> </span><span class="m">5</span><span class="nb"> </span><span class="o">-</span><span class="nb"> </span><span class="nv">\sin</span><span class="o">(</span><span class="m">3</span><span class="nv">\theta</span><span class="o">)</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ul>
   <li>I got the idea of for loop in TikZ from
@@ -100,7 +137,197 @@ documents with</p>
 
 <!-- more -->
 
-<p>{% gist ffad6efe2c65d5e70b28 my_template1.latex %}</p>
+<p><div><script src='https://gist.github.com/ffad6efe2c65d5e70b28.js?file=my_template1.latex'></script>
+<noscript><pre><code>\documentclass[12pt,a4paper]{$documentclass$}
+$if(fontfamily)$
+\usepackage{$fontfamily$}
+$else$
+\usepackage{lmodern}
+$endif$
+\usepackage{setspace}
+\setstretch{1.241} % for one half spacing of 12pt
+%\setstretch{1.655} % for double spacing of 12pt
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+    \usepackage{xltxtra,xunicode}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \newcommand{\euro}{€}
+$if(mainfont)$
+    \setmainfont{$mainfont$}
+$endif$
+$if(sansfont)$
+    \setsansfont{$sansfont$}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi]{$monofont$}
+$endif$
+$if(mathfont)$
+    \setmathfont(Digits,Latin,Greek){$mathfont$}
+$endif$
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[margin=1in]{geometry}
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage{biblatex}
+$if(biblio-files)$
+\bibliography{$biblio-files$}
+$endif$
+$endif$
+$if(listings)$
+\usepackage{listings}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+$if(graphics)$
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width&gt;\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height&gt;\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+\ifxetex
+  \usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={$author-meta$},
+            pdftitle={$title-meta$},
+            colorlinks=true,
+            citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don&#39;t use monospace font for urls
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+$if(lang)$
+\ifxetex
+  \usepackage{polyglossia}
+  \setmainlanguage{$mainlang$}
+\else
+  \usepackage[$lang$]{babel}
+\fi
+$endif$
+
+$if(title)$
+\title{$title$$if(subtitle)$\\\vspace{0.5em}{\large $subtitle$}$endif$}
+$endif$
+$if(author)$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+\date{$date$}
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\begin{document}
+$if(title)$
+\maketitle
+$endif$
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$body$
+
+$if(natbib)$
+$if(biblio-files)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$biblio-files$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
+\end{document}</code></pre></noscript></div>
+</p>
 
 ]]></content>
     
@@ -138,7 +365,38 @@ Octopress<sup id="fnref:fixed_gist"><a href="#fn:fixed_gist" class="footnote">1<
 
 <!-- more -->
 
-<p>{% gist 10473229 latex_chin_sample.tex %}</p>
+<p><div><script src='https://gist.github.com/10473229.js?file=latex_chin_sample.tex'></script>
+<noscript><pre><code>\documentclass[12pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{xeCJK}
+\setCJKmainfont{AR PL UKai HK}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{\baselineskip}
+\usepackage{setspace}
+\doublespacing
+\usepackage{metalogo}
+
+\author{
+  毛名仕\\
+  1234567890
+}
+\title{ABCD 1234：文章的主題}
+\date{二零一四年四月五日}
+\begin{document}
+\maketitle
+
+老師、各位同學，大家好！我今日想跟大家分享一下我的模版。我們每日花多少
+時間在找尋微軟的破解版上？各位正在使用微軟辦公室軟體的用者，沒有升級軟
+體，文件過了幾年就會出現相容性的問題。
+
+下一個段落，說明了我不用微軟所見即所得的文書處理器，也可以排版出漂亮的
+文章。段落之間有一空行，行與行之間也有行距，方便閱讀。我用自由的
+\XeLaTeX 造出的文件，比閉源的微軟的文書處理器所造出的還好！
+
+\end{document}
+
+% vim:nospell</code></pre></noscript></div>
+</p>
 
 <hr />
 
@@ -173,7 +431,27 @@ Octopress<sup id="fnref:fixed_gist"><a href="#fn:fixed_gist" class="footnote">1<
 
 <h2 id="sample-code">Sample code</h2>
 
-<p>{% gist 9569005 %}</p>
+<p><div><script src='https://gist.github.com/9569005.js'></script>
+<noscript><pre><code>@online{Gnu13,
+  author = {Richard Stallman},
+  title = {{Free Software and Education}},
+  date = {2013-11-06},
+  url = {http://www.gnu.org/education/education.html}
+}
+
+@article{kaplan2010users,
+  title={{Users of the world, unite! The challenges and opportunities
+    of social media}},
+  author={Kaplan, Andreas M and Haenlein, Michael},
+  journal={{Business Horizons}},
+  volume={53},
+  number={1},
+  pages={59--68},
+  year={2010},
+  publisher={Elsevier}
+}
+</code></pre></noscript></div>
+</p>
 
 <h2 id="explanation-of-code-in-latex-sampletex">Explanation of code in “latex-sample.tex”</h2>
 

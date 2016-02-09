@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-09T22:57:58+08:00</updated>
+  <updated>2016-02-10T01:46:36+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,180 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Hyperlinks in Ordered Lists in Markdown in Vim]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/"/>
+    
+    <updated>2016-02-10T01:06:42+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Same as the one in <a href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">my previous post</a>.</p>
+
+<p>I usually write hyperlinks for software names using only one pair of
+square brackets, like <code>[Vim]</code> instead of <code>[Vim][Vim]</code>.  Even though
+this <em>isn’t</em> standard, this is more convenient.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I want to start the second item of the following ordered list with a
+hyperlink to <a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a> written in a short but non-standard
+way.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Markdown code of the ordered list  (test-post.mkd)</span> <a href="https://vincenttam.github.io/downloads/code/olhlmdvim/test-post.mkd">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">Lessons learnt
+</span><span class="line">---
+</span><span class="line">
+</span><span class="line">Moreover, I revised the usage of these two [Vim] plugins.
+</span><span class="line">
+</span><span class="line">1. [Visual Star Search][visual-star-search]: Select text in visual
+</span><span class="line">   mode and search it with an asterisk `*`.
+</span><span class="line">2. [textobj-lastpat]: Add the last search pattern as a text object.
+</span><span class="line">
+</span><span class="line">[Vim]: http://www.vim.org
+</span><span class="line">[visual-star-search]: https://github.com/bronson/vim-visual-star-search
+</span><span class="line">[textobj-lastpat]: https://github.com/kana/vim-textobj-lastpat
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Unluckily, as I typed this Vim Ex command
+<a href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">to see whether my Markdown syntax was correct</a>, I quickly
+received an error from <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
+
+<pre class="cliUB"><code>:!kramdown % &gt; %&lt;.html
+</code></pre>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Markdown code of the ordered list (test-post.html)</span> <a href="https://vincenttam.github.io/downloads/code/olhlmdvim/test-post.html">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;lessons-learnt&quot;</span><span class="nt">&gt;</span>Lessons learnt<span class="nt">&lt;/h2&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;p&gt;</span>Moreover, I revised the usage of these two <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.vim.org&quot;</span><span class="nt">&gt;</span>Vim<span class="nt">&lt;/a&gt;</span> plugins.<span class="nt">&lt;/p&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">&lt;ol&gt;</span>
+</span><span class="line">  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/bronson/vim-visual-star-search&quot;</span><span class="nt">&gt;</span>Visual Star Search<span class="nt">&lt;/a&gt;</span>: Select text in visual
+</span><span class="line">mode and search it with an asterisk <span class="nt">&lt;code&gt;</span>*<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class="line"><span class="nt">&lt;/ol&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<pre class="cliUB"><code>Warning: Duplicate link ID 'textobj-lastpat' on line 13 - overwriting
+
+Press ENTER or type command to continue
+</code></pre>
+
+<p>This time, I <em>won’t</em>
+<a href="http://polymerhk.com/articles/2016/02/03/27363/">find out what’s wrong from the error message</a> because writing
+that hyperlink in the standard way is the quickest solution that I
+know.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Indentation of Titles in Markdown Files in Vim]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/"/>
+    
+    <updated>2016-02-10T00:05:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>While I was writing
+<a href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">a post about a technical problem encountered</a> while writing
+<a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/">another post about Venn diagram</a>, I encountered another
+technical problem.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried including the error message into the previous post by the Vim
+editor command <code>:r ~/lang:text temp-swp.mkd</code>.  To have it surrounded with
+<code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A section of the error message  (temp-swp.mkd)</span> <a href="https://vincenttam.github.io/downloads/code/temp-swp.mkd">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">## Generating Site with Jekyll
+</span><span class="line">    write source/stylesheets/screen.css
+</span><span class="line">Configuration file: /home/owner/octopress/_config.yml
+</span><span class="line">            Source: source
+</span><span class="line">       Destination: public
+</span><span class="line">      Generating...
+</span><span class="line">                    done.
+</span><span class="line"> Auto-regeneration: disabled. Use --watch to enable.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
+selected in visual line mode.  However, the line starting with <code>#</code>
+<em>wasn’t</em> indented like the others.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A failed indentation  (temp-swp1.mkd)</span> <a href="https://vincenttam.github.io/downloads/code/temp-swp1.mkd">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">## Generating Site with Jekyll
+</span><span class="line">        write source/stylesheets/screen.css
+</span><span class="line">    Configuration file: /home/owner/octopress/_config.yml
+</span><span class="line">                Source: source
+</span><span class="line">           Destination: public
+</span><span class="line">          Generating...
+</span><span class="line">                        done.
+</span><span class="line">     Auto-regeneration: disabled. Use --watch to enable.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>If I started <a href="http://www.vim.org">Vim</a> with all plugins disabled with <code>vim -u NONE -N</code>,
+then the above problem <em>won’t</em> happen.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Use the visual block mode instead.  Either one way will do.</p>
+
+<ol>
+  <li>Keep using the <code>&gt;</code> operator.</li>
+  <li>Use <code>I    </code> instead of <code>&gt;</code>.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -101,7 +275,7 @@ search engine for lacking originality.</p>
 <ol>
   <li><a href="https://github.com/bronson/vim-visual-star-search">Visual Star Search</a>: Select text in visual
 mode and search it with an asterisk <code>*</code>.</li>
-  <li><a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a>: Add the last search pattern as an text
+  <li><a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a>: Add the last search pattern as a text
 object.</li>
 </ol>
 
@@ -1463,161 +1637,6 @@ bounded by $C$ except for finitely many points,</p>
         <li><a href="http://math.stackexchange.com/q/629495">Intuition behind the residue at infinity</a></li>
       </ul>
       <p><a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Simplex Tableaux]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/12/20/latex-template-for-simplex-tableaux/"/>
-    
-    <updated>2015-12-20T20:19:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/12/20/latex-template-for-simplex-tableaux</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>To provide a good-looking template of simplex tableaux for users of
-<a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
-
-<div class="myeqn">
-\[
-  \begin{array}{crrrrrrr|l}
-               &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \\ \hline
-           x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 \\
-           x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 \\
-           x_6 &amp;   0 &amp;   6 &amp;  -1 &amp;   0 &amp;   0 &amp;   1 &amp; -4^* &amp; -4M +8 \\
-           x_1 &amp;   1 &amp;   0 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    1 &amp;      M \\ \hline
-               &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    2 &amp;     2M \\
-  \text{ratio} &amp;     &amp;     &amp;   1 &amp;     &amp;     &amp;     &amp;  1/2 &amp;
-  \end{array}
-\]
-</div>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>equation*<span class="nb">}</span>
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>crrrrrrr|l<span class="nb">}</span>
-</span><span class="line">               <span class="nb">&amp;</span> x<span class="nb">_</span>1 <span class="nb">&amp;</span> x<span class="nb">_</span>2 <span class="nb">&amp;</span> x<span class="nb">_</span>3 <span class="nb">&amp;</span> x<span class="nb">_</span>4 <span class="nb">&amp;</span> x<span class="nb">_</span>5 <span class="nb">&amp;</span> x<span class="nb">_</span>6 <span class="nb">&amp;</span>  x<span class="nb">_</span>7 <span class="nb">&amp;</span>        <span class="k">\\</span> <span class="k">\hline</span>
-</span><span class="line">           x<span class="nb">_</span>4 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>  -3 <span class="nb">&amp;</span>   7 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>    2 <span class="nb">&amp;</span> 2M  -4 <span class="k">\\</span>
-</span><span class="line">           x<span class="nb">_</span>5 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>  -9 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   -1 <span class="nb">&amp;</span> -M  -3 <span class="k">\\</span>
-</span><span class="line">           x<span class="nb">_</span>6 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   6 <span class="nb">&amp;</span>  -1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span> -4<span class="nb">^</span>* <span class="nb">&amp;</span> -4M +8 <span class="k">\\</span>
-</span><span class="line">           x<span class="nb">_</span>1 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>      M <span class="k">\\</span> <span class="k">\hline</span>
-</span><span class="line">               <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>   0 <span class="nb">&amp;</span>    2 <span class="nb">&amp;</span>     2M <span class="k">\\</span>
-</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>ratio<span class="nb">}</span> <span class="nb">&amp;</span>     <span class="nb">&amp;</span>     <span class="nb">&amp;</span>   1 <span class="nb">&amp;</span>     <span class="nb">&amp;</span>     <span class="nb">&amp;</span>     <span class="nb">&amp;</span>  1/2 <span class="nb">&amp;</span>
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Learnt Laurent Series]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/"/>
-    
-    <updated>2015-12-20T18:51:05+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series</id>
-    
-      <content type="html"><![CDATA[<p>Yesterday, I read the proof of Laurent’s Theorem in my complex
-variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
-
-<p><span class="myeqn">
-Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
-z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
-surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
-
-<div class="myeqn">
-\[
-  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
-  \abs{z - z_0} &lt; R_2).
-\]
-</div>
-
-<p><span>Image size:</span>
-<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
-<span id="lbl">300</span></p>
-
-<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="https://vincenttam.github.io/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<p><small>Source code: <a href="https://vincenttam.github.io/downloads/code/Laurent/laurent.tex">$\rm \LaTeX$</a>, <a href="https://vincenttam.github.io/downloads/code/Laurent/laurent.svg">SVG</a></small></p>
-
-<p>I was stuck at this point.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
-  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
-  = 0
-  \label{int}
-\end{equation}
-</div>
-
-<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
-including the circumference of $\gamma$.  Then the boundary of the
-region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
-third term in $\eqref{int}$ was needed.  I took me half an hour to
-figure out that the integrand is <em>not</em> simply $f(s)$, but with a
-denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
-I need to also include it as the boundary of the region of analyticity
-of the integrand.</p>
-
-<hr />
-
-<!-- Defer loading of JavaScripts -->
-<script type="text/javascript" charset="utf-8">
-(function() {
-    function getScript(url,success){
-        var script=document.createElement('script');
-        script.src=url;
-        var head=document.getElementsByTagName('head')[0],
-        done=false;
-        script.onload=script.onreadystatechange = function(){
-        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
-            done=true;
-            success();
-            script.onload = script.onreadystatechange = null;
-            head.removeChild(script);
-        }
-        };
-        head.appendChild(script);
-    }
-
-    getScript("/javascripts/svg-resize-bar.js",function() {});
-})();
-</script>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:churchill">
-
-      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
-variables and applications (Vol. 7)</em>. (pp. 17). New York:
-McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
