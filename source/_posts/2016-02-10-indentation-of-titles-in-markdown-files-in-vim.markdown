@@ -18,16 +18,16 @@ Problem
 ---
 
 I tried including the error message into the previous post by the Vim
-editor command `:r ~/temp-swp.mkd`.  To have it surrounded with
+editor command `:r ~/lang:text temp-swp.mkd`.  To have it surrounded with
 `<pre><code>` in HTML, one needs to indent it by four spaces.
 
-{% include_code A section of the error message temp-swp.mkd %}
+{% include_code A section of the error message lang:text temp-swp.mkd %}
 
 I usally do this by applying the right-shift operator `>` to the text
 selected in visual line mode.  However, the line starting with `#`
 *wasn't* indented like the others.
 
-{% include_code A failed indentation temp-swp1.mkd %}
+{% include_code A failed indentation lang:text temp-swp1.mkd %}
 
 <!-- more -->
 
