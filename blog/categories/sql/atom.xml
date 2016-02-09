@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Sql | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/sql/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-09T22:57:58+08:00</updated>
+  <updated>2016-02-10T00:46:09+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -31,16 +31,12 @@
 single table.  I choose <code>INNER JOIN</code> to avoid seeing null entries in
 the result.  The syntax is similar to the following.</p>
 
-<p><figure class='code'><figcaption><span>Sample SQL Syntax </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Table1</span>
-</span><span class='line'><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Table2</span>
-</span><span class='line'><span class="k">ON</span> <span class="n">Table1</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">Table2</span><span class="p">.</span><span class="n">ID</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">Col1</span> <span class="k">LIKE</span> <span class="err">‘</span><span class="n">foo</span><span class="err">’</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Sample SQL Syntax lang:sql %}
+SELECT * FROM Table1
+INNER JOIN Table2
+ON Table1.ID = Table2.ID
+WHERE Col1 LIKE ‘foo’
+{% endcodeblock %}</p>
 
 <p>Unluckily, when the size of <code>Table1</code> and <code>Table2</code> is large, it takes a
 while to get the result.</p>
@@ -50,30 +46,19 @@ while to get the result.</p>
 <p><a href="https://goo.gl/iLGa5Z">This page</a> has two more efficient ways.  Since I search for
 recent data, I adopted the third method in <a href="http://data.stackexchange.com/math/query/416590/view-all-unanswered-questions">my query</a>.</p>
 
-<p><figure class='code'><figcaption><span>My Query on Stack Exchange Data Explorer </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DECLARE</span> <span class="o">@</span><span class="n">TagLike</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">=</span> <span class="o">##</span><span class="n">taglike</span><span class="p">:</span><span class="n">string</span><span class="o">##&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">500</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Post</span> <span class="n">Link</span><span class="p">],</span> <span class="n">AnswerCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Ans</span><span class="p">],</span>
-</span><span class='line'><span class="n">CommentCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Com</span><span class="p">],</span> <span class="n">CreationDate</span><span class="p">,</span> <span class="n">Score</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Scr</span><span class="p">],</span>
-</span><span class='line'><span class="n">ViewCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Views</span><span class="p">],</span> <span class="n">OwnerUserId</span> <span class="k">FROM</span> <span class="n">Posts</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">AnswerCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">Tags</span> <span class="k">LIKE</span> <span class="err">‘</span><span class="o">%</span><span class="err">’</span> <span class="o">+</span> <span class="o">@</span><span class="n">TagLike</span> <span class="o">+</span> <span class="err">‘</span><span class="o">%</span><span class="err">’</span> <span class="k">AND</span>
-</span><span class='line'><span class="n">ClosedDate</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AS</span> <span class="n">p</span>
-</span><span class='line'><span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span><span class="p">,</span> <span class="n">LastAccessDate</span><span class="p">,</span> <span class="n">Reputation</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Rep</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Users</span>
-</span><span class='line'><span class="k">WHERE</span> <span class="n">LastAccessDate</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="err">‘</span><span class="mi">2015</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">01</span><span class="err">’</span><span class="p">)</span> <span class="k">AS</span> <span class="n">u</span>
-</span><span class='line'><span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">OwnerUserId</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">Id</span>
-</span><span class='line'><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">p</span><span class="p">.</span><span class="n">Com</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock My Query on Stack Exchange Data Explorer lang:sql %}
+DECLARE @TagLike NVARCHAR(25) = ##taglike:string##</p>
+
+<p>SELECT TOP 500 * FROM (SELECT Id AS [Post Link], AnswerCount AS [Ans],
+CommentCount AS [Com], CreationDate, Score AS [Scr],
+ViewCount AS [Views], OwnerUserId FROM Posts
+WHERE AnswerCount = 0 AND Tags LIKE ‘%’ + @TagLike + ‘%’ AND
+ClosedDate IS NULL) AS p
+INNER JOIN (SELECT Id, LastAccessDate, Reputation AS [Rep] FROM Users
+WHERE LastAccessDate &gt;= ‘2015-12-01’) AS u
+ON p.OwnerUserId = u.Id
+ORDER BY p.Com
+{% endcodeblock %}</p>
 
 ]]></content>
     
@@ -101,57 +86,33 @@ site?</p>
 
 <p>Write a SQL query on <a href="http://data.stackexchange.com">Stack Exchange Data Explorer</a>.</p>
 
-<p><figure class='code'><figcaption><span>User’s Total Reputation Distribution</span><a href='http://goo.gl/Kqwepp'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">select</span> <span class="n">u</span><span class="p">.</span><span class="n">range</span> <span class="k">as</span> <span class="p">[</span><span class="n">prev</span> <span class="k">row</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">Reputation</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">this</span> <span class="k">row</span><span class="p">],</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="p">[</span><span class="n">Users</span><span class="p">]</span>
-</span><span class='line'><span class="k">from</span> <span class="p">(</span>
-</span><span class='line'>    <span class="k">select</span> <span class="k">case</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">1</span> <span class="k">and</span> <span class="mi">4</span> <span class="k">then</span> <span class="mi">4</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">5</span> <span class="k">and</span> <span class="mi">9</span> <span class="k">then</span> <span class="mi">9</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">10</span> <span class="k">and</span> <span class="mi">14</span> <span class="k">then</span> <span class="mi">14</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">15</span> <span class="k">and</span> <span class="mi">19</span> <span class="k">then</span> <span class="mi">19</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">20</span> <span class="k">and</span> <span class="mi">49</span> <span class="k">then</span> <span class="mi">49</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">50</span> <span class="k">and</span> <span class="mi">74</span> <span class="k">then</span> <span class="mi">74</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">75</span> <span class="k">and</span> <span class="mi">99</span> <span class="k">then</span> <span class="mi">99</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">100</span> <span class="k">and</span> <span class="mi">124</span> <span class="k">then</span> <span class="mi">124</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">125</span> <span class="k">and</span> <span class="mi">249</span> <span class="k">then</span> <span class="mi">249</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">250</span> <span class="k">and</span> <span class="mi">499</span> <span class="k">then</span> <span class="mi">499</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">500</span> <span class="k">and</span> <span class="mi">999</span> <span class="k">then</span> <span class="mi">999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">1000</span> <span class="k">and</span> <span class="mi">1999</span> <span class="k">then</span> <span class="mi">1999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">2000</span> <span class="k">and</span> <span class="mi">2499</span> <span class="k">then</span> <span class="mi">2499</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">2500</span> <span class="k">and</span> <span class="mi">2999</span> <span class="k">then</span> <span class="mi">2999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">3000</span> <span class="k">and</span> <span class="mi">4999</span> <span class="k">then</span> <span class="mi">4999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">5000</span> <span class="k">and</span> <span class="mi">9999</span> <span class="k">then</span> <span class="mi">9999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">10000</span> <span class="k">and</span> <span class="mi">14999</span> <span class="k">then</span> <span class="mi">14999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">15000</span> <span class="k">and</span> <span class="mi">19999</span> <span class="k">then</span> <span class="mi">19999</span>
-</span><span class='line'>    <span class="k">when</span> <span class="n">Reputation</span> <span class="k">between</span> <span class="mi">20000</span> <span class="k">and</span> <span class="mi">24999</span> <span class="k">then</span> <span class="mi">24999</span>
-</span><span class='line'>    <span class="k">else</span> <span class="mi">400000</span> <span class="k">end</span> <span class="k">as</span> <span class="n">range</span>
-</span><span class='line'>        <span class="k">from</span> <span class="n">Users</span><span class="p">)</span> <span class="n">u</span>
-</span><span class='line'>    <span class="k">group</span> <span class="k">by</span> <span class="n">u</span><span class="p">.</span><span class="n">range</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock User’s Total Reputation Distribution lang:sql http://goo.gl/Kqwepp %}
+select u.range as [prev row &lt;= Reputation &lt;= this row], count(*) as [Users]
+from (
+    select case
+    when Reputation between 1 and 4 then 4
+    when Reputation between 5 and 9 then 9
+    when Reputation between 10 and 14 then 14
+    when Reputation between 15 and 19 then 19
+    when Reputation between 20 and 49 then 49
+    when Reputation between 50 and 74 then 74
+    when Reputation between 75 and 99 then 99
+    when Reputation between 100 and 124 then 124
+    when Reputation between 125 and 249 then 249
+    when Reputation between 250 and 499 then 499
+    when Reputation between 500 and 999 then 999
+    when Reputation between 1000 and 1999 then 1999
+    when Reputation between 2000 and 2499 then 2499
+    when Reputation between 2500 and 2999 then 2999
+    when Reputation between 3000 and 4999 then 4999
+    when Reputation between 5000 and 9999 then 9999
+    when Reputation between 10000 and 14999 then 14999
+    when Reputation between 15000 and 19999 then 19999
+    when Reputation between 20000 and 24999 then 24999
+    else 400000 end as range
+        from Users) u
+    group by u.range
+{% endcodeblock %}</p>
 
 <p>The indentation is automatically done by <a href="http://www.vim.org">Vim</a>.  I know that the
 syntax is <em>ugly</em>.  If I assign text string to the column <code>u.range</code>,
@@ -161,7 +122,7 @@ use a dirty way to get the statistics, and played with the built-in
 graphing function.  However, the visual result <em>isn’t</em> so
 satisfactory.</p>
 
-<p><img class="fancybox" src="/images/posts/MathSE/reputation985.png" width="300" title="‘Reputation v.s. Users on Math Stack Exchange’ ‘MathSE reputation statistics’" ></p>
+<p>{% img fancybox /images/posts/MathSE/reputation985.png 300 ‘Reputation v.s. Users on Math Stack Exchange’ ‘MathSE reputation statistics’ %}</p>
 
 <p>Anyone who has completed high school will realise that a log graph is
 better.  Asking for this feature on <a href="http://meta.stackexchange.com">Meta Stack Exchange</a>
@@ -183,64 +144,7 @@ matrix.</li>
   </li>
 </ol>
 
-<p><figure class='code'><figcaption><span>The source code for the log plot  (mathse-rep.m)</span> <a href='/downloads/code/mathse-rep.m'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-</pre></td><td class='code'><pre><code class='octave'><span class='line'><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>
-</span><span class='line'><span class="mi">4</span><span class="p">,</span><span class="mi">86698</span><span class="p">;</span>
-</span><span class='line'><span class="mi">9</span><span class="p">,</span><span class="mi">23074</span><span class="p">;</span>
-</span><span class='line'><span class="mi">14</span><span class="p">,</span><span class="mi">17793</span><span class="p">;</span>
-</span><span class='line'><span class="mi">19</span><span class="p">,</span><span class="mi">9897</span><span class="p">;</span>
-</span><span class='line'><span class="mi">49</span><span class="p">,</span><span class="mi">22201</span><span class="p">;</span>
-</span><span class='line'><span class="mi">74</span><span class="p">,</span><span class="mi">5852</span><span class="p">;</span>
-</span><span class='line'><span class="mi">99</span><span class="p">,</span><span class="mi">3187</span><span class="p">;</span>
-</span><span class='line'><span class="mi">124</span><span class="p">,</span><span class="mi">39216</span><span class="p">;</span>
-</span><span class='line'><span class="mi">249</span><span class="p">,</span><span class="mi">9960</span><span class="p">;</span>
-</span><span class='line'><span class="mi">499</span><span class="p">,</span><span class="mi">4471</span><span class="p">;</span>
-</span><span class='line'><span class="mi">999</span><span class="p">,</span><span class="mi">2496</span><span class="p">;</span>
-</span><span class='line'><span class="mi">1999</span><span class="p">,</span><span class="mi">1416</span><span class="p">;</span>
-</span><span class='line'><span class="mi">2499</span><span class="p">,</span><span class="mi">319</span><span class="p">;</span>
-</span><span class='line'><span class="mi">2999</span><span class="p">,</span><span class="mi">223</span><span class="p">;</span>
-</span><span class='line'><span class="mi">4999</span><span class="p">,</span><span class="mi">482</span><span class="p">;</span>
-</span><span class='line'><span class="mi">9999</span><span class="p">,</span><span class="mi">356</span><span class="p">;</span>
-</span><span class='line'><span class="mi">14999</span><span class="p">,</span><span class="mi">155</span><span class="p">;</span>
-</span><span class='line'><span class="mi">19999</span><span class="p">,</span><span class="mi">81</span><span class="p">;</span>
-</span><span class='line'><span class="mi">24999</span><span class="p">,</span><span class="mi">45</span><span class="p">;</span>
-</span><span class='line'><span class="mi">400000</span><span class="p">,</span><span class="mi">152</span><span class="p">];</span>
-</span><span class='line'><span class="nb">loglog</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span> <span class="s">&quot;.-k&quot;</span><span class="p">);</span>
-</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span>
-</span><span class='line'>  <span class="nb">text</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span><span class="s">&#39;(&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> <span class="s">&#39;,&#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="s">&#39;)&#39;</span><span class="p">],</span> <span class="p">...</span>
-</span><span class='line'>  <span class="s">&quot;fontsize&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'><span class="nb">title</span><span class="p">(</span><span class="s">&quot;User&#39;s Total Reputation Distribution on Math Stack Exchange&quot;</span><span class="p">,</span> <span class="p">...</span>
-</span><span class='line'><span class="s">&quot;fontsize&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code The source code for the log plot lang:octave mathse-rep.m %}</p>
 
 <p>I choose <code>loglog</code> because <code>semilogx</code> causes the labels on tail to
 overlap.  Here’s the results.</p>

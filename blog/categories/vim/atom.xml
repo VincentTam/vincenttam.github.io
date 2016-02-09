@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-09T22:57:58+08:00</updated>
+  <updated>2016-02-10T00:46:09+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,55 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Indentation of Titles in Markdown Files in Vim]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/"/>
+    
+    <updated>2016-02-10T00:05:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>While I was writing
+<a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">a post about a technical problem encountered</a> while writing
+<a href="/blog/2016/02/09/my-venn-diagram-mistake/">another post about Venn diagram</a>, I encountered another
+technical problem.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried including the error message into the previous post by the Vim
+editor command <code>:r ~/temp-swp.mkd</code>.  To have it surrounded with
+<code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
+
+<p>{% include_code A section of the error message temp-swp.mkd %}</p>
+
+<p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
+selected in visual line mode.  However, the line starting with <code>#</code>
+<em>wasn’t</em> indented like the others.</p>
+
+<p>{% include_code A failed indentation temp-swp1.mkd %}</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>If I started <a href="http://www.vim.org">Vim</a> with all plugins disabled with <code>vim -u NONE -N</code>,
+then the above problem <em>won’t</em> happen.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Use the visual block mode instead.  Either one way will do.</p>
+
+<ol>
+  <li>Keep using the <code>&gt;</code> operator.</li>
+  <li>Use <code>I    </code> instead of <code>&gt;</code>.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -275,58 +324,33 @@ math.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
 boost the PageSpeed score of this site, I adpated the script to load
 MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
 
-<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
-</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
-</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
-</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
-</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
-</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Put this at the bottom lang:html %}
+<script type="text/javascript">
+(function() {
+  function getScript(url,success){
+    var script=document.createElement('script');
+    script.src=url;
+    var head=document.getElementsByTagName('head')[0],
+    done=false;
+    script.onload=script.onreadystatechange = function(){
+      if ( !done &amp;&amp; (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+      done=true;
+      success();
+      script.onload = script.onreadystatechange = null;
+      head.removeChild(script);
+      }
+    };
+    head.appendChild(script);
+  }</script></p>
+
+<p>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
+    “config=TeX-AMS-MML_HTMLorMML” +
+    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
+    function(){});</p>
+
+<p>})();
+&lt;/script&gt;
+{% endcodeblock %}</p>
 
 <h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
 
@@ -445,92 +469,6 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Looping Through Lines]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/04/10/looping-through-lines/"/>
-    
-    <updated>2015-04-10T15:01:48+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/04/10/looping-through-lines</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I copied lines from an enumerated list in this blog and pasted it to
-Vim.  The content in each list item was seen in the current Vim
-buffer, but <em>not</em> the numbers.</p>
-
-<h3 id="an-illustration-of-the-problem">An illustration of the problem</h3>
-
-<p>A sample ordered list with 2015 items</p>
-
-<ol>
-  <li>Item one</li>
-  <li>Item two</li>
-  <li>Item three</li>
-</ol>
-
-<p>…</p>
-
-<ol start="2015"><li>Item 2015</li></ol>
-
-<p>What is seen in Vim after copy and paste</p>
-
-<pre><code>Item one
-Item two
-Item three
-...
-Item 2015
-</code></pre>
-
-<p>If one writes in Markdown and he/she copies a numbered list from
-elsewhere to a text editor, then it will be very <em>inconvenient</em> to
-manually add back the numbers.  To exaggerate this inconvenience, I
-put “2015” above.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>Insert the item number at the beginning.</p>
-
-<pre><code>1. Item one
-2. Item two
-3. Item three
-...
-2015. Item 2015
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I read chapters 28–30 and 36 of
-<a href="http://learnvimscriptthehardway.stevelosh.com/"><em>Learn Vimscript the Hard Way</em></a> by Steve Losh, and searched
-“vim loop through lines” on Google.  After I saw <code>while liner &lt;
-line("$")</code> in a forum thread, I typed the following editor commands in
-Vim.</p>
-
-<p><figure class='code'><figcaption><span>A while-loop which runs through the lines </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='vim'><span class='line'><span class="k">let</span> <span class="k">l</span> <span class="p">=</span> <span class="m">1</span>
-</span><span class='line'><span class="m">1</span>
-</span><span class='line'><span class="k">wh</span> <span class="k">l</span> &amp;<span class="k">lt</span>;<span class="p">=</span> line<span class="p">(</span>“$”<span class="p">)</span>
-</span><span class='line'>  exe “norm<span class="p">!</span> I” . <span class="k">l</span> . “&amp;<span class="k">lt</span>;esc&amp;gt;<span class="k">j</span>”
-</span><span class='line'>  <span class="k">let</span> <span class="k">l</span> <span class="p">+=</span> <span class="m">1</span>
-</span><span class='line'><span class="k">endwh</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>Why is <code>exe "norm!</code> used instead of <code>norm</code>?  Since <code>\&lt;esc&gt;</code> <em>can’t</em> go
-with <code>norm</code>.  Similarly, to include compound keys like <code>&lt;S-v&gt;</code> in <code>exe
-norm!</code>, insert a backslash <code>\</code> before <code>&lt;</code>.</p>
-
 ]]></content>
     
   </entry>
