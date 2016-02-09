@@ -90,7 +90,7 @@ Moreover, I revised the usage of these two Vim plugins.
 
 1. [Visual Star Search][visual-star-search]: Select text in visual
    mode and search it with an asterisk `*`.
-2. [textobj-lastpat][lastpat]: Add the last search pattern as an text
+2. [textobj-lastpat][lastpat]: Add the last search pattern as a text
    object.
 
 ---
