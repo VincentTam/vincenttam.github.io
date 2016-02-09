@@ -23,7 +23,7 @@ Then, I received a warning from [GitHub].
 
 <picture class="fancybox" title="The warning email from GitHub">
   <source srcset="/images/posts/Blog2/email635.png"
-    media="(min-width: 400px)"></source> 
+    media="(min-width: 400px)"></source>
   <img alt="The warning email from GitHub"
     src="/images/posts/Blog2/email300.png" />
 </picture>
