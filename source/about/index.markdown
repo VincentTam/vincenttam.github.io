@@ -37,6 +37,7 @@ myself.
 Useful sites:
 ---
 
+- [MathJax quick reference][mathjax-quickref]
 - [Pandoc syntax reference][pandoc]
 - [Kramdown quick reference][kramdown_quickref]
 - [HTML symbols entities][html_symb]: for writing some special symbols
@@ -46,6 +47,7 @@ Useful sites:
 - [Octave Online][octave]
 - [TLDR Pages][tldr]
 
+[mathjax-quickref]: http://meta.math.stackexchange.com/q/5020
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
 [kramdown_quickref]: http://kramdown.gettalong.org/quickref.html
 [html_symb]: http://www.w3schools.com/charsets/ref_utf_math.asp
