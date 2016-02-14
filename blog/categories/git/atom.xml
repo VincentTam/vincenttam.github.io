@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-13T01:15:52+08:00</updated>
+  <updated>2016-02-15T02:03:19+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/"/>
+    
+    <updated>2016-02-15T01:18:31+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>As I’ve said in <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/"><em>Jekyll Blog Page Build Warning</em></a>,
+<a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">GitHub Pages have upgraded to 3.0</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>The Twitter theme for every post in <a href="/blog2">Blog 2</a> was <em>gone</em>, but
+the home page and the archive page still looked good.</p>
+
+<p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
+”{{ ASSET_PATH }}” in the title of
+<a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
+<code>_config.yml</code> is too troublesome and prone to error, I clicked some
+links for related web pages, such as
+<a href="http://jekyllrb.com/docs/upgrading/2-to-3/#layout-metadata">a relevant page in Jekyll’s documentation</a>, but I <em>didn’t</em> know
+what to do.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>It turns out that this issue is the <em>same</em> as <a href="https://github.com/plusjade/jekyll-bootstrap/issues/290">issue #290</a>.
+The status of this issue is <em>closed</em> because some ways of fixing the
+problem have been shared.  Since <a href="https://github.com/plusjade/jekyll-bootstrap/pull/293/files">qh’s fix</a> has received
+positive comments, I adopt his approach.</p>
+
+<p><a href="/blog/2015/08/06/my-git-command-list-3/">Before learning more Git commands this summer</a>, I would change
+this <em>manually</em>.  However, fearing that I would <a href="https://github.com/qh/jekyll-bootstrap/commit/a2526d03dad245ea389c918055ac7fe46948ab1d">make a typo</a>, I
+seek an automatic way to apply the changes in <code>_includes/JB/setup</code>.</p>
+
+<p>I searched “git apply patch” on Google, and reached
+<a href="http://stackoverflow.com/q/7827002">this Stack Overflow question</a> eventually.  The command</p>
+
+<pre class="cliUB"><code>$ curl https://github.com/JustinTulloss/zeromq.node/pull/47.patch &gt; /tmp/47.patch
+</code></pre>
+
+<p>gave me a file (<em>without EOF</em>) in <code>/tmp</code>.</p>
+
+<pre class="cliUB"><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href="https://patch-diff.githubusercontent.com/raw/JustinTulloss/zeromq.node/pull/47.patch"&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>I then tried using <code>git apply</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git apply --stat /tmp/47.patch
+fatal: unrecognized input
+</code></pre>
+
+<p>Even though I added the <code>--stat</code> option, the bash still said that it’s
+<code>fatal</code>.  I tried googling “git apply fatal”, but I <em>couldn’t</em> see
+anything useful.  The third answer to this Stack Overflow question
+cleared my doubts: by comparing the date of the answers, one knows
+that <code>patch-diff.githubusercontent.com</code> should be used instead.</p>
+
+<p>Since the reputation of the owner of the second answer is higher,
+<em>not</em> having enough time to check their differences, I used <code>git am</code>
+instead of <code>git apply --check</code>.  Finally, everything went smooth and
+the <code>git push</code> was successful.  Originally, I intended to leave a
+short Git comment message with a few helpful links.  However,
+everything went so good that I <em>didn’t</em> have the chance to do that in
+the Git repository for Blog 2.  Therefore, I recorded my thoughts
+here.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -440,81 +515,6 @@ search query string to “hd vs od”, but found out that their functions
 are basically the <em>same</em>, but their display is <em>different</em> by default.
 I like the default display of <code>hd</code>.  To use <code>od</code> like <code>hd</code>, one only
 needs to copy the command from the man page of <code>od</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (3): Trees With Multiple Blobs]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/"/>
-    
-    <updated>2015-08-07T22:30:55+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Having written <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
-I understood how to compute the SHA-1 hash of Git tree objects.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
-word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
-<a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
-convenience.</p>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-68aba62e560c0ebc3396e8ae9335232cd93a3f60
-$ echo "sweet" &gt; rose
-$ git add rose
-$ git write-tree
-b12767ff2f8a8160bca15abfb775bca5ba31ccf1
-$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
-100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
-100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
-</code></pre>
-
-<p>Therefore, our target hash is
-<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
-
-<p>Just like what I’d done in the previous post, I manually changed the
-hashes into a <code>printf</code> command that writes out the binary value of the
-hashes.</p>
-
-<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
-$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
-0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
-7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
-a4b430f9da3e22c0854fb26c97da77db271e5acf  -
-</code></pre>
-
-<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
-<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
-hash</strong>?</em></p>
-
-<!-- more -->
-
-<h2 id="method">Method</h2>
-
-<p>I read domegetter’s comment on <a href="https://gist.github.com/masak/2415865">this Gist</a>, and removed the
-newline character <code>\n</code> in the middle of the quoted string in the above
-<code>printf</code> command.  Then I decreased the object size by one since a
-character had been taken out.</p>
-
-<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
-$ printf "tree 69\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
-0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad100644 rose\x00\xaa\x82\x37\x28\xea\x7d
-\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
-b12767ff2f8a8160bca15abfb775bca5ba31ccf1  -
-</code></pre>
-
-<p>We’re done!</p>
 
 ]]></content>
     

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blogging | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-13T01:15:52+08:00</updated>
+  <updated>2016-02-15T02:03:19+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/"/>
+    
+    <updated>2016-02-15T01:18:31+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>As I’ve said in <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/"><em>Jekyll Blog Page Build Warning</em></a>,
+<a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">GitHub Pages have upgraded to 3.0</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>The Twitter theme for every post in <a href="/blog2">Blog 2</a> was <em>gone</em>, but
+the home page and the archive page still looked good.</p>
+
+<p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
+”{{ ASSET_PATH }}” in the title of
+<a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
+<code>_config.yml</code> is too troublesome and prone to error, I clicked some
+links for related web pages, such as
+<a href="http://jekyllrb.com/docs/upgrading/2-to-3/#layout-metadata">a relevant page in Jekyll’s documentation</a>, but I <em>didn’t</em> know
+what to do.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>It turns out that this issue is the <em>same</em> as <a href="https://github.com/plusjade/jekyll-bootstrap/issues/290">issue #290</a>.
+The status of this issue is <em>closed</em> because some ways of fixing the
+problem have been shared.  Since <a href="https://github.com/plusjade/jekyll-bootstrap/pull/293/files">qh’s fix</a> has received
+positive comments, I adopt his approach.</p>
+
+<p><a href="/blog/2015/08/06/my-git-command-list-3/">Before learning more Git commands this summer</a>, I would change
+this <em>manually</em>.  However, fearing that I would <a href="https://github.com/qh/jekyll-bootstrap/commit/a2526d03dad245ea389c918055ac7fe46948ab1d">make a typo</a>, I
+seek an automatic way to apply the changes in <code>_includes/JB/setup</code>.</p>
+
+<p>I searched “git apply patch” on Google, and reached
+<a href="http://stackoverflow.com/q/7827002">this Stack Overflow question</a> eventually.  The command</p>
+
+<pre class="cliUB"><code>$ curl https://github.com/JustinTulloss/zeromq.node/pull/47.patch &gt; /tmp/47.patch
+</code></pre>
+
+<p>gave me a file (<em>without EOF</em>) in <code>/tmp</code>.</p>
+
+<pre class="cliUB"><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href="https://patch-diff.githubusercontent.com/raw/JustinTulloss/zeromq.node/pull/47.patch"&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;
+</code></pre>
+
+<p>I then tried using <code>git apply</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git apply --stat /tmp/47.patch
+fatal: unrecognized input
+</code></pre>
+
+<p>Even though I added the <code>--stat</code> option, the bash still said that it’s
+<code>fatal</code>.  I tried googling “git apply fatal”, but I <em>couldn’t</em> see
+anything useful.  The third answer to this Stack Overflow question
+cleared my doubts: by comparing the date of the answers, one knows
+that <code>patch-diff.githubusercontent.com</code> should be used instead.</p>
+
+<p>Since the reputation of the owner of the second answer is higher,
+<em>not</em> having enough time to check their differences, I used <code>git am</code>
+instead of <code>git apply --check</code>.  Finally, everything went smooth and
+the <code>git push</code> was successful.  Originally, I intended to leave a
+short Git comment message with a few helpful links.  However,
+everything went so good that I <em>didn’t</em> have the chance to do that in
+the Git repository for Blog 2.  Therefore, I recorded my thoughts
+here.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -268,86 +343,6 @@ inconvenience caused.</p>
 <a href="http://matt.might.net/articles/how-to-blog-as-an-academic/" title="6 blog tips for busy academics">Matt Might’s post</a>.  Inspired by their posts, I will try to
 squeeze some time to write what I’ve learnt.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Advantages of Blogs Over Paper Notebooks]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/"/>
-    
-    <updated>2014-05-30T16:19:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks</id>
-    
-      <content type="html"><![CDATA[<ol>
-  <li>Blogs
-    <ul>
-      <li>Accessible anywhere anytime, as long as an Internet connection is
- available.</li>
-      <li>Multiple concurrent users: it can be viewed by <em>multiple</em>
- readers at the <em>same</em> time.</li>
-      <li>Perfectly reproduced: contents of the blog can be copied into
- the computer.</li>
-      <li>Searching: readers can find information useful for them quickly.</li>
-      <li>Characters can usually be neatly displayed, despite the author’s
- poor handwriting.</li>
-    </ul>
-  </li>
-  <li>Paper notebooks
-    <ul>
-      <li>Subject to aging: oxidized pages will become yellow; ink will
- fade out.</li>
-      <li>Easily damaged: pages are easily torn if the owner doesn’t take
- care of the notebook.</li>
-      <li>Difficult for sharing: unless you take a photo of it and share
- it on the Internet, others can’t view the notebook while
- you’re using it.</li>
-      <li>Inconvenient and inefficient to locate information: readers need
- to turn over the pages and skim through them to find the
- useful parts.</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="privacy-of-the-shared-contents">Privacy of the shared contents</h2>
-
-<p>Once something is uploaded to the Internet, it is likely that <strong>the
-uploaded contents can <em>never</em> be deleted</strong> because</p>
-
-<ul>
-  <li>it’s <em>not always possible to delete the uploaded resources in the
-  server</em>; and</li>
-  <li>there’s <em>no absoulutely legitamate way to delete the backups of the
-  uploaded resources</em> at other locations where you have <em>no</em> access
-  rights, for example, others’ computers.</li>
-</ul>
-
-<p>In short, there’s <em>no absoulute privacy</em> for contents uploaded to the
-Internet.  They’re expected to (be exposed to the) <em>public</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<h2 id="usages-of-blogs">Usages of blogs</h2>
-
-<p>They can be used to write something that</p>
-
-<ul>
-  <li>you want to share; and</li>
-  <li>you don’t mind to share—it won’t be part of your private
-  information.</li>
-</ul>
-
-<p>Knowledge and universal facts are typical examples of impersonal
-information.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://www.abc.net.au/news/2014-05-12/internet-security-expert-says-no-such-thing-as/5445830">Internet Security Expert Says No Such Thing As</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
