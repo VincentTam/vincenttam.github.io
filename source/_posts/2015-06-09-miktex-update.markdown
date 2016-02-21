@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MikTeX Update"
+title: "Mik$\\rm \\TeX$ Update"
 date: 2015-06-09 16:41:12 +0800
 comments: true
 categories: [LaTeX, M$ Win*]
