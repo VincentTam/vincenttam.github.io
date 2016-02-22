@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T14:15:51+08:00</updated>
+  <updated>2016-02-22T16:17:16+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/"/>
+    
+    <updated>2016-02-22T14:32:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
+keeping the plugins up-to-date, <a href="https://vincenttam.github.io/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
+update the helptags after merging the commits from GitHub.  Therefore,
+I followed the installation guide of Vundle.  However, when I started
+updating, I got the following error.</p>
+
+<pre class="cli"><code>Processing 'tpope/vim-fugitive'
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
+command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
+line    1:
+E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
+-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
+</code></pre>
+
+<p><strong>How can I get the Vim plugin updates?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Google <em>didn’t</em> help this time.  <em>Not</em> knowing what to do, I ran a
+simple command <code>ls</code>, and this <em>failed</em>.</p>
+
+<pre class="cli"><code>C:\Program Files\Git\usr\bin\bash -c "ls"
+'C:\Program' is not recognized as an internal or external command,
+operable program or batch file.
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<p>From the above output, one knows that the cause of this unexpected
+failure is the whitespace character in the path of Git Bash.  As a
+result, I searched “vim ‘C:\Program’ is not recognized as an internal
+or external” in Google.  Then I realised that it was
+<a href="http://vi.stackexchange.com/a/2424">a bug in Vim</a>.  Since I <em>didn’t</em> want to spend time setting
+up GVim again, I stick to GVim Portable, whose runpath is <em>different</em>
+from what many developers of Vim plugins, who use *nix, expect.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Invoke GVim from Command Prompt,Start Menu or desktop icon instead of
+Git Bash because the <code>shell</code> option will then be <code>cmd.exe</code>, whose path
+contains <em>no</em> spaces.  Then everything should be fine, <em>except the
+line breaks</em>.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Some developers include a <code>.gitignore</code> file in their Vim plugins to
+ignore files like <code>docs/tags</code>, while some <em>don’t</em>.  IMHO, it’s better
+to have one.</p>
+
+<p>One good point of free software is that users can interact with
+developers to report and discuss the problems, or even share their
+code to improve the software, for example, <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> pull
+request <a href="https://github.com/tangledhelix/vim-octopress/pull/11">#11</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1471,72 +1548,6 @@ tried added <code>@{}</code> in the first argument of the <code>array</code> env
 eliminate the excessive inter-column space—this works great in $\rm
 \LaTeX$.  However, neither <code>@{}</code> nor <code>\multicolumn{4}{l}{...}</code> is
 processed by <a href="https://mathjax.org">MathJax</a>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Improve Efficiency of Inner Join]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/07/improve-efficiency-of-inner-join/"/>
-    
-    <updated>2016-01-07T18:38:44+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/07/improve-efficiency-of-inner-join</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I search the data on <a href="http://data.stackexchange.com">Stack Exchange Data Explorer</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I want to select columns from two tables and join them to form one
-single table.  I choose <code>INNER JOIN</code> to avoid seeing null entries in
-the result.  The syntax is similar to the following.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample SQL Syntax </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Table1</span>
-</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Table2</span>
-</span><span class="line"><span class="k">ON</span> <span class="n">Table1</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">Table2</span><span class="p">.</span><span class="n">ID</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">Col1</span> <span class="k">LIKE</span> <span class="s1">&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Unluckily, when the size of <code>Table1</code> and <code>Table2</code> is large, it takes a
-while to get the result.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p><a href="https://goo.gl/iLGa5Z">This page</a> has two more efficient ways.  Since I search for
-recent data, I adopted the third method in <a href="http://data.stackexchange.com/math/query/416590/view-all-unanswered-questions">my query</a>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My Query on Stack Exchange Data Explorer </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">TagLike</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">=</span> <span class="o">##</span><span class="n">taglike</span><span class="p">:</span><span class="n">string</span><span class="o">##</span>
-</span><span class="line">
-</span><span class="line"><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">500</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Post</span> <span class="n">Link</span><span class="p">],</span> <span class="n">AnswerCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Ans</span><span class="p">],</span>
-</span><span class="line"><span class="n">CommentCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Com</span><span class="p">],</span> <span class="n">CreationDate</span><span class="p">,</span> <span class="n">Score</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Scr</span><span class="p">],</span>
-</span><span class="line"><span class="n">ViewCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Views</span><span class="p">],</span> <span class="n">OwnerUserId</span> <span class="k">FROM</span> <span class="n">Posts</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">AnswerCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">Tags</span> <span class="k">LIKE</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="o">@</span><span class="n">TagLike</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span> <span class="k">AND</span>
-</span><span class="line"><span class="n">ClosedDate</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AS</span> <span class="n">p</span>
-</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span><span class="p">,</span> <span class="n">LastAccessDate</span><span class="p">,</span> <span class="n">Reputation</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Rep</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Users</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">LastAccessDate</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-12-01&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">u</span>
-</span><span class="line"><span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">OwnerUserId</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">Id</span>
-</span><span class="line"><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">p</span><span class="p">.</span><span class="n">Com</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 ]]></content>
     

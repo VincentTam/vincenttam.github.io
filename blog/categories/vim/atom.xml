@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T14:15:51+08:00</updated>
+  <updated>2016-02-22T16:46:40+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/"/>
+    
+    <updated>2016-02-22T14:32:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
+keeping the plugins up-to-date, <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
+update the helptags after merging the commits from GitHub.  Therefore,
+I followed the installation guide of Vundle.  However, when I started
+updating, I got the following error.</p>
+
+<pre class="cli"><code>Processing 'tpope/vim-fugitive'
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
+command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
+line    1:
+E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
+-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
+</code></pre>
+
+<p><strong>How can I get the Vim plugin updates?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Google <em>didn’t</em> help this time.  <em>Not</em> knowing what to do, I ran a
+simple command <code>ls</code>, and this <em>failed</em>.</p>
+
+<pre class="cli"><code>C:\Program Files\Git\usr\bin\bash -c "ls"
+'C:\Program' is not recognized as an internal or external command,
+operable program or batch file.
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<p>From the above output, one knows that the cause of this unexpected
+failure is the whitespace character in the path of Git Bash.  As a
+result, I searched “vim ‘C:\Program’ is not recognized as an internal
+or external” in Google.  Then I realised that it was
+<a href="http://vi.stackexchange.com/a/2424">a bug in Vim</a>.  Since I <em>didn’t</em> want to spend time setting
+up GVim again, I stick to GVim Portable, whose runpath is <em>different</em>
+from what many developers of Vim plugins, who use *nix, expect.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Invoke GVim from Command Prompt,Start Menu or desktop icon instead of
+Git Bash because the <code>shell</code> option will then be <code>cmd.exe</code>, whose path
+contains <em>no</em> spaces.  Then everything should be fine, <em>except the
+line breaks</em>.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Some developers include a <code>.gitignore</code> file in their Vim plugins to
+ignore files like <code>docs/tags</code>, while some <em>don’t</em>.  IMHO, it’s better
+to have one.</p>
+
+<p>One good point of free software is that users can interact with
+developers to report and discuss the problems, or even share their
+code to improve the software, for example, <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> pull
+request <a href="https://github.com/tangledhelix/vim-octopress/pull/11">#11</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -91,32 +168,7 @@ this <em>isn’t</em> standard, this is more convenient.</p>
 hyperlink to <a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a> written in a short but non-standard
 way.</p>
 
-<p><figure class='code'><figcaption><span>Markdown source code of the ordered list  (test-post.mkd)</span> <a href='/downloads/code/olhlmdvim/test-post.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>Lessons learnt
-</span><span class='line'>---
-</span><span class='line'>
-</span><span class='line'>Moreover, I revised the usage of these two [Vim] plugins.
-</span><span class='line'>
-</span><span class='line'>1. [Visual Star Search][visual-star-search]: Select text in visual
-</span><span class='line'>   mode and search it with an asterisk `*`.
-</span><span class='line'>2. [textobj-lastpat]: Add the last search pattern as a text object.
-</span><span class='line'>
-</span><span class='line'>[Vim]: http://www.vim.org
-</span><span class='line'>[visual-star-search]: https://github.com/bronson/vim-visual-star-search
-</span><span class='line'>[textobj-lastpat]: https://github.com/kana/vim-textobj-lastpat
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code Markdown source code of the ordered list lang:text olhlmdvim/test-post.mkd %}</p>
 
 <p>Unluckily, as I typed this Vim Ex command
 <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">to see whether my Markdown syntax was correct</a>, I quickly
@@ -129,26 +181,7 @@ received an error from <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
 below to see the effect of the result generated by ihe Markdown
 parser.</p>
 
-<p><figure class='code'><figcaption><span>Generated HTML code of the ordered list (test-post.html)</span> <a href='/downloads/code/olhlmdvim/test-post.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;lessons-learnt&quot;</span><span class="nt">&gt;</span>Lessons learnt<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>Moreover, I revised the usage of these two <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.vim.org&quot;</span><span class="nt">&gt;</span>Vim<span class="nt">&lt;/a&gt;</span> plugins.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;ol&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/bronson/vim-visual-star-search&quot;</span><span class="nt">&gt;</span>Visual Star Search<span class="nt">&lt;/a&gt;</span>: Select text in visual
-</span><span class='line'>mode and search it with an asterisk <span class="nt">&lt;code&gt;</span>*<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ol&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code Generated HTML code of the ordered list olhlmdvim/test-post.html %}</p>
 
 <pre class="cliUB"><code>Warning: Duplicate link ID 'textobj-lastpat' on line 13 - overwriting
 
@@ -187,47 +220,13 @@ technical problem.</p>
 editor command <code>:r ~/lang:text temp-swp.mkd</code>.  To have it surrounded with
 <code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
 
-<p><figure class='code'><figcaption><span>A section of the error message  (temp-swp.mkd)</span> <a href='/downloads/code/temp-swp.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>## Generating Site with Jekyll
-</span><span class='line'>    write source/stylesheets/screen.css
-</span><span class='line'>Configuration file: /home/owner/octopress/_config.yml
-</span><span class='line'>            Source: source
-</span><span class='line'>       Destination: public
-</span><span class='line'>      Generating...
-</span><span class='line'>                    done.
-</span><span class='line'> Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code A section of the error message lang:text temp-swp.mkd %}</p>
 
 <p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
 selected in visual line mode.  However, the line starting with <code>#</code>
 <em>wasn’t</em> indented like the others.</p>
 
-<p><figure class='code'><figcaption><span>A failed indentation  (temp-swp1.mkd)</span> <a href='/downloads/code/temp-swp1.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>## Generating Site with Jekyll
-</span><span class='line'>        write source/stylesheets/screen.css
-</span><span class='line'>    Configuration file: /home/owner/octopress/_config.yml
-</span><span class='line'>                Source: source
-</span><span class='line'>           Destination: public
-</span><span class='line'>          Generating...
-</span><span class='line'>                        done.
-</span><span class='line'>     Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code A failed indentation lang:text temp-swp1.mkd %}</p>
 
 <!-- more -->
 
@@ -361,102 +360,6 @@ at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installa
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Find Files for Vim to Edit in Bash]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/"/>
-    
-    <updated>2015-08-23T23:48:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Since copying and pasting the output of a command can be a tedious
-job.  For example, if you want to create your blog using a framework,
-you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
-repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
-GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
-one.</p>
-
-<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
-repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
-the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
-introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
-the <code>sed</code> substitution.</p>
-
-<pre class="cliUB"><code>$ git remote -v
-octopress	git@github.com:imathis/octopress.git (fetch)
-octopress	git@github.com:imathis/octopress.git (push)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
-$ name=userName; repo=repoName
-$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
-"s;(\w*)/(.*).git;$name/$repo.git;"
-$ unset name repo
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried extracting a list of Markdown files containing a particular
-word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
-<code>xargs</code>.  Unluckily, I got an error.</p>
-
-<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
-&gt; -print | xargs vi
-Vim: Warning: Input is not from a terminal
-3 files to edit
-$ 
-</code></pre>
-
-<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>As a result, I searched “vim warning input is not from a terminal
-xargs” on Google, and found <a href="http://superuser.com/q/336016">this question</a> very useful.  I
-should have wrapped the <code>find</code> command like <code>$(find ...)</code>.</p>
-
-<pre class="cliUB"><code>$ vi $(find source/_posts/ -name "*.markdown" -exec \
-&gt; grep -q ^tag {} \; -print | xargs)
-3 files to edit
-</code></pre>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="sed">sed</h3>
-<ul>
-  <li><code>3{p;q}</code>: quit after printing the third line for the sake of
-  efficiency</li>
-  <li><code>-r</code>: use extended regular expression to save the trouble of
-  escaping <code>()</code> for submatches.</li>
-  <li><code>-n</code>: suppress standard output.</li>
-  <li>Enclose the expression
-    <ul>
-      <li>with <em>single</em> quotes to <em>disable</em> interpretation of bash
-  variables</li>
-      <li>with <em>double</em> quotes to <em>enable</em> interpretation of bash
-  variables.</li>
-    </ul>
-  </li>
-  <li>One can replace the delimiter <code>/</code> in the expression
-  <code>s/{pat}/{repl}/</code> by any one character from <code>_;#| </code>.</li>
-  <li>Specify a custom delimiter like <code>\%.%s%foo%bar%</code>.  (The
-  variable/range <code>.</code> is <em>needed</em>.)</li>
-</ul>
-
-<h3 id="bash">bash</h3>
-
-<ul>
-  <li>Set variables using <code>var1=value1;var2=value2;...</code></li>
-  <li>Unset variable usign <code>unset var1 var2 ...</code></li>
-</ul>
-
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T14:15:51+08:00</updated>
+  <updated>2016-02-22T16:46:40+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -435,14 +435,14 @@ and some categories like “$\rm \LaTeX$-Suite” <em>weren’t</em> displayed
 properly.  Moreover, the link for some categories like “C/C++” was
 <em>dead</em> in <a href="http://www.dotnetguy.co.uk/post/2012/06/25/octopress-category-list-plugin/">Watson’s Category List Plugin</a>.</p>
 
-<p><img class="fancybox" src="/images/posts/CatList/CatList404.png" width="800" title="‘Dead links in category list’ ‘fig1’" ></p>
+<p>{% img fancybox /images/posts/CatList/CatList404.png 800 ‘Dead links in category list’ ‘fig1’ %}</p>
 
 <p>Unlike two months ago<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I now think that it’s better for me to find
 out why the catergory list <em>failed</em> to generate a correct URL for a
 category page, but the default links for category pages in the blog
 archive are <em>right</em>.</p>
 
-<p><img class="fancybox" src="/images/posts/CatList/CatListURL.png" width="800" title="‘Correct links in blog archive’ ‘fig2’" ></p>
+<p>{% img fancybox /images/posts/CatList/CatListURL.png 800 ‘Correct links in blog archive’ ‘fig2’ %}</p>
 
 <p>I certainly know the precise location of the part of
 <code>plugins/category_list_tag.rb</code> that has generated the <em>erroneous</em>
@@ -494,7 +494,9 @@ method that generated <code>category_url</code> should be changed like this:</p>
 
       <p>Last month, I used a specfic way to get things work.</p>
 
-      <p><blockquote><p>As I am not going to spend most of my time to study IT, I aimed at merely changing “LaTeX” to “$\rm \LaTeX$”.</p><footer><strong>Me</strong> <cite><a href='https://vincenttam.github.io/blog/2014/05/24/using-mathjax-in-category-list-entries/'>Using MathJax in Category List Entries</a></cite></footer></blockquote> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>{% blockquote Me https://vincenttam.github.io/blog/2014/05/24/using-mathjax-in-category-list-entries/ Using MathJax in Category List Entries %}
+As I am not going to spend most of my time to study IT, I aimed at merely changing “LaTeX” to “$\rm \LaTeX$”.
+{% endblockquote %} <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -518,43 +520,26 @@ so the settings below are now gone.</p>
 <p>Using the following plugin, I finished removing the repeating figures
 in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<p><figure class='code'><figcaption><span>Erv Walter’s plugin with my modifications</span><a href='http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">CustomLiquidFilters</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">remove_linenumbers</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">input</span><span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/&amp;lt;td\ class=”gutter”&amp;gt;.+?&amp;lt;\/td&amp;gt;/m</span><span class="p">,</span> <span class="err">‘</span> <span class="err">‘</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">end</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;RegexMap = {</span>
-</span><span class='line'><span class="sr">    /</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">div</span><span class="p">\</span> <span class="n">class</span><span class="o">=</span><span class="err">”</span><span class="n">caption</span><span class="err">”</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="no">Click</span> <span class="n">the</span> <span class="n">image</span> <span class="k">for</span> <span class="n">a</span> <span class="n">larger</span> <span class="n">view</span><span class="o">.</span><span class="n">&amp;lt</span><span class="p">;\</span><span class="o">/</span><span class="n">div</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">/</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ id=”image-dialog-\d+”.*?&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>    <span class="sr">/&amp;lt;div\ class=”illustration\ print”&amp;gt;.+?&amp;lt;\/div&amp;gt;/m</span> <span class="o">=&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="err">‘’</span><span class="p">,</span>
-</span><span class='line'>  <span class="p">}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="sr">&lt;p&gt;def remove_bigfig(input)</span>
-</span><span class='line'><span class="sr">    RegexMap.each_pair {|k,v| input.gsub!(k, v)}</span>
-</span><span class='line'><span class="sr">    input</span>
-</span><span class='line'><span class="sr">  end</span>
-</span><span class='line'><span class="sr">end&lt;/</span><span class="nb">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="nb">p</span><span class="o">&gt;</span><span class="no">Liquid</span><span class="o">::</span><span class="no">Template</span><span class="o">.</span><span class="n">register_filter</span> <span class="no">CustomLiquidFilters</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Erv Walter’s plugin with my modifications lang:ruby http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed %}
+module CustomLiquidFilters
+  def remove_linenumbers(input)
+    input.gsub(/&lt;td\ class=”gutter”&gt;.+?&lt;\/td&gt;/m, ‘ ‘)
+  end</p>
+
+<p>RegexMap = {
+    /&lt;div\ class=”caption”&gt;Click the image for a larger view.&lt;\/div&gt;/ =&gt; ‘’,
+    /&lt;div\ id=”image-dialog-\d+”.*?&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+    /&lt;div\ class=”illustration\ print”&gt;.+?&lt;\/div&gt;/m =&gt; ‘’,
+  }</p>
+
+<p>def remove_bigfig(input)
+    RegexMap.each_pair {|k,v| input.gsub!(k, v)}
+    input
+  end
+end</p>
+
+<p>Liquid::Template.register_filter CustomLiquidFilters
+{% endcodeblock %}</p>
 
 <h2 id="problem">Problem</h2>
 
@@ -565,19 +550,14 @@ in my Atom Feed.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></
 do the same modification like what I had already did in
 <code>source/atom.xml</code>.</p>
 
-<p><figure class='code'><figcaption><span>My initial attempt to solve the problem in category feed page</span><a href='/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together'>link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="nt">&lt;/p&gt;</span>
-</span><span class='line'><span class="nt">&lt;entry&gt;</span>
-</span><span class='line'>  <span class="c">&lt;!-- other elements --&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]<span class="ni">&amp;gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class='line'><span class="nt">&lt;/entry&gt;</span>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock My initial attempt to solve the problem in category feed page lang:xml /blog/2014/06/10/my-settings-for-rss-1/#putting-things-together %}
+{% raw %}</p>
+<entry>
+  <!-- other elements -->
+  <content type="html">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | markdownify | cdata_escape }}]]&gt;</content>
+</entry>
+<p>{% endraw %}
+{% endcodeblock %}</p>
 
 <p>Then I generated the site <em>without</em> getting any errors.  However, when
 I was previewing one of my category Atom Feeds, I found out that the
@@ -608,16 +588,14 @@ see what’s going on inside Octopress by getting the standard output.
 <em>Not</em> going take an online tutorial about using Ruby debugger, I used
 the most primitive way of debugging.</p>
 
-<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">puts</span> <span class="n">input</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:ruby %}
+def debug(input)
+  puts input
+end
+{% endcodeblock %}</p>
 
 <p>I recorded the output into a file and then browsed through it.  I
-found the <code>imgpopup ...</code> inside the file.
+found the <code>{% raw %}imgpopup ...{% endraw %}</code> inside the file.
 I also viewed the source code of <code>cdata_escape</code> so that I knew what
 the function did: HTML encode the only argument.  I compared the
 output before and after <code>cdata_escape</code>, and <em>couldn’t</em> see any

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T14:15:51+08:00</updated>
+  <updated>2016-02-22T16:46:40+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,83 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/"/>
+    
+    <updated>2016-02-22T14:32:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
+keeping the plugins up-to-date, <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
+update the helptags after merging the commits from GitHub.  Therefore,
+I followed the installation guide of Vundle.  However, when I started
+updating, I got the following error.</p>
+
+<pre class="cli"><code>Processing 'tpope/vim-fugitive'
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
+command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
+line    1:
+E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
+-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
+</code></pre>
+
+<p><strong>How can I get the Vim plugin updates?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Google <em>didn’t</em> help this time.  <em>Not</em> knowing what to do, I ran a
+simple command <code>ls</code>, and this <em>failed</em>.</p>
+
+<pre class="cli"><code>C:\Program Files\Git\usr\bin\bash -c "ls"
+'C:\Program' is not recognized as an internal or external command,
+operable program or batch file.
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<p>From the above output, one knows that the cause of this unexpected
+failure is the whitespace character in the path of Git Bash.  As a
+result, I searched “vim ‘C:\Program’ is not recognized as an internal
+or external” in Google.  Then I realised that it was
+<a href="http://vi.stackexchange.com/a/2424">a bug in Vim</a>.  Since I <em>didn’t</em> want to spend time setting
+up GVim again, I stick to GVim Portable, whose runpath is <em>different</em>
+from what many developers of Vim plugins, who use *nix, expect.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Invoke GVim from Command Prompt,Start Menu or desktop icon instead of
+Git Bash because the <code>shell</code> option will then be <code>cmd.exe</code>, whose path
+contains <em>no</em> spaces.  Then everything should be fine, <em>except the
+line breaks</em>.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Some developers include a <code>.gitignore</code> file in their Vim plugins to
+ignore files like <code>docs/tags</code>, while some <em>don’t</em>.  IMHO, it’s better
+to have one.</p>
+
+<p>One good point of free software is that users can interact with
+developers to report and discuss the problems, or even share their
+code to improve the software, for example, <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> pull
+request <a href="https://github.com/tangledhelix/vim-octopress/pull/11">#11</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -388,46 +465,7 @@ but they can be overcome.</p>
   <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
 </picture>
 
-<p><figure class='code'><figcaption><span>I clicked “Copy Info” and got this.  (err-2016-02-22-22-00.txt)</span> <a href='/downloads/code/miktex-update2/err-2016-02-22-22-00.txt'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Problem Report
-</span><span class='line'>Message: Windows API error 145: The directory is not empty.
-</span><span class='line'>
-</span><span class='line'>Data: C:\Temp\MikTeXPortable\miktex\temp\mik8012
-</span><span class='line'>Source: Libraries\MiKTeX\Core\win\winFile.cpp
-</span><span class='line'>Line: 115
-</span><span class='line'>MiKTeX: 2.9
-</span><span class='line'>OS: Microsoft Windows 7 Home Premium Edition, 64-bit Service Pack 1 (build 7601)
-</span><span class='line'>Invokers: non-existing/miktex-taskbar-icon
-</span><span class='line'>SystemAdmin: no
-</span><span class='line'>PowerUser: no
-</span><span class='line'>Root0: C:\Temp\MikTeXPortable
-</span><span class='line'>Root1: C:\localtexmf
-</span><span class='line'>UserInstall: C:\Temp\MikTeXPortable
-</span><span class='line'>UserConfig: C:\Temp\MikTeXPortable
-</span><span class='line'>UserData: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonInstall: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonConfig: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonData: C:\Temp\MikTeXPortable
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code I clicked “Copy Info” and got this. lang:text miktex-update2/err-2016-02-22-22-00.txt %}</p>
 
 <p>From <a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
 Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
@@ -437,50 +475,7 @@ work.  The update wizard inside the big window for the package manager
 <p>Sometimes, the chosen remote package repository can fail.  In this
 case, just click the button and search for another one.</p>
 
-<p><figure class='code'><figcaption><span>An example of failed update.  (update-2016-02-21-20-19.txt)</span> <a href='/downloads/code/miktex-update2/update-2016-02-21-20-19.txt'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Update Wizard Report
-</span><span class='line'>
-</span><span class='line'>Version: 2.9.4913
-</span><span class='line'>Date: Sunday, February 21, 2016
-</span><span class='line'>Time: 20:19:02
-</span><span class='line'>starting package maintenance...
-</span><span class='line'>installation directory: C:\Temp\MikTeXPortable
-</span><span class='line'>package repository: http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/
-</span><span class='line'>lightweight database digest: d913ba0ad3c9c47c3e7a3e6e11863874
-</span><span class='line'>going to download 6130048 bytes
-</span><span class='line'>going to install 10 file(s) (1 package(s))
-</span><span class='line'>going to remove 35 file(s) (4 package(s))
-</span><span class='line'>downloading http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/miktex-bin-2.9.tar.lzma...
-</span><span class='line'>6130048 bytes, 1452.65 KB/Sec
-</span><span class='line'>extracting files from miktex-bin-2.9.tar.lzma...
-</span><span class='line'>removing package miktex-freetype-bin-2.9...
-</span><span class='line'>removing package miktex-qt4-bin-2.9...
-</span><span class='line'>removing package miktex-texinfo-bin-2.9...
-</span><span class='line'>removing package miktex-vc100-bin...
-</span><span class='line'>
-</span><span class='line'>Error: The MiKTeX package management utility could not be found.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code An example of failed update. lang:text miktex-update2/update-2016-02-21-20-19.txt %}</p>
 
 <h2 id="lessons-learnt">Lessons learnt</h2>
 
@@ -498,84 +493,6 @@ non-action or non-being.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Object ID Generation (5): Predict ID]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/"/>
-    
-    <updated>2015-08-11T10:52:56+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>The method for getting the Git object ID described in
-<a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
-consists of <em>several</em> commands.</p>
-
-<h2 id="the-one-line-command">The one-line command</h2>
-
-<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
-ash}) | shasum
-</code></pre>
-
-<ul>
-  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
-  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
-</ul>
-
-<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
-
-<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
-<p>Hence, we can modify the above command to predict the Git object ID of
-a <code>{file}</code>.</p>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
-</code></pre>
-
-<p>In order to verify the result for files, one can quickly get the blob
-ID from Git by <code>git log -1 -p -- {file}</code>.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
-
-<p>I typed “linux extract number” on Google, and the autocompletion gave
-me “from string”.  I finally saw two commands for doing this.</p>
-
-<ol>
-  <li><code>sed 's/[^0-9]//g'</code></li>
-  <li><code>tr -dc '0-9'</code></li>
-</ol>
-
-<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
-complement of the characters marked by <code>-d</code>.</p>
-
-<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
-
-<p>Using the command in the section “Predict Git object IDs” gives users
-a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
-of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
-byte count of the files with <code>\r\n</code> as the line terminator in that
-command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
-
-<h3 id="using-git-for-win">Using Git for Win*</h3>
-
-<p>For the installed version of Git on M$ Win*, one needs to use
-<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
-it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
-
-<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
-
-<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
-instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
-hexadecimal number.)</p>
-
 ]]></content>
     
   </entry>

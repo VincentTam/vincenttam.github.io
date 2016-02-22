@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Power Means With Infinite Exponents - Blog 1</title>
+  <title>Git for Windows, Curl, Gist.vim With Vundle (2) - Blog 1</title>
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Half a month ago, I didn’t know how to find $\displaystyle \lim_{n \to \infty}
-\sqrt[n]{a^n+b^n}$. With the help from others, I could show
-that the &hellip;">
+  <meta name="description" content="Background I had been using pathogen.vim to manage plugin. When it comes to
+keeping the plugins up-to-date, I used a for-loop. Problem I would like &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@ that the &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents">
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2">
   <link href="/favicon.png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
   <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
@@ -84,7 +83,7 @@ that the &hellip;">
   <header>
     
       
-	<h1 class="entry-title">Power Means With Infinite Exponents</h1>
+	<h1 class="entry-title">Git for Windows, Curl, Gist.vim With Vundle (2)</h1>
       
     
     
@@ -94,7 +93,7 @@ that the &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-11-14T00:30:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:30 am</span></time>
+<time class='entry-date' datetime='2016-02-22T14:32:04+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>2:32 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -105,83 +104,71 @@ that the &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find <span class="myeqn">$\displaystyle \lim_{n \to \infty}
-\sqrt[n]{a^n+b^n}$</span>.  With the help from others, I could show
-that the answer was <span class="myeqn">$\max\left\{ a,b
-\right\}$</span>.  This inspired me to solve a question which had been
-in my mind since I was F.3.</p>
+<div class="entry-content"><h2 id="background">Background</h2>
 
-<p><span class="myeqn">
-Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \quad\forall\,n \in \N$, and
-$a_i &gt; 0\quad\forall\,i = 1, \dots,k$.  
-Show that $\displaystyle \lim_{n \to \infty} M_n (a_1,\dots,a_k) =
-\max\left\{ a_i \mid i = 1,\dots,k \right\}$ and $\displaystyle
-\lim_{n \to -\infty} M_n = \min\left\{ a_i \mid i = 1,\dots,k
-\right\}$.
-</span></p>
+<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
+keeping the plugins up-to-date, <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
 
-<p><em>Proof</em>:</p>
+<h2 id="problem">Problem</h2>
 
-<p><span class="myeqn">
-I'll use the facts that $\displaystyle \lim_{n \to \infty}
-b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by dividing
-$b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let $b^{\frac{1}{n}} =
-1 + \delta_n$ for some $\delta_n &gt; 0$.  It's a good exercise on the
-definition of limits, the binomial expansion and elementary properties
-of inequalities.)
-</span></p>
+<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
+update the helptags after merging the commits from GitHub.  Therefore,
+I followed the installation guide of Vundle.  However, when I started
+updating, I got the following error.</p>
 
-<p><span class="myeqn">
-Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note that
-</span></p>
+<pre class="cli"><code>Processing 'tpope/vim-fugitive'
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
+command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
+line    1:
+E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
+Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
+vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
+-- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
+</code></pre>
 
-<div class="myeqn">
-\[
-\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}} \le
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
-\sqrt[n]{\frac{kM^n}{k}} = M
-\]
-</div>
+<p><strong>How can I get the Vim plugin updates?</strong></p>
 
-<p>Therefore, taking limit as $n \to \infty$ and applying the Squeeze
-Theorem, one has</p>
+<!-- more -->
 
-<div class="myeqn">
-\[
-\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{ a_i \mid i =
-1,\dots,k \right\}.
-\]
-</div>
+<h2 id="discussion">Discussion</h2>
 
-<p>I wrote similar arguments for the case $n \to -\infty$, but after I
-read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
+<p>Google <em>didn’t</em> help this time.  <em>Not</em> knowing what to do, I ran a
+simple command <code>ls</code>, and this <em>failed</em>.</p>
 
-<p><span class="myeqn">
-Replace $a_i$'s with $1/a_i$'s.  Then
-</span></p>
+<pre class="cli"><code>C:\Program Files\Git\usr\bin\bash -c "ls"
+'C:\Program' is not recognized as an internal or external command,
+operable program or batch file.
+shell returned 1
+Hit any key to close this window...
+</code></pre>
 
-<div class="myeqn">
-\[
-\begin{aligned}
-\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
-\left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
-\left.\frac{1}{a_i} \right\| i = 1,\dots,k \right\} \\
-\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
-a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
-1,\dots,k \right\}} \\
-\lim_{n \to \infty} \left( \frac{\sum_{i=1}^{k}
-a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
-\mid i = 1,\dots,k \right\}
-\end{aligned}
-\]
-</div>
+<p>From the above output, one knows that the cause of this unexpected
+failure is the whitespace character in the path of Git Bash.  As a
+result, I searched “vim ‘C:\Program’ is not recognized as an internal
+or external” in Google.  Then I realised that it was
+<a href="http://vi.stackexchange.com/a/2424">a bug in Vim</a>.  Since I <em>didn’t</em> want to spend time setting
+up GVim again, I stick to GVim Portable, whose runpath is <em>different</em>
+from what many developers of Vim plugins, who use *nix, expect.</p>
 
-<p><span class="myeqn">
-Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
-\lim_{n \to -\infty} \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} =
-\min\left\{ a_i \mid i = 1,\dots,k \right\}$.
-</span></p>
+<h2 id="solution">Solution</h2>
+
+<p>Invoke GVim from Command Prompt,Start Menu or desktop icon instead of
+Git Bash because the <code>shell</code> option will then be <code>cmd.exe</code>, whose path
+contains <em>no</em> spaces.  Then everything should be fine, <em>except the
+line breaks</em>.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Some developers include a <code>.gitignore</code> file in their Vim plugins to
+ignore files like <code>docs/tags</code>, while some <em>don’t</em>.  IMHO, it’s better
+to have one.</p>
+
+<p>One good point of free software is that users can interact with
+developers to report and discuss the problems, or even share their
+code to improve the software, for example, <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> pull
+request <a href="https://github.com/tangledhelix/vim-octopress/pull/11">#11</a>.</p>
+
 </div>
 
 
@@ -197,12 +184,12 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
 
 
 
-<time class='entry-date' datetime='2014-11-14T00:30:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:30 am</span></time>
+<time class='entry-date' datetime='2016-02-22T14:32:04+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>2:32 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/math/'>math</a>
+    <a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/m$-win-star/'>m$ win*</a>, <a class='category' href='/blog/categories/vim/'>vim</a>
   
 </span>
 
@@ -211,7 +198,7 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/" data-via="" data-counturl="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/" >Tweet</a>
   
   
   
@@ -222,10 +209,8 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/11/13/plot-polar-coordinates-graphs/" title="Previous Post: Plot Polar Coordinates Graphs">&laquo; Plot Polar Coordinates Graphs</a>
+        <a class="basic-alignment left" href="/blog/2016/02/22/rake-deploy-fatal-error/" title="Previous Post: Rake Deploy Fatal Error">&laquo; Rake Deploy Fatal Error</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/12/09/a-group-of-689-elements/" title="Next Post: A Group of 689 Elements">A Group of 689 Elements &raquo;</a>
       
     </p>
   </footer>
@@ -342,8 +327,8 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/';
-        var disqus_url = 'https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/';
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/';
         var disqus_script = 'embed.js';
       
     (function () {
