@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem Spending so much time to work out the locale support for dates
-and valid HTML code in my second blog which was
-powered by Jekyll-Bootstrap, I &hellip;">
+  <meta name="description" content="Background I often write math in this blog. After typing lots of characters,
+syntax errors are inevitable, but no one wants them to be published. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,72 @@ powered by Jekyll-Bootstrap, I &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-05T00:18:45+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:18 am</span></time>
+        
+           | <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I often write math in this blog.  After typing lots of characters,
+syntax errors are <em>inevitable</em>, but no one wants them to be published.
+Unluckily, the <code>rake generate</code> command takes <em>too long</em> to run.  In
+order to find them out more quickly, I quickly went over the
+<code>Gemfile</code> of the repository for this blog, and saw that the Markdown
+engine of Octopress is kramdown.  Therefore, I used the command line
+version of this Markdown parser to convert my Markdown source file to
+an HTML document by a Vim Ex command.</p>
+
+<pre><code>:!kramdown % &gt; %&lt;.html
+</code></pre>
+
+<p>For this, I’ve written two posts describing the workflow of producing
+HTML web pages consisting of math expressions from Markdown source
+files using kramdown and MathJax.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">the first post</a> in this series, I’ve made a list of steps
+in Vim.  However, jumping to other files is laborious.  More
+importantly, those steps involve browsing and copying of lines of
+HTML code of the <code>&lt;head&gt;</code>, which loads MathJax, in other HTML files.
+This can <em>seriously</em> slow down the editing process.  Unhappily, this
+problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -642,74 +707,6 @@ links to my blog articles on Disqus?</strong></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">Added W3C Validated Logos to Some Pages</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-23T22:42:17+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:42 pm</span></time>
-        
-           | <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>The web pages under <code>/downloads/code/</code> <em>don’t</em> conform to the <abbr title="World Wide Web Consortium">W3C</abbr>’s
-standards.  This afternoon, after I had rewritten the code and passed
-the HTML 4.01 Strict Test and CSS3 Test, I was given the code to embed
-the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnref:samp_pic"><a href="#fn:samp_pic" class="footnote">1</a></sup></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>HTML code for embedding the validation icon for HTML 4.01 Strict</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;p&gt;</span>
-</span><span class="line">  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;&lt;img</span>
-</span><span class="line">    <span class="na">src=</span><span class="s">&quot;http://www.w3.org/Icons/valid-html401&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 4.01 Strict&quot;</span>
-</span><span class="line">    <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
-</span><span class="line"><span class="nt">&lt;/p&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="problem">Problem</h2>
-
-<p>Unluckily, when I clicked on the icon for re-validation of the site, I
-<em>got</em> a 404 error.</p>
-
-<picture class="fancybox" title="404 Not Found">
-  <source srcset="/images/posts/W3C/err497.png" media="(min-width: 497px)" />
-  <img alt="404 not found" src="/images/posts/W3C/err300.png" />
-</picture>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -746,7 +743,7 @@ the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnr
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (23)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (24)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -755,10 +752,11 @@ the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnr
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (22)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (23)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopres/'>octopres (1)</a> <a href='/blog/categories/octopres/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (50)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -777,6 +775,10 @@ the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnr
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
       </li>
     
@@ -790,10 +792,6 @@ the <a href="http://www.w3.org/QA/Tools/Icons">validation icons</a>.<sup id="fnr
     
       <li class="post">
         <a href="/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/">Fixed Jekyll-Bootstrap Asset Path</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/">Hyperlinks in Ordered Lists in Markdown in Vim</a>
       </li>
     
   </ul>

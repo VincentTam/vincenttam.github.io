@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T11:57:06+08:00</updated>
+  <updated>2016-02-22T14:15:51+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,178 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Rake Deploy Fatal Error]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error/"/>
+    
+    <updated>2016-02-22T12:16:16+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I had finished writing <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">my previous post</a>.  In <code>rake preview</code>, I
+got the desired output.  Then, the next step is to commit the changes
+and to deploy the generated contents to GitHub Pages.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>A large block of red text appeared after I ran <code>rake deploy</code>.  The
+commit on the <code>master</code> branch was <em>unsuccessful</em>.</p>
+
+<pre class="cli"><code>$ rake deploy
+(in C:/github/vincenttam.github.io)
+cp -r source/fancybox/.gitattributes public/fancybox/.gitattributes
+cd _deploy
+Already up-to-date.
+cd -
+rm -rf _deploy/404.html
+...
+rm -rf _deploy/stylesheets
+cp -r public/. _deploy
+cd _deploy
+fatal: CRLF would be replaced by LF in fancybox/README.md.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+        modified:   404.html
+        modified:   about/index.html
+        ...
+
+Untracked files:
+        blog/2016/02/21/
+        blog/2016/02/22/
+        downloads/code/miktex-update2/
+        images/posts/MikTeXUpdate2/
+        posts/31/
+
+no changes added to commit
+Everything up-to-date
+cd -
+## Set the codepage to 65001 for Windows machines
+## Deploying branch to Github Pages
+## Pulling any updates from Github Pages
+
+## Copying public to _deploy
+
+## Committing: Site updated at 2016-02-22 03:37:22 UTC
+
+## Pushing generated _deploy website
+
+## Github Pages deploy complete
+</code></pre>
+
+<p>Even though the system said that the deploy was “complete”, in fact,
+it had <em>never</em> been carried out.</p>
+
+<p><strong>How can I update my blog on GitHub Pages?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>In the above error output, it took me a minute to find out <em>at which
+stage</em> the deploy had failed: the line starting with “fatal”.
+Therefore, I stripped off all <code>\r</code> from <code>source/fancybox/README.md</code>.
+I tried deploying it again, and it <em>failed</em>—the <em>same</em> “fatal” error
+appeared for <em>another file</em>.  I tried committing the change for
+<code>source/fancybox/README.md</code>, but I <em>couldn’t</em> commit this.  I tried
+googling “fatal crlf would be replaced by lf”, and clicked on
+<a href="http://stackoverflow.com/q/20168639">the first search result</a>.  The answers in this Stack
+Overflow question suggested that the option <code>core.autocrlf</code> should be
+configured to <code>false</code>.  To be safe, I
+<a href="https://github.com/VundleVim/Vundle.vim/wiki#win1">turned on <code>core.safecrlf</code></a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup></p>
+
+<p>When I <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">updated Git for Windows</a>, I chose “<strong>Checkout
+Windows-style, commit Unix-style line endings</strong>” (the <em>first</em> radio
+button), which the Git Setup dialog recommended.</p>
+
+<picture class="fancybox" title="Git line conversion configuration">
+  <source srcset="/images/posts/GitUpdate/autocrlf.png" media="(min-width: 505px)" />
+  <img alt="Git line conversion configuration" width="300" src="https://vincenttam.github.io/images/posts/GitUpdate/autocrlf.png" />
+</picture>
+<p><small>Picture from <a href="http://i.stack.imgur.com/vPJCI.png">here</a>.</small></p>
+
+<p>I love using bash utilities and (G)Vim.  In Git Bash, the former gives
+LF line terminators, while the later gives CRLF.  Therefore, I decided
+to <code>set fileformat=unix</code> in my VIMRC.<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>  However, this <em>doesn’t</em>
+unify the EOL of files in the local repository.</p>
+
+<p>As I clone Git repositories, the line terminators are automatically
+converted to CRLF.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p><em>Completely</em> get rid of carriage returns <code>\r</code> in Git repositories!</p>
+
+<p>To see how many files had CRLF line terminators, I tried using <code>grep</code>
+in Git Bash, but <a href="http://stackoverflow.com/a/73886">this answer on Stack Overflow</a> <em>didn’t</em>
+work.</p>
+
+<pre class="cli"><code>$ find source -type f -exec grep -Iq . {} \; -and -exec dos2unix {} \;
+dos2unix: converting file source/404.md to Unix format...
+dos2unix: converting file source/about/index.markdown to Unix format...
+dos2unix: converting file source/about/mybyobuconf.markdown to Unix format...
+...
+dos2unix: converting file source/_posts/2016-02-22-git-for-windows-curl-with-vun
+dle-1.markdown~ to Unix format...
+dos2unix: converting file source/_posts/2016-02-22-testing-octopress-and-ruby-2-
+dot-0-on-windows-7-3.markdown to Unix format...
+dos2unix: converting file source/_posts/2016-02-22-testing-octopress-and-ruby-2-
+dot-0-on-windows-7-3.markdown~ to Unix format...
+</code></pre>
+
+<p>For the explanation of the above command, you may refer to
+<a href="/blog/2015/08/22/used-more-bash-utilities/"><em>Used More Bash Utilities</em></a>.</p>
+
+<p>After that, since <code>core.autocrlf</code> has been set to <code>false</code>, <code>git
+checkout</code> no longer inserts <code>\r</code> into the files in the local
+repository.  Therefore, even though <code>git status</code> reports unstaged
+changes, running <code>git checkout -- source</code> <em>won’t</em> hurt the files.  I
+can finally deploy the contents to GitHub Pages.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p><em>Never</em> run <code>rake generate</code> nor <code>rake preview</code> in <code>cmd.exe</code>!  Run this
+in Git Bash, or other shells that <em>don’t</em> give you carriage returns.</p>
+
+<p>When a new post is created with <code>rake new_post['...']</code> in either Git
+Bash or Command Prompt, the created post has DOS line endings.
+Therefore, we need to take extra care with this by using <code>dos2unix</code> in
+Git Bash.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:2">
+
+      <p>Refer to <a href="http://stackoverflow.com/a/1547108">this Stack Overflow question</a> for my reason
+of enabling <code>core.safecrlf</code>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:1">
+      <p>Refer to line 100 of my <code>_vimrc</code> at version <a href="https://goo.gl/iETw5d">07ab878</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>You may verify this by comparing the line</p>
+
+      <pre class="cli"><code>## Committing: Site updated at 2016-02-22 03:37:22 UTC
+</code></pre>
+
+      <p>in the above error message in the “Problem” section with commit
+<a href="https://github.com/VincentTam/vincenttam.github.io/commits/748fbd7">748fbd7</a> on GitHub.  Due to the growth of this site, each commit
+on the <code>master</code> branch now involves over 400 files and thousands
+of lines of insertion and deletion.  If I provide a direct link to
+the commit, it will take too long to load the page.  Therefore, I
+give the commit history at a particular node instead. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -216,7 +388,46 @@ but they can be overcome.</p>
   <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
 </picture>
 
-<p>{% include_code I clicked “Copy Info” and got this. lang:text miktex-update2/err-2016-02-22-22-00.txt %}</p>
+<p><figure class='code'><figcaption><span>I clicked “Copy Info” and got this.  (err-2016-02-22-22-00.txt)</span> <a href='/downloads/code/miktex-update2/err-2016-02-22-22-00.txt'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Problem Report
+</span><span class='line'>Message: Windows API error 145: The directory is not empty.
+</span><span class='line'>
+</span><span class='line'>Data: C:\Temp\MikTeXPortable\miktex\temp\mik8012
+</span><span class='line'>Source: Libraries\MiKTeX\Core\win\winFile.cpp
+</span><span class='line'>Line: 115
+</span><span class='line'>MiKTeX: 2.9
+</span><span class='line'>OS: Microsoft Windows 7 Home Premium Edition, 64-bit Service Pack 1 (build 7601)
+</span><span class='line'>Invokers: non-existing/miktex-taskbar-icon
+</span><span class='line'>SystemAdmin: no
+</span><span class='line'>PowerUser: no
+</span><span class='line'>Root0: C:\Temp\MikTeXPortable
+</span><span class='line'>Root1: C:\localtexmf
+</span><span class='line'>UserInstall: C:\Temp\MikTeXPortable
+</span><span class='line'>UserConfig: C:\Temp\MikTeXPortable
+</span><span class='line'>UserData: C:\Temp\MikTeXPortable
+</span><span class='line'>CommonInstall: C:\Temp\MikTeXPortable
+</span><span class='line'>CommonConfig: C:\Temp\MikTeXPortable
+</span><span class='line'>CommonData: C:\Temp\MikTeXPortable
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>From <a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
 Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
@@ -226,7 +437,50 @@ work.  The update wizard inside the big window for the package manager
 <p>Sometimes, the chosen remote package repository can fail.  In this
 case, just click the button and search for another one.</p>
 
-<p>{% include_code An example of failed update. lang:text miktex-update2/update-2016-02-21-20-19.txt %}</p>
+<p><figure class='code'><figcaption><span>An example of failed update.  (update-2016-02-21-20-19.txt)</span> <a href='/downloads/code/miktex-update2/update-2016-02-21-20-19.txt'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Update Wizard Report
+</span><span class='line'>
+</span><span class='line'>Version: 2.9.4913
+</span><span class='line'>Date: Sunday, February 21, 2016
+</span><span class='line'>Time: 20:19:02
+</span><span class='line'>starting package maintenance...
+</span><span class='line'>installation directory: C:\Temp\MikTeXPortable
+</span><span class='line'>package repository: http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/
+</span><span class='line'>lightweight database digest: d913ba0ad3c9c47c3e7a3e6e11863874
+</span><span class='line'>going to download 6130048 bytes
+</span><span class='line'>going to install 10 file(s) (1 package(s))
+</span><span class='line'>going to remove 35 file(s) (4 package(s))
+</span><span class='line'>downloading http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/miktex-bin-2.9.tar.lzma...
+</span><span class='line'>6130048 bytes, 1452.65 KB/Sec
+</span><span class='line'>extracting files from miktex-bin-2.9.tar.lzma...
+</span><span class='line'>removing package miktex-freetype-bin-2.9...
+</span><span class='line'>removing package miktex-qt4-bin-2.9...
+</span><span class='line'>removing package miktex-texinfo-bin-2.9...
+</span><span class='line'>removing package miktex-vc100-bin...
+</span><span class='line'>
+</span><span class='line'>Error: The MiKTeX package management utility could not be found.
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h2 id="lessons-learnt">Lessons learnt</h2>
 
@@ -322,152 +576,6 @@ it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
 instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
 hexadecimal number.)</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Mik$\rm \TeX$ Update]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
-    
-    <updated>2015-06-09T16:41:12+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/09/miktex-update</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>This morning, I tried typing the chemical symbol of carbon dioxide
-(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
-<code>\mathrm</code> in math mode — first, I changed from text mode to math
-mode, then in order to type normal font, I used <code>\mathrm</code> to change it
-back to “text mode in math mode”.  I did all of these for a little
-subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
-CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
-needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
-complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
-a result, I opened the package manager, and called the “Update Wizard”
-inside.</p>
-
-<picture class="fancybox" title="No update helper found">
-  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png" media="(min-width: 460px)" />
-  <img alt="update helper disappered?" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/no-helper300.png" />
-</picture>
-
-<p><strong>How can I get the packages updated <em>without</em> manually creating
-another folder?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I first clicked “Repository” and then “Synchronize”, but it loaded
-slowly, and I finally got <em>nothing</em>.  Then I tried to “Change package
-repository”.  I randomly selected an item in the list of remote
-package repository, and clicked “Synchronize” again.  What I saw was
-still the same.</p>
-
-<p>Then I decided <em>not</em> to include the <code>mhchem</code> package.  I restored the
-<code>\ce{CO2}</code> back to <code>CO2</code>, and then I pressed <code>\ll</code> in
-<a href="http://vim-latex.sourceforge.net/">$\rm \LaTeX$-Suite</a>.<sup id="fnref:ll"><a href="#fn:ll" class="footnote">1</a></sup>  Then I received <em>unexpected
-errors</em> from the $\rm \LaTeX$ compiler.  I then compiled another
-document which contained characters with accents, such as ‘à’, ‘é’,
-‘ï’, …  I received the same error message in the quickfix window as
-well.  Since it’s gone, I’ve retrieved the message from the
-corresponding LOG file.<sup id="fnref:log"><a href="#fn:log" class="footnote">2</a></sup></p>
-
-<pre class="cli"><code>(C:\Temp\MikTeXPortable\tex\latex\fontspec\fontspec.cfg)))
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.sty
-Package: babel 2008/07/08 v3.8m The Babel package
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Temp\MikTeXPortable\tex\latex\00miktex\bblopts.cfg
-File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-)
-(C:\Temp\MikTeXPortable\tex\latex\babel-french\frenchb.ldf
-Language: frenchb 2015/05/31 v3.1f French support from the babel system
-
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.def
-File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count123
-\U@D=\dimen139
-)
-
-<span class="err">! Package frenchb.ldf Error: frenchb requires babel v.3.9i.
-(frenchb.ldf)                Aborting here.</span>
-
-See the frenchb.ldf package documentation for explanation.
-Type  H &lt;return&gt;  for immediate help.
- ...
-
-l.116          {Please upgrade Babel!}
-
-<span class="HLCode">Please upgrade Babel!</span>
-</code></pre>
-
-<h2 id="a-nearly-successful-update">A nearly successful update</h2>
-
-<p>From Google, I’ve learnt to “Update MikTeX” directly from the little
-icon at the lower right-hand corner of the screen.  Then I directly
-clicked the “Next &gt;” button, and Mik$\rm \TeX$ tried connecting the
-manually chosen remote.  Unluckily, this <em>failed</em> and I got an error
-mesage like <em>Permission denied</em>.  I tried searching “miktex permission
-denied” on Google, but I <em>didn’t</em> understand what I’d found.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>As shown in the screenshot below, I checked the first two radio
-buttons so as to get updated packages from the nearest package
-repository.</p>
-
-<picture class="fancybox" title="Update MikTeX packages">
-  <source srcset="/images/posts/MikTeXUpdate/update513.png" media="(min-width: 513px)" />
-  <img alt="update miktex packages" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/update300.png" />
-</picture>
-
-<p>After clicking “Next &gt;”, things went smooth luckily.</p>
-
-<picture class="fancybox" title="Downloading updates from remotes">
-  <source srcset="/images/posts/MikTeXUpdate/download513.jpg" media="(min-width: 513px)" />
-  <img alt="miktex package updates downloading" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/download300.jpg" />
-</picture>
-
-<p>After the update had completed, the <code>babel</code> package had been upgraded
-from version 3.8 to 3.9i.  With the correct syntax, I could finally
-use <code>babel</code> and <code>mhchem</code>.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I often forget the command for optimizing JPEG images.  This evening,
-while I was writing this post, I googled “jpegtran command”, and I
-issued</p>
-
-<pre class="cli"><code>jpegtran -optimize input.jpg &gt; output.jpg
-</code></pre>
-
-<p>after I’d read the command example from <a href="http://junalontherun.com/2009/07/15/optimize-all-jpeg-images-with-jpegtran-utility/">this page</a>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ll">
-
-      <p><code>\ll</code> is the default keystroke for compiling a PDF document from
-the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
-<a href="http://www.vim.org">Vim</a> plugin for writing in $\rm \LaTeX$ efficiently. <a href="#fnref:ll" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:log">
-
-      <p>You may view the complete LOG file <a href="/downloads/1eDoc.log">here</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T11:57:06+08:00</updated>
+  <updated>2016-02-22T14:15:51+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -32,7 +32,7 @@
 the home page and the archive page still looked good.</p>
 
 <p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
-{% raw %}”{{ ASSET_PATH }}”{% endraw %} in the title of
+”{{ ASSET_PATH }}” in the title of
 <a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
 <code>_config.yml</code> is too troublesome and prone to error, I clicked some
 links for related web pages, such as
@@ -176,33 +176,58 @@ math.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
 boost the PageSpeed score of this site, I adpated the script to load
 MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
 
-<p>{% codeblock Put this at the bottom lang:html %}
-<script type="text/javascript">
-(function() {
-  function getScript(url,success){
-    var script=document.createElement('script');
-    script.src=url;
-    var head=document.getElementsByTagName('head')[0],
-    done=false;
-    script.onload=script.onreadystatechange = function(){
-      if ( !done &amp;&amp; (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
-      done=true;
-      success();
-      script.onload = script.onreadystatechange = null;
-      head.removeChild(script);
-      }
-    };
-    head.appendChild(script);
-  }</script></p>
-
-<p>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
-    “config=TeX-AMS-MML_HTMLorMML” +
-    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
-    function(){});</p>
-
-<p>})();
-&lt;/script&gt;
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
+</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
+</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
+</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
+</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
+</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
 
