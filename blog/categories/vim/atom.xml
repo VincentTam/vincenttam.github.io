@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-15T02:03:19+08:00</updated>
+  <updated>2016-02-22T11:57:06+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
+    
+    <updated>2016-02-22T10:23:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
+following error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
+/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
+curl: (1) Protocol "'http" not supported or disabled in libcurl
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
+the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
+and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
+
+<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
+on the Google search web page, and the rest of the error message
+appeared in the list of suggestions.  In the first search result,
+which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
+error occurred from the first answer—in the Command Prompt, one
+needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
+Bash, this <em>doesn’t</em> matter.</p>
+
+<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
+version of Git was too old.  I then upgraded it.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
+(or <code>/c</code>) stands for “command”, and what’s left is the command to
+be run.</li>
+  <li><code>curl</code> will grab content from the input URL and display it as
+standard output.  To save the downloaded content in a file, the
+flag <code>-o</code>, which means “output”, can be used.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -35,32 +91,7 @@ this <em>isn’t</em> standard, this is more convenient.</p>
 hyperlink to <a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a> written in a short but non-standard
 way.</p>
 
-<p><figure class='code'><figcaption><span>Markdown source code of the ordered list  (test-post.mkd)</span> <a href='/downloads/code/olhlmdvim/test-post.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>Lessons learnt
-</span><span class='line'>---
-</span><span class='line'>
-</span><span class='line'>Moreover, I revised the usage of these two [Vim] plugins.
-</span><span class='line'>
-</span><span class='line'>1. [Visual Star Search][visual-star-search]: Select text in visual
-</span><span class='line'>   mode and search it with an asterisk `*`.
-</span><span class='line'>2. [textobj-lastpat]: Add the last search pattern as a text object.
-</span><span class='line'>
-</span><span class='line'>[Vim]: http://www.vim.org
-</span><span class='line'>[visual-star-search]: https://github.com/bronson/vim-visual-star-search
-</span><span class='line'>[textobj-lastpat]: https://github.com/kana/vim-textobj-lastpat
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code Markdown source code of the ordered list lang:text olhlmdvim/test-post.mkd %}</p>
 
 <p>Unluckily, as I typed this Vim Ex command
 <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">to see whether my Markdown syntax was correct</a>, I quickly
@@ -73,26 +104,7 @@ received an error from <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
 below to see the effect of the result generated by ihe Markdown
 parser.</p>
 
-<p><figure class='code'><figcaption><span>Generated HTML code of the ordered list (test-post.html)</span> <a href='/downloads/code/olhlmdvim/test-post.html'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;lessons-learnt&quot;</span><span class="nt">&gt;</span>Lessons learnt<span class="nt">&lt;/h2&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>Moreover, I revised the usage of these two <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.vim.org&quot;</span><span class="nt">&gt;</span>Vim<span class="nt">&lt;/a&gt;</span> plugins.<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;ol&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/bronson/vim-visual-star-search&quot;</span><span class="nt">&gt;</span>Visual Star Search<span class="nt">&lt;/a&gt;</span>: Select text in visual
-</span><span class='line'>mode and search it with an asterisk <span class="nt">&lt;code&gt;</span>*<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/li&gt;</span>
-</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
-</span><span class='line'><span class="nt">&lt;/ol&gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code Generated HTML code of the ordered list olhlmdvim/test-post.html %}</p>
 
 <pre class="cliUB"><code>Warning: Duplicate link ID 'textobj-lastpat' on line 13 - overwriting
 
@@ -131,47 +143,13 @@ technical problem.</p>
 editor command <code>:r ~/lang:text temp-swp.mkd</code>.  To have it surrounded with
 <code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
 
-<p><figure class='code'><figcaption><span>A section of the error message  (temp-swp.mkd)</span> <a href='/downloads/code/temp-swp.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>## Generating Site with Jekyll
-</span><span class='line'>    write source/stylesheets/screen.css
-</span><span class='line'>Configuration file: /home/owner/octopress/_config.yml
-</span><span class='line'>            Source: source
-</span><span class='line'>       Destination: public
-</span><span class='line'>      Generating...
-</span><span class='line'>                    done.
-</span><span class='line'> Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code A section of the error message lang:text temp-swp.mkd %}</p>
 
 <p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
 selected in visual line mode.  However, the line starting with <code>#</code>
 <em>wasn’t</em> indented like the others.</p>
 
-<p><figure class='code'><figcaption><span>A failed indentation  (temp-swp1.mkd)</span> <a href='/downloads/code/temp-swp1.mkd'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>## Generating Site with Jekyll
-</span><span class='line'>        write source/stylesheets/screen.css
-</span><span class='line'>    Configuration file: /home/owner/octopress/_config.yml
-</span><span class='line'>                Source: source
-</span><span class='line'>           Destination: public
-</span><span class='line'>          Generating...
-</span><span class='line'>                        done.
-</span><span class='line'>     Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code A failed indentation lang:text temp-swp1.mkd %}</p>
 
 <!-- more -->
 
@@ -401,164 +379,6 @@ should have wrapped the <code>find</code> command like <code>$(find ...)</code>.
   <li>Unset variable usign <code>unset var1 var2 ...</code></li>
 </ul>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/"/>
-    
-    <updated>2015-08-05T00:18:45+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I often write math in this blog.  After typing lots of characters,
-syntax errors are <em>inevitable</em>, but no one wants them to be published.
-Unluckily, the <code>rake generate</code> command takes <em>too long</em> to run.  In
-order to find them out more quickly, I quickly went over the
-<code>Gemfile</code> of the repository for this blog, and saw that the Markdown
-engine of Octopress is kramdown.  Therefore, I used the command line
-version of this Markdown parser to convert my Markdown source file to
-an HTML document by a Vim Ex command.</p>
-
-<pre><code>:!kramdown % &gt; %&lt;.html
-</code></pre>
-
-<p>For this, I’ve written two posts describing the workflow of producing
-HTML web pages consisting of math expressions from Markdown source
-files using kramdown and MathJax.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>In <a href="/blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/">the first post</a> in this series, I’ve made a list of steps
-in Vim.  However, jumping to other files is laborious.  More
-importantly, those steps involve browsing and copying of lines of
-HTML code of the <code>&lt;head&gt;</code>, which loads MathJax, in other HTML files.
-This can <em>seriously</em> slow down the editing process.  Unhappily, this
-problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="include-the-script-in-the-content">Include the script in the content</h3>
-
-<p>There might be some option for the kramdown command line utility to
-use accept an HTML template files during the code conversion.
-However, I’m <em>too lazy</em> to search for them as I need to work on
-math.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<p>Remembering that I defered the loading of JavaScripts in order to
-boost the PageSpeed score of this site, I adpated the script to load
-MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
-
-<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
-</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
-</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
-</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
-</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
-</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
-
-<p>By default, with the plugin <code>vim-markdown</code> installed, the sections are
-<em>folded</em>.  Before I can continue editing at the end of the file, I
-have to open the last fold, which contained more than 25 lines due to
-the script enabling MathJax at the bottom.  As a result, I have to
-move back to the middle of the last fold by pressing <code>k</code> for a while.
-That annoys me.  If the script is contained in a separate fold, it’s
-better.  Therefore, adding a blank line and then a line consisting of
-three hyphens will fix this problem.</p>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<hr />
-<p>(Added on SEP 3RD, 2015)</p>
-
-<p>Now I realised that kramdown will leave the trailing two backslashes
-at each line inside <code>&lt;div&gt;</code> tags in Markdown source files <em>untouched</em>.</p>
-
-<hr />
-
-<p>In <a href="/blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/">the second post</a> in this series, we know that <code>&lt;div&gt;</code> tag
-prevents kramdown from converting the code inside the tag to HTML,
-while in <a href="/blog/2014/09/14/kramdowns-markdown-attributes/">another old post about kramdown’s Markdown attributes</a>,
-one can revert the above behaviour by simply adding an attribute
-<code>markdown="1"</code> to the <code>&lt;div&gt;</code> tag.  These can be reflected in the
-above test.</p>
-
-<p>Usually, in math environments inside a $\rm \LaTeX$ document, double
-backslashes <code>\\</code> start a new line, and it’s the same in MathJax.
-Typing <em>two</em> backslashes in the Markdown source down will suffice.
-Unluckily, in the <em>real Markdown source</em> for Octopress posts, <em>four</em>
-<code>\</code> are needed.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-
-      <p>For example, I have to think about
-<a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">multi-variable real-valued functions</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:pp2">
-
-      <p>Refer to my old post
-<a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a> in <em>Blog 1</em> for
-details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

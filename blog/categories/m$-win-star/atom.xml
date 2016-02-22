@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-15T02:03:19+08:00</updated>
+  <updated>2016-02-22T11:57:06+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,241 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
+    
+    <updated>2016-02-22T10:23:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
+following error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
+/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
+curl: (1) Protocol "'http" not supported or disabled in libcurl
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
+the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
+and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
+
+<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
+on the Google search web page, and the rest of the error message
+appeared in the list of suggestions.  In the first search result,
+which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
+error occurred from the first answer—in the Command Prompt, one
+needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
+Bash, this <em>doesn’t</em> matter.</p>
+
+<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
+version of Git was too old.  I then upgraded it.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
+(or <code>/c</code>) stands for “command”, and what’s left is the command to
+be run.</li>
+  <li><code>curl</code> will grab content from the input URL and display it as
+standard output.  To save the downloaded content in a file, the
+flag <code>-o</code>, which means “output”, can be used.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/"/>
+    
+    <updated>2016-02-22T01:05:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I was writing <a href="/blog/2016/02/21/miktex-update-2/">my previous post</a>, which was about my recent
+Mik$\rm \TeX$ update.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>After having finished it, I tried <code>rake generate</code>, and got results
+similar to the first picture of <a href="blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">the first post in this series</a>.</p>
+
+<p>Last time, I solved this problem by creating the batch file
+<code>python2.bat</code> in the folder where Python had been installed (i.e.
+<code>C:\Python27</code>).  This time, the BAT file is already there.  In (Git)
+CMD, both <code>which python</code> and <code>which python2</code> are fine.  However, in
+Git bash, I run into trouble.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python
+/c/Python27/python
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python2
+which: no python2 in (/c/Users/Owner/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/b
+in:/mingw64/bin:/usr/bin:/c/Users/Owner/bin:/c/ProgramData/Oracle/Java/javapath:
+/c/Perl/site/bin:/c/Perl/bin:/c/Program Files (x86)/Intel/iCLS Client:/c/Program
+ Files/Intel/iCLS Client:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem
+:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/OpenCL 
+SDK/2.0/bin/x86:/c/Program Files (x86)/Intel/OpenCL SDK/2.0/bin/x64:/c/Program F
+iles (x86)/Common Files/Roxio Shared/DLLShared:/c/Program Files (x86)/Common Fil
+es/Roxio Shared/OEM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/O
+EM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/OEM/12.0/DLLShared
+:/c/Program Files (x86)/Roxio 2010/OEM/AudioCore:/c/Program Files/Intel/Intel(R)
+ Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Eng
+ine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Compo
+nents/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT
+:/c/Temp/MikTeXPortable/miktex/bin:/c/MinGW/bin:/c/Temp/gnuwin32/bin:/c/ctags58:
+/c/Temp/PortableApps/gVimPortable:/c/cscope-15.8a-win32rev1-static:/c/Python27:/
+c/Ruby200-x64/bin:/c/Temp/pdf2svg-0.2.2:/c/Program Files (x86)/Skype/Phone:/cmd:
+/usr/bin/vendor_perl:/usr/bin/core_perl)
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ cd /c/Python27/
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls
+DLLs/     Lib/         NEWS.txt     pythonw.exe*  Tools/
+Doc/      libs/        python.exe*  README.txt    w9xpopen.exe*
+include/  LICENSE.txt  python2.bat  tcl/
+</code></pre>
+
+<p>Even though the generated contents can still be locally previewed,
+<strong>how can I get rid of this error message?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “which no python2 in” (<em>with surrounding double quotes</em>),
+and found one line in the post <a href="http://nathanielstory.com/2013/12/28/jekyll-on-windows-with-cygwin.html"><em>Jekyll on Windows With Cygwin</em></a>
+written by Nathan Story very useful.  While reading his post, I
+<em>didn’t</em> read it from the start.  Instead, I just searched for
+“python2”, and quickly saw the <code>ln</code> command.</p>
+
+<p>The file type of <code>python2</code> created by <code>ln</code> was <em>different</em> from what I
+expected: <code>ls -l</code> <em>didn’t</em> show that <code>python2</code> was a symbolic link,
+and <code>file</code> even said that it was an executable file.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/Python27
+$ ln -s python.exe python2
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls -l
+total 677
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 DLLs/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Doc/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 include/
+drwxr-xr-x 1 Owner 197121      0 Oct  9  2014 Lib/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 libs/
+-rw-r--r-- 1 Owner 197121  38573 Nov 10  2013 LICENSE.txt
+-rw-r--r-- 1 Owner 197121 375685 Nov 10  2013 NEWS.txt
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python.exe*
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python2*
+-rw-r--r-- 1 Owner 197121     22 Aug 31  2014 python2.bat
+-rwxr-xr-x 1 Owner 197121  27136 Nov 10  2013 pythonw.exe*
+-rw-r--r-- 1 Owner 197121  55208 Oct 27  2013 README.txt
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 tcl/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Tools/
+-rwxr-xr-x 1 Owner 197121  49664 Nov 10  2013 w9xpopen.exe*
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ file python2
+python2: PE32 executable (console) Intel 80386, for MS Windows
+</code></pre>
+
+<p>Finally, <code>rake</code> <em>doesn’t</em> give me strange output.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Mik$\rm \TeX$ Update (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/21/miktex-update-2/"/>
+    
+    <updated>2016-02-21T22:37:20+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/21/miktex-update-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I need to write something in $\rm \LaTeX$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I <em>can’t</em> get any update by clicking “Update Mik$\rm \TeX$” in the
+icon triggered by <code>miktex-portable.cmd</code>.  I faced the same problem as
+<a href="http://tex.stackexchange.com/q/251242">rantrave’s</a>.</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>If one urgently needs to get the updated version of a particular
+package, one may directly download the LZMA file.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Actually, the
+remote package repositories are still <em>online</em>.  I guess the problem
+is in Mik$\rm \TeX$ update tool.  Anyways, I am still grateful for the
+effort of its developers.</p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>The easiest way is to sit there and <em>wait for a day</em>.  Then the
+problem will be <em>gone</em>.  It is possible that some difficulties occur,
+but they can be overcome.</p>
+
+<picture class="fancybox" title="Windows API error 145">
+  <source srcset="/images/posts/MikTeXUpdate2/api-err.png" media="(min-width: 460px)" />
+  <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
+</picture>
+
+<p>{% include_code I clicked “Copy Info” and got this. lang:text miktex-update2/err-2016-02-22-22-00.txt %}</p>
+
+<p>From <a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
+Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
+work.  The update wizard inside the big window for the package manager
+<em>won’t</em>.</p>
+
+<p>Sometimes, the chosen remote package repository can fail.  In this
+case, just click the button and search for another one.</p>
+
+<p>{% include_code An example of failed update. lang:text miktex-update2/update-2016-02-21-20-19.txt %}</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>When there’s nothing can be done, then one needs the mind of
+non-action or non-being.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+
+      <p>For example, the situation described in
+<a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -93,7 +328,7 @@ hexadecimal number.)</p>
   
   <entry>
     
-      <title type="html"><![CDATA[MikTeX Update]]></title>
+      <title type="html"><![CDATA[Mik$\rm \TeX$ Update]]></title>
       <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
     
     <updated>2015-06-09T16:41:12+08:00</updated>
@@ -233,499 +468,6 @@ the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[MS Word Hanged]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/"/>
-    
-    <updated>2015-06-09T15:59:15+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>I tried editing in M$ Word, but <em>failed</em>.</p>
-
-<picture class="fancybox" title="M$ Word not responding">
-  <source srcset="/images/posts/MSWordHanged/word-hang926.png" media="(min-width: 926px)" />
-  <img alt="M$ Word hanged" src="https://vincenttam.github.io/images/posts/MSWordHanged/word-hang250.png" />
-</picture>
-
-<h2 id="solution">Solution</h2>
-
-<p>The solution is extremely simple: <em>don’t</em> use M$ Office if it’s too
-heavy for your computer — use something more lightweight: a text
-editor with a typesetting engine.</p>
-
-<h3 id="choose-your-favourite-editors">Choose your favourite editors</h3>
-
-<p>I use <a href="http://www.vim.org">Vim</a> every day as a text editor.  I tried <a href="http://www.gnu.org/software/emacs/">EMACS</a>. Though I
-<em>can’t</em> remember two sets of keystrokes, the latter is still useful
-when you need to browse <code>info</code> pages on *nix.</p>
-
-<h3 id="typesetting-engines">Typesetting engines</h3>
-
-<ol>
-  <li>
-    <p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and <a href="http://pandoc.org/">pandoc</a></p>
-
-    <p>For simple documents which have <em>little</em> variation in styles, such
- as blog entries and some homework essays.</p>
-  </li>
-  <li>
-    <p>$\rm \LaTeX$</p>
-
-    <p>For more complicated documents like lab report, documents
- containing math expressions, etc.</p>
-  </li>
-</ol>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Installed Jpegtran From Source With MinGW32]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32/"/>
-    
-    <updated>2015-03-10T07:14:28+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/03/10/installed-jpegtran-from-source-with-mingw32</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>To reduce the bandwidth usage while viewing pictures in this blog,
-I’ve already run <a href="http://optipng.sourceforge.net/">OptiPNG</a> on PNG pictures in my new
-posts.<sup id="fnref:pp_pagespeed"><a href="#fn:pp_pagespeed" class="footnote">1</a></sup>  For JPEG files optimization, Google developers
-suggest <a href="http://freshmeat.net/projects/jpegoptim/">jpegoptim</a> or <a href="http://jpegclub.org/">jpegtran</a>.<sup id="fnref:goo_dev"><a href="#fn:goo_dev" class="footnote">2</a></sup>  Since the first tool
-<em>isn’t</em> available for M$ Win* 7, I installed the second one.  I
-<em>couldn’t</em> find a compiled version of the software, so I had to
-compile it from source code.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Since there’re <em>too many</em> words following the instructions for a *nix
-machine below the table of contents in <code>install.txt</code>, I tried
-installing it with <a href="https://www.gnu.org/software/make/">Make</a> like *nix, so that the installation could
-be finished in four simple commands: <code>./configure</code>, <code>make</code>, <code>make
-test</code> and <code>make install</code>.  The output of the first command was
-fine.<sup id="fnref:config"><a href="#fn:config" class="footnote">3</a></sup></p>
-
-<p>Unluckily, I got trouble when I moved on to the next command.</p>
-
-<pre class="cli"><code>$ make
-c:/Temp/gnuwin32/bin/make  all-am
-c:/Temp/gnuwin32/bin/make: Interrupt/Exception caught (code = 0xc00000fd, addr =
- 0x4227d3)
-make: *** [all] Error 255
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “make interrupt/exception caught” and read a Super User
-question at the top of the list of search results.<sup id="fnref:su401808"><a href="#fn:su401808" class="footnote">4</a></sup>
-Luckily, the <code>code</code> and <code>addr</code> in the chosen response matched what I’d
-got above.  I therefore jumped to the last paragraph and added the
-line at the top of the generated <code>Makefile</code>.</p>
-
-<pre><code>SHELL=C:/Windows/System32/cmd.exe
-</code></pre>
-
-<p>I then tried issuing <code>make</code> for another time, and <em>failed</em> again.</p>
-
-<pre class="cli"><code>$ make
-make  all-am
-make[1]: Entering directory `C:/Users/Owner/Downloads/jpeg-9a'
-"  CC      " jaricom.lo;C:/Windows/System32/cmd.exe ./libtool --silent --tag=CC
-  --mode=compile gcc -std=gnu99 -DHAVE_CONFIG_H -I.     -g -O2 -MT jaricom.lo -M
-D -MP -MF .deps/jaricom.Tpo -c -o jaricom.lo jaricom.c
-mv: cannot stat '.deps/jaricom.Tpo': No such file or directory
-make[1]: *** [jaricom.lo] Error 1
-make[1]: Leaving directory `C:/Users/Owner/Downloads/jpeg-9a'
-make: *** [all] Error 2
-</code></pre>
-
-<p>I tried doing the same thing in M$’s Command Prompt, but got the same
-errors.  I also tried following the second answer and adding <code>PATH=</code>
-below the first line of <code>Makefile</code>, and Make still threw errors and
-said that <code>rm</code> <em>wasn’t</em> an internal or external command.  This caused
-me to give up on this answer.</p>
-
-<p>I learnt from past experience and performed a <code>make clean</code>.  This
-<em>failed</em> unexpectedly.  I copied some words in the error message and
-googled “make clean windows list is not recognized as an internal or
-external command”, and viewed some irrelevant websites.</p>
-
-<p>I then re-read the first answer to that Super User question, and found
-the cause of the problem.  I quickly saved the original <code>PATH</code>
-environment varible in Control Panel into a TXT file, duplicate that
-TXT file, and use gVim to replace all instances of <code>Program Files
-(x86)</code>, <code>Program Files</code> and <code>Intel(R) Management Engine Components</code> by
-three different strings <em>without</em> ‘(‘ and ‘)’, for example,
-<code>PROGRA~1</code>, <code>PROGRA~2</code> and <code>intel~1</code>.</p>
-
-<p>I re-ran <code>make</code> in <em>both</em> Git Bash and M$ Command Prompt, and
-received the <em>same</em> error again.  I suddenly realized that I should
-try <a href="http://www.mingw.org/wiki/msys">MSYS</a>, the shell released by the <em>same</em> group of developers of
-MinGW.  Finally, the remaining three commands worked well.<sup id="fnref:msys"><a href="#fn:msys" class="footnote">5</a></sup></p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I tried googling sample jpegtran commands, but the search <em>wasn’t</em>
-effective.  From this, I’ve learnt to read the official README and
-other help files accompanying the source files.</p>
-
-<p>I used <code>&gt;</code> in jpegtran commands, and strange images were produced.  I
-once thought that an compilation error occured.  However, the test
-images <code>test*.*</code> in the directory which contained the source files and
-compiled binary files were OK.  By looking at the “Date Modified” in a
-file browser, I guessed that the test images generated by the program
-were made by <code>make test</code>.  I browsed <code>Makefile</code> again, and finally got
-the correct syntax for optimizing JPEG images.</p>
-
-<p>Finally, I think that the new lossless scaling feature works in my
-compiled version of jpegtran, though I <em>can’t</em> see the output
-pictures.</p>
-
-<hr />
-
-<div id="config_o" class="noscr">
-  <h3 id="bashs-output-for-configure">Bash’s output for ./configure</h3>
-
-  <p>Luckily, this command worked on my laptop.</p>
-
-  <pre class="cli"><code>$ ./configure
-checking build system type... i686-pc-mingw32
-checking host system type... i686-pc-mingw32
-checking target system type... i686-pc-mingw32
-checking for a BSD-compatible install... ./install-sh -c
-checking whether build environment is sane... yes
-checking for a thread-safe mkdir -p... /bin/mkdir -p
-checking for gawk... gawk
-checking whether make sets $(MAKE)... yes
-checking whether make supports nested variables... yes
-checking whether make supports nested variables... (cached) yes
-checking whether to enable maintainer-specific portions of Makefiles... no
-checking for gcc... gcc
-checking whether the C compiler works... yes
-checking for C compiler default output file name... a.exe
-checking for suffix of executables... .exe
-checking whether we are cross compiling... no
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether gcc accepts -g... yes
-checking for gcc option to accept ISO C89... none needed
-checking whether gcc understands -c and -o together... yes
-checking for style of include used by make... GNU
-checking dependency style of gcc... gcc3
-checking for gcc option to accept ISO C99... -std=gnu99
-checking for gcc -std=gnu99 option to accept ISO Standard C... (cached) -std=gnu
-99
-checking how to run the C preprocessor... gcc -std=gnu99 -E
-checking whether make sets $(MAKE)... (cached) yes
-checking whether ln -s works... no, using cp -pR
-checking for ar... ar
-checking the archiver (ar) interface... ar
-checking if LD -Wl,--version-script works... yes
-checking for function prototypes... yes
-checking for grep that handles long lines and -e... /bin/grep
-checking for egrep... /bin/grep -E
-checking for ANSI C header files... yes
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking stddef.h usability... yes
-checking stddef.h presence... yes
-checking for stddef.h... yes
-checking for stdlib.h... (cached) yes
-checking locale.h usability... yes
-checking locale.h presence... yes
-checking for locale.h... yes
-checking for string.h... (cached) yes
-checking for size_t... yes
-checking for type unsigned char... yes
-checking for type unsigned short... yes
-checking for type void... yes
-checking for an ANSI C-conforming const... yes
-checking for inline... __inline__
-checking for broken incomplete types... ok
-checking for short external names... ok
-checking to see if char is signed... yes
-checking to see if right shift is signed... yes
-checking to see if fopen accepts b spec... yes
-checking for as... as
-checking for dlltool... dlltool
-checking for objdump... objdump
-checking how to print strings... printf
-checking for a sed that does not truncate output... /bin/sed
-checking for fgrep... /bin/grep -F
-checking for ld used by gcc -std=gnu99... c:/mingw/mingw32/bin/ld.exe
-checking if the linker (c:/mingw/mingw32/bin/ld.exe) is GNU ld... yes
-checking for BSD- or MS-compatible name lister (nm)... /c/MinGW/bin/nm
-checking the name lister (/c/MinGW/bin/nm) interface... BSD nm
-checking the maximum length of command line arguments... 8192
-checking whether the shell understands some XSI constructs... yes
-checking whether the shell understands "+="... yes
-checking how to convert i686-pc-mingw32 file names to i686-pc-mingw32 format...
-func_convert_file_msys_to_w32
-checking how to convert i686-pc-mingw32 file names to toolchain format... func_c
-onvert_file_msys_to_w32
-checking for c:/mingw/mingw32/bin/ld.exe option to reload object files... -r
-checking for objdump... (cached) objdump
-checking how to recognize dependent libraries... file_magic ^x86 archive import|
-^x86 DLL
-checking for dlltool... (cached) dlltool
-checking how to associate runtime and link libraries... func_cygming_dll_for_imp
-lib
-checking for archiver @FILE support... @
-checking for strip... strip
-checking for ranlib... ranlib
-checking command to parse /c/MinGW/bin/nm output from gcc -std=gnu99 object... o
-k
-checking for sysroot... no
-checking for mt... no
-checking if : is a manifest tool... no
-checking for dlfcn.h... no
-checking for objdir... .libs
-checking if gcc -std=gnu99 supports -fno-rtti -fno-exceptions... no
-checking for gcc -std=gnu99 option to produce PIC... -DDLL_EXPORT -DPIC
-checking if gcc -std=gnu99 PIC flag -DDLL_EXPORT -DPIC works... yes
-checking if gcc -std=gnu99 static flag -static works... yes
-checking if gcc -std=gnu99 supports -c -o file.o... yes
-checking if gcc -std=gnu99 supports -c -o file.o... (cached) yes
-checking whether the gcc -std=gnu99 linker (c:/mingw/mingw32/bin/ld.exe) support
-s shared libraries... yes
-checking whether -lc should be explicitly linked in... yes
-checking dynamic linker characteristics... Win32 ld.exe
-checking how to hardcode library paths into programs... immediate
-checking whether stripping libraries is possible... yes
-checking if libtool supports shared libraries... yes
-checking whether to build shared libraries... yes
-checking whether to build static libraries... yes
-checking libjpeg version number... 10:0:1
-checking that generated files are newer than configure... done
-configure: creating ./config.status
-config.status: creating Makefile
-config.status: creating jconfig.h
-config.status: executing depfiles commands
-config.status: executing libtool commands
-</code></pre>
-</div>
-
-<div id="msys_o" class="noscr">
-  <h3 id="switched-to-msys">Switched to MSYS</h3>
-
-  <p>The installation was successful in MSYS.</p>
-
-  <pre class="cli"><code>$ make clean
-rm -f cjpeg.exe djpeg.exe jpegtran.exe rdjpgcom.exe wrjpgcom.exe
-rm -f cjpeg djpeg jpegtran rdjpgcom wrjpgcom
-test -z "testout.ppm testout.bmp testout.jpg testoutp.ppm testoutp.jpg testoutt.
-jpg" || rm -f testout.ppm testout.bmp testout.jpg testoutp.ppm testoutp.jpg test
-outt.jpg
-test -z "libjpeg.la" || rm -f libjpeg.la
-rm -f ./so_locations
-rm -rf .libs _libs
-rm -f *.o
-rm -f *.lo
-
-$ make
-make  all-am
-make[1]: Entering directory `/c/Users/Owner/Downloads/jpeg-9a'
-  CC       jaricom.lo
-  CC       jcapimin.lo
-  CC       jcapistd.lo
-  CC       jcarith.lo
-  CC       jccoefct.lo
-  CC       jccolor.lo
-  CC       jcdctmgr.lo
-  CC       jchuff.lo
-  CC       jcinit.lo
-  CC       jcmainct.lo
-  CC       jcmarker.lo
-  CC       jcmaster.lo
-  CC       jcomapi.lo
-  CC       jcparam.lo
-  CC       jcprepct.lo
-  CC       jcsample.lo
-  CC       jctrans.lo
-  CC       jdapimin.lo
-  CC       jdapistd.lo
-  CC       jdarith.lo
-  CC       jdatadst.lo
-  CC       jdatasrc.lo
-  CC       jdcoefct.lo
-  CC       jdcolor.lo
-  CC       jddctmgr.lo
-  CC       jdhuff.lo
-  CC       jdinput.lo
-  CC       jdmainct.lo
-  CC       jdmarker.lo
-  CC       jdmaster.lo
-  CC       jdmerge.lo
-  CC       jdpostct.lo
-  CC       jdsample.lo
-  CC       jdtrans.lo
-  CC       jerror.lo
-  CC       jfdctflt.lo
-  CC       jfdctfst.lo
-  CC       jfdctint.lo
-  CC       jidctflt.lo
-  CC       jidctfst.lo
-  CC       jidctint.lo
-  CC       jquant1.lo
-  CC       jquant2.lo
-  CC       jutils.lo
-  CC       jmemmgr.lo
-  CC       jmemnobs.lo
-  CCLD     libjpeg.la
-  CC       cjpeg.o
-  CC       rdppm.o
-  CC       rdgif.o
-  CC       rdtarga.o
-  CC       rdrle.o
-  CC       rdbmp.o
-  CC       rdswitch.o
-  CC       cdjpeg.o
-  CCLD     cjpeg.exe
-  CC       djpeg.o
-  CC       wrppm.o
-  CC       wrgif.o
-  CC       wrtarga.o
-  CC       wrrle.o
-  CC       wrbmp.o
-  CC       rdcolmap.o
-  CCLD     djpeg.exe
-  CC       jpegtran.o
-  CC       transupp.o
-  CCLD     jpegtran.exe
-  CC       rdjpgcom.o
-  CCLD     rdjpgcom.exe
-  CC       wrjpgcom.o
-
-$ make test
-rm -f testout*
-./djpeg -dct int -ppm -outfile testout.ppm  ./testorig.jpg
-./djpeg -dct int -bmp -colors 256 -outfile testout.bmp  ./testorig.jpg
-./cjpeg -dct int -outfile testout.jpg  ./testimg.ppm
-./djpeg -dct int -ppm -outfile testoutp.ppm ./testprog.jpg
-./cjpeg -dct int -progressive -opt -outfile testoutp.jpg ./testimg.ppm
-./jpegtran -outfile testoutt.jpg ./testprog.jpg
-cmp ./testimg.ppm testout.ppm
-cmp ./testimg.bmp testout.bmp
-cmp ./testimg.jpg testout.jpg
-cmp ./testimg.ppm testoutp.ppm
-cmp ./testimgp.jpg testoutp.jpg
-cmp ./testorig.jpg testoutt.jpg
-
-$ make install
-make[1]: Entering directory `/c/Users/Owner/Downloads/jpeg-9a'
- /bin/mkdir -p '/usr/local/lib'
- /bin/sh ./libtool   --mode=install ./install-sh -c   libjpeg.la '/usr/local/lib
-'
-libtool: install: ./install-sh -c .libs/libjpeg.dll.a /usr/local/lib/libjpeg.dll
-.a
-libtool: install: base_file=`basename libjpeg.la`
-libtool: install:  dlpath=`/bin/sh 2&gt;&amp;1 -c '. .libs/'libjpeg.la'i; echo libjpeg-
-9.dll'`
-libtool: install:  dldir=/usr/local/lib/`dirname ../bin/libjpeg-9.dll`
-libtool: install:  test -d /usr/local/lib/../bin || mkdir -p /usr/local/lib/../b
-in
-libtool: install:  ./install-sh -c .libs/libjpeg-9.dll /usr/local/lib/../bin/lib
-jpeg-9.dll
-libtool: install:  chmod a+x /usr/local/lib/../bin/libjpeg-9.dll
-libtool: install:  if test -n '' &amp;&amp; test -n 'strip --strip-unneeded'; then eval
-'strip --strip-unneeded /usr/local/lib/../bin/libjpeg-9.dll' || exit 0; fi
-libtool: install: ./install-sh -c .libs/libjpeg.lai /usr/local/lib/libjpeg.la
-libtool: install: ./install-sh -c .libs/libjpeg.a /usr/local/lib/libjpeg.a
-libtool: install: chmod 644 /usr/local/lib/libjpeg.a
-libtool: install: ranlib /usr/local/lib/libjpeg.a
- /bin/mkdir -p '/usr/local/bin'
-  /bin/sh ./libtool   --mode=install ./install-sh -c cjpeg.exe djpeg.exe jpegtra
-n.exe rdjpgcom.exe wrjpgcom.exe '/usr/local/bin'
-libtool: install: ./install-sh -c .libs/cjpeg.exe /usr/local/bin/cjpeg.exe
-libtool: install: ./install-sh -c .libs/djpeg.exe /usr/local/bin/djpeg.exe
-libtool: install: ./install-sh -c .libs/jpegtran.exe /usr/local/bin/jpegtran.exe
-
-libtool: install: ./install-sh -c .libs/rdjpgcom.exe /usr/local/bin/rdjpgcom.exe
-
-libtool: install: ./install-sh -c .libs/wrjpgcom.exe /usr/local/bin/wrjpgcom.exe
-
-/bin/sh /c/Users/Owner/Downloads/jpeg-9a/install-sh -d /usr/local/include
-./install-sh -c -m 644 jconfig.h /usr/local/include/jconfig.h
- /bin/mkdir -p '/usr/local/include'
- ./install-sh -c -m 644 jerror.h jmorecfg.h jpeglib.h '/usr/local/include'
- /bin/mkdir -p '/usr/local/share/man/man1'
- ./install-sh -c -m 644 cjpeg.1 djpeg.1 jpegtran.1 rdjpgcom.1 wrjpgcom.1 '/usr/l
-ocal/share/man/man1'
-make[1]: Leaving directory `/c/Users/Owner/Downloads/jpeg-9a'
-</code></pre>
-</div>
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp_pagespeed">
-
-      <p>See	<a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a>
-in Blog 1 for details. <a href="#fnref:pp_pagespeed" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:goo_dev">
-      <p><a href="https://developers.google.com/speed/docs/insights/OptimizeImages"><em>Optimize images</em></a> in Google Pagespeed rules. <a href="#fnref:goo_dev" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:config">
-      <p>Click <a href="#config_o" class="cliwide">here</a> to see the bash output. <a href="#fnref:config" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:su401808">
-
-      <p><a href="http://superuser.com/a/401808"><em>make: Interrupt/Exception caught</em></a> in Super User. <a href="#fnref:su401808" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:msys">
-      <p>Click <a href="#msys_o" class="cliwide">here</a> to see the bash output. <a href="#fnref:msys" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Another BoD on Win* 7]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/02/28/another-bod-on-win-star-7/"/>
-    
-    <updated>2015-02-28T19:01:39+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/02/28/another-bod-on-win-star-7</id>
-    
-      <content type="html"><![CDATA[<p>Yesterday afternoon, I switched on a public computer.  After the
-desktop had been loaded, a dialog box popped up in the middle of the
-screen.</p>
-
-<picture class="fancybox" title="Recoverd from a BoD">
-  <source srcset="/images/posts/BoD/fig1.png" media="(min-width: 450px)" />
-  <img alt="got a BoD" src="https://vincenttam.github.io/images/posts/BoD/fig1-s.png" />
-</picture>
-
-<p>I compared this dialog box with the one that I saw on my laptap a
-month ago.</p>
-
-<picture class="fancybox" title="Recoverd from a BoD">
-  <source srcset="/images/posts/BoD/fig.png" media="(min-width: 370px)" />
-  <img alt="got a BoD" src="https://vincenttam.github.io/images/posts/BoD/fig-s.png" />
-</picture>
-
-<p>The difference between these two dialog boxes is the button “Check for
-solution” on the left of the “Close” button.  I <em>don’t</em> know whether
-this is a difference between M$ Win* 7 Home Edition and Enterprise.</p>
 ]]></content>
     
   </entry>

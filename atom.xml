@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-15T02:03:19+08:00</updated>
+  <updated>2016-02-22T11:55:42+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,323 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
+    
+    <updated>2016-02-22T10:23:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
+following error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
+/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
+curl: (1) Protocol "'http" not supported or disabled in libcurl
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
+the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
+and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
+
+<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
+on the Google search web page, and the rest of the error message
+appeared in the list of suggestions.  In the first search result,
+which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
+error occurred from the first answer—in the Command Prompt, one
+needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
+Bash, this <em>doesn’t</em> matter.</p>
+
+<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
+version of Git was too old.  I then upgraded it.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
+(or <code>/c</code>) stands for “command”, and what’s left is the command to
+be run.</li>
+  <li><code>curl</code> will grab content from the input URL and display it as
+standard output.  To save the downloaded content in a file, the
+flag <code>-o</code>, which means “output”, can be used.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/"/>
+    
+    <updated>2016-02-22T01:05:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I was writing <a href="https://vincenttam.github.io/blog/2016/02/21/miktex-update-2/">my previous post</a>, which was about my recent
+Mik$\rm \TeX$ update.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>After having finished it, I tried <code>rake generate</code>, and got results
+similar to the first picture of <a href="blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">the first post in this series</a>.</p>
+
+<p>Last time, I solved this problem by creating the batch file
+<code>python2.bat</code> in the folder where Python had been installed (i.e.
+<code>C:\Python27</code>).  This time, the BAT file is already there.  In (Git)
+CMD, both <code>which python</code> and <code>which python2</code> are fine.  However, in
+Git bash, I run into trouble.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python
+/c/Python27/python
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python2
+which: no python2 in (/c/Users/Owner/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/b
+in:/mingw64/bin:/usr/bin:/c/Users/Owner/bin:/c/ProgramData/Oracle/Java/javapath:
+/c/Perl/site/bin:/c/Perl/bin:/c/Program Files (x86)/Intel/iCLS Client:/c/Program
+ Files/Intel/iCLS Client:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem
+:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/OpenCL 
+SDK/2.0/bin/x86:/c/Program Files (x86)/Intel/OpenCL SDK/2.0/bin/x64:/c/Program F
+iles (x86)/Common Files/Roxio Shared/DLLShared:/c/Program Files (x86)/Common Fil
+es/Roxio Shared/OEM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/O
+EM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/OEM/12.0/DLLShared
+:/c/Program Files (x86)/Roxio 2010/OEM/AudioCore:/c/Program Files/Intel/Intel(R)
+ Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Eng
+ine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Compo
+nents/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT
+:/c/Temp/MikTeXPortable/miktex/bin:/c/MinGW/bin:/c/Temp/gnuwin32/bin:/c/ctags58:
+/c/Temp/PortableApps/gVimPortable:/c/cscope-15.8a-win32rev1-static:/c/Python27:/
+c/Ruby200-x64/bin:/c/Temp/pdf2svg-0.2.2:/c/Program Files (x86)/Skype/Phone:/cmd:
+/usr/bin/vendor_perl:/usr/bin/core_perl)
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ cd /c/Python27/
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls
+DLLs/     Lib/         NEWS.txt     pythonw.exe*  Tools/
+Doc/      libs/        python.exe*  README.txt    w9xpopen.exe*
+include/  LICENSE.txt  python2.bat  tcl/
+</code></pre>
+
+<p>Even though the generated contents can still be locally previewed,
+<strong>how can I get rid of this error message?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “which no python2 in” (<em>with surrounding double quotes</em>),
+and found one line in the post <a href="http://nathanielstory.com/2013/12/28/jekyll-on-windows-with-cygwin.html"><em>Jekyll on Windows With Cygwin</em></a>
+written by Nathan Story very useful.  While reading his post, I
+<em>didn’t</em> read it from the start.  Instead, I just searched for
+“python2”, and quickly saw the <code>ln</code> command.</p>
+
+<p>The file type of <code>python2</code> created by <code>ln</code> was <em>different</em> from what I
+expected: <code>ls -l</code> <em>didn’t</em> show that <code>python2</code> was a symbolic link,
+and <code>file</code> even said that it was an executable file.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/Python27
+$ ln -s python.exe python2
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls -l
+total 677
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 DLLs/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Doc/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 include/
+drwxr-xr-x 1 Owner 197121      0 Oct  9  2014 Lib/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 libs/
+-rw-r--r-- 1 Owner 197121  38573 Nov 10  2013 LICENSE.txt
+-rw-r--r-- 1 Owner 197121 375685 Nov 10  2013 NEWS.txt
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python.exe*
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python2*
+-rw-r--r-- 1 Owner 197121     22 Aug 31  2014 python2.bat
+-rwxr-xr-x 1 Owner 197121  27136 Nov 10  2013 pythonw.exe*
+-rw-r--r-- 1 Owner 197121  55208 Oct 27  2013 README.txt
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 tcl/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Tools/
+-rwxr-xr-x 1 Owner 197121  49664 Nov 10  2013 w9xpopen.exe*
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ file python2
+python2: PE32 executable (console) Intel 80386, for MS Windows
+</code></pre>
+
+<p>Finally, <code>rake</code> <em>doesn’t</em> give me strange output.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Mik$\rm \TeX$ Update (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/21/miktex-update-2/"/>
+    
+    <updated>2016-02-21T22:37:20+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/21/miktex-update-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I need to write something in $\rm \LaTeX$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I <em>can’t</em> get any update by clicking “Update Mik$\rm \TeX$” in the
+icon triggered by <code>miktex-portable.cmd</code>.  I faced the same problem as
+<a href="http://tex.stackexchange.com/q/251242">rantrave’s</a>.</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>If one urgently needs to get the updated version of a particular
+package, one may directly download the LZMA file.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Actually, the
+remote package repositories are still <em>online</em>.  I guess the problem
+is in Mik$\rm \TeX$ update tool.  Anyways, I am still grateful for the
+effort of its developers.</p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>The easiest way is to sit there and <em>wait for a day</em>.  Then the
+problem will be <em>gone</em>.  It is possible that some difficulties occur,
+but they can be overcome.</p>
+
+<picture class="fancybox" title="Windows API error 145">
+  <source srcset="/images/posts/MikTeXUpdate2/api-err.png" media="(min-width: 460px)" />
+  <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
+</picture>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>I clicked "Copy Info" and got this.  (err-2016-02-22-22-00.txt)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-update2/err-2016-02-22-22-00.txt">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">MiKTeX Problem Report
+</span><span class="line">Message: Windows API error 145: The directory is not empty.
+</span><span class="line">
+</span><span class="line">Data: C:\Temp\MikTeXPortable\miktex\temp\mik8012
+</span><span class="line">Source: Libraries\MiKTeX\Core\win\winFile.cpp
+</span><span class="line">Line: 115
+</span><span class="line">MiKTeX: 2.9
+</span><span class="line">OS: Microsoft Windows 7 Home Premium Edition, 64-bit Service Pack 1 (build 7601)
+</span><span class="line">Invokers: non-existing/miktex-taskbar-icon
+</span><span class="line">SystemAdmin: no
+</span><span class="line">PowerUser: no
+</span><span class="line">Root0: C:\Temp\MikTeXPortable
+</span><span class="line">Root1: C:\localtexmf
+</span><span class="line">UserInstall: C:\Temp\MikTeXPortable
+</span><span class="line">UserConfig: C:\Temp\MikTeXPortable
+</span><span class="line">UserData: C:\Temp\MikTeXPortable
+</span><span class="line">CommonInstall: C:\Temp\MikTeXPortable
+</span><span class="line">CommonConfig: C:\Temp\MikTeXPortable
+</span><span class="line">CommonData: C:\Temp\MikTeXPortable
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>From <a href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
+Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
+work.  The update wizard inside the big window for the package manager
+<em>won’t</em>.</p>
+
+<p>Sometimes, the chosen remote package repository can fail.  In this
+case, just click the button and search for another one.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>An example of failed update.  (update-2016-02-21-20-19.txt)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-update2/update-2016-02-21-20-19.txt">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">MiKTeX Update Wizard Report
+</span><span class="line">
+</span><span class="line">Version: 2.9.4913
+</span><span class="line">Date: Sunday, February 21, 2016
+</span><span class="line">Time: 20:19:02
+</span><span class="line">starting package maintenance...
+</span><span class="line">installation directory: C:\Temp\MikTeXPortable
+</span><span class="line">package repository: http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/
+</span><span class="line">lightweight database digest: d913ba0ad3c9c47c3e7a3e6e11863874
+</span><span class="line">going to download 6130048 bytes
+</span><span class="line">going to install 10 file(s) (1 package(s))
+</span><span class="line">going to remove 35 file(s) (4 package(s))
+</span><span class="line">downloading http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/miktex-bin-2.9.tar.lzma...
+</span><span class="line">6130048 bytes, 1452.65 KB/Sec
+</span><span class="line">extracting files from miktex-bin-2.9.tar.lzma...
+</span><span class="line">removing package miktex-freetype-bin-2.9...
+</span><span class="line">removing package miktex-qt4-bin-2.9...
+</span><span class="line">removing package miktex-texinfo-bin-2.9...
+</span><span class="line">removing package miktex-vc100-bin...
+</span><span class="line">
+</span><span class="line">Error: The MiKTeX package management utility could not be found.
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>When there’s nothing can be done, then one needs the mind of
+non-action or non-being.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+
+      <p>For example, the situation described in
+<a href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1231,444 +1548,6 @@ searching “octave export svg”.  From
 <a href="https://www.gnu.org/software/octave/doc/interpreter/Printing-and-Saving-Plots.html"><em>Printing and Saving Plots</em></a>, I see <code>print -d[device]</code>,
 in which one can substitute the output format.  For example, I used
 <code>print -dsvg</code> to generate the SVG’s shown above.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Ubuntu Grey Screen]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen/"/>
-    
-    <updated>2016-01-02T14:05:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen</id>
-    
-      <content type="html"><![CDATA[<p>A few days ago, I was browsing questions on
-<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> on <a href="http://www.ubuntu.com/desktop">Ubuntu</a> 14.04 <abbr title="long-term support">LTS</abbr>.  I opened
-lots of tabs in <a href="https://www.chromium.org">Google Chromium</a>.  Suddenly, the screen
-went grey.  I <em>don’t</em> know the cause.  I <em>hadn’t</em> seen such problem
-before.  I waited for about one minute, and I switched to the terminal
-<code>tty3</code>.  The grey screen became black <em>without any text</em>.  I pressed
-<code>&lt;Ctrl&gt;-&lt;Alt&gt;-&lt;F7&gt;</code>, then the monitor showed the grey screen again.</p>
-
-<p>I looked at the light (not the power button) in the desktop.  I
-thought it represented the hard disk activity.  Its blinking was
-normal.  As a result, I <em>guessed</em> the problem was related to the
-display.  I <em>pretended</em> I could normally see things, and I <em>imagined</em>
-the picture.  I logged on <code>tty3</code> without logging off <code>tty7</code>.  Then I
-typed <code>sudo reboot</code> and supplied the password.  Within several
-seconds, I heard a <em>beep</em> sound and the system rebooted.</p>
-
-<p>Certainly, all unsaved works on <code>tty7</code> had been <em>lost</em>.  Therefore, it
-was very important to save your work.  As I’m no longer an IT worker,
-I <em>won’t</em> try to find a solution after reading a few related posts
-which I have difficulty to understand.  Within six months, a new <abbr title="long-term support">LTS</abbr>
-version of Ubuntu will be launched.  The price of a <abbr title="solid-state drive">SSD</abbr> will drop, so
-perhaps I will clean install Ubuntu on a <abbr title="solid-state drive">SSD</abbr>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Got a Warning From Octave]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/12/28/got-a-warning-from-octave/"/>
-    
-    <updated>2015-12-28T23:11:59+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/12/28/got-a-warning-from-octave</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>To verify <a href="http://math.stackexchange.com/q/1591435">the inequality</a></p>
-
-<div class="myeqn">
-\[
-  \left(\sqrt{\frac{a+b}{c}}+\sqrt{\frac{b+c}{a}}+\sqrt{\frac{c+a}{b}}
-  \right)^2\ge\frac{16}{3(a+b)(b+c)(c+a)}
-\]
-</div>
-
-<p>found on Math Stack Exchange, I wrote the following Octave script.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A small script to verify the inequality  (test.m)</span> <a href="https://vincenttam.github.io/downloads/code/test.m">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">a</span> <span class="p">=</span> <span class="mf">0.1</span><span class="p">;</span> <span class="n">b</span> <span class="p">=</span> <span class="mf">0.2</span><span class="p">;</span> <span class="n">c</span> <span class="p">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
-</span><span class="line"><span class="n">A</span> <span class="p">=</span> <span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="n">a</span><span class="p">))</span>^<span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-</span><span class="line"><span class="n">B</span> <span class="p">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="p">)</span>^<span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
-</span><span class="line"><span class="n">C</span> <span class="p">=</span> <span class="p">(</span><span class="nb">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">b</span><span class="o">+</span><span class="n">c</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">sqrt</span><span class="p">((</span><span class="n">c</span><span class="o">+</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">))</span>^<span class="mi">2</span>
-</span><span class="line"><span class="mi">16</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">A</span>^<span class="mi">3</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="problem">Problem</h2>
-
-<p>The above script did the calculations, but <em>a warning message
-appeared</em>.</p>
-
-<pre class="cliUB"><code>$ octave -q test.m
-warning: function ./test.m shadows a core library function
-A =  0.60000
-B =  0.24101
-C =  31.975
-ans =  24.691
-</code></pre>
-
-<p><strong>How can I run this script without the warning?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Change the file name of the script to an uncommon name.</p>
-
-<pre class="cliUB"><code>$ mv test.m test1.m
-$ octave -q test1.m
-A =  0.60000
-B =  0.24101
-C =  31.975
-ans =  24.691
-</code></pre>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Display of Calligraphic Font by MathJax in Chromium]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium/"/>
-    
-    <updated>2015-12-24T13:05:30+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/12/24/display-of-calligraphic-font-by-mathjax-in-chromium</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<h3 id="css-style-of-this-blog">CSS style of this blog</h3>
-
-<p>I use <a href="http://erikzaadi.com/2012/04/22/solarized-color-scheme-for-octopress/" title="Source code of Solarized theme for Octopress">Solarized</a> theme with light background.  <abbr title="In my humble opinion">IMHO</abbr>, it is less
-tiring to look at a light background.  I’ve chosen pink as the text
-colour.</p>
-
-<h3 id="contents-of-this-blog">Contents of this blog</h3>
-
-<p>Apart from technical stuff, I often post math containing calligraphic
-font, for example</p>
-
-<ol>
-  <li><a href="https://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/"><em>Injectivity of Stable Mappings</em></a></li>
-  <li><a href="https://vincenttam.github.io/blog/2014/06/18/definition-of-content-0-sets/"><em>Definition of Content 0 Sets</em></a></li>
-  <li><a href="https://vincenttam.github.io/blog/2014/06/19/archimedean-sequence-of-partitions-of-a-square/"><em>Archimedean Sequence of Partitions of a Square</em></a></li>
-  <li><a href="https://vincenttam.github.io/blog/2014/11/08/composition-of-limits/"><em>Composition of Limits</em></a></li>
-</ol>
-
-<p>I used Mozilla Firefox, and I <em>didn’t</em> see problem on the display of
-<code>\mathcal</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Three months ago, I wrote something about Zorn’s Lemma and Hausdorff
-spaces.  In the post <a href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/"><em>Normal Compact $T_2$ Spaces</em></a>, I observed
-that the math display was <em>abnormal</em>.  Due to homework and exams, I
-delayed the investigation into this technical problem.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/err.png" alt="mathcal display error" title="mathcal display error" /></p>
-
-<p>Normally, the foreground colour of the math expression is the <em>same</em>
-as that of normal inline text.  In the above figure, <span class="myeqn">"$T_2$" is in pink.  However, $U_y,
-V_y$</span> <em>aren’t</em>.</p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<h3 id="look-into-the-code">Look into the code</h3>
-
-<p>It is normal for me to inspect the HTML elements.</p>
-
-<h4 id="element-inspected">Element inspected</h4>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/img.png" alt="HTML element inspected" title="HTML element inspected" /></p>
-
-<h4 id="interpreted-html-in-chromium">Interpreted HTML in Chromium</h4>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/inspect.png" alt="HTML code in the inspector" title="HTML code shown" /></p>
-
-<p>The above math expression is in <em>black</em> rather than <em>pink</em> because it
-is rendered as a <abbr title="Portable Network Graphics">PNG</abbr> <em>image</em>.</p>
-
-<p>I confirmed this by looking at the list of loaded resources.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/png-list.png" alt="list of loaded PNG" title="list of loaded PNG" /></p>
-
-<h3 id="is-this-problem-browser-specific">Is this problem browser-specific?</h3>
-
-<p>I tried opening <a href="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/">the blog article</a> in Mozilla Firefox, and I
-<em>didn’t</em> see any problem.</p>
-
-<picture class="fancybox" title="result in Firefox">
-  <source srcset="/images/posts/Mathcal/ff487.png" media="(min-width: 490px)" />
-  <img alt="result in Firefox" src="https://vincenttam.github.io/images/posts/Mathcal/ff300.png" />
-</picture>
-
-<h2 id="cause">Cause</h2>
-
-<p>Based on the above observations, I suspected that the presence of a
-calligraphic font triggered this fallback of fonts.  In order to test
-this, I did an experiment on my local MathJax test page:  I had a math
-expression containing <code>\mathcal</code> and one without.  I put them in
-different order, and observed the difference in the loaded <abbr title="Portable Network Graphics">PNG</abbr>.</p>
-
-<h3 id="calligraphic-font-at-the-bottom">Calligraphic font at the bottom</h3>
-
-<picture class="fancybox" title="Visual effect of \mathcal at the
-bottom">
-  <source srcset="/images/posts/Mathcal/view1-364.png" media="(min-width: 370px)" />
-  <img alt="Visual effect of \mathcal at the bottom" src="https://vincenttam.github.io/images/posts/Mathcal/view1-300.png" />
-</picture>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/b4cal.png" alt="PNG list when \mathcal at last" title="PNG list when \mathcal at last" /></p>
-
-<p>Only the curly ‘C’ is loaded as <abbr title="Portable Network Graphics">PNG</abbr>, while the rest <em>aren’t</em>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code for the above sample page (b4cal.html)</span> <a href="https://vincenttam.github.io/downloads/code/mathcal/b4cal.html">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
-</span><span class="line"><span class="cp">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
-</span><span class="line"><span class="nt">&lt;html&gt;</span>
-</span><span class="line"><span class="nt">&lt;head&gt;</span>
-</span><span class="line"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
-</span><span class="line"><span class="nt">&lt;/head&gt;</span>
-</span><span class="line"><span class="nt">&lt;body&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">\begin{align*}
-</span><span class="line">  <span class="ni">&amp;\quad\;</span> \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-</span><span class="line">  =<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-</span><span class="line">  \le<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2)}\\
-</span><span class="line">  =<span class="err">&amp;</span> 1.
-</span><span class="line">\end{align*}
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="c">&lt;!-- Don&#39;t need to go to MathJax CDN Sample --&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>$\mathcal{C}$<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span>
-</span><span class="line">          <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
-</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span>
-</span><span class="line">    <span class="kd">function</span><span class="p">(){});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">})();</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h3 id="calligraphic-font-at-the-bottom-1">Calligraphic font at the bottom</h3>
-
-<picture class="fancybox" title="Visual effect of \mathcal at the
-top">
-  <source srcset="/images/posts/Mathcal/view2-364.png" media="(min-width: 370px)" />
-  <img alt="Visual effect of \mathcal at the top" src="https://vincenttam.github.io/images/posts/Mathcal/view2-300.png" />
-</picture>
-
-<p><img src="https://vincenttam.github.io/images/posts/Mathcal/cal1st.png" alt="PNG list when \mathcal at first" title="PNG list when \mathcal at first" /></p>
-
-<p>Everything (after the curly ‘C’) are loaded as <abbr title="Portable Network Graphics">PNG</abbr>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code for the above sample page (cal1st.html)</span> <a href="https://vincenttam.github.io/downloads/code/mathcal/cal1st.html">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;</span>
-</span><span class="line"><span class="cp">&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;</span>
-</span><span class="line"><span class="nt">&lt;html&gt;</span>
-</span><span class="line"><span class="nt">&lt;head&gt;</span>
-</span><span class="line"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;title&gt;</span>Don&#39;t delete!<span class="nt">&lt;/title&gt;</span>
-</span><span class="line"><span class="nt">&lt;/head&gt;</span>
-</span><span class="line"><span class="nt">&lt;body&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="c">&lt;!-- Don&#39;t need to go to MathJax CDN Sample --&gt;</span>
-</span><span class="line"><span class="nt">&lt;p&gt;</span>$\mathcal{C}$<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;myeqn&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">\begin{align*}
-</span><span class="line">  <span class="ni">&amp;\quad\;</span> \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-</span><span class="line">  =<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-</span><span class="line">  \le<span class="err">&amp;</span> \sqrt{x^2 + (1 - x^2)}\\
-</span><span class="line">  =<span class="err">&amp;</span> 1.
-</span><span class="line">\end{align*}
-</span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class="line">  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class="line">    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class="line">    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class="line">    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class="line">      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span>
-</span><span class="line">          <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class="line">      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">success</span><span class="p">();</span>
-</span><span class="line">      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class="line">      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">      <span class="p">}</span>
-</span><span class="line">    <span class="p">};</span>
-</span><span class="line">    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class="line">  <span class="p">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="nx">getScript</span><span class="p">(</span><span class="s2">&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;config=TeX-AMS-MML_HTMLorMML&quot;</span> <span class="o">+</span>
-</span><span class="line">    <span class="s2">&quot;,https://vincenttam.github.io/javascripts/MathJaxLocal.js&quot;</span><span class="p">,</span>
-</span><span class="line">    <span class="kd">function</span><span class="p">(){});</span>
-</span><span class="line">
-</span><span class="line"><span class="p">})();</span>
-</span><span class="line"><span class="nt">&lt;/script&gt;</span>
-</span><span class="line"><span class="nt">&lt;/body&gt;</span>
-</span><span class="line"><span class="nt">&lt;/html&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Therefore, my claim is verified.  <em>Unluckily</em>, I failed to find any
-solution to this problem on Google.</p>
-
-<h2 id="reasons-for-not-finding-a-solution">Reasons for <em>not</em> finding a solution</h2>
-
-<ol>
-  <li>This problem <em>doesn’t</em> affect the content.</li>
-  <li>This problem is browser-specific—it <em>doesn’t</em> appear in Mozilla
-Firefox.</li>
-  <li>It is possible that this issue will be automatically fixed by a
-future upgrade, and a solution of this problem will be transient.</li>
-</ol>
-
-<p>I’ve better solve math problems instead of technical ones since math
-is always true.</p>
-
-<h2 id="some-off-topic-stuff">Some off-topic stuff</h2>
-
-<p>I started writing this post on Christmas Eve, and I finished it at
-Christmas.</p>
 
 ]]></content>
     

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-15T02:03:19+08:00</updated>
+  <updated>2016-02-22T11:57:06+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Mik$\rm \TeX$ Update (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/21/miktex-update-2/"/>
+    
+    <updated>2016-02-21T22:37:20+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/21/miktex-update-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I need to write something in $\rm \LaTeX$.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I <em>can’t</em> get any update by clicking “Update Mik$\rm \TeX$” in the
+icon triggered by <code>miktex-portable.cmd</code>.  I faced the same problem as
+<a href="http://tex.stackexchange.com/q/251242">rantrave’s</a>.</p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>If one urgently needs to get the updated version of a particular
+package, one may directly download the LZMA file.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Actually, the
+remote package repositories are still <em>online</em>.  I guess the problem
+is in Mik$\rm \TeX$ update tool.  Anyways, I am still grateful for the
+effort of its developers.</p>
+
+<h2 id="resolution">Resolution</h2>
+
+<p>The easiest way is to sit there and <em>wait for a day</em>.  Then the
+problem will be <em>gone</em>.  It is possible that some difficulties occur,
+but they can be overcome.</p>
+
+<picture class="fancybox" title="Windows API error 145">
+  <source srcset="/images/posts/MikTeXUpdate2/api-err.png" media="(min-width: 460px)" />
+  <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
+</picture>
+
+<p>{% include_code I clicked “Copy Info” and got this. lang:text miktex-update2/err-2016-02-22-22-00.txt %}</p>
+
+<p>From <a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
+Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
+work.  The update wizard inside the big window for the package manager
+<em>won’t</em>.</p>
+
+<p>Sometimes, the chosen remote package repository can fail.  In this
+case, just click the button and search for another one.</p>
+
+<p>{% include_code An example of failed update. lang:text miktex-update2/update-2016-02-21-20-19.txt %}</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>When there’s nothing can be done, then one needs the mind of
+non-action or non-being.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp1">
+
+      <p>For example, the situation described in
+<a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -48,9 +119,9 @@ A =
 
 <p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
 
-<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock $\rm \LaTeX$ code for matrix $A$ %}
+A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}
+{% endcodeblock %}</p>
 
 <p>so that one gets</p>
 
@@ -160,22 +231,15 @@ of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p><figure class='code'><figcaption><span>A minimum working example on Math Stack Exchange </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cccll<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\max</span> <span class="nb">&amp;</span>amp;z=<span class="nb">&amp;</span>amp;x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; &lt;br /&gt;
-</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>s.t.<span class="nb">}&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="k">\phantom</span><span class="nb">{</span>+<span class="nb">}</span>x<span class="nb">_</span>2 + s<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;= 8 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; -x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 - s<span class="nb">_</span>2<span class="nb">&amp;</span>amp;=-4 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2+s<span class="nb">_</span>3<span class="nb">&amp;</span>amp;= 12 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; s<span class="nb">_</span>1,s<span class="nb">_</span>2,s<span class="nb">_</span>3 <span class="nb">&amp;</span>amp;<span class="k">\ge</span> 0
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:tex A minimum working example on Math Stack Exchange %}
+\begin{array}{cccll}
+  \max &amp;z=&amp;x_1&amp;+x_2 &amp; <br />
+  \text{s.t.}&amp; &amp; &amp; \phantom{+}x_2 + s_1 &amp;= 8 <br />
+  &amp; &amp; -x_1&amp;+x_2 - s_2&amp;=-4 <br />
+  &amp; &amp; x_1&amp;+x_2+s_3&amp;= 12 <br />
+  &amp; &amp; &amp; s_1,s_2,s_3 &amp;\ge 0
+\end{array}
+{% endcodeblock %}</p>
 
 <h2 id="inadequacies">Inadequacies</h2>
 
@@ -221,30 +285,19 @@ processed by <a href="https://mathjax.org">MathJax</a>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>equation&lt;em&gt;<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>crrrrrrr|l<span class="nb">}</span>
-</span><span class='line'>               <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>3 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;  x<span class="nb">_</span>7 <span class="nb">&amp;</span>amp;        <span class="k">\ \hline</span>
-</span><span class='line'>           x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -3 <span class="nb">&amp;</span>amp;   7 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp; 2M  -4 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -9 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   -1 <span class="nb">&amp;</span>amp; -M  -3 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   6 <span class="nb">&amp;</span>amp;  -1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp; -4<span class="nb">^</span>&lt;/em&gt; <span class="nb">&amp;</span>amp; -4M +8 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    1 <span class="nb">&amp;</span>amp;      M <span class="k">\ \hline</span>
-</span><span class='line'>               <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp;     2M &lt;br /&gt;
-</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>ratio<span class="nb">}</span> <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;  1/2 <span class="nb">&amp;</span>amp;
-</span><span class='line'>  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:tex A minimum working example %}
+\begin{equation<em>}
+  \begin{array}{crrrrrrr|l}
+               &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \ \hline
+           x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 <br />
+           x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 <br />
+           x_6 &amp;   0 &amp;   6 &amp;  -1 &amp;   0 &amp;   0 &amp;   1 &amp; -4^</em> &amp; -4M +8 <br />
+           x_1 &amp;   1 &amp;   0 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    1 &amp;      M \ \hline
+               &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    2 &amp;     2M <br />
+  \text{ratio} &amp;     &amp;     &amp;   1 &amp;     &amp;     &amp;     &amp;  1/2 &amp;
+  \end{array}
+\end{equation*}
+{% endcodeblock %}</p>
 
 ]]></content>
     
@@ -252,7 +305,7 @@ processed by <a href="https://mathjax.org">MathJax</a>.</p>
   
   <entry>
     
-      <title type="html"><![CDATA[MikTeX Update]]></title>
+      <title type="html"><![CDATA[Mik$\rm \TeX$ Update]]></title>
       <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
     
     <updated>2015-06-09T16:41:12+08:00</updated>
@@ -389,90 +442,6 @@ the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
     <li id="fn:log">
 
       <p>You may view the complete LOG file <a href="/downloads/1eDoc.log">here</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[A Comparison of Similar Horizontal Paddings in $\rm \LaTeX$ Math Mode]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode/"/>
-    
-    <updated>2015-05-16T22:12:58+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/05/16/a-comparison-of-similar-horizontal-paddings-in-latex-math-mode</id>
-    
-      <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>I prepared this little series of screenshots two years ago.  When
-these pictures were made, I <em>didn’t</em> know anything about <a href="http://fancyapps.com/fancybox/">fancybox</a>,
-so I just shared it using Ubuntu One, which is now <em>dead</em>.<sup id="fnref:ub1dead"><a href="#fn:ub1dead" class="footnote">1</a></sup></p>
-
-<p>Now, with fancybox, the effects of these commands can be compared
-below.  Click on the left and right arrows in the pop-up window to see
-the little difference in spacing.</p>
-
-<h2 id="comparison-and-conclusion">Comparison and conclusion</h2>
-
-<picture class="fancybox" title="1. Original equal sign">
-  <source srcset="/images/posts/flalign-spacing/1-crop.png" media="(min-width: 940px)" />
-  <img alt="1. Original equal sign" src="https://vincenttam.github.io/images/posts/flalign-spacing/1-crop300.png" />
-</picture>
-
-<picture class="fancybox noscr" title="2. &quot;\quad&quot; and &quot;\,&quot;">
-  <source srcset="/images/posts/flalign-spacing/2-crop.png" media="(min-width: 940px)" />
-  <img alt="2. &quot;\quad&quot; and &quot;\,&quot;" src="https://vincenttam.github.io/images/posts/flalign-spacing/2-crop300.png" />
-</picture>
-
-<picture class="fancybox noscr" title="3. &quot;\quad&quot; and &quot;\:&quot;">
-  <source srcset="/images/posts/flalign-spacing/3-crop.png" media="(min-width: 940px)" />
-  <img alt="3. &quot;\quad&quot; and &quot;\:&quot;" src="https://vincenttam.github.io/images/posts/flalign-spacing/3-crop300.png" />
-</picture>
-
-<picture class="fancybox noscr" title="4. &quot;\quad&quot; and &quot;\;&quot;">
-  <source srcset="/images/posts/flalign-spacing/4-crop.png" media="(min-width: 940px)" />
-  <img alt="4. &quot;\quad&quot; and &quot;\;&quot;" src="https://vincenttam.github.io/images/posts/flalign-spacing/4-crop300.png" />
-</picture>
-
-<!-- more -->
-
-<p>As can be seen from the slideshow of pictures, the fourth figure
-resembles the first one the most.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I’ve found a quicker way to crop images.  In the past, using <a href="http://www.gimp.org">GIMP</a>
-for shrinking pictures would result in an image size larger than using
-<a href="http://www.imagemagick.org">ImageMagick</a>.  However, I <em>didn’t</em> know a way to get the coordinates
-of the image file inside an image viewer, so I <em>couldn’t</em> supply them
-quickly to ImageMagick’s command line utility.  Now, realising that
-GIMP can be <em>regarded</em> as an image viewer, this problem can be quickly
-solved.</p>
-
-<p>Finally, with my experience of writing for loops in bash, it <em>didn’t</em>
-took me long to type this loop.<sup id="fnref:pp_for"><a href="#fn:pp_for" class="footnote">2</a></sup></p>
-
-<pre class="cliUB"><code>$ for i in {1..4}; do convert $i.png -crop 940x615+160+370 $i\_crop.png; done
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ub1dead">
-
-      <p>For the link to the related post in the offical blog, you may go
-to the <a href="/blog/2015/05/06/github-page-build-failure/#fn:ub1dead">first footnote</a> of one of my recent posts in
-<em>Blog 1</em>: GitHub Page Build Failure. <a href="#fnref:ub1dead" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:pp_for">
-
-      <p>Refer to
-<a href="/blog/2015/05/16/concatenate-loop-variables-value-and-a-string-in-bash/">Concatenate Loop Variable’s Value and a String in Bash</a>
-in <em>Blog 1</em> if you want to know when, why and how I know to put a
-backslash ‘\’ behind the loop variable. <a href="#fnref:pp_for" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

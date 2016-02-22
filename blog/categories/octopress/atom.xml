@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-15T02:03:19+08:00</updated>
+  <updated>2016-02-22T11:57:06+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/"/>
+    
+    <updated>2016-02-22T01:05:04+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I was writing <a href="/blog/2016/02/21/miktex-update-2/">my previous post</a>, which was about my recent
+Mik$\rm \TeX$ update.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>After having finished it, I tried <code>rake generate</code>, and got results
+similar to the first picture of <a href="blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">the first post in this series</a>.</p>
+
+<p>Last time, I solved this problem by creating the batch file
+<code>python2.bat</code> in the folder where Python had been installed (i.e.
+<code>C:\Python27</code>).  This time, the BAT file is already there.  In (Git)
+CMD, both <code>which python</code> and <code>which python2</code> are fine.  However, in
+Git bash, I run into trouble.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python
+/c/Python27/python
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ which python2
+which: no python2 in (/c/Users/Owner/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/b
+in:/mingw64/bin:/usr/bin:/c/Users/Owner/bin:/c/ProgramData/Oracle/Java/javapath:
+/c/Perl/site/bin:/c/Perl/bin:/c/Program Files (x86)/Intel/iCLS Client:/c/Program
+ Files/Intel/iCLS Client:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem
+:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/OpenCL 
+SDK/2.0/bin/x86:/c/Program Files (x86)/Intel/OpenCL SDK/2.0/bin/x64:/c/Program F
+iles (x86)/Common Files/Roxio Shared/DLLShared:/c/Program Files (x86)/Common Fil
+es/Roxio Shared/OEM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/O
+EM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/OEM/12.0/DLLShared
+:/c/Program Files (x86)/Roxio 2010/OEM/AudioCore:/c/Program Files/Intel/Intel(R)
+ Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Eng
+ine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Compo
+nents/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT
+:/c/Temp/MikTeXPortable/miktex/bin:/c/MinGW/bin:/c/Temp/gnuwin32/bin:/c/ctags58:
+/c/Temp/PortableApps/gVimPortable:/c/cscope-15.8a-win32rev1-static:/c/Python27:/
+c/Ruby200-x64/bin:/c/Temp/pdf2svg-0.2.2:/c/Program Files (x86)/Skype/Phone:/cmd:
+/usr/bin/vendor_perl:/usr/bin/core_perl)
+
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ cd /c/Python27/
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls
+DLLs/     Lib/         NEWS.txt     pythonw.exe*  Tools/
+Doc/      libs/        python.exe*  README.txt    w9xpopen.exe*
+include/  LICENSE.txt  python2.bat  tcl/
+</code></pre>
+
+<p>Even though the generated contents can still be locally previewed,
+<strong>how can I get rid of this error message?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I googled “which no python2 in” (<em>with surrounding double quotes</em>),
+and found one line in the post <a href="http://nathanielstory.com/2013/12/28/jekyll-on-windows-with-cygwin.html"><em>Jekyll on Windows With Cygwin</em></a>
+written by Nathan Story very useful.  While reading his post, I
+<em>didn’t</em> read it from the start.  Instead, I just searched for
+“python2”, and quickly saw the <code>ln</code> command.</p>
+
+<p>The file type of <code>python2</code> created by <code>ln</code> was <em>different</em> from what I
+expected: <code>ls -l</code> <em>didn’t</em> show that <code>python2</code> was a symbolic link,
+and <code>file</code> even said that it was an executable file.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/Python27
+$ ln -s python.exe python2
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ ls -l
+total 677
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 DLLs/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Doc/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 include/
+drwxr-xr-x 1 Owner 197121      0 Oct  9  2014 Lib/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 libs/
+-rw-r--r-- 1 Owner 197121  38573 Nov 10  2013 LICENSE.txt
+-rw-r--r-- 1 Owner 197121 375685 Nov 10  2013 NEWS.txt
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python.exe*
+-rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python2*
+-rw-r--r-- 1 Owner 197121     22 Aug 31  2014 python2.bat
+-rwxr-xr-x 1 Owner 197121  27136 Nov 10  2013 pythonw.exe*
+-rw-r--r-- 1 Owner 197121  55208 Oct 27  2013 README.txt
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 tcl/
+drwxr-xr-x 1 Owner 197121      0 May 25  2014 Tools/
+-rwxr-xr-x 1 Owner 197121  49664 Nov 10  2013 w9xpopen.exe*
+
+Owner@Owner-PC MINGW64 /c/Python27
+$ file python2
+python2: PE32 executable (console) Intel 80386, for MS Windows
+</code></pre>
+
+<p>Finally, <code>rake</code> <em>doesn’t</em> give me strange output.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -312,58 +420,33 @@ math.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
 boost the PageSpeed score of this site, I adpated the script to load
 MathJax instead of fancyBox in my draft markdown file.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup></p>
 
-<p><figure class='code'><figcaption><span>Put this at the bottom </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-</span><span class='line'>  <span class="kd">function</span> <span class="nx">getScript</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span><span class="nx">success</span><span class="p">){</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">script</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">src</span><span class="o">=</span><span class="nx">url</span><span class="p">;</span>
-</span><span class='line'>    <span class="kd">var</span> <span class="nx">head</span><span class="o">=</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
-</span><span class='line'>    <span class="nx">done</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span>
-</span><span class='line'>    <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span><span class="o">=</span><span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>      <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">done</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;loaded&#39;</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="s1">&#39;complete&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="nx">done</span><span class="o">=</span><span class="kc">true</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">success</span><span class="p">();</span>
-</span><span class='line'>      <span class="nx">script</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="nx">script</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class='line'>      <span class="nx">head</span><span class="p">.</span><span class="nx">removeChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>    <span class="p">};</span>
-</span><span class='line'>    <span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">script</span><span class="p">);</span>
-</span><span class='line'>  <span class="p">}</span><span class="nt">&lt;/script&gt;&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
-</span><span class='line'>    “config=TeX-AMS-MML_HTMLorMML” +
-</span><span class='line'>    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
-</span><span class='line'>    function(){});<span class="nt">&lt;/p&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="nt">&lt;p&gt;</span>})();
-</span><span class='line'><span class="ni">&amp;lt;</span>/script<span class="ni">&amp;gt;</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock Put this at the bottom lang:html %}
+<script type="text/javascript">
+(function() {
+  function getScript(url,success){
+    var script=document.createElement('script');
+    script.src=url;
+    var head=document.getElementsByTagName('head')[0],
+    done=false;
+    script.onload=script.onreadystatechange = function(){
+      if ( !done &amp;&amp; (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+      done=true;
+      success();
+      script.onload = script.onreadystatechange = null;
+      head.removeChild(script);
+      }
+    };
+    head.appendChild(script);
+  }</script></p>
+
+<p>getScript(“https://cdn.mathjax.org/mathjax/latest/MathJax.js?” +
+    “config=TeX-AMS-MML_HTMLorMML” +
+    “,https://vincenttam.github.io/javascripts/MathJaxLocal.js”,
+    function(){});</p>
+
+<p>})();
+&lt;/script&gt;
+{% endcodeblock %}</p>
 
 <h3 id="a-problem-with-vims-folding-arised">A problem with Vim’s folding arised</h3>
 
@@ -413,193 +496,6 @@ Unluckily, in the <em>real Markdown source</em> for Octopress posts, <em>four</e
       <p>Refer to my old post
 <a href="/blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/"><em>Octopress, PageSpeed, jQuery and fancyBox</em></a> in <em>Blog 1</em> for
 details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Set Up Another Local Repository for an Existing Octopress Blog]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog/"/>
-    
-    <updated>2015-03-09T15:17:20+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/03/09/set-up-another-local-repository-for-an-existing-octopress-blog</id>
-    
-      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
-
-<p>Same as the raison d’être in <a href="/blog/2014/05/26/using-octopress-on-another-device/#raison-dtre"><em>Using Octopress on Another Device</em></a>
-in Blog 1.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I wrote that post last year, I gave <em>too little</em> commands for the
-actual process of setting up the local repository.  Yesterday, I
-re-read <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">Robert Anderson’s post</a> again, and tried reproducing the
-steps, and got some redundant Git branches.</p>
-
-<!-- more -->
-
-<h2 id="my-steps">My steps</h2>
-
-<p>Assume that throughout this post, the current working directoy is
-<code>~/octopress</code>.</p>
-
-<pre class="cliUB"><code>$ pwd
-/home/owner/octopress
-$ git clone -b source git@github.com:VincentTam/vincenttam.github.io.git .
-Cloning into '.'...
-remote: Counting objects: 71346, done.
-remote: Compressing objects: 100% (76/76), done.
-remote: Total 71346 (delta 8), reused 0 (delta 0), pack-reused 71266
-Receiving objects: 100% (71346/71346), 63.71 MiB | 3.08 MiB/s, done.
-Resolving deltas: 100% (33764/33764), done.
-Checking connectivity... done.
-</code></pre>
-
-<p>This is a standard command, and I first created the folder
-<code>~/octopress</code> before cloning the <code>source</code> branch to the folder, so
-that my commands <em>aren’t</em> exactly the same as Anderson’s.</p>
-
-<p>To make another difference, I also fetched the <code>master</code> branch from
-Octopress.</p>
-
-<pre class="cliUB"><code>$ git remote add octopress git@github.com:imathis/octopress.git
-$ git fetch octopress master
-From github.com:imathis/octopress
- * branch            master     -&gt; FETCH_HEAD
- * [new branch]      master     -&gt; octopress/master
-$ git branch -av
-* source                   bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
-  remotes/octopress/master 5080107 Fixed improper canonical url
-  remotes/origin/HEAD      -&gt; origin/source
-  remotes/origin/master    7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  remotes/origin/source    bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
-</code></pre>
-
-<p>Since I <em>dont’t</em> and <em>won’t</em> have a Mac laptop, I <em>skipped</em> the
-command <code>rbenv rehash</code>.</p>
-
-<picture class="fancybox" title="A Macbook exploded">
-  <source srcset="/images/posts/MacExplosion/MacExplosion.jpg" media="(min-width: 340px)" />
-  <img alt="Macbook exploded" src="https://vincenttam.github.io/images/posts/MacExplosion/MacExplosion300.jpg" />
-</picture>
-
-<p><small>Source:
-<a href="http://www.homelandsecureit.com/wp-content/uploads/2011/07/MacExplosion.jpg">http://www.homelandsecureit.com/wp-content/uploads/2011/07/MacExplosion.jpg</a>
-</small></p>
-
-<p>I then viewed the task <code>setup_github_pages</code> in <code>Rakefile</code>, and
-discovered that if I cloned the whole remote repository of the
-Octopress blog into <code>_deploy</code>, the there’d be an extra <code>master</code> branch
-in the default deploy directory.  To avoid this, I typed a longer
-command.</p>
-
-<pre class="cliUB"><code>$ gem install bundler
-$ bundle install
-$ git clone git@github.com:VincentTam/vincenttam.github.io.git -b master _deploy
-Cloning into '_deploy'...
-remote: Counting objects: 71346, done.
-remote: Compressing objects:  68% (52/76)   Receiving objects:   0% (1/71346)
-remote: Compressing objects: 100% (76/76), done.
-remote: Total 71346 (delta 8), reused 0 (delta 0), pack-reused 71266
-Receiving objects: 100% (71346/71346), 63.71 MiB | 2.77 MiB/s, done.
-Resolving deltas: 100% (33764/33764), done.
-Checking connectivity... done.
-Checking out files: 100% (644/644), done.
-$ cd _deploy &amp;&amp; git branch -av &amp;&amp; cd ..
-* master                7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  remotes/origin/HEAD   -&gt; origin/source
-  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  remotes/origin/source bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)
-</code></pre>
-
-<p>To test if the last two words of the command in Anderson’s post could
-be <em>omitted</em>, I <em>changed</em> the Markdown source of one of my old posts
-slightly, committed the change and pushed it to GitHub.</p>
-
-<pre class="cliUB"><code>$ gvim source/_posts/2014-03-16-latex-template-for-essays.markdown
-$ git commit -am "Another small minor change" &amp;&amp; git push
-[source 4be7fba] Another small minor change
-1 file changed, 2 insertions(+), 4 deletions(-)
-Counting objects: 10, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (5/5), done.
-Writing objects: 100% (5/5), 435 bytes | 0 bytes/s, done.
-Total 5 (delta 4), reused 0 (delta 0)
-To git@github.com:VincentTam/vincenttam.github.io.git
-bd39cb2..4be7fba  source -&gt; source
-$ cd _deploy/ &amp;&amp; git branch -av &amp;&amp; cd ..
-* master		7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  remotes/origin/HEAD   -&gt; origin/source
-  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  <span class="HLCode">remotes/origin/source bd39cb2 Corrected the MathJax syntax for X ~ Exp(λ)</span>
-$ cd _deploy/ &amp;&amp; <span class="HLCode">git pull</span> &amp;&amp; git branch -av &amp;&amp; cd ..
-* master		7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  remotes/origin/HEAD   -&gt; origin/source
-  remotes/origin/master 7f8f845 Site updated at 2015-03-08 12:59:04 UTC
-  <span class="HLCode">remotes/origin/source 4be7fba Another small minor change</span>
-</code></pre>
-
-<p>From <code>Rakefile</code> and the above highlighted command output, I could
-deduce that before starting to blog on another machine and publish
-them to GitHub Pages, one needed to pull the commits from the remote
-repository by <code>git pull origin source</code> and <code>git pull</code> in <code>~/octopress</code>
-and <code>~/octopres/_deploy</code> respectively.</p>
-
-<p>Then I faced the same errors I saw yesterday.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">1</a></sup>  After solving
-them, I proceeded to deploying the site to GitHub Pages.</p>
-
-<pre class="cliUB"><code>$ rake deploy
-
-...
-
- 30 files changed, 44 insertions(+), 46 deletions(-)
-
-## Pushing generated _deploy website
-Counting objects: 130, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (64/64), done.
-Writing objects: 100% (65/65), 5.37 KiB | 0 bytes/s, done.
-Total 65 (delta 35), reused 0 (delta 0)
-To git@github.com:VincentTam/vincenttam.github.io.git
-   7f8f845..5af7b9d  master -&gt; master
-
-## Github Pages deploy complete
-cd -
-</code></pre>
-
-<p>Lastly, I found that the remote tracking branch <code>origin/master</code>
-<em>wasn’t</em> necessary in <code>~/octopress</code>.  However, the creation of this
-branch <em>couldn’t</em> be avoided: using <code>git clone</code> to clone either the
-<em>whole repository</em> or <em>a single branch only</em> will lead the creation of
-<em>all</em> remote branches.  To minimize the number of branches in the
-local repository for an Octopress blog, I suggest deleting the
-outdated <code>origin/master</code> branch.</p>
-
-<pre class="cliUB"><code>$ cd _deploy &amp;&amp; git branch -av &amp;&amp; cd ..
-<span class="HLCode">* master                5af7b9d Site updated at 2015-03-09 06:54:16 UTC</span>
-  remotes/origin/HEAD   -&amp;gt; origin/source
-  <span class="HLCode">remotes/origin/master 5af7b9d Site updated at 2015-03-09 06:54:16 UTC</span>
-  remotes/origin/source 4be7fba Another small minor change
-$ git branch -av
-* source                   4be7fba Another small minor change
-  remotes/octopress/master 5080107 Fixed improper canonical url
-  remotes/origin/HEAD      -&amp;gt; origin/source
-  <span class="HLCode">remotes/origin/master    7f8f845 Site updated at 2015-03-08 12:59:04 UTC</span>
-  remotes/origin/source    4be7fba Another small minor change
-$ git branch -rd origin/master
-Deleted remote branch origin/master (was 7f8f845).
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp2">
-      <p>See <a href="/blog/2015/03/08/another-jekyll-error/"><em>Another Jekyll Error</em></a> in Blog 1 for details. <a href="#fnref:pp2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>

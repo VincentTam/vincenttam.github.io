@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why? It’s because I’ve some code block/console input/output which have more
-than 80 characters and their width can’t be reduced. For example,
-in GNU &hellip;">
+  <meta name="description" content="Why? With detailed output from the terminal, other users can understand the
+problem better. This helps them come up with a solution to the
+problem. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,168 @@ in GNU &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/14/record-linux-terminal/">Record Linux Terminal</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T11:52:09+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:52 am</span></time>
+        
+           | <a href="/blog/2014/09/14/record-linux-terminal/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/14/record-linux-terminal/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/record-linux-terminal/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="why">Why?</h2>
+
+<p>With detailed output from the terminal, other users can understand the
+problem better.  This helps them come up with a solution to the
+problem.</p>
+
+<p>Why don’t we use <code>&gt;</code> and <code>&gt;&gt;</code> to capture the standard output?</p>
+
+<p>Using <code>screendump</code>, one can record the commands <em>and</em> their output at
+<em>one</em> time; using <code>[cmd] &gt; output.txt</code>, <code>output.txt</code> only consists of
+the output of <code>[cmd]</code>, but <em>not</em> what he/she has typed.  (i.e.
+<code>[cmd]</code>)  The commands are often complicated and more than one line in
+length—copying and pasting text from the terminal are thus more
+difficult.  Therefore, <code>screendump</code> is useful.</p>
+
+<p>Why don’t we use <code>fbgrab</code> or <code>fbcat</code> to get a screenshot of the
+terminal?</p>
+
+<p>The goal is to let other know what’s in the terminal.   A screenshot
+of the terminal is easy to make.  However, its file size is <em>much</em>
+greater than the screen capture made of text.  Bitmaps <em>don’t</em> look
+good when one zooms in on them with a great magnification.  Therefore,
+to achieve the same goal, one may use text instead of images.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/14/record-linux-terminal/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/completely-remove-linux-kernels/">Completely Remove Linux Kernels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:24:51+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:24 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/completely-remove-linux-kernels/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/13/completely-remove-linux-kernels/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/completely-remove-linux-kernels/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I issued the following command and then rebooted the machine.</p>
+
+<pre class="cliUB"><code>$ sudo aptitude remove linux-headers-3.2.0-67-generic-pae \
+&gt; linux-image-3.2.0-67-generic-pae linux-headers-3.13.0-33-generic \
+&gt; linux-image-3.13.0-33-generic linux-image-extra-3.13.0-33-generic
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I checked the list of installed packages, and the above removed package was still there, though in the status of <code>rc</code>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How can that package disappear from the list?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/13/completely-remove-linux-kernels/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">I/O Errors During Removal of Old Kernels</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-13T23:14:25+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:14 pm</span></time>
+        
+           | <a href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>I encountered some block I/O errors while deleting old Linux kernels.</p>
+
+<p><img class="fancybox" src="/images/posts/RmOldKer/err.png" width="900" title="Received errors in tty1" alt="error messages" /></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/09/13/i-slash-o-errors-during-removal-of-old-kernels/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -568,217 +730,6 @@ Detexify is the answer for commonly used symbols.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/07/a-fake-function/">A Fake Function</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T14:16:31+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:16 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/a-fake-function/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/07/a-fake-function/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/a-fake-function/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Half a year ago, when I heard the concept of <strong>well-defined
-functions</strong>, I <em>wasn’t</em> familiar with it.</p>
-
-<p>I’ve just worked out a problem, and got more idea about that concept.
-The problem should be quite easy.  It asks readers to show that if
-$\langle G, * \rangle$ is a group, $g \in G$ and $\varphi_g: G \to G$
-is a mapping defined by $\varphi_g (x) = g * x * g^{-1}$, then
-$\varphi_g: G \to G$ is an automorphism.  However, I misunderstood
-the wordings in the question, and attempted to prove that the binary
-structure $\langle \{\varphi_g \mid g \in G\},\circ \rangle$ is
-isomorphic to $\langle G, * \rangle$, where $\circ$ denotes the
-composition of functions.  As a result, I let $\phi: \{\varphi_g
-\mid g \in G\} \to G$ be a mapping defined by $\phi(\varphi_g) = g$.
-The associativity, existence of identity element and existence of
-inverse of the binary structure can be easily verified.  By the very
-definition of $\phi$, it seems that its surjectivity is very obvious.
-I continued to write “injectivity of $\phi$ is also obvious.”</p>
-
-<p>\[
-\phi(\varphi_{g_1}) = \phi(\varphi_{g_2}) \iff g_1 = g_2
-  \implies \varphi_{g_1} = \varphi_{g_2}
-\]</p>
-
-<p>I tried to turn the above rightward double arrow ‘$\implies$’ into a
-double-headed one.  If I <em>couldn’t</em> do so, it means that
-$\phi(\varphi_{g_1}) = \phi(\varphi_{g_2})$, though $g_1 \neq
-g_2$.  I realised that I need to check whether $\phi$ was
-<em>well-defined</em>.  As a result, I wasted an hour on some equations.
-Suddenly, I stopped substituting $x = g_1$ or $x = g_2$ into
-$\varphi_{g_1} (x) = \varphi_{g_2} (x)$.  Instead I took $\langle
-G, * \rangle = \langle \R, \cdot \rangle$ and realized what I just did
-was a waste of time.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/06/weaker-group-axioms/">Weaker Group Axioms</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-06T11:12:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:12 am</span></time>
-        
-           | <a href="/blog/2014/09/06/weaker-group-axioms/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/06/weaker-group-axioms/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/06/weaker-group-axioms/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The following axioms seem to be weaker.</p>
-
-<p>Let <span class="myeqn">$G$ be a set, and $*: G \times G
-\to G$</span> be a binary operation.</p>
-
-<dl>
-  <dt>Associativity</dt>
-  <dd><span class="myeqn">$\forall a,b,c \in G, (a * b) * c =
-a * (b * c)$</span></dd>
-  <dt>Existence of <em>left</em> identity</dt>
-  <dd><span class="myeqn">$\exists e \in G \text{ s.t. }
-\forall a \in G, e * a = a$</span></dd>
-  <dt>Existence of <em>left</em> inverse</dt>
-  <dd>$\forall a \in G, \exists a^{-1} \in G \text{ s.t. } a^{-1} * a =
-e$</dd>
-</dl>
-
-<p>Claim: They’re actually <em>equivalent</em> definition of a group.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/09/06/weaker-group-axioms/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/09/05/fixing-this-repos-network-graph/">Fixing This Repo's Network Graph</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-05T23:33:17+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:33 pm</span></time>
-        
-           | <a href="/blog/2014/09/05/fixing-this-repos-network-graph/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/05/fixing-this-repos-network-graph/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/05/fixing-this-repos-network-graph/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tonight, I worked on my blog.  Here’re something done.</p>
-
-<ol>
-  <li>Fixed a dead link in <a href="/blog/2014/05/26/using-octopress-on-another-device/">Using Octopress on Another Device</a> in
-<em>Blog 1</em>.</li>
-  <li>Fixed <code>url</code> in <code>_config.yml</code>: it should be in lower case.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></li>
-  <li>Understand item 5 of Scott Cheng’s post on setting up
-<a href="http://www.octopress.org">Octopress</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  In May, I <em>didn’t</em> understand it.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>  I’ve tested
-it in order to understand what it really means.  After running <code>rake
-setup_github_pages</code>, <code>_deploy</code> folder has <em>only</em> local <code>master</code>
-branch, and <em>no</em> remote branch.  Therefore, it’s <em>impossible</em> to
-remote the <em>only</em> branch there.  To avoid conflicts when I push my
-commits on <code>master</code> branch to my remote repository in GitHub, I ran
-some commands as shown below.</li>
-  <li>Fixed the network graph of the GitHub repository for <em>Blog 1</em>.
-    <ul>
-      <li>Original graph: Due to my poor knowledge on <a href="http://git-scm.com/">Git</a>, <code>master</code>
- branch shares, as shown in the graph, a common node with
- <code>source</code> branch.  This is <em>wrong</em>!</li>
-      <li>Deleted locally <code>origin/master</code> branch and <code>master</code> branch in
- the remote repository to clear the mess.</li>
-      <li>In the new graph, those two branches <em>don’t</em> share a common node
- anymore.</li>
-    </ul>
-  </li>
-</ol>
-
-<pre class="cli"><code class="UBMono">[owner@localhost ~/octopress/_deploy]$ git branch -rd origin/master
-Deleted remote branch origin/master (was e745caf).
-[owner@localhost ~/octopress/_deploy]$ git branch -a
-* <span class="GitBrName">master</span>
-[owner@localhost ~/octopress/_deploy]$ git push origin --delete master
-To git@github.com:vincenttam/vincenttam.github.io.git
- - [deleted]         master
-</code></pre>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>See commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/49f9d1b" title="Corrected the config file">49f9d1b</a> for details. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>This Markdown source code of the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> can be found in GitHub. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>See the <a href="https://github.com/scottcheng/scottcheng.com-v1/blob/3bb8142/source/_posts/2012-11-07-setting-up-existing-octopress-blog-on-a-new-computer.markdown">post</a> in item 1 for details. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/16">&larr; Older</a>
@@ -815,20 +766,20 @@ To git@github.com:vincenttam/vincenttam.github.io.git
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (22)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (23)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (21)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (19)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (22)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (49)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (50)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -836,7 +787,7 @@ To git@github.com:vincenttam/vincenttam.github.io.git
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (32)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (33)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (24)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -846,23 +797,23 @@ To git@github.com:vincenttam/vincenttam.github.io.git
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/">Testing Octopress and Ruby 2.0 on Windows 7 (3)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/21/miktex-update-2/">Mik$\rm \TeX$ Update (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/">Fixed Jekyll-Bootstrap Asset Path</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/">Hyperlinks in Ordered Lists in Markdown in Vim</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/">Indentation of Titles in Markdown Files in Vim</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/09/my-venn-diagram-mistake/">My Venn Diagram Mistake</a>
       </li>
     
   </ul>
