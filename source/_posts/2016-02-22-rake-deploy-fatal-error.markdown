@@ -3,7 +3,7 @@ layout: post
 title: "Rake Deploy Fatal Error"
 date: 2016-02-22 12:16:16 +0800
 comments: true
-categories: [Git, M$ Win*, Octopres]
+categories: [Git, M$ Win*, Octopress]
 ---
 
 Background
