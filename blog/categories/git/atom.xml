@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T16:46:40+08:00</updated>
+  <updated>2016-02-22T20:00:35+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,143 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (4)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/"/>
+    
+    <updated>2016-02-22T18:38:00+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
+path of Git Bash can become a source of trouble.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
+
+<!-- more -->
+
+<h2 id="a-failed-attempt">A failed attempt</h2>
+
+<p>I googled “vim shell path program files”, and clicked
+<a href="http://stackoverflow.com/a/13917410">the first web site</a> as usual.  Even though I <em>don’t</em>, and
+<em>won’t</em> have Cygwin installed in my computer, I still viewed this
+page, which suggested that the path of <code>shell</code> option should be
+surrounded by a pair of double quotes <code>""</code>.  I tried this, but the
+above problem <em>wasn’t</em> solved.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I recalled that after opening the built-in editor in Command Prompt on
+M$ Win* Professional/Enterprise, the displayed path of the working
+directory would be different: some tildes appear in the path.</p>
+
+<p>Therefore, I googled “windows path without spaces”, and learnt to use
+<code>DIR /X</code> in Command Prompt to <a href="https://goo.gl/a9eHZF">solve this problem</a> from an
+answer to <a href="http://superuser.com/a/179450">this Super User question</a>.  Finally, usual
+external commands like <code>ls</code> and <code>file</code> can be executed inside GVim
+Portable.  This solves the error mentioned in the “Discussion” section
+of <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>.  What I’ve wriiten in the
+“Solution” section can be updated: I expect that under usual
+circumstances, the external commands can be run even if the <code>shell</code>
+option is set to Git Bash.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>I used an <code>if</code> statement to surround the <code>set shell=/path/to/bash.exe</code>
+because <a href="http://stackoverflow.com/a/13917410">the same Stack Overflow answer</a> mentioned in the
+“A failed attempt” section said that many Vim plugins used
+<code>has("win32")</code>.  If a plugin failed in a GVim window triggered by Git
+Bash, I can still use it by opening GVim with Command Prompt.</p>
+
+<p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
+<code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/"/>
+    
+    <updated>2016-02-22T16:54:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A VIMRC is important for efficient text editing.  It can be over one
+hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
+folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
+VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
+other users, and read others’ configuration files so as to learn from
+them.</p>
+
+<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
+efficient.  Therefore, I re-read the installation instructions for
+<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
+installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
+
+<p>Due to the problem mentioned in
+<a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
+Prompt instead of Git Bash.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I have already configure <code>github.user</code> to my GitHub user name, but
+Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
+
+<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
+</code></pre>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I tried looking into the source code of the Vim plugin.  I learnt from
+<em>Learn Vim Script the Hard Way</em> the difference between <code>echo</code> and
+<code>echom</code>: the former <em>isn’t</em> persistent; the later can be retrieved by
+<code>message</code>.  It took me a few minutes to find out that Command Prompt,
+the program set by <code>shell</code> option, <em>didn’t</em> take my global
+configurations into account.  I viewed the list of my configurations
+using the following command.</p>
+
+<pre class="cli"><code>:!git config --list
+</code></pre>
+
+<p>I <em>didn’t</em> see <code>github.user</code> in the list.  I tried adding <code>--global</code>,
+and I got an error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
+fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
+gs/.gitconfig': No such file or directory
+shell returned 128
+Hit any key to close this window...
+</code></pre>
+
+<p>I <em>failed</em> to comprehend the second line of the above output.  I just
+realised that this had something to do with GVim Portable.  If I use
+GVim instead, I <em>won’t</em> have such trouble since <code>.gitconfig</code> is
+located at the home folder.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched for a tutorial of using this plugin.  Finally, from a
+Japanese website which I forgot its URL, I found out that one can
+manually set the variable <code>github_user</code> in VIMRC.</p>
+
+<p>After that, I restarted the editor and invoked the plugin, which then
+asked for my GitHub password and created a token in
+<code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -314,127 +451,6 @@ standard output.  To save the downloaded content in a file, the
 flag <code>-o</code>, which means “output”, can be used.</li>
 </ol>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/"/>
-    
-    <updated>2016-02-15T01:18:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>As I’ve said in <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/"><em>Jekyll Blog Page Build Warning</em></a>,
-<a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">GitHub Pages have upgraded to 3.0</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>The Twitter theme for every post in <a href="/blog2">Blog 2</a> was <em>gone</em>, but
-the home page and the archive page still looked good.</p>
-
-<p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
-{% raw %}”{{ ASSET_PATH }}”{% endraw %} in the title of
-<a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
-<code>_config.yml</code> is too troublesome and prone to error, I clicked some
-links for related web pages, such as
-<a href="http://jekyllrb.com/docs/upgrading/2-to-3/#layout-metadata">a relevant page in Jekyll’s documentation</a>, but I <em>didn’t</em> know
-what to do.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>It turns out that this issue is the <em>same</em> as <a href="https://github.com/plusjade/jekyll-bootstrap/issues/290">issue #290</a>.
-The status of this issue is <em>closed</em> because some ways of fixing the
-problem have been shared.  Since <a href="https://github.com/plusjade/jekyll-bootstrap/pull/293/files">qh’s fix</a> has received
-positive comments, I adopt his approach.</p>
-
-<p><a href="/blog/2015/08/06/my-git-command-list-3/">Before learning more Git commands this summer</a>, I would change
-this <em>manually</em>.  However, fearing that I would <a href="https://github.com/qh/jekyll-bootstrap/commit/a2526d03dad245ea389c918055ac7fe46948ab1d">make a typo</a>, I
-seek an automatic way to apply the changes in <code>_includes/JB/setup</code>.</p>
-
-<p>I searched “git apply patch” on Google, and reached
-<a href="http://stackoverflow.com/q/7827002">this Stack Overflow question</a> eventually.  The command</p>
-
-<pre class="cliUB"><code>$ curl https://github.com/JustinTulloss/zeromq.node/pull/47.patch &gt; /tmp/47.patch
-</code></pre>
-
-<p>gave me a file (<em>without EOF</em>) in <code>/tmp</code>.</p>
-
-<pre class="cliUB"><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href="https://patch-diff.githubusercontent.com/raw/JustinTulloss/zeromq.node/pull/47.patch"&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;
-</code></pre>
-
-<p>I then tried using <code>git apply</code>.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git apply --stat /tmp/47.patch
-fatal: unrecognized input
-</code></pre>
-
-<p>Even though I added the <code>--stat</code> option, the bash still said that it’s
-<code>fatal</code>.  I tried googling “git apply fatal”, but I <em>couldn’t</em> see
-anything useful.  The third answer to this Stack Overflow question
-cleared my doubts: by comparing the date of the answers, one knows
-that <code>patch-diff.githubusercontent.com</code> should be used instead.</p>
-
-<p>Since the reputation of the owner of the second answer is higher,
-<em>not</em> having enough time to check their differences, I used <code>git am</code>
-instead of <code>git apply --check</code>.  Finally, everything went smooth and
-the <code>git push</code> was successful.  Originally, I intended to leave a
-short Git comment message with a few helpful links.  However,
-everything went so good that I <em>didn’t</em> have the chance to do that in
-the Git repository for Blog 2.  Therefore, I recorded my thoughts
-here.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Merge Failed?]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/"/>
-    
-    <updated>2015-09-03T14:34:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/03/git-merge-failed</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Octopress has recently removed Rubypants, so the automatic smartquotes
-<em>aren’t</em> supported any more.  However, after typing <code>git pull
-octopress master</code> on the <code>source</code> branch of the local working
-directory for this blog, <code>git</code> simply said that it’s “already
-up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
-show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
-If the former has the commits of the later, then
-<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
-the command <code>git merge octopress/master</code> again, and the version
-control system still said that there’s <em>no</em> unmerged commits from the
-<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>By using <code>git log --abbrev-commit --pretty=oneline --graph</code> and <code>git
-merge-base octopress/master HEAD</code>, I can quickly browse through the
-commits.  Finally, I identified the reason for this failed merge: I
-reverted the first merge of those two branches three months ago.  I
-belive that I can revert this reversion to achieve my desired merge.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:remote">
-
-      <p>Since Octopress 3 is currently in development, I still use the
-original version. <a href="#fnref:remote" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

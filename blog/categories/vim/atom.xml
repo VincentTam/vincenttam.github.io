@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T16:46:40+08:00</updated>
+  <updated>2016-02-22T20:00:35+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,143 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (4)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/"/>
+    
+    <updated>2016-02-22T18:38:00+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
+path of Git Bash can become a source of trouble.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
+
+<!-- more -->
+
+<h2 id="a-failed-attempt">A failed attempt</h2>
+
+<p>I googled “vim shell path program files”, and clicked
+<a href="http://stackoverflow.com/a/13917410">the first web site</a> as usual.  Even though I <em>don’t</em>, and
+<em>won’t</em> have Cygwin installed in my computer, I still viewed this
+page, which suggested that the path of <code>shell</code> option should be
+surrounded by a pair of double quotes <code>""</code>.  I tried this, but the
+above problem <em>wasn’t</em> solved.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I recalled that after opening the built-in editor in Command Prompt on
+M$ Win* Professional/Enterprise, the displayed path of the working
+directory would be different: some tildes appear in the path.</p>
+
+<p>Therefore, I googled “windows path without spaces”, and learnt to use
+<code>DIR /X</code> in Command Prompt to <a href="https://goo.gl/a9eHZF">solve this problem</a> from an
+answer to <a href="http://superuser.com/a/179450">this Super User question</a>.  Finally, usual
+external commands like <code>ls</code> and <code>file</code> can be executed inside GVim
+Portable.  This solves the error mentioned in the “Discussion” section
+of <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>.  What I’ve wriiten in the
+“Solution” section can be updated: I expect that under usual
+circumstances, the external commands can be run even if the <code>shell</code>
+option is set to Git Bash.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>I used an <code>if</code> statement to surround the <code>set shell=/path/to/bash.exe</code>
+because <a href="http://stackoverflow.com/a/13917410">the same Stack Overflow answer</a> mentioned in the
+“A failed attempt” section said that many Vim plugins used
+<code>has("win32")</code>.  If a plugin failed in a GVim window triggered by Git
+Bash, I can still use it by opening GVim with Command Prompt.</p>
+
+<p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
+<code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/"/>
+    
+    <updated>2016-02-22T16:54:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A VIMRC is important for efficient text editing.  It can be over one
+hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
+folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
+VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
+other users, and read others’ configuration files so as to learn from
+them.</p>
+
+<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
+efficient.  Therefore, I re-read the installation instructions for
+<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
+installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
+
+<p>Due to the problem mentioned in
+<a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
+Prompt instead of Git Bash.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I have already configure <code>github.user</code> to my GitHub user name, but
+Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
+
+<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
+</code></pre>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I tried looking into the source code of the Vim plugin.  I learnt from
+<em>Learn Vim Script the Hard Way</em> the difference between <code>echo</code> and
+<code>echom</code>: the former <em>isn’t</em> persistent; the later can be retrieved by
+<code>message</code>.  It took me a few minutes to find out that Command Prompt,
+the program set by <code>shell</code> option, <em>didn’t</em> take my global
+configurations into account.  I viewed the list of my configurations
+using the following command.</p>
+
+<pre class="cli"><code>:!git config --list
+</code></pre>
+
+<p>I <em>didn’t</em> see <code>github.user</code> in the list.  I tried adding <code>--global</code>,
+and I got an error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
+fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
+gs/.gitconfig': No such file or directory
+shell returned 128
+Hit any key to close this window...
+</code></pre>
+
+<p>I <em>failed</em> to comprehend the second line of the above output.  I just
+realised that this had something to do with GVim Portable.  If I use
+GVim instead, I <em>won’t</em> have such trouble since <code>.gitconfig</code> is
+located at the home folder.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched for a tutorial of using this plugin.  Finally, from a
+Japanese website which I forgot its URL, I found out that one can
+manually set the variable <code>github_user</code> in VIMRC.</p>
+
+<p>After that, I restarted the editor and invoked the plugin, which then
+asked for my GitHub password and created a token in
+<code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -168,7 +305,32 @@ this <em>isn’t</em> standard, this is more convenient.</p>
 hyperlink to <a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a> written in a short but non-standard
 way.</p>
 
-<p>{% include_code Markdown source code of the ordered list lang:text olhlmdvim/test-post.mkd %}</p>
+<p><figure class='code'><figcaption><span>Markdown source code of the ordered list  (test-post.mkd)</span> <a href='/downloads/code/olhlmdvim/test-post.mkd'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>Lessons learnt
+</span><span class='line'>---
+</span><span class='line'>
+</span><span class='line'>Moreover, I revised the usage of these two [Vim] plugins.
+</span><span class='line'>
+</span><span class='line'>1. [Visual Star Search][visual-star-search]: Select text in visual
+</span><span class='line'>   mode and search it with an asterisk `*`.
+</span><span class='line'>2. [textobj-lastpat]: Add the last search pattern as a text object.
+</span><span class='line'>
+</span><span class='line'>[Vim]: http://www.vim.org
+</span><span class='line'>[visual-star-search]: https://github.com/bronson/vim-visual-star-search
+</span><span class='line'>[textobj-lastpat]: https://github.com/kana/vim-textobj-lastpat
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>Unluckily, as I typed this Vim Ex command
 <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">to see whether my Markdown syntax was correct</a>, I quickly
@@ -181,7 +343,26 @@ received an error from <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
 below to see the effect of the result generated by ihe Markdown
 parser.</p>
 
-<p>{% include_code Generated HTML code of the ordered list olhlmdvim/test-post.html %}</p>
+<p><figure class='code'><figcaption><span>Generated HTML code of the ordered list (test-post.html)</span> <a href='/downloads/code/olhlmdvim/test-post.html'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;lessons-learnt&quot;</span><span class="nt">&gt;</span>Lessons learnt<span class="nt">&lt;/h2&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Moreover, I revised the usage of these two <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.vim.org&quot;</span><span class="nt">&gt;</span>Vim<span class="nt">&lt;/a&gt;</span> plugins.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;ol&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/bronson/vim-visual-star-search&quot;</span><span class="nt">&gt;</span>Visual Star Search<span class="nt">&lt;/a&gt;</span>: Select text in visual
+</span><span class='line'>mode and search it with an asterisk <span class="nt">&lt;code&gt;</span>*<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ol&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <pre class="cliUB"><code>Warning: Duplicate link ID 'textobj-lastpat' on line 13 - overwriting
 
@@ -195,171 +376,6 @@ Press ENTER or type command to continue
 that hyperlink in the standard way is the quickest solution that I
 know.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Indentation of Titles in Markdown Files in Vim]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/"/>
-    
-    <updated>2016-02-10T00:05:04+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>While I was writing
-<a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">a post about a technical problem encountered</a> while writing
-<a href="/blog/2016/02/09/my-venn-diagram-mistake/">another post about Venn diagram</a>, I encountered another
-technical problem.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried including the error message into the previous post by the Vim
-editor command <code>:r ~/lang:text temp-swp.mkd</code>.  To have it surrounded with
-<code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
-
-<p>{% include_code A section of the error message lang:text temp-swp.mkd %}</p>
-
-<p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
-selected in visual line mode.  However, the line starting with <code>#</code>
-<em>wasn’t</em> indented like the others.</p>
-
-<p>{% include_code A failed indentation lang:text temp-swp1.mkd %}</p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>If I started <a href="http://www.vim.org">Vim</a> with all plugins disabled with <code>vim -u NONE -N</code>,
-then the above problem <em>won’t</em> happen.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Use the visual block mode instead.  Either one way will do.</p>
-
-<ol>
-  <li>Keep using the <code>&gt;</code> operator.</li>
-  <li>Use <code>I    </code> instead of <code>&gt;</code>.</li>
-</ol>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Rake Aborted Due to a Vim Swap File]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/"/>
-    
-    <updated>2016-02-09T20:49:29+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Tonight, I wrote <a href="/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
-to publish it using the Vim editor command</p>
-
-<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
-</code></pre>
-
-<p>After that, the following error message popped up.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
-To git@github.com:VincentTam/vincenttam.github.io.git
-   c6c422a..fc8d6b8  source -&gt; source
-
-## Generating Site with Jekyll
-    write source/stylesheets/screen.css
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-                    done.
- Auto-regeneration: disabled. Use --watch to enable.
-cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-rake aborted!
-Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
-Tasks: TOP =&gt; copydot
-(See full trace by running task with --trace)
-
-shell returned 1
-
-Press ENTER or type command to continue
-</code></pre>
-
-<p>When one sees an error message like above for the first time, one
-needs <em>not</em> look directly into code, even though one is writing code
-in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
-wrong.</p>
-
-<p>From the command <code>cp -r ...</code>, I realised that the problem came from
-<code>Rakefile</code>, which tried to copy the non-existent
-<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
-folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
-<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
-
-<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “rake generate ignore swp”, and clicked on
-<a href="https://github.com/imathis/octopress/issues/1073">the first search result</a>, which is Octopress issue #1073.  It
-provided a link to <a href="https://github.com/imathis/octopress/issues/600">issue #600</a>.  Bradon Mathis said that <q cite="https://github.com/imathis/octopress/blob/2.1/Rakefile#L265">this
-has been <a href="https://github.com/imathis/octopress/blob/2.1/Rakefile#L265">fixed in 2.1</a></q>.  Unluckily, after hitting that
-hyperlink, I found that the version of <code>Rakefile</code> shown online was
-<em>different</em> from mine. Finally, I installed <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> to solve
-this problem.<sup id="fnref:installation"><a href="#fn:installation" class="footnote">3</a></sup>  If this plugin supports background tasks
-like <code>rake preview</code>, the blogging experience using <a href="http://octopress.org">Octopress</a> within
-<a href="http://www.vim.org">Vim</a> will be further enhanced.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I’ve learnt to use <a href="http://www.w3schools.com/tags/att_q_cite.asp">the HTML cite tag</a> when I directly quote
-a short phrase from others to avoid being penalised by the Google
-search engine for lacking originality.</p>
-
-<p>Moreover, I revised the usage of these two Vim plugins.</p>
-
-<ol>
-  <li><a href="https://github.com/bronson/vim-visual-star-search">Visual Star Search</a>: Select text in visual
-mode and search it with an asterisk <code>*</code>.</li>
-  <li><a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a>: Add the last search pattern as a text
-object.</li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>I’ve used this Vim plugin <a href="/blog/2016/02/09/my-venn-diagram-mistake/#fugitivevim">for more than a year</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:gitrepo">
-
-      <p>Strictly speaking, the <code>public</code> folder <em>isn’t</em> in the <em>Git
-repository</em> because <em>this folder isn’t *tracked by the version
-control system</em> (VCS). <a href="#fnref:gitrepo" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:installation">
-
-      <p>For more details, you may see my gist for the <code>.vimrc</code> on Ubuntu
-at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installation" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

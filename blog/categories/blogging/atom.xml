@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blogging | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T16:46:40+08:00</updated>
+  <updated>2016-02-22T20:00:35+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -32,7 +32,7 @@
 the home page and the archive page still looked good.</p>
 
 <p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
-{% raw %}”{{ ASSET_PATH }}”{% endraw %} in the title of
+”{{ ASSET_PATH }}” in the title of
 <a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
 <code>_config.yml</code> is too troublesome and prone to error, I clicked some
 links for related web pages, such as
@@ -157,7 +157,90 @@ preview.</p>
 manually filled in the name of the months to create a French “support”
 for dates in sites built with Jekyll.</p>
 
-<p>{% include_code A minimum working example for customizing month names lang:text index.md %}</p>
+<p><figure class='code'><figcaption><span>A minimum working example for customizing month names  (index.md)</span> <a href='/downloads/code/index.md'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>{% raw %}
+</span><span class='line'>&lt;!-- delete the first line --&gt;
+</span><span class='line'>---
+</span><span class='line'>layout: page
+</span><span class='line'>title: Mon 2ème blog
+</span><span class='line'>tagline: Mes petites notes de français
+</span><span class='line'>---
+</span><span class='line'>{% include JB/setup %}
+</span><span class='line'>
+</span><span class='line'>C&#39;est difiicile de chercher des mots dans un cahier ou dans un livre.
+</span><span class='line'>Heureusement, c&#39;est facile de les rechercher sur Google.  Alors, je
+</span><span class='line'>fais ce blog-ci.
+</span><span class='line'>
+</span><span class='line'>## Articles récents
+</span><span class='line'>
+</span><span class='line'>Voici une petite liste des articles.
+</span><span class='line'>
+</span><span class='line'>&lt;ul class=&quot;posts&quot;&gt;
+</span><span class='line'>  {% for post in site.posts limit:5 %}
+</span><span class='line'>    &lt;li&gt;&lt;span&gt;{% assign m = post.date | date: &quot;%-m&quot; %}
+</span><span class='line'>      {{ post.date | date: &quot;%-d&quot; }}
+</span><span class='line'>      {% case m %}
+</span><span class='line'>	{% when &#39;1&#39; %}janvier
+</span><span class='line'>	{% when &#39;2&#39; %}février
+</span><span class='line'>	{% when &#39;3&#39; %}mars
+</span><span class='line'>	{% when &#39;4&#39; %}avril
+</span><span class='line'>	{% when &#39;5&#39; %}mai
+</span><span class='line'>	{% when &#39;6&#39; %}juin
+</span><span class='line'>	{% when &#39;7&#39; %}juillet
+</span><span class='line'>	{% when &#39;8&#39; %}août
+</span><span class='line'>	{% when &#39;9&#39; %}septembre
+</span><span class='line'>	{% when &#39;10&#39; %}octobre
+</span><span class='line'>	{% when &#39;11&#39; %}novembre
+</span><span class='line'>	{% when &#39;12&#39; %}décembre
+</span><span class='line'>      {% endcase %}
+</span><span class='line'>      {{ post.date | date: &quot;%Y&quot; }}
+</span><span class='line'>    &lt;/span&gt; &amp;raquo; &lt;a href=&quot;{{ BASE_PATH }}{{ post.url }}&quot;&gt;{{ post.title }}&lt;/a&gt;&lt;/li&gt;
+</span><span class='line'>  {% endfor %}
+</span><span class='line'>&lt;/ul&gt;
+</span><span class='line'>&lt;!-- delete the last line --&gt;
+</span><span class='line'>{% endraw %}
+</span></code></pre></td></tr></table></div></figure></p>
 
 ]]></content>
     

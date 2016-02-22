@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-22T16:17:16+08:00</updated>
+  <updated>2016-02-22T20:00:35+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,143 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (4)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/"/>
+    
+    <updated>2016-02-22T18:38:00+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
+path of Git Bash can become a source of trouble.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
+
+<!-- more -->
+
+<h2 id="a-failed-attempt">A failed attempt</h2>
+
+<p>I googled “vim shell path program files”, and clicked
+<a href="http://stackoverflow.com/a/13917410">the first web site</a> as usual.  Even though I <em>don’t</em>, and
+<em>won’t</em> have Cygwin installed in my computer, I still viewed this
+page, which suggested that the path of <code>shell</code> option should be
+surrounded by a pair of double quotes <code>""</code>.  I tried this, but the
+above problem <em>wasn’t</em> solved.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I recalled that after opening the built-in editor in Command Prompt on
+M$ Win* Professional/Enterprise, the displayed path of the working
+directory would be different: some tildes appear in the path.</p>
+
+<p>Therefore, I googled “windows path without spaces”, and learnt to use
+<code>DIR /X</code> in Command Prompt to <a href="https://goo.gl/a9eHZF">solve this problem</a> from an
+answer to <a href="http://superuser.com/a/179450">this Super User question</a>.  Finally, usual
+external commands like <code>ls</code> and <code>file</code> can be executed inside GVim
+Portable.  This solves the error mentioned in the “Discussion” section
+of <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>.  What I’ve wriiten in the
+“Solution” section can be updated: I expect that under usual
+circumstances, the external commands can be run even if the <code>shell</code>
+option is set to Git Bash.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>I used an <code>if</code> statement to surround the <code>set shell=/path/to/bash.exe</code>
+because <a href="http://stackoverflow.com/a/13917410">the same Stack Overflow answer</a> mentioned in the
+“A failed attempt” section said that many Vim plugins used
+<code>has("win32")</code>.  If a plugin failed in a GVim window triggered by Git
+Bash, I can still use it by opening GVim with Command Prompt.</p>
+
+<p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
+<code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (3)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/"/>
+    
+    <updated>2016-02-22T16:54:53+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A VIMRC is important for efficient text editing.  It can be over one
+hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
+folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
+VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
+other users, and read others’ configuration files so as to learn from
+them.</p>
+
+<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
+efficient.  Therefore, I re-read the installation instructions for
+<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
+installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
+
+<p>Due to the problem mentioned in
+<a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
+Prompt instead of Git Bash.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I have already configure <code>github.user</code> to my GitHub user name, but
+Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
+
+<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
+</code></pre>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I tried looking into the source code of the Vim plugin.  I learnt from
+<em>Learn Vim Script the Hard Way</em> the difference between <code>echo</code> and
+<code>echom</code>: the former <em>isn’t</em> persistent; the later can be retrieved by
+<code>message</code>.  It took me a few minutes to find out that Command Prompt,
+the program set by <code>shell</code> option, <em>didn’t</em> take my global
+configurations into account.  I viewed the list of my configurations
+using the following command.</p>
+
+<pre class="cli"><code>:!git config --list
+</code></pre>
+
+<p>I <em>didn’t</em> see <code>github.user</code> in the list.  I tried adding <code>--global</code>,
+and I got an error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
+fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
+gs/.gitconfig': No such file or directory
+shell returned 128
+Hit any key to close this window...
+</code></pre>
+
+<p>I <em>failed</em> to comprehend the second line of the above output.  I just
+realised that this had something to do with GVim Portable.  If I use
+GVim instead, I <em>won’t</em> have such trouble since <code>.gitconfig</code> is
+located at the home folder.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I searched for a tutorial of using this plugin.  Finally, from a
+Japanese website which I forgot its URL, I found out that one can
+manually set the variable <code>github_user</code> in VIMRC.</p>
+
+<p>After that, I restarted the editor and invoked the plugin, which then
+asked for my GitHub password and created a token in
+<code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1461,93 +1598,6 @@ typing the same set of numbers for $B$ and <span class="myeqn">$c_B$</span>.</p>
 <p>Since I’m no longer in an LP course, I’m too lazy to write the code
 for finding the suitable elements for a pivot operation.  We <em>don’t</em>
 need to re-develop something that has been well-developed.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Some Families of Open Sets in $\Bbb R$]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r/"/>
-    
-    <updated>2016-01-15T20:22:57+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r</id>
-    
-      <content type="html"><![CDATA[<p>Two days ago, I read a proof about a basic property of open sets in
-Royden’s <em>Real Analysis</em>.  It says that each open set in $\Bbb R$ is a
-countable union of disjoint open intervals.  Reading the book, I got
-stuck at the countability.  I tried to think of a map between each
-open interval and a rational number, but I <em>didn’t</em> know <em>which one to
-choose</em>.  It took me half an hour to understand from the words that
-the <em>one single</em> rational number inside the open interval can be
-arbitrarily chosen.</p>
-
-<p>Yesterday, I was puzzled at $\mathcal{T} \subseteq \mathcal{B}$ for a
-while.  On the LHS, I came up with “arbitrary union”; on the RHS, I
-thought of “countable union”.  It seemed that “countable union” is
-more restrictive than “arbitrarily union”.  My teacher said that this
-is <em>by definition</em>, and I realized that I forgot the definition of
-Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
-\mathcal{T}$.  Finally, I get it.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Simple MathJax Template for Basic Linear Programs]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs/"/>
-    
-    <updated>2016-01-09T23:12:24+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/09/simple-mathjax-template-for-basic-linear-programs</id>
-    
-      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
-
-<p>To provide a good-looking template of basic linear programs for users
-of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
-
-<div class="myeqn">
-\[
-  \begin{array}{cccll}
-    \max &amp;z=&amp;x_1&amp;+x_2 &amp; \\
-    \text{s.t.}&amp; &amp; &amp; \phantom{+}x_2 + s_1 &amp;= 8 \\
-    &amp; &amp; -x_1&amp;+x_2 - s_2&amp;=-4 \\
-    &amp; &amp; x_1&amp;+x_2+s_3&amp;= 12 \\
-    &amp; &amp; &amp; s_1,s_2,s_3 &amp;\ge 0
-  \end{array}
-\]
-</div>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimum working example on Math Stack Exchange </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cccll<span class="nb">}</span>
-</span><span class="line">  <span class="k">\max</span> <span class="nb">&amp;</span>z=<span class="nb">&amp;</span>x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2 <span class="nb">&amp;</span> <span class="k">\\</span>
-</span><span class="line">  <span class="k">\text</span><span class="nb">{</span>s.t.<span class="nb">}&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="k">\phantom</span><span class="nb">{</span>+<span class="nb">}</span>x<span class="nb">_</span>2 + s<span class="nb">_</span>1 <span class="nb">&amp;</span>= 8 <span class="k">\\</span>
-</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> -x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2 - s<span class="nb">_</span>2<span class="nb">&amp;</span>=-4 <span class="k">\\</span>
-</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> x<span class="nb">_</span>1<span class="nb">&amp;</span>+x<span class="nb">_</span>2+s<span class="nb">_</span>3<span class="nb">&amp;</span>= 12 <span class="k">\\</span>
-</span><span class="line">  <span class="nb">&amp;</span> <span class="nb">&amp;</span> <span class="nb">&amp;</span> s<span class="nb">_</span>1,s<span class="nb">_</span>2,s<span class="nb">_</span>3 <span class="nb">&amp;</span><span class="k">\ge</span> 0
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<p>If you want a prettier template, you may see
-<a href="http://tex.stackexchange.com/q/75108">this $\rm TeX$–$\rm \LaTeX$ Stack Exchange question</a>.  I
-tried added <code>@{}</code> in the first argument of the <code>array</code> environment to
-eliminate the excessive inter-column space—this works great in $\rm
-\LaTeX$.  However, neither <code>@{}</code> nor <code>\multicolumn{4}{l}{...}</code> is
-processed by <a href="https://mathjax.org">MathJax</a>.</p>
 
 ]]></content>
     

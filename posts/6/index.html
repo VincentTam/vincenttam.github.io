@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Overview Unlike the Git commands found on the previous posts in this series, in
-this article, I’ll focus on low-level Git commands. Raison d’être &hellip;">
+  <meta name="description" content="Situation I’ve written and commited the post My Git Command List (3),
+but after a while, I changed that post. In order not to complexify
+my Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,113 @@ this article, I’ll focus on low-level Git commands. Raison d’être &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="situation">Situation</h2>
+
+<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
+but after a while, I changed that post.  In order not to complexify
+my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
+simple and convenient.  I observed that the displayed time in the
+amended commit was the <em>same</em> as the original one, whereas the SHA-1
+hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
+However, from
+<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
+that the ID of Git commit objects is totally determined by</p>
+
+<ol>
+  <li>the content of the commit message</li>
+  <li>the commit time</li>
+  <li>the author</li>
+</ol>
+
+<p>In this case, no difference of the above factors between the original
+commit and the amended commit can be observed with <code>git show</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/how-does-git-commit-amend-work/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Git Object ID Generation (1): Blobs and Commits</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T13:52:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:52 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
+is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
+be similarly generated.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -626,123 +734,6 @@ site of SVGPan as an example.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-01T17:22:45+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>5:22 pm</span></time>
-        
-           | <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/01/fixed-a-javascript-typeerror/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I included <a href="/blog/2015/04/11/an-image-with-changeable-size/">an image with changeable size</a> in a post written about
-two months ago.</p>
-
-<h3 id="howwhy-does-this-work">How/Why does this work?</h3>
-
-<ul>
-  <li>In brief: View <code>/javascripts/svg-resize-bar.js</code>.</li>
-  <li>For details: click the hyperlink above.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<picture class="fancybox" title="A error received from Firefox
-  console">
-  <source srcset="/images/posts/SVGResizeErr/null-bar558.png" media="(min-width: 558px)" />
-  <img alt="FF throws TypeError" src="/images/posts/SVGResizeErr/null-bar270.png" />
-</picture>
-
-<p>When I browsed any pages except that post which contains the
-changeable SVG image, the above <code>TypeError</code> was thrown.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Validate HTML Code for SVG Fallbacks to Text</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-30T22:23:37+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:23 pm</span></time>
-        
-           | <a href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>After I’d written <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"><em>Added <abbr title="World Wide Web Consortium">W3C</abbr> Validated Logos to Some Pages</em></a>, I
-saw that in the site, there’s still two pages which <em>hadn’t</em> been
-checked by the <abbr title="World Wide Web Consortium">W3C</abbr>’s validators.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>To allow SVG fallbacks to text, I viewed the source code for
-<a href="http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">the SVG example from W3Schools</a>.  The fallback message was
-simply included inside a <code>&lt;svg&gt;</code> tag just like a <code>&lt;p&gt;</code> tag.  I applied
-this technique to <code>source/downloads/code/SVGViewBox/viewBox1.html</code>.</p>
-
-<p>Then I uploaded that HTML file to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, which
-complained such an inclusion of text.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -779,7 +770,7 @@ complained such an inclusion of text.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (25)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (27)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (4)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -788,7 +779,7 @@ complained such an inclusion of text.</p>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (24)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (26)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -801,7 +792,7 @@ complained such an inclusion of text.</p>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (34)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (36)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (24)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -809,6 +800,14 @@ complained such an inclusion of text.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Git for Windows, Curl, Gist.vim With Vundle (4)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">Git for Windows, Curl, Gist.vim With Vundle (3)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">Git for Windows, Curl, Gist.vim With Vundle (2)</a>
@@ -820,14 +819,6 @@ complained such an inclusion of text.</p>
     
       <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/22/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/">Testing Octopress and Ruby 2.0 on Windows 7 (3)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/21/miktex-update-2/">Mik$\rm \TeX$ Update (2)</a>
       </li>
     
   </ul>
