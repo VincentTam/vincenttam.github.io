@@ -41,10 +41,11 @@ $\varepsilon$.[^1]
 \]
 </div>
 
-where <span class="myeqn" markdown="0">$S_i$</span> is a set of $i$
-numbers chosen from $\left\{ 1,\dots,n \right\}$, and <span
-class="myeqn" markdown="0">$\left\{ a_j \right\}$</span> is an
-increasing sequence in <span class="myeqn" markdown="0">$S_i$</span>.
+<span class="myeqn" markdown="0">
+where $S_i$ is a set of $i$ numbers chosen from $\left\{ 1,\dots,n
+\right\}$, and $\left\{ a_j \right\}$ is an increasing sequence in
+$S_i$.
+</span>
 
 I assumed that $n > 2$.  For $n = 2$, deleting the third term in the
 last step will do.  For $n = 1$, the problem is trivial.
