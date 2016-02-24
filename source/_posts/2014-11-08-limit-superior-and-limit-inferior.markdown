@@ -28,8 +28,8 @@ Discussion
 It suffices to find a relation between '<' and '⊆': $\{x \le a\}
 \subseteq \{x \le b\} \iff a \le b$.
 
-Claim: $\displaystyle \bigcup_{a \in A} \{x \le a\} = \{x \le \sup
-A\}$.
+Claim: <span class="myeqn" markdown="0">$\displaystyle \bigcup_{a \in
+A} \{x \le a\} = \{x \le \sup A\}$.</span>
 
 *Proof*\:
 
