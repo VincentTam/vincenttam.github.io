@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Two days ago, I read a proof about a basic property of open sets in
-Royden’s Real Analysis. It says that each open set in $\Bbb R$ is a
-countable &hellip;">
+  <meta name="description" content="Background It’s easy that one makes careless mistakes in a pivot
+operation. As a result, in test/exams in which calculators are
+allowed, I used a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,108 @@ countable &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/">Generate Simplex Tableaux With Octave</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-16T14:53:15+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:53 pm</span></time>
+        
+           | <a href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>It’s easy that one makes <a href="http://chat.stackexchange.com/transcript/message/26730376#26730376">careless mistakes</a> in a pivot
+operation.  As a result, in test/exams in which calculators are
+allowed, I used a simple program to save time.</p>
+
+<p>Answering linear programming question on
+<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a>, I used <a href="http://www.gnu.org/software/octave">GNU Octave</a> to
+do the tedious work.</p>
+
+<h2 id="initial-tableau">Initial tableau</h2>
+
+<p>First write the LPP in standard form.  I assume that $b$ and $c$ are
+column vectors.</p>
+
+<ul>
+  <li><code>c</code> is the objective function.</li>
+  <li><code>A</code> is the coefficient matrix of the constraints.  (a.k.a technology
+  matrix)</li>
+  <li><code>b</code> is the RHS of the constraints.</li>
+  <li><code>T0</code> is the initial tableau.</li>
+</ul>
+
+<p>My habit is to</p>
+
+<ol>
+  <li>place $b$ on the RHS;</li>
+  <li>place the objective function row at the bottom;</li>
+  <li>omit the coefficient for $z$ since it’ll <em>never</em> be changed.</li>
+</ol>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the initial tableau</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">format</span> <span class="nb">rat</span><span class="p">;</span>
+</span><span class="line"><span class="n">c</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span> <span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">11</span> <span class="mi">0</span> <span class="mi">8</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
+</span><span class="line"><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>
+</span><span class="line"><span class="mi">1</span> <span class="o">-</span><span class="p">.</span><span class="mi">5</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="mi">0</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">];</span>
+</span><span class="line"><span class="n">T0</span> <span class="p">=</span> <span class="p">[</span><span class="n">A</span> <span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="mi">0</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="current-simplex-tableau">Current simplex tableau</h2>
+
+<p>The command <code>basis = [3 2 6]</code> is used to choose the decision variables
+<span class="myeqn">$x_3,x_2$ and $x_6$</span> as the
+basis.  Note that the order of the entries in the array <code>basis</code> is
+very <em>important</em>.  By setting this array, I <em>don’t</em> need to repeat
+typing the same set of numbers for $B$ and <span class="myeqn">$c_B$</span>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the tableau from the current basis</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">basis</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">6</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span><span class="n">basis</span><span class="p">);</span> <span class="n">cB</span> <span class="p">=</span> <span class="n">c</span><span class="p">(</span><span class="n">basis</span><span class="p">);</span>
+</span><span class="line"><span class="n">T</span> <span class="p">=</span> <span class="p">[</span><span class="n">B</span><span class="o">\</span><span class="n">A</span> <span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">)]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="inadequacies">Inadequacies</h2>
+
+<p>Since I’m no longer in an LP course, I’m too lazy to write the code
+for finding the suitable elements for a pivot operation.  We <em>don’t</em>
+need to re-develop something that has been well-developed.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -828,124 +930,6 @@ bounded by $C$ except for finitely many points,</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/12/20/learnt-laurent-series/">Learnt Laurent Series</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-12-20T18:51:05+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:51 pm</span></time>
-        
-           | <a href="/blog/2015/12/20/learnt-laurent-series/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/12/20/learnt-laurent-series/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday, I read the proof of Laurent’s Theorem in my complex
-variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
-
-<p><span class="myeqn">
-Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
-z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
-surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
-
-<div class="myeqn">
-\[
-  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
-  \abs{z - z_0} &lt; R_2).
-\]
-</div>
-
-<p><span>Image size:</span>
-<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
-<span id="lbl">300</span></p>
-
-<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
-  Your browser does not support SVG
-</object>
-
-<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
-</a></p>
-
-<p><small>Source code: <a href="/downloads/code/Laurent/laurent.tex">$\rm \LaTeX$</a>, <a href="/downloads/code/Laurent/laurent.svg">SVG</a></small></p>
-
-<p>I was stuck at this point.</p>
-
-<div class="myeqn">
-\begin{equation}
-  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
-  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
-  = 0
-  \label{int}
-\end{equation}
-</div>
-
-<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
-including the circumference of $\gamma$.  Then the boundary of the
-region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
-third term in $\eqref{int}$ was needed.  I took me half an hour to
-figure out that the integrand is <em>not</em> simply $f(s)$, but with a
-denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
-I need to also include it as the boundary of the region of analyticity
-of the integrand.</p>
-
-<hr />
-
-<!-- Defer loading of JavaScripts -->
-<script type="text/javascript" charset="utf-8">
-(function() {
-    function getScript(url,success){
-        var script=document.createElement('script');
-        script.src=url;
-        var head=document.getElementsByTagName('head')[0],
-        done=false;
-        script.onload=script.onreadystatechange = function(){
-        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
-            done=true;
-            success();
-            script.onload = script.onreadystatechange = null;
-            head.removeChild(script);
-        }
-        };
-        head.appendChild(script);
-    }
-
-    getScript("/javascripts/svg-resize-bar.js",function() {});
-})();
-</script>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:churchill">
-
-      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
-variables and applications (Vol. 7)</em>. (pp. 17). New York:
-McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -991,7 +975,7 @@ McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (26)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (27)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -1013,6 +997,10 @@ McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/25/another-blue-screen-windows-7/">Another Blue Screen Windows 7</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Git for Windows, Curl, Gist.vim With Vundle (4)</a>
       </li>
     
@@ -1026,10 +1014,6 @@ McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
     
       <li class="post">
         <a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
       </li>
     
   </ul>

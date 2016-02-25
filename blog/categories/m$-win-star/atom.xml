@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-25T00:37:09+08:00</updated>
+  <updated>2016-02-25T23:07:26+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Another Blue Screen Windows 7]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7/"/>
+    
+    <updated>2016-02-25T22:41:06+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7</id>
+    
+      <content type="html"><![CDATA[<p>I saw a monitor which displayed the notorious blue screen of death
+this evening.  Since I <em>don’t</em> know how to find out the reason of the
+problem from the coredump, I use <a href="http://www.ubuntu.com/">Ubuntu</a>.</p>
+
+<picture class="fancybox" title="A Windows 7 Blue Screen">
+  <source srcset="/images/posts/BoD/20160225-185456.jpg" media="(min-width: 400px)" /> 
+  <img alt="Win 7 BoD" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160225-185456.jpg" />
+</picture>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -395,62 +416,6 @@ give the commit history at a particular node instead. <a href="#fnref:3" class="
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
-    
-    <updated>2016-02-22T10:23:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
-following error.</p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
-/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
-curl: (1) Protocol "'http" not supported or disabled in libcurl
-shell returned 1
-Hit any key to close this window...
-</code></pre>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
-the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
-and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
-
-<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
-on the Google search web page, and the rest of the error message
-appeared in the list of suggestions.  In the first search result,
-which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
-error occurred from the first answer—in the Command Prompt, one
-needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
-Bash, this <em>doesn’t</em> matter.</p>
-
-<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
-version of Git was too old.  I then upgraded it.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
-(or <code>/c</code>) stands for “command”, and what’s left is the command to
-be run.</li>
-  <li><code>curl</code> will grab content from the input URL and display it as
-standard output.  To save the downloaded content in a file, the
-flag <code>-o</code>, which means “output”, can be used.</li>
-</ol>
-
 ]]></content>
     
   </entry>

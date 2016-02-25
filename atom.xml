@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-25T00:37:09+08:00</updated>
+  <updated>2016-02-25T23:07:26+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,27 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Another Blue Screen Windows 7]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7/"/>
+    
+    <updated>2016-02-25T22:41:06+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7</id>
+    
+      <content type="html"><![CDATA[<p>I saw a monitor which displayed the notorious blue screen of death
+this evening.  Since I <em>don’t</em> know how to find out the reason of the
+problem from the coredump, I use <a href="http://www.ubuntu.com/">Ubuntu</a>.</p>
+
+<picture class="fancybox" title="A Windows 7 Blue Screen">
+  <source srcset="/images/posts/BoD/20160225-185456.jpg" media="(min-width: 400px)" /> 
+  <img alt="Win 7 BoD" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160225-185456.jpg" />
+</picture>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1519,85 +1540,6 @@ the square brackets with a backslash, but I faied again.  Finally, I
 googled “grep escape character” for a solution.  Since then, I know
 that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
 string.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Generate Simplex Tableaux With Octave]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave/"/>
-    
-    <updated>2016-01-16T14:53:15+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>It’s easy that one makes <a href="http://chat.stackexchange.com/transcript/message/26730376#26730376">careless mistakes</a> in a pivot
-operation.  As a result, in test/exams in which calculators are
-allowed, I used a simple program to save time.</p>
-
-<p>Answering linear programming question on
-<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a>, I used <a href="http://www.gnu.org/software/octave">GNU Octave</a> to
-do the tedious work.</p>
-
-<h2 id="initial-tableau">Initial tableau</h2>
-
-<p>First write the LPP in standard form.  I assume that $b$ and $c$ are
-column vectors.</p>
-
-<ul>
-  <li><code>c</code> is the objective function.</li>
-  <li><code>A</code> is the coefficient matrix of the constraints.  (a.k.a technology
-  matrix)</li>
-  <li><code>b</code> is the RHS of the constraints.</li>
-  <li><code>T0</code> is the initial tableau.</li>
-</ul>
-
-<p>My habit is to</p>
-
-<ol>
-  <li>place $b$ on the RHS;</li>
-  <li>place the objective function row at the bottom;</li>
-  <li>omit the coefficient for $z$ since it’ll <em>never</em> be changed.</li>
-</ol>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the initial tableau</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">format</span> <span class="nb">rat</span><span class="p">;</span>
-</span><span class="line"><span class="n">c</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span> <span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">11</span> <span class="mi">0</span> <span class="mi">8</span><span class="p">]</span><span class="o">&#39;</span><span class="p">;</span>
-</span><span class="line"><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>
-</span><span class="line"><span class="mi">1</span> <span class="o">-</span><span class="p">.</span><span class="mi">5</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line"><span class="mi">0</span> <span class="mi">2</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line"><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">];</span>
-</span><span class="line"><span class="n">T0</span> <span class="p">=</span> <span class="p">[</span><span class="n">A</span> <span class="n">b</span><span class="p">;</span> <span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="mi">0</span><span class="p">]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="current-simplex-tableau">Current simplex tableau</h2>
-
-<p>The command <code>basis = [3 2 6]</code> is used to choose the decision variables
-<span class="myeqn">$x_3,x_2$ and $x_6$</span> as the
-basis.  Note that the order of the entries in the array <code>basis</code> is
-very <em>important</em>.  By setting this array, I <em>don’t</em> need to repeat
-typing the same set of numbers for $B$ and <span class="myeqn">$c_B$</span>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Generate the tableau from the current basis</span><a href="http://math.stackexchange.com/a/1605301/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="octave"><span class="line"><span class="n">basis</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">6</span><span class="p">];</span> <span class="n">B</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span><span class="n">basis</span><span class="p">);</span> <span class="n">cB</span> <span class="p">=</span> <span class="n">c</span><span class="p">(</span><span class="n">basis</span><span class="p">);</span>
-</span><span class="line"><span class="n">T</span> <span class="p">=</span> <span class="p">[</span><span class="n">B</span><span class="o">\</span><span class="n">A</span> <span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">A</span><span class="p">)</span><span class="o">-</span><span class="n">c</span><span class="o">&#39;</span> <span class="n">cB</span><span class="o">&#39;*</span><span class="p">(</span><span class="n">B</span><span class="o">\</span><span class="n">b</span><span class="p">)]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<p>Since I’m no longer in an LP course, I’m too lazy to write the code
-for finding the suitable elements for a pivot operation.  We <em>don’t</em>
-need to re-develop something that has been well-developed.</p>
 
 ]]></content>
     

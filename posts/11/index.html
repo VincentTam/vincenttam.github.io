@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I often use Lynx due to several reasons.1 Problem While browsing the Internet with Lynx, one can spawn the shell, so that
-one can resume &hellip;">
+  <meta name="description" content="Background I pull the Git commits from the origin of this blog to Git Bash on
+M$ Win*. The Gemfile has changed due to commit fbc3c0b. Problem I ran &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,76 @@ one can resume &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/01/04/certificate-verify-failed-during-gem-update/">Certificate Verify Failed During Gem Update</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-04T22:41:05+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:41 pm</span></time>
+        
+           | <a href="/blog/2015/01/04/certificate-verify-failed-during-gem-update/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/01/04/certificate-verify-failed-during-gem-update/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/01/04/certificate-verify-failed-during-gem-update/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I pull the Git commits from the <code>origin</code> of this blog to Git Bash on
+M$ Win*.  The <code>Gemfile</code> has changed due to commit <a href="https://github.com/imathis/octopress/commit/fbc3c0b">fbc3c0b</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I ran <code>bundle install</code> according to the official documentation, and
+got an <em>unexpected error</em>.<sup id="fnref:doc"><a href="#fn:doc" class="footnote">1</a></sup></p>
+
+<pre class="cli"><code><span class="GitHostName">Owner@OWNER-PC</span> <span class="GitPathName">/c/github/vincenttam.github.io (source)</span>
+$ bundle install
+DL is deprecated, please use Fiddle
+Fetching gem metadata from https://rubygems.org/.........
+Resolving dependencies...
+<span class="err">Bundler could not find compatible versions for gem "sass":
+  In snapshot (Gemfile.lock):
+    sass (3.2.19)
+
+  In Gemfile:
+    compass (~&gt; 1.0.1) x64-mingw32 depends on
+      sass (&lt; 3.5, &gt;= 3.3.13) x64-mingw32</span>
+
+Running `<span class="HLCode">bundle update</span>` will rebuild your snapshot from scratch, using only
+the gems in your Gemfile, which may resolve the conflict.
+</code></pre>
+
+<p><em>Without</em> updated gems, even though everything in the <code>source</code> folder
+is <em>correct</em>, one <em>can’t</em> generate an Octopress blog.  <strong>How can one
+get the gems updated?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/04/certificate-verify-failed-during-gem-update/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -632,60 +702,6 @@ command <code>git status</code> gradually <em>decreased</em>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/">My Improved Custom Autocompletion Mappings in Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-13T14:40:44+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:40 pm</span></time>
-        
-           | <a href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Inspired by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>, I added some
-autocompletion mappings in my VIMRC last year.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Three months
-later, I saw the word “FileType” in <a href="http://vimdoc.sourceforge.net/htmldoc/usr_40.html#40.3">Vim’s User Manual</a>,
-and shortened these autocommand a little bit.<sup id="fnref:pp2"><a href="#fn:pp2" class="footnote">2</a></sup>  In my opinion,
-it’s incredibly amazing since I can type text at the speed of thought.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If I’ve finished editing an HTML file and open another $\rm \LaTeX$
-file, then my insert mode mappings will interfere with those defined
-by <a href="http://vim-latex.sourceforge.net">$\rm \LaTeX$-Suite</a>.  <strong>How can I restrict my custom
-mappings to the current working buffer only?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/13/my-improved-custom-autocompletion-mappings-in-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -731,7 +747,7 @@ mappings to the current working buffer only?</strong></p>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (26)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (27)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -753,6 +769,10 @@ mappings to the current working buffer only?</strong></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/25/another-blue-screen-windows-7/">Another Blue Screen Windows 7</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Git for Windows, Curl, Gist.vim With Vundle (4)</a>
       </li>
     
@@ -766,10 +786,6 @@ mappings to the current working buffer only?</strong></p>
     
       <li class="post">
         <a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
       </li>
     
   </ul>

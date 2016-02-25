@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Backgroud I was stuck at a question from a convex analysis book for more than a
-week. I couldn’t directly find its solution. Let $K$ be a convex cone &hellip;">
+  <meta name="description" content="Yesterday, I read the proof of Laurent’s Theorem in my complex
+variables book, and I was stuck at the following equation.1 Suppose that $f$ is &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,124 @@ week. I couldn’t directly find its solution. Let $K$ be a convex cone &hellip;
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/12/20/learnt-laurent-series/">Learnt Laurent Series</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-12-20T18:51:05+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:51 pm</span></time>
+        
+           | <a href="/blog/2015/12/20/learnt-laurent-series/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/12/20/learnt-laurent-series/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/12/20/learnt-laurent-series/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Yesterday, I read the proof of Laurent’s Theorem in my complex
+variables book, and I was stuck at the following equation.<sup id="fnref:churchill"><a href="#fn:churchill" class="footnote">1</a></sup></p>
+
+<p><span class="myeqn">
+Suppose that $f$ is analytic on the annular region $R_1 &lt; \abs{z -
+z_0} &lt; R_2$.  Let $C$ be any postively-oriented closed curve
+surrounding point $z_0$.</span>  By Cauchy–Goursat Theorem, we have</p>
+
+<div class="myeqn">
+\[
+  f(z) = \sum_{n = -\infty}^{\infty} c_n (z - z_0)^n \quad (R_1 &lt;
+  \abs{z - z_0} &lt; R_2).
+\]
+</div>
+
+<p><span>Image size:</span>
+<input id="bar" type="range" name="points" min="200" max="800" value="300" step="10" />
+<span id="lbl">300</span></p>
+
+<object type="image/svg+xml" class="boxed" id="obj" data="/downloads/code/Laurent/laurent.svg" width="300" height="300">
+  Your browser does not support SVG
+</object>
+
+<p><a href="http://validator.w3.org/check?uri=https%3A%2F%2Fvincenttam.github.io%2Fdownloads%2Fcode%2FLaurent%2Flaurent.svg;ss=1"><img src="/images/valid-svg11.png" alt="Valid SVG 1.1" height="31" width="88" />
+</a></p>
+
+<p><small>Source code: <a href="/downloads/code/Laurent/laurent.tex">$\rm \LaTeX$</a>, <a href="/downloads/code/Laurent/laurent.svg">SVG</a></small></p>
+
+<p>I was stuck at this point.</p>
+
+<div class="myeqn">
+\begin{equation}
+  \int_{C_2}^{} \frac{f(s) \ud s}{s - z} - \int_{C_1}^{}
+  \frac{f(s) \ud s}{s - z} - \int_{\gamma}^{} \frac{f(s) \ud s}{s - z}
+  = 0
+  \label{int}
+\end{equation}
+</div>
+
+<p>The function $f$ is analytic on the <em>entire</em> circle $\gamma$,
+including the circumference of $\gamma$.  Then the boundary of the
+region where $f$ is analytic is the circumferences of <span class="myeqn">$C_1$ and $C_2$</span>.  I wondered why the
+third term in $\eqref{int}$ was needed.  I took me half an hour to
+figure out that the integrand is <em>not</em> simply $f(s)$, but with a
+denominator $s - z$.  Since $z$ is the centre of the circle $\gamma$,
+I need to also include it as the boundary of the region of analyticity
+of the integrand.</p>
+
+<hr />
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/svg-resize-bar.js",function() {});
+})();
+</script>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:churchill">
+
+      <p>Brown, J. W., Churchill, R. V., &amp; Lapidus, M. (1996). <em>Complex
+variables and applications (Vol. 7)</em>. (pp. 17). New York:
+McGraw-Hill. <a href="#fnref:churchill" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -828,153 +946,6 @@ McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-03T16:35:01+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:35 pm</span></time>
-        
-           | <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="lemma">Lemma</h2>
-
-<p>Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have</p>
-
-<div class="myeqn">
-\begin{equation}
-\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{lemma}
-\end{equation}
-</div>
-
-<p>The trick is to treat the integral on the L.H.S. of \eqref{lemma} as a
-number.</p>
-
-<div class="myeqn">
-\begin{align}
-\int_{a}^{b} w(t) \ud t &amp;= r_0 e^{i\theta_0} \text{ for some } r \in
-\R \text{ and } \theta_0 \in [-\pi,\pi)
-\label{trick1}\\
-r_0 &amp;= \int_{a}^{b} e^{-i\theta_0} w(t) \ud t
-\label{trick2}
-\end{align}
-</div>
-
-<p>Then from \eqref{lemma} and \eqref{trick1}, it suffices to show that</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 = \abslr{r_0 e^{i\theta_0}} \le \int_{a}^{b} \abs{w(t)} \ud t.
-\label{new_goal1}
-\end{equation}
-</div>
-
-<p>Since \eqref{trick2} consists of $e^{-i\theta_0}$, which is <em>absent</em>
-on the R.H.S. of \eqref{lemma} and \eqref{new_goal1}, we add it back.
-Thus, we need to show</p>
-
-<div class="myeqn">
-\begin{equation}
-r_0 \le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\label{new_goal2}
-\end{equation}
-</div>
-
-<p>Looking at \eqref{trick2} again, we’re almost there!  Using elementary
-properties of complex numbers and definite integrals for real-valued
-functions and the fact/definition that</p>
-
-<div class="myeqn">
-\begin{equation}
-\Re\left(\int_{a}^{b} w(t) \ud t\right) = \int_{a}^{b} \Re[w(t)] \ud
-t,
-\label{Re-int}
-\end{equation}
-</div>
-
-<p>we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-r_0 &amp;= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
-&amp;= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
-&amp;\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
-\end{aligned}
-\label{fin}
-\end{equation}
-</div>
-
-<p>Therefore, \eqref{new_goal2} is satisfied, so as \eqref{lemma}.</p>
-
-<h2 id="an-upper-bound-for-legendre-polynomials">An upper bound for Legendre polynomials</h2>
-
-<p>I have <em>never</em> evaluated</p>
-
-<div class="myeqn">
-\begin{equation}
-P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta,
-\label{pnx}
-\end{equation}
-</div>
-
-<p>where $-1 \le x \le 1$ and $n = 0,1,2,\dots$</p>
-
-<p>Applying \eqref{lemma}, one gets</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
-\cos{\theta})^n \ud\theta\\
-&amp;\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
-&amp;= 1
-\end{aligned}
-\label{crux}
-\end{equation}
-</div>
-
-<p>because</p>
-
-<div class="myeqn">
-\begin{equation}
-\begin{aligned}
-&amp;\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
-&amp;= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
-&amp;\le \sqrt{x^2 + (1 - x^2)}\\
-&amp;= 1.
-\end{aligned}
-\label{norm-ub}
-\end{equation}
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -1020,7 +991,7 @@ P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (26)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (27)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -1042,6 +1013,10 @@ P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/02/25/another-blue-screen-windows-7/">Another Blue Screen Windows 7</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Git for Windows, Curl, Gist.vim With Vundle (4)</a>
       </li>
     
@@ -1055,10 +1030,6 @@ P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
     
       <li class="post">
         <a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a>
       </li>
     
   </ul>
