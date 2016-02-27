@@ -100,7 +100,7 @@ Fact learnt: formatting printf's output
 In the Stack Overflow question, there's a command
 
     find .git/objects/ -type f -printf "%h%f %s\n"
-{.cliUB}
+{:.cliUB}
 
 - The flag `-type f` stands for files.  *Without* this flag,
     directories like `.git/objects` will be displayed.
