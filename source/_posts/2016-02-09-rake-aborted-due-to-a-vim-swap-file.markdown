@@ -71,7 +71,7 @@ Solution
 I googled "rake generate ignore swp", and clicked on
 [the first search result][1st], which is Octopress issue #1073.  It
 provided a link to [issue #600][i600].  Bradon Mathis said that <q
-cite="https://github.com/imathis/octopress/blob/2.1/Rakefile#L265">this
+cite="https://github.com/imathis/octopress/blob/site-2.1/Rakefile#L265">this
 has been [fixed in 2.1][fixed21]</q>.  Unluckily, after hitting that
 hyperlink, I found that the version of `Rakefile` shown online was
 *different* from mine. Finally, I installed [vim-octopress] to solve
@@ -110,7 +110,7 @@ Moreover, I revised the usage of these two Vim plugins.
 [log]: http://polymerhk.com/articles/2016/02/03/27363/
 [1st]: https://github.com/imathis/octopress/issues/1073
 [i600]: https://github.com/imathis/octopress/issues/600
-[fixed21]: https://github.com/imathis/octopress/blob/2.1/Rakefile#L265
+[fixed21]: https://github.com/imathis/octopress/blob/site-2.1/Rakefile#L265
 [vim-octopress]: https://github.com/tangledhelix/vim-octopress
 [installation]: https://goo.gl/2Uq5AU
 [Octopress]: http://octopress.org
