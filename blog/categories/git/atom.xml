@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Git | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/git/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-28T19:56:40+08:00</updated>
+  <updated>2016-02-29T01:31:02+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (5)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/"/>
+    
+    <updated>2016-02-29T00:35:30+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">the third post of this series</a>, I ran the editor command</p>
+
+<pre class="cli"><code>:!git config --list
+</code></pre>
+
+<p>inside <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>, but I got a fatal error.  I
+found out how to get <a href="https://github.com/mattn/gist-vim">Gist.vim</a> work <em>without</em> solving this problem.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to avoid this fatal error?</strong></p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
+fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
+gs/.gitconfig': No such file or directory
+shell returned 128
+Hit any key to close this window...
+</code></pre>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I forgot <a href="http://polymerhk.com/articles/2016/02/03/27363/">this article about programming</a> that I’d read several
+weeks ago.  I should have pay more attention of the error message
+itself, rather than the Google search results of this message.  Hence,
+creating a symbolic link for <code>C:\Users\foo\.gitignore</code> to the
+<code>path/to/Data/settings</code> folder.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>While writing this post, I re-read
+<a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/"><em>Rake Aborted Due to a Vim Swap File</em></a> so as to find the URL of
+the article about programming.  I discovered a broken link in the
+GitHub page for <a href="https://github.com/imathis/octopress/issues/600#issuecomment-6206116">Octopress issue #600</a>.  From the list of
+branches in the homepage for this GitHub project, I found <code>site-2.1</code>,
+on which commit <a href="https://github.com/imathis/octopress/commit/2399008">2399008</a> was located.  Therefore, I made commit
+<a href="https://github.com/VincentTam/vincenttam.github.io/commit/68b0adb">68b0adb</a> in the repository for this blog.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -395,62 +448,6 @@ give the commit history at a particular node instead. <a href="#fnref:3" class="
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
-    
-    <updated>2016-02-22T10:23:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
-following error.</p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
-/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
-curl: (1) Protocol "'http" not supported or disabled in libcurl
-shell returned 1
-Hit any key to close this window...
-</code></pre>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
-the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
-and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
-
-<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
-on the Google search web page, and the rest of the error message
-appeared in the list of suggestions.  In the first search result,
-which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
-error occurred from the first answer—in the Command Prompt, one
-needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
-Bash, this <em>doesn’t</em> matter.</p>
-
-<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
-version of Git was too old.  I then upgraded it.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
-(or <code>/c</code>) stands for “command”, and what’s left is the command to
-be run.</li>
-  <li><code>curl</code> will grab content from the input URL and display it as
-standard output.  To save the downloaded content in a file, the
-flag <code>-o</code>, which means “output”, can be used.</li>
-</ol>
-
 ]]></content>
     
   </entry>
