@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Learnt Cauchy--Bunyakovsky--Schwarz Inequality for Definite Integrals"
+title: "Learnt Cauchy–Bunyakovsky–Schwarz Inequality for Definite Integrals"
 date: 2015-02-28 22:37:59 +0800
 comments: true
 categories: math
