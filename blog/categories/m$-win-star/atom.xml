@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-02-29T01:31:02+08:00</updated>
+  <updated>2016-03-12T21:04:29+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Missing OS]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/12/missing-os/"/>
+    
+    <updated>2016-03-12T20:53:42+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/12/missing-os</id>
+    
+      <content type="html"><![CDATA[<p>I saw this error on a M$ Win* 7 machine.  If I were the
+administrator, I would install GNU/Linux into that computer so that
+a free and reliable operating system can be found inside.</p>
+
+<picture class="fancybox" title="Missing Operating System">
+  <source srcset="/images/posts/BoD/20160312-153126.jpg" media="(min-width: 400px)" /> 
+  <img alt="Missing Operating System" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160312-153126.jpg" />
+</picture>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -219,83 +239,6 @@ manually set the variable <code>github_user</code> in VIMRC.</p>
 <p>After that, I restarted the editor and invoked the plugin, which then
 asked for my GitHub password and created a token in
 <code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (2)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/"/>
-    
-    <updated>2016-02-22T14:32:04+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
-keeping the plugins up-to-date, <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
-update the helptags after merging the commits from GitHub.  Therefore,
-I followed the installation guide of Vundle.  However, when I started
-updating, I got the following error.</p>
-
-<pre class="cli"><code>Processing 'tpope/vim-fugitive'
-Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
-vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
-command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
-line    1:
-E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
-Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
-vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
--- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
-</code></pre>
-
-<p><strong>How can I get the Vim plugin updates?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Google <em>didn’t</em> help this time.  <em>Not</em> knowing what to do, I ran a
-simple command <code>ls</code>, and this <em>failed</em>.</p>
-
-<pre class="cli"><code>C:\Program Files\Git\usr\bin\bash -c "ls"
-'C:\Program' is not recognized as an internal or external command,
-operable program or batch file.
-shell returned 1
-Hit any key to close this window...
-</code></pre>
-
-<p>From the above output, one knows that the cause of this unexpected
-failure is the whitespace character in the path of Git Bash.  As a
-result, I searched “vim ‘C:\Program’ is not recognized as an internal
-or external” in Google.  Then I realised that it was
-<a href="http://vi.stackexchange.com/a/2424">a bug in Vim</a>.  Since I <em>didn’t</em> want to spend time setting
-up GVim again, I stick to GVim Portable, whose runpath is <em>different</em>
-from what many developers of Vim plugins, who use *nix, expect.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Invoke GVim from Command Prompt,Start Menu or desktop icon instead of
-Git Bash because the <code>shell</code> option will then be <code>cmd.exe</code>, whose path
-contains <em>no</em> spaces.  Then everything should be fine, <em>except the
-line breaks</em>.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>Some developers include a <code>.gitignore</code> file in their Vim plugins to
-ignore files like <code>docs/tags</code>, while some <em>don’t</em>.  IMHO, it’s better
-to have one.</p>
-
-<p>One good point of free software is that users can interact with
-developers to report and discuss the problems, or even share their
-code to improve the software, for example, <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> pull
-request <a href="https://github.com/tangledhelix/vim-octopress/pull/11">#11</a>.</p>
 
 ]]></content>
     
