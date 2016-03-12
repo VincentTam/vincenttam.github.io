@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-12T21:04:29+08:00</updated>
+  <updated>2016-03-12T21:41:12+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Google Webmaster Sitemap Warning]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/12/google-webmaster-sitemap-warning/"/>
+    
+    <updated>2016-03-12T21:19:19+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/12/google-webmaster-sitemap-warning</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I uploaded my <code>sitemap.xml</code> to Google Webmaster, but I received
+warnings: <code>404.html</code> was in the sitemap, but the crawl was blocked by
+<code>robots.txt</code>.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Obviously, I should find a way to exclude the 404 page from the
+sitemap.  In the old days, one can add the path name of the page to be
+excluded.<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup></p>
+
+<p>However, the file <code>plugins/sitemap_generator.rb</code> has been <em>deleted</em>
+since commit <a href="https://github.com/octopress/octopress/commit/52f9119">52f9119</a>.  <strong>How can the 404 page be excluded from the
+sitemap then?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Searching “octopress sitemap exclude url” <em>won’t</em> help.  Actually,
+adding a line <code>sitemap: false</code> will do.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ref">
+
+      <p>For details, refer to <a href="http://droidyue.com/blog/2014/06/20/custom-octopress-404-page/index.html"><em>自定義Octopress404頁面</em></a> written by
+androidyue. <a href="#fnref:ref" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1453,26 +1497,6 @@ game out of curiosity.</p>
 
 <p>Zoom in the web page so that the target is enlarged.  This allows you
 to hit closer to the centre, which enables larger damage to the boss.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Become an Unsung Hero]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/17/become-an-unsung-hero/"/>
-    
-    <updated>2016-01-17T13:45:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/17/become-an-unsung-hero</id>
-    
-      <content type="html"><![CDATA[<p>Several mininutes ago, I was awarded the “Unsung Hero” badge on
-<a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.  I’m glad about that, and I
-hope that this will bring more upvotes to my answers and reduce the
-ratio of zero score accepted answers to all accepted answers.  This is
-<em>not</em> likely to happen though.</p>
-
-<p><img src="https://vincenttam.github.io/images/posts/MathSE/unsung.png" alt="My &quot;Unsung Hero&quot; badge on Mathematics Stack Exchange" /></p>
 
 ]]></content>
     
