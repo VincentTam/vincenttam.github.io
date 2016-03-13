@@ -30,7 +30,7 @@ Solution
 ---
 
 Searching "octopress sitemap exclude url" *won't* help.  Actually,
-adding a line `sitemap: false` will do.
+adding a line `sitemap: false` in `source/404.md` will do.
 
 [^ref]:
     For details, refer to [*自定義Octopress404頁面*][ref] written by
