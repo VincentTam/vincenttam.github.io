@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-13T16:03:56+08:00</updated>
+  <updated>2016-03-14T22:12:19+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,41 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Adobe Reader Has Stopped Working]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/14/adobe-reader-has-stopped-working/"/>
+    
+    <updated>2016-03-14T22:01:45+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/14/adobe-reader-has-stopped-working</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I opened Adobe Reader on a M$ Win* 7 desktop in a library so as to
+print a PDF file.  I <em>couldn’t</em> understand why this window kept
+popping up.</p>
+
+<picture class="fancybox" title="Adobe RdrCEF has stopped working">
+  <source srcset="/images/posts/AdbRdr/RdrCEF.png" media="(min-width: 525px)" /> 
+  <img alt="Adobe RdrCEF has stopped working" width="300" src="https://vincenttam.github.io/images/posts/AdbRdr/RdrCEF.png" />
+</picture>
+
+<h2 id="result">Result</h2>
+
+<p>Lacking time, I <em>won’t</em> find a solution for this problem.</p>
+
+<p>If I choose to ignore this window, then the printing job can still be
+carried out.  Therefore, I just waited until the document was printed.
+Then I closed Adobe Reader.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>I choose Sumatra PDF since it is licensed under <abbr title="General Public License">GPL</abbr>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -161,84 +196,6 @@ Bash, I can still use it by opening GVim with Command Prompt.</p>
 
 <p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
 <code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/"/>
-    
-    <updated>2016-02-22T16:54:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>A VIMRC is important for efficient text editing.  It can be over one
-hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
-folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
-VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
-other users, and read others’ configuration files so as to learn from
-them.</p>
-
-<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
-efficient.  Therefore, I re-read the installation instructions for
-<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
-installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
-
-<p>Due to the problem mentioned in
-<a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
-Prompt instead of Git Bash.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I have already configure <code>github.user</code> to my GitHub user name, but
-Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
-
-<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
-</code></pre>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I tried looking into the source code of the Vim plugin.  I learnt from
-<em>Learn Vim Script the Hard Way</em> the difference between <code>echo</code> and
-<code>echom</code>: the former <em>isn’t</em> persistent; the later can be retrieved by
-<code>message</code>.  It took me a few minutes to find out that Command Prompt,
-the program set by <code>shell</code> option, <em>didn’t</em> take my global
-configurations into account.  I viewed the list of my configurations
-using the following command.</p>
-
-<pre class="cli"><code>:!git config --list
-</code></pre>
-
-<p>I <em>didn’t</em> see <code>github.user</code> in the list.  I tried adding <code>--global</code>,
-and I got an error.</p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
-fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
-gs/.gitconfig': No such file or directory
-shell returned 128
-Hit any key to close this window...
-</code></pre>
-
-<p>I <em>failed</em> to comprehend the second line of the above output.  I just
-realised that this had something to do with GVim Portable.  If I use
-GVim instead, I <em>won’t</em> have such trouble since <code>.gitconfig</code> is
-located at the home folder.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I searched for a tutorial of using this plugin.  Finally, from a
-Japanese website which I forgot its URL, I found out that one can
-manually set the variable <code>github_user</code> in VIMRC.</p>
-
-<p>After that, I restarted the editor and invoked the plugin, which then
-asked for my GitHub password and created a token in
-<code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
 
 ]]></content>
     
