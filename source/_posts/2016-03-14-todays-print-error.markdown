@@ -13,11 +13,11 @@ I had sent a PDF file to a printer for printing.  Then I was waiting
 for a person to finish her priting job.  Unfortunately, an error
 occured, and she left *without* saying a word.
 
-<picture class="fancybox" title="Adobe RdrCEF has stopped working">
-  <source srcset="source/images/posts/PrinterError/20160314_191831_HDR.jpg"
-    media="(min-width: 525px)"></source> 
-  <img alt="Adobe RdrCEF has stopped working" width="300"
-    src="source/images/posts/PrinterError/20160314_191831_HDR.jpg" />
+<picture class="fancybox" title="A Print Error">
+  <source srcset="/images/posts/PrinterError/20160314_191831_HDR.jpg"
+    media="(min-width: 600px)"></source> 
+  <img alt="A Print Error" width="300"
+    src="/images/posts/PrinterError/20160314_191831_HDR.jpg" />
 </picture>
 
 Result
