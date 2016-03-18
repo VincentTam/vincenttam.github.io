@@ -9,7 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I installed msysgit 1.9.0, and added its bash utilities to PATH. Problem I attempted to open an HTML file with curl. However, I got the &hellip;">
+  <meta name="description" content="Background I had finished writing my previous post. In rake preview, I
+got the desired output. Then, the next step is to commit the changes
+and to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +80,103 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-22T12:16:16+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:16 pm</span></time>
+        
+           | <a href="/blog/2016/02/22/rake-deploy-fatal-error/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/22/rake-deploy-fatal-error/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I had finished writing <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">my previous post</a>.  In <code>rake preview</code>, I
+got the desired output.  Then, the next step is to commit the changes
+and to deploy the generated contents to GitHub Pages.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>A large block of red text appeared after I ran <code>rake deploy</code>.  The
+commit on the <code>master</code> branch was <em>unsuccessful</em>.</p>
+
+<pre class="cli"><code>$ rake deploy
+(in C:/github/vincenttam.github.io)
+cp -r source/fancybox/.gitattributes public/fancybox/.gitattributes
+cd _deploy
+Already up-to-date.
+cd -
+rm -rf _deploy/404.html
+...
+rm -rf _deploy/stylesheets
+cp -r public/. _deploy
+cd _deploy
+fatal: CRLF would be replaced by LF in fancybox/README.md.
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+        modified:   404.html
+        modified:   about/index.html
+        ...
+
+Untracked files:
+        blog/2016/02/21/
+        blog/2016/02/22/
+        downloads/code/miktex-update2/
+        images/posts/MikTeXUpdate2/
+        posts/31/
+
+no changes added to commit
+Everything up-to-date
+cd -
+## Set the codepage to 65001 for Windows machines
+## Deploying branch to Github Pages
+## Pulling any updates from Github Pages
+
+## Copying public to _deploy
+
+## Committing: Site updated at 2016-02-22 03:37:22 UTC
+
+## Pushing generated _deploy website
+
+## Github Pages deploy complete
+</code></pre>
+
+<p>Even though the system said that the deploy was “complete”, in fact,
+it had <em>never</em> been carried out.</p>
+
+<p><strong>How can I update my blog on GitHub Pages?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/22/rake-deploy-fatal-error/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -788,73 +887,6 @@ Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/07/flair-in-octopress-via-https/">Flair in Octopress via HTTPS</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-07T23:52:33+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:52 pm</span></time>
-        
-           | <a href="/blog/2016/02/07/flair-in-octopress-via-https/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/07/flair-in-octopress-via-https/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I replaced <a href="/images/avatar256.png">the big avatar</a> of my self intro in the sidebar
-with my Stack Exchange flair, which summarized my reputation and
-badges on <a href="https://math.stackexchange.com">Mathematics Stack Exchange</a>.  Since then, it’s
-easier to see my profile there.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I browsed my blog, I saw a lock with a yellow triangle on the
-left of the URL.</p>
-
-<picture class="fancybox" title="An abnormal icon on the left of the
-URL">
-  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" /> 
-  <img alt="An abnormal icon on the left of the URL" src="/images/posts/Flair/mixed-300.png" />
-</picture>
-
-<p>This indicated the presence of insecure contents.</p>
-
-<picture class="fancybox" title="Firefox's error console message">
-  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" /> 
-  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" /> 
-  <img alt="Firefox's error console message" src="/images/posts/Flair/log-300.png" />
-</picture>
-
-<p><strong>How can I get rid of this error message?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/07/flair-in-octopress-via-https/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -901,7 +933,7 @@ URL">
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (30)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (31)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -923,6 +955,10 @@ URL">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a>
       </li>
     
@@ -936,10 +972,6 @@ URL">
     
       <li class="post">
         <a href="/blog/2016/03/12/missing-os/">Missing OS</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/">Git for Windows, Curl, Gist.vim With Vundle (5)</a>
       </li>
     
   </ul>

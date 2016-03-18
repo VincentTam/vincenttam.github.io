@@ -4,7 +4,7 @@
   <title><![CDATA[Category: M$ Win* | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/m$-win-star/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-14T23:07:01+08:00</updated>
+  <updated>2016-03-18T20:47:39+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Stopped by Adobe Protected Mode]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/18/stopped-by-adobe-protected-mode/"/>
+    
+    <updated>2016-03-18T20:27:34+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/18/stopped-by-adobe-protected-mode</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>I tried opening a PDF file with the freeware Adobe Reader.  Unluckily,
+Blocked by the popup window below, I <em>couldn’t</em> view the content of
+the file.</p>
+
+<picture class="fancybox" title="The default is the 3rd choice.">
+  <source srcset="/images/posts/AdbRdr/opt3.png" media="(min-width: 790px)" /> 
+  <img alt="The default is the 3rd choice." width="300" src="https://vincenttam.github.io/images/posts/AdbRdr/opt3.png" />
+</picture>
+
+<p>I then attempted to open this file by checking the first or the second
+radio button.</p>
+
+<picture class="fancybox" title="Neither of the 1st nor the 2nd worked.">
+  <source srcset="/images/posts/AdbRdr/opt1.png" media="(min-width: 790px)" /> 
+  <img alt="Neither of the 1st nor the 2nd worked." width="300" src="https://vincenttam.github.io/images/posts/AdbRdr/opt1.png" />
+</picture>
+
+<p>Unfortunately, either choice gave rise to the <em>same</em> error.</p>
+
+<p><img src="/images/posts/AdbRdr/opt1a.png" alt="Fatal Error" title="Acrobat failed to load its Core DLL" /></p>
+
+<h2 id="result">Result</h2>
+
+<p>I opened the file in <em>another</em> desktop machine.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -137,65 +176,6 @@ problem from the coredump, I use <a href="http://www.ubuntu.com/">Ubuntu</a>.</p
   <source srcset="/images/posts/BoD/20160225-185456.jpg" media="(min-width: 400px)" /> 
   <img alt="Win 7 BoD" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160225-185456.jpg" />
 </picture>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (4)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/"/>
-    
-    <updated>2016-02-22T18:38:00+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
-path of Git Bash can become a source of trouble.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
-
-<!-- more -->
-
-<h2 id="a-failed-attempt">A failed attempt</h2>
-
-<p>I googled “vim shell path program files”, and clicked
-<a href="http://stackoverflow.com/a/13917410">the first web site</a> as usual.  Even though I <em>don’t</em>, and
-<em>won’t</em> have Cygwin installed in my computer, I still viewed this
-page, which suggested that the path of <code>shell</code> option should be
-surrounded by a pair of double quotes <code>""</code>.  I tried this, but the
-above problem <em>wasn’t</em> solved.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I recalled that after opening the built-in editor in Command Prompt on
-M$ Win* Professional/Enterprise, the displayed path of the working
-directory would be different: some tildes appear in the path.</p>
-
-<p>Therefore, I googled “windows path without spaces”, and learnt to use
-<code>DIR /X</code> in Command Prompt to <a href="https://goo.gl/a9eHZF">solve this problem</a> from an
-answer to <a href="http://superuser.com/a/179450">this Super User question</a>.  Finally, usual
-external commands like <code>ls</code> and <code>file</code> can be executed inside GVim
-Portable.  This solves the error mentioned in the “Discussion” section
-of <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>.  What I’ve wriiten in the
-“Solution” section can be updated: I expect that under usual
-circumstances, the external commands can be run even if the <code>shell</code>
-option is set to Git Bash.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>I used an <code>if</code> statement to surround the <code>set shell=/path/to/bash.exe</code>
-because <a href="http://stackoverflow.com/a/13917410">the same Stack Overflow answer</a> mentioned in the
-“A failed attempt” section said that many Vim plugins used
-<code>has("win32")</code>.  If a plugin failed in a GVim window triggered by Git
-Bash, I can still use it by opening GVim with Command Prompt.</p>
-
-<p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
-<code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
 
 ]]></content>
     
