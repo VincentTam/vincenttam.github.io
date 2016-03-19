@@ -106,5 +106,5 @@ and `file` even said that it was an executable file.
 Finally, `rake` *doesn't* give me strange output.
 
 [pp1]: /blog/2016/02/21/miktex-update-2/
-[pp2]: blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/
+[pp2]: /blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/
 [src]: http://nathanielstory.com/2013/12/28/jekyll-on-windows-with-cygwin.html
