@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Googling “tikz tutorial”, one can find several useful PDF documents
-which are easy to follow, such as the first two results. PGF/TikZ - Graphics for &hellip;">
+  <meta name="description" content="Half a month ago, I didn’t know how to find $\displaystyle \lim_{n \to \infty}
+\sqrt[n]{a^n+b^n}$. With the help from others, I could show
+that the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,118 @@ which are easy to follow, such as the first two results. PGF/TikZ - Graphics for
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/11/14/power-means-with-infinite-exponents/">Power Means With Infinite Exponents</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-11-14T00:30:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:30 am</span></time>
+        
+           | <a href="/blog/2014/11/14/power-means-with-infinite-exponents/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/11/14/power-means-with-infinite-exponents/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find <span class="myeqn">$\displaystyle \lim_{n \to \infty}
+\sqrt[n]{a^n+b^n}$</span>.  With the help from others, I could show
+that the answer was <span class="myeqn">$\max\left\{ a,b
+\right\}$</span>.  This inspired me to solve a question which had been
+in my mind since I was F.3.</p>
+
+<p><span class="myeqn">
+Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \quad\forall\,n \in \N$, and
+$a_i &gt; 0\quad\forall\,i = 1, \dots,k$.  
+Show that $\displaystyle \lim_{n \to \infty} M_n (a_1,\dots,a_k) =
+\max\left\{ a_i \mid i = 1,\dots,k \right\}$ and $\displaystyle
+\lim_{n \to -\infty} M_n = \min\left\{ a_i \mid i = 1,\dots,k
+\right\}$.
+</span></p>
+
+<p><em>Proof</em>:</p>
+
+<p><span class="myeqn">
+I'll use the facts that $\displaystyle \lim_{n \to \infty}
+b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by dividing
+$b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let $b^{\frac{1}{n}} =
+1 + \delta_n$ for some $\delta_n &gt; 0$.  It's a good exercise on the
+definition of limits, the binomial expansion and elementary properties
+of inequalities.)
+</span></p>
+
+<p><span class="myeqn">
+Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note that
+</span></p>
+
+<div class="myeqn">
+\[
+\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}} \le
+\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
+\sqrt[n]{\frac{kM^n}{k}} = M
+\]
+</div>
+
+<p>Therefore, taking limit as $n \to \infty$ and applying the Squeeze
+Theorem, one has</p>
+
+<div class="myeqn">
+\[
+\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{ a_i \mid i =
+1,\dots,k \right\}.
+\]
+</div>
+
+<p>I wrote similar arguments for the case $n \to -\infty$, but after I
+read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
+
+<p><span class="myeqn">
+Replace $a_i$'s with $1/a_i$'s.  Then
+</span></p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
+\left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
+\left.\frac{1}{a_i} \right\| i = 1,\dots,k \right\} \\
+\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
+a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
+1,\dots,k \right\}} \\
+\lim_{n \to \infty} \left( \frac{\sum_{i=1}^{k}
+a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
+\mid i = 1,\dots,k \right\}
+\end{aligned}
+\]
+</div>
+
+<p><span class="myeqn">
+Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
+\lim_{n \to -\infty} \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} =
+\min\left\{ a_i \mid i = 1,\dots,k \right\}$.
+</span></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -680,85 +793,6 @@ main&gt;'
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Understood Power Means Inequality for Integer Powers</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-10-25T18:02:53+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:02 pm</span></time>
-        
-           | <a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve learnt the AM–GM–HM inequality when I was a secondary school
-student.</p>
-
-<p>\[
-  \frac{\sum_{i=1}^n x_i}{n} \ge \sqrt[n]{\prod_{i=1}^n x_i} \ge
-  \frac{n}{\sum_{i=1}^n x_i^{-1}}
-\]</p>
-
-<p>But I didn’t know how to generalise it to integer power $s$.  That is,
-if $k$ and $m$ are positive integers such that $k \le m$, then we have</p>
-
-<p>\[
-  \left( \frac{\sum_{i=1}^n x_i^k}{n} \right)^{\frac{1}{k}} \le
-  \left( \frac{\sum_{i=1}^n x_i^m}{n} \right)^{\frac{1}{m}}.
-\]</p>
-
-<p>I read the proof in Wikipedia, and got stuck in the first step.</p>
-
-<p>\[
-  \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k}}{\sum_{i=1}^{n}w_{i}x_{i}^
-  {k-1}} \le \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k+1}}{\sum_{i=1}^{n}
-  w_{i}x_{i}^{k}},
-\]</p>
-
-<p>I quickly realised that $w_i = 1/n$ in this case.  Even though I know
-that the above inequality is eqivalent to</p>
-
-<p>\[
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k} \right)^2 \le
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k-1} \right)
-  \left( \sum_{i=1}^n w_{i}x_{i}^{k+1} \right),
-\]</p>
-
-<p>At the first glance, I didn’t know how to relate this to the famous
-Cauchy–Schwartz inequality.</p>
-
-<p>\[
-  \left( \sum_{i=1}^n a_{i}b_{i} \right)^2 \le
-  \left(\sum_{i=1}^n a_{i}^2\right)
-  \left(\sum_{i=1}^n b_{i}^2\right)
-\]</p>
-
-<p>Actually, setting $a_i = \sqrt{w_{i}x_{i}^{k-1}}$ and $b_i =
-\sqrt{w_{i}x_{i}^{k+1}}$ will do.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/15">&larr; Older</a>
@@ -791,7 +825,7 @@ Cauchy–Schwartz inequality.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (12)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (13)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -818,13 +852,17 @@ Cauchy–Schwartz inequality.</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (37)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (25)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
@@ -840,10 +878,6 @@ Cauchy–Schwartz inequality.</p>
     
       <li class="post">
         <a href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Google Webmaster Sitemap Warning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/12/missing-os/">Missing OS</a>
       </li>
     
   </ul>

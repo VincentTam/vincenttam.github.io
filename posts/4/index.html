@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Recently, I post math on Mathematics Stack Exchange instead
-of here. Problem How can one get a table for the distribution of reputation on &hellip;">
+  <meta name="description" content="Background I search the data on Stack Exchange Data Explorer. Problem I want to select columns from two tables and join them to form one
+single table &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,95 @@ of here. Problem How can one get a table for the distribution of reputation on &
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-01-07T18:38:44+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:38 pm</span></time>
+        
+           | <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/07/improve-efficiency-of-inner-join/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/01/07/improve-efficiency-of-inner-join/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I search the data on <a href="http://data.stackexchange.com">Stack Exchange Data Explorer</a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I want to select columns from two tables and join them to form one
+single table.  I choose <code>INNER JOIN</code> to avoid seeing null entries in
+the result.  The syntax is similar to the following.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample SQL Syntax </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Table1</span>
+</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Table2</span>
+</span><span class="line"><span class="k">ON</span> <span class="n">Table1</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">Table2</span><span class="p">.</span><span class="n">ID</span>
+</span><span class="line"><span class="k">WHERE</span> <span class="n">Col1</span> <span class="k">LIKE</span> <span class="s1">&#39;foo&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Unluckily, when the size of <code>Table1</code> and <code>Table2</code> is large, it takes a
+while to get the result.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p><a href="https://goo.gl/iLGa5Z">This page</a> has two more efficient ways.  Since I search for
+recent data, I adopted the third method in <a href="http://data.stackexchange.com/math/query/416590/view-all-unanswered-questions">my query</a>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My Query on Stack Exchange Data Explorer </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">TagLike</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">=</span> <span class="o">##</span><span class="n">taglike</span><span class="p">:</span><span class="n">string</span><span class="o">##</span>
+</span><span class="line">
+</span><span class="line"><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">500</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Post</span> <span class="n">Link</span><span class="p">],</span> <span class="n">AnswerCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Ans</span><span class="p">],</span>
+</span><span class="line"><span class="n">CommentCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Com</span><span class="p">],</span> <span class="n">CreationDate</span><span class="p">,</span> <span class="n">Score</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Scr</span><span class="p">],</span>
+</span><span class="line"><span class="n">ViewCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Views</span><span class="p">],</span> <span class="n">OwnerUserId</span> <span class="k">FROM</span> <span class="n">Posts</span>
+</span><span class="line"><span class="k">WHERE</span> <span class="n">AnswerCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">Tags</span> <span class="k">LIKE</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="o">@</span><span class="n">TagLike</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span> <span class="k">AND</span>
+</span><span class="line"><span class="n">ClosedDate</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AS</span> <span class="n">p</span>
+</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span><span class="p">,</span> <span class="n">LastAccessDate</span><span class="p">,</span> <span class="n">Reputation</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Rep</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Users</span>
+</span><span class="line"><span class="k">WHERE</span> <span class="n">LastAccessDate</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-12-01&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">u</span>
+</span><span class="line"><span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">OwnerUserId</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">Id</span>
+</span><span class="line"><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">p</span><span class="p">.</span><span class="n">Com</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -953,81 +1042,6 @@ A'$.
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Mountain Climbing in Lindelöf $T_3$ Spaces</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-09-28T15:39:38+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:39 pm</span></time>
-        
-           | <a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="motivation">Motivation</h2>
-
-<p>To deduce that <a href="/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
-the arguments of the proof in the previous post, but I <em>couldn’t</em> do
-it.  Therefore, I read another proof about the normality of regular
-Lindelöf spaces instead.</p>
-
-<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
-
-<p><span class="myeqn">
-Suppose that $X$ is the given space, and $H$ and $K$ are the given
-sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
-\omega\right\}$ are open countable subcovers of $H$ and $K$
-respectively.  On p.91 in Davis's Topology book, I saw the following
-equations.
-</span></p>
-
-<div class="myeqn">
-\begin{alignat*}{2}
-  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
-  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
-  (\overline{U_0} \cup \overline{U_1}) \\
-  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
-  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
-  \overline{U_2}) \\
-  \vdots \\
-  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
-  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
-  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
-  V_n
-\end{alignat*}
-</div>
-
-<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
-<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
-reading the symbols.  Luckily, an analogy of climbing mounts is given.
-Therefore, I finally understood how the open subsets $U_n$’s and
-$V_n$’s are built step-by-step while preserving disjointness and
-openness.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -1060,7 +1074,7 @@ openness.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (12)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (13)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -1087,13 +1101,17 @@ openness.</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (37)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (25)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
@@ -1109,10 +1127,6 @@ openness.</p>
     
       <li class="post">
         <a href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Google Webmaster Sitemap Warning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/12/missing-os/">Missing OS</a>
       </li>
     
   </ul>

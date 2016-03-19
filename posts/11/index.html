@@ -9,9 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem After I’ve written posts for this blog, I would like to publish them
-by rake deploy, but I was prompted to type my passphrase for
-~/.ssh/ &hellip;">
+  <meta name="description" content="Background I use Byobu with Tmux backend.1 Problem Moving across panes is inconvenient. If I have a Vim vertical/horizontal split in a Tmux pane, I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +78,128 @@ by rake deploy, but I was prompted to type my passphrase for
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/">Switch Tmux Panes and Vim-$\rm \LaTeX$</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-19T10:37:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:37 am</span></time>
+        
+           | <a href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/19/switch-tmux-panes-and-vim-latex/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/02/19/switch-tmux-panes-and-vim-latex/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I use <a href="http://byobu.co">Byobu</a> with <a href="http://tmux.sourceforge.net">Tmux</a> backend.<sup id="fnref:pp_tmux"><a href="#fn:pp_tmux" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<ul>
+  <li>Moving across panes is inconvenient.</li>
+  <li>If I have a Vim vertical/horizontal split in a Tmux pane, I need to
+  use <em>two</em> different sets of key bindings to navigate the adjacent
+  panes.</li>
+  <li>In the copy mode, it’s great that most of the key bindings follow
+  from those of <a href="http://www.vim.org">Vim</a>, <em>but not the most important two</em>:
+    <ul>
+      <li>start selection</li>
+      <li>copy</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="solution">Solution</h2>
+
+<p>I find two articles on <em>Giant Robots</em> very useful.</p>
+
+<ol>
+  <li><a href="http://robots.thoughtbot.com/seamlessly-navigate-vim-and-tmux-splits"><em>Seamlessly Navigate Vim and tmux Splits</em></a></li>
+  <li><a href="http://robots.thoughtbot.com/tmux-copy-paste-on-os-x-a-better-future"><em>Tmux Copy &amp; Paste on OS X: A Better Future</em></a></li>
+</ol>
+
+<p>Therefore, I followed the steps in the first blog post, and installed
+<a href="https://github.com/christoomey/vim-tmux-navigator">Vim Tmux Navigator</a>.</p>
+
+<h2 id="another-problem">Another problem</h2>
+
+<p>After the installation of the Vim plugin, I got another problem while
+editing my VIMRC: The <code>{Down-Mapping}</code> <em>didn’t</em> work.
+<a href="https://github.com/vim-latex/vim-latex">Vim-$\rm \LaTeX$</a> should know the reason.  I found an
+article describing a similar problem.<sup id="fnref:choy"><a href="#fn:choy" class="footnote">2</a></sup>  However, I <em>wouldn’t</em>
+like to change <code>~/.vim/bundle/vim-latex/plugin/imaps.vim</code>, so I got
+stuck at this point for hours.  I tried to substitute <code>{Down-Mapping}</code>
+with <code>&lt;C-a&gt;j</code> in VIMRC, but it <em>didn’t</em> work.</p>
+
+<h2 id="lessons-learnt">Lessons Learnt</h2>
+
+<ol>
+  <li>
+    <p>Accept simple ways to do things</p>
+
+    <p>Even though I <em>can’t</em> set <code>{Down-Mapping}</code> to <code>&lt;C-j&gt;</code>, the Vim
+ editor command <code>:TmuxNavigateDown</code> <em>isn’t</em> so hard to type.  I
+ failed to realise that typing <code>:tm&lt;Tab&gt;</code> will do, and wasted time
+ on that.  Now I accept the use of <em>two</em> different sets of
+ keystrokes for switching to the Tmux pane/Vim buffer below.  We
+ can look at this problem from another angle.</p>
+  </li>
+  <li>
+    <p>Store a list of windows in a file</p>
+
+    <p>A sample file can be found on Super User.<sup id="fnref:su"><a href="#fn:su" class="footnote">3</a></sup>  I found that if I
+ had run Byobu before, a session <code>0</code> would <em>also</em> be created on top
+ of <code>tmuxs</code>.  To avoid this problem, remove the first line in the
+ sample window list and type <code>byobu attach -t 0</code> starting from the
+ second time of opening Byobu.</p>
+  </li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:pp_tmux">
+
+      <p>See <a href="/blog/2015/02/14/use-tmux-for-previewing-posts/"><em>Use Tmux for Previewing Posts</em></a> in this blog for
+details. <a href="#fnref:pp_tmux" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:choy">
+
+      <p>See <a href="https://chrischoy.github.io/blog/notes/vim-tmux-navigation-and-vim-latex/"><em>Key mapping collision between vim-navigation and vim-latex</em></a>
+by Chris Choy for details. <a href="#fnref:choy" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:su">
+
+      <p>See <a href="http://superuser.com/a/747819"><em>Proper Format for Byobu’s windows.tmux?</em></a> on Super
+User. <a href="#fnref:su" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -651,55 +771,6 @@ error: failed to push some refs to '/media/owner/08F1-B181/MATH2220/MATH2220.git
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/">Read a Proof About the Transitivity of Characteristic Subgroups</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-31T00:52:20+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:52 am</span></time>
-        
-           | <a href="/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/12/31/read-a-proof-about-the-transitivity-of-characteristic-subgroups/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>On the day before yesterday, I read a proof about the transitivity of
-characteristic subgroups.  The proof <em>shouldn’t</em> be too difficult.
-The key step is just to create a restriction automorphism.</p>
-
-<p>Suppose $K\le H\le G$, and $f\in \Aut(G)$.  Then $f(H)=H$.  Define the
-restriction of $f$ on $H$ as $g:H\to H$ such that $g(h)=f(h)\forall h
-\in H$.  Clearly, $g\in \Aut(H)$.</p>
-
-<p>I <em>couldn’t</em> understand why $g(K)=K$.  I googled “strongly normal
-transitivity”, but <em>couldn’t</em> find anything relevant.  I changed the
-words, and found <a href="https://www.proofwiki.org/wiki/Definition:Characteristic_Subgroup">the proof on ProofWiki</a>.  Then I realised why I
-got stuck: when I wrote the definition of characteristic subgroup
-symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -732,7 +803,7 @@ symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (12)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (13)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -759,13 +830,17 @@ symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (37)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (25)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
@@ -781,10 +856,6 @@ symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
     
       <li class="post">
         <a href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Google Webmaster Sitemap Warning</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/12/missing-os/">Missing OS</a>
       </li>
     
   </ul>
