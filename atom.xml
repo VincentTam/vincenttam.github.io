@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-19T17:19:38+08:00</updated>
+  <updated>2016-03-20T20:11:24+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Portable Home Path]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/20/git-portable-home-path/"/>
+    
+    <updated>2016-03-20T17:47:21+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/20/git-portable-home-path</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I often included Unicode characters in my commit messages, such as
+“Committed in a café”.  Since I <em>couldn’t</em> input the character ‘é’
+inside the <a href="http://www.vim.org">Vim</a> editor shipped with msysgit, and the <code>curl</code> utility
+<em>didn’t</em> get along well with my <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>
+I decided to <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">upgrade it</a>.</p>
+
+<p>Then I set up things after the installation of <a href="https://git-for-windows.github.io/">Git for Windows</a>
+so that it works well with <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> now.<sup id="fnref:setup"><a href="#fn:setup" class="footnote">1</a></sup>  After that, I
+thought that it would be great if I can set it up on a USB stick so
+that the Vim editor with the powerful plugins can be executed on
+<em>every</em> M$ Win* 7 machine.</p>
+
+<p>The first Google search result for “git portable” is the webpage for
+Git for Windows downloads.  To get it installed on a USB device,
+<em>don’t</em> click “Save file” for the dialog box that popped up upon the
+page is loaded.  <em>Choose the “thumbdrive edition”.</em></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Each time I opened the Vim editor from Portable Git Bash from the USB,
+a new <code>.viminfo</code> file was created in the home folder of current user
+in the C drive.  (e.g. <code>C:\Users\Foo\.viminfo</code>)  Therefore, it could
+be deduced that VIM installed (under <code>/usr/share/vim/vim74</code>) in the
+USB <em>couldn’t</em> load the configurations from <code>.vimrc</code> stored on the
+<em>same</em> USB.  What an irony!</p>
+
+<p><strong>How can one build a truly <em>portable</em> Vim in the USB stick?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Searching “git portable home path” on Google, I found
+<a href="http://markb.co.uk/portable-git-windows-setting-home-environment-variable.html">an article about setting <code>$HOME</code> and SSL keys for GitHub</a>.
+However, it was written <em>several years ago</em>.  In the current version
+of Git for Windows, <code>git-bash.bat</code> <em>doesn’t</em> even exist.</p>
+
+<p>Another search result was <a href="http://stackoverflow.com/a/3455231">a Stack Overflow question</a>.  I
+tried copying <a href="http://stackoverflow.com/users/5991/dgw">dgw</a>’s <a href="https://gist.github.com/533267">wrapper</a> into <code>git-bash-portable.bat</code>.  I
+adapted it to my installed copy of Git Portable by changing the
+extension name at the last line from <code>bat</code> to <code>exe</code>.  Unluckily, it
+took a long time to load the Portable Git Bash on clicking the batch
+file.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I found <a href="https://github.com/git-for-windows/git/issues/320#issuecomment-140278002">Jason Cemra’s comment on issue #320</a> of Git for Windows
+on GitHub extremely useful.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href="https://vincenttam.github.io/downloads/code/git-bash.bat">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="c">rem Setup environment (replace &#39;user&#39; with your desired username)</span>
+</span><span class="line"><span class="k">set</span> <span class="nv">HOMEDRIVE</span><span class="o">=</span><span class="nv">%~d0</span>
+</span><span class="line"><span class="k">set</span> <span class="nv">HOME</span><span class="o">=</span>home<span class="n">/owner</span>
+</span><span class="line"><span class="k">set</span> <span class="nv">USERPROFILE</span><span class="o">=</span><span class="nv">%HOME%</span>
+</span><span class="line">
+</span><span class="line"><span class="c">rem Launch the git bash</span>
+</span><span class="line">start git-bash.exe
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I borrow the line <code>set HOMEDRIVE=%~d0</code> from <a href="http://stackoverflow.com/users/5991/dgw">dgw</a> since the drive
+letter of the USB can <em>change</em>.  This facilitates the process of
+adjusting the path of the <code>origin</code> when it comes to pushing a non-bare
+Git repository in the USB device to a bare one in the <em>same</em> device.
+(If the Win* machine <em>doesn’t</em> have Git and Vim installed, I use the
+ones in my USB stick.  Otherwise, I use the installed versions of
+those softwares.)</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Since the shell of a Vim session invoked by Git Bash is automatically
+set to <code>/usr/bin/bash</code>, it is expected that
+<a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/">Zaadi’s VIMRC configuration</a> for automatic installation of
+<a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> works.  Though I’m using the version written two years ago,
+it still functions well.</p>
+
+<p>To write in $\rm \LaTeX$ on <em>every</em> Win* 7 device, I also copied the
+<a href="http://miktex.org/portable">Mik$\rm \TeX$ Portable</a> from my laptop to my USB stick.</p>
+
+<p>I practised my <code>sed</code> skills by using <code>sed '2 i set HOMEDRIVE=%~d0'</code> to
+insert contents <em>before</em> the second line.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:setup">
+
+      <p>See the newest series <em>Git for Windows, Curl, Gist.vim with
+Vundle</em> for details. <a href="#fnref:setup" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1361,50 +1474,6 @@ at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installa
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Venn Diagram Mistake]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/"/>
-    
-    <updated>2016-02-09T14:24:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I tried <a href="http://math.stackexchange.com/q/1635782/290189">this Mathematics Stack Exchange question</a> by
-drawing a Venn Diagram.</p>
-
-<picture class="fancybox" title="A 4-set Venn Diagram">
-  <source srcset="https://i.stack.imgur.com/jbsrG.png" media="(min-width: 400px)" />
-  <img alt="A 4-set Venn Diagram" width="300" src="https://i.stack.imgur.com/jbsrG.png" />
-</picture>
-
-<h2 id="problem">Problem</h2>
-
-<p>A downvote was quickly casted on my answer below which a comment about
-the non-existence of a Venn diagram with 4 sets was left.  I clicked
-on <a href="http://math.stackexchange.com/a/825984/290189">the link to another question</a> in that comment to
-understand why I got this downvote: <strong>Why a 4-set Venn diagram
-<em>doesn’t</em> exist?</strong></p>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>I understood the arguments of Joebot’s answer up to the “application
-of binomial theorem”, but I <em>didn’t</em> understand the Euler’s formular.
-In fact, for any 3-D object with edges, vertices and faces, one can
-represent it by a 2-D planar graph, on which the outermost region also
-represents one of the faces of the 3-D object.  Thus, the Euler’s
-formula for any 3-D object can be seen on a 2-D planar graph.  I’m
-amazed that this can be proved by mathematical induction on the number
-of regions on the 2-D graph (which corresponds to that of faces of the
-3-D object).  IMHO, this should be taught in high schools as examples
-of mathematical induction, instead of divisibility of integers, which
-can be done better using modular arithmetic.</p>
-
 ]]></content>
     
   </entry>

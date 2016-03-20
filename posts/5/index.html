@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Motivation To deduce that compact $T_2$ spaces are $T_4$, I tried using
-the arguments of the proof in the previous post, but I couldn’t do
-it. &hellip;">
+  <meta name="description" content="To find a finite subcover of a countable open cover
+$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
+Bolzano–Weierstrass property &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,87 @@ it. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-28T18:35:57+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:35 pm</span></time>
+        
+           | <a href="/blog/2015/09/28/a-queue-in-t1-spaces/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/28/a-queue-in-t1-spaces/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="myeqn">
+To find a finite subcover of a countable open cover
+$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
+Bolzano–Weierstrass property, one has to pick a sequence in $X$ in
+order to apply the Bolzano–Weierstrass property.  In order to build a
+link between the sequence with the countable open cover, I picked a
+point $x_n$ from each $U_n$, and then build an infinite set $A$
+consisting of $x_n \forall n \in \N$.  I knew that $A$ is compact, but
+what does that do with the countable open cover?
+</span></p>
+
+<p>Reading my notes again, I realised the trick of choosing $x_q$: it
+<em>shouldn’t</em> be chosen from $U_k$ with index $k$ which is smaller than
+<span class="myeqn">$n_q$.  In other words, $x_q \in
+U_{n_q}$ and $x_q \notin U_k \forall k &lt; n_q$.  If we failed to make
+such choices, that means we don't have enough $U_k$'s and $x_q$'s,
+meaning that $X$ is the finite union of $U_k$'s and it's countably
+compact.  Otherwise, we continue this process to get an infinite set
+$A$ can be set up in the same way: $A := \left\{x_q \in X : q \in \N
+\right\}$.</span>  One will see that $A$ has <em>no</em> cluster point,
+contracdicting the Bolzano–Weierstrass property of $X$.</p>
+
+<p><span class="myeqn">
+Assume that $x \in X$.  $\exists m \in \N$ so that $x \in U_m$ and $x
+\notin U_j \forall j &lt; m$.  I was puzzled at the line $n_N &lt; m \le
+n_{N + 1}$.  Using the analogy of "queuing", I understood what's going
+on.
+</span></p>
+
+<picture class="fancybox" title="a queue of open sets in the open
+  countable cover">
+  <source srcset="/images/posts/QT1/q-800.jpg" media="(min-width: 800px)" />
+  <source srcset="/images/posts/QT1/q-600.jpg" media="(min-width: 600px)" />
+  <img alt="a queue of open sets in the open countable cover" src="/images/posts/QT1/q-300.jpg" />
+</picture>
+
+<p><span class="myeqn">
+Since $X$ is $T_1$, which is equivalent to the closeness of
+singletons, deleting finitely many singletons from an open set won't
+change the openness of the set.  We have a neighbourhood $V := U_m
+\setminus \left\{x_j : j \le N \text{ and } x \ne x_j \right\}$ of $x$
+which intersects $A$ at no more than one point.  Thus, there exists a
+deleted neighbourhood $V \setminus \{x\}$ of $x$ so that $V \cap A
+\setminus \{x\} = \varnothing$.  Hence, $\forall x \in X, x \notin
+A'$.
+</span></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -825,57 +906,6 @@ control system still said that there’s <em>no</em> unmerged commits from the
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/25/rare-sed-delimiters/">Rare Sed Delimiters</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-25T10:47:53+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:47 am</span></time>
-        
-           | <a href="/blog/2015/08/25/rare-sed-delimiters/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/25/rare-sed-delimiters/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
-Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
-have to be escaped by backslashes, which makes the whole command ugly.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
-<code> </code> (white space), etc, and you’re <em>too lazy</em> to look for
-<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/25/rare-sed-delimiters/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -913,7 +943,7 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (28)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (29)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -921,8 +951,8 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (47)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (31)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (32)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -934,7 +964,7 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (37)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (38)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
@@ -942,6 +972,10 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
@@ -957,10 +991,6 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
     
       <li class="post">
         <a href="/blog/2016/03/14/adobe-reader-has-stopped-working/">Adobe Reader Has Stopped Working</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Google Webmaster Sitemap Warning</a>
       </li>
     
   </ul>

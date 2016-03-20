@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-19T17:19:38+08:00</updated>
+  <updated>2016-03-20T20:11:24+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Git Portable Home Path]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/20/git-portable-home-path/"/>
+    
+    <updated>2016-03-20T17:47:21+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/20/git-portable-home-path</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I often included Unicode characters in my commit messages, such as
+“Committed in a café”.  Since I <em>couldn’t</em> input the character ‘é’
+inside the <a href="http://www.vim.org">Vim</a> editor shipped with msysgit, and the <code>curl</code> utility
+<em>didn’t</em> get along well with my <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>
+I decided to <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">upgrade it</a>.</p>
+
+<p>Then I set up things after the installation of <a href="https://git-for-windows.github.io/">Git for Windows</a>
+so that it works well with <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> now.<sup id="fnref:setup"><a href="#fn:setup" class="footnote">1</a></sup>  After that, I
+thought that it would be great if I can set it up on a USB stick so
+that the Vim editor with the powerful plugins can be executed on
+<em>every</em> M$ Win* 7 machine.</p>
+
+<p>The first Google search result for “git portable” is the webpage for
+Git for Windows downloads.  To get it installed on a USB device,
+<em>don’t</em> click “Save file” for the dialog box that popped up upon the
+page is loaded.  <em>Choose the “thumbdrive edition”.</em></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Each time I opened the Vim editor from Portable Git Bash from the USB,
+a new <code>.viminfo</code> file was created in the home folder of current user
+in the C drive.  (e.g. <code>C:\Users\Foo\.viminfo</code>)  Therefore, it could
+be deduced that VIM installed (under <code>/usr/share/vim/vim74</code>) in the
+USB <em>couldn’t</em> load the configurations from <code>.vimrc</code> stored on the
+<em>same</em> USB.  What an irony!</p>
+
+<p><strong>How can one build a truly <em>portable</em> Vim in the USB stick?</strong></p>
+
+<!-- more -->
+
+<h2 id="discussion">Discussion</h2>
+
+<p>Searching “git portable home path” on Google, I found
+<a href="http://markb.co.uk/portable-git-windows-setting-home-environment-variable.html">an article about setting <code>$HOME</code> and SSL keys for GitHub</a>.
+However, it was written <em>several years ago</em>.  In the current version
+of Git for Windows, <code>git-bash.bat</code> <em>doesn’t</em> even exist.</p>
+
+<p>Another search result was <a href="http://stackoverflow.com/a/3455231">a Stack Overflow question</a>.  I
+tried copying <a href="http://stackoverflow.com/users/5991/dgw">dgw</a>’s <a href="https://gist.github.com/533267">wrapper</a> into <code>git-bash-portable.bat</code>.  I
+adapted it to my installed copy of Git Portable by changing the
+extension name at the last line from <code>bat</code> to <code>exe</code>.  Unluckily, it
+took a long time to load the Portable Git Bash on clicking the batch
+file.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I found <a href="https://github.com/git-for-windows/git/issues/320#issuecomment-140278002">Jason Cemra’s comment on issue #320</a> of Git for Windows
+on GitHub extremely useful.</p>
+
+<p><figure class='code'><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href='/downloads/code/git-bash.bat'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="c">rem Setup environment (replace &#39;user&#39; with your desired username)</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">HOMEDRIVE</span><span class="o">=</span><span class="nv">%~d0</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">HOME</span><span class="o">=</span>home<span class="n">/owner</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">USERPROFILE</span><span class="o">=</span><span class="nv">%HOME%</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">rem Launch the git bash</span>
+</span><span class='line'>start git-bash.exe
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>I borrow the line <code>set HOMEDRIVE=%~d0</code> from <a href="http://stackoverflow.com/users/5991/dgw">dgw</a> since the drive
+letter of the USB can <em>change</em>.  This facilitates the process of
+adjusting the path of the <code>origin</code> when it comes to pushing a non-bare
+Git repository in the USB device to a bare one in the <em>same</em> device.
+(If the Win* machine <em>doesn’t</em> have Git and Vim installed, I use the
+ones in my USB stick.  Otherwise, I use the installed versions of
+those softwares.)</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Since the shell of a Vim session invoked by Git Bash is automatically
+set to <code>/usr/bin/bash</code>, it is expected that
+<a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/">Zaadi’s VIMRC configuration</a> for automatic installation of
+<a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> works.  Though I’m using the version written two years ago,
+it still functions well.</p>
+
+<p>To write in $\rm \LaTeX$ on <em>every</em> Win* 7 device, I also copied the
+<a href="http://miktex.org/portable">Mik$\rm \TeX$ Portable</a> from my laptop to my USB stick.</p>
+
+<p>I practised my <code>sed</code> skills by using <code>sed '2 i set HOMEDRIVE=%~d0'</code> to
+insert contents <em>before</em> the second line.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:setup">
+
+      <p>See the newest series <em>Git for Windows, Curl, Gist.vim with
+Vundle</em> for details. <a href="#fnref:setup" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -349,153 +462,6 @@ should have wrapped the <code>find</code> command like <code>$(find ...)</code>.
   <li>Set variables using <code>var1=value1;var2=value2;...</code></li>
   <li>Unset variable usign <code>unset var1 var2 ...</code></li>
 </ul>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Used More Bash Utilities]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities/"/>
-    
-    <updated>2015-08-22T11:59:26+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Same as what has been written in my older post
-<a href="/blog/2014/12/12/using-xclip/"><em>Using Xclip</em></a>.</p>
-
-<h2 id="drawback">Drawback</h2>
-
-<p>Inputing the keyboard command for the paste action is, in my opinion,
-<em>laborious</em>.</p>
-
-<h2 id="tools-used">Tools used</h2>
-
-<ol>
-  <li><code>find</code></li>
-  <li><code>grep</code></li>
-  <li><code>sed</code></li>
-  <li><code>awk</code></li>
-  <li><code>xargs</code></li>
-</ol>
-
-<!-- more -->
-
-<h3 id="the-find-command">The find command</h3>
-
-<pre class="cliUB"><code>find . -path ./dir -prune -o -name '*.txt' -type f -print
-find ./foo -exec wc {} \;
-</code></pre>
-
-<ul>
-  <li><code>-path ./dir -prune -o</code>: exclude the directory <code>./dir</code></li>
-  <li><code>-name '*.txt'</code>: match the name of the file</li>
-  <li><code>-type f</code>: match files only, not directories</li>
-  <li><code>-print</code>: print all matched paths</li>
-  <li><code>-exec {cmd} {} \;</code>
-    <ul>
-      <li>execute <em>one single</em> command <code>{cmd}</code>, no pipes are allowed</li>
-      <li><code>{}</code>: an instance of matched path</li>
-      <li><code>\;</code>: terminator</li>
-    </ul>
-  </li>
-</ul>
-
-<p>I’ve found that if <code>-type f</code> goes <em>before</em> <code>-path ./dir -prune -o</code>,
-the path <code>./dir</code> <em>won’t</em> be excluded.  <strong>Don’t use <code>./</code>, use <code>.</code>!</strong> on
-Mac.</p>
-
-<p>Using <code>-not -path ./dir</code> option <em>doesn’t</em> work.</p>
-
-<h3 id="the-grep-command">The grep command</h3>
-
-<ul>
-  <li><code>-I</code>: ignore binary files</li>
-  <li><code>-q . {}</code>: match any characters and suppress output for faster
-  execution</li>
-</ul>
-
-<h3 id="the-sed-command">The sed command</h3>
-
-<ul>
-  <li><code>-i .bak</code>: edit file with backup extension <code>.bak</code> (Mac only, not in
-  *nix)</li>
-  <li><code>-i ''</code>: no backup (Also Mac only)</li>
-  <li><code>sed 'p;s/foo/bar/'</code>: print original and replaced strings, separated
-by whitespace.</li>
-</ul>
-
-<h3 id="the-awk-command">The awk command</h3>
-
-<p>The command <code>awk '{ print $2 }'</code> extracts the second column.  For more
-examples, see <a href="http://www.hcs.harvard.edu/~dholland/computers/awk.html">the simple awk tutorial</a>.</p>
-
-<h3 id="the-xargs-command">The xargs command</h3>
-
-<p>This is a very powerful command when combined with <code>find</code>.  This
-utility reads from <code>stdin</code> and echos it.</p>
-
-<ul>
-  <li>no flags: all output joined into a single line</li>
-  <li><code>-n3</code>: 3 space-delimited stdin in each line</li>
-  <li><code>xargs -n2 {cmd}</code>: execute <code>{cmd} {arg1} {arg2}</code>, …, <code>{cmd}
-  {arg2n-1} {arg2n}</code>.</li>
-</ul>
-
-<h3 id="putting-things-together">Putting things together</h3>
-
-<p>Here’s some sample commands.</p>
-
-<h4 id="find-and-replace-for-all-text-files-under-a-path">Find and replace for all text files under a path</h4>
-
-<pre class="cliUB"><code>find . -path ./.git -prune -o -type f -exec grep -Iq . {} \; -and \
--exec sed -i 's/foo/bar/g' {} \;
-</code></pre>
-
-<p>Ignore the <code>.git</code> folder, which is the Git repository, to avoid
-damaging it.</p>
-
-<h4 id="find-and-replace-substrings-in-path-names">Find and replace substrings in path names</h4>
-
-<pre class="cliUB"><code>find . -path ./.git -prune -o -name "*foo*" -print | sed \
-'p;s/foo/bar/g' | xargs -n2 mv
-</code></pre>
-
-<p>All instances of <code>foo</code> in path names are replaced with <code>bar</code>.  Note
-that that <code>-print</code> option <em>should be included</em>.  Otherwise, the path
-<code>./.git</code> which is intended to be omitted will appear in the piped
-output and processed by <code>sed</code>, and then the terminal will throw the
-follow error message.</p>
-
-<pre class="cliUB"><code>fatal: can not move directory into itself, source=.git, destination=.git/.git
-</code></pre>
-
-<h4 id="find-and-replace-git-remote-paths">Find and replace Git remote paths</h4>
-
-<pre class="cliUB"><code>$ git remote -v | awk '{ print $2 }' | head -1 | \
-xargs git remote set-url origin
-$ git remote -v
-origin	https://github.com/VincentTam/StudentList1.git (fetch)
-origin	https://github.com/VincentTam/StudentList1.git (push)
-$ git remote -v | awk '{ print $2 }' | head -1 | sed \
-'s/StudentList1/StudentList4/' | xargs git remote set-url origin
-$ git remote -v
-origin	https://github.com/VincentTam/StudentList4.git (fetch)
-origin	https://github.com/VincentTam/StudentList4.git (push)
-</code></pre>
-
-<hr />
-<p>(ADDED ON DEC 26TH, 2015)</p>
-
-<h4 id="the-highlighting-of-grep-after-find">The highlighting of grep after find</h4>
-
-<p>In Gnome Terminal, the <code>grep</code> command alone highlights the matched
-text in red by default.  However, if it’s placed after <code>find ...
--exec</code>, then the highlighting will be <em>disabled</em>.  In order to enable
-it again, add the option <code>--color=auto</code> to <code>grep</code>.</p>
 
 ]]></content>
     
