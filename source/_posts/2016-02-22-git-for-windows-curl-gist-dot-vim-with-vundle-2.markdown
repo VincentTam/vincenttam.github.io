@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Git for Windows, Curl, Gist.vim With Vundle (2)"
+title: "Git for Windows, Curl, Gist.vim with Vundle (2)"
 date: 2016-02-22 14:32:04 +0800
 comments: true
 categories: [Git, M$ Win*, Vim]
