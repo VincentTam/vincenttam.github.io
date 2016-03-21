@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Approxation of a Bounded Simple Function by a Continuous Function"
+title: "Approximation of a Bounded Simple Function by a Continuous Function"
 date: 2016-03-21 10:12:06 +0800
 comments: true
 categories: math
@@ -71,3 +71,17 @@ and $\psi \triangleq \chi_{[0,1]} + \chi_{[1,2]}$.  Then $f = \psi$
 except on $\{0,1,2\}$ and $0 \le f \le 1$, but $\psi(1) = 2
 > 1$.</span>  One can easily transform a step function into a
 piecewise linear (i.e. continuous) function $g$.
+
+Remarks
+---
+
+It's very difficult for a function to be continuous.  The result
+provides a step for proving [Lusin's Theorem][lusin], which says that
+a measurable function can be approximated by a sequence of continuous
+function.  <q
+cite="http://evchk.wikia.com/wiki/Wow!_Old_news_is_so_exciting!">Old
+news is so exciting!</q>  (See [this encyclopedia page][old-news] for
+explanation.)
+
+[lusin]: https://en.wikipedia.org/wiki/Lusin's_theorem
+[old-news]: http://evchk.wikia.com/wiki/Wow!_Old_news_is_so_exciting!
