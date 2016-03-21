@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-20T20:11:24+08:00</updated>
+  <updated>2016-03-21T10:22:12+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,81 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Approxation of a Bounded Simple Function by a Continuous Function]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/21/approxation-of-a-bounded-simple-function-by-a-continuous-function/"/>
+    
+    <updated>2016-03-21T10:12:06+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/21/approxation-of-a-bounded-simple-function-by-a-continuous-function</id>
+    
+      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
+
+<p>Today, I was puzzled by a <em>remark</em> of a proof that a simple function
+$f:[a,b] \to \R$ is equal to a step function $\psi:[a,b] \to \R$
+(resp. a continuous function $g:[a,b] \to \R$) except on a set of
+arbitrarily small measure $\epsilon$.</p>
+
+<blockquote>
+  <p>If $m \le f(x) \le M \;\forall\, x\in [a,b]$, then $\bar{\psi}
+\triangleq (m \vee \psi) \wedge M$ and $\bar{g} \triangleq (m \vee
+g) \wedge M$ are step function and continuous function which satisfy
+$m \le \bar{\psi}$ and $m \le \bar{g} \le M$ so that $f =
+\bar{\psi}$ and $f = \bar{g}$ except on a set of measure less than
+$\epsilon$ respectively.</p>
+</blockquote>
+
+<p>I can verify the above remark, but I wonder <em>why</em> we need to define
+$\bar{\psi}$ and $\bar{g}$ so as to guarantee that they are bounded
+below and above by $m$ and $M$ respectively.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Write</p>
+
+<div class="myeqn">
+\[
+  f = \sum_{j = 1}^m a_j \chi_{E_j \cap [a,b]},
+\]
+</div>
+
+<p><span class="myeqn">
+where $E_j$ is measurable for each $j = 1,\dots,m$, so that we can
+consider $E_j$.  Note that the $E_j$'s are not necessarily disjoint,
+but who cares?  By drawing a simple figure of $E_j \cap [a,b]$ and
+$U_j$, which is a finite disjoint union of open intervals obtained by
+applying Littlewood's First Principle, I realised that I should try
+constructing a simple function $f$ while focusing on $(E_j \cap [a,b])
+\triangle U_j$.
+</span></p>
+
+<p>In the proof, to deal with the summation sign, we use a union sign.</p>
+
+<div class="myeqn">
+\[
+  f = \psi \triangleq \sum_{j = 1}^m a_j \chi_{U_j} \text{ except on }
+  \bigcup_{j = 1}^m [(E_j \cap [a,b]) \triangle U_j]
+\]
+</div>
+
+<p>If we’re given that $m \le f \le M$, to find <span class="myeqn">$x \in \bigcup_{j = 1}^m [(E_j \cap [a,b]) \triangle
+U_j]$</span> so that $\psi(x) &lt; m$ or $\psi(x) &gt; M$, we need to have
+<em>overlapping</em> of <span class="myeqn">$E_i \cap [a,b]$ and
+$E_j \cap [a,b]$, so that $\chi_{(E_i \cap [a,b]) \triangle U_i} +
+\chi_{(E_j \cap [a,b]) \triangle U_j}$ will give us something
+interesting.</span></p>
+
+<p>To see <em>necessity</em> of the introduction of $\bar{\psi}$, consider <span class="myeqn">$f \triangleq \chi_{(0,1)} + \chi_{(1,2)}$
+and $\psi \triangleq \chi_{[0,1]} + \chi_{[1,2]}$.  Then $f = \psi$
+except on $\{0,1,2\}$ and $0 \le f \le 1$, but $\psi(1) = 2
+&gt; 1$.</span>  One can easily transform a step function into a
+piecewise linear (i.e. continuous) function $g$.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1358,122 +1433,6 @@ then the above problem <em>won’t</em> happen.</p>
   <li>Use <code>I    </code> instead of <code>&gt;</code>.</li>
 </ol>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Rake Aborted Due to a Vim Swap File]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/"/>
-    
-    <updated>2016-02-09T20:49:29+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Tonight, I wrote <a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
-to publish it using the Vim editor command</p>
-
-<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
-</code></pre>
-
-<p>After that, the following error message popped up.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
-To git@github.com:VincentTam/vincenttam.github.io.git
-   c6c422a..fc8d6b8  source -&gt; source
-
-## Generating Site with Jekyll
-    write source/stylesheets/screen.css
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-                    done.
- Auto-regeneration: disabled. Use --watch to enable.
-cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-rake aborted!
-Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
-Tasks: TOP =&gt; copydot
-(See full trace by running task with --trace)
-
-shell returned 1
-
-Press ENTER or type command to continue
-</code></pre>
-
-<p>When one sees an error message like above for the first time, one
-needs <em>not</em> look directly into code, even though one is writing code
-in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
-wrong.</p>
-
-<p>From the command <code>cp -r ...</code>, I realised that the problem came from
-<code>Rakefile</code>, which tried to copy the non-existent
-<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
-folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
-<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
-
-<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “rake generate ignore swp”, and clicked on
-<a href="https://github.com/imathis/octopress/issues/1073">the first search result</a>, which is Octopress issue #1073.  It
-provided a link to <a href="https://github.com/imathis/octopress/issues/600">issue #600</a>.  Bradon Mathis said that <q cite="https://github.com/imathis/octopress/blob/site-2.1/Rakefile#L265">this
-has been <a href="https://github.com/imathis/octopress/blob/site-2.1/Rakefile#L265">fixed in 2.1</a></q>.  Unluckily, after hitting that
-hyperlink, I found that the version of <code>Rakefile</code> shown online was
-<em>different</em> from mine. Finally, I installed <a href="https://github.com/tangledhelix/vim-octopress">vim-octopress</a> to solve
-this problem.<sup id="fnref:installation"><a href="#fn:installation" class="footnote">3</a></sup>  If this plugin supports background tasks
-like <code>rake preview</code>, the blogging experience using <a href="http://octopress.org">Octopress</a> within
-<a href="http://www.vim.org">Vim</a> will be further enhanced.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I’ve learnt to use <a href="http://www.w3schools.com/tags/att_q_cite.asp">the HTML cite tag</a> when I directly quote
-a short phrase from others to avoid being penalised by the Google
-search engine for lacking originality.</p>
-
-<p>Moreover, I revised the usage of these two Vim plugins.</p>
-
-<ol>
-  <li><a href="https://github.com/bronson/vim-visual-star-search">Visual Star Search</a>: Select text in visual
-mode and search it with an asterisk <code>*</code>.</li>
-  <li><a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a>: Add the last search pattern as a text
-object.</li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-      <p>I’ve used this Vim plugin <a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/#fugitivevim">for more than a year</a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:gitrepo">
-
-      <p>Strictly speaking, the <code>public</code> folder <em>isn’t</em> in the <em>Git
-repository</em> because <em>this folder isn’t *tracked by the version
-control system</em> (VCS). <a href="#fnref:gitrepo" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:installation">
-
-      <p>For more details, you may see my gist for the <code>.vimrc</code> on Ubuntu
-at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installation" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

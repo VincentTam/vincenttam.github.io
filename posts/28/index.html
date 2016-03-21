@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: This post won’t make sense here. Refer to the
-original post. Note: I can now figure out a way to work with both UltraBlog and
-WordPress.com’s &hellip;">
+  <meta name="description" content="To quote another one’s words, one can paraphrase the words. For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,125 @@ WordPress.com’s &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comparison of $\rm \LaTeX$'s "Quote" and "Quotation" Environments</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-31T00:25:10+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:25 am</span></time>
+        
+           | <a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To quote another one’s words, one can paraphrase the words.  For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s words.) one would like to directly quote what another
+one has said.</p>
+
+<p>To show the difference in $\rm \LaTeX$, I’ve made
+<a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>.  It’s now on Google Docs.</p>
+
+<p>I created the above PDF document using <code>quote.tex</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.tex"></script>
+<noscript><pre><code>%        File: quote.tex
+%     Created: Mon Apr 29 07:00 PM 2013 H
+% Last Change: Mon Apr 29 07:00 PM 2013 H
+%
+\documentclass[a4paper]{article}
+\usepackage{parskip}
+\author{Somobody Here}
+\title{Sample Draft Paper No. 1}
+\date{\today}
+\setlength{\parindent}{1.5em}
+\begin{document}
+\maketitle
+
+Some paragraphs. After that go to~a quote. Some
+paragraphs.\footnote{Wells Abcd, Wealth of family} After that go to~a
+quote. Some paragraphs, after that go to~a quote. Some
+paragraphs.\footnotemark[1] After that go to~a quote.
+
+\begin{quote}
+  Some long sentence. In a capitalist society, the separation of
+  capital, land and property is unavoidable, but harmful to workers.
+\end{quote}
+\begin{quotation}
+  Some long long sentences. So we can see the difference of two
+  environments. Moreover, compile it and keep calm. see the result and
+  go to have a rest after long hours facing computer.
+\end{quotation}
+
+I&#39;ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.\footnote{some text here} They are the most
+direct way of getting answers from ``computer stuff&#39;&#39;.
+
+Some sentences.
+\end{document}</code></pre></noscript></div>
+
+<p>For many computer users who <em>aren’t</em> familiar with $\rm \LaTeX$’s
+syntax but HTML’s, they should find <a href="http://daringfireball.net/projects/markdown">Markdown</a> easy to write, and
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a> easy to use.</p>
+
+<pre class="cli"><code class="UBMono">$ pandoc -s \
+&gt; <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> \
+&gt; foo.markdown foo.tex</code></pre>
+
+<p>The result is shown in <code>quote.markdown</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.markdown"></script>
+<noscript><pre><code>% Sample Draft Paper No. 1
+% Somobody Here
+% 
+
+Some paragraphs. After that go to a quote. Some paragraphs.[^1] After
+that go to a quote. Some paragraphs, after that go to a quote. Some
+paragraphs.[1] After that go to a quote.
+
+&gt; Some long sentence. In a capitalist society, the separation of
+&gt; capital, land and property is unavoidable, but harmful to workers.
+
+&gt; Some long long sentences. So we can see the difference of two
+&gt; environments. Moreover, compile it and keep calm. see the result and
+&gt; go to have a rest after long hours facing computer.
+
+I’ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.[^2] They are the most direct way of getting
+answers from “computer stuff”.
+
+Some sentences.
+
+[^1]: Wells Abcd, Wealth of family
+
+[^2]: some text here</code></pre></noscript></div>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -554,69 +673,6 @@ Blogger, they <em>won’t</em> make sense here, so refer to
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Compilation of Ruby's Source Code on Ubuntu</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-10T03:22:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 am</span></time>
-        
-           | <a href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oliver’s guide has listed the packages on which Ruby depends.
-Following strictly to the guide, you should start working with the
-programming language, instead of wasting time to read this article.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>To compile Ruby for whatever reasons.</p>
-
-<h2 id="background">Background</h2>
-
-<p>You’ve read Oliver’s guide. However, your goal does <em>not</em> match with
-those in <a href="http://excid3.com/blog/setting-up-ubuntu-12-04-with-ruby-1-9-3-nginx-passenger-and-postgresql-or-mysql/">Oliver’s guide</a>. Therefore, you <em>don’t</em> need
-to do all the things in the guide and start to skim through the text
-and to scan for commands useful to you. This is an essential skill to
-survive in *nix.<sup id="fnref:skim_doc"><a href="#fn:skim_doc" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>You’ve found <em>some</em> useful commands, and tried working out their
-dependencies. Nonetheless, you missed out some important commands and
-thus the dependencies were wrong. Unfortunately, you’re unaware of
-such careless mistake and continued the process, before being stopped
-by the compiler’s error message.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/29">&larr; Older</a>
@@ -664,7 +720,7 @@ by the compiler’s error message.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (32)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (50)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (51)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -685,6 +741,10 @@ by the compiler’s error message.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/21/approxation-of-a-bounded-simple-function-by-a-continuous-function/">Approxation of a Bounded Simple Function by a Continuous Function</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
       </li>
     
@@ -698,10 +758,6 @@ by the compiler’s error message.</p>
     
       <li class="post">
         <a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/14/adobe-reader-has-stopped-working/">Adobe Reader Has Stopped Working</a>
       </li>
     
   </ul>

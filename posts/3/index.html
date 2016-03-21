@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I tried this Mathematics Stack Exchange question by
-drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below which &hellip;">
+  <meta name="description" content="Background I’m using fugitive.vim for efficient verson control.1 Problem Tonight, I wrote an article about Venn diagram, and I attempted
+to publish &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,100 @@ drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-09T20:49:29+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:49 pm</span></time>
+        
+           | <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Tonight, I wrote <a href="/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
+to publish it using the Vim editor command</p>
+
+<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
+</code></pre>
+
+<p>After that, the following error message popped up.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
+To git@github.com:VincentTam/vincenttam.github.io.git
+   c6c422a..fc8d6b8  source -&gt; source
+
+## Generating Site with Jekyll
+    write source/stylesheets/screen.css
+Configuration file: /home/owner/octopress/_config.yml
+            Source: source
+       Destination: public
+      Generating... 
+                    done.
+ Auto-regeneration: disabled. Use --watch to enable.
+cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+rake aborted!
+Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
+Tasks: TOP =&gt; copydot
+(See full trace by running task with --trace)
+
+shell returned 1
+
+Press ENTER or type command to continue
+</code></pre>
+
+<p>When one sees an error message like above for the first time, one
+needs <em>not</em> look directly into code, even though one is writing code
+in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
+wrong.</p>
+
+<p>From the command <code>cp -r ...</code>, I realised that the problem came from
+<code>Rakefile</code>, which tried to copy the non-existent
+<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
+folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
+<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
+
+<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -690,57 +784,6 @@ need to re-develop something that has been well-developed.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-15T20:22:57+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:22 pm</span></time>
-        
-           | <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/01/15/some-families-of-open-sets-in-r/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Two days ago, I read a proof about a basic property of open sets in
-Royden’s <em>Real Analysis</em>.  It says that each open set in $\Bbb R$ is a
-countable union of disjoint open intervals.  Reading the book, I got
-stuck at the countability.  I tried to think of a map between each
-open interval and a rational number, but I <em>didn’t</em> know <em>which one to
-choose</em>.  It took me half an hour to understand from the words that
-the <em>one single</em> rational number inside the open interval can be
-arbitrarily chosen.</p>
-
-<p>Yesterday, I was puzzled at $\mathcal{T} \subseteq \mathcal{B}$ for a
-while.  On the LHS, I came up with “arbitrary union”; on the RHS, I
-thought of “countable union”.  It seemed that “countable union” is
-more restrictive than “arbitrarily union”.  My teacher said that this
-is <em>by definition</em>, and I realized that I forgot the definition of
-Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
-\mathcal{T}$.  Finally, I get it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -788,7 +831,7 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (32)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (50)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (51)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -809,6 +852,10 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/21/approxation-of-a-bounded-simple-function-by-a-continuous-function/">Approxation of a Bounded Simple Function by a Continuous Function</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
       </li>
     
@@ -822,10 +869,6 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
     
       <li class="post">
         <a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/14/adobe-reader-has-stopped-working/">Adobe Reader Has Stopped Working</a>
       </li>
     
   </ul>

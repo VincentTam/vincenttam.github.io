@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background One can replace the usual delimiter / in sed with the other ones.
-Therefore, the slashes in the URL inside the search pattern won’t
-have &hellip;">
+  <meta name="description" content="Problem Octopress has recently removed Rubypants, so the automatic smartquotes
+aren’t supported any more. However, after typing git pull
+octopress &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,59 @@ have &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/03/git-merge-failed/">Git Merge Failed?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-03T14:34:31+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:34 pm</span></time>
+        
+           | <a href="/blog/2015/09/03/git-merge-failed/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/03/git-merge-failed/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>Octopress has recently removed Rubypants, so the automatic smartquotes
+<em>aren’t</em> supported any more.  However, after typing <code>git pull
+octopress master</code> on the <code>source</code> branch of the local working
+directory for this blog, <code>git</code> simply said that it’s “already
+up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
+show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
+If the former has the commits of the later, then
+<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
+the command <code>git merge octopress/master</code> again, and the version
+control system still said that there’s <em>no</em> unmerged commits from the
+<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/09/03/git-merge-failed/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -782,70 +835,6 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
-        
-           | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="situation">Situation</h2>
-
-<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
-but after a while, I changed that post.  In order not to complexify
-my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
-simple and convenient.  I observed that the displayed time in the
-amended commit was the <em>same</em> as the original one, whereas the SHA-1
-hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
-However, from
-<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
-that the ID of Git commit objects is totally determined by</p>
-
-<ol>
-  <li>the content of the commit message</li>
-  <li>the commit time</li>
-  <li>the author</li>
-</ol>
-
-<p>In this case, no difference of the above factors between the original
-commit and the amended commit can be observed with <code>git show</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/07/how-does-git-commit-amend-work/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -893,7 +882,7 @@ commit and the amended commit can be observed with <code>git show</code>.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (32)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (49)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (50)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (51)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -914,6 +903,10 @@ commit and the amended commit can be observed with <code>git show</code>.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/21/approxation-of-a-bounded-simple-function-by-a-continuous-function/">Approxation of a Bounded Simple Function by a Continuous Function</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
       </li>
     
@@ -927,10 +920,6 @@ commit and the amended commit can be observed with <code>git show</code>.</p>
     
       <li class="post">
         <a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/14/adobe-reader-has-stopped-working/">Adobe Reader Has Stopped Working</a>
       </li>
     
   </ul>
