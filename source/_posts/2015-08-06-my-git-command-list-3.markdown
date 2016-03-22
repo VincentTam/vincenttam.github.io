@@ -34,7 +34,7 @@ The list
     $ git diff                # Show the difference between the working directory and the index
     $ git diff --cached       # Show the difference between HEAD and the index
     $ git diff HEAD           # Show the difference between HEAD and the working directory
-    {:.cliUB}
+{:.cliUB}
 
 It *isn't* necessary to supply the full SHA-1 hash for
 `{hash}`---several hex digits at the beginning will be enough.
