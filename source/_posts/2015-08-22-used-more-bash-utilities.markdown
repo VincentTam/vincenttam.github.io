@@ -63,7 +63,7 @@ Using `-not -path ./dir` option *doesn't* work.
     \*nix)
 - `-i ''`: no backup (Also Mac only)
 - `sed 'p;s/foo/bar/'`: print original and replaced strings, separated
-  by whitespace.
+  by newline.
 
 ### The awk command
 
