@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-24T23:03:50+08:00</updated>
+  <updated>2016-03-26T22:06:27+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,26 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Missing OS (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/26/missing-os-2/"/>
+    
+    <updated>2016-03-26T21:48:09+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/26/missing-os-2</id>
+    
+      <content type="html"><![CDATA[<p>I saw a similar error <em>again</em>.  After pressing any key, the M$ Win*
+logo appeared.  I <em>don’t</em> think that I’ll find out anything about this
+error since I’ve other things to do.</p>
+
+<picture class="fancybox" title="No operating system found">
+  <source srcset="/images/posts/BoD/20160322-125447.jpg" media="(min-width: 400px)" /> 
+  <img alt="No operating system found" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160322-125447.jpg" />
+</picture>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1359,89 +1379,6 @@ Press ENTER or type command to continue
 <a href="http://polymerhk.com/articles/2016/02/03/27363/">find out what’s wrong from the error message</a> because writing
 that hyperlink in the standard way is the quickest solution that I
 know.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Indentation of Titles in Markdown Files in Vim]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim/"/>
-    
-    <updated>2016-02-10T00:05:04+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/10/indentation-of-titles-in-markdown-files-in-vim</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>While I was writing
-<a href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">a post about a technical problem encountered</a> while writing
-<a href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/">another post about Venn diagram</a>, I encountered another
-technical problem.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried including the error message into the previous post by the Vim
-editor command <code>:r ~/lang:text temp-swp.mkd</code>.  To have it surrounded with
-<code>&lt;pre&gt;&lt;code&gt;</code> in HTML, one needs to indent it by four spaces.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A section of the error message  (temp-swp.mkd)</span> <a href="https://vincenttam.github.io/downloads/code/temp-swp.mkd">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">## Generating Site with Jekyll
-</span><span class="line">    write source/stylesheets/screen.css
-</span><span class="line">Configuration file: /home/owner/octopress/_config.yml
-</span><span class="line">            Source: source
-</span><span class="line">       Destination: public
-</span><span class="line">      Generating...
-</span><span class="line">                    done.
-</span><span class="line"> Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I usally do this by applying the right-shift operator <code>&gt;</code> to the text
-selected in visual line mode.  However, the line starting with <code>#</code>
-<em>wasn’t</em> indented like the others.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A failed indentation  (temp-swp1.mkd)</span> <a href="https://vincenttam.github.io/downloads/code/temp-swp1.mkd">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">## Generating Site with Jekyll
-</span><span class="line">        write source/stylesheets/screen.css
-</span><span class="line">    Configuration file: /home/owner/octopress/_config.yml
-</span><span class="line">                Source: source
-</span><span class="line">           Destination: public
-</span><span class="line">          Generating...
-</span><span class="line">                        done.
-</span><span class="line">     Auto-regeneration: disabled. Use --watch to enable.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>If I started <a href="http://www.vim.org">Vim</a> with all plugins disabled with <code>vim -u NONE -N</code>,
-then the above problem <em>won’t</em> happen.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>Use the visual block mode instead.  Either one way will do.</p>
-
-<ol>
-  <li>Keep using the <code>&gt;</code> operator.</li>
-  <li>Use <code>I    </code> instead of <code>&gt;</code>.</li>
-</ol>
 
 ]]></content>
     

@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem Octopress has recently removed Rubypants, so the automatic smartquotes
-aren’t supported any more. However, after typing git pull
-octopress &hellip;">
+  <meta name="description" content="Lemma Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have \begin{equation}
+\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,153 @@ octopress &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Found an Upper Bound for the Modulus of Legendre Polynomials</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-03T16:35:01+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:35 pm</span></time>
+        
+           | <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="lemma">Lemma</h2>
+
+<p>Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have</p>
+
+<div class="myeqn">
+\begin{equation}
+\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t)} \ud t.
+\label{lemma}
+\end{equation}
+</div>
+
+<p>The trick is to treat the integral on the L.H.S. of \eqref{lemma} as a
+number.</p>
+
+<div class="myeqn">
+\begin{align}
+\int_{a}^{b} w(t) \ud t &amp;= r_0 e^{i\theta_0} \text{ for some } r \in
+\R \text{ and } \theta_0 \in [-\pi,\pi)
+\label{trick1}\\
+r_0 &amp;= \int_{a}^{b} e^{-i\theta_0} w(t) \ud t
+\label{trick2}
+\end{align}
+</div>
+
+<p>Then from \eqref{lemma} and \eqref{trick1}, it suffices to show that</p>
+
+<div class="myeqn">
+\begin{equation}
+r_0 = \abslr{r_0 e^{i\theta_0}} \le \int_{a}^{b} \abs{w(t)} \ud t.
+\label{new_goal1}
+\end{equation}
+</div>
+
+<p>Since \eqref{trick2} consists of $e^{-i\theta_0}$, which is <em>absent</em>
+on the R.H.S. of \eqref{lemma} and \eqref{new_goal1}, we add it back.
+Thus, we need to show</p>
+
+<div class="myeqn">
+\begin{equation}
+r_0 \le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+\label{new_goal2}
+\end{equation}
+</div>
+
+<p>Looking at \eqref{trick2} again, we’re almost there!  Using elementary
+properties of complex numbers and definite integrals for real-valued
+functions and the fact/definition that</p>
+
+<div class="myeqn">
+\begin{equation}
+\Re\left(\int_{a}^{b} w(t) \ud t\right) = \int_{a}^{b} \Re[w(t)] \ud
+t,
+\label{Re-int}
+\end{equation}
+</div>
+
+<p>we can write</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+r_0 &amp;= \Re\left(\int_{a}^{b} e^{-i\theta_0} w(t) \ud t\right) \\
+&amp;= \int_{a}^{b} \Re[e^{-i\theta_0} w(t)] \ud t\\
+&amp;\le \int_{a}^{b} \abslr{e^{-i\theta_0} w(t)} \ud t.
+\end{aligned}
+\label{fin}
+\end{equation}
+</div>
+
+<p>Therefore, \eqref{new_goal2} is satisfied, so as \eqref{lemma}.</p>
+
+<h2 id="an-upper-bound-for-legendre-polynomials">An upper bound for Legendre polynomials</h2>
+
+<p>I have <em>never</em> evaluated</p>
+
+<div class="myeqn">
+\begin{equation}
+P_n(x) = \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+\cos{\theta})^n \ud\theta,
+\label{pnx}
+\end{equation}
+</div>
+
+<p>where $-1 \le x \le 1$ and $n = 0,1,2,\dots$</p>
+
+<p>Applying \eqref{lemma}, one gets</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
+\cos{\theta})^n \ud\theta\\
+&amp;\le \frac{1}{\pi} \int_0^\pi \ud\theta\\
+&amp;= 1
+\end{aligned}
+\label{crux}
+\end{equation}
+</div>
+
+<p>because</p>
+
+<div class="myeqn">
+\begin{equation}
+\begin{aligned}
+&amp;\quad\; \abs{x + i \sqrt{1 - x^2} \cos{\theta}}\\
+&amp;= \sqrt{x^2 + (1 - x^2) \cos^2{\theta}}\\
+&amp;\le \sqrt{x^2 + (1 - x^2)}\\
+&amp;= 1.
+\end{aligned}
+\label{norm-ub}
+\end{equation}
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -737,104 +883,6 @@ hash</strong>?</em></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Git Object ID Generation (2): Trees With One Single Blob</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-07T19:36:21+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:36 pm</span></time>
-        
-           | <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>In <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">the first post</a> in this series, I’ve claimed that the
-generation of object IDs in Git is the SHA-1 hash of the string</p>
-
-<pre><code>&lt;object type name&gt; SP &lt;len&gt; NUL &lt;data&gt;
-</code></pre>
-
-<p>,where</p>
-
-<ul>
-  <li><code>&lt;data&gt;</code> stands for the output of <code>git cat-file -p {hash}</code></li>
-  <li><code>&lt;len&gt;</code> means the length of <code>&lt;data&gt;</code>.  It can be measured with the
-  command <code>wc -c</code>.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>To verify my claim, I followed the steps in Chapter 4 of <em>Version
-Control with Git</em>.</p>
-
-<ol>
-  <li>Create a folder named <code>hello</code> and go to that directory.</li>
-  <li>Initialise an empty Git repository.</li>
-  <li>Create the file <code>hello.txt</code> with one single line “hello world”.</li>
-  <li>Add the file to Git’s object storage.</li>
-  <li>Get a tree object from the index.</li>
-  <li>Capture the contents of the tree object in <code>test.txt</code>.</li>
-  <li>Count the number of bytes in <code>test.txt</code>.</li>
-  <li>
-    <p>Create the file <code>len.txt</code> consisting of</p>
-
-    <pre class="cliUB"><code> "tree" SP &lt;result in item 6&gt; NUL
-</code></pre>
-
-    <p><em>without</em> the line terminator.</p>
-  </li>
-  <li>Concatenate the contents of the files <code>len.txt</code> and <code>test.txt</code> and
-compute its SHA-1 hash.</li>
-</ol>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-<span class="UBHLCode">68aba62e560c0ebc3396e8ae9335232cd93a3f60</span>
-$ git cat-file -p 68aba62e560c0ebc3396e8ae9335232cd93a3f60 | tee test.txt
-<span class="UBHLCode">100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad	hello.txt</span>
-$ wc -c test.txt
-63 test.txt
-$ printf "tree 63\0" &gt; len.txt
-$ cat len.txt test.txt | shasum
-<span class="err">10bd0f0350027c25edc4ce72aba60e641f55596d  -</span>
-</code></pre>
-
-<p>As can be seen above, I’ve <span class="err">a wrong SHA-1
-hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -881,7 +929,7 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (32)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (50)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -903,6 +951,10 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/26/missing-os-2/">Missing OS (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/">Approximation of a Bounded Simple Function by a Continuous Function</a>
       </li>
     
@@ -916,10 +968,6 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
     
       <li class="post">
         <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a>
       </li>
     
   </ul>
