@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background In the first post in this series, I’ve claimed that the
-generation of object IDs in Git is the SHA-1 hash of the string &lt;object type &hellip;">
+  <meta name="description" content="Background Having written the second post in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects. Problem &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,90 @@ generation of object IDs in Git is the SHA-1 hash of the string &lt;object type 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Git Object ID Generation (3): Trees With Multiple Blobs</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T22:30:55+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:30 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Having written <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
+I understood how to compute the SHA-1 hash of Git tree objects.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
+word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
+<a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
+convenience.</p>
+
+<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
+$ git init
+$ echo "hello world" &gt; hello.txt
+$ git add hello.txt
+$ git write-tree
+68aba62e560c0ebc3396e8ae9335232cd93a3f60
+$ echo "sweet" &gt; rose
+$ git add rose
+$ git write-tree
+b12767ff2f8a8160bca15abfb775bca5ba31ccf1
+$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
+100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
+100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
+</code></pre>
+
+<p>Therefore, our target hash is
+<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
+
+<p>Just like what I’d done in the previous post, I manually changed the
+hashes into a <code>printf</code> command that writes out the binary value of the
+hashes.</p>
+
+<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
+$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
+0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
+7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
+a4b430f9da3e22c0854fb26c97da77db271e5acf  -
+</code></pre>
+
+<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
+<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
+hash</strong>?</em></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -696,79 +780,6 @@ another folder?</strong></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/09/ms-word-hanged/">MS Word Hanged</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-09T15:59:15+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:59 pm</span></time>
-        
-           | <a href="/blog/2015/06/09/ms-word-hanged/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/09/ms-word-hanged/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I tried editing in M$ Word, but <em>failed</em>.</p>
-
-<picture class="fancybox" title="M$ Word not responding">
-  <source srcset="/images/posts/MSWordHanged/word-hang926.png" media="(min-width: 926px)" />
-  <img alt="M$ Word hanged" src="/images/posts/MSWordHanged/word-hang250.png" />
-</picture>
-
-<h2 id="solution">Solution</h2>
-
-<p>The solution is extremely simple: <em>don’t</em> use M$ Office if it’s too
-heavy for your computer — use something more lightweight: a text
-editor with a typesetting engine.</p>
-
-<h3 id="choose-your-favourite-editors">Choose your favourite editors</h3>
-
-<p>I use <a href="http://www.vim.org">Vim</a> every day as a text editor.  I tried <a href="http://www.gnu.org/software/emacs/">EMACS</a>. Though I
-<em>can’t</em> remember two sets of keystrokes, the latter is still useful
-when you need to browse <code>info</code> pages on *nix.</p>
-
-<h3 id="typesetting-engines">Typesetting engines</h3>
-
-<ol>
-  <li>
-    <p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and <a href="http://pandoc.org/">pandoc</a></p>
-
-    <p>For simple documents which have <em>little</em> variation in styles, such
- as blog entries and some homework essays.</p>
-  </li>
-  <li>
-    <p>$\rm \LaTeX$</p>
-
-    <p>For more complicated documents like lab report, documents
- containing math expressions, etc.</p>
-  </li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -828,13 +839,17 @@ when you need to browse <code>info</code> pages on *nix.</p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (38)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/27/an-invalid-claim-by-the-government/">An Invalid Claim by the Government</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/26/missing-os-2/">Missing OS (2)</a>
@@ -850,10 +865,6 @@ when you need to browse <code>info</code> pages on *nix.</p>
     
       <li class="post">
         <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
       </li>
     
   </ul>

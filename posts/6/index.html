@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Lemma Suppose that $w: [a,b] \to \C$ is piecewise continuous, then we have \begin{equation}
-\abslr{\int_{a}^{b} w(t) \ud t} \le \int_{a}^{b} \abs{w(t &hellip;">
+  <meta name="description" content="Problem Suppose that $z = x + iy, x,y \in \R$. Then $\abs{\sin z} \ge
+\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$. ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,50 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Stuck at Two Trigonometric Inequalities</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-04T18:26:48+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:26 pm</span></time>
+        
+           | <a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>Suppose that $z = x + iy, x,y \in \R$.  Then $\abs{\sin z} \ge
+\abs{\sin x}$ and $\abs{\sin z} \ge \abs{\sinh y}$.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -799,90 +843,6 @@ $ printf "tree 71\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Git Object ID Generation (3): Trees With Multiple Blobs</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-07T22:30:55+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:30 pm</span></time>
-        
-           | <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Having written <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series, I thought that
-I understood how to compute the SHA-1 hash of Git tree objects.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Suppose that I add a file named <code>rose</code> which consisted merely of the
-word <code>sweet</code> and a line terminator to the folder <code>hello</code> in
-<a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">the second post</a> in this series.  I include the setup here for
-convenience.</p>
-
-<pre class="cliUB"><code>$ mkdir hello &amp;&amp; cd hello
-$ git init
-$ echo "hello world" &gt; hello.txt
-$ git add hello.txt
-$ git write-tree
-68aba62e560c0ebc3396e8ae9335232cd93a3f60
-$ echo "sweet" &gt; rose
-$ git add rose
-$ git write-tree
-b12767ff2f8a8160bca15abfb775bca5ba31ccf1
-$ git cat-file -p b12767ff2f8a8160bca15abfb775bca5ba31ccf1 | tee test.txt
-100644 blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    hello.txt
-100644 blob aa823728ea7d592acc69b36875a482cdf3fd5c8d    rose
-</code></pre>
-
-<p>Therefore, our target hash is
-<code>b12767ff2f8a8160bca15abfb775bca5ba31ccf1</code>.</p>
-
-<p>Just like what I’d done in the previous post, I manually changed the
-hashes into a <code>printf</code> command that writes out the binary value of the
-hashes.</p>
-
-<pre class="cliUB"><code># Note: I *didn't* type enter in the following command.  Just keep typing.
-$ printf "tree 70\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
-0\xdd\x08\xae\xb3\x7f\x8e\x72\x8b\x8d\xad\n100644 rose\x00\xaa\x82\x37\x28\xea\x
-7d\x59\x2a\xcc\x69\xb3\x68\x75\xa4\x82\xcd\xf3\xfd\x5c\x8d" | shasum
-a4b430f9da3e22c0854fb26c97da77db271e5acf  -
-</code></pre>
-
-<p>What I got is <code>a4b430f9da3e22c0854fb26c97da77db271e5acf</code>, which is
-<em>different</em> from the target.  <em>How can I get back <strong>the right SHA-1
-hash</strong>?</em></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -942,13 +902,17 @@ hash</strong>?</em></p>
 <li class='category'><a href='/blog/categories/template/'>template (4)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (38)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (26)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/03/27/an-invalid-claim-by-the-government/">An Invalid Claim by the Government</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/03/26/missing-os-2/">Missing OS (2)</a>
@@ -964,10 +928,6 @@ hash</strong>?</em></p>
     
       <li class="post">
         <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a>
       </li>
     
   </ul>
