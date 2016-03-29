@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background There is an easy way of calculating the volume of $\{(x,y,z) \in
-\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the &hellip;">
+  <meta name="description" content="Background Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,168 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/04/10/compared-two-poisson-variables/">Compared Two Poisson Variables</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-04-10T13:21:37+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:21 pm</span></time>
+        
+           | <a href="/blog/2015/04/10/compared-two-poisson-variables/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/04/10/compared-two-poisson-variables/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/04/10/compared-two-poisson-variables/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Last Friday, I had to submit a homework which required me to evaluate
+$\Pr(A &gt; B)$ and $\Pr(A = B)$, where $A$ and $B$ were two independent
+Poisson random variables with parameters $\alpha$ and $\beta$
+respectively.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I then started evaluating the sum.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A &gt; B) = \sum_{i = 1}^\infty \sum_{j = 0}^{i - 1}
+  \frac{e^{-\alpha} \alpha^i}{i!} \cdot \frac{e^{-\beta} \beta^j}{j!}
+\]
+</div>
+
+<p>Then I was <em>stuck</em>.  I <em>couldn’t</em> compute this sum also.</p>
+
+<div class="myeqn">
+\[
+  \Pr(A = B) = \sum_{i = 0}^\infty \frac{e^{-(\alpha + \beta)}
+  \alpha^i \beta^i}{(i!)^2}
+\]
+</div>
+
+<h2 id="fact">Fact</h2>
+
+<p>I googled for a solution for hours, and after I saw equation (3.1) in
+a paper, I gave up finding exact solutions.<sup id="fnref:fact"><a href="#fn:fact" class="footnote">1</a></sup>  As a supporter of
+free software, I avoided using M$ Ex*, and wrote a program in C++ to
+approximate the above probabitities by directly adding them term by
+term.</p>
+
+<h3 id="source-code">Source code</h3>
+
+<div><script src="https://gist.github.com/c27c38c49fe8de17c815.js"></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+
+<h3 id="sample-output">Sample output</h3>
+
+<pre class="cliUB"><code>Assume that Poisson r.v. A and B are indepedent
+Parameter for A: 1.6
+Parameter for B: 1.4
+Number of terms to be added (100 &lt;= N &lt;= 1000): 8
+P(A &gt; B) = 0.423023, P(A &lt; B) = 0.335224, P(A = B) = 0.241691
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>
+    <p>A one-line method for writing the content of a function which
+returns the factorial of a number.</p>
+
+    <p>URL: <a href="http://progopedia.com/example/factorial/">http://progopedia.com/example/factorial/</a></p>
+  </li>
+  <li>
+    <p>Evaluation of a function inside GDB</p>
+
+    <p>URL: <a href="http://stackoverflow.com/q/1354731/">http://stackoverflow.com/q/1354731/</a></p>
+  </li>
+</ol>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:fact">
+
+      <p>Keller, J. B. (1994). A characterization of the Poisson
+distribution and the probability of winning a game. <em>The American
+Statistician</em>, 48(4), 294–298. <a href="#fnref:fact" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1029,77 +1191,6 @@ that $f \equiv 0$. <a href="#fnref:rmk" class="reversefootnote">&#8617;</a></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/02/28/evaluated-a-convolution-integral/">Evaluated a Convolution Integral</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-28T19:26:05+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:26 pm</span></time>
-        
-           | <a href="/blog/2015/02/28/evaluated-a-convolution-integral/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/02/28/evaluated-a-convolution-integral/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/02/28/evaluated-a-convolution-integral/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Yesterday afternoon, I did a convolution integral to show that a
-finite sum of i.i.d. $X_i \sim \Exp(\lambda)$ is Gamma distributed.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{X_{i_1}} * f_{X_{i_2}}(x) =&amp; \int_{-\infty}^{\infty} f_{X_{i_1}}(z)
-f_{X_{i_2}}(x - z) \ud z \\
-=&amp; \int_{0}^{x} (\lambda e^{-\lambda z}) (\lambda e^{-\lambda (x -
-z)}) \ud z \\
-=&amp; \int_{0}^{x} \lambda^2 e^{-\lambda x} \ud z \\
-=&amp; \lambda^2 x e^{-\lambda x}
-\end{aligned}
-\]
-</div>
-
-<p>Using the same technique, one can prove the claim by induction.
-What’s written above is the base case.</p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-f_{\sum_{j = 1}^{k + 1} X_{i_j}}(x) =&amp; f_{\sum_{j = 1}^{k} X_{i_j} +
-X_{i_{k + 1}}}(x) \\
-=&amp; f_{\sum_{j = 1}^{k} X_{i_j}} * f_{X_{i_{k + 1}}}(x) \\
-=&amp; \int_{-\infty}^{\infty} f_{\sum_{j = 1}^{k} X_{i_j}}(z) f_{X_{i_{k
-+ 1}}}(x - z) \ud z \\
-=&amp; \int_{0}^{x} \left (\frac{\lambda^k z^{k - 1} e^{-\lambda z}}{(k -
-1)!} \right ) (\lambda e^{-\lambda (x - z)}) \ud z \\
-=&amp; \int_{0}^{x} \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} z^{k -
-1} \ud z \\
-=&amp; \frac{\lambda^{k + 1} e^{-\lambda x}}{(k - 1)!} \frac{x^k}{k} \\
-=&amp; \frac{\lambda^{k + 1} x^k e^{-\lambda x}}{k!}
-\end{aligned}
-\]
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -1168,6 +1259,10 @@ X_{i_{k + 1}}}(x) \\
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/27/an-invalid-claim-by-the-government/">An Invalid Claim by the Government</a>
       </li>
     
@@ -1181,10 +1276,6 @@ X_{i_{k + 1}}}(x) \\
     
       <li class="post">
         <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a>
       </li>
     
   </ul>

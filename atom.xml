@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-27T14:47:14+08:00</updated>
+  <updated>2016-03-29T19:35:33+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Gems on Which TLDR Pages Depend]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/03/29/gems-on-which-tldr-pages-depend/"/>
+    
+    <updated>2016-03-29T19:13:20+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/03/29/gems-on-which-tldr-pages-depend</id>
+    
+      <content type="html"><![CDATA[<p>Tonight, I’ve installed <a href="http://tldr-pages.github.io/">TLDR pages</a> by typing <code>gem install
+tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
+
+<p>Here’s a list of gems actually fetched.</p>
+
+<ol>
+  <li><code>bales-0.1.2</code></li>
+  <li><code>unf-0.2.0.beta2</code></li>
+  <li><code>domain_name-0.5.20160310</code></li>
+  <li><code>http-cookie-1.0.2</code></li>
+  <li><code>mime-types-2.99.1</code></li>
+  <li><code>netrc-0.11.0</code></li>
+  <li><code>rest-client-1.8.0</code></li>
+  <li><code>tldrb-0.0.2</code></li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1243,81 +1271,6 @@ non-action or non-being.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/"/>
-    
-    <updated>2016-02-15T01:18:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>As I’ve said in <a href="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/"><em>Jekyll Blog Page Build Warning</em></a>,
-<a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">GitHub Pages have upgraded to 3.0</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>The Twitter theme for every post in <a href="https://vincenttam.github.io/blog2">Blog 2</a> was <em>gone</em>, but
-the home page and the archive page still looked good.</p>
-
-<p>I viewed <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>’s <a href="https://github.com/plusjade/jekyll-bootstrap/issues">issue list</a>.  The
-“{{ ASSET_PATH }}” in the title of
-<a href="https://github.com/plusjade/jekyll-bootstrap/issues/295">issue #295</a> caught my eyes.  Feeling that changing
-<code>_config.yml</code> is too troublesome and prone to error, I clicked some
-links for related web pages, such as
-<a href="http://jekyllrb.com/docs/upgrading/2-to-3/#layout-metadata">a relevant page in Jekyll’s documentation</a>, but I <em>didn’t</em> know
-what to do.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>It turns out that this issue is the <em>same</em> as <a href="https://github.com/plusjade/jekyll-bootstrap/issues/290">issue #290</a>.
-The status of this issue is <em>closed</em> because some ways of fixing the
-problem have been shared.  Since <a href="https://github.com/plusjade/jekyll-bootstrap/pull/293/files">qh’s fix</a> has received
-positive comments, I adopt his approach.</p>
-
-<p><a href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Before learning more Git commands this summer</a>, I would change
-this <em>manually</em>.  However, fearing that I would <a href="https://github.com/qh/jekyll-bootstrap/commit/a2526d03dad245ea389c918055ac7fe46948ab1d">make a typo</a>, I
-seek an automatic way to apply the changes in <code>_includes/JB/setup</code>.</p>
-
-<p>I searched “git apply patch” on Google, and reached
-<a href="http://stackoverflow.com/q/7827002">this Stack Overflow question</a> eventually.  The command</p>
-
-<pre class="cliUB"><code>$ curl https://github.com/JustinTulloss/zeromq.node/pull/47.patch &gt; /tmp/47.patch
-</code></pre>
-
-<p>gave me a file (<em>without EOF</em>) in <code>/tmp</code>.</p>
-
-<pre class="cliUB"><code>&lt;html&gt;&lt;body&gt;You are being &lt;a href="https://patch-diff.githubusercontent.com/raw/JustinTulloss/zeromq.node/pull/47.patch"&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;
-</code></pre>
-
-<p>I then tried using <code>git apply</code>.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git apply --stat /tmp/47.patch
-fatal: unrecognized input
-</code></pre>
-
-<p>Even though I added the <code>--stat</code> option, the bash still said that it’s
-<code>fatal</code>.  I tried googling “git apply fatal”, but I <em>couldn’t</em> see
-anything useful.  The third answer to this Stack Overflow question
-cleared my doubts: by comparing the date of the answers, one knows
-that <code>patch-diff.githubusercontent.com</code> should be used instead.</p>
-
-<p>Since the reputation of the owner of the second answer is higher,
-<em>not</em> having enough time to check their differences, I used <code>git am</code>
-instead of <code>git apply --check</code>.  Finally, everything went smooth and
-the <code>git push</code> was successful.  Originally, I intended to leave a
-short Git comment message with a few helpful links.  However,
-everything went so good that I <em>didn’t</em> have the chance to do that in
-the Git repository for Blog 2.  Therefore, I recorded my thoughts
-here.</p>
-
 ]]></content>
     
   </entry>
