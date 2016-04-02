@@ -14,10 +14,10 @@ for a person to finish her priting job.  Unfortunately, an error
 occured, and she left *without* saying a word.
 
 <picture class="fancybox" title="A Print Error">
-  <source srcset="/images/posts/PrinterError/20160314_191831_HDR.jpg"
-    media="(min-width: 600px)"></source> 
+  <source srcset="/images/posts/PrinterError/20160314-191831-HDR.jpg"
+    media="(min-width: 2800px)"></source>
   <img alt="A Print Error" width="300"
-    src="/images/posts/PrinterError/20160314_191831_HDR.jpg" />
+    src="/images/posts/PrinterError/20160314-191831s.jpg" />
 </picture>
 
 Result
