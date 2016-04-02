@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-03-29T19:35:33+08:00</updated>
+  <updated>2016-04-02T17:14:51+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$L^\infty$ Is Not Separable]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable/"/>
+    
+    <updated>2016-04-02T17:00:13+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable</id>
+    
+      <content type="html"><![CDATA[<p>This Wednesday, I read a proof about the non-separability of
+$L^\infty$ spaces.  To simplify things, I assume that it’s defined on
+sequences.</p>
+
+<div class="myeqn">
+\[
+  L^\infty \triangleq \{ (x_n)_{n \in \N} \mid \exists\,M \ge 0
+  \text{ such that } \forall\,n \in \N, \abs{x_n} \le M \}
+\]
+</div>
+
+<p>I have written down the uncountable set (see Cantor’s diagonal
+argument)</p>
+
+<div class="myeqn">
+\[
+  D \triangleq \{ (x_n)_{n \in \N} \mid \forall\,n \in \N, x_n=\pm1 \}
+\]
+</div>
+
+<p>in my notes.  I understand</p>
+
+<div class="myeqn">
+\[
+  B(x,1) \cap B(y,1) = \varnothing \quad \forall \, x,y \in D
+  \text{ with } x \ne y.
+\]
+</div>
+
+<p>Then, my teacher said that the reason was like the Pigeon-Hole
+Principle.  I got puzzled when I was revising the proof.  In fact, in
+the above equation, an element in a <em>dense</em> set $C$ can be found in
+each open ball $B(x,1)$.  Since the open balls $B(x,1)$ are
+<em>disjoint</em>, $C$ has <em>uncountably</em> many elements.  Hence, $L^\infty$ is
+non-separable.</p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -1118,159 +1165,6 @@ python2: PE32 executable (console) Intel 80386, for MS Windows
 
 <p>Finally, <code>rake</code> <em>doesn’t</em> give me strange output.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Mik$\rm \TeX$ Update (2)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/21/miktex-update-2/"/>
-    
-    <updated>2016-02-21T22:37:20+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/21/miktex-update-2</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I need to write something in $\rm \LaTeX$.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I <em>can’t</em> get any update by clicking “Update Mik$\rm \TeX$” in the
-icon triggered by <code>miktex-portable.cmd</code>.  I faced the same problem as
-<a href="http://tex.stackexchange.com/q/251242">rantrave’s</a>.</p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>If one urgently needs to get the updated version of a particular
-package, one may directly download the LZMA file.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup>  Actually, the
-remote package repositories are still <em>online</em>.  I guess the problem
-is in Mik$\rm \TeX$ update tool.  Anyways, I am still grateful for the
-effort of its developers.</p>
-
-<h2 id="resolution">Resolution</h2>
-
-<p>The easiest way is to sit there and <em>wait for a day</em>.  Then the
-problem will be <em>gone</em>.  It is possible that some difficulties occur,
-but they can be overcome.</p>
-
-<picture class="fancybox" title="Windows API error 145">
-  <source srcset="/images/posts/MikTeXUpdate2/api-err.png" media="(min-width: 460px)" />
-  <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
-</picture>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>I clicked "Copy Info" and got this.  (err-2016-02-22-22-00.txt)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-update2/err-2016-02-22-22-00.txt">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">MiKTeX Problem Report
-</span><span class="line">Message: Windows API error 145: The directory is not empty.
-</span><span class="line">
-</span><span class="line">Data: C:\Temp\MikTeXPortable\miktex\temp\mik8012
-</span><span class="line">Source: Libraries\MiKTeX\Core\win\winFile.cpp
-</span><span class="line">Line: 115
-</span><span class="line">MiKTeX: 2.9
-</span><span class="line">OS: Microsoft Windows 7 Home Premium Edition, 64-bit Service Pack 1 (build 7601)
-</span><span class="line">Invokers: non-existing/miktex-taskbar-icon
-</span><span class="line">SystemAdmin: no
-</span><span class="line">PowerUser: no
-</span><span class="line">Root0: C:\Temp\MikTeXPortable
-</span><span class="line">Root1: C:\localtexmf
-</span><span class="line">UserInstall: C:\Temp\MikTeXPortable
-</span><span class="line">UserConfig: C:\Temp\MikTeXPortable
-</span><span class="line">UserData: C:\Temp\MikTeXPortable
-</span><span class="line">CommonInstall: C:\Temp\MikTeXPortable
-</span><span class="line">CommonConfig: C:\Temp\MikTeXPortable
-</span><span class="line">CommonData: C:\Temp\MikTeXPortable
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>From <a href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
-Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
-work.  The update wizard inside the big window for the package manager
-<em>won’t</em>.</p>
-
-<p>Sometimes, the chosen remote package repository can fail.  In this
-case, just click the button and search for another one.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>An example of failed update.  (update-2016-02-21-20-19.txt)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-update2/update-2016-02-21-20-19.txt">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">MiKTeX Update Wizard Report
-</span><span class="line">
-</span><span class="line">Version: 2.9.4913
-</span><span class="line">Date: Sunday, February 21, 2016
-</span><span class="line">Time: 20:19:02
-</span><span class="line">starting package maintenance...
-</span><span class="line">installation directory: C:\Temp\MikTeXPortable
-</span><span class="line">package repository: http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/
-</span><span class="line">lightweight database digest: d913ba0ad3c9c47c3e7a3e6e11863874
-</span><span class="line">going to download 6130048 bytes
-</span><span class="line">going to install 10 file(s) (1 package(s))
-</span><span class="line">going to remove 35 file(s) (4 package(s))
-</span><span class="line">downloading http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/miktex-bin-2.9.tar.lzma...
-</span><span class="line">6130048 bytes, 1452.65 KB/Sec
-</span><span class="line">extracting files from miktex-bin-2.9.tar.lzma...
-</span><span class="line">removing package miktex-freetype-bin-2.9...
-</span><span class="line">removing package miktex-qt4-bin-2.9...
-</span><span class="line">removing package miktex-texinfo-bin-2.9...
-</span><span class="line">removing package miktex-vc100-bin...
-</span><span class="line">
-</span><span class="line">Error: The MiKTeX package management utility could not be found.
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>When there’s nothing can be done, then one needs the mind of
-non-action or non-being.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp1">
-
-      <p>For example, the situation described in
-<a href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>. <a href="#fnref:pp1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

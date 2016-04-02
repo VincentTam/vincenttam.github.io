@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I am not so satisfied with this the following
-definition.1 \[ e^{i\theta} := \cos \theta + i \sin \theta
-\] I remembered the proof for convergence of &hellip;">
+  <meta name="description" content="Many math books that I’ve read referred me to other books for the
+proof of the equivalence of the Axiom of Choice and Zorn’s Lemma.
+This afternoon, I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,82 @@ definition.1 \[ e^{i\theta} := \cos \theta + i \sin \theta
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Understood How Zorn's Lemma Implies the Axiom of Choice</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-06T01:26:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:26 am</span></time>
+        
+           | <a href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/06/understood-how-zorns-lemma-implies-the-axiom-of-choice/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Many math books that I’ve read referred me to other books for the
+proof of the equivalence of the Axiom of Choice and Zorn’s Lemma.
+This afternoon, I spent more than two hours to understand the proof
+that the later implies and former in <cite>Topology</cite> written by
+Davis.</p>
+
+<ol>
+  <li>Set up a non-empty partially ordered set $(\mathcal{P},\le)$</li>
+  <li>Let $\mathcal{T}$ be any non-empty chain in $\mathcal{P}$.</li>
+  <li>Prove that $\cup \mathcal{T} \in \mathcal{P}$.</li>
+  <li>Apply Zorn’s Lemma to get a maximal element $g \in \mathcal{P}$.</li>
+  <li><span class="myeqn">Use the maximality of $g$ to claim
+that the domain of $g$ equals the family of non-empty subsets
+$(S_i)_{i \in I}$ from which elements $(x_i)_{i \in I}$ are chosen.
+</span></li>
+</ol>
+
+<p>In the book, $\le$ means function extension, and</p>
+
+<div class="myeqn">
+\[
+  \mathcal{P} = \{f: f \text{ is a function, } dom\,f \subseteq
+  (S_i)_{i \in I}, f(x) \in x \forall x \in dom\,f\}.
+\]
+</div>
+
+<p><span class="myeqn">
+Step (3) is proved step-by-step according to the definition of
+$\mathcal{P}$.  Usually, suppose that $(x_1,y_1),(x_2,y_2) \in f$,
+$x_1 = x_2 \implies y_1 = y_2$.  The book uses the contrapositive form
+of this statement.  I was stuck at the sentence <q>Now, for a set to
+be an element of $dom\cup\mathcal{T}$, it must be an element of some
+member of $\mathcal{T}$</q>.  At first, I omitted the phrase "some
+member of", and stopped for half an hour.  Reading the next sentence
+<q>Hence $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$</q>, I knew
+how to interpret the sentence where I was stuck: if $S \in
+dom\cup\mathcal{T}$, $\exists f \in \mathcal{T}$ such that $S \in
+dom\,f$.  Since $f \in \mathcal{T} \subseteq \mathcal{P}$, $dom\,f
+\subseteq (S_i)_{i \in I}$.  Then $S \in (S_i)_{i \in I}$, and thus
+$dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
+</span></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -768,107 +844,6 @@ a real Android device by clicking the little triangle on the top.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/">Git Object ID Generation (5): Predict ID</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-11T10:52:56+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:52 am</span></time>
-        
-           | <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/11/git-object-id-generation-5-predict-id/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="goal">Goal</h2>
-
-<p>The method for getting the Git object ID described in
-<a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
-consists of <em>several</em> commands.</p>
-
-<h2 id="the-one-line-command">The one-line command</h2>
-
-<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
-ash}) | shasum
-</code></pre>
-
-<ul>
-  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
-  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
-</ul>
-
-<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
-
-<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
-<p>Hence, we can modify the above command to predict the Git object ID of
-a <code>{file}</code>.</p>
-
-<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
-</code></pre>
-
-<p>In order to verify the result for files, one can quickly get the blob
-ID from Git by <code>git log -1 -p -- {file}</code>.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
-
-<p>I typed “linux extract number” on Google, and the autocompletion gave
-me “from string”.  I finally saw two commands for doing this.</p>
-
-<ol>
-  <li><code>sed 's/[^0-9]//g'</code></li>
-  <li><code>tr -dc '0-9'</code></li>
-</ol>
-
-<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
-complement of the characters marked by <code>-d</code>.</p>
-
-<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
-
-<p>Using the command in the section “Predict Git object IDs” gives users
-a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
-of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
-byte count of the files with <code>\r\n</code> as the line terminator in that
-command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
-
-<h3 id="using-git-for-win">Using Git for Win*</h3>
-
-<p>For the installed version of Git on M$ Win*, one needs to use
-<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
-it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
-
-<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
-
-<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
-instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
-hexadecimal number.)</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/7">&larr; Older</a>
@@ -916,7 +891,7 @@ hexadecimal number.)</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (50)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (51)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (51)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -937,6 +912,10 @@ hexadecimal number.)</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/02/l-infty-is-not-separable/">$L^\infty$ Is Not Separable</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a>
       </li>
     
@@ -950,10 +929,6 @@ hexadecimal number.)</p>
     
       <li class="post">
         <a href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/">Approximation of a Bounded Simple Function by a Continuous Function</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a>
       </li>
     
   </ul>
