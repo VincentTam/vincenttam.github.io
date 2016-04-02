@@ -6,6 +6,9 @@ comments: true
 categories: [math]
 ---
 
+Background
+---
+
 This Wednesday, I read a proof about the non-separability of
 $L^\infty$ spaces.  To simplify things, I assume that it's defined on
 sequences.
@@ -35,9 +38,23 @@ in my notes.  I understand
 \]
 </div>
 
-Then, my teacher said that the reason was like the Pigeon-Hole
-Principle.  I got puzzled when I was revising the proof.  In fact, in
-the above equation, an element in a *dense* set $C$ can be found in
-each open ball $B(x,1)$.  Since the open balls $B(x,1)$ are
-*disjoint*, $C$ has *uncountably* many elements.  Hence, $L^\infty$ is
-non-separable.
+Problem
+---
+
+Then, my teacher said that the reason for the non-separability of
+$L^\infty$ was like the Pigeon-Hole Principle.  I got puzzled when I
+was revising the proof.  In fact, in the above equation, an element in
+a *dense* set $C$ can be found in each open ball $B(x,1)$.  Since the
+open balls $B(x,1)$ are *disjoint*, $C$ has *uncountably* many
+elements.  Hence, $L^\infty$ is non-separable.
+
+One knows that if a space is separable, we *can't* insert a
+non-separable subspace into it.  The above property of $L^\infty$
+serves as a concrete example of this fact.
+
+It's easy to show that a space having a Schauder basis is separable.
+Thus, we can conclude that $L^\infty$ *don't* possess any Schauder
+basis.
+
+In fact, we have a more *direct* approach to the absence of Schauder
+basis in $L^\infty$.  This will be discussed in my next post.
