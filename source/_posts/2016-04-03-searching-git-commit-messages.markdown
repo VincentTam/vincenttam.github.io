@@ -38,7 +38,7 @@ to display the following information.
 Solution
 ---
 
-    $ git log -2 --grep="HTTPS"
+    $ git log -2 --grep="HTTPS" --pretty="%h %cd %s"
     7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
     b6f4f1f Mon Feb 8 00:45:02 2016 +0800 A new article about Flair, Octopress and HTTPS
 {:.cliUB}
