@@ -9,8 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I was writing my previous post, which was about my recent
-Mik$\rm \TeX$ update. Problem After having finished it, I tried rake generate, &hellip;">
+  <meta name="description" content="Background I installed msysgit 1.9.0, and added its bash utilities to PATH. Problem I attempted to open an HTML file with curl. However, I got the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +78,85 @@ Mik$\rm \TeX$ update. Problem After having finished it, I tried rake generate, &
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Git for Windows, Curl, Gist.vim With Vundle (1)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-22T10:23:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>10:23 am</span></time>
+        
+           | <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
+following error.</p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
+/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
+curl: (1) Protocol "'http" not supported or disabled in libcurl
+shell returned 1
+Hit any key to close this window...
+</code></pre>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
+the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
+and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
+
+<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
+on the Google search web page, and the rest of the error message
+appeared in the list of suggestions.  In the first search result,
+which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
+error occurred from the first answer—in the Command Prompt, one
+needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
+Bash, this <em>doesn’t</em> matter.</p>
+
+<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
+version of Git was too old.  I then upgraded it.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
+(or <code>/c</code>) stands for “command”, and what’s left is the command to
+be run.</li>
+  <li><code>curl</code> will grab content from the input URL and display it as
+standard output.  To save the downloaded content in a file, the
+flag <code>-o</code>, which means “output”, can be used.</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -777,103 +855,6 @@ URL">
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/07/closedness-vs-completeness/">Closedness vs Completeness</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-07T17:50:37+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:50 pm</span></time>
-        
-           | <a href="/blog/2016/02/07/closedness-vs-completeness/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/07/closedness-vs-completeness/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>To prove a limit, we need to find a number before.  The definition
-gives us <em>no</em> hints on how to find it.  Cauchy’s Criterion for
-convergence is a good method for finding it numerically in “certain
-spaces” (e.g. $\R,L^p,L^\infty$) because the definition is
-<em>intrinsic</em>.</p>
-
-<p>Unluckily, there’re some “strange spaces” where Cauchy’s Criterion
-<em>isn’t</em> enough to give a convergence.  The simplest one is $\Q$
-equipped with the usual metric in $\R$.</p>
-
-<p><span class="myeqn">
-One knows that an incomplete metric space $X$ can extended to form a
-complete one $X^*$ (which is unique up to isometric isomorphism) so
-that $\iota(X)$ is dense in $X^*$.  That is, $\overline{\iota(X)} =
-X^*$.
-</span></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I confused $\overline{X}$ with $X^*$.  In other words, what’s the
-difference between the completion of $X$ and the closure of $X$?</p>
-
-<h2 id="explanation">Explanation</h2>
-
-<h3 id="general-answer">General answer</h3>
-
-<p>To see this, we note that the closedness of a set is discussed
-<em>relative to another set</em>, so if one stays inside the incomplete space
-$X$, then one notices that <strong>$X$ is closed in $X$</strong>.  However, even
-though one <em>doesn’t</em> know about $X^*$, one still realises that $X$ is
-incomplete.</p>
-
-<p>If one becomes wiser and seeks to “complete a given Cauchy sequence”
-(i.e. find a limit for a Cauchy sequence in $X$), it’s <em>impossible to
-live inside $X$</em>—one needs to escape from $X$ to $X^*$ so as to
-enjoy more freedom.</p>
-
-<blockquote>
-  <p>Claim: $X$ <em>isn’t</em> closed in $X^*$.</p>
-
-  <p>Approach: We <em>won’t</em> start from the topological definition (open
-complement).  Instead, we’ll argue with sequences.</p>
-
-  <p>Proof: Since $X$ is <em>incomplete</em>, there exists a Cauchy sequence
-$(x_n)$ in $X$ so that it has <em>no</em> limit in $X$.  The completeness
-of $X^*$ is applied to construct a limit $x$ in $X^*$.  If one
-allows $X$ to be closed, then $x$ will stay inside $X$, which
-contradicts the fact that $(x_n)$ has <em>no</em> limit in $X$.</p>
-</blockquote>
-
-<p>Even though living in $X$ is sad, and it seems to be hard to escape
-(because $X$ is closed in $X$), if one has a chance to travel outside,
-one will see that $X$ is <em>not</em> really closed—it is possible to find
-a sequence $(x_n)$ to escape from $X$.</p>
-
-<h3 id="specific-example">Specific example</h3>
-
-<p>$\Q$ is closed in $\Q$, but it <em>isn’t</em> closed in $\R$.  Therefore, the
-concept of closedness depends on the bigger space.  However, the
-concept of completeness only depends on $\Q$ itself.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -911,7 +892,7 @@ concept of completeness only depends on $\Q$ itself.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (30)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (31)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -919,7 +900,7 @@ concept of completeness only depends on $\Q$ itself.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (48)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (49)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (51)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -942,6 +923,10 @@ concept of completeness only depends on $\Q$ itself.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/04/oneline-perl/">Oneline Perl</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/03/searching-git-commit-messages/">Searching Git Commit Messages</a>
       </li>
     
@@ -955,10 +940,6 @@ concept of completeness only depends on $\Q$ itself.</p>
     
       <li class="post">
         <a href="/blog/2016/03/27/an-invalid-claim-by-the-government/">An Invalid Claim by the Government</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/26/missing-os-2/">Missing OS (2)</a>
       </li>
     
   </ul>

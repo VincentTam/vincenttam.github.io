@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-03T21:21:27+08:00</updated>
+  <updated>2016-04-04T00:55:22+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,134 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Oneline Perl]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/04/oneline-perl/"/>
+    
+    <updated>2016-04-04T00:47:40+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/04/oneline-perl</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Knowing some regular expressions in Vim, I hope to apply these
+concepts to Perl so that I can search and replace some simple strings
+directly in base <em>without</em> having to open the editor.</p>
+
+<p>As a Vim user, the class of special characters in Perl is more
+<em>natural</em> than that of <code>sed</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="/blog/2016/04/03/searching-git-commit-messages/">the previous post</a>, the list of Git commit messages containing
+the string “HTTPS” is the main focus.  However, the alignment of this
+list <em>isn’t</em> good: in the column representing the day, the data can be
+either one or two digit.  Though I can still extract information with
+<code>awk '{print $[col_num]}'</code>, it’s better to fix the alignment.</p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s"
+7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
+b6f4f1f Mon Feb 8 00:45:02 2016 +0800 A new article about Flair, Octopress and HTTPS
+</code></pre>
+
+<!-- more -->
+
+<h2 id="start-using-perl">Start using Perl</h2>
+
+<p>Searching “perl intro” online, one can easily find some basic Perl
+scripts.  I tried to issue some simple one-line Perl command to save
+time, but I <em>couldn’t</em> easily find them.  Thanks to
+<a href="http://articles.mongueurs.net/magazines/linuxmag50.html">a webpage by Philippe Bruhat</a>, I managed to starting using
+Perl.  I jot them down here.</p>
+
+<pre><code>$ perl -e 'print "hello \n"'  # single quote outside
+hello
+$ perl -e "\$str='abc'; print \$str;"  # escape $, no EOL
+abc
+$ perl -e "$str='test'; print $str.'\n';"  # not desired
+test\n
+$ perl -e '$str="test"; print $str."\n";'  # want newlne
+test
+</code></pre>
+
+<p>The <code>-e</code> flag above stands for “execute”.</p>
+
+<h2 id="read-from-external-command">Read from external command</h2>
+
+<p>Unluckily, I <em>didn’t</em> know how to use <code>system()</code> nor backticks to pass
+output of a command into Perl.  After trying a few search keywords,
+“perl oneline read command output” worked best for me.  It was quite
+<em>uncommon</em> that I found the <em>eighth</em> result useful.  In the article
+<a href="http://www.theperlreview.com/articles/one-liners.html"><em>Perl One-liners</em></a>, I found out the answer.</p>
+
+<pre class="cliUB"><code>$ for (( i = 1; i &lt;= 10; i++ )); do
+  echo $i
+  done | perl -e 'while (&lt;&gt;) {s/(?&lt;!\d)\d{1}(?!\d)/0$&amp;/; print $_}'
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+</code></pre>
+
+<p>In fact, the flag <code>-n</code> can be used to replace the <code>while (&lt;&gt;) {...}</code>
+loop.  The <code>-p</code> flag has the function of <code>-n</code> but <em>also</em> prints the
+output.  I learnt them from <a href="https://www.kernel.org/pub/software/scm/git/docs/git-log.html">Git manual web page for git-log</a>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Combine the above observations together.</p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s" \
+  | perl -pe 's/(?&lt;=\u\l\l )\d{1}(?= )/0$&amp;/'
+7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
+b6f4f1f Mon Feb 08 00:45:02 2016 +0800 A new article about Flair, Octopress and 
+HTTPS
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>Perl: Apart from the above syntax, I’ve also learnt to use <code>$&amp;</code> and
+<code>\b</code> in the replacement.  This is the Perl counterpart of <code>&amp;</code> and
+<code>\&lt;</code> or <code>\&gt;</code> in Vim respectively.</li>
+  <li>Git: In <code>git log</code> and <code>git show</code>,
+    <ul>
+      <li><code>--name-only</code>: suppress the diff hunk</li>
+      <li><code>--pretty=format:</code> display nothing</li>
+      <li><code>format</code> vs <code>tformat</code>: <code>t</code> stands for “terminator” (a.k.a. EOL)</li>
+    </ul>
+
+    <p>Each of each flags seems to be useless.  Nevertheless, it helps
+ extract the edited files in a particular commit.</p>
+  </li>
+  <li>
+    <p>Posting long commands in a blog entry</p>
+
+    <p>From the two codeblocks explaining the difference between <code>format</code>
+ and <code>tformat</code> in the Git manual, I understand that it’s better to
+ end each line with a backslash, then continue with the command.
+ In bash,  a <code>&gt;</code> is then automatically inserted at the beginning of
+ each line.  This is carried from the shell to the source file of
+ the blog article by copy and paste.  I used to think that it’s
+ good to keep this so that this and the Ubuntu font will give a
+ sense of reality to the reader.  However, this also causes
+ inconvenience to those who want to try this command.  From now on,
+ I <em>won’t</em> include this character anymore at the beginning of a
+ long command exceeding 80 characters.  I will replace it with a
+ white space instead.</p>
+  </li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -366,102 +494,6 @@ command.</p>
 
 <pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ sed -ir '\#&lt;scr#,\#&lt;/scr#' ex0.html
 </code></pre>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Find Files for Vim to Edit in Bash]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/"/>
-    
-    <updated>2015-08-23T23:48:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Since copying and pasting the output of a command can be a tedious
-job.  For example, if you want to create your blog using a framework,
-you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
-repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
-GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
-one.</p>
-
-<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
-repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
-the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
-introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
-the <code>sed</code> substitution.</p>
-
-<pre class="cliUB"><code>$ git remote -v
-octopress	git@github.com:imathis/octopress.git (fetch)
-octopress	git@github.com:imathis/octopress.git (push)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
-$ name=userName; repo=repoName
-$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
-"s;(\w*)/(.*).git;$name/$repo.git;"
-$ unset name repo
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried extracting a list of Markdown files containing a particular
-word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
-<code>xargs</code>.  Unluckily, I got an error.</p>
-
-<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
-&gt; -print | xargs vi
-Vim: Warning: Input is not from a terminal
-3 files to edit
-$ 
-</code></pre>
-
-<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>As a result, I searched “vim warning input is not from a terminal
-xargs” on Google, and found <a href="http://superuser.com/q/336016">this question</a> very useful.  I
-should have wrapped the <code>find</code> command like <code>$(find ...)</code>.</p>
-
-<pre class="cliUB"><code>$ vi $(find source/_posts/ -name "*.markdown" -exec \
-&gt; grep -q ^tag {} \; -print | xargs)
-3 files to edit
-</code></pre>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<h3 id="sed">sed</h3>
-<ul>
-  <li><code>3{p;q}</code>: quit after printing the third line for the sake of
-  efficiency</li>
-  <li><code>-r</code>: use extended regular expression to save the trouble of
-  escaping <code>()</code> for submatches.</li>
-  <li><code>-n</code>: suppress standard output.</li>
-  <li>Enclose the expression
-    <ul>
-      <li>with <em>single</em> quotes to <em>disable</em> interpretation of bash
-  variables</li>
-      <li>with <em>double</em> quotes to <em>enable</em> interpretation of bash
-  variables.</li>
-    </ul>
-  </li>
-  <li>One can replace the delimiter <code>/</code> in the expression
-  <code>s/{pat}/{repl}/</code> by any one character from <code>_;#| </code>.</li>
-  <li>Specify a custom delimiter like <code>\%.%s%foo%bar%</code>.  (The
-  variable/range <code>.</code> is <em>needed</em>.)</li>
-</ul>
-
-<h3 id="bash">bash</h3>
-
-<ul>
-  <li>Set variables using <code>var1=value1;var2=value2;...</code></li>
-  <li>Unset variable usign <code>unset var1 var2 ...</code></li>
-</ul>
 
 ]]></content>
     

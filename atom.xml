@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-03T21:21:27+08:00</updated>
+  <updated>2016-04-04T00:55:22+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,134 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Oneline Perl]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/04/oneline-perl/"/>
+    
+    <updated>2016-04-04T00:47:40+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/04/oneline-perl</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Knowing some regular expressions in Vim, I hope to apply these
+concepts to Perl so that I can search and replace some simple strings
+directly in base <em>without</em> having to open the editor.</p>
+
+<p>As a Vim user, the class of special characters in Perl is more
+<em>natural</em> than that of <code>sed</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="https://vincenttam.github.io/blog/2016/04/03/searching-git-commit-messages/">the previous post</a>, the list of Git commit messages containing
+the string “HTTPS” is the main focus.  However, the alignment of this
+list <em>isn’t</em> good: in the column representing the day, the data can be
+either one or two digit.  Though I can still extract information with
+<code>awk '{print $[col_num]}'</code>, it’s better to fix the alignment.</p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s"
+7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
+b6f4f1f Mon Feb 8 00:45:02 2016 +0800 A new article about Flair, Octopress and HTTPS
+</code></pre>
+
+<!-- more -->
+
+<h2 id="start-using-perl">Start using Perl</h2>
+
+<p>Searching “perl intro” online, one can easily find some basic Perl
+scripts.  I tried to issue some simple one-line Perl command to save
+time, but I <em>couldn’t</em> easily find them.  Thanks to
+<a href="http://articles.mongueurs.net/magazines/linuxmag50.html">a webpage by Philippe Bruhat</a>, I managed to starting using
+Perl.  I jot them down here.</p>
+
+<pre><code>$ perl -e 'print "hello \n"'  # single quote outside
+hello
+$ perl -e "\$str='abc'; print \$str;"  # escape $, no EOL
+abc
+$ perl -e "$str='test'; print $str.'\n';"  # not desired
+test\n
+$ perl -e '$str="test"; print $str."\n";'  # want newlne
+test
+</code></pre>
+
+<p>The <code>-e</code> flag above stands for “execute”.</p>
+
+<h2 id="read-from-external-command">Read from external command</h2>
+
+<p>Unluckily, I <em>didn’t</em> know how to use <code>system()</code> nor backticks to pass
+output of a command into Perl.  After trying a few search keywords,
+“perl oneline read command output” worked best for me.  It was quite
+<em>uncommon</em> that I found the <em>eighth</em> result useful.  In the article
+<a href="http://www.theperlreview.com/articles/one-liners.html"><em>Perl One-liners</em></a>, I found out the answer.</p>
+
+<pre class="cliUB"><code>$ for (( i = 1; i &lt;= 10; i++ )); do
+  echo $i
+  done | perl -e 'while (&lt;&gt;) {s/(?&lt;!\d)\d{1}(?!\d)/0$&amp;/; print $_}'
+01
+02
+03
+04
+05
+06
+07
+08
+09
+10
+</code></pre>
+
+<p>In fact, the flag <code>-n</code> can be used to replace the <code>while (&lt;&gt;) {...}</code>
+loop.  The <code>-p</code> flag has the function of <code>-n</code> but <em>also</em> prints the
+output.  I learnt them from <a href="https://www.kernel.org/pub/software/scm/git/docs/git-log.html">Git manual web page for git-log</a>.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Combine the above observations together.</p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s" \
+  | perl -pe 's/(?&lt;=\u\l\l )\d{1}(?= )/0$&amp;/'
+7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
+b6f4f1f Mon Feb 08 00:45:02 2016 +0800 A new article about Flair, Octopress and 
+HTTPS
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<ol>
+  <li>Perl: Apart from the above syntax, I’ve also learnt to use <code>$&amp;</code> and
+<code>\b</code> in the replacement.  This is the Perl counterpart of <code>&amp;</code> and
+<code>\&lt;</code> or <code>\&gt;</code> in Vim respectively.</li>
+  <li>Git: In <code>git log</code> and <code>git show</code>,
+    <ul>
+      <li><code>--name-only</code>: suppress the diff hunk</li>
+      <li><code>--pretty=format:</code> display nothing</li>
+      <li><code>format</code> vs <code>tformat</code>: <code>t</code> stands for “terminator” (a.k.a. EOL)</li>
+    </ul>
+
+    <p>Each of each flags seems to be useless.  Nevertheless, it helps
+ extract the edited files in a particular commit.</p>
+  </li>
+  <li>
+    <p>Posting long commands in a blog entry</p>
+
+    <p>From the two codeblocks explaining the difference between <code>format</code>
+ and <code>tformat</code> in the Git manual, I understand that it’s better to
+ end each line with a backslash, then continue with the command.
+ In bash,  a <code>&gt;</code> is then automatically inserted at the beginning of
+ each line.  This is carried from the shell to the source file of
+ the blog article by copy and paste.  I used to think that it’s
+ good to keep this so that this and the Ubuntu font will give a
+ sense of reality to the reader.  However, this also causes
+ inconvenience to those who want to try this command.  From now on,
+ I <em>won’t</em> include this character anymore at the beginning of a
+ long command exceeding 80 characters.  I will replace it with a
+ white space instead.</p>
+  </li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -51,7 +179,7 @@ to display the following information.</p>
 
 <h2 id="solution">Solution</h2>
 
-<pre class="cliUB"><code>$ git log -2 --grep="HTTPS"
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s"
 7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
 b6f4f1f Mon Feb 8 00:45:02 2016 +0800 A new article about Flair, Octopress and HTTPS
 </code></pre>
@@ -1106,62 +1234,6 @@ give the commit history at a particular node instead. <a href="#fnref:3" class="
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (1)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/"/>
-    
-    <updated>2016-02-22T10:23:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I installed msysgit 1.9.0, and added its bash utilities to <code>PATH</code>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I attempted to open an HTML file with <code>curl</code>.  However, I got the
-following error.</p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (curl 'http://www.vim.org/index.html' -o 'C:/Temp
-/PortableApps/gVimPortable/Data/Temp/VIA1ED5.html')
-curl: (1) Protocol "'http" not supported or disabled in libcurl
-shell returned 1
-Hit any key to close this window...
-</code></pre>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>In the first line of the code block, <code>cmd.exe</code> with option <code>/c</code> ran
-the command in the parenthesis <code>()</code>.  I copied the command inside <code>()</code>
-and ran it in <code>cmd.exe</code>, and the error was reproduced.</p>
-
-<p>It’s easy to find the cause of the problem.  I typed “curl protocol”
-on the Google search web page, and the rest of the error message
-appeared in the list of suggestions.  In the first search result,
-which was <a href="http://stackoverflow.com/q/6684235">a Stack Overflow question</a>, I learnt why this
-error occurred from the first answer—in the Command Prompt, one
-needs to use double quotes <code>""</code> instead of single quotes <code>''</code>.  In Git
-Bash, this <em>doesn’t</em> matter.</p>
-
-<p>Since <code>curl</code> was bundled with msysgit, I suspected that the installed
-version of Git was too old.  I then upgraded it.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<ol>
-  <li>For a shell program (e.g. Command Prompt, bash), the option <code>-c</code>
-(or <code>/c</code>) stands for “command”, and what’s left is the command to
-be run.</li>
-  <li><code>curl</code> will grab content from the input URL and display it as
-standard output.  To save the downloaded content in a file, the
-flag <code>-o</code>, which means “output”, can be used.</li>
-</ol>
-
 ]]></content>
     
   </entry>
