@@ -49,6 +49,7 @@ Perl.  I jot them down here.
     test\n
     $ perl -e '$str="test"; print $str."\n";'  # want newlne
     test
+{:.cliUB}
 
 The `-e` flag above stands for "execute".
 
