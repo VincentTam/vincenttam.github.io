@@ -104,8 +104,9 @@ Lessons learnt
     - `--pretty=format:` display nothing
     - `format` vs `tformat`: `t` stands for "terminator" (a.k.a. EOL)
 
-    Each of each flags seems to be useless.  Nevertheless, it helps
-    extract the edited files in a particular commit.
+    Each of each flags seems to be useless.  Nevertheless, *when
+    combined together*, they help extract the edited files in a
+    particular commit.
 
 3. Posting long commands in a blog entry
 
