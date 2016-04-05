@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-04T01:27:14+08:00</updated>
+  <updated>2016-04-05T19:40:39+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,7 +15,31 @@
   
   <entry>
     
-      <title type="html"><![CDATA[$L^\infty$ Is Not Separable]]></title>
+      <title type="html"><![CDATA[No Schauder Base in $\ell^\infty$]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/05/no-schauder-base-in-l-infty/"/>
+    
+    <updated>2016-04-05T19:10:52+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/05/no-schauder-base-in-l-infty</id>
+    
+      <content type="html"><![CDATA[<p>In <a href="/blog/2016/04/02/l-infty-is-not-separable/">a recent post about $\ell^\infty$</a>, I’ve said that there’s a
+more direct way to show that a Schauder base <em>doesn’t</em> exist in
+$\ell^\infty$.  This proof can be
+<a href="http://math.stackexchange.com/a/869754">found on Math Stack Exchange</a>.  It uses three facts.</p>
+
+<ol>
+  <li>$c_0$ is closed.</li>
+  <li>A result deduced from Hahn–Banach Theorem about a non-zero linear
+functional defined on a closed subspace of a normed space.</li>
+  <li>$x^*$ is continous.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$ll^\infty$ Is Not Separable]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable/"/>
     
     <updated>2016-04-02T17:00:13+08:00</updated>
@@ -24,8 +48,8 @@
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
 
 <p>This Wednesday, I read a proof about the non-separability of
-$L^\infty$ spaces.  To simplify things, I assume that it’s defined on
-sequences.</p>
+$\ell^\infty$ spaces.  To simplify things, I assume that it’s defined
+on sequences.</p>
 
 <div class="myeqn">
 \[
@@ -55,22 +79,22 @@ argument)</p>
 <h2 id="problem">Problem</h2>
 
 <p>Then, my teacher said that the reason for the non-separability of
-$L^\infty$ was like the Pigeon-Hole Principle.  I got puzzled when I
-was revising the proof.  In fact, in the above equation, an element in
-a <em>dense</em> set $C$ can be found in each open ball $B(x,1)$.  Since the
-open balls $B(x,1)$ are <em>disjoint</em>, $C$ has <em>uncountably</em> many
-elements.  Hence, $L^\infty$ is non-separable.</p>
+$\ell^\infty$ was like the Pigeon-Hole Principle.  I got puzzled when
+I was revising the proof.  In fact, in the above equation, an element
+in a <em>dense</em> set $C$ can be found in each open ball $B(x,1)$.  Since
+the open balls $B(x,1)$ are <em>disjoint</em>, $C$ has <em>uncountably</em> many
+elements.  Hence, $\ell^\infty$ is non-separable.</p>
 
 <p>One knows that if a space is separable, we <em>can’t</em> insert a
-non-separable subspace into it.  The above property of $L^\infty$
+non-separable subspace into it.  The above property of $\ell^\infty$
 serves as a concrete example of this fact.</p>
 
 <p>It’s easy to show that a space having a Schauder basis is separable.
-Thus, we can conclude that $L^\infty$ <em>don’t</em> possess any Schauder
+Thus, we can conclude that $\ell^\infty$ <em>don’t</em> possess any Schauder
 basis.</p>
 
 <p>In fact, we have a more <em>direct</em> approach to the absence of Schauder
-basis in $L^\infty$.  This will be discussed in my next post.</p>
+basis in $\ell^\infty$.  This will be discussed in my next post.</p>
 ]]></content>
     
   </entry>
@@ -274,124 +298,6 @@ a sequence $(x_n)$ to escape from $X$.</p>
 <p>$\Q$ is closed in $\Q$, but it <em>isn’t</em> closed in $\R$.  Therefore, the
 concept of closedness depends on the bigger space.  However, the
 concept of completeness only depends on $\Q$ itself.</p>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
-    
-    <updated>2016-01-16T15:33:39+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ul>
-  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
-  typeset math expressions.</li>
-  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
-  calculations for a quick and correct response on Mathematics Stack
-  Exchange.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
-Mathematics Stack Exchange.</p>
-
-<p>For any given matrix $A$ in Octave,</p>
-
-<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
-A =
-
-   1   2   2
-   2   3   4
-   4   4   2
-</code></pre>
-
-<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
-
-<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
-
-<p>so that one gets</p>
-
-<div class="myeqn">
-\[
-  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
-\]
-</div>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
-quite useful.  I issued the first command to see the result.</p>
-
-<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
-ans = 1 2 2\\
-2 3 4\\
-4 4 2
-</code></pre>
-
-<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
-verified that I was right.  To fix this, I extracted the function
-<code>mat2str(A)</code> in the middle of this command to see the results.  From
-its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
-standed for “string replace”.  Then, I changed the double-quoted comma
-in the second argument of function <code>strrep</code> to a double-quoted
-whitespace character, and got the anticipated result.</p>
-
-<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
-";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
-ans = \begin{bmatrix}
-1&amp;2&amp;2\\
-2&amp;3&amp;4\\
-4&amp;4&amp;2
-\end{bmatrix}
-</code></pre>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
-can work it out by searching and testing in several hours, but I
-<em>don’t</em> have the time to do so.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="math">Math</h3>
-
-<p>I revised some definitions in linear algebra.</p>
-
-<ul>
-  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
-  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
-</ul>
-
-<h3 id="gnu-octave">GNU Octave</h3>
-
-<ul>
-  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
-  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
-  multiple replacements.</li>
-  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
-  inside.</li>
-</ul>
-
-<h3 id="grep">Grep</h3>
-
-<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
-(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
-over 1270 results.  I tried adding single/double quotes and escaping
-the square brackets with a backslash, but I faied again.  Finally, I
-googled “grep escape character” for a solution.  Since then, I know
-that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
-string.</p>
-
 ]]></content>
     
   </entry>
