@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I replaced the big avatar of my self intro in the sidebar
-with my Stack Exchange flair, which summarized my reputation and
-badges on &hellip;">
+  <meta name="description" content="Background The page build of Jekyll is quite easy because one doesn’t need to
+locally generate the HTML code of the Markdown source with rake.
+One &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,63 @@ badges on &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Jekyll Blog Page Build Warning</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-08T01:45:25+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:45 am</span></time>
+        
+           | <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/08/jekyll-blog-page-build-warning/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>The page build of Jekyll is quite easy because one <em>doesn’t</em> need to
+locally generate the HTML code of the Markdown source with <code>rake</code>.
+One just needs to directly save, commit and push the source code
+online.  The GitHub page support will handle the rest for you.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I wrote <a href="/blog2/essai/2016/02/07/bon-nouvel-an-chinois">an article in my Jekyll blog</a> yesterday afternoon.  From
+what was shown in the terminal, the page build was smooth as expected.
+Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
+
+<picture class="fancybox" title="The warning email from GitHub">
+  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" />
+  <img alt="The warning email from GitHub" src="/images/posts/Blog2/email300.png" />
+</picture>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -674,95 +731,6 @@ of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/01/07/improve-efficiency-of-inner-join/">Improve Efficiency of Inner Join</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-07T18:38:44+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:38 pm</span></time>
-        
-           | <a href="/blog/2016/01/07/improve-efficiency-of-inner-join/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/07/improve-efficiency-of-inner-join/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/01/07/improve-efficiency-of-inner-join/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I search the data on <a href="http://data.stackexchange.com">Stack Exchange Data Explorer</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I want to select columns from two tables and join them to form one
-single table.  I choose <code>INNER JOIN</code> to avoid seeing null entries in
-the result.  The syntax is similar to the following.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample SQL Syntax </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Table1</span>
-</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Table2</span>
-</span><span class="line"><span class="k">ON</span> <span class="n">Table1</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">Table2</span><span class="p">.</span><span class="n">ID</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">Col1</span> <span class="k">LIKE</span> <span class="s1">&#39;foo&#39;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Unluckily, when the size of <code>Table1</code> and <code>Table2</code> is large, it takes a
-while to get the result.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p><a href="https://goo.gl/iLGa5Z">This page</a> has two more efficient ways.  Since I search for
-recent data, I adopted the third method in <a href="http://data.stackexchange.com/math/query/416590/view-all-unanswered-questions">my query</a>.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My Query on Stack Exchange Data Explorer </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="sql"><span class="line"><span class="k">DECLARE</span> <span class="o">@</span><span class="n">TagLike</span> <span class="n">NVARCHAR</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">=</span> <span class="o">##</span><span class="n">taglike</span><span class="p">:</span><span class="n">string</span><span class="o">##</span>
-</span><span class="line">
-</span><span class="line"><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">500</span> <span class="o">*</span> <span class="k">FROM</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Post</span> <span class="n">Link</span><span class="p">],</span> <span class="n">AnswerCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Ans</span><span class="p">],</span>
-</span><span class="line"><span class="n">CommentCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Com</span><span class="p">],</span> <span class="n">CreationDate</span><span class="p">,</span> <span class="n">Score</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Scr</span><span class="p">],</span>
-</span><span class="line"><span class="n">ViewCount</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Views</span><span class="p">],</span> <span class="n">OwnerUserId</span> <span class="k">FROM</span> <span class="n">Posts</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">AnswerCount</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">AND</span> <span class="n">Tags</span> <span class="k">LIKE</span> <span class="s1">&#39;%&#39;</span> <span class="o">+</span> <span class="o">@</span><span class="n">TagLike</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span> <span class="k">AND</span>
-</span><span class="line"><span class="n">ClosedDate</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">)</span> <span class="k">AS</span> <span class="n">p</span>
-</span><span class="line"><span class="k">INNER</span> <span class="k">JOIN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">Id</span><span class="p">,</span> <span class="n">LastAccessDate</span><span class="p">,</span> <span class="n">Reputation</span> <span class="k">AS</span> <span class="p">[</span><span class="n">Rep</span><span class="p">]</span> <span class="k">FROM</span> <span class="n">Users</span>
-</span><span class="line"><span class="k">WHERE</span> <span class="n">LastAccessDate</span> <span class="o">&gt;=</span> <span class="s1">&#39;2015-12-01&#39;</span><span class="p">)</span> <span class="k">AS</span> <span class="n">u</span>
-</span><span class="line"><span class="k">ON</span> <span class="n">p</span><span class="p">.</span><span class="n">OwnerUserId</span> <span class="o">=</span> <span class="n">u</span><span class="p">.</span><span class="n">Id</span>
-</span><span class="line"><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">p</span><span class="p">.</span><span class="n">Com</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -809,7 +777,7 @@ recent data, I adopted the third method in <a href="http://data.stackexchange.co
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (49)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (34)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -831,6 +799,10 @@ recent data, I adopted the third method in <a href="http://data.stackexchange.co
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/07/com-surrogate-problem/">COM Surrogate Problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/05/no-schauder-base-in-l-infty/">No Schauder Base in $\ell^\infty$</a>
       </li>
     
@@ -844,10 +816,6 @@ recent data, I adopted the third method in <a href="http://data.stackexchange.co
     
       <li class="post">
         <a href="/blog/2016/04/02/l-infty-is-not-separable/">$ll^\infty$ Is Not Separable</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a>
       </li>
     
   </ul>

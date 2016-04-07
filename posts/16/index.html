@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Objective To update many Vim plugins under runtimepath managed by
-pathogen.vim efficiently. Raison d’être With the :BundleUpdate editor command, &hellip;">
+  <meta name="description" content="I’ve learnt the AM–GM–HM inequality when I was a secondary school
+student. \[ \frac{\sum_{i=1}^n x_i}{n} \ge \sqrt[n]{\prod_{i=1}^n x_i} \ge \frac{n &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,85 @@ pathogen.vim efficiently. Raison d’être With the :BundleUpdate editor command
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Understood Power Means Inequality for Integer Powers</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-10-25T18:02:53+08:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:02 pm</span></time>
+        
+           | <a href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/10/25/understood-power-means-inequality-for-integer-powers/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve learnt the AM–GM–HM inequality when I was a secondary school
+student.</p>
+
+<p>\[
+  \frac{\sum_{i=1}^n x_i}{n} \ge \sqrt[n]{\prod_{i=1}^n x_i} \ge
+  \frac{n}{\sum_{i=1}^n x_i^{-1}}
+\]</p>
+
+<p>But I didn’t know how to generalise it to integer power $s$.  That is,
+if $k$ and $m$ are positive integers such that $k \le m$, then we have</p>
+
+<p>\[
+  \left( \frac{\sum_{i=1}^n x_i^k}{n} \right)^{\frac{1}{k}} \le
+  \left( \frac{\sum_{i=1}^n x_i^m}{n} \right)^{\frac{1}{m}}.
+\]</p>
+
+<p>I read the proof in Wikipedia, and got stuck in the first step.</p>
+
+<p>\[
+  \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k}}{\sum_{i=1}^{n}w_{i}x_{i}^
+  {k-1}} \le \frac{\sum_{i=1}^{n}w_{i}x_{i}^{k+1}}{\sum_{i=1}^{n}
+  w_{i}x_{i}^{k}},
+\]</p>
+
+<p>I quickly realised that $w_i = 1/n$ in this case.  Even though I know
+that the above inequality is eqivalent to</p>
+
+<p>\[
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k} \right)^2 \le
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k-1} \right)
+  \left( \sum_{i=1}^n w_{i}x_{i}^{k+1} \right),
+\]</p>
+
+<p>At the first glance, I didn’t know how to relate this to the famous
+Cauchy–Schwartz inequality.</p>
+
+<p>\[
+  \left( \sum_{i=1}^n a_{i}b_{i} \right)^2 \le
+  \left(\sum_{i=1}^n a_{i}^2\right)
+  \left(\sum_{i=1}^n b_{i}^2\right)
+\]</p>
+
+<p>Actually, setting $a_i = \sqrt{w_{i}x_{i}^{k-1}}$ and $b_i =
+\sqrt{w_{i}x_{i}^{k+1}}$ will do.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -519,79 +598,6 @@ Similarly, in order to avoid troubles, characters like ‘é’ and ‘ï’
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick Command Line Examples–part 1</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-14T17:58:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:58 pm</span></time>
-        
-           | <a href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In the second example, the command only produces <em>one</em> image.  In the
-past, <em>without</em> knowing the use of <code>+[x-pos]+[y-pos]</code>, I got <em>more
-than one</em> image, and needed to delete them <em>except</em> the desired
-one.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>When I wrote a post about <code>screendump</code>, I took a screenshot of TTY1 so
-as to prove that the text that followed the screenshot was <em>really</em>
-contents in TTY1.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  The width and height of the screenshot was
-1280 px and 1024 px respectively.  I then used my old way to crop it
-to an image with width 520 px and height 230 px, and got similar error
-message described in ImageMagick’s examples.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>In “<a href="/blog/2014/06/30/basic-use-of-aptitude/#imagemagick-commands-learnt">ImageMagick commands learnt</a>” in <em>Basic Use of
-Aptitude</em>, I got <em>four</em> images because I <em>didn’t</em> append <code>+0+0</code>
-after <code>640x512</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>There’s an image cropped with ImageMagick in “<a href="/blog/2014/09/14/record-linux-terminal/">Usage</a>” in
-<em>Record Linux Terminal</em>.</p>
-
-      <pre class="cliUB"><code>$ convert src.png -crop 512x225+0+0 tty1.png
-</code></pre>
-      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>In “<a href="http://www.imagemagick.org/Usage/crop/#crop_missed">The Missed Image (from a bad crop)</a>” in <em>Examples of
-ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/17">&larr; Older</a>
@@ -638,7 +644,7 @@ ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (49)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (34)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -660,6 +666,10 @@ ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/07/com-surrogate-problem/">COM Surrogate Problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/05/no-schauder-base-in-l-infty/">No Schauder Base in $\ell^\infty$</a>
       </li>
     
@@ -673,10 +683,6 @@ ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&
     
       <li class="post">
         <a href="/blog/2016/04/02/l-infty-is-not-separable/">$ll^\infty$ Is Not Separable</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a>
       </li>
     
   </ul>

@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I used the search box in the navigation bar to search for pages in
-this blog. It had been working well, but a month ago, the box searched for &hellip;">
+  <meta name="description" content="Background I always use commands for different tasks. Then I need a command line
+utility for copying command output into clipboard so as to quickly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,87 @@ this blog. It had been working well, but a month ago, the box searched for &hell
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/12/12/using-xclip/">Using Xclip</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-12T17:21:12+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:21 pm</span></time>
+        
+           | <a href="/blog/2014/12/12/using-xclip/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/12/using-xclip/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/12/12/using-xclip/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I always use commands for different tasks.  Then I need a command line
+utility for copying command output into clipboard so as to quickly
+finish typing the command.  Luckily, it’s very easy to install xclip
+on Ubuntu.  I believe that on other GNU/Linux distributions, the
+installation <em>won’t</em> be too difficult.</p>
+
+<p>Although it’s convenient to use xclip, I experienced two problems
+while using it on *nix GUI.</p>
+
+<h2 id="problem-1">Problem 1</h2>
+
+<p>Suppose that you want to capture the output of a command, and pipe it
+to another command.  However, the output often consists of a trailing
+newline character.  As a result, I sometimes executed commands
+incorrectly and carelessly.  <strong>How can one get rid of it?</strong></p>
+
+<h2 id="problem-2">Problem 2</h2>
+
+<p>Before this Wednesday morning, I <em>didn’t</em> know how to use xclip with
+other options.  Therefore, when I wanted to retrieve to contents in
+the clipboard, the <em>only</em> two ways that I knew were to use the utility
+with the <code>-o</code> flag to obtain the <strong>o</strong>utput, and to use the middle
+click of the mouse.  However, from problem one, I <em>couldn’t</em> chop off
+the newline character at the end of the clipped text.  Moreover, if
+one only needs <em>part</em> of the text in the clipboard, it would be quite
+troublesome to pipe the output of <code>xclip -o</code> to other text editing
+commands like <code>sed</code> and <code>awk</code>.  If one can use a keyboard shortcut for
+pasting text in a terminal emulator like Gnome Terminal (e.g.
+<code>&lt;C-v&gt;</code>), then one can also use <code>&lt;C-b&gt;</code>, <code>&lt;Alt-d&gt;</code>, etc. For example,
+if there’re three words in the clipboard, and I only need the last
+two, then combining the use of these keyboard shortcuts will enable
+one to type strings quickly and accurately.  <strong>Is there such a
+keyboard shortcut?</strong></p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I found two Stack Overflow quesitons extremely useful for improving my
+skills in xclip.</p>
+
+<ol>
+  <li><a href="http://stackoverflow.com/a/12524320">Bash: Strip trailing linebreak from output</a></li>
+  <li><a href="http://stackoverflow.com/a/4208191">Pipe to/from Clipboard</a></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -610,118 +691,6 @@ problem aside.  After a fortnight, I came up with an answer:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/11/14/power-means-with-infinite-exponents/">Power Means With Infinite Exponents</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-14T00:30:15+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:30 am</span></time>
-        
-           | <a href="/blog/2014/11/14/power-means-with-infinite-exponents/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/11/14/power-means-with-infinite-exponents/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/11/14/power-means-with-infinite-exponents/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Half a month ago, I <em>didn’t</em> know how to find <span class="myeqn">$\displaystyle \lim_{n \to \infty}
-\sqrt[n]{a^n+b^n}$</span>.  With the help from others, I could show
-that the answer was <span class="myeqn">$\max\left\{ a,b
-\right\}$</span>.  This inspired me to solve a question which had been
-in my mind since I was F.3.</p>
-
-<p><span class="myeqn">
-Suppose that $\displaystyle M_n (a_1,\dots,a_k) :=
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \quad\forall\,n \in \N$, and
-$a_i &gt; 0\quad\forall\,i = 1, \dots,k$.  
-Show that $\displaystyle \lim_{n \to \infty} M_n (a_1,\dots,a_k) =
-\max\left\{ a_i \mid i = 1,\dots,k \right\}$ and $\displaystyle
-\lim_{n \to -\infty} M_n = \min\left\{ a_i \mid i = 1,\dots,k
-\right\}$.
-</span></p>
-
-<p><em>Proof</em>:</p>
-
-<p><span class="myeqn">
-I'll use the facts that $\displaystyle \lim_{n \to \infty}
-b^{\frac{1}{n}} = 1 \quad\forall\,b&gt;0$.  (It can be proved by dividing
-$b$ into $0 &lt; b &lt; 1$ and $b &gt; 1$.  For $b &gt; 1$, let $b^{\frac{1}{n}} =
-1 + \delta_n$ for some $\delta_n &gt; 0$.  It's a good exercise on the
-definition of limits, the binomial expansion and elementary properties
-of inequalities.)
-</span></p>
-
-<p><span class="myeqn">
-Let $M := \max\left\{ a_i \mid i = 1,\dots,k \right\}$.  Note that
-</span></p>
-
-<div class="myeqn">
-\[
-\frac{M}{k^{\frac{1}{n}}} = \sqrt[n]{\frac{M^n}{k}} \le
-\sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} \le
-\sqrt[n]{\frac{kM^n}{k}} = M
-\]
-</div>
-
-<p>Therefore, taking limit as $n \to \infty$ and applying the Squeeze
-Theorem, one has</p>
-
-<div class="myeqn">
-\[
-\lim_{n \to \infty} M_n (a_1,\dots,a_k) = M = \max\left\{ a_i \mid i =
-1,\dots,k \right\}.
-\]
-</div>
-
-<p>I wrote similar arguments for the case $n \to -\infty$, but after I
-read Wikipedia, I’ve learnt a quicker way to finish the question.</p>
-
-<p><span class="myeqn">
-Replace $a_i$'s with $1/a_i$'s.  Then
-</span></p>
-
-<div class="myeqn">
-\[
-\begin{aligned}
-\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
-\left( \frac{1}{a_i} \right)^n}{k}} &amp;= \max\left\{
-\left.\frac{1}{a_i} \right\| i = 1,\dots,k \right\} \\
-\lim_{n \to \infty} \sqrt[n]{\frac{\sum_{i=1}^{k}
-a_i^{-n}}{k}} &amp;= \frac{1}{\min\left\{ a_i \mid i =
-1,\dots,k \right\}} \\
-\lim_{n \to \infty} \left( \frac{\sum_{i=1}^{k}
-a_i^{-n}}{k} \right)^{-\frac{1}{n}} &amp;= \min\left\{ a_i
-\mid i = 1,\dots,k \right\}
-\end{aligned}
-\]
-</div>
-
-<p><span class="myeqn">
-Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
-\lim_{n \to -\infty} \sqrt[n]{\frac{\sum_{i=1}^{k} a_i^n}{k}} =
-\min\left\{ a_i \mid i = 1,\dots,k \right\}$.
-</span></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/15">&larr; Older</a>
@@ -768,7 +737,7 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (49)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (33)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (34)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -790,6 +759,10 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/07/com-surrogate-problem/">COM Surrogate Problem</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/05/no-schauder-base-in-l-infty/">No Schauder Base in $\ell^\infty$</a>
       </li>
     
@@ -803,10 +776,6 @@ Hence, $\displaystyle \lim_{n \to -\infty} M_n (a_1,\dots,a_k) =
     
       <li class="post">
         <a href="/blog/2016/04/02/l-infty-is-not-separable/">$ll^\infty$ Is Not Separable</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a>
       </li>
     
   </ul>
