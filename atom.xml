@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-08T22:18:47+08:00</updated>
+  <updated>2016-04-09T01:18:33+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,133 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Loop Through an Array Having Only One Element in Bash]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/"/>
+    
+    <updated>2016-04-08T22:59:29+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>To find out a way to loop through all elements in an array consisting
+of more than one element, it’s easy.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello","world"}; do echo $f; done
+hello
+world
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>When I try to take away the second element in the above array so that
+it becomes an array consisting in <em>one</em> single element, then I get
+<code>{hello}</code> instead of <code>hello</code>.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello"}; do echo $f; done
+{hello}
+</code></pre>
+
+<p><strong>How can one get back an output consistent with the case of arrays
+consisting of multiple elements?</strong></p>
+
+<!-- more -->
+
+<h2 id="motivation">Motivation</h2>
+
+<p>This problem seems nonsense–loops are supposed to do repetitive
+tasks.  If the loop has <em>only</em> one iteration, then we can directly
+type in the command, instead of adapting it into a loop and setting up
+the scope of the loop.</p>
+
+<p>Nevertheless, if one converts multiple lines of short texts into one
+long single line with <code>xargs</code>, then the items will be separated by
+white spaces.  This <em>won’t</em> work with the above for loop.  To change
+the delimiter from white space to comma, one may use <code>paste -d, -s</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Syntax</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code>-d,</code></td>
+      <td style="text-align: left">Use <code>,</code> as the delimiter.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-s</code></td>
+      <td style="text-align: left"><em>Without</em> this flag, <code>$1</code> and <code>$2</code> are displayed in <em>parallel</em>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Surely, there are other tools to do this, such as <code>sed</code>.  However, I
+think that <code>paste -d, -s</code> should be the <em>simplest</em> way to do this.
+Note that the white space character between the two flags are
+<em>important</em>.  Otherwise, this command <em>won’t</em> work.</p>
+
+<p><em>Without</em> prior knowledge of the text to be processed, it’s possible
+that the output of <code>paste -d, -s</code> consists of <em>only</em> one item.  This
+single case is easy to deal with, even though the handling may be a
+bit different from the case of multiple elements.  However, if the
+syntax for the command that handles the output of <code>paste -d, -s</code>
+<em>isn’t exactly the same</em> in the case of <em>one</em> single element and the
+case of <em>multiple</em> elements, then we need to look at the content and
+make manual judgement–this is tedious and error-prone.</p>
+
+<p>In the problem posed in the previous section, if the list in the
+for loop has <em>only</em> one item, then we need to do something different
+from a list having two or more items.  If we observe this difference
+with our naked eyes, the whole process will lack efficiency.</p>
+
+<p>To solve this problem, we seek an <em>unified</em> approach.  In other words,
+I try to change the syntax of the above for loop so that the for loop
+will work for <em>any</em> one of these two cases.</p>
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>Surround each string in the array by a pair of <em>double quotes</em>.</li>
+  <li>Add a comma <em>either</em> before the first element or after the last
+element.</li>
+</ol>
+
+<p>The first step is needed if in the array, there exists an element
+having two or more words <em>separated by a white space</em>; the second step
+is needed for an array with one single element.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello world",}; do echo $f; done
+hello world
+</code></pre>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>As the number of steps increases, the difficulty of constructing a
+one-line command to do the thing rises tremendously.  It’s possible
+that a shell script is <em>easier</em> to write.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href="https://vincenttam.github.io/downloads/code/oneelt.sh">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/bash</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span>
+</span><span class="line"><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
+</span><span class="line">    <span class="nb">echo</span> <span class="nv">$f</span>
+</span><span class="line"><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -952,84 +1079,6 @@ Bash, I can still use it by opening GVim with Command Prompt.</p>
 
 <p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
 <code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/"/>
-    
-    <updated>2016-02-22T16:54:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>A VIMRC is important for efficient text editing.  It can be over one
-hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
-folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
-VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
-other users, and read others’ configuration files so as to learn from
-them.</p>
-
-<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
-efficient.  Therefore, I re-read the installation instructions for
-<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
-installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
-
-<p>Due to the problem mentioned in
-<a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
-Prompt instead of Git Bash.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I have already configure <code>github.user</code> to my GitHub user name, but
-Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
-
-<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
-</code></pre>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I tried looking into the source code of the Vim plugin.  I learnt from
-<em>Learn Vim Script the Hard Way</em> the difference between <code>echo</code> and
-<code>echom</code>: the former <em>isn’t</em> persistent; the later can be retrieved by
-<code>message</code>.  It took me a few minutes to find out that Command Prompt,
-the program set by <code>shell</code> option, <em>didn’t</em> take my global
-configurations into account.  I viewed the list of my configurations
-using the following command.</p>
-
-<pre class="cli"><code>:!git config --list
-</code></pre>
-
-<p>I <em>didn’t</em> see <code>github.user</code> in the list.  I tried adding <code>--global</code>,
-and I got an error.</p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
-fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
-gs/.gitconfig': No such file or directory
-shell returned 128
-Hit any key to close this window...
-</code></pre>
-
-<p>I <em>failed</em> to comprehend the second line of the above output.  I just
-realised that this had something to do with GVim Portable.  If I use
-GVim instead, I <em>won’t</em> have such trouble since <code>.gitconfig</code> is
-located at the home folder.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I searched for a tutorial of using this plugin.  Finally, from a
-Japanese website which I forgot its URL, I found out that one can
-manually set the variable <code>github_user</code> in VIMRC.</p>
-
-<p>After that, I restarted the editor and invoked the plugin, which then
-asked for my GitHub password and created a token in
-<code>/path/to/gVimPortable/Data/settings/.gist-vim</code>.</p>
 
 ]]></content>
     

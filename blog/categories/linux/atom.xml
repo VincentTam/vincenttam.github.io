@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-08T22:18:47+08:00</updated>
+  <updated>2016-04-09T01:18:33+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,133 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Loop Through an Array Having Only One Element in Bash]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/"/>
+    
+    <updated>2016-04-08T22:59:29+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>To find out a way to loop through all elements in an array consisting
+of more than one element, it’s easy.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello","world"}; do echo $f; done
+hello
+world
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>When I try to take away the second element in the above array so that
+it becomes an array consisting in <em>one</em> single element, then I get
+<code>{hello}</code> instead of <code>hello</code>.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello"}; do echo $f; done
+{hello}
+</code></pre>
+
+<p><strong>How can one get back an output consistent with the case of arrays
+consisting of multiple elements?</strong></p>
+
+<!-- more -->
+
+<h2 id="motivation">Motivation</h2>
+
+<p>This problem seems nonsense–loops are supposed to do repetitive
+tasks.  If the loop has <em>only</em> one iteration, then we can directly
+type in the command, instead of adapting it into a loop and setting up
+the scope of the loop.</p>
+
+<p>Nevertheless, if one converts multiple lines of short texts into one
+long single line with <code>xargs</code>, then the items will be separated by
+white spaces.  This <em>won’t</em> work with the above for loop.  To change
+the delimiter from white space to comma, one may use <code>paste -d, -s</code>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Syntax</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code>-d,</code></td>
+      <td style="text-align: left">Use <code>,</code> as the delimiter.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code>-s</code></td>
+      <td style="text-align: left"><em>Without</em> this flag, <code>$1</code> and <code>$2</code> are displayed in <em>parallel</em>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Surely, there are other tools to do this, such as <code>sed</code>.  However, I
+think that <code>paste -d, -s</code> should be the <em>simplest</em> way to do this.
+Note that the white space character between the two flags are
+<em>important</em>.  Otherwise, this command <em>won’t</em> work.</p>
+
+<p><em>Without</em> prior knowledge of the text to be processed, it’s possible
+that the output of <code>paste -d, -s</code> consists of <em>only</em> one item.  This
+single case is easy to deal with, even though the handling may be a
+bit different from the case of multiple elements.  However, if the
+syntax for the command that handles the output of <code>paste -d, -s</code>
+<em>isn’t exactly the same</em> in the case of <em>one</em> single element and the
+case of <em>multiple</em> elements, then we need to look at the content and
+make manual judgement–this is tedious and error-prone.</p>
+
+<p>In the problem posed in the previous section, if the list in the
+for loop has <em>only</em> one item, then we need to do something different
+from a list having two or more items.  If we observe this difference
+with our naked eyes, the whole process will lack efficiency.</p>
+
+<p>To solve this problem, we seek an <em>unified</em> approach.  In other words,
+I try to change the syntax of the above for loop so that the for loop
+will work for <em>any</em> one of these two cases.</p>
+
+<h2 id="solution">Solution</h2>
+
+<ol>
+  <li>Surround each string in the array by a pair of <em>double quotes</em>.</li>
+  <li>Add a comma <em>either</em> before the first element or after the last
+element.</li>
+</ol>
+
+<p>The first step is needed if in the array, there exists an element
+having two or more words <em>separated by a white space</em>; the second step
+is needed for an array with one single element.</p>
+
+<pre class="cliUB"><code>$ for f in {"hello world",}; do echo $f; done
+hello world
+</code></pre>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>As the number of steps increases, the difficulty of constructing a
+one-line command to do the thing rises tremendously.  It’s possible
+that a shell script is <em>easier</em> to write.</p>
+
+<p><figure class='code'><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href='/downloads/code/oneelt.sh'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span>
+</span><span class='line'><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$f</span>
+</span><span class='line'><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -403,98 +530,6 @@ I <em>won’t</em> try to find a solution after reading a few related posts
 which I have difficulty to understand.  Within six months, a new <abbr title="long-term support">LTS</abbr>
 version of Ubuntu will be launched.  The price of a <abbr title="solid-state drive">SSD</abbr> will drop, so
 perhaps I will clean install Ubuntu on a <abbr title="solid-state drive">SSD</abbr>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Rare Sed Delimiters]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/"/>
-    
-    <updated>2015-08-25T10:47:53+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
-Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
-have to be escaped by backslashes, which makes the whole command ugly.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
-<code> </code> (white space), etc, and you’re <em>too lazy</em> to look for
-<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
-
-<!-- more -->
-
-<h2 id="discussion-on-the-custom-delimiter">Discussion on the custom delimiter</h2>
-
-<p>When I read article at the above link, I was stuck at the last part,
-which was about using a custom delimiter.  I <em>mistakenly</em> thought that
-this was for the search pattern and the replacement.  In fact, reading
-<a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">GNU’s manual</a> and trying some commands repeatedly, I realized
-that prepending the custom delimiter with a backslash was for
-specifying the range of the following expresion.</p>
-
-<p>Therefore, I finally understand what <code>somevar</code> is in
-<a href="http://stackoverflow.com/a/20808364">this Stack Overflow question</a>.</p>
-
-<h2 id="solution">Solution</h2>
-
-<h3 id="customizing-the-delimiter-in-a-replacement">Customizing the delimiter in a replacement</h3>
-
-<p>To begin with, I tried the following command.</p>
-
-<pre class="cliUB"><code>$ echo strange | sed s/'[a-e]'/#/g
-str#ng#
-</code></pre>
-
-<p>After that, I know that surrounding the whole <code>s</code> command <em>isn’t</em> a
-must, just the <code>regex</code> and <code>replacement</code> will do.</p>
-
-<p>Then I replaced all <code>/</code> with <code>y</code> in the above command.</p>
-
-<pre class="cliUB"><code>$ echo strange | sed sy'[a-e]'y#yg
-str#ng#
-</code></pre>
-
-<p>Now, it’s clear that the custom delimiter in the <code>s</code> command <em>doesn’t</em>
-need to be escaped.</p>
-
-<h3 id="towards-the-goal">Towards the goal</h3>
-
-<p>The goal in this post is to use bizarre characters as the delimiter in
-the <code>s</code> command, and I believe that if you’ve reached here, you’ll
-probably understand what <a href="https://stackoverflow.com/a/4844945">this command</a> is doing, provided
-that you know the way to
-<a href="https://stackoverflow.com/a/10571642">input control characters as arguments in bash commands</a>.</p>
-
-<h2 id="more-examples">More examples</h2>
-
-<p>I’ve just tried to delete a <code>&lt;script&gt;</code> tag in the <code>master</code> branch of a
-repository for <a href="https://vincenttam.github.io/SampleWebPage/ex0.html">my sample W3CSS page</a> using the in-place
-editing option of <code>sed</code>.  Before making <em>real</em> changes to the file, I
-tested my command syntax with the standard output first.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ git branch -a
-* master
-  remotes/origin/HEAD -&gt; origin/master
-  remotes/origin/gh-pages
-  remotes/origin/master
-[owner@localhost ~/SampleWebPage]$ sed -nr '\#&lt;scr#,#&lt;/scr#p' ex0.html
-sed: -e expression #1, char 9: unexpected `,'
-</code></pre>
-
-<p>Looking at <a href="https://www.gnu.org/software/sed/manual/html_node/Addresses.html#Addresses">the manual</a> <em>again</em>, I thought that <code>\%regex%</code>
-represented <em>one</em> address only.  The pattern after the comma was
-<em>another</em> address, so I should have used <em>two</em> backslashes in the last
-command.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/SampleWebPage]$ sed -ir '\#&lt;scr#,\#&lt;/scr#' ex0.html
-</code></pre>
 
 ]]></content>
     
