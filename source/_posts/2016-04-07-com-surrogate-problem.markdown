@@ -12,8 +12,8 @@ perform a Google search for "COM Surrogate has stopped working" in
 order to know more about this problem.
 
 <picture class="fancybox" title="COM Surrogate has stopped working">
-  <source srcset="source/images/posts/COMSurrogate/stop-working.png"
+  <source srcset="/images/posts/COMSurrogate/stop-working.png"
     media="(min-width: 366px)"></source> 
   <img alt="COM Surrogate has stopped working" width="300"
-    src="source/images/posts/COMSurrogate/stop-working300.png" />
+    src="/images/posts/COMSurrogate/stop-working300.png" />
 </picture>
