@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "$\ell^\\infty$ is not separable"
+title: "$\\ell^\\infty$ is not separable"
 date: 2016-04-02 17:00:13 +0800
 comments: true
 categories: [math]
