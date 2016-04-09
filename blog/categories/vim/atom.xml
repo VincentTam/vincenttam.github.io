@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-09T18:30:37+08:00</updated>
+  <updated>2016-04-09T18:37:27+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -95,7 +95,14 @@ work for me, I still found his answer informative.</p>
 problem, and added the last line of this file into BASHRC since I have
 other important things to do.</p>
 
-<p>{% include_code Actual CMD file found in Mik$\rm \TeX$ Portable miktex-portable.cmd %}</p>
+<p><figure class='code'><figcaption><span>Actual CMD file found in Mik$\rm \TeX$ Portable  (miktex-portable.cmd)</span> <a href='/downloads/code/miktex-portable.cmd'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
+</span><span class='line'><span class="k">cd</span> <span class="n">/d</span> <span class="nv">%~dp0</span>
+</span><span class='line'>miktex\bin\miktex-taskbar-icon.exe
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>To include Mik$\rm \TeX$ into <code>PATH</code>, I first extracted <code>$HOMEDRIVE</code>
 in the form <code>/f</code> instead of <code>F:/</code>.  If not, Mik$\rm \TeX$ <em>won’t</em>
@@ -105,7 +112,44 @@ work.</p>
 
 <p>Here’s my BASHRC for Git Bash.</p>
 
-<p>{% include_code My BASHRC .bashrc %}</p>
+<p><figure class='code'><figcaption><span>My BASHRC (.bashrc)</span> <a href='/downloads/code/.bashrc'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'><span class="vg">stty</span><span class="w"> </span><span class="o">-</span><span class="vg">ixon</span>
+</span><span class='line'><span class="vg">cd</span><span class="w"> </span><span class="o">~</span>
+</span><span class='line'>
+</span><span class='line'><span class="vg">HOMEDRIVE</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="vg">perl</span><span class="w"> </span><span class="o">-</span><span class="vg">e</span><span class="w"> </span><span class="c1">&#39;($var) = $ENV{HOMEDRIVE} =~ /([A-Z]):/; print &quot;/&quot;.lc($1)&#39;)</span>
+</span><span class='line'><span class="vg">PATH</span><span class="o">=</span><span class="err">$</span><span class="nl">PATH:</span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="vg">MikTeXPortable</span><span class="o">/</span><span class="vg">miktex</span><span class="o">/</span><span class="vg">bin</span>
+</span><span class='line'><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;IMPORTANT: Close MikTeX Taskbar icon before exit.&quot;</span>
+</span><span class='line'><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;Otherwise this shell WON&#39;T close.&quot;</span>
+</span><span class='line'><span class="vg">miktex</span><span class="o">-</span><span class="vg">taskbar</span><span class="o">-</span><span class="vg">icon</span>
+</span><span class='line'>
+</span><span class='line'><span class="vg">loc_repo</span><span class="o">=</span><span class="p">(</span>
+</span><span class='line'><span class="c1">&#39;resume2015&#39;</span>
+</span><span class='line'><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="vg">for</span><span class="w"> </span><span class="vg">f</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="err">$</span><span class="p">{</span><span class="vg">loc_repo</span><span class="p">[</span><span class="err">@</span><span class="p">]};</span><span class="w"> </span><span class="vg">do</span>
+</span><span class='line'><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="err">$</span><span class="vg">f</span>
+</span><span class='line'><span class="w">    </span><span class="vg">git</span><span class="w"> </span><span class="vg">remote</span><span class="w"> </span><span class="vg">set</span><span class="o">-</span><span class="vg">url</span><span class="w"> </span><span class="vg">origin</span><span class="w"> </span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="err">$</span><span class="vg">f</span><span class="o">.</span><span class="vg">git</span>
+</span><span class='line'><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="o">..</span>
+</span><span class='line'><span class="vg">done</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>If the setup is correct, then <code>\ll</code> in $\rm \LaTeX$-Suite should
 automatically trigger the $\rm \LaTeX$ compilation.  I give up on
@@ -285,7 +329,22 @@ file.</p>
 <p>I found <a href="https://github.com/git-for-windows/git/issues/320#issuecomment-140278002">Jason Cemra’s comment on issue #320</a> of Git for Windows
 on GitHub extremely useful.</p>
 
-<p>{% include_code Launch Portable Git Bash with proper a home folder git-bash.bat %}</p>
+<p><figure class='code'><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href='/downloads/code/git-bash.bat'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="c">rem Setup environment (replace &#39;user&#39; with your desired username)</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">HOMEDRIVE</span><span class="o">=</span><span class="nv">%~d0</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">HOME</span><span class="o">=</span>home<span class="n">/owner</span>
+</span><span class='line'><span class="k">set</span> <span class="nv">USERPROFILE</span><span class="o">=</span><span class="nv">%HOME%</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">rem Launch the git bash</span>
+</span><span class='line'>start git-bash.exe
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I borrow the line <code>set HOMEDRIVE=%~d0</code> from <a href="http://stackoverflow.com/users/5991/dgw">dgw</a> since the drive
 letter of the USB can <em>change</em>.  This facilitates the process of
