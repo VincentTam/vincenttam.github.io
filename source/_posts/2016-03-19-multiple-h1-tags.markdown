@@ -37,4 +37,5 @@ site ownership *doesn't* need to be done again.
 [bingwebmaster]: https://www.bing.com/webmaster
 [Octopress]: http://octopress.org
 [GitHub]: https://github.com/imathis/octopress
+[src]: http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824
 [goowebmaster]: https://www.google.com/webmaster
