@@ -95,6 +95,10 @@ Remarks
 
 As the number of steps increases, the difficulty of constructing a
 one-line command to do the thing rises tremendously.  It's possible
-that a shell script is *easier* to write.
+that a shell script is *easier* to write.  By searching "bash array
+tutorial" on Google, I got [a tutorial on the Geek Stuff][tut] in the
+first search result.
 
 {% include_code A shell script that display an array oneelt.sh %}
+
+[tut]: http://www.thegeekstuff.com/2010/06/bash-array-tutorial/
