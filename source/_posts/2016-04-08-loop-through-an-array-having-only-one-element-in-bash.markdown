@@ -3,7 +3,7 @@ layout: post
 title: "Loop Through an Array Having Only One Element in Bash"
 date: 2016-04-08 22:59:29 +0800
 comments: true
-categories: Linux
+categories: [Linux, Perl]
 ---
 
 Background

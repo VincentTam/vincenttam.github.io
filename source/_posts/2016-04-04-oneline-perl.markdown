@@ -3,7 +3,7 @@ layout: post
 title: "Oneline Perl"
 date: 2016-04-04 00:47:40 +0800
 comments: true
-categories: [Git, Linux]
+categories: [Git, Linux, Perl]
 ---
 
 Motivation
