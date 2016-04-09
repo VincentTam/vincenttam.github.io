@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-09T11:59:06+08:00</updated>
+  <updated>2016-04-09T18:30:37+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,202 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$-Suite in Portable Git]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git/"/>
+    
+    <updated>2016-04-09T14:34:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A year ago, I was using msysgit on M$ Win* 7. Its support for
+Unicode characters <em>isn’t</em> so good, and I <em>can’t</em> write a text file
+with accents like “café” in the Vim editor that shipped with msysgit.
+As a result, I needed GVim for editing my $\rm \LaTeX$ documents.</p>
+
+<p>Unluckily, unlike Linux, the GVim can <em>never</em> have forward control.
+Therefore, I needed to switch windows between GVim and Git Bash.</p>
+
+<p>More importantly, if I want to apply the Linux skills and the tools on
+M$ Win*, I need <em>portable</em> programs excutable on a USB unless I
+carry my laptop.</p>
+
+<p>Luckily, the bash shell in Git for Windows has improved a lot.  The
+accents are well supported.  Then, I have switched from GVim to the
+embedded Vim in Git for Windows.  Luckily, the setup of Vundle was
+smooth. Most of the installed plugins work fine in terminal Vim.</p>
+
+<h2 id="problem-1">Problem 1</h2>
+
+<p>In the post <a href="/blog/2016/03/20/git-portable-home-path/"><em>Git Portable Home Path</em></a>, a BAT file is included so
+that the home folder and the <code>HOMEDRIVE</code> environment are automatically
+set.  Since the <em>same</em> Git repository can be shared among multiple
+devices, such as my Linux desktop, my M$ Win* 7 laptop, and my USB
+stick, a bare repository is needed for efficient pulling and pushing
+of Git commits.  Since I work outside home, I place a bare Git repo in
+my USB stick.  However, for each local Git repository stored in the
+USB stick (under <code>~/local_repo</code>, a.k.a.
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>), I need to run the
+following command for each time I use Git Bash.</p>
+
+<h2 id="problem-2">Problem 2</h2>
+
+<p>After making some changes on a $\rm \TeX$ file, I compiled the file
+using Mik$\rm \TeX$ Portable.</p>
+
+<ol>
+  <li>Browse the folder <code>$HOMEDRIVE/MikTeXPortable/</code>.</li>
+  <li>Double-click on <code>miktex-portable.cmd</code>.</li>
+  <li>In the Command Prompt popped up, switch to
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>.</li>
+  <li>Type <code>pdflatex file.tex</code>.</li>
+</ol>
+
+<p>This sounds really slow.  The goal is to find a more efficient $\rm
+\LaTeX$ editing workflow.</p>
+
+<p>That’s <em>not</em> the end.  Another bad news came from <code>eu1lmr.fd</code>.  I’ve
+got error similar to <a href="http://bbs.ctex.org/forum.php?mod=viewthread&amp;tid=75679">fengbaobao6’s</a>.  The compilation was
+<em>stuck</em> at <code>...\tex\latex\euenc\eu1lmr.fd</code>.  Then an error was shown:
+“Fontconfig error: Cannot load config file”.</p>
+
+<!-- more -->
+
+<h2 id="solution-1">Solution 1</h2>
+
+<ol>
+  <li>Create a file <code>~/.bashrc</code> if it <em>doesn’t</em> exist.</li>
+  <li>Write an array consisting of all local Git repositories saved in
+the USB stick in BASHRC.</li>
+  <li>Then Write a for loop to reset the remote location.</li>
+</ol>
+
+<h2 id="solution-2">Solution 2</h2>
+
+<p>Searching the error text, I found kounoupis’s answer on
+<a href="http://askubuntu.com/a/708541">Ask Ubuntu</a>.  Even though the <code>export</code> command <em>didn’t</em>
+work for me, I still found his answer informative.</p>
+
+<p>Finally, reading <code>miktex-portable.cmd</code>, I gave up on investigating the
+problem, and added the last line of this file into BASHRC since I have
+other important things to do.</p>
+
+<p>{% include_code Actual CMD file found in Mik$\rm \TeX$ Portable miktex-portable.cmd %}</p>
+
+<p>To include Mik$\rm \TeX$ into <code>PATH</code>, I first extracted <code>$HOMEDRIVE</code>
+in the form <code>/f</code> instead of <code>F:/</code>.  If not, Mik$\rm \TeX$ <em>won’t</em>
+work.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Here’s my BASHRC for Git Bash.</p>
+
+<p>{% include_code My BASHRC .bashrc %}</p>
+
+<p>If the setup is correct, then <code>\ll</code> in $\rm \LaTeX$-Suite should
+automatically trigger the $\rm \LaTeX$ compilation.  I give up on
+finding ways to open a viewer with <code>\lv</code> since I can use the keyboard
+to switch to a web browser to see the compiled PDF file <em>without</em>
+installing another PDF viewer in my USB stick.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I’ve learnt some Perl and bash after writing this BASHRC.</p>
+
+<ol>
+  <li>A little bit of Perl
+    <ul>
+      <li><code>$ENV{HOMEDRIVE}</code> for extracting the environment variable
+  <code>HOMEDRIVE</code>.</li>
+      <li><code>/(regex_pat)/;</code> for extracting matching string to capture
+  groups <code>$1</code>, <code>$2</code>…  (The <code>()</code> around <code>regex_pat</code> is
+  <em>crucial</em>.)</li>
+      <li><code>.</code> for string concatenation.</li>
+      <li><code>lc()</code> for converting a string to lowercase.</li>
+    </ul>
+  </li>
+  <li>Bash for loop writing: described in <a href="/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/">one of my recent posts</a>.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Awk Column Alignment]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment/"/>
+    
+    <updated>2016-04-09T12:48:11+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use Google’s <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> to check if the images
+on this blog are optimised.  Recently, it reported that two images in
+<a href="/blog/2016/03/27/an-invalid-claim-by-the-government/"><em>An Invalid Claim by the Government</em></a> could be resized and
+compressed.  I did so, and then the file size of the files were
+displayed using <code>ls -lh</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress/source/images/posts/W3CInvalid]$ ls -lh
+total 312K
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb1-300.png
+-rw-rw-r-- 1 owner owner 132K Mar 27 14:32 cedb1.png
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb2-300.png
+-rw-rw-r-- 1 owner owner  83K Apr  9 12:20 cedb2.png
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>To remove the first four column, one uses <code>awk</code> to do this.  (I assume
+that the current working directory is the <em>same</em> as above.)</p>
+
+<pre class="cliUB"><code>$ ls -lh | awk '{print $5 $6 $7 $8 $9}'
+
+32KApr912:20cedb1-300.png
+132KMar2714:32cedb1.png
+32KApr912:20cedb2-300.png
+83KApr912:20cedb2.png
+</code></pre>
+
+<p><strong>How can one properly align the columns?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Searching “awk align columns” on Google, I quickly got
+<a href="http://stackoverflow.com/a/14095129">an answer posted by Mike Sherrill</a> on Stack Overflow.
+However, there’s room for improvement in the visual effect of the
+output.</p>
+
+<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %13s\n", $5, $6, $7, $8, $9);}'
+                         
+ 32718 Apr  9 12:20 cedb1-300.png
+135159 Mar 27 14:32     cedb1.png
+ 32665 Apr  9 12:20 cedb2-300.png
+ 84580 Apr  9 12:20     cedb2.png
+</code></pre>
+
+<p>The solution can be found in <a href="http://stackoverflow.com/a/1505360">the second search result</a> for
+the Google search for “awk align columns left right”.  Added a hyphen
+after <code>%</code> will suffice.  Note that the newline <code>\n</code> <em>can’t</em> be
+omitted.  Otherwise, the output will be messed up.</p>
+
+<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %-s\n", $5, $6, $7, $8, $9);}'
+                         
+ 32718 Apr  9 12:20 cedb1-300.png
+135159 Mar 27 14:32 cedb1.png    
+ 32665 Apr  9 12:20 cedb2-300.png
+ 84580 Apr  9 12:20 cedb2.png    
+</code></pre>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -124,20 +320,7 @@ that a shell script is <em>easier</em> to write.  By searching “bash array
 tutorial” on Google, I got <a href="http://www.thegeekstuff.com/2010/06/bash-array-tutorial/">a tutorial on the Geek Stuff</a> in the
 first search result.</p>
 
-<p><figure class='code'><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href='/downloads/code/oneelt.sh'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span>
-</span><span class='line'><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$f</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code A shell script that display an array oneelt.sh %}</p>
 
 ]]></content>
     
@@ -331,22 +514,7 @@ file.</p>
 <p>I found <a href="https://github.com/git-for-windows/git/issues/320#issuecomment-140278002">Jason Cemra’s comment on issue #320</a> of Git for Windows
 on GitHub extremely useful.</p>
 
-<p><figure class='code'><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href='/downloads/code/git-bash.bat'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='bat'><span class='line'><span class="c">rem Setup environment (replace &#39;user&#39; with your desired username)</span>
-</span><span class='line'><span class="k">set</span> <span class="nv">HOMEDRIVE</span><span class="o">=</span><span class="nv">%~d0</span>
-</span><span class='line'><span class="k">set</span> <span class="nv">HOME</span><span class="o">=</span>home<span class="n">/owner</span>
-</span><span class='line'><span class="k">set</span> <span class="nv">USERPROFILE</span><span class="o">=</span><span class="nv">%HOME%</span>
-</span><span class='line'>
-</span><span class='line'><span class="c">rem Launch the git bash</span>
-</span><span class='line'>start git-bash.exe
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code Launch Portable Git Bash with proper a home folder git-bash.bat %}</p>
 
 <p>I borrow the line <code>set HOMEDRIVE=%~d0</code> from <a href="http://stackoverflow.com/users/5991/dgw">dgw</a> since the drive
 letter of the USB can <em>change</em>.  This facilitates the process of
@@ -381,159 +549,6 @@ Vundle</em> for details. <a href="#fnref:setup" class="reversefootnote">&#8617;<
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
-    
-    <updated>2016-01-16T15:33:39+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ul>
-  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
-  typeset math expressions.</li>
-  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
-  calculations for a quick and correct response on Mathematics Stack
-  Exchange.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
-Mathematics Stack Exchange.</p>
-
-<p>For any given matrix $A$ in Octave,</p>
-
-<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
-A =
-
-   1   2   2
-   2   3   4
-   4   4   2
-</code></pre>
-
-<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
-
-<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
-
-<p>so that one gets</p>
-
-<div class="myeqn">
-\[
-  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
-\]
-</div>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
-quite useful.  I issued the first command to see the result.</p>
-
-<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
-ans = 1 2 2\\
-2 3 4\\
-4 4 2
-</code></pre>
-
-<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
-verified that I was right.  To fix this, I extracted the function
-<code>mat2str(A)</code> in the middle of this command to see the results.  From
-its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
-standed for “string replace”.  Then, I changed the double-quoted comma
-in the second argument of function <code>strrep</code> to a double-quoted
-whitespace character, and got the anticipated result.</p>
-
-<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
-";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
-ans = \begin{bmatrix}
-1&amp;2&amp;2\\
-2&amp;3&amp;4\\
-4&amp;4&amp;2
-\end{bmatrix}
-</code></pre>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
-can work it out by searching and testing in several hours, but I
-<em>don’t</em> have the time to do so.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="math">Math</h3>
-
-<p>I revised some definitions in linear algebra.</p>
-
-<ul>
-  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
-  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
-</ul>
-
-<h3 id="gnu-octave">GNU Octave</h3>
-
-<ul>
-  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
-  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
-  multiple replacements.</li>
-  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
-  inside.</li>
-</ul>
-
-<h3 id="grep">Grep</h3>
-
-<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
-(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
-over 1270 results.  I tried adding single/double quotes and escaping
-the square brackets with a backslash, but I faied again.  Finally, I
-googled “grep escape character” for a solution.  Since then, I know
-that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
-string.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Ubuntu Grey Screen]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen/"/>
-    
-    <updated>2016-01-02T14:05:54+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/02/ubuntu-grey-screen</id>
-    
-      <content type="html"><![CDATA[<p>A few days ago, I was browsing questions on
-<a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> on <a href="http://www.ubuntu.com/desktop">Ubuntu</a> 14.04 <abbr title="long-term support">LTS</abbr>.  I opened
-lots of tabs in <a href="https://www.chromium.org">Google Chromium</a>.  Suddenly, the screen
-went grey.  I <em>don’t</em> know the cause.  I <em>hadn’t</em> seen such problem
-before.  I waited for about one minute, and I switched to the terminal
-<code>tty3</code>.  The grey screen became black <em>without any text</em>.  I pressed
-<code>&lt;Ctrl&gt;-&lt;Alt&gt;-&lt;F7&gt;</code>, then the monitor showed the grey screen again.</p>
-
-<p>I looked at the light (not the power button) in the desktop.  I
-thought it represented the hard disk activity.  Its blinking was
-normal.  As a result, I <em>guessed</em> the problem was related to the
-display.  I <em>pretended</em> I could normally see things, and I <em>imagined</em>
-the picture.  I logged on <code>tty3</code> without logging off <code>tty7</code>.  Then I
-typed <code>sudo reboot</code> and supplied the password.  Within several
-seconds, I heard a <em>beep</em> sound and the system rebooted.</p>
-
-<p>Certainly, all unsaved works on <code>tty7</code> had been <em>lost</em>.  Therefore, it
-was very important to save your work.  As I’m no longer an IT worker,
-I <em>won’t</em> try to find a solution after reading a few related posts
-which I have difficulty to understand.  Within six months, a new <abbr title="long-term support">LTS</abbr>
-version of Ubuntu will be launched.  The price of a <abbr title="solid-state drive">SSD</abbr> will drop, so
-perhaps I will clean install Ubuntu on a <abbr title="solid-state drive">SSD</abbr>.</p>
-
 ]]></content>
     
   </entry>

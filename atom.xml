@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-09T11:59:06+08:00</updated>
+  <updated>2016-04-09T14:34:39+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,135 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[LaTeX-Suite in Portable Git]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git/"/>
+    
+    <updated>2016-04-09T14:34:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git</id>
+    
+      <content type="html"><![CDATA[
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Can't Visit WordPress.com]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/cant-visit-wordpress-dot-com/"/>
+    
+    <updated>2016-04-09T14:10:27+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/cant-visit-wordpress-dot-com</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>While removing the “here”’s in the hyperlink text, I clicked on a link
+to my old blog on WordPress.com.  Unfortunately, after 15 seconds, I
+<em>couldn’t</em> see the output.</p>
+
+<h2 id="more-errors">More errors</h2>
+
+<p>I suspect that it was a problem of the server of WordPress.com.  I
+think the following screenshot confirm my guess.</p>
+
+<picture class="fancybox" title="Address NOT found">
+  <source srcset="/images/posts/NoWP/nowp.png" media="(min-width: 685px)" /> 
+  <img alt="Address NOT found" width="300" src="https://vincenttam.github.io/images/posts/NoWP/nowp300.png" />
+</picture>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Replaced All "Click Here"]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/replaced-all-click-here/"/>
+    
+    <updated>2016-04-09T13:58:40+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/replaced-all-click-here</id>
+    
+      <content type="html"><![CDATA[<p>I removed all instances of “here” in the hyperlink text and committed
+the changes at <a href="https://github.com/VincentTam/vincenttam.github.io/commit/29528f8">29528f8</a> after reading <em>Why Your Links Should Never
+Say “Click Here”</em> in <a href="https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/"><em>Smashing Magazine</em></a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Awk Column Alignment]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment/"/>
+    
+    <updated>2016-04-09T12:48:11+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I use Google’s <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> to check if the images
+on this blog are optimised.  Recently, it reported that two images in
+<a href="https://vincenttam.github.io/blog/2016/03/27/an-invalid-claim-by-the-government/"><em>An Invalid Claim by the Government</em></a> could be resized and
+compressed.  I did so, and then the file size of the files were
+displayed using <code>ls -lh</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress/source/images/posts/W3CInvalid]$ ls -lh
+total 312K
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb1-300.png
+-rw-rw-r-- 1 owner owner 132K Mar 27 14:32 cedb1.png
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb2-300.png
+-rw-rw-r-- 1 owner owner  83K Apr  9 12:20 cedb2.png
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>To remove the first four column, one uses <code>awk</code> to do this.  (I assume
+that the current working directory is the <em>same</em> as above.)</p>
+
+<pre class="cliUB"><code>$ ls -lh | awk '{print $5 $6 $7 $8 $9}'
+
+32KApr912:20cedb1-300.png
+132KMar2714:32cedb1.png
+32KApr912:20cedb2-300.png
+83KApr912:20cedb2.png
+</code></pre>
+
+<p><strong>How can one properly align the columns?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Searching “awk align columns” on Google, I quickly got
+<a href="http://stackoverflow.com/a/14095129">an answer posted by Mike Sherrill</a> on Stack Overflow.
+However, there’s room for improvement in the visual effect of the
+output.</p>
+
+<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %13s\n", $5, $6, $7, $8, $9);}'
+                         
+ 32718 Apr  9 12:20 cedb1-300.png
+135159 Mar 27 14:32     cedb1.png
+ 32665 Apr  9 12:20 cedb2-300.png
+ 84580 Apr  9 12:20     cedb2.png
+</code></pre>
+
+<p>The solution can be found in <a href="http://stackoverflow.com/a/1505360">the second search result</a> for
+the Google search for “awk align columns left right”.  Added a hyphen
+after <code>%</code> will suffice.  Note that the newline <code>\n</code> <em>can’t</em> be
+omitted.  Otherwise, the output will be messed up.</p>
+
+<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %-s\n", $5, $6, $7, $8, $9);}'
+                         
+ 32718 Apr  9 12:20 cedb1-300.png
+135159 Mar 27 14:32 cedb1.png    
+ 32665 Apr  9 12:20 cedb2-300.png
+ 84580 Apr  9 12:20 cedb2.png    
+</code></pre>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -511,14 +640,14 @@ validation icon for HTML 4.01 at the lower right-hand corner.</p>
 
 <picture class="fancybox" title="home page of gov webpage">
   <source srcset="/images/posts/W3CInvalid/cedb1.png" media="(min-width: 900px)" /> 
-  <img alt="home page of gov webpage" width="300" src="https://vincenttam.github.io/images/posts/W3CInvalid/cedb1.png" />
+  <img alt="home page of gov webpage" width="300" src="https://vincenttam.github.io/images/posts/W3CInvalid/cedb1-300.png" />
 </picture>
 
 <p>To my surprise, an error was produced.</p>
 
 <picture class="fancybox" title="W3C validator shows error">
   <source srcset="/images/posts/W3CInvalid/cedb2.png" media="(min-width: 900px)" /> 
-  <img alt="W3C validator shows error" width="300" src="https://vincenttam.github.io/images/posts/W3CInvalid/cedb2.png" />
+  <img alt="W3C validator shows error" width="300" src="https://vincenttam.github.io/images/posts/W3CInvalid/cedb2-300.png" />
 </picture>
 
 <p>Lacking time to write an email with good grammar to the authories, I
@@ -930,159 +1059,6 @@ androidyue. <a href="#fnref:ref" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Missing OS]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/03/12/missing-os/"/>
-    
-    <updated>2016-03-12T20:53:42+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/03/12/missing-os</id>
-    
-      <content type="html"><![CDATA[<p>I saw this error on a M$ Win* 7 machine.  If I were the
-administrator, I would install GNU/Linux into that computer so that
-a free and reliable operating system can be found inside.</p>
-
-<picture class="fancybox" title="Missing Operating System">
-  <source srcset="/images/posts/BoD/20160312-153126.jpg" media="(min-width: 400px)" /> 
-  <img alt="Missing Operating System" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160312-153126.jpg" />
-</picture>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (5)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/"/>
-    
-    <updated>2016-02-29T00:35:30+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">the third post of this series</a>, I ran the editor command</p>
-
-<pre class="cli"><code>:!git config --list
-</code></pre>
-
-<p>inside <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>, but I got a fatal error.  I
-found out how to get <a href="https://github.com/mattn/gist-vim">Gist.vim</a> work <em>without</em> solving this problem.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><strong>How to avoid this fatal error?</strong></p>
-
-<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
-fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
-gs/.gitconfig': No such file or directory
-shell returned 128
-Hit any key to close this window...
-</code></pre>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I forgot <a href="http://polymerhk.com/articles/2016/02/03/27363/">this article about programming</a> that I’d read several
-weeks ago.  I should have pay more attention of the error message
-itself, rather than the Google search results of this message.  Hence,
-creating a symbolic link for <code>C:\Users\foo\.gitignore</code> to the
-<code>path/to/Data/settings</code> folder.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>While writing this post, I re-read
-<a href="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/"><em>Rake Aborted Due to a Vim Swap File</em></a> so as to find the URL of
-the article about programming.  I discovered a broken link in the
-GitHub page for <a href="https://github.com/imathis/octopress/issues/600#issuecomment-6206116">Octopress issue #600</a>.  From the list of
-branches in the homepage for this GitHub project, I found <code>site-2.1</code>,
-on which commit <a href="https://github.com/imathis/octopress/commit/2399008">2399008</a> was located.  Therefore, I made commit
-<a href="https://github.com/VincentTam/vincenttam.github.io/commit/68b0adb">68b0adb</a> in the repository for this blog.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Another Blue Screen Windows 7]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7/"/>
-    
-    <updated>2016-02-25T22:41:06+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/25/another-blue-screen-windows-7</id>
-    
-      <content type="html"><![CDATA[<p>I saw a monitor which displayed the notorious blue screen of death
-this evening.  Since I <em>don’t</em> know how to find out the reason of the
-problem from the coredump, I use <a href="http://www.ubuntu.com/">Ubuntu</a>.</p>
-
-<picture class="fancybox" title="A Windows 7 Blue Screen">
-  <source srcset="/images/posts/BoD/20160225-185456.jpg" media="(min-width: 400px)" /> 
-  <img alt="Win 7 BoD" width="300" src="https://vincenttam.github.io/images/posts/BoD/20160225-185456.jpg" />
-</picture>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git for Windows, Curl, Gist.vim With Vundle (4)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/"/>
-    
-    <updated>2016-02-22T18:38:00+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>In <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
-path of Git Bash can become a source of trouble.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
-
-<!-- more -->
-
-<h2 id="a-failed-attempt">A failed attempt</h2>
-
-<p>I googled “vim shell path program files”, and clicked
-<a href="http://stackoverflow.com/a/13917410">the first web site</a> as usual.  Even though I <em>don’t</em>, and
-<em>won’t</em> have Cygwin installed in my computer, I still viewed this
-page, which suggested that the path of <code>shell</code> option should be
-surrounded by a pair of double quotes <code>""</code>.  I tried this, but the
-above problem <em>wasn’t</em> solved.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I recalled that after opening the built-in editor in Command Prompt on
-M$ Win* Professional/Enterprise, the displayed path of the working
-directory would be different: some tildes appear in the path.</p>
-
-<p>Therefore, I googled “windows path without spaces”, and learnt to use
-<code>DIR /X</code> in Command Prompt to <a href="https://goo.gl/a9eHZF">solve this problem</a> from an
-answer to <a href="http://superuser.com/a/179450">this Super User question</a>.  Finally, usual
-external commands like <code>ls</code> and <code>file</code> can be executed inside GVim
-Portable.  This solves the error mentioned in the “Discussion” section
-of <a href="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>.  What I’ve wriiten in the
-“Solution” section can be updated: I expect that under usual
-circumstances, the external commands can be run even if the <code>shell</code>
-option is set to Git Bash.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>I used an <code>if</code> statement to surround the <code>set shell=/path/to/bash.exe</code>
-because <a href="http://stackoverflow.com/a/13917410">the same Stack Overflow answer</a> mentioned in the
-“A failed attempt” section said that many Vim plugins used
-<code>has("win32")</code>.  If a plugin failed in a GVim window triggered by Git
-Bash, I can still use it by opening GVim with Command Prompt.</p>
-
-<p>Now, though using <code>curl</code> in GVim whose <code>shell</code> is configured to
-<code>cmd.exe</code>, I can finally use <code>curl</code> in GVim invoked by Git Bash.</p>
-
 ]]></content>
     
   </entry>

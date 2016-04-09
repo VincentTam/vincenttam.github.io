@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: This post won’t make sense here. Refer to the
-original post. Note: I can now figure out a way to work with both UltraBlog and
-WordPress.com’s &hellip;">
+  <meta name="description" content="I’ve found a page which provides a brief summary of gpg
+commands. I think some mainland users will find it useful. I hope
+that I can use these &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,306 @@ WordPress.com’s &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/03/gnupg-encryption/">GnuPG Encryption</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-03T21:03:59+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:03 pm</span></time>
+        
+           | <a href="/blog/2014/02/03/gnupg-encryption/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/03/gnupg-encryption/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/03/gnupg-encryption/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve found <a href="http://blog.aboutc.net/linux/55/pgp-file-encryption-and-decryption" title="PGP Document Encryption">a page</a> which provides a brief summary of gpg
+commands.  I think some mainland users will find it useful.  I hope
+that I can use these commands soon.</p>
+
+<pre class="cli"><code>$ gpg -k
+$ gpg -K
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/02/03/gnupg-encryption/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-experience-of-using-vundle/">My Experience of Using Vundle</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T12:17:52+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 pm</span></time>
+        
+           | <a href="/blog/2014/02/01/my-experience-of-using-vundle/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/01/my-experience-of-using-vundle/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-experience-of-using-vundle/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Three months ago, I gave <a href="https://github.com/gmarik/vundle">Vundle</a> a try, and it’s <em>much</em> more
+convenient than <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a>.  With
+<a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/" title="Auto Installing Vundle From Your Vimrc">Zaadi’s VIMRC configuration</a>, Vundle can be set up within
+several minutes.</p>
+
+<p>I installed <a href="https://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a> for opening files in other directories
+without leaving Vim.  However, during the installation of the plugin,
+I carelessly forgot to download <a href="https://github.com/vim-scripts/L9">L9</a> library first.  Therefore, I put
+it into <code>$MYVIMRC</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line">Bundle <span class="s1">&#39;L9&#39;</span> <span class="c">&quot; FuzzyFinder dependency</span>
+</span><span class="line">Bundle <span class="s1">&#39;FuzzyFinder&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then, I got the following error message.</p>
+
+<pre class="cli"><code class="UBMono"><span class="vimErr">$ vi
+Error detected while processing /home/owner/.vimrc:
+line   28:
+E116: Invalid arguments for function vundle#config#bundle
+line   30:
+E116: Invalid arguments for function vundle#config#bundle
+line   31:
+E116: Invalid arguments for function vundle#config#bundle
+line   32:
+E116: Invalid arguments for function vundle#config#bundle
+line   33:
+E116: Invalid arguments for function vundle#config#bundle
+line   39:
+E116: Invalid arguments for function vundle#config#bundle
+Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:
+line   13:
+***** L9 library must be installed! *****</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+</code></pre>
+
+<p><code>:BundleList</code> doesn’t have L9, but <code>~/.vim/bundle</code> has the folder
+<code>L9</code>.  The cause of the problem is the comment on the right of the
+<code>Bundle 'foo'</code> command.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">My Choice of Vim Alignment Plugin</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T11:16:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>11:16 am</span></time>
+        
+           | <a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is <em>nothing</em> more than a link to a post on <em>Ruby China</em>,
+which recommends some Vim plugins<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup>, and I’d like to use
+<a href="https://github.com/junegunn/vim-easy-align" title="vim-easy-align">vim-easy-align</a> rather than <a href="http://www.drchip.org/astronaut/vim/align.html" title="Align.vim">Align.vim</a>.</p>
+
+<p>For the rest of the plugins, I don’t feel that I need them now, so I
+won’t bother them. For instance, I found the ruler at the bottom of
+each buffer useful, and I can’t see the difference between a powerline
+and the default ruler.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+      <p>See <a href="https://ruby-china.org/topics/13350">a post on <em>Ruby China</em></a>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comparison of $\rm \LaTeX$'s "Quote" and "Quotation" Environments</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-31T00:25:10+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:25 am</span></time>
+        
+           | <a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To quote another one’s words, one can paraphrase the words.  For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s words.) one would like to directly quote what another
+one has said.</p>
+
+<p>To show the difference in $\rm \LaTeX$, I’ve made
+<a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>.  It’s now on Google Docs.</p>
+
+<p>I created the above PDF document using <code>quote.tex</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.tex"></script>
+<noscript><pre><code>%        File: quote.tex
+%     Created: Mon Apr 29 07:00 PM 2013 H
+% Last Change: Mon Apr 29 07:00 PM 2013 H
+%
+\documentclass[a4paper]{article}
+\usepackage{parskip}
+\author{Somobody Here}
+\title{Sample Draft Paper No. 1}
+\date{\today}
+\setlength{\parindent}{1.5em}
+\begin{document}
+\maketitle
+
+Some paragraphs. After that go to~a quote. Some
+paragraphs.\footnote{Wells Abcd, Wealth of family} After that go to~a
+quote. Some paragraphs, after that go to~a quote. Some
+paragraphs.\footnotemark[1] After that go to~a quote.
+
+\begin{quote}
+  Some long sentence. In a capitalist society, the separation of
+  capital, land and property is unavoidable, but harmful to workers.
+\end{quote}
+\begin{quotation}
+  Some long long sentences. So we can see the difference of two
+  environments. Moreover, compile it and keep calm. see the result and
+  go to have a rest after long hours facing computer.
+\end{quotation}
+
+I&#39;ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.\footnote{some text here} They are the most
+direct way of getting answers from ``computer stuff&#39;&#39;.
+
+Some sentences.
+\end{document}</code></pre></noscript></div>
+
+<p>For many computer users who <em>aren’t</em> familiar with $\rm \LaTeX$’s
+syntax but HTML’s, they should find <a href="http://daringfireball.net/projects/markdown">Markdown</a> easy to write, and
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a> easy to use.</p>
+
+<pre class="cli"><code class="UBMono">$ pandoc -s \
+&gt; <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> \
+&gt; foo.markdown foo.tex</code></pre>
+
+<p>The result is shown in <code>quote.markdown</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.markdown"></script>
+<noscript><pre><code>% Sample Draft Paper No. 1
+% Somobody Here
+% 
+
+Some paragraphs. After that go to a quote. Some paragraphs.[^1] After
+that go to a quote. Some paragraphs, after that go to a quote. Some
+paragraphs.[1] After that go to a quote.
+
+&gt; Some long sentence. In a capitalist society, the separation of
+&gt; capital, land and property is unavoidable, but harmful to workers.
+
+&gt; Some long long sentences. So we can see the difference of two
+&gt; environments. Moreover, compile it and keep calm. see the result and
+&gt; go to have a rest after long hours facing computer.
+
+I’ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.[^2] They are the most direct way of getting
+answers from “computer stuff”.
+
+Some sentences.
+
+[^1]: Wells Abcd, Wealth of family
+
+[^2]: some text here</code></pre></noscript></div>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,208 +715,6 @@ syntax errors in the source code and improve its readability.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://cloud.itsc.cuhk.edu.hk/enewsasp/app/article-details.aspx/26D533F3B5CF28FBE498826C239038FD/">Heads Up While Creating Online Form</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-18T14:07:29+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:07 pm</span></time>
-        
-           | <a href="/blog/2014/01/18/heads-up-while-creating-online-form/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/18/heads-up-while-creating-online-form/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/18/heads-up-while-creating-online-form/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For what you <em>can</em> do using Google Form, you can refer to those online
-forms that are created by Google.</p>
-
-<p>The focus of this post is what you <em>shouldn’t</em> do while using online
-forms that are accessible to the public, like Google Forms and other
-platforms that enable users to easily create questionnaire.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">My First Post Using UltraBlog.vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-12T00:22:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
-        
-           | <a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Note: This post won’t make sense here. Refer to the
-<a href="https://blogueun.wordpress.com/2014/01/12/my-first-post-using-ultrablog-vim/">original post</a>.</em></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/11/migrated-from-blogger/">Migrated From Blogger</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-11T07:10:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:10 am</span></time>
-        
-           | <a href="/blog/2014/01/11/migrated-from-blogger/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/11/migrated-from-blogger/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/11/migrated-from-blogger/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I tried finding a way to blog using Vim, and <code>blogger.vim</code> is what
-I’ve found. I’ve tried this plugin but it <em>doesn’t</em> work for my
-computer. <em>Without</em> Vim, writing code is <em>painful</em> for me. Read the
-authors’ last Blogger post, which was, ironically, about <em>his switch
-to WordPress</em>, I followed his footstep.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>Note: For posts about online syntax highlighting and Mathjax on
-Blogger, they <em>won’t</em> make sense here, so refer to
-<a href="http://blogue-un.blogspot.hk/">my original blog</a> if necessary.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Ujihisa.  (DEC 11, 2013).  <em>moved!</em>.  Retrieved from
-<a href="http://ujihisa.blogspot.hk/2013/12/moved.html">http://ujihisa.blogspot.hk/2013/12/moved.html</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Compilation of Ruby's Source Code on Ubuntu</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-10T03:22:00+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:22 am</span></time>
-        
-           | <a href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oliver’s guide has listed the packages on which Ruby depends.
-Following strictly to the guide, you should start working with the
-programming language, instead of wasting time to read this article.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>To compile Ruby for whatever reasons.</p>
-
-<h2 id="background">Background</h2>
-
-<p>You’ve read Oliver’s guide. However, your goal does <em>not</em> match with
-those in <a href="http://excid3.com/blog/setting-up-ubuntu-12-04-with-ruby-1-9-3-nginx-passenger-and-postgresql-or-mysql/">Oliver’s guide</a>. Therefore, you <em>don’t</em> need
-to do all the things in the guide and start to skim through the text
-and to scan for commands useful to you. This is an essential skill to
-survive in *nix.<sup id="fnref:skim_doc"><a href="#fn:skim_doc" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>You’ve found <em>some</em> useful commands, and tried working out their
-dependencies. Nonetheless, you missed out some important commands and
-thus the dependencies were wrong. Unfortunately, you’re unaware of
-such careless mistake and continued the process, before being stopped
-by the compiler’s error message.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/10/compilation-of-rubys-source-code-on-ubuntu/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/30">&larr; Older</a>
@@ -649,7 +747,7 @@ by the compiler’s error message.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (13)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (15)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -662,7 +760,7 @@ by the compiler’s error message.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (50)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (51)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (34)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -686,23 +784,23 @@ by the compiler’s error message.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/09/latex-suite-in-portable-git/">LaTeX-Suite in Portable Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/cant-visit-wordpress-dot-com/">Can't Visit WordPress.com</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/replaced-all-click-here/">Replaced All "Click Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/awk-column-alignment/">Awk Column Alignment</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/">Loop Through an Array Having Only One Element in Bash</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/07/com-surrogate-problem/">COM Surrogate Problem</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/05/no-schauder-base-in-l-infty/">No Schauder Base in $\ell^\infty$</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/04/oneline-perl/">Oneline Perl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/03/searching-git-commit-messages/">Searching Git Commit Messages</a>
       </li>
     
   </ul>

@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem When I was writing my previous post, I typed three $ in
-one single paragraph. Although I’d tried adding \ in front of
-$1, part of the words &hellip;">
+  <meta name="description" content="Situation (TL;DR) Since I tried to import my old WordPress posts to this blog without
+affecting source branch, I created a new branch called
+wpcom- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,466 @@ $1, part of the words &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/17/my-git-command-list-2/">My Git Command List (2)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-17T22:51:14+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:51 pm</span></time>
+        
+           | <a href="/blog/2014/06/17/my-git-command-list-2/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/17/my-git-command-list-2/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/17/my-git-command-list-2/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="situation-tldr">Situation (TL;DR)</h2>
+
+<p>Since I tried to import my old WordPress posts to this blog <em>without</em>
+affecting <code>source</code> branch, I created a new branch called
+<code>wpcom-importer</code> branch, on which <code>rake deploy</code> was successfully run.
+However, some of my old WordPress posts contain some unusual
+characters, which triggered an encoding problem in
+<a href="https://gist.github.com/1394128">Chuang’s WordPress XML to Octopress importer</a>.  Looking at
+<code>rake</code>’s error message, I feel that I’ve put the converted posts from
+WordPress’s XML on the right branch.</p>
+
+<p>Thus, I drafted my new posts on <code>source</code> branch, but <em>not</em> on
+<code>wpcom-importer</code> branch.  I then switched to <code>wpcom-importer</code> and
+deleted some unwanted parts of XML file.  However, I <em>couldn’t</em> switch
+back to <code>source</code> branch to do another commit.  As a result, I used
+<code>git stash</code> to solve the problem.</p>
+
+<p>After finishing the draft, I committed the change, switched to
+<code>wpcom-importer</code> and “merged” the last change on <code>source</code> branch for
+<code>rake preview</code>.  The reason for <em>not</em> running the preview command on
+<code>source</code> branch is to avoid huge changes in <code>public</code> folder.
+<del>I’ve learnt to do the “merge” from
+<a href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" title="Git Tip: How to &quot;Merge&quot; Specific Files from Another Branch">a post published by Jason Rudolph</a>.</del></p>
+
+<p>Being <em>unfamiliar</em> with kramdown syntax for displayed math
+equations<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I had made some mistakes in the source code for my
+<a href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Injectivity of Stable Mappings">previous post</a> while writing the draft on <code>source</code> branch.</p>
+
+<hr />
+<p>(Last edited on JUN 19,2014)</p>
+
+<p>From the network graph, I realized my mistake in understanding merging
+in Git.  I <em>shouldn’t</em> manually commit the <em>same</em> changes on
+<em>different</em> branch, but to commit it <em>once only</em> on a branch and
+<em>merge</em> the commit on <em>another</em> branch, if the two diverging branches
+have <em>no</em> conflict.</p>
+
+<p>I continued writing <code>&lt;posts&gt;</code>.  Unfortunately, I had <em>mistakenly</em>
+committed the changes on <code>wpcom-importer</code>, instead of <code>source</code> branch.
+I would like to</p>
+
+<ol>
+  <li>Remove the commit, but <em>keep</em> the changes in the files.</li>
+  <li>“Move” the changed file from <code>wpcom-importer</code> to <code>source</code> branch.</li>
+  <li>Commit the changes on <code>source</code> branch.</li>
+  <li>Merge the changes from <code>source</code> branch into <code>wpcom-importer</code>.</li>
+</ol>
+
+<p>I issued the following commands to do so.</p>
+
+<pre class="cliUB"><code>$ git reflog                   # For checking purpose
+$ git reset --soft HEAD^       # Revert to the previous commit
+$ git log -3                   # For checking purpose
+$ git status                   # `&lt;post&gt;' should be in `... not staged for commit'
+$ less &lt;post&gt;                  # For checking purpose
+$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
+$ git checkout source          # Go to the correct place for the commit
+$ git add &lt;post&gt;               # Add back `&lt;post&gt;' to `source' branch
+$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
+$ git checkout wpcom-importer  # Go back to another branch for merging
+$ git merge source             # Merge the changes back
+</code></pre>
+
+<hr />
+
+<h2 id="the-little-list">The little list</h2>
+
+<h3 id="stashing-and-grabbing">Stashing and Grabbing</h3>
+
+<p>“Stash” means going to another branch with <em>uncommitted</em> changes in
+the staging area here.</p>
+
+<p><a href="http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/" title="Git 初學筆記-指令操作教學-Tsung's Blog">This list</a> written in Chinese is a quick summary of Git
+commands.  I learnt the use of <code>git stash</code> commands from there.</p>
+
+<pre class="cliUB"><code>$ git stash                      # save the uncommitted changes
+$ git stash list                 # show a list of stashes
+$ git stash show                 # inspect a list of stashes
+$ git stash pop                  # apply and discard the topmost stash
+$ git stash apply                # apply but don't discard the topmost stash
+$ git checkout source -- &lt;file&gt;  # copy the file from other branch
+</code></pre>
+
+<p>In the last “merge” command, <code>--</code> avoids an ambiguity since <code>source</code>
+can be either the name of a branch or a folder in this case.  In
+addition, this command <em>doesn’t</em> affect the commit history.</p>
+
+<h3 id="more-about-rewinding-things">More about rewinding things</h3>
+
+<h4 id="rewinding-to-previous-versions-on-the-same-branch">Rewinding to previous versions on the same branch</h4>
+
+<p>Here’s more commands about reseting the working tree to previous
+versions.</p>
+
+<pre class="cliUB"><code>$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
+$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
+</code></pre>
+
+<h4 id="difference-between-resetting-and-reverting-things">Difference between resetting and reverting things</h4>
+
+<p>In the manual of <code>git reset</code>, I saw a link to<code>git revert</code>, and
+<em>couldn’t</em> understand the difference between those two command from
+there.</p>
+
+<blockquote>
+  <p>If you want to undo a commit other than the latest on a branch,
+<a href="https://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a> is your friend.</p>
+</blockquote>
+
+<p>A page in Stack Overflow is really my friend.
+(<a href="http://stackoverflow.com/a/8358039">URL</a>)  <code>git revert</code> <em>won’t</em> overwrite the
+commit history, so it’s suitable for published changes, while
+<code>git reset</code> <em>can</em> rewrite history.</p>
+
+<h4 id="undoing-merges">Undoing merges</h4>
+
+<p>See <em>Undo a merge or pull</em> and the following section in the manual of
+<code>git reset</code> for explanations.</p>
+
+<h5 id="undoing-conflicted-merges">Undoing conflicted merges</h5>
+
+<p>The SCM will say:</p>
+
+<pre class="cliUB"><code>Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p>Thus, the problematic merge <em>hasn’t</em> been committed.  Simply running
+<code>git reset --hard</code> will solve the problem.</p>
+
+<h5 id="undoing-successful-automatic-merges">Undoing successful automatic merges</h5>
+
+<p>Use <code>ORIG_HEAD</code> instead of <code>HEAD</code> for the tip of the branch before the
+merge.  (i.e. <code>git reset --hard ORIG_HEAD</code>)</p>
+
+<h3 id="using-git-diff-for-merging-commits">Using git-diff for merging commits</h3>
+
+<p>(Added on JUN 20, 2014)</p>
+
+<h4 id="a-shortcoming-of-">A shortcoming of “..”</h4>
+
+<p>To forsee possible conflicts in <code>git merge</code>, one may run
+<code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code> to see the differences between two
+diverged branches.  However, the diff hunk <em>doesn’t</em> show the
+additions and deletions on each branch.  A <code>-</code> in the diff hunk can be
+caused by either</p>
+
+<ol>
+  <li>Addition of contents in <code>&lt;branch1&gt;</code>; or</li>
+  <li>Deletion of contents in <code>&lt;branch2&gt;</code>.</li>
+</ol>
+
+<p>Running <code>git merge &lt;branch1&gt;</code> on <code>&lt;branch2&gt;</code> gives <em>different</em>
+results in different cases.</p>
+
+<ol>
+  <li>The line starting with <code>-</code> in the diff hunk will be inserted into
+<code>&lt;branch2&gt;</code>.</li>
+  <li>The line starting with <code>-</code> in the diff hunk <em>won’t</em> be inserted
+into <code>&lt;branch1&gt;</code>.</li>
+</ol>
+
+<p>In order to predict whether there will be a conflict, one needs to
+know the <em>changes done on each branch</em>.  Therefore, one needs to
+compare the tip of each branch with their common ancestors.</p>
+
+<p>Let me illustrate this by two examples.</p>
+
+<h5 id="example-1">Example 1</h5>
+
+<p>One has a file like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then it diverged into two branches.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 1 (line 1 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 2 (line 2 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<h5 id="example-2">Example 2</h5>
+
+<p>One has a file like this.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then it diverged into two branches.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 1 (line 2 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Branch 2 (line 1 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
+</span><span class="line">line 3
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
+
+<pre><code>+line 1
+-line 2
+ line 3
+</code></pre>
+
+<p>Observation: The diff hunks in the two examples are the <strong>same</strong>, even
+though their common ancestors and changes in files are <strong>different</strong>.</p>
+
+<h4 id="overcoming-the-shortcoming">Overcoming the shortcoming</h4>
+
+<p>From the above sub-section, it’s clear that one needs to compare the
+tip of each branch with the common ancestor of the two branches.  To
+see how <code>&lt;branch1&gt;</code> has been modified,
+<code>git diff &lt;branch2&gt;...&lt;branch1&gt;</code> can be used to compare the tip of
+<code>&lt;branch1&gt;</code> with the common ancestor of <code>&lt;branch1&gt;</code> and <code>&lt;branch2&gt;</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>The official kramdown syntax documentation. (<a href="http://kramdown.gettalong.org/syntax.html#math-blocks">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/17/injectivity-of-stable-mappings/">Injectivity of Stable Mappings</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-17T19:44:37+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:44 pm</span></time>
+        
+           | <a href="/blog/2014/06/17/injectivity-of-stable-mappings/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/17/injectivity-of-stable-mappings/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Two weeks ago, I revised calculus and read the proof of the Inverse
+Function Theorem in the calculus textbook that I was reading.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  The
+Nonlinear Stablity Theorem is first applied to a continuously
+differentiable function $\vect{F}: \mathcal{O} \to \R^n$, where
+$\mathcal{O}$ is an open subset of $\R^n$ and contains a point
+$\vect{x}_*$ at which $\det \vect{DF}(\vect{x}_*) \ne 0$, to
+construct a neighbourhood $U$ of $\vect{x}_*$ and find $c &gt; 0$ such
+that
+$\norm{\vect{F}(\vect{u})-\vect{F}(\vect{v})} \ge c \norm{\vect{u} -
+\vect{v}}\quad\forall\,\vect{u},\vect{v} \in U$.</p>
+
+<p>It’s said that if $V := \vect{F}(U)$, then $\vect{F}: U \to V$ is
+bijective.  The surjectivity is obvious, but I <em>wasn’t</em> smart enough
+to see the injectivity immediately.  After a week, I realised that I
+overlooked the discussion about invertible linear operators on
+$\F^n$ that preceeded the introduction to the idea of <em>stable
+mapping</em>.  In fact,
+$\forall\,\vect{u},\vect{v} \in U,\vect{F}(\vect{u}) =
+\vect{F}(\vect{v}) \iff \norm{\vect{F}(\vect{u}) - \vect{F}(\vect{v})}
+= 0$.</p>
+
+<p>Then
+$\norm{\vect{u} - \vect{v}} \le \norm{\vect{F}(\vect{u}) -
+\vect{F}(\vect{v})} / c = 0 \iff \vect{u} = \vect{v}$.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>FitzPatrick’s <em>Advanced Calculus</em> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">An Unreported Mistake in "Advanced Calculus"</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T23:40:05+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:40 pm</span></time>
+        
+           | <a href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After setting up Octopress for several weeks, I can finally begin to
+write some math.  The errors of FitzPatrick’s <em>Advanced Calculus</em> can
+be found at <a href="http://people.wallawalla.edu/~thomth/453/Fitzpatrick2ndTextbookErrors.pdf">Walla Walla University</a>.</p>
+
+<p>Two weeks ago, I found a mistake in the book that <em>wasn’t</em> in the
+error list.  In p. 430, ln. -3, the ‘&lt;’ sign should actually be a ‘≤’,
+since it’s <em>given</em> that
+<script type="math/tex">\norm{\vect{B} - \vect{A}} \le c / 2</script>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/16/an-unreported-mistake-in-advanced-calculus/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/">Search and Replace in Vim's Visual Mode</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-16T22:45:43+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:45 pm</span></time>
+        
+           | <a href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/16/search-and-replace-in-vims-visual-mode/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/16/search-and-replace-in-vims-visual-mode/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you want to select some lines of text and search for a word to
+replace in Vim, many users will do it like this:</p>
+
+<ol>
+  <li>Use <code>v</code> to do the selection.</li>
+  <li>Press <code>:</code> to start inputting an editor command.</li>
+  <li>Use <code>s/&lt;pat&gt;/&lt;text&gt;/g</code> to search and replace text.</li>
+</ol>
+
+<p>Observation: <code>:'&lt;,'&gt;s</code> “applies to whole lines”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p><strong>How about an arbitrary visual selection?</strong></p>
+
+<p>According to a Vim tips found in the footnote, the answer is quite
+simple—insert the <code>\%V</code> atom at the beginning of the search pattern.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Search and replace in a visual selection—<a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection">Vim Tips Wiki</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -413,222 +873,6 @@ details.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://www.skypost.hk/港聞/新聞頭條/20140606/001/常玩手機腦生鏽%2014％青年無記性/141538">常玩手機腦生鏽 14%青年無記性</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-14T12:21:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:21 pm</span></time>
-        
-           | <a href="/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/14/electronic-gadgets-and-absent-mindedness/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><blockquote><p>機不離手會令腦生鏽？美國有研究發現，18至39歲年輕人中有14％記憶力變差，相信與經常使用智能產品有關。本港專家指，20歲後腦部發展踏入衰退期，如過分依賴數碼產品，又無鍛練腦筋，長遠會加速腦退化。</p><footer><strong>晴報</strong></footer></blockquote>
-
-<p>After reading this piece of news from <em>Sky Post</em> last week, I’m glad
-that I <em>don’t</em> have to reply any WhatsApp message.</p>
-
-<p>The Chinese article cited a news report in the <em>Daily Mail</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Technology is turning us absent minded, researchers claim as it’s
-revealed one in 7 young adults suffer memory lapses in <em>the Daily
-Mail</em> by Fiona Macrae.  (<a href="http://www.dailymail.co.uk/sciencetech/article-2648971/Technology-turns-youths-absent-minded-researchers-warn-revealed-one-7-young-adults-suffer-memory-lapses.html">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/14/20-reasons-to-switch-to-linux/">20 Reasons to Switch to Linux</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-14T11:07:37+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:07 am</span></time>
-        
-           | <a href="/blog/2014/06/14/20-reasons-to-switch-to-linux/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/14/20-reasons-to-switch-to-linux/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/14/20-reasons-to-switch-to-linux/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This morning, I saw some reasons for M$ Win* and Mac users to switch
-to GNU/Linux.</p>
-
-<ul>
-  <li><a href="http://www.whylinuxisbetter.net/index.php" title="Why Linux is better">More pictures from <em>Why Linux is better</em></a></li>
-  <li><a href="http://efytimes.com/e1/fullnews.asp?edid=118296" title="20 Reasons Why You Should Switch To Linux!">Text version on EFY Times</a></li>
-</ul>
-
-<p>The first link is for those who has little time to read web pages,
-while the second one has more detailed explanation.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/12/my-css-settiings-for-printing-1/">My CSS Settiings for Printing (1)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-12T21:41:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 pm</span></time>
-        
-           | <a href="/blog/2014/06/12/my-css-settiings-for-printing-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/12/my-css-settiings-for-printing-1/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/12/my-css-settiings-for-printing-1/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="objective">Objective</h2>
-
-<p>To set up a printer-friendly framework for blog posts/pages.</p>
-
-<h2 id="background">Background</h2>
-
-<p>Two months ago, in order to install <a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/" title="A Simple Octopress Image Popup Plugin">Clapper’s image popup plugin</a> in this blog<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I studied <a href="https://github.com/bmc/brizzled/">the source code of his blog on GitHub</a>.  In this process, I learnt the roles of <code>/sass\/(custom\/_)?(screen|print).scss/</code>.  (To be concise, I write a <a href="http://www.perl.org/" title="The Perl Programming Language">Perl</a> regex.)  Lacking time to learn CSS, I just directly copied Clapper’s CSS settings for printing.</p>
-
-<h2 id="problems-on-the-printed-page">Problems on the printed page</h2>
-
-<ol>
-  <li>Missing author and date</li>
-  <li>Screenshots were too large and part of them flowed out of the page.</li>
-</ol>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/12/my-css-settiings-for-printing-1/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Include Liquid Code Inside Octopress Codeblocks</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-12T13:58:30+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:58 pm</span></time>
-        
-           | <a href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Last night, I wrote a post on editing a Ruby plugin file and an Atom
-Feed <abbr title="EXtensible Markup Language">XML</abbr> file for removing redundant images in Atom Feeds.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> To show
-how to change the files, I put some codeblocks in my post.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample codeblock that contains Liquid code</span><a href="/blog/2014/06/10/my-settings-for-rss-1/#putting-things-together">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line">{% codeblock Change the <abbr title="EXtensible Markup Language">XML</abbr> file as well lang:xml http://www.ewal.net/2012/09/08/octopress-customizations/#categories-in-the-atom-feed %}
-</span><span class="line"><span class="nt">&lt;entry&gt;</span>
-</span><span class="line">  <span class="c">&lt;!-- other elements --&gt;</span>
-</span><span class="line">  <span class="nt">&lt;content</span> <span class="na">type=</span><span class="s">&quot;html&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[{{ post.content | remove_linenumbers | remove_bigfig | expand_urls: site.url | cdata_escape }}]]&gt;</span><span class="nt">&lt;/content&gt;</span>
-</span><span class="line"><span class="nt">&lt;/entry&gt;</span>
-</span><span class="line">{% endcodeblock %}
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>However, I <em>couldn’t</em> generate the site.  I tried HTML encoding the
-contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
-<code>{% codeblock %}</code> tag, but this approach also
-<em>failed</em>.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/12/include-liquid-code-inside-octopress-codeblocks/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/24">&larr; Older</a>
@@ -661,7 +905,7 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (13)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (15)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -674,7 +918,7 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (22)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (6)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (50)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (51)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (34)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -698,23 +942,23 @@ contents and surrounding them using a <code>&lt;pre&gt;</code> tag, instead of a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/04/09/latex-suite-in-portable-git/">LaTeX-Suite in Portable Git</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/cant-visit-wordpress-dot-com/">Can't Visit WordPress.com</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/replaced-all-click-here/">Replaced All "Click Here"</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/09/awk-column-alignment/">Awk Column Alignment</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/">Loop Through an Array Having Only One Element in Bash</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/07/com-surrogate-problem/">COM Surrogate Problem</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/05/no-schauder-base-in-l-infty/">No Schauder Base in $\ell^\infty$</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/04/oneline-perl/">Oneline Perl</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/03/searching-git-commit-messages/">Searching Git Commit Messages</a>
       </li>
     
   </ul>

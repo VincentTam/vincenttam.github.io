@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-09T11:59:06+08:00</updated>
+  <updated>2016-04-09T18:30:37+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$-Suite in Portable Git]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git/"/>
+    
+    <updated>2016-04-09T14:34:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A year ago, I was using msysgit on M$ Win* 7. Its support for
+Unicode characters <em>isn’t</em> so good, and I <em>can’t</em> write a text file
+with accents like “café” in the Vim editor that shipped with msysgit.
+As a result, I needed GVim for editing my $\rm \LaTeX$ documents.</p>
+
+<p>Unluckily, unlike Linux, the GVim can <em>never</em> have forward control.
+Therefore, I needed to switch windows between GVim and Git Bash.</p>
+
+<p>More importantly, if I want to apply the Linux skills and the tools on
+M$ Win*, I need <em>portable</em> programs excutable on a USB unless I
+carry my laptop.</p>
+
+<p>Luckily, the bash shell in Git for Windows has improved a lot.  The
+accents are well supported.  Then, I have switched from GVim to the
+embedded Vim in Git for Windows.  Luckily, the setup of Vundle was
+smooth. Most of the installed plugins work fine in terminal Vim.</p>
+
+<h2 id="problem-1">Problem 1</h2>
+
+<p>In the post <a href="/blog/2016/03/20/git-portable-home-path/"><em>Git Portable Home Path</em></a>, a BAT file is included so
+that the home folder and the <code>HOMEDRIVE</code> environment are automatically
+set.  Since the <em>same</em> Git repository can be shared among multiple
+devices, such as my Linux desktop, my M$ Win* 7 laptop, and my USB
+stick, a bare repository is needed for efficient pulling and pushing
+of Git commits.  Since I work outside home, I place a bare Git repo in
+my USB stick.  However, for each local Git repository stored in the
+USB stick (under <code>~/local_repo</code>, a.k.a.
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>), I need to run the
+following command for each time I use Git Bash.</p>
+
+<h2 id="problem-2">Problem 2</h2>
+
+<p>After making some changes on a $\rm \TeX$ file, I compiled the file
+using Mik$\rm \TeX$ Portable.</p>
+
+<ol>
+  <li>Browse the folder <code>$HOMEDRIVE/MikTeXPortable/</code>.</li>
+  <li>Double-click on <code>miktex-portable.cmd</code>.</li>
+  <li>In the Command Prompt popped up, switch to
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>.</li>
+  <li>Type <code>pdflatex file.tex</code>.</li>
+</ol>
+
+<p>This sounds really slow.  The goal is to find a more efficient $\rm
+\LaTeX$ editing workflow.</p>
+
+<p>That’s <em>not</em> the end.  Another bad news came from <code>eu1lmr.fd</code>.  I’ve
+got error similar to <a href="http://bbs.ctex.org/forum.php?mod=viewthread&amp;tid=75679">fengbaobao6’s</a>.  The compilation was
+<em>stuck</em> at <code>...\tex\latex\euenc\eu1lmr.fd</code>.  Then an error was shown:
+“Fontconfig error: Cannot load config file”.</p>
+
+<!-- more -->
+
+<h2 id="solution-1">Solution 1</h2>
+
+<ol>
+  <li>Create a file <code>~/.bashrc</code> if it <em>doesn’t</em> exist.</li>
+  <li>Write an array consisting of all local Git repositories saved in
+the USB stick in BASHRC.</li>
+  <li>Then Write a for loop to reset the remote location.</li>
+</ol>
+
+<h2 id="solution-2">Solution 2</h2>
+
+<p>Searching the error text, I found kounoupis’s answer on
+<a href="http://askubuntu.com/a/708541">Ask Ubuntu</a>.  Even though the <code>export</code> command <em>didn’t</em>
+work for me, I still found his answer informative.</p>
+
+<p>Finally, reading <code>miktex-portable.cmd</code>, I gave up on investigating the
+problem, and added the last line of this file into BASHRC since I have
+other important things to do.</p>
+
+<p>{% include_code Actual CMD file found in Mik$\rm \TeX$ Portable miktex-portable.cmd %}</p>
+
+<p>To include Mik$\rm \TeX$ into <code>PATH</code>, I first extracted <code>$HOMEDRIVE</code>
+in the form <code>/f</code> instead of <code>F:/</code>.  If not, Mik$\rm \TeX$ <em>won’t</em>
+work.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Here’s my BASHRC for Git Bash.</p>
+
+<p>{% include_code My BASHRC .bashrc %}</p>
+
+<p>If the setup is correct, then <code>\ll</code> in $\rm \LaTeX$-Suite should
+automatically trigger the $\rm \LaTeX$ compilation.  I give up on
+finding ways to open a viewer with <code>\lv</code> since I can use the keyboard
+to switch to a web browser to see the compiled PDF file <em>without</em>
+installing another PDF viewer in my USB stick.</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>I’ve learnt some Perl and bash after writing this BASHRC.</p>
+
+<ol>
+  <li>A little bit of Perl
+    <ul>
+      <li><code>$ENV{HOMEDRIVE}</code> for extracting the environment variable
+  <code>HOMEDRIVE</code>.</li>
+      <li><code>/(regex_pat)/;</code> for extracting matching string to capture
+  groups <code>$1</code>, <code>$2</code>…  (The <code>()</code> around <code>regex_pat</code> is
+  <em>crucial</em>.)</li>
+      <li><code>.</code> for string concatenation.</li>
+      <li><code>lc()</code> for converting a string to lowercase.</li>
+    </ul>
+  </li>
+  <li>Bash for loop writing: described in <a href="/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/">one of my recent posts</a>.</li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -52,46 +175,7 @@ but they can be overcome.</p>
   <img alt="Windows API error 145" width="300" src="https://vincenttam.github.io/images/posts/MikTeXUpdate2/api-err.png" />
 </picture>
 
-<p><figure class='code'><figcaption><span>I clicked “Copy Info” and got this.  (err-2016-02-22-22-00.txt)</span> <a href='/downloads/code/miktex-update2/err-2016-02-22-22-00.txt'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Problem Report
-</span><span class='line'>Message: Windows API error 145: The directory is not empty.
-</span><span class='line'>
-</span><span class='line'>Data: C:\Temp\MikTeXPortable\miktex\temp\mik8012
-</span><span class='line'>Source: Libraries\MiKTeX\Core\win\winFile.cpp
-</span><span class='line'>Line: 115
-</span><span class='line'>MiKTeX: 2.9
-</span><span class='line'>OS: Microsoft Windows 7 Home Premium Edition, 64-bit Service Pack 1 (build 7601)
-</span><span class='line'>Invokers: non-existing/miktex-taskbar-icon
-</span><span class='line'>SystemAdmin: no
-</span><span class='line'>PowerUser: no
-</span><span class='line'>Root0: C:\Temp\MikTeXPortable
-</span><span class='line'>Root1: C:\localtexmf
-</span><span class='line'>UserInstall: C:\Temp\MikTeXPortable
-</span><span class='line'>UserConfig: C:\Temp\MikTeXPortable
-</span><span class='line'>UserData: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonInstall: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonConfig: C:\Temp\MikTeXPortable
-</span><span class='line'>CommonData: C:\Temp\MikTeXPortable
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code I clicked “Copy Info” and got this. lang:text miktex-update2/err-2016-02-22-22-00.txt %}</p>
 
 <p>From <a href="/blog/2015/06/09/miktex-update/"><em>Mik$\rm \LaTeX$ Update</em></a>, I know that only the “Update
 Mik$\rm \TeX$” in the menu triggered by clicking the small icon will
@@ -101,50 +185,7 @@ work.  The update wizard inside the big window for the package manager
 <p>Sometimes, the chosen remote package repository can fail.  In this
 case, just click the button and search for another one.</p>
 
-<p><figure class='code'><figcaption><span>An example of failed update.  (update-2016-02-21-20-19.txt)</span> <a href='/downloads/code/miktex-update2/update-2016-02-21-20-19.txt'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='text'><span class='line'>MiKTeX Update Wizard Report
-</span><span class='line'>
-</span><span class='line'>Version: 2.9.4913
-</span><span class='line'>Date: Sunday, February 21, 2016
-</span><span class='line'>Time: 20:19:02
-</span><span class='line'>starting package maintenance...
-</span><span class='line'>installation directory: C:\Temp\MikTeXPortable
-</span><span class='line'>package repository: http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/
-</span><span class='line'>lightweight database digest: d913ba0ad3c9c47c3e7a3e6e11863874
-</span><span class='line'>going to download 6130048 bytes
-</span><span class='line'>going to install 10 file(s) (1 package(s))
-</span><span class='line'>going to remove 35 file(s) (4 package(s))
-</span><span class='line'>downloading http://ftp.yzu.edu.tw/CTAN/systems/win32/miktex/tm/packages/miktex-bin-2.9.tar.lzma...
-</span><span class='line'>6130048 bytes, 1452.65 KB/Sec
-</span><span class='line'>extracting files from miktex-bin-2.9.tar.lzma...
-</span><span class='line'>removing package miktex-freetype-bin-2.9...
-</span><span class='line'>removing package miktex-qt4-bin-2.9...
-</span><span class='line'>removing package miktex-texinfo-bin-2.9...
-</span><span class='line'>removing package miktex-vc100-bin...
-</span><span class='line'>
-</span><span class='line'>Error: The MiKTeX package management utility could not be found.
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% include_code An example of failed update. lang:text miktex-update2/update-2016-02-21-20-19.txt %}</p>
 
 <h2 id="lessons-learnt">Lessons learnt</h2>
 
@@ -201,9 +242,9 @@ A =
 
 <p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
 
-<p><figure class='code'><figcaption><span>$\rm \LaTeX$ code for matrix $A$ </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock $\rm \LaTeX$ code for matrix $A$ %}
+A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}
+{% endcodeblock %}</p>
 
 <p>so that one gets</p>
 
@@ -313,22 +354,15 @@ of <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p><figure class='code'><figcaption><span>A minimum working example on Math Stack Exchange </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>cccll<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\max</span> <span class="nb">&amp;</span>amp;z=<span class="nb">&amp;</span>amp;x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; &lt;br /&gt;
-</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>s.t.<span class="nb">}&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="k">\phantom</span><span class="nb">{</span>+<span class="nb">}</span>x<span class="nb">_</span>2 + s<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;= 8 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; -x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2 - s<span class="nb">_</span>2<span class="nb">&amp;</span>amp;=-4 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1<span class="nb">&amp;</span>amp;+x<span class="nb">_</span>2+s<span class="nb">_</span>3<span class="nb">&amp;</span>amp;= 12 &lt;br /&gt;
-</span><span class='line'>  <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; <span class="nb">&amp;</span>amp; s<span class="nb">_</span>1,s<span class="nb">_</span>2,s<span class="nb">_</span>3 <span class="nb">&amp;</span>amp;<span class="k">\ge</span> 0
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:tex A minimum working example on Math Stack Exchange %}
+\begin{array}{cccll}
+  \max &amp;z=&amp;x_1&amp;+x_2 &amp; <br />
+  \text{s.t.}&amp; &amp; &amp; \phantom{+}x_2 + s_1 &amp;= 8 <br />
+  &amp; &amp; -x_1&amp;+x_2 - s_2&amp;=-4 <br />
+  &amp; &amp; x_1&amp;+x_2+s_3&amp;= 12 <br />
+  &amp; &amp; &amp; s_1,s_2,s_3 &amp;\ge 0
+\end{array}
+{% endcodeblock %}</p>
 
 <h2 id="inadequacies">Inadequacies</h2>
 
@@ -374,177 +408,20 @@ processed by <a href="https://mathjax.org">MathJax</a>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p><figure class='code'><figcaption><span>A minimum working example </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\begin</span><span class="nb">{</span>equation&lt;em&gt;<span class="nb">}</span>
-</span><span class='line'>  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>crrrrrrr|l<span class="nb">}</span>
-</span><span class='line'>               <span class="nb">&amp;</span>amp; x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>2 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>3 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp; x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;  x<span class="nb">_</span>7 <span class="nb">&amp;</span>amp;        <span class="k">\ \hline</span>
-</span><span class='line'>           x<span class="nb">_</span>4 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -3 <span class="nb">&amp;</span>amp;   7 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp; 2M  -4 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>5 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;  -9 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   -1 <span class="nb">&amp;</span>amp; -M  -3 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>6 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   6 <span class="nb">&amp;</span>amp;  -1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp; -4<span class="nb">^</span>&lt;/em&gt; <span class="nb">&amp;</span>amp; -4M +8 &lt;br /&gt;
-</span><span class='line'>           x<span class="nb">_</span>1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    1 <span class="nb">&amp;</span>amp;      M <span class="k">\ \hline</span>
-</span><span class='line'>               <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;   0 <span class="nb">&amp;</span>amp;    2 <span class="nb">&amp;</span>amp;     2M &lt;br /&gt;
-</span><span class='line'>  <span class="k">\text</span><span class="nb">{</span>ratio<span class="nb">}</span> <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;   1 <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;     <span class="nb">&amp;</span>amp;  1/2 <span class="nb">&amp;</span>amp;
-</span><span class='line'>  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
-</span><span class='line'><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></p>
+<p>{% codeblock lang:tex A minimum working example %}
+\begin{equation<em>}
+  \begin{array}{crrrrrrr|l}
+               &amp; x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp;  x_7 &amp;        \ \hline
+           x_4 &amp;   0 &amp;  -3 &amp;   7 &amp;   1 &amp;   0 &amp;   0 &amp;    2 &amp; 2M  -4 <br />
+           x_5 &amp;   0 &amp;  -9 &amp;   0 &amp;   0 &amp;   1 &amp;   0 &amp;   -1 &amp; -M  -3 <br />
+           x_6 &amp;   0 &amp;   6 &amp;  -1 &amp;   0 &amp;   0 &amp;   1 &amp; -4^</em> &amp; -4M +8 <br />
+           x_1 &amp;   1 &amp;   0 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    1 &amp;      M \ \hline
+               &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   0 &amp;    2 &amp;     2M <br />
+  \text{ratio} &amp;     &amp;     &amp;   1 &amp;     &amp;     &amp;     &amp;  1/2 &amp;
+  \end{array}
+\end{equation*}
+{% endcodeblock %}</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Mik$\rm \TeX$ Update]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/06/09/miktex-update/"/>
-    
-    <updated>2015-06-09T16:41:12+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/06/09/miktex-update</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>This morning, I tried typing the chemical symbol of carbon dioxide
-(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
-<code>\mathrm</code> in math mode — first, I changed from text mode to math
-mode, then in order to type normal font, I used <code>\mathrm</code> to change it
-back to “text mode in math mode”.  I did all of these for a little
-subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
-CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
-needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
-complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
-a result, I opened the package manager, and called the “Update Wizard”
-inside.</p>
-
-<picture class="fancybox" title="No update helper found">
-  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png" media="(min-width: 460px)" />
-  <img alt="update helper disappered?" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/no-helper300.png" />
-</picture>
-
-<p><strong>How can I get the packages updated <em>without</em> manually creating
-another folder?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I first clicked “Repository” and then “Synchronize”, but it loaded
-slowly, and I finally got <em>nothing</em>.  Then I tried to “Change package
-repository”.  I randomly selected an item in the list of remote
-package repository, and clicked “Synchronize” again.  What I saw was
-still the same.</p>
-
-<p>Then I decided <em>not</em> to include the <code>mhchem</code> package.  I restored the
-<code>\ce{CO2}</code> back to <code>CO2</code>, and then I pressed <code>\ll</code> in
-<a href="http://vim-latex.sourceforge.net/">$\rm \LaTeX$-Suite</a>.<sup id="fnref:ll"><a href="#fn:ll" class="footnote">1</a></sup>  Then I received <em>unexpected
-errors</em> from the $\rm \LaTeX$ compiler.  I then compiled another
-document which contained characters with accents, such as ‘à’, ‘é’,
-‘ï’, …  I received the same error message in the quickfix window as
-well.  Since it’s gone, I’ve retrieved the message from the
-corresponding LOG file.<sup id="fnref:log"><a href="#fn:log" class="footnote">2</a></sup></p>
-
-<pre class="cli"><code>(C:\Temp\MikTeXPortable\tex\latex\fontspec\fontspec.cfg)))
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.sty
-Package: babel 2008/07/08 v3.8m The Babel package
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Temp\MikTeXPortable\tex\latex\00miktex\bblopts.cfg
-File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
-)
-(C:\Temp\MikTeXPortable\tex\latex\babel-french\frenchb.ldf
-Language: frenchb 2015/05/31 v3.1f French support from the babel system
-
-(C:\Temp\MikTeXPortable\tex\generic\babel\babel.def
-File: babel.def 2008/07/08 v3.8m Babel common definitions
-\babel@savecnt=\count123
-\U@D=\dimen139
-)
-
-<span class="err">! Package frenchb.ldf Error: frenchb requires babel v.3.9i.
-(frenchb.ldf)                Aborting here.</span>
-
-See the frenchb.ldf package documentation for explanation.
-Type  H &lt;return&gt;  for immediate help.
- ...
-
-l.116          {Please upgrade Babel!}
-
-<span class="HLCode">Please upgrade Babel!</span>
-</code></pre>
-
-<h2 id="a-nearly-successful-update">A nearly successful update</h2>
-
-<p>From Google, I’ve learnt to “Update MikTeX” directly from the little
-icon at the lower right-hand corner of the screen.  Then I directly
-clicked the “Next &gt;” button, and Mik$\rm \TeX$ tried connecting the
-manually chosen remote.  Unluckily, this <em>failed</em> and I got an error
-mesage like <em>Permission denied</em>.  I tried searching “miktex permission
-denied” on Google, but I <em>didn’t</em> understand what I’d found.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>As shown in the screenshot below, I checked the first two radio
-buttons so as to get updated packages from the nearest package
-repository.</p>
-
-<picture class="fancybox" title="Update MikTeX packages">
-  <source srcset="/images/posts/MikTeXUpdate/update513.png" media="(min-width: 513px)" />
-  <img alt="update miktex packages" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/update300.png" />
-</picture>
-
-<p>After clicking “Next &gt;”, things went smooth luckily.</p>
-
-<picture class="fancybox" title="Downloading updates from remotes">
-  <source srcset="/images/posts/MikTeXUpdate/download513.jpg" media="(min-width: 513px)" />
-  <img alt="miktex package updates downloading" src="https://vincenttam.github.io/images/posts/MikTeXUpdate/download300.jpg" />
-</picture>
-
-<p>After the update had completed, the <code>babel</code> package had been upgraded
-from version 3.8 to 3.9i.  With the correct syntax, I could finally
-use <code>babel</code> and <code>mhchem</code>.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>I often forget the command for optimizing JPEG images.  This evening,
-while I was writing this post, I googled “jpegtran command”, and I
-issued</p>
-
-<pre class="cli"><code>jpegtran -optimize input.jpg &gt; output.jpg
-</code></pre>
-
-<p>after I’d read the command example from <a href="http://junalontherun.com/2009/07/15/optimize-all-jpeg-images-with-jpegtran-utility/">this page</a>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:ll">
-
-      <p><code>\ll</code> is the default keystroke for compiling a PDF document from
-the $\rm \LaTeX$ source code in $\rm \LaTeX$-Suite, which is a
-<a href="http://www.vim.org">Vim</a> plugin for writing in $\rm \LaTeX$ efficiently. <a href="#fnref:ll" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:log">
-
-      <p>You may <a href="/downloads/1eDoc.log">view the complete LOG file</a>. <a href="#fnref:log" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
