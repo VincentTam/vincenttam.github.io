@@ -213,7 +213,7 @@ Posted via [UltraBlog.vim].
     Engineering: C++, Java and Octave Numerical Programming with Free
     Software Tools*.  Cambridge University Press.
 
-[^blog1]: See [here][blog1] for the post.
+[^blog1]: See [*Linux for Research*][blog1] for the post.
 
 [GNU]: https://www.gnu.org/
 [DISLIN]: http://www.dislin.de/

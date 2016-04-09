@@ -57,8 +57,8 @@ that one overlooks the conditions and gets stuck.
 Use another notations
 ---
 
-Note: see [here][pp] for the definition of open ball
-$\\mathcal\{B}\_r(\\vect\{x}\_0)$.
+Note: see [*Definition of Content 0 Sets*][pp] for the definition of
+open ball $\\mathcal\{B}\_r(\\vect\{x}\_0)$.
 
 Let $\\epsilon > 0$.
 

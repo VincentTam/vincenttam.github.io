@@ -24,7 +24,6 @@ Now, I've got rid of those hotlinked figures.
 
 ---
 [^1]:
-    Click [here] for the HTML code for embedding the Creative Commons
-    license.
+    The [HTML code][code] for embedding the Creative Commons license.
 
-[here]: https://creativecommons.org/choose/results-one?license_code=by-sa&amp;jurisdiction=&amp;version=4.0&amp;lang=en
+[code]: https://creativecommons.org/choose/results-one?license_code=by-sa&amp;jurisdiction=&amp;version=4.0&amp;lang=en

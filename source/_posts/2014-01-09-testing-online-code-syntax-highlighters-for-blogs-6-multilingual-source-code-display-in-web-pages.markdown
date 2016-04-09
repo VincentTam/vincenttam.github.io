@@ -7,7 +7,7 @@ comments: true
 ---
 
 *Note: This post won't make sense here.  Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
@@ -180,7 +180,7 @@ here's some sample code.
 </pre>
 {% endcodeblock %}
 
-[orig_post]: http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html
+[op]: http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters_8.html
 [pp]: http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html
 [SyntaxHighlight]: http://alexgorbatchev.com/SyntaxHighlighter
 [highlight.js]: http://highlightjs.org/

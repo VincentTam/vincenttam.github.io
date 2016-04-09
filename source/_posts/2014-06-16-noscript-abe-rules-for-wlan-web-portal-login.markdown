@@ -21,8 +21,8 @@ To block malicious scripts from running inside the browser ⇒ I installed
 Problem
 ---
 
-Similar to the one described in [here][IAForum]:  I *couldn't* log on
-to the web portal of a WLAN.
+Similar to the one described in [InformAction Forums][IAForum]:  I
+*couldn't* log on to the web portal of a WLAN.
 
 For ordinary netizens who *don't* have time to read the post on
 InformAction Forums, I've prepared a screenshot to depict the problem.

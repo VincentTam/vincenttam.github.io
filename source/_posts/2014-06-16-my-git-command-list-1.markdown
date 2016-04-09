@@ -26,10 +26,11 @@ Refer to [*Pro Git* section 1.5][GitBook1.5].
 I recommend new Git users to set the configuration variable
 `push.default` using `git config` with the `--global` option, which
 make Git save the variables in `~/.gitconfig`, so as to avoid the
-warning shown in [here][so13148066].[^1]  Due to my limited
-understanding of Git, I *couldn't* find a way to suppress the warning
-after reading the Stack Overflow question.  I eventually figured it
-out after reading a Chinese blog post found in the first footnote.
+warning shown in [Marko's Stack Overflow question][so13148066].[^1]
+Due to my limited understanding of Git, I *couldn't* find a way to
+suppress the warning after reading the Stack Overflow question.  I
+eventually figured it out after reading a Chinese blog post found in
+the first footnote.
 
 Initialize repositories
 ---
@@ -49,8 +50,8 @@ Clone repositories
 
 See [*Pro Git* section 2.1][GitBook2.1].
 
-From [here][so2816369], I know that one can pass the `--bare` option
-to `git clone`.
+From [Nowhere man's answer][so2816369], I know that one can pass the
+`--bare` option to `git clone`.
 
     $ git clone --bare repo.old repo
 {:.cliUB}
@@ -122,8 +123,8 @@ There are three basic commands:
 - `git mv`
 - `git rm`
 
-See [here][GitAdd] for the difference between `git add -A` and `git
-add .`.
+See [Charles Bailey's post][GitAdd] for the difference between `git
+add -A` and `git add .`.
 
     $ git add <file>...             # Add <file> to the staging area
     $ git add .                     # Add all modified/new files that are tracked
@@ -258,7 +259,7 @@ staging area.
 
 [Git]: http://git-scm.com/
 [GitBook1.5]: http://git-scm.com/book/en/Getting-Started-First-Time-Git-Setup "Getting Started - First-Time Git Setup"
-[so13148066]: http://stackoverflow.com/a/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
+[so13148066]: http://stackoverflow.com/q/13148066/ "Warning: push.default is unset; its implicit value is changing in Git 2.0"
 [ChinPost]: http://www.zhetenga.com/view/git%20push警告：warning:%20push.default%20is%20unset-c0e395114.html "git push警告：warning: push.default is unset"
 [PrevPost2]: /blog/2014/06/14/local-huge-file-sharing/
 [so5149861]: http://stackoverflow.com/a/5149861 "Does running git init twice initialize a repository or reinitialize an existing repo?"

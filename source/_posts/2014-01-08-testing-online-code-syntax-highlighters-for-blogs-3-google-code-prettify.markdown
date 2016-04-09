@@ -7,7 +7,7 @@ comments: true
 ---
 
 *Note: This post won't make sense here.  Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
@@ -113,7 +113,7 @@ For further details, refer to the [official README][doc].
 [^blogger_cb]:
     [在Blogger上用Google Code Prettify及GitHub Gist顯示程式碼...][fn1]
 
-[orig_post]: http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for_8.html
+[op]: http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for_8.html
 [google-code-prettify]: https://code.google.com/p/google-code-prettify/
 [tut]: https://code.google.com/p/google-code-prettify/wiki/GettingStarted
 [fn1]: http://andmobiz.blogspot.hk/2013/05/blogger-google-code-prettify-github-gist.html

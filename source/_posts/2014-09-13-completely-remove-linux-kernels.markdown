@@ -76,7 +76,7 @@ kernel images with status `rc` *shouldn't* be seen in the list of
 packages anymore.[^2]
 
 ---
-[^1]: Click [here](#list1){:.cliwide} to view the terminal commands and output.
+[^1]: [View the terminal commands and output](#list1){:.cliwide}.
 
 <div id="list1" class="noscr" markdown="1">
 The **bold** lines represent the packages that are going to be
@@ -133,7 +133,7 @@ ii  util-<span class="grep">linux</span>                                        
 </code></pre>
 </div>
 
-[^2]: Click [here](#list2){:.cliwide} to view the terminal commands and output.
+[^2]: [View the terminal commands and output](#list2){:.cliwide}.
 
 <div id="list2" class="noscr" markdown="1">
 There's *no* lines beginning with `rc`.

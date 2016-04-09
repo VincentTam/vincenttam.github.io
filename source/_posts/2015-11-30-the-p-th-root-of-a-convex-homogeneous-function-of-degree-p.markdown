@@ -27,7 +27,8 @@ Resolution
 ---
 
 I saw a proof for the Minkowski inequality using the convexity of the
-function $x \mapsto x^p$ [here][src].  In fact, by replacing
+function $x \mapsto x^p$ on
+[the webpage for a real analysis course][src].  In fact, by replacing
 $\norm{\cdot}$ with $g(\cdot)$ in the proof of Theorem 7, we're done.
 
 First, observe that

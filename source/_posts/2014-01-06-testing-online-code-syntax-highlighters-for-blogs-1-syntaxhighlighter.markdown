@@ -7,7 +7,7 @@ comments: true
 ---
 
 *Note: This post won't make sense here.  Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
@@ -128,7 +128,7 @@ Vim.  Issuing the command `:[range]s:^\t: [num_of_times]:` will do.
 (It depends on the tabstop option on Vim.  Adapt it according to your
 needs.)
 
-[orig_post]: http://blogue-un.blogspot.hk/2014/01/testing-syntaxhighlighter_5977.html
+[op]: http://blogue-un.blogspot.hk/2014/01/testing-syntaxhighlighter_5977.html
 [guide1]: http://geektalkin.blogspot.hk/2009/11/embed-code-syntax-highlighting-in-blog.html
 [pp1]: /blog/2014/01/05/gnu-ddrescue-a-powerful-data-recovery-tool/
 [java_zip]: http://www.codejava.net/java-se/file-io/programmatically-extract-a-zip-file-using-java

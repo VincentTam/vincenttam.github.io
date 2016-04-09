@@ -112,11 +112,11 @@ pictures.
     in Blog 1 for details.
 
 [^goo_dev]: [*Optimize images*][imgoptim] in Google Pagespeed rules.
-[^config]: Click [here](#config_o){:.cliwide} to see the bash output.
+[^config]: [See the bash output](#config_o){:.cliwide}.
 [^su401808]:
     [*make: Interrupt/Exception caught*][su401808] in Super User.
 
-[^msys]: Click [here](#msys_o){:.cliwide} to see the bash output.
+[^msys]: [See the bash output](#msys_o){:.cliwide}.
 
 [OptiPNG]: http://optipng.sourceforge.net/
 [pp_pagespeed]: /blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/

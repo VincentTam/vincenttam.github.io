@@ -14,7 +14,7 @@ This is a $\rm \LaTeX$ template for writing an article.
 Sample output
 ---
 
-[Click here.][sample_output]
+[View the sample PDF online.][sample_output]
 
 <!-- more -->
 
@@ -46,9 +46,9 @@ Word and Abode InDesign[^1].  In addition, the typesetting of
 Microsoft is incorrect, whereas $\rm \LaTeX$ gives the correct kerning
 and ligatures of characters, apart from rendering "ancient and rare
 ligatures"[^2].  The staff in the Department of Engineering at the
-University of Cambridge has made a more comprehensive and detailed
-comparison of WYSIWYG (What-You-See-Is-What-You-Get) editors and $\rm
-\LaTeX$ [here].
+University of Cambridge has made
+[a more comprehensive and detailed comparison][here] of WYSIWYG
+(What-You-See-Is-What-You-Get) editors and $\rm \LaTeX$.
 
 
 ---

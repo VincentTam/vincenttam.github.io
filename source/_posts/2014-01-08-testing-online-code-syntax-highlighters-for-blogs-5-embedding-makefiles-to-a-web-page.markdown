@@ -7,7 +7,7 @@ comments: true
 ---
 
 *Note: This post won't make sense here.  Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
@@ -97,7 +97,7 @@ that after running `make` on the first day.
 [^win3]:
     <http://google-code-prettify.googlecode.com/svn/trunk/README.html>
 
-[orig_post]: http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters.html
+[op]: http://blogue-un.blogspot.hk/2014/01/testing-online-code-syntax-highlighters.html
 [pp1]: /blog/2013/12/11/fast-compilation-and-execution-of-source-code/
 [SyntaxHighlighter]: http://alexgorbatchev.com/SyntaxHighlighter/
 [pp2]: http://blogue-un.blogspot.hk/2014/01/testing-code-syntax-highlighters-for.html

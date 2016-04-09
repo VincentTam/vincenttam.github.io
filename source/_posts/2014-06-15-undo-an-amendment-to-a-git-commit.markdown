@@ -32,7 +32,7 @@ Solution
 I googled "undo git commit amend", and, at the first glance, found
 three relevant web pages.
 
-1. A question on [StackOverflow][so1459150]
+1. A question on [Stack Overflow][so1459150]
 
     At first, I *didn't* understand what `HEAD@{1}` was, and jumped to
     the next item.
@@ -65,8 +65,8 @@ is better than just using words.
 [^1]:
     According to the original version of a GitHub help page, changing
     a pushed commit will "cause the wrath of Git gods".  However, the
-    quoted phrase has gone, but I can still find it
-    [here][so19096170].
+    quoted phrase has gone, but I can still find it on
+    [Stack Overflow][so19096170].
 
 [so19096170]: http://stackoverflow.com/questions/19096170/ "Pushing to remote after locally rebasing commits"
 [so1459150]: http://stackoverflow.com/a/1459264 'How to undo "git commit --amend" done instead of "git commit"'

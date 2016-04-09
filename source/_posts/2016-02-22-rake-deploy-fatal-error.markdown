@@ -93,7 +93,7 @@ button), which the Git Setup dialog recommended.
   <img alt="Git line conversion configuration" width="300"
     src="/images/posts/GitUpdate/autocrlf.png" />
 </picture>
-<small>Picture from [here][pic-src].</small>
+<small>Picture from [imgur][pic-src].</small>
 
 I love using bash utilities and (G)Vim.  In Git Bash, the former gives
 LF line terminators, while the later gives CRLF.  Therefore, I decided

@@ -8,7 +8,7 @@ categories: math
 
 After setting up Octopress for several weeks, I can finally begin to
 write some math.  The errors of FitzPatrick's *Advanced Calculus* can
-be found [here][err].
+be found at [Walla Walla University][err].
 
 Two weeks ago, I found a mistake in the book that *wasn't* in the
 error list.  In p. 430, ln. -3, the '<' sign should actually be a '≤',

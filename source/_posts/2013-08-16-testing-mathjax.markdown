@@ -6,7 +6,8 @@ categories: MathJax
 comments: true
 ---
 
-Following the instructions [here][src], [MathJax] works on Blogger.
+Following the instructions on [Irreducible representation][src],
+[MathJax] works on Blogger.
 
 I typed
 

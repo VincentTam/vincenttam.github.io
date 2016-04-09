@@ -50,8 +50,8 @@ keystrokes:
 - To open the sidebar, type `:sbar [arg]`.
 - To close the sidebar, type `:sbclose`.
 
-More keystrokes from [here][more_key], and a cheat sheet
-[there][cheat_sheet].
+More keystrokes from [Daqing Chu's WordPress blog][more_key], and
+[a cheat sheetcreated by Shiar][cheat_sheet].
 
 Another useful plugin
 ---

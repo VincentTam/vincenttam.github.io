@@ -104,7 +104,7 @@ Ruby code learnt
 ---
 
 - `body.gsub!(/(?=\b).+(?=\b)/) {|m| subs[m]}` from
-    [here][StackOverflow17766216]
+    [Stack Overflow][so17766216].
     - `/(?<=\b)/` *didn't* work, since Perl and Ruby didn't allow
 	variable-length patterns.
     - This is for an array of Strings, *not* a long String.
@@ -140,6 +140,6 @@ Therefore, I just adopted an ugly approach—input `.gsub(...)` for
 [clapper]: http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/ "A Simple Octopress Image Popup Plugin"
 [PrevPost]: /blog/2014/06/10/my-settings-for-rss-1/ "My Settings for RSS (1)"
 [ewal]: http://www.ewal.net/2012/09/08/octopress-customizations/#remove-line-numbers-in-atom-feed "Remove line numbers in Atom Feed"
-[StackOverflow17766216]: http://stackoverflow.com/a/17766326 "Can I use gsub and Hashes in Ruby?" 
+[so17766216]: http://stackoverflow.com/a/17766326 "Can I use gsub and Hashes in Ruby?" 
 [449a911]: https://github.com/VincentTam/vincenttam.github.io/blob/449a911/plugins/custom_filter.rb#L18-L26
 [fad55d6]: https://github.com/VincentTam/vincenttam.github.io/commit/fad55d6#diff-1

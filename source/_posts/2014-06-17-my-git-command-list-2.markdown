@@ -28,7 +28,8 @@ After finishing the draft, I committed the change, switched to
 `wpcom-importer` and "merged" the last change on `source` branch for
 `rake preview`.  The reason for *not* running the preview command on
 `source` branch is to avoid huge changes in `public` folder.
-<del>I've learnt to do the "merge" from [here][GitMergeTip].</del>
+<del>I've learnt to do the "merge" from
+[a post published by Jason Rudolph][GitMergeTip].</del>
 
 Being *unfamiliar* with kramdown syntax for displayed math
 equations[^1], I had made some mistakes in the source code for my

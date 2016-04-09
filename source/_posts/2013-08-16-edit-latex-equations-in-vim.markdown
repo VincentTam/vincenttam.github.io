@@ -78,7 +78,7 @@ For M\$ Win\*, the installation procedures for GVim
     - *Don't* put them under `C:\Program Files`.
 
 2.  Download [Vim-$\rm \LaTeX$][vim-latex] from SourceForge.
-3.  Follow the steps [here][more_steps].
+3.  Follow the steps in [*Download*][more_steps] on $\rm \LaTeX$.
 
 Remarks: The installation of [Vim-$\rm \LaTeX$][vim-latex] (items 3
 and 4) is the same for portable and non-portable versions of GVim.

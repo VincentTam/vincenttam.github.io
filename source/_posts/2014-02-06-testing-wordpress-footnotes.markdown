@@ -8,17 +8,17 @@ comments: true
 ---
 
 *Note: This post won't make sense here. Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
 I tried to embed footnotes using UltraBlog. Maybe I've done too much
-things. Let me list them here.  
+things. Let me list them here.
 
 1. On the dashboard, go to "Settings", "Writing" and check the box for
-using Markdown.  
+using Markdown.
 2. Try using UltraBlog.vim to write some footnotes by editing an
-existing post found by `:UBList`.  
+existing post found by `:UBList`.
 3. Send the finished post to WordPress.com and view the results, and
 find out that it fails.
 
@@ -50,6 +50,6 @@ Posted via [UltraBlog.vim][end].
 [^fn1]: Here is the footnote.
 [^fn2]: Here's one with multiple blocks.
 
-[orig_post]: http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/
+[op]: http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/
 [pandoc_syntax]: http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html
 [end]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/

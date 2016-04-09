@@ -18,7 +18,7 @@ and the default ruler.
 Posted via [UltraBlog.vim].
 
 ---
-[^src]: See the post [here][src].
+[^src]: See [a post on *Ruby China*][src].
 
 [src]: https://ruby-china.org/topics/13350
 [vim-easy-align]: https://github.com/junegunn/vim-easy-align "vim-easy-align"

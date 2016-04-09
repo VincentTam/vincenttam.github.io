@@ -50,7 +50,7 @@ Specifying the `font-family` of a `<pre>` tag is *useless*—change
     For example, you may refer to the screenshot in a comment for my
     post [Clang Complete on Ubuntu 14.04][pp_clang1404] on *Blog 1*.
 
-[^rec]: You may click [here] for what I actually saw inside Vim.
+[^rec]: [The Vim screen that I actually saw][here].
 [^guide]:
     Refer to the "[General Formatting Rules][goo_guide]" in *Google
     HTML/CSS Style Guide* Revision 2.23.

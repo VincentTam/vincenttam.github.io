@@ -143,7 +143,7 @@ after I'd read the command example from [this page][jpegtran_cmd].
     [Vim] plugin for writing in $\rm \LaTeX$ efficiently.
 
 [^log]:
-    You may view the complete LOG file [here][log].
+    You may [view the complete LOG file][log].
 
 [mhchem]: https://www.ctan.org/pkg/mhchem
 [latex-suite]: http://vim-latex.sourceforge.net/

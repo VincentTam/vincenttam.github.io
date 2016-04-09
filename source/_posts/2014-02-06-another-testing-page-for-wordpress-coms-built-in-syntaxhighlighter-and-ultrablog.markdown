@@ -7,7 +7,7 @@ comments: true
 ---
 
 *Note: This post won't make sense here. Refer to the
-[original post][orig_post].*
+[original post][op].*
 
 <!-- more -->
 
@@ -31,7 +31,7 @@ Posted via [UltraBlog.vim][end].
 ---
 [^pp]: Refer to [*Testing WordPress' Footnotes*][pp] for details.
 
-[orig_post]: http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/
+[op]: http://blogueun.wordpress.com/2014/02/06/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/
 [pp]: /blog/2014/02/06/testing-wordpress-footnotes/
 [Gist]: https://gist.github.com
 [end]: http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/

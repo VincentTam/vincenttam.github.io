@@ -32,9 +32,8 @@ but it's *hard* to see.
 Result
 ---
 
-Click [here](#eg1){:.cliwide} to view the console message, which has
-160 columns.  It's so wide that putting it into a popup dialog can
-help.
+You may [view the console message](#eg1){:.cliwide}, which has 160
+columns.  It's so wide that putting it into a popup dialog can help.
 
 <div id="eg1" class="noscr">
 <pre class="cli"><code class="UBMono">   o   create a new empty DOS partition table

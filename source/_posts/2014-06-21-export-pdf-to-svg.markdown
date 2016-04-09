@@ -11,8 +11,9 @@ I've drawn a figure in $\rm \LaTeX$ using the [TikZ].  However,
 generate an SVG figure from $\rm \LaTeX$ if I need to post it on
 Octopress.
 
-I had followed the example [here][TeXStackExchange].  It worked for
-PNG and JPG files, *but* not SVG files.  Since the quality of SVG
+I had followed the example
+[on $\rm \TeX$--$\rm \LaTeX$ StackExchange][texse51766].  It worked
+for PNG and JPG files, *but* not SVG files.  Since the quality of SVG
 files is the *best*, I would like to include use SVG.
 
 <!-- more -->
@@ -129,7 +130,7 @@ using the tool.
 
 [TikZ]: http://www.texample.net/tikz/ 
 [MathJax]: http://www.mathjax.org/
-[TeXStackExchange]: http://tex.stackexchange.com/a/51766 "How can I use TikZ to make standalone (SVG) graphics?"
+[texse51766]: http://tex.stackexchange.com/a/51766 "How can I use TikZ to make standalone (SVG) graphics?"
 [`pdf2svg`]: http://www.cityinthesky.co.uk/opensource/pdf2svg/
 [LaTeXWikibooks]: https://en.wikibooks.org/wiki/LaTeX
 [poppler-glib-dev]: https://github.com/politza/pdf-tools/issues/3 "No poppler-glib package in Ubuntu 12.04 #3"

@@ -39,7 +39,18 @@ Writing internal commands to files
 ---
 
 A forum post has answered my doubt. I redirect interested readers to
-[here][redi].
+[Object Mix][redi].
+
+---
+(Added on APR 09, 2016)
+
+Fearing that this post will be deleted, I added tianlan's code below.
+
+    :redi @+
+    :version
+    :redi END
+    "+p
+{:.cliUB}
 
 Quick reference lists of some easy Vim commands
 ---

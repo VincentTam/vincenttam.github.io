@@ -28,7 +28,7 @@ Then I tried running `git commit` in
 but it's "aborting commit due to empty commit message".
 
 Why is the `-f` flag there?  It's because the `--nofork` option causes
-gVim to be in the foreground in \*nix.  I've learnt this from [here].
+gVim to be in the foreground in \*nix.  I've learnt this from [GitHub].
 The `-w` flag in the commands for setting other editors as the default
 editor for Git is the key for the above quoted message.
 
@@ -42,4 +42,4 @@ To conclude, if I'm working on M\$ Win*, I'll just forget about
 
 [fugitive.vim]: https://github.com/tpope/vim-fugitive "An awesome Git wrapper"
 [so2863038]: http://stackoverflow.com/a/19416705 "GCommit doesn't work with fugitive.vim under windows xp?"
-[here]: https://help.github.com/articles/associating-text-editors-with-git "Associating text editors with Git"
+[GitHub]: https://help.github.com/articles/associating-text-editors-with-git "Associating text editors with Git"
