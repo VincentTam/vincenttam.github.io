@@ -14,7 +14,7 @@ validation icon for HTML 4.01 at the lower right-hand corner.
   <source srcset="/images/posts/W3CInvalid/cedb1.png"
     media="(min-width: 900px)"></source> 
   <img alt="home page of gov webpage" width="300"
-    src="/images/posts/W3CInvalid/cedb1.png" />
+    src="/images/posts/W3CInvalid/cedb1-300.png" />
 </picture>
 
 To my surprise, an error was produced.
@@ -23,7 +23,7 @@ To my surprise, an error was produced.
   <source srcset="/images/posts/W3CInvalid/cedb2.png"
     media="(min-width: 900px)"></source> 
   <img alt="W3C validator shows error" width="300"
-    src="/images/posts/W3CInvalid/cedb2.png" />
+    src="/images/posts/W3CInvalid/cedb2-300.png" />
 </picture>
 
 Lacking time to write an email with good grammar to the authories, I
