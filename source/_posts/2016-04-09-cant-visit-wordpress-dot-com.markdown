@@ -25,3 +25,11 @@ think the following screenshot confirm my guess.
   <img alt="Address NOT found" width="300"
     src="/images/posts/NoWP/nowp300.png" />
 </picture>
+
+Remarks
+---
+
+This justifies the migration from WordPress to Octopress of
+[this blog][blog1].
+
+[blog1]: /blog/2014/03/15/migrated-to-octopress/
