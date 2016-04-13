@@ -81,7 +81,7 @@ Finally, reading `miktex-portable.cmd`, I gave up on investigating the
 problem, and added the last line of this file into BASHRC since I have
 other important things to do.
 
-{% include_code Actual CMD file found in Mik$\rm \TeX$ Portable miktex-portable.cmd %}
+{% include_code Actual CMD file found in Mik$\rm \TeX$ Portable lang:bat miktex-portable.cmd %}
 
 To include Mik$\rm \TeX$ into `PATH`, I first extracted `$HOMEDRIVE`
 in the form `/f` instead of `F:/`.  If not, Mik$\rm \TeX$ *won't*
