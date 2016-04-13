@@ -215,14 +215,24 @@ work.</p>
 <span class="line-number">16</span>
 <span class="line-number">17</span>
 <span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
 </pre></td><td class="code"><pre><code class=""><span class="line"><span class="vg">stty</span><span class="w"> </span><span class="o">-</span><span class="vg">ixon</span>
 </span><span class="line"><span class="vg">cd</span><span class="w"> </span><span class="o">~</span>
 </span><span class="line">
 </span><span class="line"><span class="vg">HOMEDRIVE</span><span class="o">=</span><span class="err">$</span><span class="p">(</span><span class="vg">perl</span><span class="w"> </span><span class="o">-</span><span class="vg">e</span><span class="w"> </span><span class="c1">&#39;($var) = $ENV{HOMEDRIVE} =~ /([A-Z]):/; print &quot;/&quot;.lc($1)&#39;)</span>
-</span><span class="line"><span class="vg">PATH</span><span class="o">=</span><span class="err">$</span><span class="nl">PATH:</span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="vg">MikTeXPortable</span><span class="o">/</span><span class="vg">miktex</span><span class="o">/</span><span class="vg">bin</span>
-</span><span class="line"><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;IMPORTANT: Close MikTeX Taskbar icon before exit.&quot;</span>
-</span><span class="line"><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;Otherwise this shell WON&#39;T close.&quot;</span>
-</span><span class="line"><span class="vg">miktex</span><span class="o">-</span><span class="vg">taskbar</span><span class="o">-</span><span class="vg">icon</span>
+</span><span class="line"><span class="vg">if</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="vg">perl</span><span class="w"> </span><span class="o">-</span><span class="vg">e</span><span class="w"> </span><span class="c1">&#39;($var) = $ENV{PATH} !~ /tex/i; print STDOUT $var&#39;) ]</span>
+</span><span class="line"><span class="vg">then</span>
+</span><span class="line"><span class="w">    </span><span class="vg">echo</span><span class="w"> </span><span class="err">&quot;</span><span class="vg">No</span><span class="w"> </span><span class="vg">LaTeX</span><span class="w"> </span><span class="vg">found!</span><span class="w">  </span><span class="vg">Added</span><span class="w"> </span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="vg">MikTeXPortable</span><span class="o">/</span><span class="vg">miktex</span><span class="o">/</span><span class="vg">bin</span>
+</span><span class="line"><span class="w">    </span><span class="vg">to</span><span class="w"> </span><span class="vg">path</span><span class="o">.</span><span class="err">&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="vg">PATH</span><span class="o">=</span><span class="err">$</span><span class="nl">PATH:</span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="vg">MikTeXPortable</span><span class="o">/</span><span class="vg">miktex</span><span class="o">/</span><span class="vg">bin</span>
+</span><span class="line"><span class="w">    </span><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;IMPORTANT: Close MikTeX Taskbar icon before exit.&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="vg">echo</span><span class="w"> </span><span class="s2">&quot;Otherwise this shell WON&#39;T close.&quot;</span>
+</span><span class="line"><span class="w">    </span><span class="vg">miktex</span><span class="o">-</span><span class="vg">taskbar</span><span class="o">-</span><span class="vg">icon</span>
+</span><span class="line"><span class="vg">fi</span>
 </span><span class="line">
 </span><span class="line"><span class="vg">loc_repo</span><span class="o">=</span><span class="p">(</span>
 </span><span class="line"><span class="c1">&#39;resume2015&#39;</span>
@@ -231,7 +241,7 @@ work.</p>
 </span><span class="line"><span class="vg">for</span><span class="w"> </span><span class="vg">f</span><span class="w"> </span><span class="vg">in</span><span class="w"> </span><span class="err">$</span><span class="p">{</span><span class="vg">loc_repo</span><span class="p">[</span><span class="err">@</span><span class="p">]};</span><span class="w"> </span><span class="vg">do</span>
 </span><span class="line"><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="err">$</span><span class="vg">f</span>
 </span><span class="line"><span class="w">    </span><span class="vg">git</span><span class="w"> </span><span class="vg">remote</span><span class="w"> </span><span class="vg">set</span><span class="o">-</span><span class="vg">url</span><span class="w"> </span><span class="vg">origin</span><span class="w"> </span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="err">$</span><span class="vg">f</span><span class="o">.</span><span class="vg">git</span>
-</span><span class="line"><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="o">..</span>
+</span><span class="line"><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="o">-</span>
 </span><span class="line"><span class="vg">done</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
