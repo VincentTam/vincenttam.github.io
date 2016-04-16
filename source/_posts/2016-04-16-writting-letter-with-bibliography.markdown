@@ -52,11 +52,12 @@ for this error.
 Solution
 ---
 
-Luckily, I find the thread [*Environment thebibliography undefined
-when using letter*][sol] in $\rm \LaTeX$ Forum extremely useful.  In
-my opinion, if one can include inline code in a post in this forum,
-the file name `letterbib.sty` and the command in the preamble can be
-shown in monospaced font for readability.
+Luckily, I find the thread
+[*Environment thebibliography undefined when using letter*][sol] in
+$\rm \LaTeX$ Forum extremely useful.  In my opinion, if one can
+include inline code in a post in this forum, the file name
+`letterbib.sty` and the command in the preamble can be shown in
+monospaced font for readability.
 
 {% include_code A minimal working $\rm \LaTeX$ letter MaLettre/ltrbib.tex %}
 
