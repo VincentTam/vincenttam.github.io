@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Objective To share files of several gigabytes (GBs) locally between two
-computers. Usual ways Cloud storage (e.g. Dropbox, Google Drive) Inefficient &hellip;">
+  <meta name="description" content="Objective To undo the command git commit --amend. Background (TL;DR) Tonight, I changed something in a Git repository, and wanted to write
+a Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,61 @@ computers. Usual ways Cloud storage (e.g. Dropbox, Google Drive) Inefficient &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/">Undo an Amendment to a Git Commit</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-15T20:52:32+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:52 pm</span></time>
+        
+           | <a href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/15/undo-an-amendment-to-a-git-commit/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="objective">Objective</h2>
+
+<p>To undo the command <code>git commit --amend</code>.</p>
+
+<h2 id="background-tldr">Background (TL;DR)</h2>
+
+<p>Tonight, I changed something in a Git repository, and wanted to write
+a Git commit, but I carelessly ran <code>git commit --amend</code>, instead of
+<code>git commit --all</code>.  As a result, I was brought to a Vim buffer which
+showed the commit message of the latest commit.  I quit the editor
+with <code>:q</code>.  Unfortunately, the SHA-1 name of that commit was
+<em>replaced</em> with another one.  The original latest commit had been
+pushed to GitHub.  In other words, I <em>amended a pushed commit</em>—this is
+an absolutely <em>bad</em> practice!<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  Therefore, I need to undo the
+“amendment” to the commit.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/15/undo-an-amendment-to-a-git-commit/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -625,56 +680,6 @@ ago.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/08/remove-octopresss-default-image-border/">Remove Octopress's Default Image Border</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-08T13:45:31+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:45 pm</span></time>
-        
-           | <a href="/blog/2014/06/08/remove-octopresss-default-image-border/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/08/remove-octopresss-default-image-border/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/08/remove-octopresss-default-image-border/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Two days ago, when I was writing
-<a href="/blog/2014/06/05/mathjax-in-octopress-via-https/" title="MathJax in Octopress via HTTPS">a post about viewing Octopress blogs over HTTPS</a>, which is
-a <em>secure</em> and <em>encrypted</em> connection, I saw
-<a href="http://mzl.la/13jCUSU" title="How does content that isn't secure affect my safety?">a Moziila Support page</a> which contained inline icons.  I
-attempted to include those tiny pictures into some paragraphs.
-However, the resulting appearance of those paragraphs <em>wasn’t</em>
-appealing—the white border surrounding the tiny icon <em>didn’t</em> look
-great.  It would be <em>better</em> if it could be removed.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/08/remove-octopresss-default-image-border/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/25">&larr; Older</a>
@@ -718,7 +723,7 @@ great.  It would be <em>better</em> if it could be removed.</p>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (24)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (25)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (53)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (35)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -732,7 +737,7 @@ great.  It would be <em>better</em> if it could be removed.</p>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (5)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (6)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -748,6 +753,10 @@ great.  It would be <em>better</em> if it could be removed.</p>
       </li>
     
       <li class="post">
+        <a href="/blog/2016/04/16/writting-letter-with-bibliography/">Writting Letter With Bibliography</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/09/i-search-and-reverse-i-search/">I-Search and Reverse I-Search</a>
       </li>
     
@@ -757,10 +766,6 @@ great.  It would be <em>better</em> if it could be removed.</p>
     
       <li class="post">
         <a href="/blog/2016/04/09/cant-visit-wordpress-dot-com/">Can't Visit WordPress.com</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/09/replaced-all-click-here/">Replaced All "Click Here"</a>
       </li>
     
   </ul>

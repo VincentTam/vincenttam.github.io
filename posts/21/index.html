@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Let $X$ be a metric space and $q \in X$. Suppose that sequence $\left\{ p_k \right\}$ in $X$
-converges to a point $p$ in $X$. Then, $\left\{ d(p_k,q &hellip;">
+  <meta name="description" content="This afternoon, I read the proof of Banach fixed-point theorem in
+Wikipedia.1 It’s said that \begin{equation} d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,120 @@ converges to a point $p$ in $X$. Then, $\left\{ d(p_k,q &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/">Error Bound of the Fixed Point of Contraction Mappings</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-11T01:32:23+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:32 am</span></time>
+        
+           | <a href="/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/11/error-bound-of-the-fixed-point-of-contraction-mappings/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This afternoon, I read the proof of Banach fixed-point theorem in
+<em>Wikipedia</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  It’s said that</p>
+
+<div class="myeqn">
+\begin{equation}
+  d(x^*,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0).
+  \label{eq:inf_err}
+\end{equation}
+</div>
+
+<p>In the proofs for the lemmas, I could only find something like $x_k$
+inside the brackets, but <em>not</em> $x^<em>$.  Thus, I *couldn’t</em> figure out
+how one can derive inequality \eqref{eq:inf_err} from an inequality
+derived in the proof of Lemma 2.</p>
+
+<div class="myeqn">
+\begin{equation}
+  d(x_m,x_n) \le \frac{q^n}{1 - q} d(x_1,x_0),
+  \text{ where } m &gt; n.
+  \label{eq:finite_err}
+\end{equation}
+</div>
+
+<p>I googled for some notes, and found one which told me to take the
+limit of the L.H.S. of inequality \eqref{eq:finite_err} as $m \to
+\infty$.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> After looking at Corollary 2.4 in the PDF file in
+footnote #2 for a while, I know what I’ve missed.</p>
+
+<p>If <span class="myeqn">$\left\{ p_k \right\}$</span>
+converges to $p$,</p>
+
+<div class="myeqn">
+\begin{equation}
+  \lim_{k \to \infty} d(p_k,q) = d(p,q)
+    = d\left(\lim_{k \to \infty} p_k,q \right)
+  \label{eq:dist_limit}
+\end{equation}
+</div>
+
+<p>That’s why I wrote the <a href="/blog/2014/08/10/limit-of-distances-in-metric-spaces/" title="Limit of Distances in Metric Spaces">previous post</a>.</p>
+
+<p>With equation \eqref{eq:dist_limit}, I can now derive
+\eqref{eq:inf_err} from \eqref{eq:finite_err}.</p>
+
+<p><span class="myeqn">$\displaystyle \because \lim_{k \to
+\infty} x_k = x_*$</span></p>
+
+<div class="myeqn">
+\[
+\begin{aligned}
+  d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\
+  =&amp; \lim_{k \to \infty} d(x_k,x_n) \\
+  \le&amp; \lim_{k \to \infty} \frac{q^n}{1 - q} d(x_1,x_0) \qquad
+    \text{(by \eqref{eq:finite_err})} \\
+  =&amp; \frac{q^n}{1 - q} d(x_1,x_0)
+\end{aligned}
+\]
+</div>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>Banach fixed-point theorem.  (2014, July 15).  In <em>Wikipedia, The
+Free Encyclopedia</em>.  Retrieved 17:34, August 10, 2014, from
+<a href="http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697">http://en.wikipedia.org/w/index.php?title=Banach_fixed-point_theorem&amp;oldid=617083697</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>Conrad, K.  (2014).  The contraction mapping theorem.  <em>Expository
+paper.  University of Connecticut, College of Liberal Arts and
+Sciences, Department of Mathematics</em>.  Retrieved August 10,2014,
+from
+<a href="http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf">http://www.math.uconn.edu/~kconrad/blurbs/analysis/contraction.pdf</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -781,79 +895,6 @@ opinion, the new URL is better because it’s more easy to remember.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Avoid Using Ugly Bitmapped Computer Modern Fonts</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-08-02T14:22:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:22 pm</span></time>
-        
-           | <a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In a $\rm \LaTeX$ guide found on the website of George Mason
-University, it’s said that Computer Modern fonts can look ugly.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>
-Like most Computer Modern users, I <em>didn’t</em> notice that until I wrote
-an article using $\rm \LaTeX$ last weekend.</p>
-
-<p>To illustrate the problem, I used a minimum example which I had posted
-on Gist.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  To simply matters, one may use
-<code>\pagenumbering{gobble}</code> to suppress page numbers.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<p><img class="fancybox" src="/images/posts/CMvsLM/cmodern.png" width="800" title="Ugly bitmapped Computer Modern fonts" alt="fig1" /></p>
-
-<p>If one thinks that downloading the Blue Sky fonts from the American
-Mathematical Society is too troublesome, simply including the package
-<code>lmodern</code> will do.</p>
-
-<p><img class="fancybox" src="/images/posts/CMvsLM/lmodern.png" width="800" title="Improved outlook using Latin Modern fonts" alt="fig2" /></p>
-
-<p>P.S. I have learnt an ImageMagick command from a Stack Overflow
-question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:4">
-      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/22">&larr; Older</a>
@@ -897,7 +938,7 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (24)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (25)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (53)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (35)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -911,7 +952,7 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (5)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (6)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -927,6 +968,10 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
       </li>
     
       <li class="post">
+        <a href="/blog/2016/04/16/writting-letter-with-bibliography/">Writting Letter With Bibliography</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/09/i-search-and-reverse-i-search/">I-Search and Reverse I-Search</a>
       </li>
     
@@ -936,10 +981,6 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
     
       <li class="post">
         <a href="/blog/2016/04/09/cant-visit-wordpress-dot-com/">Can't Visit WordPress.com</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/09/replaced-all-click-here/">Replaced All "Click Here"</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Template | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/template/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-16T23:40:54+08:00</updated>
+  <updated>2016-04-17T01:36:23+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -127,6 +127,298 @@ of this page.</p>
 
 <p>You may view <a href="/downloads/ltr.pdf">the output PDF</a> before downloading the above
 sample.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Writting Letter With Bibliography]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography/"/>
+    
+    <updated>2016-04-16T21:39:52+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Recently, I need to write letters.  Get the formatting for addressee
+and sender automatically done, I choose $\rm \LaTeX$.  I cite a book
+in my letter, and try to add a bibliography at the end of the letter.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>During the compilation for the following letter, an error was thrown.</p>
+
+<p><figure class='code'><figcaption><span>A failed $\rm \LaTeX$ letter (noltrbib.tex)</span> <a href='/downloads/code/MaLettre/noltrbib.tex'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[backend=biber]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
+</span><span class='line'><span class="k">\addbibresource</span><span class="nb">{</span>ltrbib.bib<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>csquotes<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
+</span><span class='line'>    Nom de destinataire <span class="k">\\</span>
+</span><span class='line'>    4, boulevard de la Paix, <span class="k">\\</span>
+</span><span class='line'>    12345 Nom de ville
+</span><span class='line'><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\name</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\address</span><span class="nb">{</span>
+</span><span class='line'>    Votre NOM<span class="k">\\</span>
+</span><span class='line'>    23, rue à votre ville <span class="k">\\</span>
+</span><span class='line'>    23456 Nom de votre ville
+</span><span class='line'>  <span class="nb">}</span>
+</span><span class='line'>  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\nofax</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  Un exemple de citation dans un document <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span>.  <span class="k">\cite</span><span class="nb">{</span>serre<span class="nb">}</span>
+</span><span class='line'>  Le faux texte ci-dessous est généré par le plugin Lorem Ipsum pour
+</span><span class='line'>  Vim.
+</span><span class='line'>
+</span><span class='line'><span class="c">% lorem{{{</span>
+</span><span class='line'>  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
+</span><span class='line'>  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
+</span><span class='line'>  risus ut arcu malesuada ornare. Maecenas.
+</span><span class='line'>
+</span><span class='line'>  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
+</span><span class='line'>  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
+</span><span class='line'>  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
+</span><span class='line'>  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
+</span><span class='line'>  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
+</span><span class='line'>  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
+</span><span class='line'>  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
+</span><span class='line'>  urna.
+</span><span class='line'><span class="c">% lorem}}}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
+</span><span class='line'>  meilleures.<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\printbibliography</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>File /home/owner/octopress/source/downloads/code/MaLettre/noltrbib.bib could not be found</p>
+
+<p>Here’s my compilation procedure.</p>
+
+<pre class="cliUB"><code>$ xelatex noltrbib.tex
+$ biber noltrbib
+$ xelatex noltrbib.tex
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+...
+! Undefined control sequence.
+\\blx@head@bibliography [#1]-&gt;\section 
+                                       *{#1}\markboth {\MakeUppercase {#1}}{...
+l.52 \end
+         {letter}
+?
+...
+</code></pre>
+
+<p>I type <code>&lt;Enter&gt;</code> at <code>?</code>, and get <a href="/downloads/noltrbib.pdf">a PDF that seems OK</a>.  You may
+read the <a href="/downloads/code/MaLettre/noltrbib.log">log file for this file</a> to know more about this error.
+However, each time I use $\rm \LaTeX$-Suite to compile the document
+inside Vim, a quickfix window pops up.  This is quite inconvenient: I
+need to use <code>&lt;C-w&gt;k</code> to switch to the original buffer or <code>ZQ</code> to close
+the quickfix window.  Therefore, I am motivated to find out a solution
+for this error.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Luckily, I find the thread <a href="http://www.latex-community.org/forum/viewtopic.php?f=4&amp;t=3359"><em>Environment thebibliography undefined
+when using letter</em></a> in $\rm \LaTeX$ Forum extremely useful.  In
+my opinion, if one can include inline code in a post in this forum,
+the file name <code>letterbib.sty</code> and the command in the preamble can be
+shown in monospaced font for readability.</p>
+
+<p><figure class='code'><figcaption><span>A minimal working $\rm \LaTeX$ letter (ltrbib.tex)</span> <a href='/downloads/code/MaLettre/ltrbib.tex'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+</pre></td><td class='code'><pre><code class='tex'><span class='line'><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="na">[backend=biber]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
+</span><span class='line'><span class="k">\addbibresource</span><span class="nb">{</span>ltrbib.bib<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>csquotes<span class="nb">}</span>
+</span><span class='line'><span class="k">\usepackage</span><span class="nb">{</span>letterbib<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class='line'><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
+</span><span class='line'>    Nom de destinataire <span class="k">\\</span>
+</span><span class='line'>    4, boulevard de la Paix, <span class="k">\\</span>
+</span><span class='line'>    12345 Nom de ville
+</span><span class='line'><span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\name</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\address</span><span class="nb">{</span>
+</span><span class='line'>    Votre NOM<span class="k">\\</span>
+</span><span class='line'>    23, rue à votre ville <span class="k">\\</span>
+</span><span class='line'>    23456 Nom de votre ville
+</span><span class='line'>  <span class="nb">}</span>
+</span><span class='line'>  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\nofax</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
+</span><span class='line'>  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  Un exemple de citation dans un document <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span>.  <span class="k">\cite</span><span class="nb">{</span>serre<span class="nb">}</span>
+</span><span class='line'>  Le faux texte ci-dessous est généré par le plugin Lorem Ipsum pour
+</span><span class='line'>  Vim.
+</span><span class='line'>
+</span><span class='line'><span class="c">% lorem{{{</span>
+</span><span class='line'>  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
+</span><span class='line'>  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
+</span><span class='line'>  risus ut arcu malesuada ornare. Maecenas.
+</span><span class='line'>
+</span><span class='line'>  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
+</span><span class='line'>  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
+</span><span class='line'>  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
+</span><span class='line'>  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
+</span><span class='line'>  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
+</span><span class='line'>  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
+</span><span class='line'>  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
+</span><span class='line'>  urna.
+</span><span class='line'><span class="c">% lorem}}}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
+</span><span class='line'>  meilleures.<span class="nb">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">\printbibliography</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
+</span><span class='line'><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Finally, no compilation error is shown in the <a href="/downloads/code/MaLettre/ltrbib.log">generated log</a>.
+You may view the [second generated PDF][pdf2].</p>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>To install the above STY file, which <em>isn’t</em> found on <abbr title="Comprehensive TeX Archive Network">CTAN</abbr>, one needs
+to manually download it to <code>~/texmf</code> on *nix.  (Search “~/texmf” for
+the way to find <a href="http://tex.stackexchange.com/a/12702">“temxf” on Win*</a>.)  Searching “texmf
+linux refresh”, I find the way for a <a href="http://www.dickimaw-books.com/latex/novices/html/texhash.html">$\rm \TeX$ database
+update</a>.  I miss the first argument in the command
+<code>texhash ~/texmf</code>, and then the installed STY file <em>can’t</em> be found in
+<code>~/texmf/ls-R</code>.</p>
 
 ]]></content>
     
@@ -523,101 +815,6 @@ Octopress<sup id="fnref:fixed_gist"><a href="#fn:fixed_gist" class="footnote">1<
   <ol>
     <li id="fn:fixed_gist">
       <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e5668de">e5668de</a> of this repo. <a href="#fnref:fixed_gist" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Essays]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/03/16/latex-template-for-essays/"/>
-    
-    <updated>2014-03-16T00:28:20+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/03/16/latex-template-for-essays</id>
-    
-      <content type="html"><![CDATA[<h2 id="introduction">Introduction</h2>
-
-<p>This is a $\rm \LaTeX$ template for writing an article.</p>
-
-<h2 id="sample-output">Sample output</h2>
-
-<p><a href="/downloads/latex-sample.pdf">View the sample PDF online.</a></p>
-
-<!-- more -->
-
-<h2 id="sample-code">Sample code</h2>
-
-<p><div><script src='https://gist.github.com/9569005.js'></script>
-<noscript><pre><code>@online{Gnu13,
-  author = {Richard Stallman},
-  title = {{Free Software and Education}},
-  date = {2013-11-06},
-  url = {http://www.gnu.org/education/education.html}
-}
-
-@article{kaplan2010users,
-  title={{Users of the world, unite! The challenges and opportunities
-    of social media}},
-  author={Kaplan, Andreas M and Haenlein, Michael},
-  journal={{Business Horizons}},
-  volume={53},
-  number={1},
-  pages={59--68},
-  year={2010},
-  publisher={Elsevier}
-}
-</code></pre></noscript></div>
-</p>
-
-<h2 id="explanation-of-code-in-latex-sampletex">Explanation of code in “latex-sample.tex”</h2>
-
-<p>For the one-inch margin, I have used the geometry package to do so.
-(line 2) The font size has been set to 12. (line 1) The 1.5 line
-spacing has been implemented. (lines 7–8)</p>
-
-<p>The APA-style reference list was automatically generated using the
-biblatex package along with the biber backend. (lines 15–17,107)</p>
-
-<h2 id="comparison-of-rm-latex-and-other-technologies">Comparison of $\rm \LaTeX$ and other technologies</h2>
-
-<p>I personally appreciate the beauty of Professor Donald Knuff’s
-Computer Modern typefaces, and thus the font Computer Modern Roman has
-been chosen through the whole PDF file.  In terms the number of
-trailing hyphenations in each line, and other relating in-word spacing
-statistics, $\rm \LaTeX$ is better than an array of
-internationally-acclaimed proprietary softwares, such as Microsoft
-Word and Abode InDesign<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.  In addition, the typesetting of
-Microsoft is incorrect, whereas $\rm \LaTeX$ gives the correct kerning
-and ligatures of characters, apart from rendering “ancient and rare
-ligatures”<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>.  The staff in the Department of Engineering at the
-University of Cambridge has made
-<a href="http://www.eng.cam.ac.uk/help/tpl/textprocessing/latex_advocacy.html">a more comprehensive and detailed comparison</a> of WYSIWYG
-(What-You-See-Is-What-You-Get) editors and $\rm \LaTeX$.</p>
-
-<hr />
-
-<p>I’ve found <a href="http://latex.informatik.uni-halle.de/latex-online/latex.php">$\rm \LaTeX$-Online-Compiler</a>, which is useful
-for testing $\rm \LaTeX$ code.</p>
-
-<p>(Last edited on APR 26TH, 2014)</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Visual comparison between LaTeX and Word output (hyphenation,
-typesetting, ligatures etc) on
-<a href="http://tex.stackexchange.com/q/110133">$\rm \TeX$–$\rm \LaTeX$ Stack Exchange</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:2">
-
-      <p>Taraborelli, D.  (July 4, 2011).  <em>The Beauty of $\rm \LaTeX$</em>.
-Retrieved from <a href="http://nitens.org/taraborelli/latex">http://nitens.org/taraborelli/latex</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
