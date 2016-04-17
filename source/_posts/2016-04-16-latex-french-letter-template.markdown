@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LaTeX French Letter Template"
+title: "$\\rm \\LaTeX$ French Letter Template"
 date: 2016-04-16 23:32:14 +0800
 comments: true
 categories: [LaTeX, template]
