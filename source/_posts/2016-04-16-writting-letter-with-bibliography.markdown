@@ -20,7 +20,7 @@ During the compilation for the following letter, an error was thrown.
 
 {% include_code A failed $\rm \LaTeX$ letter MaLettre/noltrbib.tex %}
 
-{% include_code A sample Bib$\rm \LaTeX$ file MaLettre/ltrbib.bib %}
+{% include_code A sample Bib$\rm \LaTeX$ file lang:tex MaLettre/ltrbib.bib %}
 
 Here's my compilation procedure.
 
