@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ultrablog.vim | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/ultrablog-dot-vim/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-17T18:04:03+08:00</updated>
+  <updated>2016-04-17T18:11:46+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -143,11 +143,13 @@ numbered list and <em>the last paragraph</em> in one of my recent post on
 WordPress.com, surrounding the code block with 3 backticks should work
 in UltraBlog.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup></p>
 
-<p>{% codeblock lang:java %}
-public static void main(String[] args) {
-    int i = 1;
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>However, I tried writing an <code>&lt;html&gt;</code> tag in the online editor, and the
 code was stripped of. Anyways, there’s <a href="https://gist.github.com">Gist</a> on GitHub, so there
@@ -214,7 +216,7 @@ the text below. I copied them from
 pair of middle brackets will be changed to numbers. In order to let you
 see it, I post a screenshot of my gVim here.</p>
 
-<p>{% img fancybox center /images/posts/WPFn/MyGVim.png 800 ‘screenshot of my gVim’ ‘fig1’ %}<br />
+<p><img class="fancybox center" src="/images/posts/WPFn/MyGVim.png" width="800" title="‘screenshot of my gVim’ ‘fig1’" ><br />
 Note: Remember to <code>:se ft=html</code> before <code>:UBSend</code></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
@@ -269,15 +271,15 @@ of course, but I can “keep calm and continue blogging”.</p>
 
 <p>I’ve run into this situation for the first time today.</p>
 
-<p>{% img fancybox /images/posts/UBErr/ub-q1.png 800 ‘First UltraBlog screenshot’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/UBErr/ub-q1.png" width="800" title="‘First UltraBlog screenshot’ ‘fig1’" ></p>
 
 <p>I tried to quit the new list with <code>:q</code>.</p>
 
-<p>{% img fancybox /images/posts/UBErr/ub-q2.png 800 ‘Second UltraBlog screenshot’ ‘fig2’ %}</p>
+<p><img class="fancybox" src="/images/posts/UBErr/ub-q2.png" width="800" title="‘Second UltraBlog screenshot’ ‘fig2’" ></p>
 
 <p>Vim told me to use <code>:q!</code> instead.</p>
 
-<p>{% img fancybox /images/posts/UBErr/ub-error.png 800 ‘Third UltraBlog screenshot’ ‘fig3’ %}</p>
+<p><img class="fancybox" src="/images/posts/UBErr/ub-error.png" width="800" title="‘Third UltraBlog screenshot’ ‘fig3’" ></p>
 
 <p>UltraBlog threw a host of errors that I wouldn’t be interested to find
 out more.</p>
@@ -333,10 +335,11 @@ built-in SyntaxHighlighter now because I’ve realised that a blank line
 in Markdown will be changed to a <code>&lt;p&gt;</code> tag in HTML.  Thus, <em>don’t</em> put
 any blank lines right above and below the the <code>&lt;code&gt;</code> tags.)</p>
 
-<p>{% codeblock lang:js %}
-element1 = document.getElementById(“foo”);
-element1.innerHTML = “Hello world!”;
-{% endcodeblock %}</p>
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">element1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="err">“</span><span class="nx">foo</span><span class="err">”</span><span class="p">);</span>
+</span><span class='line'><span class="nx">element1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="err">“</span><span class="nx">Hello</span> <span class="nx">world</span><span class="o">!</span><span class="err">”</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>There’s some shortcomings of the above method.  If you need to copy a
 list of source code, you’ll need to browse the source code, provided
@@ -350,13 +353,13 @@ element, such as the statement <code>#include &lt;iostream&gt;</code> in a C++ p
 <strong>doesn’t</strong> work with UltraBlog.</em>  <del>The above code list verifies
 this assertion.<del></del></del></p>
 
-<p>{% img /images/posts/1stWPGist/ultrablog.png Screenshot of the “code list” in UltraBlog.vim %}</p>
+<p><img src="/images/posts/1stWPGist/ultrablog.png" title="Screenshot of the “code list” in UltraBlog.vim" ></p>
 
 <p><small>Figure 1: This is a screenshot of the “code list” in
 UltraBlog.vim.  <a href="http://en.support.wordpress.com/markdown-quick-reference/" title="Markdown quick reference">Markdown quick reference</a> suggests the
 use of 3 backticks.</small></p>
 
-<p>{% img fancybox /images/posts/1stWPGist/interpreted.png 800 ‘Screenshot of the interpreted code in WordPress.com online editor’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/1stWPGist/interpreted.png" width="800" title="‘Screenshot of the interpreted code in WordPress.com online editor’ ‘fig1’" ></p>
 
 <p><small>Figure 2: The above figure shows how the source code for the
 “code list” (in lines 12–15 in UltraBlog.vim, see Figure 1) is
@@ -377,7 +380,18 @@ VIMRC file, but the plugin used by WordPress.com <em>can’t</em>.</p>
 <p>According to <a href="http://en.support.wordpress.com/gist/" title="WordPress's Gist Support">WordPress’s official support</a>, using Gist
 should be much easier. The following is the result.</p>
 
-<p>{% gist 8703067 %}</p>
+<p><div><script src='https://gist.github.com/8703067.js'></script>
+<noscript><pre><code>CXX = g++
+SRCS = foo.cpp
+
+default: $(SRCS:.cpp=.out)
+
+.cpp.out:
+	$(CXX) $&lt; -o $@
+
+clean:
+	rm -rf *.out</code></pre></noscript></div>
+</p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 

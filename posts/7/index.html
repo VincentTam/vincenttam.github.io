@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background In my opinion, the default display of the $\rm \LaTeX$ command for
-$\Re z$ and $\Im z$ don’t look good. Problem I want to reset the \Im &hellip;">
+  <meta name="description" content="To show that any compact Hausdorff space is $T_4$, one may first show
+that it’s $T_3$. To see this, using set theory notations may be quite
+difficult &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,94 @@ $\Re z$ and $\Im z$ don’t look good. Problem I want to reset the \Im &hellip;"
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/28/normal-compact-t2-spaces/">Normal Compact $T_2$ Spaces</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-28T14:39:06+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:39 pm</span></time>
+        
+           | <a href="/blog/2015/09/28/normal-compact-t2-spaces/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/28/normal-compact-t2-spaces/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To show that any compact Hausdorff space is $T_4$, one may first show
+that it’s $T_3$.  To see this, using set theory notations may be quite
+<em>difficult</em>.  For mediocre students, the contents of the following
+seciton may sound <em>unnatural</em>.</p>
+
+<h2 id="a-sketch-of-the-proof">A sketch of the proof</h2>
+
+<p>Suppose that we want to separate a point $x \notin A$ and a closed set
+$A$ in a compact $T_2$ space $X$ by two <em>disjoint</em> open sets $U$ and
+$V$ so that $x \in U$ and $A \subseteq V$.  A standard proof is to
+apply the $T_2$ property of $X$ to $x$ and each $y \in A$ so as to
+yield two <em>disjoint</em> open sets <span class="myeqn">$U_y,V_y \in \mathcal{T}$ such that $x \in U_y$ and $y
+\in V_y$</span>.  Since $A$ should be contained in an open set $V$, in
+other words, an <em>open cover</em> of $A$ is needed, one might be tempted to
+construct the following union of open sets.</p>
+
+<div class="myeqn">
+\begin{equation}
+  V = \bigcup_{y \in A} V_y
+  \label{Vinf}
+\end{equation}
+</div>
+
+<p>However, one <em>can’t</em> ensure that the following <em>infinite</em> intersection
+of open sets is open.</p>
+
+<div class="myeqn">
+\begin{equation}
+  U = \bigcap_{y \in A} U_y
+  \label{Uinf}
+\end{equation}
+</div>
+
+<p>For instance, by the Nested Interval Theorem,</p>
+
+<div class="myeqn">
+\[
+  \{0\} = \bigcap_{n \in \N} \left( -\frac{1}{n},\frac{1}{n} \right).
+\]
+</div>
+
+<p>Thus, one applies the compactness of $X$ to get <em>finite</em> versions of
+\eqref{Vinf} and \eqref{Uinf}.</p>
+
+<h2 id="a-snapshot-of-this-fact">A snapshot of this fact</h2>
+
+<p>Since it’s so <em>difficult</em> to remember every detail of the proof, I
+love illustrating it using a picture.</p>
+
+<p><img src="/images/posts/CptT2/cptT2-280.jpg" alt="snapshot capturing central idea of proof" /></p>
+
+<p>How can a compact regular space be regular?  See my next post.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -792,65 +881,6 @@ $
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-22T11:59:26+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:59 am</span></time>
-        
-           | <a href="/blog/2015/08/22/used-more-bash-utilities/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/22/used-more-bash-utilities/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Same as what has been written in my older post
-<a href="/blog/2014/12/12/using-xclip/"><em>Using Xclip</em></a>.</p>
-
-<h2 id="drawback">Drawback</h2>
-
-<p>Inputing the keyboard command for the paste action is, in my opinion,
-<em>laborious</em>.</p>
-
-<h2 id="tools-used">Tools used</h2>
-
-<ol>
-  <li><code>find</code></li>
-  <li><code>grep</code></li>
-  <li><code>sed</code></li>
-  <li><code>awk</code></li>
-  <li><code>xargs</code></li>
-</ol>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/22/used-more-bash-utilities/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -894,7 +924,7 @@ $
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (25)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (53)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (35)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -908,7 +938,7 @@ $
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (6)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -920,7 +950,11 @@ $
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2016/04/16/latex-french-letter-template/">LaTeX French Letter Template</a>
+        <a href="/blog/2016/04/17/latex-french-letter-with-signature/">$\rm \LaTeX$ French Letter With Signature</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/04/16/latex-french-letter-template/">$\rm \LaTeX$ French Letter Template</a>
       </li>
     
       <li class="post">
@@ -933,10 +967,6 @@ $
     
       <li class="post">
         <a href="/blog/2016/04/09/latex-suite-in-portable-git/">$\rm \LaTeX$-Suite in Portable Git</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/09/cant-visit-wordpress-dot-com/">Can't Visit WordPress.com</a>
       </li>
     
   </ul>
