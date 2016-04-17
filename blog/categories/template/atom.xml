@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Template | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/template/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-17T01:49:48+08:00</updated>
+  <updated>2016-04-17T18:04:03+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,7 +15,58 @@
   
   <entry>
     
-      <title type="html"><![CDATA[LaTeX French Letter Template]]></title>
+      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter With Signature]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature/"/>
+    
+    <updated>2016-04-17T17:15:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Same as my recent post <a href="/blog/2016/04/16/writting-letter-with-bibliography/"><em>Writting Letter With Bibliography</em></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How to add a scanned signature to a $\rm \LaTeX$ document for the
+<code>lettre</code> class?</p>
+
+<p><img src="/downloads/code/MaLettre/sample-sign.jpg" alt="scanned signature to be added" /></p>
+
+<!-- more -->
+
+<h2 id="my-attempt">My attempt</h2>
+
+<p>Searching “latex letter signature”, I quickly find an article on
+<a href="http://texblog.org/2010/05/04/latex-letter-signature-as-image/">texblog</a>.  If the <code>\name{}</code> has been defined at the beginning of
+the letter, then adding <code>\forname</code> below the line</p>
+
+<pre><code>\fromsig{\includegraphics[scale=1]{signature.jpg}} \\
+</code></pre>
+
+<p>will give you <em>another</em> name, and <code>{Your name}</code> will give you the
+third one.  Moreover, the alignment of the sender’s name <em>isn’t</em>
+right.</p>
+
+<p>According to the documentation of <code>lettre</code>, the <code>\signature{}</code> command
+accepts <em>only text</em> as its arguments.  I try redefining it, but the
+alignment is still <em>wrong</em>.  As a result, I decided to do it the
+<em>dirty</em> way:  I recalled the method of adding the sender’s name at the
+closing part in <a href="http://bio-teckna.fr/?p=1019">Bio Teckna’s model letter</a>.  The
+<code>\begin{center}</code> environment is used.  However, to make it look like a
+French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing.</p>
+
+<p>{% include_code Sample $\rm \LaTeX$ French letter with signature MaLettre/ltrsign.tex %}</p>
+
+<p>The final product can be viewed by clicking the link for the
+<a href="/downloads/ltrsign.pdf">sample PDF with signature</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter Template]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template/"/>
     
     <updated>2016-04-16T23:32:14+08:00</updated>
@@ -201,53 +252,6 @@ documents with</p>
 
 <p>{% gist ffad6efe2c65d5e70b28 my_template1.latex %}</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[$\rm \LaTeX$ Template for Chinese Essays]]></title>
-      <link href="https://vincenttam.github.io/blog/2014/04/05/latex-template-for-chinese-essays/"/>
-    
-    <updated>2014-04-05T21:37:58+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2014/04/05/latex-template-for-chinese-essays</id>
-    
-      <content type="html"><![CDATA[<p>With this template, I believe that creating a Chinese article using
-$\rm \LaTeX$ should be <em>a lot</em> quicker and easier.</p>
-
-<p>I’ve tried including a <a href="https://gist.github.com">Gist</a> in one of my posts.  However, each line
-separates too much from another.  Therefore, including a <a href="https://gist.github.com">Gist</a> in my
-post doesn’t seem to be a good idea.</p>
-
-<p>I think that the default layout of the code list in <a href="http://octopress.org">Octopress</a> is
-<em>much</em> prettier than <a href="https://gist.github.com">Gist</a>.  I included the source code of my $\rm
-\LaTeX$ essay in <a href="/blog/2014/03/16/latex-template-for-essays/" title="LaTeX Template for Essays">my previous post on $\rm \LaTeX$</a>.  Unluckily,
-some of the functions in Octopress’s code block don’t work.  As a
-result, I have to put the <em>whole</em> source file in that post.</p>
-
-<p>In this post, I’ll just post the link to <del>my $\rm \LaTeX$ Chinese
-template <a href="https://gist.github.com">Gist</a>, and</del> <a href="/downloads/latex-chin-sample.pdf">the PDF file</a>.</p>
-
-<hr />
-<p>(Added on AUG 03, 2014)</p>
-
-<p>Since I’ve copied the code for fixing the problem of embedded <a href="https://gist.github.com">Gist</a>s in
-Octopress<sup id="fnref:fixed_gist"><a href="#fn:fixed_gist" class="footnote">1</a></sup>, I will include the <a href="https://gist.github.com">Gist</a> in this post now.</p>
-
-<!-- more -->
-
-<p>{% gist 10473229 latex_chin_sample.tex %}</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:fixed_gist">
-      <p>Commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/e5668de">e5668de</a> of this repo. <a href="#fnref:fixed_gist" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>

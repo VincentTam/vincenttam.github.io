@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Latex | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/latex/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-17T01:49:48+08:00</updated>
+  <updated>2016-04-17T18:04:03+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,7 +15,58 @@
   
   <entry>
     
-      <title type="html"><![CDATA[LaTeX French Letter Template]]></title>
+      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter With Signature]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature/"/>
+    
+    <updated>2016-04-17T17:15:38+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Same as my recent post <a href="/blog/2016/04/16/writting-letter-with-bibliography/"><em>Writting Letter With Bibliography</em></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>How to add a scanned signature to a $\rm \LaTeX$ document for the
+<code>lettre</code> class?</p>
+
+<p><img src="/downloads/code/MaLettre/sample-sign.jpg" alt="scanned signature to be added" /></p>
+
+<!-- more -->
+
+<h2 id="my-attempt">My attempt</h2>
+
+<p>Searching “latex letter signature”, I quickly find an article on
+<a href="http://texblog.org/2010/05/04/latex-letter-signature-as-image/">texblog</a>.  If the <code>\name{}</code> has been defined at the beginning of
+the letter, then adding <code>\forname</code> below the line</p>
+
+<pre><code>\fromsig{\includegraphics[scale=1]{signature.jpg}} \\
+</code></pre>
+
+<p>will give you <em>another</em> name, and <code>{Your name}</code> will give you the
+third one.  Moreover, the alignment of the sender’s name <em>isn’t</em>
+right.</p>
+
+<p>According to the documentation of <code>lettre</code>, the <code>\signature{}</code> command
+accepts <em>only text</em> as its arguments.  I try redefining it, but the
+alignment is still <em>wrong</em>.  As a result, I decided to do it the
+<em>dirty</em> way:  I recalled the method of adding the sender’s name at the
+closing part in <a href="http://bio-teckna.fr/?p=1019">Bio Teckna’s model letter</a>.  The
+<code>\begin{center}</code> environment is used.  However, to make it look like a
+French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing.</p>
+
+<p>{% include_code Sample $\rm \LaTeX$ French letter with signature MaLettre/ltrsign.tex %}</p>
+
+<p>The final product can be viewed by clicking the link for the
+<a href="/downloads/ltrsign.pdf">sample PDF with signature</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter Template]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template/"/>
     
     <updated>2016-04-16T23:32:14+08:00</updated>
@@ -302,124 +353,6 @@ non-action or non-being.</p>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Generate $\rm \LaTeX$ Code for Octave Matrices]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/"/>
-    
-    <updated>2016-01-16T15:33:39+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<ul>
-  <li><a href="http://math.stackexchange.com">Mathematics Stack Exchange</a> use <a href="https://daringfireball.net/projects/markdown/">Markdown</a> and <a href="https://mathjax.org/">MathJax</a> to
-  typeset math expressions.</li>
-  <li>I use <a href="https://www.gnu.org/software/octave">GNU Octave</a> to efficiently perform (matrix)
-  calculations for a quick and correct response on Mathematics Stack
-  Exchange.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<p>Recently, I encountered a <a href="http://math.stackexchange.com/q/1614115/290189">linear algebra problem</a> on
-Mathematics Stack Exchange.</p>
-
-<p>For any given matrix $A$ in Octave,</p>
-
-<pre class="cliUB"><code>A = [1 2 2; 2 3 4; 4 4 2]
-A =
-
-   1   2   2
-   2   3   4
-   4   4   2
-</code></pre>
-
-<p><strong>how can one generate its $\rm \LaTeX$ code</strong></p>
-
-<p>{% codeblock $\rm \LaTeX$ code for matrix $A$ %}
-A = \begin{bmatrix} 1&amp;2&amp;2\ 2&amp;3&amp;4\ 4&amp;4&amp;2 \end{bmatrix}
-{% endcodeblock %}</p>
-
-<p>so that one gets</p>
-
-<div class="myeqn">
-\[
-  A = \begin{bmatrix} 1&amp;2&amp;2\\ 2&amp;3&amp;4\\ 4&amp;4&amp;2 \end{bmatrix}?
-\]
-</div>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I searched “octave to latex matrices” and I found <a href="http://tex.stackexchange.com/a/43733">this answer</a>
-quite useful.  I issued the first command to see the result.</p>
-
-<pre class="cliUB"><code>strrep(strrep(mat2str(A),",","&amp;"),";","\\\\\n")(2:end-1)
-ans = 1 2 2\\
-2 3 4\\
-4 4 2
-</code></pre>
-
-<p>I suspected that it <em>didn’t</em> work.  I posted it as a comment and
-verified that I was right.  To fix this, I extracted the function
-<code>mat2str(A)</code> in the middle of this command to see the results.  From
-its result (<code>ans = [1 2 2;2 3 4;4 4 2]</code>), I realised that <code>strrep</code>
-standed for “string replace”.  Then, I changed the double-quoted comma
-in the second argument of function <code>strrep</code> to a double-quoted
-whitespace character, and got the anticipated result.</p>
-
-<pre class="cliUB"><code>strcat("\\begin{bmatrix}\n",strrep(strrep(mat2str(A)," ","&amp;"), ...
-";","\\\\\n")(2:end-1),"\n\\end{bmatrix}\n")
-ans = \begin{bmatrix}
-1&amp;2&amp;2\\
-2&amp;3&amp;4\\
-4&amp;4&amp;2
-\end{bmatrix}
-</code></pre>
-
-<h2 id="inadequacies">Inadequacies</h2>
-
-<p>I <em>don’t</em> know how to do this for matrices with fractions.  I think I
-can work it out by searching and testing in several hours, but I
-<em>don’t</em> have the time to do so.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="math">Math</h3>
-
-<p>I revised some definitions in linear algebra.</p>
-
-<ul>
-  <li>A matrix $U$ is <strong>unitary</strong> iff $UU^\star = U^\star U = I$.</li>
-  <li>A matrix $N$ is <strong>normal</strong> iff $NN^\star = N^\star N$.</li>
-</ul>
-
-<h3 id="gnu-octave">GNU Octave</h3>
-
-<ul>
-  <li>The function <code>strrep(str,"foo","bar")</code> replaces all instances of
-  <code>foo</code> in <code>str</code> with <code>bar</code>.  It can be used in a nested manner for
-  multiple replacements.</li>
-  <li>The function <code>strcat(str1,str2,...)</code> concatenates the strings
-  inside.</li>
-</ul>
-
-<h3 id="grep">Grep</h3>
-
-<p>When I was writing this article, I wanted to search for “<a href="https://www.gnu.org/software/octave">octave</a>”
-(with the square brackets “[]”) with <code>grep</code> inside <a href="http://www.vim.org/">Vim</a>, but I got
-over 1270 results.  I tried adding single/double quotes and escaping
-the square brackets with a backslash, but I faied again.  Finally, I
-googled “grep escape character” for a solution.  Since then, I know
-that I should <a href="http://stackoverflow.com/a/12387802/3184351">add the <code>-F</code> flag to <code>grep</code></a> to fix the
-string.</p>
-
 ]]></content>
     
   </entry>
