@@ -36,7 +36,7 @@ consisting of multiple elements?**
 Motivation
 ---
 
-This problem seems nonsense--loops are supposed to do repetitive
+This problem seems nonsense---loops are supposed to do repetitive
 tasks.  If the loop has *only* one iteration, then we can directly
 type in the command, instead of adapting it into a loop and setting up
 the scope of the loop.
