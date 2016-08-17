@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-04-30T21:28:27+08:00</updated>
+  <updated>2016-08-17T17:00:50+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,270 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Restore Corrupt Git Repository]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository/"/>
+    
+    <updated>2016-08-17T11:16:33+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I <em>hadn’t</em> used <a href="http://www.vim.org">Vim</a> on my GNU/Linux desktop for a month.  When I
+used it again, an error message was shown on the screen.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~]$ vi
+Error detected while processing
+/home/owner/.vim/bundle/nerdtree/plugin/NERD_tree.vim:
+line  153:
+E117: Unknown function: nerdtree#ui_glue#setupCommands
+Error detected while processing function nerdtree#postSourceActions:
+line    2:
+E117: Unknown function: nerdtree#ui_glue#createDefaultBindings
+Press ENTER or type command to continue
+</code></pre>
+
+<p>Since I was occupied with <a href="https://vincenttam.github.io/blog2">another blog</a>, thinking that the
+problem would be quickly fixed by an update of
+<a href="https://github.com/scrooloose/nerdtree/">the NERD tree</a>, a <a href="http://www.vim.org">Vim</a> plugin for showing a file tree in a
+sidebar, I <em>didn’t</em> want to find out the cause.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>During this <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> update, an exclamation mark with red background
+was displayed on the LHS of the item <code>Plugin 'scrooloose/nerdtree'</code> in
+the list contained in the status bar.  I then checked Vundle’s update
+log.</p>
+
+<pre class="cliUB"><code>[2016-08-12 15:18:40] Plugin scrooloose/nerdtree
+[2016-08-12 15:18:40] $ cd '/home/owner/.vim/bundle/nerdtree' &amp;&amp; git pull &amp;&amp; git submodule update --init --recursive
+[2016-08-12 15:18:40] &gt; error: object file .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d is empty
+[2016-08-12 15:18:40] &gt; error: object file .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d is empty
+[2016-08-12 15:18:40] &gt; fatal: loose object 2e2b649232d6ae4d02d74793e5da0ee08480ad8d (stored in .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d) is corrupt
+[2016-08-12 15:18:40] &gt; fatal: The remote end hung up unexpectedly
+[2016-08-12 15:18:40] &gt; 
+</code></pre>
+
+<p>While I was trying to update this plugin manually by typing in
+<a href="https://vincenttam.github.io/blog/2014/06/16/my-git-command-list-1/">Git commands</a> in bash, the electricity supply of my desktop went
+off suddenly.  After it had been switched on again, I tried typing in
+the commands again, and I got the same error.</p>
+
+<p><strong>How can the Git repository be restored to its previous state</strong>, so
+that it’s intact?</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>This problem can be fixed by simply undoing all changes done to the
+directory <code>.git/</code>.  First, a list of recently changed files is needed,
+and <code>find</code> can be used for this purpose.  I searched “ls filter by
+time”, then this <a href="http://unix.stackexchange.com/a/10043">question about <code>ls</code></a> on Unix &amp; Linux
+Stack Exchange appeared in the search results.  After reading the
+first answer, I tried to find the defective binary objects in
+<code>.git/objects</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree/.git]$ find . -maxdepth 1 -mindepth 1 \
+&gt; -mtime -1 -type d -print -and -exec ls -lt {} \;
+./2e
+total 20
+-r--r--r-- 1 owner owner   0 Aug 12 15:18 2b649232d6ae4d02d74793e5da0ee08480ad8d
+-r--r--r-- 1 owner owner 256 May 12 20:38 c9b3dd9d6b8d11f2a3c12924f88588a846517d
+./7e
+total 44
+
+-r--r--r-- 1 owner owner  341 May 12 20:38 8be22b1d5052e9140fc7c7b840755980cb960
+9
+-r--r--r-- 1 owner owner   49 May 12 20:38 9492c9f3b3b463114c0b6308a8ccd46ce3869
+2
+-r--r--r-- 1 owner owner 3029 Nov  1  2014 12c042bb8f5ab387a2bd0aabcfe30fce25027
+f
+./a0
+total 20
+-r--r--r-- 1 owner owner   0 Aug 12 15:43 019ff4d6b033f37efd9b1a99daf6c9797796b1
+-r--r--r-- 1 owner owner 468 May 12 20:38 b89b83d8cd02f8043840a48b0b2cf3724bee1c
+./29
+total 20
+-r--r--r-- 1 owner owner   0 Aug 12 15:43 24ab207162ca18cf5844d00b351ade1b5122f6
+-r--r--r-- 1 owner owner 342 May 12 20:38 0935cab8f1e7dec23bb3bda0e2f7dd84c867d9
+./38
+total 20
+-r--r--r-- 1 owner owner  0 Aug 12 15:43 d79fd1123213f2ceb3d6c32e8dad42bd587ec8
+-r--r--r-- 1 owner owner 55 May 15  2015 569aab72ab0cbf466c40658ab9a3d86b55263e
+./d7
+total 8
+-r--r--r-- 1 owner owner 0 Aug 12 15:43 9f81cd6e309fa01e063f3e12fb7615e712d7f4
+./2a
+total 36
+-r--r--r-- 1 owner owner    0 Aug 12 15:43 a3bece220f147f85172fe43430d069276d835
+c
+-r--r--r-- 1 owner owner 7025 Jun 24  2015 f07ddbaf243cef8de791b45e7ff4232025a93
+6
+-r--r--r-- 1 owner owner  277 May 15  2015 a1964c1ba8fd40f3fdebf64efd0ba3756115a
+f
+./b7
+total 20
+-r--r--r-- 1 owner owner   0 Aug 12 15:43 23fee57c918ba3fd06057398e0a905fde7b80e
+-r--r--r-- 1 owner owner 277 May 15  2015 2300417059ab5c52ac26c318e6b67bcefbe1e2
+./c9
+total 20
+-r--r--r-- 1 owner owner  0 Aug 12 15:43 9312442b0961241eb0de3d6d65893c52f4d9d1
+-r--r--r-- 1 owner owner 49 May 15  2015 ab6021b2473c60ba443c5ad197f2e3e3692895
+./e8
+total 20
+-r--r--r-- 1 owner owner   0 Aug 12 15:43 7e67fafb0d6c63b790b37ab46f67cf0654ea22
+-r--r--r-- 1 owner owner 466 May 15  2015 258b21d3a02dfcc0c5c10f3ab186763ae0c38b
+./4c
+total 36
+-r--r--r-- 1 owner owner    0 Aug 12 15:43 bfb3869eb16ca691d93e1a3a05d375e87c1c7
+7
+-r--r--r-- 1 owner owner   57 May 15  2015 be8a2baee075d0935e3af349d85c2553d77bf
+8
+-r--r--r-- 1 owner owner 6830 Nov  1  2014 df1a366dbdf08c5f7412ff867d859d6818376
+4
+</code></pre>
+
+<p>Objects are grouped according to the first two digits of their <a href="https://git-scm.com/">Git</a>
+hash.  The following list is easier to read.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree/.git/objects]$ find . -mindepth 2 \
+&gt; -maxdepth 2 -mtime 0 -type f -exec file {} \;
+./2e/2b649232d6ae4d02d74793e5da0ee08480ad8d: empty 
+./7e/e42eb25e86a6825cdba370f20d2e146ed61ae6: empty 
+./a0/019ff4d6b033f37efd9b1a99daf6c9797796b1: empty 
+./29/24ab207162ca18cf5844d00b351ade1b5122f6: empty 
+./38/d79fd1123213f2ceb3d6c32e8dad42bd587ec8: empty 
+./d7/9f81cd6e309fa01e063f3e12fb7615e712d7f4: empty 
+./2a/a3bece220f147f85172fe43430d069276d835c: empty 
+./b7/23fee57c918ba3fd06057398e0a905fde7b80e: empty 
+./c9/9312442b0961241eb0de3d6d65893c52f4d9d1: empty 
+./e8/7e67fafb0d6c63b790b37ab46f67cf0654ea22: empty 
+./4c/bfb3869eb16ca691d93e1a3a05d375e87c1c77: empty 
+</code></pre>
+
+<p>I <em>removed</em> these files and typed <code>git status</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree]$ git status
+fatal: bad object HEAD
+</code></pre>
+
+<p>I googled “invalid sha1 pointer in cache-tree”, and read a webpage a
+Stack Overflow <a href="http://stackoverflow.com/q/11706215">post on empty Git objects</a>.  The command
+<code>git fsck --full</code> can be used to check the integrity of a <a href="https://git-scm.com/">Git</a>
+repository.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree/.git]$ git fsck --full
+Checking object directories: 100% (256/256), done.
+Checking objects: 100% (3525/3525), done.
+error: HEAD: invalid sha1 pointer 2e2b649232d6ae4d02d74793e5da0ee08480ad8d
+error: refs/heads/master: invalid sha1 pointer 2e2b649232d6ae4d02d74793e5da0ee08
+480ad8d
+error: refs/remotes/origin/HEAD: invalid sha1 pointer 2e2b649232d6ae4d02d74793e5
+da0ee08480ad8d
+error: refs/remotes/origin/master: invalid sha1 pointer 2e2b649232d6ae4d02d74793
+e5da0ee08480ad8d
+error: HEAD: invalid reflog entry 2e2b649232d6ae4d02d74793e5da0ee08480ad8d
+error: refs/heads/master: invalid reflog entry 2e2b649232d6ae4d02d74793e5da0ee08
+480ad8d
+error: refs/remotes/origin/master: invalid reflog entry 2e2b649232d6ae4d02d74793
+e5da0ee08480ad8d
+error: d79f81cd6e309fa01e063f3e12fb7615e712d7f4: invalid sha1 pointer in cache-t
+ree
+missing blob 2aa3bece220f147f85172fe43430d069276d835c
+</code></pre>
+
+<p>The above message inspired me to make the following list of files
+changed due to this failed <a href="https://git-scm.com/">Git</a> pull.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree/.git]$ find . -mtime 0 -type f -print
+./refs/heads/master
+./refs/remotes/origin/master
+./FETCH_HEAD
+./logs/HEAD
+./logs/refs/heads/master
+./logs/refs/remotes/origin/master
+./ORIG_HEAD
+./index
+</code></pre>
+
+<p>I looked at the relevant files in the folder <code>logs/refs/</code>.  The change
+time in Unix timestamp, the old and new commit IDs were found.
+I restored these files (including the logs) with the help of these
+logs <em>except</em> <code>FETCH_HEAD</code> and <code>index</code>.</p>
+
+<p>At this stage, <code>git status</code> would still throw out an error if it was
+invoked.  However, since the references to <code>HEAD</code> and <code>ORIG_HEAD</code> had
+been manually set, <code>git reset --hard HEAD</code> could restore the <a href="https://git-scm.com/">Git</a>
+repository.</p>
+
+<h2 id="result">Result</h2>
+
+<p>Finally, I could update <a href="https://github.com/scrooloose/nerdtree/">the NERD Tree</a>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/.vim/bundle/nerdtree]$ git pull
+remote: Counting objects: 11, done.
+remote: Total 11 (delta 3), reused 3 (delta 3), pack-reused 8
+Unpacking objects: 100% (11/11), done.
+From https://github.com/scrooloose/nerdtree
+   d280b15..2e2b649  master     -&gt; origin/master
+Updating d280b15..2e2b649
+Fast-forward
+ autoload/nerdtree/ui_glue.vim | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+</code></pre>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<h3 id="find">find</h3>
+
+<ul>
+  <li>Control the depth of the search with <code>-maxdepth</code> and <code>-mindepth</code>.</li>
+  <li>Search files by time.  (To be put <em>before</em> <code>-type</code>)
+    <ul>
+      <li><code>-mtime [n]</code>: last modified time equal to <code>n</code> <del>day(s)</del>
+  <code>*24</code> hours.  (rounded down to an integer)
+        <ul>
+          <li><code>-mtime +[n]</code>: modified <em>before</em> <code>n</code> <del>day(s)</del> <code>*24</code>
+  hours.</li>
+          <li><code>-mtime -[n]</code>: modified <em>within</em> the last <code>n</code>
+  <del>day(s)</del> <code>*24</code> hours.</li>
+          <li><code>-mmin [n]</code>: modified time calculated in number of <em>minutes</em>
+  instead of days.</li>
+        </ul>
+      </li>
+      <li><code>-atime [n]</code>, <code>-amin [n]</code>: last access time</li>
+      <li><code>-ctime [n]</code>, <code>-cmin [n]</code>: last change of file status</li>
+      <li><code>-anewer</code>, <code>-cnewer</code>, <code>-newer</code>: followed by filename (<code>-mnewer</code>
+  <em>doesn’t</em> exist.)</li>
+      <li><code>-daystart</code>: use the start of day for calculations.  (Preceed
+  <code>-mtime</code>)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="ls">ls</h3>
+
+<p>Use <code>-t</code> flag to sort files using their last modified time in
+descending order.</p>
+
+<h3 id="git">Git</h3>
+
+<p>One can find files from a Git SHA1 hash using <code>git ls-tree -r &lt;hash&gt;</code>.
+To search contents in commits, you may refer to a
+<a href="http://stackoverflow.com/q/460331">question about Git</a> on Stack Overflow.</p>
+
+<p>When I wrote my <a href="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">list of low-level commands</a> last year, I
+<em>couldn’t</em> understand the role of <code>index</code>.  Now, I know that the
+binary objects stored in <code>objets/</code> and the references can work
+<em>independently</em> of <code>index</code>, which can be re-created by <code>git
+write-tree</code>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -55,7 +319,7 @@ closing part in <a href="http://bio-teckna.fr/?p=1019">Bio Teckna’s model lett
 <code>\begin{center}</code> environment is used.  However, to make it look like a
 French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample $\rm \LaTeX$ French letter with signature (ltrsign.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrsign.tex">download</a></figcaption>
+<figure class="code"><figcaption><span>Sample $\rm \LaTeX$ French letter with signature (ltrsign.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrsign.tex">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -166,7 +430,7 @@ French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing
 </span><span class="line">
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>The final product can be viewed by clicking the link for the
 <a href="https://vincenttam.github.io/downloads/ltrsign.pdf">sample PDF with signature</a>.</p>
@@ -188,7 +452,7 @@ are universal, I assume that the source file and the linked PDF file
 below are in public domain, despite the CC-BY-SA licence at the bottom
 of this page.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Sample French $\rm \LaTeX$ letter (ltr.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltr.tex">download</a></figcaption>
+<figure class="code"><figcaption><span>Sample French $\rm \LaTeX$ letter (ltr.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltr.tex">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -285,7 +549,7 @@ of this page.</p>
 </span><span class="line">
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>You may view <a href="https://vincenttam.github.io/downloads/ltr.pdf">the output PDF</a> before downloading the above
 sample.</p>
@@ -312,7 +576,7 @@ in my letter, and try to add a bibliography at the end of the letter.</p>
 
 <p>During the compilation for the following letter, an error was thrown.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A failed $\rm \LaTeX$ letter (noltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/noltrbib.tex">download</a></figcaption>
+<figure class="code"><figcaption><span>A failed $\rm \LaTeX$ letter (noltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/noltrbib.tex">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -419,9 +683,9 @@ in my letter, and try to add a bibliography at the end of the letter.</p>
 </span><span class="line">  <span class="k">\printbibliography</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A sample Bib$\rm \LaTeX$ file  (ltrbib.bib)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.bib">download</a></figcaption>
+<figure class="code"><figcaption><span>A sample Bib$\rm \LaTeX$ file  (ltrbib.bib)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.bib">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -440,7 +704,7 @@ in my letter, and try to add a bibliography at the end of the letter.</p>
 </span><span class="line">    address = <span class="nb">{</span>Paris, France<span class="nb">}</span>,
 </span><span class="line">    pages = <span class="nb">{</span>103--106<span class="nb">}</span>,
 </span><span class="line"><span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Here’s my compilation procedure.</p>
 
@@ -478,7 +742,7 @@ include inline code in a post in this forum, the file name
 <code>letterbib.sty</code> and the command in the preamble can be shown in
 monospaced font for readability.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A minimal working $\rm \LaTeX$ letter (ltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.tex">download</a></figcaption>
+<figure class="code"><figcaption><span>A minimal working $\rm \LaTeX$ letter (ltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.tex">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -587,7 +851,7 @@ monospaced font for readability.</p>
 </span><span class="line">  <span class="k">\printbibliography</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Finally, no compilation error is shown in the <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.log">generated log</a>.
 You may view the <a href="https://vincenttam.github.io/downloads/ltrbib.pdf">second generated PDF</a>.</p>
@@ -705,14 +969,14 @@ work for me, I still found his answer informative.</p>
 problem, and added the last line of this file into BASHRC since I have
 other important things to do.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Actual CMD file found in Mik$\rm \TeX$ Portable  (miktex-portable.cmd)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-portable.cmd">download</a></figcaption>
+<figure class="code"><figcaption><span>Actual CMD file found in Mik$\rm \TeX$ Portable  (miktex-portable.cmd)</span> <a href="https://vincenttam.github.io/downloads/code/miktex-portable.cmd">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="p">@</span><span class="k">echo</span> <span class="k">off</span>
 </span><span class="line"><span class="k">cd</span> <span class="n">/d</span> <span class="nv">%~dp0</span>
 </span><span class="line">miktex\bin\miktex-taskbar-icon.exe
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>To include Mik$\rm \TeX$ into <code>PATH</code>, I first extracted <code>$HOMEDRIVE</code>
 in the form <code>/f</code> instead of <code>F:/</code>.  If not, Mik$\rm \TeX$ <em>won’t</em>
@@ -722,7 +986,7 @@ work.</p>
 
 <p>Here’s my BASHRC for Git Bash.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>My BASHRC (.bashrc)</span> <a href="https://vincenttam.github.io/downloads/code/.bashrc">download</a></figcaption>
+<figure class="code"><figcaption><span>My BASHRC (.bashrc)</span> <a href="https://vincenttam.github.io/downloads/code/.bashrc">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -769,7 +1033,7 @@ work.</p>
 </span><span class="line"><span class="w">    </span><span class="vg">git</span><span class="w"> </span><span class="vg">remote</span><span class="w"> </span><span class="vg">set</span><span class="o">-</span><span class="vg">url</span><span class="w"> </span><span class="vg">origin</span><span class="w"> </span><span class="err">$</span><span class="vg">HOMEDRIVE</span><span class="o">/</span><span class="err">$</span><span class="vg">f</span><span class="o">.</span><span class="vg">git</span>
 </span><span class="line"><span class="w">    </span><span class="vg">cd</span><span class="w"> </span><span class="o">-</span>
 </span><span class="line"><span class="vg">done</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>If the setup is correct, then <code>\ll</code> in $\rm \LaTeX$-Suite should
 automatically trigger the $\rm \LaTeX$ compilation.  I give up on
@@ -1033,7 +1297,7 @@ that a shell script is <em>easier</em> to write.  By searching “bash array
 tutorial” on Google, I got <a href="http://www.thegeekstuff.com/2010/06/bash-array-tutorial/">a tutorial on the Geek Stuff</a> in the
 first search result.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href="https://vincenttam.github.io/downloads/code/oneelt.sh">download</a></figcaption>
+<figure class="code"><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href="https://vincenttam.github.io/downloads/code/oneelt.sh">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1046,7 +1310,7 @@ first search result.</p>
 </span><span class="line"><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
 </span><span class="line">    <span class="nb">echo</span> <span class="nv">$f</span>
 </span><span class="line"><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
     
@@ -1605,7 +1869,7 @@ file.</p>
 <p>I found <a href="https://github.com/git-for-windows/git/issues/320#issuecomment-140278002">Jason Cemra’s comment on issue #320</a> of Git for Windows
 on GitHub extremely useful.</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href="https://vincenttam.github.io/downloads/code/git-bash.bat">download</a></figcaption>
+<figure class="code"><figcaption><span>Launch Portable Git Bash with proper a home folder (git-bash.bat)</span> <a href="https://vincenttam.github.io/downloads/code/git-bash.bat">download</a></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
@@ -1620,7 +1884,7 @@ on GitHub extremely useful.</p>
 </span><span class="line">
 </span><span class="line"><span class="c">rem Launch the git bash</span>
 </span><span class="line">start git-bash.exe
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>I borrow the line <code>set HOMEDRIVE=%~d0</code> from <a href="http://stackoverflow.com/users/5991/dgw">dgw</a> since the drive
 letter of the USB can <em>change</em>.  This facilitates the process of
@@ -1655,43 +1919,6 @@ Vundle</em> for details. <a href="#fnref:setup" class="reversefootnote">&#8617;<
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Multiple H1 Tags]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/03/19/multiple-h1-tags/"/>
-    
-    <updated>2016-03-19T16:58:26+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/03/19/multiple-h1-tags</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>The SEO Analysis of <a href="https://www.bing.com/webmaster">Bing Webmaster</a> complained that
-each page of my blog had <em>more than one</em> <code>&lt;h1&gt;</code> tag.</p>
-
-<p>I viewed the HTML code for the homepage of this blog to verify the
-warning message of this SEO tool.  Then I found over three instances
-of the <code>&lt;h1&gt;</code> tag, at the top, in the sidebar, etc.  To facilitate
-this process, I used <code>git grep "&lt;h1&gt;"</code>.</p>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>I searched for “h1” in the issues and the pull requests of <a href="http://octopress.org">Octopress</a>
-on <a href="https://github.com/imathis/octopress">GitHub</a>, and I got <em>no</em> results.  I wondered why <em>nobody</em> reported
-this.  As a result, I went to Google to search “octopress more than
-one h1 tag”.  Finally, reading <a href="http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824">this article</a>, I gave up the idea
-of changing the <code>&lt;h1&gt;</code> tags in the sidebar into <code>&lt;h2&gt;</code>.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>Like <a href="https://www.google.com/webmaster">Google Webmaster</a>, I <em>can’t</em> simply reset the URL
-of the site.  To insert an ‘s’ into the protocol “http”, one needs to
-deleted the site and add it again.  Fortunately, the verification of
-site ownership <em>doesn’t</em> need to be done again.</p>
-
 ]]></content>
     
   </entry>

@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="While writing a post about purging old Linux kernels, I made use of
-fancybox’s plugin to show a popup window which contains some HTML
-elements.1 &hellip;">
+  <meta name="description" content="In the second example, the command only produces one image. In the
+past, without knowing the use of +[x-pos]+[y-pos], I got more
+than one image, and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,79 @@ elements.1 &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title external"><a href="http://www.ioncannon.net/linux/81/5-imagemagick-command-line-examples-part-1/">5 ImageMagick Command Line Examples–part 1</a> &#9733;</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-09-14T17:58:13+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:58 pm</span></time>
+        
+           | <a href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/09/14/5-imagemagick-command-line-examples-part-1/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the second example, the command only produces <em>one</em> image.  In the
+past, <em>without</em> knowing the use of <code>+[x-pos]+[y-pos]</code>, I got <em>more
+than one</em> image, and needed to delete them <em>except</em> the desired
+one.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<p>When I wrote a post about <code>screendump</code>, I took a screenshot of TTY1 so
+as to prove that the text that followed the screenshot was <em>really</em>
+contents in TTY1.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  The width and height of the screenshot was
+1280 px and 1024 px respectively.  I then used my old way to crop it
+to an image with width 520 px and height 230 px, and got similar error
+message described in ImageMagick’s examples.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>In “<a href="/blog/2014/06/30/basic-use-of-aptitude/#imagemagick-commands-learnt">ImageMagick commands learnt</a>” in <em>Basic Use of
+Aptitude</em>, I got <em>four</em> images because I <em>didn’t</em> append <code>+0+0</code>
+after <code>640x512</code>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+
+      <p>There’s an image cropped with ImageMagick in “<a href="/blog/2014/09/14/record-linux-terminal/">Usage</a>” in
+<em>Record Linux Terminal</em>.</p>
+
+      <pre class="cliUB"><code>$ convert src.png -crop 512x225+0+0 tty1.png
+</code></pre>
+      <p><a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+
+      <p>In “<a href="http://www.imagemagick.org/Usage/crop/#crop_missed">The Missed Image (from a bad crop)</a>” in <em>Examples of
+ImageMagick Usage (version 6)</em>. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2014/09/14/kramdowns-markdown-attributes/">Kramdown's Markdown Attributes</a></h1>
       
     
@@ -113,7 +186,7 @@ elements.1 &hellip;">
 <a href="http://fancyapps.com/fancybox/">fancybox</a>’s plugin to show a popup window which contains some <abbr title="HyperText Markup Language">HTML</abbr>
 elements.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Original container for popup contents</span><a href="http://goo.gl/rdMWNf">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Original container for popup contents</span><a href="http://goo.gl/rdMWNf">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -133,7 +206,7 @@ elements.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
 </span><span class="line"><span class="nt">&lt;p&gt;</span>There&#39;s <span class="nt">&lt;em&gt;</span>no<span class="nt">&lt;/em&gt;</span> lines beginning with <span class="nt">&lt;code&gt;</span>rc<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/p&gt;</span>
 </span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
 </span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>I tried writing Markdown code inside these <code>&lt;div&gt;</code> containers, but the
 Markdown code <em>failed</em> to be changed to <abbr title="HyperText Markup Language">HTML</abbr>.  As a result, <em>not</em>
@@ -151,7 +224,7 @@ editing experience.</p>
 official website, and found out that the <code>markdown="1"</code> attribute can
 solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Current container for popup contents</span><a href="http://goo.gl/53zo2d">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Current container for popup contents</span><a href="http://goo.gl/53zo2d">View raw </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -171,7 +244,7 @@ solve this problem.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup
 </span><span class="line">There&#39;s *no* lines beginning with `rc`.
 </span><span class="line"><span class="c">&lt;!-- omitted a pre tag --&gt;</span>
 </span><span class="line"><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <hr />
 
@@ -664,7 +737,7 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\<br />
 \end{aligned}
 \]</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<figure class="code"><figcaption><span>Source code of the above block equation</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
@@ -682,7 +755,7 @@ d(x^*,x_n) =&amp; d\left( \lim_{k \to \infty} x_k,x_n\right) \\\<br />
 </span><span class="line">=&amp; \frac{q^n}{1 - q} d(x\_1,x\_0)
 </span><span class="line">\end{aligned}
 </span><span class="line">\\]
-</span></code></pre></td></tr></table></div></figure></notextile></div>
+</span></code></pre></td></tr></table></div></figure>
 
 <p>Starting from the second line in the above block equation, at the left
 of the binary relation symbols there’s a whitespace character.</p>
@@ -746,47 +819,6 @@ equations.  As a result, readers <em>couldn’t</em> see them in <a href="https:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://jblevins.org/notes/greek">The Greek Alphabet in $\rm \LaTeX$</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-09-07T22:01:43+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:01 pm</span></time>
-        
-           | <a href="/blog/2014/09/07/the-greek-alphabet-in-latex/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/09/07/the-greek-alphabet-in-latex/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/09/07/the-greek-alphabet-in-latex/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve found a list of $\rm \LaTeX$ commands for Greek alphabets.
-Unluckily, when I right-clicked each alphabet, the popped-up menu
-could only show the MathML code, but <em>not</em> the $\rm \LaTeX$ code.
-Therefore, I have to use <a href="http://cdn.mathjax.org/mathjax/latest/test/sample-dynamic.html" title="Display an equation typed in by a user">MathJax’s previewer</a> to
-verify the commands.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/19">&larr; Older</a>
@@ -824,7 +856,7 @@ verify the commands.</p>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (32)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (33)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -832,7 +864,7 @@ verify the commands.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (53)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (54)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (35)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -856,6 +888,10 @@ verify the commands.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/08/17/restore-corrupt-git-repository/">Restore Corrupt Git Repository</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/04/17/latex-french-letter-with-signature/">$\rm \LaTeX$ French Letter With Signature</a>
       </li>
     
@@ -869,10 +905,6 @@ verify the commands.</p>
     
       <li class="post">
         <a href="/blog/2016/04/09/i-search-and-reverse-i-search/">I-Search and Reverse I-Search</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/09/latex-suite-in-portable-git/">$\rm \LaTeX$-Suite in Portable Git</a>
       </li>
     
   </ul>
