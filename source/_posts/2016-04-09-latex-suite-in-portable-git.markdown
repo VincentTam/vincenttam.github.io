@@ -92,7 +92,7 @@ Conclusion
 
 Here's my BASHRC for Git Bash.
 
-{% include_code My BASHRC .bashrc %}
+{% include_code My BASHRC bashrc %}
 
 If the setup is correct, then `\ll` in $\rm \LaTeX$-Suite should
 automatically trigger the $\rm \LaTeX$ compilation.  I give up on
