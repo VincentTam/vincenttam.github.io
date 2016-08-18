@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem The SEO Analysis of Bing Webmaster complained that
-each page of my blog had more than one &lt;h1&gt; tag. I viewed the HTML code for the &hellip;">
+  <meta name="description" content="Background I often included Unicode characters in my commit messages, such as
+“Committed in a café”. Since I couldn’t input the character ‘é’
+inside &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,75 @@ each page of my blog had more than one &lt;h1&gt; tag. I viewed the HTML code fo
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/03/20/git-portable-home-path/">Git Portable Home Path</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-03-20T17:47:21+08:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:47 pm</span></time>
+        
+           | <a href="/blog/2016/03/20/git-portable-home-path/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/20/git-portable-home-path/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/03/20/git-portable-home-path/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I often included Unicode characters in my commit messages, such as
+“Committed in a café”.  Since I <em>couldn’t</em> input the character ‘é’
+inside the <a href="http://www.vim.org">Vim</a> editor shipped with msysgit, and the <code>curl</code> utility
+<em>didn’t</em> get along well with my <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>
+I decided to <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">upgrade it</a>.</p>
+
+<p>Then I set up things after the installation of <a href="https://git-for-windows.github.io/">Git for Windows</a>
+so that it works well with <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> now.<sup id="fnref:setup"><a href="#fn:setup" class="footnote">1</a></sup>  After that, I
+thought that it would be great if I can set it up on a USB stick so
+that the Vim editor with the powerful plugins can be executed on
+<em>every</em> M$ Win* 7 machine.</p>
+
+<p>The first Google search result for “git portable” is the webpage for
+Git for Windows downloads.  To get it installed on a USB device,
+<em>don’t</em> click “Save file” for the dialog box that popped up upon the
+page is loaded.  <em>Choose the “thumbdrive edition”.</em></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Each time I opened the Vim editor from Portable Git Bash from the USB,
+a new <code>.viminfo</code> file was created in the home folder of current user
+in the C drive.  (e.g. <code>C:\Users\Foo\.viminfo</code>)  Therefore, it could
+be deduced that VIM installed (under <code>/usr/share/vim/vim74</code>) in the
+USB <em>couldn’t</em> load the configurations from <code>.vimrc</code> stored on the
+<em>same</em> USB.  What an irony!</p>
+
+<p><strong>How can one build a truly <em>portable</em> Vim in the USB stick?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/03/20/git-portable-home-path/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -562,71 +632,6 @@ path of Git Bash can become a source of trouble.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">Git for Windows, Curl, Gist.vim With Vundle (3)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-22T16:54:53+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>4:54 pm</span></time>
-        
-           | <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>A VIMRC is important for efficient text editing.  It can be over one
-hundred lines.  It’s good to have the changes tracked.  One <em>entire</em>
-folder <code>.git</code> for <em>one</em> single text file will be too much.  Since my
-VIMRCs <em>don’t</em> have anything secret, I upload them to Gist like many
-other users, and read others’ configuration files so as to learn from
-them.</p>
-
-<p>Nonetheless, my workflow of uploading Gists on M$ Win* was not quite
-efficient.  Therefore, I re-read the installation instructions for
-<a href="https://github.com/mattn/gist-vim">Gist.vim</a>.  Since <code>curl.cmd</code> has already been set up during the
-installation of Vundle.vim, I used Vundle to install Gist.vim.</p>
-
-<p>Due to the problem mentioned in
-<a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the previos post in this series</a>, I opened GVim from Command
-Prompt instead of Git Bash.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I have already configure <code>github.user</code> to my GitHub user name, but
-Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
-
-<pre class="cli"><code>You have not configured a Github account. Read ":help gist-vim-setup".
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -659,12 +664,12 @@ Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (15)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (16)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (33)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (34)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -687,13 +692,17 @@ Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
 <li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (27)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (28)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/08/17/restore-corrupt-git-repository/">Restore Corrupt Git Repository</a>
@@ -709,10 +718,6 @@ Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
     
       <li class="post">
         <a href="/blog/2016/04/16/writting-letter-with-bibliography/">Writting Letter With Bibliography</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/09/i-search-and-reverse-i-search/">I-Search and Reverse I-Search</a>
       </li>
     
   </ul>

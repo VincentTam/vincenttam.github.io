@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Web Technologies | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/web-technologies/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-08-17T17:00:50+08:00</updated>
+  <updated>2016-08-18T16:37:20+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/"/>
+    
+    <updated>2016-08-18T16:15:33+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I attempted to manually fix a [problem in the first post][pp] in this
+series half a year ago.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I have just updated the Jekyll source code for <a href="/blog2">Blog 2</a>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git pull jekyll master
+remote: Counting objects: 37, done.
+remote: Total 37 (delta 10), reused 10 (delta 10), pack-reused 27
+Unpacking objects: 100% (37/37), done.
+From github.com:plusjade/jekyll-bootstrap
+ * branch            master     -&gt; FETCH_HEAD
+   3a34785..8193869  master     -&gt; jekyll/master
+Removing sitemap.txt
+Auto-merging _includes/JB/setup
+CONFLICT (content): Merge conflict in _includes/JB/setup
+Auto-merging _config.yml
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre>
+
+<p><strong>How to repair this failed merge?</strong></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>In the file <code>_includes/JB/setup</code>, I deleted the <code>HEAD</code> part, and
+adopted the official changes in the remote repository for Jekyll.
+Then, everything should be fine.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -199,44 +244,6 @@ short Git comment message with a few helpful links.  However,
 everything went so good that I <em>didn’t</em> have the chance to do that in
 the Git repository for Blog 2.  Therefore, I recorded my thoughts
 here.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Jekyll Blog Page Build Warning]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/"/>
-    
-    <updated>2016-02-08T01:45:25+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>The page build of Jekyll is quite easy because one <em>doesn’t</em> need to
-locally generate the HTML code of the Markdown source with <code>rake</code>.
-One just needs to directly save, commit and push the source code
-online.  The GitHub page support will handle the rest for you.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I wrote <a href="/blog2/essai/2016/02/07/bon-nouvel-an-chinois">an article in my Jekyll blog</a> yesterday afternoon.  From
-what was shown in the terminal, the page build was smooth as expected.
-Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
-
-<picture class="fancybox" title="The warning email from GitHub">
-  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" />
-  <img alt="The warning email from GitHub" src="https://vincenttam.github.io/images/posts/Blog2/email300.png" />
-</picture>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>The problem can be easily solved: just follow what the email says.
-I’ve visited <a href="https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0">this blog article on GitHub</a> to know more about the
-GitHub Pages upgrade.</p>
 
 ]]></content>
     
