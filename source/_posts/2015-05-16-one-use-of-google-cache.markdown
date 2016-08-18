@@ -95,7 +95,8 @@ received errors similar to the one below from `cp`.
 {:.cliUB}
 
 ---
-[^blocked]: [在github的Project Pages上部署jekyll][target] 
+[^blocked]:
+    *在github的Project Pages上部署jekyll*  
+    The original link http://evsseny.appspot.com/?p=63001 is dead now.
 
-[target]: http://evsseny.appspot.com/?p=63001
 [Nautilus]: https://help.ubuntu.com/community/DefaultFileManager
