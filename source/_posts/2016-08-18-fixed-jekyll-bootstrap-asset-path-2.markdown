@@ -42,4 +42,5 @@ In the file `_includes/JB/setup`, I deleted the `HEAD` part, and
 adopted the official changes in the remote repository for Jekyll.
 Then, everything should be fine.
 
+[pp]: /blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/
 [blog2]: /blog2
