@@ -16,7 +16,7 @@ Problem
 
 Then, I wanted to preview it.
 
-    owner@owner-Inspiron-560s:~/blog2$ jekyll serve
+    [owner@localhost ~/blog2]$ jekyll serve
     /home/owner/.rvm/gems/ruby-2.1.2@global/gems/bundler-1.6.5/lib/bundler/resolver.
     rb:357:in `resolve': Could not find gem 'jekyll (~> 3.1) ruby' in the gems avail
     able on this machine. (Bundler::GemNotFound)
