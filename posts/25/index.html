@@ -9,9 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Last night, I wrote a post on editing a Ruby plugin file and an Atom
-Feed XML file for removing redundant images in Atom Feeds.1 To show
-how to &hellip;">
+  <meta name="description" content="Objective To set up a printer-friendly framework for blog posts/pages. Background Two months ago, in order to install Clapper’s image popup plugin in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +78,60 @@ how to &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/12/my-css-settiings-for-printing-1/">My CSS Settiings for Printing (1)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-12T21:41:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:41 pm</span></time>
+        
+           | <a href="/blog/2014/06/12/my-css-settiings-for-printing-1/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/12/my-css-settiings-for-printing-1/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/12/my-css-settiings-for-printing-1/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="objective">Objective</h2>
+
+<p>To set up a printer-friendly framework for blog posts/pages.</p>
+
+<h2 id="background">Background</h2>
+
+<p>Two months ago, in order to install <a href="http://brizzled.clapper.org/blog/2012/02/05/a-simple-octopress-image-popup-plugin/" title="A Simple Octopress Image Popup Plugin">Clapper’s image popup plugin</a> in this blog<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I studied <a href="https://github.com/bmc/brizzled/">the source code of his blog on GitHub</a>.  In this process, I learnt the roles of <code>/sass\/(custom\/_)?(screen|print).scss/</code>.  (To be concise, I write a <a href="http://www.perl.org/" title="The Perl Programming Language">Perl</a> regex.)  Lacking time to learn CSS, I just directly copied Clapper’s CSS settings for printing.</p>
+
+<h2 id="problems-on-the-printed-page">Problems on the printed page</h2>
+
+<ol>
+  <li>Missing author and date</li>
+  <li>Screenshots were too large and part of them flowed out of the page.</li>
+</ol>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/12/my-css-settiings-for-printing-1/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -635,93 +687,6 @@ be displayed</li>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/05/secure-file-removal/">Secure File Removal</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-05T13:11:44+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:11 pm</span></time>
-        
-           | <a href="/blog/2014/06/05/secure-file-removal/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/05/secure-file-removal/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/05/secure-file-removal/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="gnus-shred-utility">GNU’s <code>shred</code> utility</h2>
-
-<h3 id="the-command-for-files-and-folders">The command for files and folders</h3>
-
-<p>For a <em>single</em> file, the command should be simple.  For a <em>directory</em>,
-the following command can shred the files recursively.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<pre class="cliUB"><code>$ find &lt;dir&gt; -type f -exec shred {} \;
-</code></pre>
-
-<h3 id="effectiveness-of-shred-in-ext3-and-ntfs-file-systems">Effectiveness of <code>shred</code> in Ext3 and NTFS file systems</h3>
-
-<p>The cited part of <code>shred</code>’s manpage in the second answer interested me
-to read more about the utility.  In Vim, I pressed <code>K</code> when the cursor
-is on the word <code>shred</code>, and opened the manpage, which claims that
-<em>using it on an Ext3 partition is fine</em> if the partition is in either
-the <code>data=ordered</code> (<strong>default</strong>) or <code>data=writeback</code> mode.  How about
-<em>an NTFS partition</em>?  At the bottom, it says that the info page has
-more information about the utility.  I found the following section in
-the info page.</p>
-
-<blockquote>
-  <p><strong>Please note</strong> that `shred’ relies on a very important assumption:
-that the file system overwrites data in place.  This is the
-traditional way to do things, but many modern file system designs do
-not satisfy this assumption.  Exceptions include:</p>
-
-  <ul>
-    <li>Log-structured or journaled file systems, such as those supplied
-with AIX and Solaris, and JFS, ReiserFS, XFS, Ext3 (in
-`data=journal’ mode), BFS, <strong>NTFS</strong>, etc. when they are configured
-to journal <em>data</em>.</li>
-  </ul>
-</blockquote>
-
-<p>However, googling “shred ntfs effective”, I saw another post about the
-utility.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Due to my <em>limited</em> IT knowledge, searching for the word
-“NTFS”, all I could understand was that “using <code>shred</code> on NTFS is
-fine”.  I searched for the word “ext3”, and found Shane’s comment,
-which questioned Wayne Richardson’s advice.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<h3 id="true-solution-encrypt-the-file-system">True solution: Encrypt the file system</h3>
-
-<p>I went back to the Unix Stack Exchange question and re-read the second
-solution.  The feasible way is in the last line.  I think many new
-GNU/Linux users who have read this answer won’t think of encrypting
-swap.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/05/secure-file-removal/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/26">&larr; Older</a>
@@ -754,7 +719,7 @@ swap.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (17)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (18)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -772,7 +737,7 @@ swap.</p>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (51)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (52)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -782,13 +747,17 @@ swap.</p>
 <li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (28)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (29)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/21/my-host-file-edited/">My Host File Edited</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
@@ -804,10 +773,6 @@ swap.</p>
     
       <li class="post">
         <a href="/blog/2016/04/17/latex-french-letter-with-signature/">$\rm \LaTeX$ French Letter With Signature</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/16/latex-french-letter-template/">$\rm \LaTeX$ French Letter Template</a>
       </li>
     
   </ul>

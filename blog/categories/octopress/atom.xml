@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-08-21T00:44:07+08:00</updated>
+  <updated>2016-08-21T01:18:45+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[My Host File Edited]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/08/21/my-host-file-edited/"/>
+    
+    <updated>2016-08-21T00:50:34+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/21/my-host-file-edited</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>A preview of a blog is often needed before it’s published.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>However, it is possible that one <em>doesn’t</em> like to type <code>localhost</code> in
+the address bar, and would like to have other names.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The idea is in <em>Local Setup – edit your hosts file</em> in <em>How to test
+localhost from any device on your network</em>
+<a href="http://wesbos.com/localhost-mobile-device-testing/">written by Wes Bos</a>.  On *nix, the file path is still the
+<em>same</em> as on OSX, but many users would rather use <a href="http://www.vim.org/">Vim</a> for editing
+<code>/etc/hosts</code>.  One may even use <a href="https://www.gnu.org/software/sed/manual/sed.html"><code>sed</code></a> with the <code>-i</code> flag and
+the <code>sudo</code> privilege in order to directly manipulate this file.</p>
+
+<ul>
+  <li><code>sudo sed -i "3i127.0.0.1\tblogtest.com" /etc/hosts</code> for insertion
+  of “127.0.0.1        blogtest.com” <em>before</em> the third line.</li>
+  <li><code>sudo sed -i "3c127.0.0.1\tblogtest.com" /etc/hosts</code> for changing
+  the third line to “127.0.0.1        blogtest.com”.</li>
+</ul>
+
+<p>Note that the tab is escaped as <code>\t</code> in these two commands.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -492,52 +531,6 @@ say the case insensitive search.</p>
 you fork any one of <a href="https://github.com/VincentTam">my repositories on GitHub</a>, you’ll
 know what it is.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Git Merge Failed?]]></title>
-      <link href="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/"/>
-    
-    <updated>2015-09-03T14:34:31+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2015/09/03/git-merge-failed</id>
-    
-      <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
-
-<p>Octopress has recently removed Rubypants, so the automatic smartquotes
-<em>aren’t</em> supported any more.  However, after typing <code>git pull
-octopress master</code> on the <code>source</code> branch of the local working
-directory for this blog, <code>git</code> simply said that it’s “already
-up-to-date”.  I compared the stored trees for <code>plugins/</code> by using <code>git
-show HEAD:plugins</code> on the <code>source</code> and <code>octopress/master</code> branches.
-If the former has the commits of the later, then
-<code>plugins/rubypants.rb</code> <em>shouldn’t</em> be found on the former.  I issued
-the command <code>git merge octopress/master</code> again, and the version
-control system still said that there’s <em>no</em> unmerged commits from the
-<code>octopress/master</code> branch.<sup id="fnref:remote"><a href="#fn:remote" class="footnote">1</a></sup></p>
-
-<!-- more -->
-
-<h2 id="cause">Cause</h2>
-
-<p>By using <code>git log --abbrev-commit --pretty=oneline --graph</code> and <code>git
-merge-base octopress/master HEAD</code>, I can quickly browse through the
-commits.  Finally, I identified the reason for this failed merge: I
-reverted the first merge of those two branches three months ago.  I
-belive that I can revert this reversion to achieve my desired merge.</p>
-
-<hr />
-<div class="footnotes">
-  <ol>
-    <li id="fn:remote">
-
-      <p>Since Octopress 3 is currently in development, I still use the
-original version. <a href="#fnref:remote" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
 ]]></content>
     
   </entry>
