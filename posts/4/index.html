@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background A VIMRC is important for efficient text editing. It can be over one
-hundred lines. It’s good to have the changes tracked. One entire &hellip;">
+  <meta name="description" content="Background In the second post in this series, we see that the space in the
+path of Git Bash can become a source of trouble. Problem How to run &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,54 @@ hundred lines. It’s good to have the changes tracked. One entire &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Git for Windows, Curl, Gist.vim With Vundle (4)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-22T18:38:00+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>6:38 pm</span></time>
+        
+           | <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">the second post in this series</a>, we see that the space in the
+path of Git Bash can become a source of trouble.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to run external commands in GVim Portable invoked by Git Bash?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-4/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -797,100 +845,6 @@ selected in visual line mode.  However, the line starting with <code>#</code>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-09T20:49:29+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:49 pm</span></time>
-        
-           | <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>Tonight, I wrote <a href="/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
-to publish it using the Vim editor command</p>
-
-<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
-</code></pre>
-
-<p>After that, the following error message popped up.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
-To git@github.com:VincentTam/vincenttam.github.io.git
-   c6c422a..fc8d6b8  source -&gt; source
-
-## Generating Site with Jekyll
-    write source/stylesheets/screen.css
-Configuration file: /home/owner/octopress/_config.yml
-            Source: source
-       Destination: public
-      Generating... 
-                    done.
- Auto-regeneration: disabled. Use --watch to enable.
-cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-rake aborted!
-Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
-/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
-/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
-/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
-Tasks: TOP =&gt; copydot
-(See full trace by running task with --trace)
-
-shell returned 1
-
-Press ENTER or type command to continue
-</code></pre>
-
-<p>When one sees an error message like above for the first time, one
-needs <em>not</em> look directly into code, even though one is writing code
-in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
-wrong.</p>
-
-<p>From the command <code>cp -r ...</code>, I realised that the problem came from
-<code>Rakefile</code>, which tried to copy the non-existent
-<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
-folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
-<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
-
-<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -923,7 +877,7 @@ folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo">
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (16)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (17)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -960,6 +914,10 @@ folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo">
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
       </li>
     
@@ -973,10 +931,6 @@ folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo">
     
       <li class="post">
         <a href="/blog/2016/04/16/latex-french-letter-template/">$\rm \LaTeX$ French Letter Template</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/16/writting-letter-with-bibliography/">Writting Letter With Bibliography</a>
       </li>
     
   </ul>
