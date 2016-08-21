@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-08-21T01:18:45+08:00</updated>
+  <updated>2016-08-21T20:20:48+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
+    
+    <updated>2016-08-21T18:30:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To know the page layout of a website, notably my blogs, on mobile
+devices before publishing it.</p>
+
+<p><img src="/images/posts/SitePreviewMobile/Screenshot-2016-08-21-19-36-14.png" alt="Preview this blog on a smartphone" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I used <code>ifconfig</code> to check the IP address of my desktop where the
+preview site was hosted.  It’s <code>192.168.1.5</code>.  When I typed in this
+address followed by a colon and the port number <code>4000</code>, then the
+browser said “connection timeout” after loading for a while.</p>
+
+<p><img src="/images/posts/SitePreviewMobile/Screenshot-2016-08-21-19-35-00.png" alt="Connection timeout" /></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I spent a day to identify the cause of the problem.</p>
+
+<h3 id="host-name-incorrect">Host name incorrect</h3>
+
+<p>Actually, the website should be hosted at the internal IP address
+shown by <code>ifconfig</code> instead of <code>localhost</code>.  Since I switch off the
+router before going to bed every day, the internal IP address for my
+desktop changes daily.  Therefore, one uses <code>0.0.0.0</code> to host the site
+on <em>all</em> IP addresses that the machine possesses.</p>
+
+<p>In <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>, one may simply add <code>host : 0.0.0.0</code> in
+<code>_config.yml</code>; in <a href="http://octopress.org/">Octopress</a>, one may find the line containing
+<code>server_port</code> in the middle of <code>Rakefile</code> and add <code>--host
+#{listen_host}</code>.<sup id="fnref:myeg"><a href="#fn:myeg" class="footnote">1</a></sup></p>
+
+<p>``` ruby Changes in Rakefile http://www.jmlog.com/octopress-preview-config-in-vagrant/
+server_port     = “4000”      # port for preview server eg. localhost:4000
+listen_host     = “0.0.0.0”   # bind to all available IPs</p>
+
+<h1 id="rackuppid--processspawnrackup---port-serverport">rackupPid = Process.spawn(“rackup –port #{server_port}”)</h1>
+<p>rackupPid = Process.spawn(“rackup –port #{server_port} –host #{listen_host}”)
+```</p>
+
+<h3 id="port-blocked-by-firewall">Port blocked by firewall</h3>
+
+<p>On Ubuntu, I used <abbr title="Uncomplicated Firewall">UFW</abbr> to open the port <code>4000</code> to all devices at home.
+(The netmask of my home router has 24 bits, which is the usual
+setting.)</p>
+
+<pre class="cliUB"><code>sudo ufw allow from 192.168.1.0/24 to any port 4000:4001 proto tcp
+</code></pre>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="https://help.ubuntu.com/community/UFW#Allow_and_Deny_.28specific_rules.29"><abbr title="Uncomplicated Firewall">UFW</abbr> – Ubuntu Community Help</a>: the syntax for allowing and
+denying specific machines.</li>
+  <li><a href="http://www.jmlog.com/octopress-preview-config-in-vagrant/"><em>Vagrant 下的 Octopress 預覽設置</em></a>: A sample <code>Rakefile</code>
+which allows the specification of the host address.</li>
+  <li>鳥哥的 Linux 私房菜 – <a href="http://linux.vbird.org/linux_server/0110network_basic.php">基礎網路概念</a>: A detailed explanation
+for some fundamental concepts like IP address, netmask and subnet.
+I understand what <code>/24</code> in <code>192.168.1.0/24</code> means after reading
+this chapter of the guide.</li>
+  <li>An Ask Ubuntu question on specifying a
+<a href="http://askubuntu.com/q/7099">range of ports in <abbr title="Uncomplicated Firewall">UFW</abbr></a></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:myeg">
+
+      <p>View my working examples:</p>
+
+      <ul>
+        <li><a href="/">Blog 1</a>: at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/bfa1e9e">bfa1e9e</a></li>
+        <li><a href="/blog2">Blog 2</a>: at commit <a href="https://github.com/VincentTam/blog2/commit/d4ec6a6">d4ec6a6</a></li>
+      </ul>
+      <p><a href="#fnref:myeg" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -444,93 +539,6 @@ at version <a href="https://goo.gl/2Uq5AU">a2c8028</a>. <a href="#fnref:installa
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Flair in Octopress via HTTPS]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https/"/>
-    
-    <updated>2016-02-07T23:52:33+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I replaced <a href="/images/avatar256.png">the big avatar</a> of my self intro in the sidebar
-with my Stack Exchange flair, which summarized my reputation and
-badges on <a href="https://math.stackexchange.com">Mathematics Stack Exchange</a>.  Since then, it’s
-easier to see my profile there.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I browsed my blog, I saw a lock with a yellow triangle on the
-left of the URL.</p>
-
-<picture class="fancybox" title="An abnormal icon on the left of the
-URL">
-  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" /> 
-  <img alt="An abnormal icon on the left of the URL" src="https://vincenttam.github.io/images/posts/Flair/mixed-300.png" />
-</picture>
-
-<p>This indicated the presence of insecure contents.</p>
-
-<picture class="fancybox" title="Firefox's error console message">
-  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" /> 
-  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" /> 
-  <img alt="Firefox's error console message" src="https://vincenttam.github.io/images/posts/Flair/log-300.png" />
-</picture>
-
-<p><strong>How can I get rid of this error message?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Even though I focus on math analysis now and I’m <em>not</em> going to write
-any programming code, the advice of
-<a href="http://polymerhk.com/articles/2016/02/03/27363/">this article about programming</a> still applies.  Reading the
-error message, I recalled one of my old posts written more than one
-year ago.  It was titled <a href="/blog/2014/06/05/mathjax-in-octopress-via-https/"><em>MathJax in Octopress via HTTPS</em></a>.
-Therefore, the only thing that I needed to do was to add an <code>s</code>
-between <code>http</code> and <code>:</code> in the URL of the image for the flair.</p>
-
-<h2 id="a-command-learnt">A command learnt</h2>
-
-<p>I typed the command <code>git log -g --grep "flair"</code> in the repository for
-this blog, and I quickly see the results.</p>
-
-<pre class="cliUB"><code>commit 5b9a757484314658458d86aa4613c75e5beb65e6
-Reflog: HEAD@{0} (Vincent Tam &lt;fake@live.hk&gt;)
-Reflog message: commit: Improved the code for my Stack Exchange flair
-Author: Vincent Tam &lt;fake@live.hk&gt;
-Date:   Mon Feb 8 01:04:06 2016 +0800
-
-    Improved the code for my Stack Exchange flair
-    
-    1. Avoid the problem described in b6f4f1f.
-    2. Get rid of the line break in the popup tooltip text of the image.
-
-commit 8800fa646fb8d6f22dd924b43a38e4ef3460e63e
-Reflog: HEAD@{6} (Vincent Tam &lt;fake@live.hk&gt;)
-Reflog message: commit: Changed the picture on the RHS in self-intro
-Author: Vincent Tam &lt;fake@live.hk&gt;
-Date:   Sat Jan 16 16:43:33 2016 +0800
-
-    Changed the picture on the RHS in self-intro
-    
-    Replaced the avatar with a flair so that it's more convenient to view my
-    Stack Exchange profile.
-</code></pre>
-
-<p>Unluckily, the normal flags in the <code>grep</code> utility <em>aren’t</em> supported,
-say the case insensitive search.</p>
-
-<p>P.S. I replaced my email with <code>fake@live.hk</code> to avoid junk mail.  If
-you fork any one of <a href="https://github.com/VincentTam">my repositories on GitHub</a>, you’ll
-know what it is.</p>
-
 ]]></content>
     
   </entry>

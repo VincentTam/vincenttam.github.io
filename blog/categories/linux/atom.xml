@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-08-21T01:18:45+08:00</updated>
+  <updated>2016-08-21T20:20:48+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,101 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
+    
+    <updated>2016-08-21T18:30:57+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
+    
+      <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
+
+<p>To know the page layout of a website, notably my blogs, on mobile
+devices before publishing it.</p>
+
+<p><img src="/images/posts/SitePreviewMobile/Screenshot-2016-08-21-19-36-14.png" alt="Preview this blog on a smartphone" /></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I used <code>ifconfig</code> to check the IP address of my desktop where the
+preview site was hosted.  It’s <code>192.168.1.5</code>.  When I typed in this
+address followed by a colon and the port number <code>4000</code>, then the
+browser said “connection timeout” after loading for a while.</p>
+
+<p><img src="/images/posts/SitePreviewMobile/Screenshot-2016-08-21-19-35-00.png" alt="Connection timeout" /></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>I spent a day to identify the cause of the problem.</p>
+
+<h3 id="host-name-incorrect">Host name incorrect</h3>
+
+<p>Actually, the website should be hosted at the internal IP address
+shown by <code>ifconfig</code> instead of <code>localhost</code>.  Since I switch off the
+router before going to bed every day, the internal IP address for my
+desktop changes daily.  Therefore, one uses <code>0.0.0.0</code> to host the site
+on <em>all</em> IP addresses that the machine possesses.</p>
+
+<p>In <a href="https://github.com/plusjade/jekyll-bootstrap">Jekyll-Bootstrap</a>, one may simply add <code>host : 0.0.0.0</code> in
+<code>_config.yml</code>; in <a href="http://octopress.org/">Octopress</a>, one may find the line containing
+<code>server_port</code> in the middle of <code>Rakefile</code> and add <code>--host
+#{listen_host}</code>.<sup id="fnref:myeg"><a href="#fn:myeg" class="footnote">1</a></sup></p>
+
+<p>``` ruby Changes in Rakefile http://www.jmlog.com/octopress-preview-config-in-vagrant/
+server_port     = “4000”      # port for preview server eg. localhost:4000
+listen_host     = “0.0.0.0”   # bind to all available IPs</p>
+
+<h1 id="rackuppid--processspawnrackup---port-serverport">rackupPid = Process.spawn(“rackup –port #{server_port}”)</h1>
+<p>rackupPid = Process.spawn(“rackup –port #{server_port} –host #{listen_host}”)
+```</p>
+
+<h3 id="port-blocked-by-firewall">Port blocked by firewall</h3>
+
+<p>On Ubuntu, I used <abbr title="Uncomplicated Firewall">UFW</abbr> to open the port <code>4000</code> to all devices at home.
+(The netmask of my home router has 24 bits, which is the usual
+setting.)</p>
+
+<pre class="cliUB"><code>sudo ufw allow from 192.168.1.0/24 to any port 4000:4001 proto tcp
+</code></pre>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="https://help.ubuntu.com/community/UFW#Allow_and_Deny_.28specific_rules.29"><abbr title="Uncomplicated Firewall">UFW</abbr> – Ubuntu Community Help</a>: the syntax for allowing and
+denying specific machines.</li>
+  <li><a href="http://www.jmlog.com/octopress-preview-config-in-vagrant/"><em>Vagrant 下的 Octopress 預覽設置</em></a>: A sample <code>Rakefile</code>
+which allows the specification of the host address.</li>
+  <li>鳥哥的 Linux 私房菜 – <a href="http://linux.vbird.org/linux_server/0110network_basic.php">基礎網路概念</a>: A detailed explanation
+for some fundamental concepts like IP address, netmask and subnet.
+I understand what <code>/24</code> in <code>192.168.1.0/24</code> means after reading
+this chapter of the guide.</li>
+  <li>An Ask Ubuntu question on specifying a
+<a href="http://askubuntu.com/q/7099">range of ports in <abbr title="Uncomplicated Firewall">UFW</abbr></a></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:myeg">
+
+      <p>View my working examples:</p>
+
+      <ul>
+        <li><a href="/">Blog 1</a>: at commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/bfa1e9e">bfa1e9e</a></li>
+        <li><a href="/blog2">Blog 2</a>: at commit <a href="https://github.com/VincentTam/blog2/commit/d4ec6a6">d4ec6a6</a></li>
+      </ul>
+      <p><a href="#fnref:myeg" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -539,136 +634,6 @@ omitted.  Otherwise, the output will be messed up.</p>
  32665 Apr  9 12:20 cedb2-300.png
  84580 Apr  9 12:20 cedb2.png    
 </code></pre>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Loop Through an Array Having Only One Element in Bash]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/"/>
-    
-    <updated>2016-04-08T22:59:29+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>To find out a way to loop through all elements in an array consisting
-of more than one element, it’s easy.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello","world"}; do echo $f; done
-hello
-world
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I try to take away the second element in the above array so that
-it becomes an array consisting in <em>one</em> single element, then I get
-<code>{hello}</code> instead of <code>hello</code>.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello"}; do echo $f; done
-{hello}
-</code></pre>
-
-<p><strong>How can one get back an output consistent with the case of arrays
-consisting of multiple elements?</strong></p>
-
-<!-- more -->
-
-<h2 id="motivation">Motivation</h2>
-
-<p>This problem seems nonsense—loops are supposed to do repetitive
-tasks.  If the loop has <em>only</em> one iteration, then we can directly
-type in the command, instead of adapting it into a loop and setting up
-the scope of the loop.</p>
-
-<p>Nevertheless, if one converts multiple lines of short texts into one
-long single line with <code>xargs</code>, then the items will be separated by
-white spaces.  This <em>won’t</em> work with the above for loop.  To change
-the delimiter from white space to comma, one may use <code>paste -d, -s</code>.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Syntax</th>
-      <th style="text-align: left">Meaning</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code>-d,</code></td>
-      <td style="text-align: left">Use <code>,</code> as the delimiter.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code>-s</code></td>
-      <td style="text-align: left"><em>Without</em> this flag, <code>$1</code> and <code>$2</code> are displayed in <em>parallel</em>.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Surely, there are other tools to do this, such as <code>sed</code>.  However, I
-think that <code>paste -d, -s</code> should be the <em>simplest</em> way to do this.
-Note that the white space character between the two flags are
-<em>important</em>.  Otherwise, this command <em>won’t</em> work.</p>
-
-<p><em>Without</em> prior knowledge of the text to be processed, it’s possible
-that the output of <code>paste -d, -s</code> consists of <em>only</em> one item.  This
-single case is easy to deal with, even though the handling may be a
-bit different from the case of multiple elements.  However, if the
-syntax for the command that handles the output of <code>paste -d, -s</code>
-<em>isn’t exactly the same</em> in the case of <em>one</em> single element and the
-case of <em>multiple</em> elements, then we need to look at the content and
-make manual judgement–this is tedious and error-prone.</p>
-
-<p>In the problem posed in the previous section, if the list in the
-for loop has <em>only</em> one item, then we need to do something different
-from a list having two or more items.  If we observe this difference
-with our naked eyes, the whole process will lack efficiency.</p>
-
-<p>To solve this problem, we seek an <em>unified</em> approach.  In other words,
-I try to change the syntax of the above for loop so that the for loop
-will work for <em>any</em> one of these two cases.</p>
-
-<h2 id="solution">Solution</h2>
-
-<ol>
-  <li>Surround each string in the array by a pair of <em>double quotes</em>.</li>
-  <li>Add a comma <em>either</em> before the first element or after the last
-element.</li>
-</ol>
-
-<p>The first step is needed if in the array, there exists an element
-having two or more words <em>separated by a white space</em>; the second step
-is needed for an array with one single element.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello world",}; do echo $f; done
-hello world
-</code></pre>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>As the number of steps increases, the difficulty of constructing a
-one-line command to do the thing rises tremendously.  It’s possible
-that a shell script is <em>easier</em> to write.  By searching “bash array
-tutorial” on Google, I got <a href="http://www.thegeekstuff.com/2010/06/bash-array-tutorial/">a tutorial on the Geek Stuff</a> in the
-first search result.</p>
-
-<p><figure class='code'><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href='/downloads/code/oneelt.sh'>download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/bash</span>
-</span><span class='line'>
-</span><span class='line'><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span>
-</span><span class='line'><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
-</span><span class='line'>    <span class="nb">echo</span> <span class="nv">$f</span>
-</span><span class='line'><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure></p>
 
 ]]></content>
     

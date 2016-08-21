@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I saw a monitor which displayed the notorious blue screen of death
-this evening. Since I don’t know how to find out the reason of the
-problem from &hellip;">
+  <meta name="description" content="Background In the third post of this series, I ran the editor command :!git config --list inside GVim Portable, but I got a fatal error. I
+found out &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,66 @@ problem from &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/">Git for Windows, Curl, Gist.vim With Vundle (5)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-29T00:35:30+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:35 am</span></time>
+        
+           | <a href="/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>In <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-3/">the third post of this series</a>, I ran the editor command</p>
+
+<pre class="cli"><code>:!git config --list
+</code></pre>
+
+<p>inside <a href="http://portableapps.com/apps/development/gvim_portable">GVim Portable</a>, but I got a fatal error.  I
+found out how to get <a href="https://github.com/mattn/gist-vim">Gist.vim</a> work <em>without</em> solving this problem.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>How to avoid this fatal error?</strong></p>
+
+<pre class="cli"><code>C:\Windows\system32\cmd.exe /c (git config --global --list)
+fatal: unable to read config file 'C:\Temp\PortableApps\gVimPortable\Data\settin
+gs/.gitconfig': No such file or directory
+shell returned 128
+Hit any key to close this window...
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/29/git-for-windows-curl-gist-dot-vim-with-vundle-5/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -676,126 +735,6 @@ what to do.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/">Hyperlinks in Ordered Lists in Markdown in Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-10T01:06:42+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:06 am</span></time>
-        
-           | <a href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/10/hyperlinks-in-ordered-lists-in-markdown-in-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Same as the one in <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">my previous post</a>.</p>
-
-<p>I usually write hyperlinks for software names using only one pair of
-square brackets, like <code>[Vim]</code> instead of <code>[Vim][Vim]</code>.  Even though
-this <em>isn’t</em> standard, this is more convenient.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I want to start the second item of the following ordered list with a
-hyperlink to <a href="https://github.com/kana/vim-textobj-lastpat">textobj-lastpat</a> written in a short but non-standard
-way.</p>
-
-<figure class="code"><figcaption><span>Markdown source code of the ordered list  (test-post.mkd)</span> <a href="/downloads/code/olhlmdvim/test-post.mkd">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">Lessons learnt
-</span><span class="line">---
-</span><span class="line">
-</span><span class="line">Moreover, I revised the usage of these two [Vim] plugins.
-</span><span class="line">
-</span><span class="line">1. [Visual Star Search][visual-star-search]: Select text in visual
-</span><span class="line">   mode and search it with an asterisk `*`.
-</span><span class="line">2. [textobj-lastpat]: Add the last search pattern as a text object.
-</span><span class="line">
-</span><span class="line">[Vim]: http://www.vim.org
-</span><span class="line">[visual-star-search]: https://github.com/bronson/vim-visual-star-search
-</span><span class="line">[textobj-lastpat]: https://github.com/kana/vim-textobj-lastpat
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Unluckily, as I typed this Vim Ex command
-<a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">to see whether my Markdown syntax was correct</a>, I quickly
-received an error from <a href="http://kramdown.gettalong.org">kramdown</a>.</p>
-
-<pre class="cliUB"><code>:!kramdown % &gt; %&lt;.html
-</code></pre>
-
-<p>You may click “donwload” at the top right hand corner of the codeblock
-below to see the effect of the result generated by ihe Markdown
-parser.</p>
-
-<figure class="code"><figcaption><span>Generated HTML code of the ordered list (test-post.html)</span> <a href="/downloads/code/olhlmdvim/test-post.html">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;h2</span> <span class="na">id=</span><span class="s">&quot;lessons-learnt&quot;</span><span class="nt">&gt;</span>Lessons learnt<span class="nt">&lt;/h2&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;p&gt;</span>Moreover, I revised the usage of these two <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://www.vim.org&quot;</span><span class="nt">&gt;</span>Vim<span class="nt">&lt;/a&gt;</span> plugins.<span class="nt">&lt;/p&gt;</span>
-</span><span class="line">
-</span><span class="line"><span class="nt">&lt;ol&gt;</span>
-</span><span class="line">  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;https://github.com/bronson/vim-visual-star-search&quot;</span><span class="nt">&gt;</span>Visual Star Search<span class="nt">&lt;/a&gt;</span>: Select text in visual
-</span><span class="line">mode and search it with an asterisk <span class="nt">&lt;code&gt;</span>*<span class="nt">&lt;/code&gt;</span>.<span class="nt">&lt;/li&gt;</span>
-</span><span class="line">  <span class="nt">&lt;li&gt;&lt;/li&gt;</span>
-</span><span class="line"><span class="nt">&lt;/ol&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<pre class="cliUB"><code>Warning: Duplicate link ID 'textobj-lastpat' on line 13 - overwriting
-
-Press ENTER or type command to continue
-</code></pre>
-
-<h2 id="solution">Solution</h2>
-
-<p>This time, I <em>won’t</em>
-<a href="http://polymerhk.com/articles/2016/02/03/27363/">find out what’s wrong from the error message</a> because writing
-that hyperlink in the standard way is the quickest solution that I
-know.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -828,7 +767,7 @@ know.</p>
   <h1>Categories</h1>
   <ul id="categories">
     <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/blogging/'>blogging (18)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (19)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -841,12 +780,12 @@ know.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (54)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (35)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (52)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -856,13 +795,17 @@ know.</p>
 <li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (29)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2016/08/21/my-host-file-edited/">My Host File Edited</a>
@@ -878,10 +821,6 @@ know.</p>
     
       <li class="post">
         <a href="/blog/2016/08/17/restore-corrupt-git-repository/">Restore Corrupt Git Repository</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/04/17/latex-french-letter-with-signature/">$\rm \LaTeX$ French Letter With Signature</a>
       </li>
     
   </ul>
