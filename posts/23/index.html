@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Why use Aptitude? I tried upgrading the Linux kernel on Ubuntu using apt-get, but it
-failed. How can I upgrade the Linux kernel? ">
+  <meta name="description" content="Yesterday, I learnt drawing simple TikZ diagrams. In my opinion, defining nodes while connecting them will not look
+good. \path[draw] (0, 0) node {A &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,126 @@ failed. How can I upgrade the Linux kernel? ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/07/12/star-of-david-in-pascals-triangle/">Star of David in Pascal's Triangle</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-07-12T21:44:37+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:44 pm</span></time>
+        
+           | <a href="/blog/2014/07/12/star-of-david-in-pascals-triangle/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/07/12/star-of-david-in-pascals-triangle/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img class="right" src="/images/posts/DavidStar/Nodes1.svg" width="100" /></p>
+
+<p>Yesterday, I learnt drawing simple TikZ diagrams.</p>
+
+<p>In my opinion, defining nodes while connecting them will <em>not</em> look
+good.</p>
+
+<pre><code>\path[draw] (0, 0) node {A} -- (1,0) -- (1,1) node {B};
+</code></pre>
+
+<p>I define the nodes before connecting them, and the result is what I
+desire.</p>
+
+<p><img src="/images/posts/DavidStar/Nodes2.svg" width="100" />
+<!-- The image overlapped with the code block. --></p>
+
+<figure class="code"><figcaption><span>Drawing basic TikZ diagrams</span><a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\node</span> (A) at (0,0) <span class="nb">{</span>A<span class="nb">}</span>;
+</span><span class="line"><span class="k">\node</span> (B) at (1,1) <span class="nb">{</span>B<span class="nb">}</span>;
+</span><span class="line"><span class="k">\draw</span> (A) -- (1,0) -- (B);
+</span></code></pre></td></tr></table></div></figure>
+
+<p><img class="center" src="/images/posts/DavidStar/DavidStar.svg" width="600" /></p>
+
+<p>I <em>overlooked</em> the meaning of <strong>clipping</strong> in Meik Hellmund’s short
+TikZ tutorial.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  I constructed the diagram using the <code>edge</code>
+command.</p>
+
+<figure class="code"><figcaption><span> (DavidStar.tex)</span> <a href="/downloads/code/DavidStar.tex">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[tikz]</span><span class="nb">{</span>standalone<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line">  <span class="k">\node</span> (A) at (1,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line">  <span class="k">\node</span> (C) at (4,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (A);
+</span><span class="line">  <span class="k">\node</span> (E) at (1,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (C)
+</span><span class="line">                                                 edge (A);
+</span><span class="line">  <span class="k">\node</span> (B) at (3,0) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">+</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line">  <span class="k">\node</span> (D) at (3,4) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}</span><span class="nv">\choose</span><span class="nb">{r}}</span><span class="s">$</span><span class="nb">}</span> edge (B);
+</span><span class="line">  <span class="k">\node</span> (F) at (0,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{{n}</span><span class="nv">\choose</span><span class="nb">{r </span><span class="o">-</span><span class="nb"> </span><span class="m">1</span><span class="nb">}}</span><span class="s">$</span><span class="nb">}</span> edge (B)
+</span><span class="line">                                             edge (D);
+</span><span class="line">  <span class="k">\node</span> (G) at (2,2) <span class="nb">{</span><span class="s">$</span><span class="nb">{n </span><span class="nv">\choose</span><span class="nb"> r}</span><span class="s">$</span><span class="nb">}</span>;
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>tikzpicture<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Realising that $\displaystyle {n \choose k} = \frac{n!}{r! (n - r)!}$,
+one can easily see that</p>
+
+<p>\[
+\binom{n - 1}{k - 1} \binom{n}{k + 1} \binom{n + 1}{k} =
+  \binom{n - 1}{k} \binom{n}{k - 1} \binom{n + 1}{k + 1}.
+\]</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+
+      <p>See <a href="http://www.math.uni-leipzig.de/~hellmund/LaTeX/pgf-tut.pdf#page=12">p.12</a> of the tutorial.</p>
+
+      <blockquote>
+        <p>“It is often better to define named nodes first and connect them
+later, since then the paths are clipped around the notes…”</p>
+      </blockquote>
+      <p><a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -536,290 +656,6 @@ myself what ideas should be introduced.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/17/my-git-command-list-2/">My Git Command List (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-17T22:51:14+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:51 pm</span></time>
-        
-           | <a href="/blog/2014/06/17/my-git-command-list-2/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/17/my-git-command-list-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/17/my-git-command-list-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="situation-tldr">Situation (TL;DR)</h2>
-
-<p>Since I tried to import my old WordPress posts to this blog <em>without</em>
-affecting <code>source</code> branch, I created a new branch called
-<code>wpcom-importer</code> branch, on which <code>rake deploy</code> was successfully run.
-However, some of my old WordPress posts contain some unusual
-characters, which triggered an encoding problem in
-<a href="https://gist.github.com/1394128">Chuang’s WordPress XML to Octopress importer</a>.  Looking at
-<code>rake</code>’s error message, I feel that I’ve put the converted posts from
-WordPress’s XML on the right branch.</p>
-
-<p>Thus, I drafted my new posts on <code>source</code> branch, but <em>not</em> on
-<code>wpcom-importer</code> branch.  I then switched to <code>wpcom-importer</code> and
-deleted some unwanted parts of XML file.  However, I <em>couldn’t</em> switch
-back to <code>source</code> branch to do another commit.  As a result, I used
-<code>git stash</code> to solve the problem.</p>
-
-<p>After finishing the draft, I committed the change, switched to
-<code>wpcom-importer</code> and “merged” the last change on <code>source</code> branch for
-<code>rake preview</code>.  The reason for <em>not</em> running the preview command on
-<code>source</code> branch is to avoid huge changes in <code>public</code> folder.
-<del>I’ve learnt to do the “merge” from
-<a href="http://jasonrudolph.com/blog/2009/02/25/git-tip-how-to-merge-specific-files-from-another-branch/" title="Git Tip: How to &quot;Merge&quot; Specific Files from Another Branch">a post published by Jason Rudolph</a>.</del></p>
-
-<p>Being <em>unfamiliar</em> with kramdown syntax for displayed math
-equations<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, I had made some mistakes in the source code for my
-<a href="/blog/2014/06/17/injectivity-of-stable-mappings/" title="Injectivity of Stable Mappings">previous post</a> while writing the draft on <code>source</code> branch.</p>
-
-<hr />
-<p>(Last edited on JUN 19,2014)</p>
-
-<p>From the network graph, I realized my mistake in understanding merging
-in Git.  I <em>shouldn’t</em> manually commit the <em>same</em> changes on
-<em>different</em> branch, but to commit it <em>once only</em> on a branch and
-<em>merge</em> the commit on <em>another</em> branch, if the two diverging branches
-have <em>no</em> conflict.</p>
-
-<p>I continued writing <code>&lt;posts&gt;</code>.  Unfortunately, I had <em>mistakenly</em>
-committed the changes on <code>wpcom-importer</code>, instead of <code>source</code> branch.
-I would like to</p>
-
-<ol>
-  <li>Remove the commit, but <em>keep</em> the changes in the files.</li>
-  <li>“Move” the changed file from <code>wpcom-importer</code> to <code>source</code> branch.</li>
-  <li>Commit the changes on <code>source</code> branch.</li>
-  <li>Merge the changes from <code>source</code> branch into <code>wpcom-importer</code>.</li>
-</ol>
-
-<p>I issued the following commands to do so.</p>
-
-<pre class="cliUB"><code>$ git reflog                   # For checking purpose
-$ git reset --soft HEAD^       # Revert to the previous commit
-$ git log -3                   # For checking purpose
-$ git status                   # `&lt;post&gt;' should be in `... not staged for commit'
-$ less &lt;post&gt;                  # For checking purpose
-$ git reset HEAD &lt;post&gt;        # Unstage `&lt;post&gt;' for commit
-$ git checkout source          # Go to the correct place for the commit
-$ git add &lt;post&gt;               # Add back `&lt;post&gt;' to `source' branch
-$ git commit -am "&lt;msg&gt;"       # Do the commit on the correct branch
-$ git checkout wpcom-importer  # Go back to another branch for merging
-$ git merge source             # Merge the changes back
-</code></pre>
-
-<hr />
-
-<h2 id="the-little-list">The little list</h2>
-
-<h3 id="stashing-and-grabbing">Stashing and Grabbing</h3>
-
-<p>“Stash” means going to another branch with <em>uncommitted</em> changes in
-the staging area here.</p>
-
-<p><a href="http://blog.longwin.com.tw/2009/05/git-learn-initial-command-2009/" title="Git 初學筆記-指令操作教學-Tsung's Blog">This list</a> written in Chinese is a quick summary of Git
-commands.  I learnt the use of <code>git stash</code> commands from there.</p>
-
-<pre class="cliUB"><code>$ git stash                      # save the uncommitted changes
-$ git stash list                 # show a list of stashes
-$ git stash show                 # inspect a list of stashes
-$ git stash pop                  # apply and discard the topmost stash
-$ git stash apply                # apply but don't discard the topmost stash
-$ git checkout source -- &lt;file&gt;  # copy the file from other branch
-</code></pre>
-
-<p>In the last “merge” command, <code>--</code> avoids an ambiguity since <code>source</code>
-can be either the name of a branch or a folder in this case.  In
-addition, this command <em>doesn’t</em> affect the commit history.</p>
-
-<h3 id="more-about-rewinding-things">More about rewinding things</h3>
-
-<h4 id="rewinding-to-previous-versions-on-the-same-branch">Rewinding to previous versions on the same branch</h4>
-
-<p>Here’s more commands about reseting the working tree to previous
-versions.</p>
-
-<pre class="cliUB"><code>$ git reset --soft HEAD^   # Revert to the previous commit without changing the files
-$ git reset --hard HEAD~2  # Take a further step back from `HEAD' and discard all changes in the files in the disappeared commits
-</code></pre>
-
-<h4 id="difference-between-resetting-and-reverting-things">Difference between resetting and reverting things</h4>
-
-<p>In the manual of <code>git reset</code>, I saw a link to<code>git revert</code>, and
-<em>couldn’t</em> understand the difference between those two command from
-there.</p>
-
-<blockquote>
-  <p>If you want to undo a commit other than the latest on a branch,
-<a href="https://www.kernel.org/pub/software/scm/git/docs/git-revert.html">git-revert(1)</a> is your friend.</p>
-</blockquote>
-
-<p>A page in Stack Overflow is really my friend.
-(<a href="http://stackoverflow.com/a/8358039">URL</a>)  <code>git revert</code> <em>won’t</em> overwrite the
-commit history, so it’s suitable for published changes, while
-<code>git reset</code> <em>can</em> rewrite history.</p>
-
-<h4 id="undoing-merges">Undoing merges</h4>
-
-<p>See <em>Undo a merge or pull</em> and the following section in the manual of
-<code>git reset</code> for explanations.</p>
-
-<h5 id="undoing-conflicted-merges">Undoing conflicted merges</h5>
-
-<p>The SCM will say:</p>
-
-<pre class="cliUB"><code>Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
-
-<p>Thus, the problematic merge <em>hasn’t</em> been committed.  Simply running
-<code>git reset --hard</code> will solve the problem.</p>
-
-<h5 id="undoing-successful-automatic-merges">Undoing successful automatic merges</h5>
-
-<p>Use <code>ORIG_HEAD</code> instead of <code>HEAD</code> for the tip of the branch before the
-merge.  (i.e. <code>git reset --hard ORIG_HEAD</code>)</p>
-
-<h3 id="using-git-diff-for-merging-commits">Using git-diff for merging commits</h3>
-
-<p>(Added on JUN 20, 2014)</p>
-
-<h4 id="a-shortcoming-of-">A shortcoming of “..”</h4>
-
-<p>To forsee possible conflicts in <code>git merge</code>, one may run
-<code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code> to see the differences between two
-diverged branches.  However, the diff hunk <em>doesn’t</em> show the
-additions and deletions on each branch.  A <code>-</code> in the diff hunk can be
-caused by either</p>
-
-<ol>
-  <li>Addition of contents in <code>&lt;branch1&gt;</code>; or</li>
-  <li>Deletion of contents in <code>&lt;branch2&gt;</code>.</li>
-</ol>
-
-<p>Running <code>git merge &lt;branch1&gt;</code> on <code>&lt;branch2&gt;</code> gives <em>different</em>
-results in different cases.</p>
-
-<ol>
-  <li>The line starting with <code>-</code> in the diff hunk will be inserted into
-<code>&lt;branch2&gt;</code>.</li>
-  <li>The line starting with <code>-</code> in the diff hunk <em>won’t</em> be inserted
-into <code>&lt;branch1&gt;</code>.</li>
-</ol>
-
-<p>In order to predict whether there will be a conflict, one needs to
-know the <em>changes done on each branch</em>.  Therefore, one needs to
-compare the tip of each branch with their common ancestors.</p>
-
-<p>Let me illustrate this by two examples.</p>
-
-<h5 id="example-1">Example 1</h5>
-
-<p>One has a file like this.</p>
-
-<figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
-</span><span class="line">line 2
-</span><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Then it diverged into two branches.</p>
-
-<figure class="code"><figcaption><span>Branch 1 (line 1 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
-</span><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<figure class="code"><figcaption><span>Branch 2 (line 2 deleted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
-</span><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
-
-<pre><code>+line 1
--line 2
- line 3
-</code></pre>
-
-<h5 id="example-2">Example 2</h5>
-
-<p>One has a file like this.</p>
-
-<figure class="code"><figcaption><span>Parent of the two branches</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Then it diverged into two branches.</p>
-
-<figure class="code"><figcaption><span>Branch 1 (line 2 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 2
-</span><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<figure class="code"><figcaption><span>Branch 2 (line 1 inserted)</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="text"><span class="line">line 1
-</span><span class="line">line 3
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Running <code>git diff &lt;branch1&gt;..&lt;branch2&gt;</code>, one gets</p>
-
-<pre><code>+line 1
--line 2
- line 3
-</code></pre>
-
-<p>Observation: The diff hunks in the two examples are the <strong>same</strong>, even
-though their common ancestors and changes in files are <strong>different</strong>.</p>
-
-<h4 id="overcoming-the-shortcoming">Overcoming the shortcoming</h4>
-
-<p>From the above sub-section, it’s clear that one needs to compare the
-tip of each branch with the common ancestor of the two branches.  To
-see how <code>&lt;branch1&gt;</code> has been modified,
-<code>git diff &lt;branch2&gt;...&lt;branch1&gt;</code> can be used to compare the tip of
-<code>&lt;branch1&gt;</code> with the common ancestor of <code>&lt;branch1&gt;</code> and <code>&lt;branch2&gt;</code>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>The official kramdown syntax documentation. (<a href="http://kramdown.gettalong.org/syntax.html#math-blocks">URL</a>) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/24">&larr; Older</a>
@@ -889,6 +725,10 @@ see how <code>&lt;branch1&gt;</code> has been modified,
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
       </li>
     
@@ -902,10 +742,6 @@ see how <code>&lt;branch1&gt;</code> has been modified,
     
       <li class="post">
         <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/17/restore-corrupt-git-repository/">Restore Corrupt Git Repository</a>
       </li>
     
   </ul>
