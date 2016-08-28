@@ -3,7 +3,7 @@ layout: post
 title: "Jekyll Serve Error (2)"
 date: 2016-08-28 21:32:58 +0800
 comments: true
-categories: 
+categories: [blogging, M$ Win*]
 ---
 
 Background
