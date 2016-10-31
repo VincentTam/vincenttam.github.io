@@ -13,7 +13,8 @@ Sozi's better support for SVG graphics.
 
 1. [My first presentation][present1]  
     A small test upload
-2. My upcoming presentation  
+2. [My upcoming presentation][present2]  
     Under construction
 
 [present1]: first-presentation.sozi.html
+[present2]: eng/fff.svg
