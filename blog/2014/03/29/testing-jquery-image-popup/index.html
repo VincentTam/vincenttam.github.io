@@ -1,0 +1,709 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Testing jQuery Image Popup - Blog 1</title>
+  <meta name="author" content="Vincent Tam">
+
+  
+  <meta name="description" content="What’s below is a small picture. The words inside the screenshot
+can’t be displayed. Users may right-click on the picture and select
+“View Image”, if &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://vincenttam.github.io/blog/2014/03/29/testing-jquery-image-popup">
+  <link href="/favicon.png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Blog 1" type="application/atom+xml">
+  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+  <meta name="msvalidate.01" content="E421C0320103717D8EB0AD1FEC67709D" />
+  <script type="text/javascript">
+  var host = "vincenttam.github.io";
+  if ((host == window.location.host) && (window.location.protocol != "https:")) {
+    window.location.protocol = "https";
+  }
+  </script>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-46788371-2', 'auto');
+      ga('send', 'pageview');
+
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Blog 1</a></h1>
+  
+    <h2>Random Talk on Random Thoughts</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="vincenttam.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/about">About</a></li>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+	<h1 class="entry-title">Testing jQuery Image Popup</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-29T18:50:50+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:50 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io">Comments</a>
+        
+	| <a rel="bookmark" href="" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>What’s below is a small picture.  The words inside the screenshot
+<em>can’t</em> be displayed.  Users may right-click on the picture and select
+“View Image”, if there’s a script that enables a magnified image to
+show up right after a user has clicked on the image, it’ll be <em>more
+convenient</em> for the user.</p>
+
+<p><img class="fancybox" src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" title="My Big Image" alt="fig1" /></p>
+
+<p>I tried following <a href="http://goo.gl/5qCaj">Clapper’s guide</a>, but as I generate
+the site using <code>rake</code>, I got two errors. The first one was about CSS,
+while the second one was about one of the two required Ruby gems.
+(Namely, <a href="http://goo.gl/qeN28">mini_magick</a> and <a href="http://goo.gl/0oZy6">Erubis</a>.)</p>
+
+<!-- more -->
+
+<p>For the first error, I got something like <code>Undefined mixin
+'centered'</code>, and so I googled <code>octopress "Undefined mixin
+'centered'"</code>.  Using this query string, no match was returned.
+Instead, Google performed a similar search using a query string
+<em>without the double quotes</em>.  Among the search results, I found an
+article also written by Clapper.<sup id="fnref:toc"><a href="#fn:toc" class="footnote">1</a></sup>  I’ve known that I also need to
+download <code>sass/custom/_mixins.scss</code>
+<a href="http://goo.gl/qvYPRI">from his GitHub repo</a>.</p>
+
+<p>For the second error, I’ve realised that I forgot to include those
+gems in <code>Gemfile</code>, because I lacked knowledge in Ruby, and the guide
+didn’t mention that.  In fact, adding the following two lines into
+<code>Gemfile</code> solved the problem.</p>
+
+<pre><code>gem 'mini_magick'
+gem 'erubis'
+</code></pre>
+
+<p><del>I don’t know why.  The plugin doesn’t work, but</del> I can get
+jQuery working here.  The following script from Clapper doesn’t work
+for me.</p>
+
+<figure class="code"><figcaption><span>jQuery on the Google CDN</span><a href="http://goo.gl/hOF4mR">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="c1">// Revert jQuery&#39;s &#39;$&#39; alias, to avoid clashes with ender.js. NOTE:</span>
+</span><span class="line">  <span class="c1">// Use</span>
+</span><span class="line">  <span class="c1">// jQuery(...), instead of $(...) from here on.</span>
+</span><span class="line">  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">noConflict</span><span class="p">();</span>
+</span><span class="line"><span class="nt">&lt;/script&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>The <code>noConflict</code> method disabled my button for hiding the sidebar on
+the right hand side.  <del>Anyways, I gave up trying this
+plugin.</del>  Before trying <del>it again</del> more things, I think
+I should have more knowledge in jQuery first.</p>
+
+<p>To get things work, I played some <em>dirty and little</em> tricks on
+<code>plugins/img_popup.html.erb</code>.  Since some features of Octopress’s
+codeblock are <em>not</em> working<sup id="fnref:no_start_num"><a href="#fn:no_start_num" class="footnote">2</a></sup>, I just manually include
+part of the code.</p>
+
+<figure class="code"><figcaption><span>My adaptations of the plugin</span><a href="http://goo.gl/53fIEZ">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="js+erb"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#image-dialog-</span><span class="cp">&lt;%=</span> <span class="nb">id</span> <span class="cp">%&gt;</span><span class="s2">&quot;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#image-dialog-</span><span class="cp">&lt;%=</span> <span class="nb">id</span> <span class="cp">%&gt;</span><span class="s2">&quot;</span><span class="p">).</span><span class="nx">dialog</span><span class="p">({</span>
+</span><span class="line">    <span class="nx">autoOpen</span><span class="o">:</span>  <span class="kc">false</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">modal</span><span class="o">:</span>     <span class="kc">true</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">draggable</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">minWidth</span><span class="o">:</span>  <span class="cp">&lt;%=</span> <span class="n">full_width</span> <span class="o">+</span> <span class="mi">40</span> <span class="cp">%&gt;</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">minHeight</span><span class="o">:</span> <span class="cp">&lt;%=</span> <span class="n">full_height</span> <span class="o">+</span> <span class="mi">40</span> <span class="cp">%&gt;</span><span class="p">,</span>
+</span><span class="line">    <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">title</span> <span class="cp">-%&gt;</span>
+</span><span class="line">    <span class="nx">title</span><span class="o">:</span>     <span class="s2">&quot;</span><span class="cp">&lt;%=</span> <span class="n">title</span> <span class="cp">%&gt;</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span class="line">    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">-%&gt;</span>
+</span><span class="line">    <span class="nx">show</span><span class="o">:</span>      <span class="s1">&#39;scale&#39;</span><span class="p">,</span>
+</span><span class="line">    <span class="nx">hide</span><span class="o">:</span>      <span class="s1">&#39;scale&#39;</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#image-</span><span class="cp">&lt;%=</span> <span class="nb">id</span> <span class="cp">%&gt;</span><span class="s2">&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="line">    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#image-dialog-</span><span class="cp">&lt;%=</span> <span class="nb">id</span> <span class="cp">%&gt;</span><span class="s2">&quot;</span><span class="p">).</span><span class="nx">dialog</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">);</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>What I’ve actually done in the above code block is to replace <code>jQuery</code>
+with <code>$</code>.  At that time, if I ran <code>rake generate</code>, Octopress let me
+pass.  However, when I locally previewed the result, clicking on the
+picture <em>couldn’t</em> trigger a popup window showing a larger picture.</p>
+
+<p>I tried comparing the generated HTML source code of my site and that
+of Clapper’s site unproductively.  I decided to give up, and wrote a
+paragraph on this.  Then I removed the related files and sections of
+code.  Since I was running <code>rake preview</code>, I pressed <code>&lt;F5&gt;</code> and
+expected to see a <em>static</em> picture.  I was surprised to see <em>two</em>
+pictures.  The lower one was a static picture that I had seen for
+numerous times during this test.  The uppper one is smaller, and as I
+clicked on it, a popup window showed up.  This result amazed me.  As a
+result, I decided to grab back the files from Clapper’s GitHub repo,
+and studied his Sass settings.</p>
+
+<p>I re-worked the whole thing again, and tried adapting Clapper’s Sass
+rules to mine, but I <em>couldn’t</em> manage to create the popup window
+again.  Then I tried to reduce the complexity of the relations of the
+SCSS files by reducing the amount of files.  I appended the following
+lines of code to <code>sass/screen.scss</code>. (You may refer to
+<a href="http://goo.gl/BNqlL7">my original file</a>.)</p>
+
+<figure class="code"><figcaption><span>My *temporary* `sass/screen.scss` </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="k">@import</span> <span class="s2">&quot;compass&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@include</span><span class="nd"> global-reset</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/colors&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/fonts&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/layout&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;base&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;partials&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;plugins/**/*&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/styles&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="cm">/* I appended the following lines. */</span>
+</span><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/mixins&quot;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class="line">    <span class="na">font-size</span><span class="o">:</span> <span class="mi">90</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class="line">    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="nv">$base2</span><span class="p">;</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">60</span><span class="kt">%</span><span class="p">);</span>
+</span><span class="line">    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="line">    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class="line">    <span class="nc">.caption</span> <span class="p">{</span>
+</span><span class="line">	<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.screen</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.illustration</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>I did something strange: <em>while <code>rake preview</code> was running</em>, in my
+<code>sass/screen.scss</code>, I commented the line <code>@import custom/mixins</code>.  One
+would expect I got error due to the line <code>@include centered(100%)</code>.
+Although the Solarized theme was gone, the image popup window was
+<em>back</em>.  Without changing other lines of code, I repeated the process
+for a few times, and discovered that if <code>@import custom/mixins</code> was
+<em>gone</em>, then the popup window was <em>back</em>.  It was important for me
+<em>not to stop the <code>rake preview</code> command</em>. Otherwise, the command <code>rake
+generate</code> would <em>fail</em> me.  I wondered how these two lines could
+coexist.  I finally noticed that the <code>screen</code> class was <em>hidden</em> due
+to <code>display: none;</code>!  I commented that line and imported
+<code>sass/custom/_mixins.scss</code>, then the two images are <em>back</em>!</p>
+
+<p>This time, in order to find out useful information such as the class
+name and the id of relevant HTML elements, I used Firefox to quickly
+inspect the code.  Finally, I found out that for pictures that
+<em>couldn’t</em> trigger a popup window, it was inside a <code>&lt;div&gt;</code> container
+of classes <code>illustration</code> and <code>print</code>, and there’s <em>another</em> image in
+<em>another</em> <code>&lt;div&gt;</code> container of classes <code>imgpopup</code> and <code>screen</code>.
+However, it didn’t show up because of the line <code>display: none;</code> inside
+the <code>screen</code> class.  Looking at Clapper’s Sass settings again on his
+GitHub repo, I eventually have a clue on the two SCSS code blocks in
+Clapper’s blog post about his Octopress image popup plugin.</p>
+
+<p>The <em>true</em> reason for my failure in creating the image popup window at
+the beginning is on line 20 of the code block below: it should be
+<code>print</code> instead of <code>screen</code> since it’s a user’s custom Sass rule for
+the display on the web browser. (i.e. <em>screen</em>), and we want to <em>hide</em>
+the static picture, which is for printing.</p>
+
+<figure class="code"><figcaption><span>Correct `sass/custom/_screen.scss`</span><a href="http://goo.gl/Vw52BS">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">font-style</span><span class="o">:</span> <span class="no">italic</span><span class="p">;</span>
+</span><span class="line">    <span class="na">font-size</span><span class="o">:</span> <span class="mi">80</span><span class="kt">%</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class="line">    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">div</span><span class="nc">.imgpopup</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#cccccc</span><span class="p">;</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> rounded-border</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span>
+</span><span class="line">    <span class="na">margin</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="line">    <span class="k">@include</span><span class="nd"> centered</span><span class="p">(</span><span class="mi">80</span><span class="kt">%</span><span class="p">);</span>
+</span><span class="line">    <span class="na">text-align</span><span class="o">:</span> <span class="no">center</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">    <span class="nc">.caption</span> <span class="p">{</span>
+</span><span class="line">	<span class="na">margin</span><span class="o">:</span> <span class="mi">0</span> <span class="nv">!important</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.print</span> <span class="p">{</span> <span class="c1">// It should be *print*, instead of *screen*.</span>
+</span><span class="line">    <span class="na">display</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>In Clapper’s guide, the SCSS code block below the above one should be
+included in <code>sass/custom/_print.scss</code>.  Then, a new file
+<code>sass/print.scss</code> is created.</p>
+
+<figure class="code"><figcaption><span>`sass/screen.scss` </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="k">@import</span> <span class="s2">&quot;custom/print&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:toc">
+      <p><a href="http://goo.gl/hOF4mR">http://goo.gl/hOF4mR</a> <a href="#fnref:toc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:no_start_num">
+      <p><a href="http://goo.gl/o5IeWk">http://goo.gl/o5IeWk</a> <a href="#fnref:no_start_num" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Vincent Tam</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2014-03-29T18:50:50+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:50 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/web-technologies/'>web technologies</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://vincenttam.github.io/blog/2014/03/29/testing-jquery-image-popup/" data-via="" data-counturl="https://vincenttam.github.io/blog/2014/03/29/testing-jquery-image-popup/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/03/22/jump-to-latex-syntax-error/" title="Previous Post: Jump to $\rm \LaTeX$ Syntax Error">&laquo; Jump to $\rm \LaTeX$ Syntax Error</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/04/05/latex-template-for-chinese-essays/" title="Next Post: $\rm \LaTeX$ Template for Chinese Essays">$\rm \LaTeX$ Template for Chinese Essays &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me (Brief)</h1>
+  <a href="http://stackexchange.com/users/3841408/gnu-supporter">
+    <img src="/images/flair.png" width="208" height="58"
+    alt="profile for GNU Supporter on Stack Exchange, a network of
+    free, community-driven Q&amp;A sites" title="profile for GNU
+    Supporter on Stack Exchange, a network of free, community-driven
+    Q&amp;A sites" /></a>
+  <p><a href="/about">Here</a>'s a more detailed version.</p>
+  <ol>
+    <li>A free software supporter</li>
+    <li>A GNU/Linux user</li>
+    <li>Love text editing in Vim</li>
+    <li>Enjoy writing in Markdown</li>
+  </ol>
+</section>
+<section>
+  <h1>Categories</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/android/'>android (1)</a> <a href='/blog/categories/android/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/blogging/'>blogging (20)</a> <a href='/blog/categories/blogging/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/c-slash-c-plus-plus/'>c/c++ (6)</a> <a href='/blog/categories/c-slash-c-plus-plus/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (34)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+
+  </ul>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/08/20/my-host-file-edited/">My Host File Edited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" src="/images/CC-BY-SA-icon.png" height="31" width="88"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br/>
+<span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'blogueun';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'https://vincenttam.github.io/blog/2014/03/29/testing-jquery-image-popup/';
+        var disqus_url = 'https://vincenttam.github.io/blog/2014/03/29/testing-jquery-image-popup/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+<!-- Defer loading of JavaScripts -->
+<script type="text/javascript" charset="utf-8">
+(function() {
+    function getScript(url,success){
+        var script=document.createElement('script');
+        script.src=url;
+        var head=document.getElementsByTagName('head')[0],
+        done=false;
+        script.onload=script.onreadystatechange = function(){
+        if ( !done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') ) {
+            done=true;
+            success();
+            script.onload = script.onreadystatechange = null;
+            head.removeChild(script);
+        }
+        };
+        head.appendChild(script);
+    }
+
+    getScript("/javascripts/modernizr-2.0.js",function() {});
+    getScript("https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML,https://vincenttam.github.io/javascripts/MathJaxLocal.js",function() {});
+
+    getScript("//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",function(){
+      getScript("/javascripts/octopress.js",function() {});
+      getScript("/fancybox/source/jquery.fancybox.pack.js?v=2.1.5", function() {
+	getScript("/fancybox/source/helpers/all.js", function() {
+	  getScript("/javascripts/FancyBoxLocal.js", function() {});
+	  });
+	});
+      });
+})();
+
+var cb = function() {
+  var h = document.getElementsByTagName('head')[0];
+
+  // Fonts from Google's Web font directory at http://google.com/webfonts
+  var font1 = document.createElement("link");
+  font1.href = "//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic";
+  font1.rel = "stylesheet";
+  font1.type = "text/css";
+  h.parentNode.insertBefore(font1, h);
+
+  var font2 = document.createElement("link");
+  font2.href = "//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic";
+  font2.rel = "stylesheet";
+  font2.type = "text/css";
+  h.parentNode.insertBefore(font2, h);
+
+  var fontub = document.createElement("link");
+  fontub.href = "//fonts.googleapis.com/css?family=Ubuntu+Mono:400,700";
+  fontub.rel = "stylesheet";
+  fontub.type = "text/css";
+  h.parentNode.insertBefore(fontub, h);
+
+  // screen.css
+  var l = document.createElement("link");
+  l.href = "/stylesheets/screen.css";
+  l.media = "screen, projection";
+  l.rel = "stylesheet";
+  l.type = "text/css";
+  h.parentNode.insertBefore(l, h);
+
+  // table css
+  var tcss = document.createElement("link");
+  tcss.href = "/stylesheets/data-table.css";
+  tcss.media = "screen, projection";
+  tcss.rel = "stylesheet";
+  tcss.type = "text/css";
+  h.parentNode.insertBefore(tcss, h);
+
+  // CSS files for FancyBox
+  var fbcss = document.createElement("link");
+  fbcss.href = "/fancybox/source/jquery.fancybox.css?v=2.1.5";
+  fbcss.rel = "stylesheet";
+  fbcss.type = "text/css";
+  fbcss.media = "screen, projection";
+  document.body.appendChild(fbcss);
+  var fbbtncss = document.createElement("link");
+  fbbtncss.href = "/fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5";
+  fbbtncss.rel = "stylesheet";
+  fbbtncss.type = "text/css";
+  fbbtncss.media = "screen, projection";
+  document.body.appendChild(fbbtncss);
+  var fbthmcss = document.createElement("link");
+  fbthmcss.href = "/fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7";
+  fbthmcss.rel = "stylesheet";
+  fbthmcss.type = "text/css";
+  fbthmcss.media = "screen, projection";
+  document.body.appendChild(fbthmcss);
+};
+
+var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+    webkitRequestAnimationFrame || msRequestAnimationFrame;
+if (raf) raf(cb);
+else window.addEventListener('load', cb);
+</script>
+
+
+</body>
+</html>

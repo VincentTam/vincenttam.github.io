@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-08-28T22:01:45+08:00</updated>
+  <updated>2016-10-31T14:48:44+01:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -18,7 +18,7 @@
       <title type="html"><![CDATA[Jekyll Serve Error (2)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2/"/>
     
-    <updated>2016-08-28T21:32:58+08:00</updated>
+    <updated>2016-08-28T15:32:58+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -337,6 +337,101 @@ BACKPORTED mode. [ http://git.io/vJf3J ]
 jekyll 3.2.1 | Error:  wrong number of arguments (2 for 1)
 </code></pre>
 
+<p>Then, I googled “unable to convert x90 from ascii-8bit to utf-8” and
+clicked on the first link, which was a Stack Overflow question about
+<a href="http://stackoverflow.com/q/18235293">an similar error</a>.</p>
+
+<pre class="cli"><code>$ gem update --system
+RubyGems 2.6.6 installed
+Parsing documentation for rubygems-2.6.6
+Installing ri documentation for rubygems-2.6.6
+
+=== 2.6.6 / 2016-06-22
+
+Bug fixes:
+
+* Sort installed versions to make sure we install the latest version when
+## RELEASE NOTES OMITTED
+  by Michal Papis.
+
+
+------------------------------------------------------------------------------
+
+RubyGems installed the following executables:
+    C:/Ruby200-x64/bin/gem
+
+Ruby Interactive (ri) documentation was installed. ri is kind of like man
+pages for ruby libraries. You may access it like this:
+  ri Classname
+  ri Classname.class_method
+  ri Classname#instance_method
+If you do not wish to install this documentation in the future, use the
+--no-document flag, or set it as the default in your ~/.gemrc file. See
+'gem help env' for details.
+
+Updating rubygems-update
+Successfully installed rubygems-update-2.6.6
+Parsing documentation for rubygems-update-2.6.6
+Installing ri documentation for rubygems-update-2.6.6
+Installing darkfish documentation for rubygems-update-2.6.6
+Installing RubyGems 2.6.6
+RubyGems system software updated
+</code></pre>
+
+<p>The error <em>unable to convert “\x86” from ASCII-8BIT to UTF-8 for …</em>
+was <em>gone</em>, but the rests were still there.</p>
+
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/blog2 (gh-pages)
+$ gem update
+ERROR:  Error installing io-console:
+        ERROR: Failed to build gem native extension.
+
+    current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+C:/Ruby200-x64/bin/ruby.exe -r ./siteconf20160829-1756-1m1r5xm.rb extconf.rb
+checking for rb_funcallv()... no
+checking for rb_sym2str()... no
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can
+ be found here:
+
+  C:/Ruby200-x64/lib/ruby/gems/2.0.0/extensions/x64-mingw32/2.0.0/io-console-0.4
+.6/mkmf.log
+
+current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+make "DESTDIR=" clean
+
+current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+make "DESTDIR="
+generating console-x64-mingw32.def
+compiling console.c
+console.c: In function 'console_cursor_set':
+console.c:716:5: warning: implicit declaration of function 'RARRAY_AREF' [-Wimpl
+icit-function-declaration]
+linking shared-object io/console.so
+console.o: In function `console_cursor_set':
+C:\Ruby200-x64\lib\ruby\gems\2.0.0\gems\io-console-0.4.6/console.c:716: undefine
+d reference to `RARRAY_AREF'
+C:\Ruby200-x64\lib\ruby\gems\2.0.0\gems\io-console-0.4.6/console.c:716: undefine
+d reference to `RARRAY_AREF'
+collect2.exe: error: ld returned 1 exit status
+make: *** [console.so] Error 1
+
+make failed, exit code 2
+
+Gem files will remain installed in C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-co
+nsole-0.4.6 for inspection.
+Results logged to C:/Ruby200-x64/lib/ruby/gems/2.0.0/extensions/x64-mingw32/2.0.
+0/io-console-0.4.6/gem_make.out
+ERROR:  While executing gem ... (Encoding::InvalidByteSequenceError)
+    "\xE9" followed by "\x94" on CP950
+Updating installed gems
+Updating io-console
+Temporarily enhancing PATH to include DevKit...
+Building native extensions.  This could take a while...
+Updating jekyll-sitemap
+</code></pre>
+
 ]]></content>
     
   </entry>
@@ -346,7 +441,7 @@ jekyll 3.2.1 | Error:  wrong number of arguments (2 for 1)
       <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
     
-    <updated>2016-08-21T18:30:57+08:00</updated>
+    <updated>2016-08-21T12:30:57+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
     
       <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
@@ -443,10 +538,10 @@ this chapter of the guide.</li>
   <entry>
     
       <title type="html"><![CDATA[My Host File Edited]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/08/21/my-host-file-edited/"/>
+      <link href="https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited/"/>
     
-    <updated>2016-08-21T00:50:34+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/08/21/my-host-file-edited</id>
+    <updated>2016-08-20T18:50:34+02:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
 
@@ -484,7 +579,7 @@ the <code>sudo</code> privilege in order to directly manipulate this file.</p>
       <title type="html"><![CDATA[Jekyll Serve Error]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error/"/>
     
-    <updated>2016-08-20T22:15:43+08:00</updated>
+    <updated>2016-08-20T16:15:43+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -798,7 +893,7 @@ Configuration file: /home/owner/blog2/_config.yml
       <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path (2)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/"/>
     
-    <updated>2016-08-18T16:15:33+08:00</updated>
+    <updated>2016-08-18T10:15:33+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -843,7 +938,7 @@ Then, everything should be fine.</p>
       <title type="html"><![CDATA[Restore Corrupt Git Repository]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository/"/>
     
-    <updated>2016-08-17T11:16:33+08:00</updated>
+    <updated>2016-08-17T05:16:33+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1107,7 +1202,7 @@ write-tree</code>.</p>
       <title type="html"><![CDATA[$\rm \LaTeX$ French Letter With Signature]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature/"/>
     
-    <updated>2016-04-17T17:15:38+08:00</updated>
+    <updated>2016-04-17T11:15:38+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1269,7 +1364,7 @@ French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing
       <title type="html"><![CDATA[$\rm \LaTeX$ French Letter Template]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template/"/>
     
-    <updated>2016-04-16T23:32:14+08:00</updated>
+    <updated>2016-04-16T17:32:14+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template</id>
     
       <content type="html"><![CDATA[<p>I just include the files here for future references.  Since the code
@@ -1388,7 +1483,7 @@ sample.</p>
       <title type="html"><![CDATA[Writting Letter With Bibliography]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography/"/>
     
-    <updated>2016-04-16T21:39:52+08:00</updated>
+    <updated>2016-04-16T15:39:52+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1700,7 +1795,7 @@ in the command <code>texhash ~/texmf</code>, and then the installed STY file
       <title type="html"><![CDATA[I-Search and Reverse I-Search]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/09/i-search-and-reverse-i-search/"/>
     
-    <updated>2016-04-09T20:42:54+08:00</updated>
+    <updated>2016-04-09T14:42:54+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/09/i-search-and-reverse-i-search</id>
     
       <content type="html"><![CDATA[<p>One knows that long commands can be retrieved by <code>&lt;C-r&gt;</code>.  If the
@@ -1717,7 +1812,7 @@ search forward through the command history instead of backword?</p>
       <title type="html"><![CDATA[$\rm \LaTeX$-Suite in Portable Git]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git/"/>
     
-    <updated>2016-04-09T14:34:38+08:00</updated>
+    <updated>2016-04-09T08:34:38+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1894,7 +1989,7 @@ installing another PDF viewer in my USB stick.</p>
       <title type="html"><![CDATA[Can't Visit WordPress.com]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/09/cant-visit-wordpress-dot-com/"/>
     
-    <updated>2016-04-09T14:10:27+08:00</updated>
+    <updated>2016-04-09T08:10:27+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/09/cant-visit-wordpress-dot-com</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1927,7 +2022,7 @@ think the following screenshot confirm my guess.</p>
       <title type="html"><![CDATA[Replaced All "Click Here"]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/09/replaced-all-click-here/"/>
     
-    <updated>2016-04-09T13:58:40+08:00</updated>
+    <updated>2016-04-09T07:58:40+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/09/replaced-all-click-here</id>
     
       <content type="html"><![CDATA[<p>I removed all instances of “here” in the hyperlink text and committed
@@ -1943,7 +2038,7 @@ Say “Click Here”</em> in <a href="https://www.smashingmagazine.com/2012/06/l
       <title type="html"><![CDATA[Awk Column Alignment]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment/"/>
     
-    <updated>2016-04-09T12:48:11+08:00</updated>
+    <updated>2016-04-09T06:48:11+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -2016,7 +2111,7 @@ omitted.  Otherwise, the output will be messed up.</p>
       <title type="html"><![CDATA[Loop Through an Array Having Only One Element in Bash]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/"/>
     
-    <updated>2016-04-08T22:59:29+08:00</updated>
+    <updated>2016-04-08T16:59:29+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -2146,7 +2241,7 @@ first search result.</p>
       <title type="html"><![CDATA[COM Surrogate Problem]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/07/com-surrogate-problem/"/>
     
-    <updated>2016-04-07T22:14:30+08:00</updated>
+    <updated>2016-04-07T16:14:30+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/07/com-surrogate-problem</id>
     
       <content type="html"><![CDATA[<p>A few days ago, I saw this dialog box on M$ Win* 7.  Occupied by my
@@ -2167,7 +2262,7 @@ order to know more about this problem.</p>
       <title type="html"><![CDATA[No Schauder Base in $\ell^\infty$]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/05/no-schauder-base-in-l-infty/"/>
     
-    <updated>2016-04-05T19:10:52+08:00</updated>
+    <updated>2016-04-05T13:10:52+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/05/no-schauder-base-in-l-infty</id>
     
       <content type="html"><![CDATA[<p>In <a href="https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable/">a recent post about $\ell^\infty$</a>, I’ve said that there’s a
@@ -2189,10 +2284,10 @@ functional defined on a closed subspace of a normed space.</li>
   <entry>
     
       <title type="html"><![CDATA[Oneline Perl]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/04/oneline-perl/"/>
+      <link href="https://vincenttam.github.io/blog/2016/04/03/oneline-perl/"/>
     
-    <updated>2016-04-04T00:47:40+08:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/04/oneline-perl</id>
+    <updated>2016-04-03T18:47:40+02:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/04/03/oneline-perl</id>
     
       <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
 
@@ -2320,7 +2415,7 @@ HTTPS
       <title type="html"><![CDATA[Searching Git Commit Messages]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/03/searching-git-commit-messages/"/>
     
-    <updated>2016-04-03T19:42:33+08:00</updated>
+    <updated>2016-04-03T13:42:33+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/03/searching-git-commit-messages</id>
     
       <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
@@ -2410,7 +2505,7 @@ address with <code>fake</code>. <a href="#fnref:1" class="reversefootnote">&#861
       <title type="html"><![CDATA[$\ell^\infty$ Is Not Separable]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable/"/>
     
-    <updated>2016-04-02T17:00:13+08:00</updated>
+    <updated>2016-04-02T11:00:13+02:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
