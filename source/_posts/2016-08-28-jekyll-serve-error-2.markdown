@@ -327,4 +327,100 @@ The preview *failed*.
     jekyll 3.2.1 | Error:  wrong number of arguments (2 for 1)
 {:.cli}
 
+Then, I googled "unable to convert x90 from ascii-8bit to utf-8" and
+clicked on the first link, which was a Stack Overflow question about
+[an similar error][so18235293].
+
+    $ gem update --system
+    RubyGems 2.6.6 installed
+    Parsing documentation for rubygems-2.6.6
+    Installing ri documentation for rubygems-2.6.6
+
+    === 2.6.6 / 2016-06-22
+
+    Bug fixes:
+
+    * Sort installed versions to make sure we install the latest version when
+    ## RELEASE NOTES OMITTED
+      by Michal Papis.
+
+
+    ------------------------------------------------------------------------------
+
+    RubyGems installed the following executables:
+	    C:/Ruby200-x64/bin/gem
+
+    Ruby Interactive (ri) documentation was installed. ri is kind of like man
+    pages for ruby libraries. You may access it like this:
+      ri Classname
+      ri Classname.class_method
+      ri Classname#instance_method
+    If you do not wish to install this documentation in the future, use the
+    --no-document flag, or set it as the default in your ~/.gemrc file. See
+    'gem help env' for details.
+
+    Updating rubygems-update
+    Successfully installed rubygems-update-2.6.6
+    Parsing documentation for rubygems-update-2.6.6
+    Installing ri documentation for rubygems-update-2.6.6
+    Installing darkfish documentation for rubygems-update-2.6.6
+    Installing RubyGems 2.6.6
+    RubyGems system software updated
+{:.cli}
+
+The error *unable to convert "\\x86" from ASCII-8BIT to UTF-8 for ...*
+was *gone*, but the rests were still there.
+
+    Owner@Owner-PC MINGW64 /c/github/blog2 (gh-pages)
+    $ gem update
+    ERROR:  Error installing io-console:
+            ERROR: Failed to build gem native extension.
+
+        current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+    C:/Ruby200-x64/bin/ruby.exe -r ./siteconf20160829-1756-1m1r5xm.rb extconf.rb
+    checking for rb_funcallv()... no
+    checking for rb_sym2str()... no
+    creating Makefile
+
+    To see why this extension failed to compile, please check the mkmf.log which can
+     be found here:
+
+      C:/Ruby200-x64/lib/ruby/gems/2.0.0/extensions/x64-mingw32/2.0.0/io-console-0.4
+    .6/mkmf.log
+
+    current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+    make "DESTDIR=" clean
+
+    current directory: C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-console-0.4.6
+    make "DESTDIR="
+    generating console-x64-mingw32.def
+    compiling console.c
+    console.c: In function 'console_cursor_set':
+    console.c:716:5: warning: implicit declaration of function 'RARRAY_AREF' [-Wimpl
+    icit-function-declaration]
+    linking shared-object io/console.so
+    console.o: In function `console_cursor_set':
+    C:\Ruby200-x64\lib\ruby\gems\2.0.0\gems\io-console-0.4.6/console.c:716: undefine
+    d reference to `RARRAY_AREF'
+    C:\Ruby200-x64\lib\ruby\gems\2.0.0\gems\io-console-0.4.6/console.c:716: undefine
+    d reference to `RARRAY_AREF'
+    collect2.exe: error: ld returned 1 exit status
+    make: *** [console.so] Error 1
+
+    make failed, exit code 2
+
+    Gem files will remain installed in C:/Ruby200-x64/lib/ruby/gems/2.0.0/gems/io-co
+    nsole-0.4.6 for inspection.
+    Results logged to C:/Ruby200-x64/lib/ruby/gems/2.0.0/extensions/x64-mingw32/2.0.
+    0/io-console-0.4.6/gem_make.out
+    ERROR:  While executing gem ... (Encoding::InvalidByteSequenceError)
+        "\xE9" followed by "\x94" on CP950
+    Updating installed gems
+    Updating io-console
+    Temporarily enhancing PATH to include DevKit...
+    Building native extensions.  This could take a while...
+    Updating jekyll-sitemap
+{:.cli}
+
 [pp]: /blog/2016/08/20/jekyll-serve-error/
+[so18235293]: http://stackoverflow.com/q/18235293
