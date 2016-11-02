@@ -9,8 +9,15 @@
     </head>
     <body>
       <h1>My first interactive math graph in SVG</h1>
-      <div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
-      <script type="text/javascript"> var board = JXG.JSXGraph.initBoard('box', {boundingbox: [-10, 10, 10, -10], axis:true}); </script>
+      <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+      <script type="text/javascript">
+	var brd = JXG.JSXGraph.initBoard('jxgbox', {boundingbox: [-10, 10, 10, -10], axis:true}),
+            a = brd.create('slider',[[2,-5],[7,-5],[-5,1,5]], {name:'a'}),
+            b = brd.create('slider',[[2,-6],[7,-6],[-5,0,5]], {name:'b'}),
+            c = brd.create('slider',[[2,-7],[7,-7],[-5,0,5]], {name:'c'}),
+
+            f = brd.create('functiongraph',[function(x){ return a.Value()*x*x + b.Value()*x + c.Value(); }]);
+      </script>
       <small>Powered by <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a></small>
       <a href="//validator.w3.org/check?uri=referer">
         <img src="/images/valid-html5.png" alt="Valid HTML 5" height="31" width="88"></a>
