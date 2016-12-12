@@ -80,6 +80,15 @@ MathJax instead of fancyBox in my draft markdown file.[^pp2]
 
 ### A problem with Vim's folding arised
 
+---
+(Added on DEC 12TH, 2016)
+
+This subsection can be omitted since appending the above code can be
+done with `cat`.  Please see [the next post][seri4] in this series for
+the detailed description.
+
+---
+
 By default, with the plugin `vim-markdown` installed, the sections are
 *folded*.  Before I can continue editing at the end of the file, I
 have to open the last fold, which contained more than 25 lines due to
@@ -125,6 +134,7 @@ Unluckily, in the *real Markdown source* for Octopress posts, *four*
 
 [seri1]: /blog/2014/12/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-1/
 [seri2]: /blog/2014/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-2/
+[seri4]: /blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/
 [pp1]: /blog/2015/08/04/some-thoughts-on-a-real-valued-function/
 [pp2]: /blog/2014/12/29/octopress-pagespeed-jquery-and-fancybox/
 [pp3]: /blog/2014/09/14/kramdowns-markdown-attributes/
