@@ -50,8 +50,8 @@ That's why I wrote the [previous post][PrevPost].
 With equation \eqref{eq:dist_limit}, I can now derive
 \eqref{eq:inf_err} from \eqref{eq:finite_err}.
 
-<span class="myeqn" markdown="0">$\displaystyle \because \lim_{k \to
-\infty} x_k = x_*$</span>
+<span class="myeqn" markdown="0">$\because \lim\limits_{k \to \infty}
+x_k = x_*$</span>
 
 <div class="myeqn">
 \[
