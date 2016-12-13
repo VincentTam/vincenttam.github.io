@@ -25,8 +25,8 @@ In the book, $\le$ means function extension, and
 
 <div class="myeqn">
 \[
-  \mathcal{P} = \{f: f \text{ is a function, } dom\,f \subseteq
-  (S_i)_{i \in I}, f(x) \in x \forall x \in dom\,f\}.
+  \mathcal{P} = \{f \mid f \text{ is a function, } dom\,f \subseteq
+  (S_i)_{i \in I}, f(x) \in x \,\forall x \in dom\,f\}.
 \]
 </div>
 

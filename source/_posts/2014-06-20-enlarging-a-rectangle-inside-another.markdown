@@ -88,8 +88,8 @@ i} \volume \vect{I} \, \left( \frac{\varepsilon}{L} \right)^{n - i} +
 \]
 </div>
 
-Assume $\varepsilon < 1, L \ge 1$, and let $\displaystyle M :=
-\max_{1 \le i \le n - 1} {n \choose i}$.
+Assume $\varepsilon < 1, L \ge 1$, and let $M := \max\limits_{1 \le i
+\le n - 1} {n \choose i}$.
 
 Then we have
 
@@ -101,8 +101,8 @@ Then we have
   \choose i} \volume \vect{I} \, \left( \frac{\varepsilon}{L}
   \right)^{n - i} \\
 =& \frac{\varepsilon}{L} + M (n - 1) \volume \vect{I}
-  \frac{\varepsilon}{L} \\
-=& [1 + M (n - 1) \volume \vect{I}] \frac{\varepsilon}{L}
+  \,\frac{\varepsilon}{L} \\
+=& [1 + M (n - 1) \volume \vect{I}] \,\frac{\varepsilon}{L}
 \end{split}
 \]
 </div>

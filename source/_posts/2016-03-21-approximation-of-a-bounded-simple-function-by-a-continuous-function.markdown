@@ -58,11 +58,11 @@ In the proof, to deal with the summation sign, we use a union sign.
 </div>
 
 If we're given that $m \le f \le M$, to find <span class="myeqn"
-markdown="0">$x \in \bigcup_{j = 1}^m [(E_j \cap [a,b]) \triangle
-U_j]$</span> so that $\psi(x) < m$ or $\psi(x) > M$, we need to have
-*overlapping* of <span class="myeqn" markdown="0">$E_i \cap [a,b]$ and
-$E_j \cap [a,b]$, so that $\chi_{(E_i \cap [a,b]) \triangle U_i} +
-\chi_{(E_j \cap [a,b]) \triangle U_j}$ will give us something
+markdown="0">$x \in \bigcup\limits_{j = 1}^m [(E_j \cap [a,b])
+\triangle U_j]$</span> so that $\psi(x) < m$ or $\psi(x) > M$, we need
+to have *overlapping* of <span class="myeqn" markdown="0">$E_i \cap
+[a,b]$ and $E_j \cap [a,b]$, so that $\chi_{(E_i \cap [a,b]) \triangle
+U_i} + \chi_{(E_j \cap [a,b]) \triangle U_j}$ will give us something
 interesting.</span>
 
 To see *necessity* of the introduction of $\bar{\psi}$, consider <span

@@ -196,11 +196,11 @@ Generalization
 
 By induction, we can generalize \eqref{eq:fin} to the expected waiting
 time for $n$ servers in parallel: if $X\_i \sim \Exp(\lambda\_i)
-\forall 1 \le i \le n$, then
+\,\forall 1 \le i \le n$, then
 
 <div class="myeqn">
 \[
-  \E[\min\left\{ X_1, \ldots, X_n \right\}] = \frac{1}{\sum_{k = 1}^n
-  \lambda_k}.
+  \E[\min\left\{ X_1, \ldots, X_n \right\}]
+  = \frac{1}{\sum\limits_{k = 1}^n \lambda_k}.
 \]
 </div>

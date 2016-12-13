@@ -40,9 +40,9 @@ Problem
 ---
 
 In the author's proof, it's said that if $f$ is a continuous function
-defined on $I$, <span class="myeqn" markdown="0">$K:=\sup\{f(x):x\in
-I\}$</span>, and $\forall t\in I, \exists a(t),\delta(t)>0$ such that
-$|x-t|<\delta(t)$ and $x\in I$, then $f(x)<K-a(t)$.
+defined on $I$, <span class="myeqn" markdown="0">$K:=\sup\{f(x) \mid
+x\in I\}$</span>, and $\forall t\in I, \exists a(t),\delta(t)>0$ such
+that $|x-t|<\delta(t)$ and $x\in I$, then $f(x)<K-a(t)$.
 
 Spending too much time on
 [boosting the PageSpeed of the homepage of this blog][pp_speed], I

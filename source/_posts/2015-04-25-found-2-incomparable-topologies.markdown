@@ -8,12 +8,12 @@ categories: math
 
 1. Lower limit topology ($\R\_l$)
 
-    - Basis: $\\{[a,b): a,b \in \R\text{ s.t. } a < b\\}$
+    - Basis: $\\{[a,b) \mid a,b \in \R\text{ s.t. } a < b\\}$
 
 2. K-topology ($\R\_K$)
 
-    - Basis: $\\{(a,b), (a,b) - K: a,b \in \R\text{ s.t. } a < b \\}$,
-	where $K = \\{ 1/n : n \in \Z\_+ \\}$.
+    - Basis: $\\{(a,b), (a,b) - K \mid a,b \in \R\text{ s.t. } a < b \\}$,
+	where $K = \\{ 1/n \mid n \in \Z\_+ \\}$.
 
 $\R\_l \nsubseteq \R\_K$
 ---

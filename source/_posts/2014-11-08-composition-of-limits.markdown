@@ -14,12 +14,11 @@ $\\R^m$ respectively, $f:\\mathcal\{V} \\to \\R^k$ and
 $g:\\mathcal\{U} \\to \\R^m$ be functions such that $g(\\mathcal\{U})
 \\subseteq \\mathcal\{V}$, and $\\vect\{x}\_0 \\in \\mathcal\{U},
 \\vect\{y}\_0 \\in \\mathcal\{V}$, and $\\vect\{z}\_0 \\in \\R^k$ be
-points such that $\\displaystyle \\lim\_\{\\vect\{x} \\to
-\\vect\{x}\_0} g(\\vect\{x}) = \\vect\{y}\_0$ and $\\displaystyle
-\\lim\_\{\\vect\{y} \\to \\vect\{y}\_0} f(\\vect\{y}) =
-\\vect\{z}\_0$.
+points such that $\\lim\\limits\_\{\\vect\{x} \\to \\vect\{x}\_0}
+g(\\vect\{x}) = \\vect\{y}\_0$ and $ \\lim\\limits\_\{\\vect\{y} \\to
+\\vect\{y}\_0} f(\\vect\{y}) = \\vect\{z}\_0$.
 
-**Is it possible that** $\\displaystyle \\lim\_\{\\vect\{x} \\to
+**Is it possible that** $\\lim\\limits\_\{\\vect\{x} \\to
 \\vect\{x}\_0} f(g(\\vect\{x})) \\ne \\vect\{z}\_0$**?**
 
 <!-- more -->
@@ -27,18 +26,18 @@ points such that $\\displaystyle \\lim\_\{\\vect\{x} \\to
 \"Intuition\"
 ---
 
-1.  Since $\\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x}\_0}
+1.  Since $\\lim\\limits\_\{\\vect\{x} \\to \\vect\{x}\_0}
     g(\\vect\{x}) = \\vect\{y}\_0$, as $\\vect\{x}$ is \"sufficiently
     near to $\\vect\{x}\_0$\", $\\vect\{y} = g(\\vect\{x})$ is \"very
     close\" to $\\vect\{y}\_0$.
-2.  Since $\\displaystyle \\lim\_\{\\vect\{y} \\to \\vect\{y}\_0}
+2.  Since $\\lim\\limits\_\{\\vect\{y} \\to \\vect\{y}\_0}
     f(\\vect\{y}) = \\vect\{z}\_0$, as $\\vect\{y}$ is \"sufficiently
     near to $\\vect\{y}\_0$\", $\\vect\{z} = f(\\vect\{y})$ is \"very
     close\" to $\\vect\{z}\_0$.
 
 Combining (1) and (2), as $\\vect\{x}$ is \"sufficiently near to
 $\\vect\{x}\_0$\", $\\vect\{z} = f(\\vect\{y})$ is \"very close\" to
-$\\vect\{z}\_0$, thus one expects $\\displaystyle \\lim\_\{\\vect\{x}
+$\\vect\{z}\_0$, thus one expects $\\lim\\limits\_\{\\vect\{x}
 \\to \\vect\{x}\_0} f(g(\\vect\{x})) = \\vect\{z}\_0$.
 
 Discussion
@@ -62,7 +61,7 @@ open ball $\\mathcal\{B}\_r(\\vect\{x}\_0)$.
 
 Let $\\epsilon > 0$.
 
-$\\because \\displaystyle \\lim\_\{\\vect\{y} \\to \\vect\{y}\_0}
+$\\because \\lim\\limits\_\{\\vect\{y} \\to \\vect\{y}\_0}
 f(\\vect\{y}) = \\vect\{z}\_0$
 
 (a) $\\therefore \\exists\\,\\delta\' > 0 \\text\{ such that }
@@ -75,7 +74,7 @@ f(\\mathcal\{B}\_\{\\delta\'}
 
 Use another given limit.
 
-$\\because \\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x}\_0}
+$\\because \\lim\\limits\_\{\\vect\{x} \\to \\vect\{x}\_0}
 g(\\vect\{x}) = \\vect\{y}\_0$
 
 (b) $\\therefore \\exists\\,\\delta > 0 \\text\{ such that }
@@ -104,7 +103,7 @@ Thus, the key of this problem is whether the point $\\vect\{y}\_0$ is
 in $\\mathcal\{B}\_\\epsilon (\\vect\{z}\_0)$, and whehter such
 $\\vect\{y}\_0$ *exists*.
 
-Since we want $\\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x}\_0}
+Since we want $\\lim\\limits\_\{\\vect\{x} \\to \\vect\{x}\_0}
 f(g(\\vect\{x})) \\ne \\vect\{z}\_0$, we want
 $f(g(\\mathcal\{B}\_\\delta
 (\\vect\{x}\_0)\\setminus\\left\\\{\\vect\{x}\_0\\right\\}))
@@ -134,7 +133,7 @@ Conclusion
 ---
 
 With the above <span class="grp2">two additional conditions</span>,
-one has $\\displaystyle \\lim\_\{\\vect\{x} \\to \\vect\{x}\_0}
+one has $\\lim\\limits\_\{\\vect\{x} \\to \\vect\{x}\_0}
 f(g(\\vect\{x})) \\ne \\vect\{z}\_0$.
 
 Some off-topic remarks

@@ -28,7 +28,7 @@ Unless otherwise specified, assume that $A \in \R^n,\vect{x},
 
 Norm
 : The *norm* of $\vect{x}$ is defined as
-  $\displaystyle \norm{\vect{x}} := \sqrt{\sum\_{i = 1}^n x\_i^2}$.
+  $\norm{\vect{x}} := \sqrt{\sum\limits\_{i = 1}^n x\_i^2}$.
 
 Distance
 : The *distance* between $\vect{u}$ and $\vect{v}$ is
@@ -52,14 +52,13 @@ Open set
 
 Limit of $\\{\vect{u}\_k\\}$
 : $\forall\,\varepsilon > 0,\exists\,K \in \N \text{ s.t. }
-  \forall\,k \ge K, \norm{\vect{u}\_k - \vect{u}} < \varepsilon$
-
+  \forall\,k \ge K, \norm{\vect{u}\_k - \vect{u}} < \varepsilon$  
   We denote it as
-  $\displaystyle \lim\_{k \to \infty} \vect{u}\_k = \vect{u}$.
+  $\lim\limits\_{k \to \infty} \vect{u}\_k = \vect{u}$.
 
 Closed set
-: $\displaystyle \vect{u}\_k \in A\,\forall\,k \in \N,
-  \lim\_{k \to \infty} \vect{u}\_k = \vect{u} \implies \vect{u}\in A$
+: $\vect{u}\_k \in A\,\forall\,k \in \N, \lim\limits\_{k \to \infty}
+  \vect{u}\_k = \vect{u} \implies \vect{u}\in A$
 
 Boundary
 : $\partial A := \\{\vect{x}\mid\forall\,r > 0,\exists\,\vect{u}\in A,
@@ -85,7 +84,7 @@ $\R^n$, $\partial A \subseteq B$.
 *Proof*. Let
 $\vect{u} \in \partial A. \forall\,k \in \N,
 \exists\,\vect{u}\_k \in \mathcal{B}\_{1/k}(\vect{u}) \cap A$.
-Then $\displaystyle \lim\_{k \to \infty} \vect{u}\_k = \vect{u}$
+Then $\lim\limits\_{k \to \infty} \vect{u}\_k = \vect{u}$
 because $\forall\,\varepsilon > 0,K > 1/\varepsilon,
 (k \ge K \implies \norm{\vect{u} - \vect{u}\_k} < 1/k
 \le \varepsilon)$.  
@@ -161,7 +160,7 @@ Generalized rectangle
   $\vect{I\_i} := [a\_i,b\_i]\,\forall\,i \in \N$.
 
 Volume of generalized rectangle
-: $\displaystyle \volume \vect{I} := \prod\_{i = 1}^n (b\_i - a\_i)$
+: $\volume \vect{I} := \prod\limits\_{i = 1}^n (b\_i - a\_i)$
 
 From the definition of the closure of a set, we can conclude that $A
 \subseteq \overline{A}$ since $\R^n = \interior A \sqcup \partial A
@@ -190,8 +189,8 @@ That's the definition of *Jordan content 0* sets.
 Suppose $D$ is a bounded subset of $\R^n$.  
 $\forall\,\varepsilon > 0,\exists$ generalized rectangle $\vect{I}\_1,
 \dots,\vect{I}\_m \subseteq \R^n$ s.t.
-$\displaystyle D \subseteq \bigcup\_{j = 1}^m \vect{I}\_j$ and
-$\displaystyle \sum\_{j = 1}^m \volume \vect{I}\_j < \varepsilon$.
+$D \subseteq \bigcup\limits\_{j = 1}^m \vect{I}\_j$ and
+$\sum\limits\_{j = 1}^m \volume \vect{I}\_j < \varepsilon$.
 
 I have read another version of the definition, and the only difference
 between those two versions is that $D$ is replaced by $\overline{D}$.
@@ -199,10 +198,10 @@ It took me a short while to understand why this is OK.
 
 First, $\vect{I}\_j$ is closed for each $j$ since it's the Cartesian
 product of closed intervals.  
-$\displaystyle \bigcup\_{j = 1}^m \vect{I}\_j$ is also closed.
+$\bigcup\limits\_{j = 1}^m \vect{I}\_j$ is also closed.
 (DeMorgan's Law)  
 Hence, by the [extended claim](#ExtendedClaim), one can also write
-$\displaystyle \overline{D} \subseteq \bigcup_{j=1}^m \vect{I}_j$
+$\overline{D} \subseteq \bigcup\limits_{j=1}^m \vect{I}_j$
 instead of $D$ in the above definition.
 
 ---

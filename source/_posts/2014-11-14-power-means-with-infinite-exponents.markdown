@@ -19,8 +19,8 @@ Suppose that $M_n (a_1,\dots,a_k) :=
 \N$, and $a_i > 0\quad\forall\,i \in \{1, \dots,k\}$.  
 Show that
 $\lim\limits_{n \to \infty} M_n (a_1,\dots,a_k) = \max\limits_{i \in
-\{ 1,\dots,k\}} a_i$ and $\displaystyle \lim\limits_{n \to -\infty}
-M_n = \min\limits_{i \in \{1,\dots,k\}} a_i$.
+\{ 1,\dots,k\}} a_i$ and $\lim\limits_{n \to -\infty} M_n =
+\min\limits_{i \in \{1,\dots,k\}} a_i$.
 </span>
 
 *Proof*:

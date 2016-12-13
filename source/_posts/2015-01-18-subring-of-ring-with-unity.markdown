@@ -14,5 +14,6 @@ $\phi(m) = m\cdot 1$ *isn't* difficult to read.
 I used fifteen minutes to think of why one needs a *subring* inside
 the ring $R$ with unity, instead of $R$.  After I've come up with
 <span class="myeqn"
-markdown="0">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}\mid a
-\in \Z, b \in\Z_{\ge 0} \right\}$</span>, I start this post.
+markdown="0">$R=\langle1,\frac{1}{2}\rangle=\left\{\frac{a}{2^b}
+\,\middle|\, a \in \Z, b \in\Z_{\ge 0} \right\}$</span>, I start this
+post.

@@ -12,10 +12,11 @@ proof of Cauchy--Schwarz Inequality.
 <div class="myeqn">
 \[
 \begin{aligned}
-& (\sum_{i = 1}^n a_i b_i)^2 \le (\sum_{i = 1}^n a_i^2)(\sum_{j = 1}^n
-b_j^2) \\
-\iff& (\sum_{i = 1}^n a_i b_i) (\sum_{j = 1}^n a_j b_j) \le (\sum_{i =
-1}^n a_i^2)(\sum_{j = 1}^n b_j^2) \\
+& \left(\sum_{i = 1}^n a_i b_i\right)^2 \le \left(\sum_{i = 1}^n
+a_i^2\right) \left(\sum_{j = 1}^n b_j^2\right) \\
+\iff& \left(\sum_{i = 1}^n a_i b_i\right) \left(\sum_{j = 1}^n a_j
+b_j\right) \le \left(\sum_{i = 1}^n a_i^2\right) \left(\sum_{j = 1}^n
+b_j^2\right) \\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
 \sum_{j = 1}^n a_i^2 b_j^2 \\
 \iff& \sum_{i = 1}^n \sum_{j = 1}^n a_i a_j b_i b_j \le \sum_{i = 1}^n
@@ -61,5 +62,5 @@ points.[^rmk]
     *don't* to want be to so strict on the functions $f$ and $g$
     defined on $\[a,b\]$, and we just say that $f$ and $g$ are
     integrable functions defined on $\[a,b\]$, then we have to accept
-    the fact that $\displaystyle \int_a^b f^2 = 0$ *doesn't* imply
-    that $f \equiv 0$.
+    the fact that $\int_a^b f^2 = 0$ *doesn't* imply that $f \equiv
+    0$.

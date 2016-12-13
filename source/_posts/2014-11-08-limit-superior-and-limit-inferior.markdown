@@ -11,12 +11,12 @@ Problem
 
 For sequences of numbers, *limit inferior* and *limit superior* are
 defined as <span class="myeqn" markdown="0">$\liminf
-(a_n):=\sup\{\inf\{a_k:k \ge n\}\}$</span> and <span class="myeqn"
-markdown="0">$\limsup (a_n):=\inf\{\sup\{a_k:k \ge n\}\}$</span>
-respectively; for sequences of sets, they are defined as <span
-class="myeqn" markdown="0">$\displaystyle \bigcup_{n=1}^{\infty}
-\bigcap_{k=n}^{\infty} A_k$ and $\displaystyle \bigcap_{n=1}^{\infty}
-\bigcup_{k=n}^{\infty} A_k$</span> respectively.
+(a_n):=\sup\{\inf\{a_k \mid k \ge n\}\}$</span> and <span
+class="myeqn" markdown="0">$\limsup (a_n):=\inf\{\sup\{a_k \mid k \ge
+n\}\}$</span> respectively; for sequences of sets, they are defined as
+<span class="myeqn" markdown="0">$\bigcup\limits_{n=1}^{\infty}
+\bigcap\limits_{k=n}^{\infty} A_k$ and $\bigcap\limits_{n=1}^{\infty}
+\bigcup\limits_{k=n}^{\infty} A_k$</span> respectively.
 
 **Why are they consistent?**
 
@@ -28,7 +28,7 @@ Discussion
 It suffices to find a relation between '<' and '⊆': $\{x \le a\}
 \subseteq \{x \le b\} \iff a \le b$.
 
-Claim: <span class="myeqn" markdown="0">$\displaystyle \bigcup_{a \in
+Claim: <span class="myeqn" markdown="0">$\bigcup\limits_{a \in
 A} \{x \le a\} = \{x \le \sup A\}$.</span>
 
 *Proof*\:
@@ -61,8 +61,9 @@ With the above claim, one has
 </div>
 
 <span class="myeqn" markdown="0">
-Hence, one can see that $\sup\inf \{a_k:k \ge n\} \le \inf\sup \{a_k:k
-\ge n\}$ and $\displaystyle \bigcup_{n=1}^{\infty}
-\bigcap_{k=n}^{\infty} \{x \le a_k\} \subseteq \bigcap_{n=1}^{\infty}
-\bigcup_{k=n}^{\infty} \{x \le a_k\}$ share something in common. 
+Hence, one can see that $\sup\inf \{a_k \mid k \ge n\} \le \inf\sup
+\{a_k \mid k \ge n\}$ and $\bigcup\limits_{n=1}^{\infty}
+\bigcap\limits_{k=n}^{\infty} \{x \le a_k\} \subseteq
+\bigcap\limits_{n=1}^{\infty} \bigcup\limits_{k=n}^{\infty} \{x \le
+a_k\}$ share something in common. 
 </span>
