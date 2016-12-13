@@ -3,7 +3,7 @@ layout: post
 title: "Simple MathJax Template for Basic Linear Programs"
 date: 2016-01-09 23:12:24 +0800
 comments: true
-categories: [LaTeX, MathJax]
+categories: [LaTeX, MathJax, template]
 ---
 
 Goal
