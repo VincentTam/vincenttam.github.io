@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="Background There is an easy way of calculating the volume of $\{(x,y,z) \in
-\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the &hellip;">
+\R^3 \mid 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,7 +94,7 @@
 
 
 
-<time class='entry-date' datetime='2015-04-07T10:07:49+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:07 am</span></time>
+<time class='entry-date' datetime='2015-04-07T09:07:49+01:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:07 am</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -108,7 +108,7 @@
 <div class="entry-content"><h2 id="background">Background</h2>
 
 <p>There is an easy way of calculating the volume of $\{(x,y,z) \in
-\R^3: 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
+\R^3 \mid 0 \le x,y,z \le t, x + y + z \le t\}$: just consider the
 permutation of $x,y,z$.<sup id="fnref:easy_vol"><a href="#fn:easy_vol" class="footnote">1</a></sup>  This can be easily generalized to
 $n$ dimension.</p>
 
@@ -117,29 +117,33 @@ $n$ dimension.</p>
 <div class="myeqn">
 \[
 \begin{split}
-&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n: 0 \le x_i \le 1
-\forall 1 \le i \le n, \sum\nolimits_{i = 1}^n x_i \le 1 \right\}.
+&amp; \text{Let } A:= \left\{ (x_1,\ldots,x_n) \in \R^n \,\middle|\,
+0 \le x_i \le 1 \,\forall 1 \le i \le n, \sum\limits_{i = 1}^n x_i \le 1
+\right\}.
 \\
 &amp; \text{Volume of } A \\
 =&amp; \idotsint\limits_A \ud x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3 \ud x_2
-\ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 1} x_i} \ud x_n \cdots \ud x_3
+\ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} (t - \sum_{i = 1}^{n - 1} x_i)
-\ud x_{n - 1} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 2} x_i} \left(t -
+\sum\limits_{i = 1}^{n - 1} x_i\right) \ud x_{n - 1} \cdots \ud x_3
+\ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1} \cdots
-\ud x_3 \ud x_2 \ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 2} x_i} x_{n - 1} \ud x_{n - 1}
+\cdots \ud x_3 \ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{(t - \sum_{i = 1}^{n -
-2} x_i)^2}{2!} \ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 3} x_i} \frac{1}{2!} \left(t -
+\sum\limits_{i = 1}^{n - 2} x_i\right)^2 \ud x_{n - 2}
+\cdots \ud x_3 \ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!} \ud
-x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 3} x_i} \frac{x_{n - 2}^2}{2!}
+\ud x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =&amp; \int_{0}^{t} \int_{0}^{t - x_1} \int_{0}^{t - x_1 - x_2} \cdots
-\int_{0}^{t - \sum_{i = 1}^{n - 4} x_i} \frac{(t - \sum_{i = 1}^{n -
-3} x_i)^3}{3!} \ud x_{n - 3} \cdots \ud x_3 \ud x_2 \ud x_1 \\
+\int_{0}^{t - \sum\limits_{i = 1}^{n - 4} x_i} \frac{1}{3!} \left(t -
+\sum\limits_{i = 1}^{n - 3} x_i\right)^3 \ud x_{n - 3}
+\cdots \ud x_3 \ud x_2 \ud x_1 \\
 &amp; \vdots \\
 =&amp; \int_{0}^{t} \frac{(t - x_1)^{n - 1}}{(n - 1)!} \ud x_1 \\
 =&amp; \frac{t^n}{n!}
@@ -158,11 +162,11 @@ x_{n - 2} \cdots \ud x_3 \ud x_2 \ud x_1 \\
 =&amp; \frac{n!}{t^n} \idotsint\limits_A x_1 \ud x_n \cdots \ud x_3 \ud
 x_2 \ud x_1 \\
 =&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \int_{0}^{t - x_1} \int_{0}^{t -
-x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
-\cdots \ud x_3 \ud x_2 \ud x_1 \\
-=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \frac{(t - x_1)^{n - 1}}{(n - 1)!}
-\ud x_1 \\
-=&amp; \frac{n!}{t^n} \left( \left. -x_1 \frac{(t - x_1)^{n - 1}}{(n -
+x_1 - x_2} \cdots \int_{0}^{t - \sum\limits_{i = 1}^{n - 1} x_i} \ud
+x_n \cdots \ud x_3 \ud x_2 \ud x_1 \\
+=&amp; \frac{n!}{t^n} \int_{0}^{t} x_1 \,\frac{(t - x_1)^{n - 1}}{(n -
+1)!} \ud x_1 \\
+=&amp; \frac{n!}{t^n} \left( \left. -x_1 \,\frac{(t - x_1)^{n - 1}}{(n -
 1)!} \right|_{0}^t + \int_{0}^{t} \frac{(t - x_1)^n}{n!} \ud x_1
 \right) \\
 =&amp; \frac{n!}{t^n} \left( 0 + \frac{t^{n + 1}}{(n + 1)!} \right) \\
@@ -171,8 +175,8 @@ x_1 - x_2} \cdots \int_{0}^{t - \sum_{i = 1}^{n - 1} x_i} \ud x_n
 \]
 </div>
 
-<p>By symmetry, we conclude that the center of mass is $(\frac{t}{n + 1},
-\frac{t}{n + 1}, \ldots, \frac{t}{n + 1}) \in \R^n$.</p>
+<p>By symmetry, we conclude that the center of mass is $\left(\frac{t}{n
++ 1}, \frac{t}{n + 1}, \ldots, \frac{t}{n + 1}\right) \in \R^n$.</p>
 
 <hr />
 <div class="footnotes">
@@ -200,7 +204,7 @@ Retrieved 15:34, April 6, 2015, from
 
 
 
-<time class='entry-date' datetime='2015-04-07T10:07:49+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:07 am</span></time>
+<time class='entry-date' datetime='2015-04-07T09:07:49+01:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:07 am</span></time>
       
 
 <span class="categories">
@@ -274,25 +278,25 @@ Retrieved 15:34, April 6, 2015, from
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -301,23 +305,23 @@ Retrieved 15:34, April 6, 2015, from
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/my-host-file-edited/">My Host File Edited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
       </li>
     
   </ul>

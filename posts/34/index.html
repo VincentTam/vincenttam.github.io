@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Possible software: Vim Why? In a heavy IDE, you need to click a button or some keyboard shortcuts.
-Unless you frequently use the keystrokes, you’ll &hellip;">
+  <meta name="description" content="Typing :h %:p will give you a list of file name modifiers in
+cmdline.txt, and the section below filename-modifiers is
+extension-removal. The list &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +89,182 @@ Unless you frequently use the keystrokes, you’ll &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2013/12/11/vim-file-name-modifier/">Vim File Name Modifier</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T05:19:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:19 am</span></time>
+        
+           | <a href="/blog/2013/12/11/vim-file-name-modifier/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/11/vim-file-name-modifier/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/vim-file-name-modifier/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Typing <code>:h %:p</code> will give you a list of file name modifiers in
+<code>cmdline.txt</code>, and the section below <code>filename-modifiers</code> is
+<code>extension-removal</code>.  The list maybe too detailed, especially for
+users who don’t have much time to learn it.  Bram Moolenaar, the
+father of <a href="http://www.vim.org">Vim</a>, once said that trying to learn all the things in his
+lecture called <a href="http://www.moolenaar.net/habits.html">7 Habits of Effective Text Editing</a> (see
+habit 7).  (The video is on <a href="http://youtu.be/p6K4iIMlouI">Youtube</a>.)  Fortunately, there’re
+some examples below the list.  I found some useful in the following
+cases.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/11/vim-file-name-modifier/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/11/something-about-win-batch-files/">Something About Win* Batch Files</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-11T03:10:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:10 am</span></time>
+        
+           | <a href="/blog/2013/12/11/something-about-win-batch-files/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/11/something-about-win-batch-files/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/11/something-about-win-batch-files/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="get-drive-letter">Get drive letter</h2>
+
+<p>If you run portable devices from a USB stick, sometimes you need to
+refer to other files that is in the same USB drive. Their relative
+position is stable, but the drive letter is not. Thus, referring to
+those files by absolute path doesn't work, unless you do the tedious
+modifications every time.</p>
+
+<ul>
+  <li>Method 1: <code>set var=%cd:~0,3%</code></li>
+  <li>Method 2: <code>set var=%~d0</code> (preferred) Use variable: <code>%var%</code></li>
+</ul>
+
+<h2 id="alias-on-m-win">Alias on M$ Win*</h2>
+
+<p>If you’re familiar with *nix and use M$-DOS, you may unconsciously
+type the <code>ls</code> command in DOS; or if you have a portable version of a
+software and you need to launch it by command, you will discover the
+difference between the name of the programs—one has <code>portable</code> at the
+end while the other one doesn’t.</p>
+
+<p>Copy and paste the following lines of code into any text editor.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bat"><span class="line"><span class="p">@</span><span class="k">ECHO</span> <span class="k">OFF</span>
+</span><span class="line">[command] %*
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Save the whole file as <code>[alias].bat</code> and put the file under any folder
+found on <code>PATH</code> environment variable.</p>
+
+<p>Run <code>[alias]</code> in the command prompt to see the effect.</p>
+
+<p>Note: <code>%</code> in M$ Win* is the <em>same</em> as <code>$*</code> in *nix.<sup id="fnref:ms_all_arg"><a href="#fn:ms_all_arg" class="footnote">1</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:ms_all_arg">
+
+      <p><a href="http://windowsitpro.com/windows-server/how-can-i-output-all-batch-files-arguments"><em>How can I output all of a batch file’s arguments?</em></a> by John
+Savill in Windows IT Pro. <a href="#fnref:ms_all_arg" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2013/12/10/using-vim-keystrokes-in-web-browser/">Using Vim Keystrokes in Web Browser</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-12-10T20:01:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:01 pm</span></time>
+        
+           | <a href="/blog/2013/12/10/using-vim-keystrokes-in-web-browser/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/10/using-vim-keystrokes-in-web-browser/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2013/12/10/using-vim-keystrokes-in-web-browser/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.vim.org">Vim</a> fans will be delighted and amazed for knowing this the first
+time: <a href="https://github.com/vimperator/vimperator-labs">Vimperator</a> is the plugin for <a href="http://www.vim.org">Vim</a>-like behaviour on
+<a href="http://mozilla.com">Firefox</a>.  It’s the original one and it focuses on usability.
+Following the hints with <code>f</code> is great!  Here’re some useful
+keystrokes:</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/10/using-vim-keystrokes-in-web-browser/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2013/12/10/fast-compilation-and-execution-of-source-code/">Fast Compilation and Execution of Source Code</a></h1>
       
     
@@ -98,7 +275,7 @@ Unless you frequently use the keystrokes, you’ll &hellip;">
 
 
 
-<time class='entry-date' datetime='2013-12-10T20:23:00+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:23 pm</span></time>
+<time class='entry-date' datetime='2013-12-10T19:23:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:23 pm</span></time>
         
            | <a href="/blog/2013/12/10/fast-compilation-and-execution-of-source-code/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/10/fast-compilation-and-execution-of-source-code/">Comments</a>
@@ -161,7 +338,7 @@ since it may still work with some good design and functions.</p>
 
 
 
-<time class='entry-date' datetime='2013-12-10T19:07:00+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:07 pm</span></time>
+<time class='entry-date' datetime='2013-12-10T18:07:00+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:07 pm</span></time>
         
            | <a href="/blog/2013/12/10/vim-latexs-slash-slash-lv-command-with-sumatra-pdf/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/12/10/vim-latexs-slash-slash-lv-command-with-sumatra-pdf/">Comments</a>
@@ -209,7 +386,7 @@ since it may still work with some good design and functions.</p>
 
 
 
-<time class='entry-date' datetime='2013-11-05T19:36:00+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:36 pm</span></time>
+<time class='entry-date' datetime='2013-11-05T18:36:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:36 pm</span></time>
         
            | <a href="/blog/2013/11/05/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/11/05/error-of-the-font-of-the-cited-url-in-bibliography-using-biblatex-in-apa-style/">Comments</a>
@@ -262,7 +439,7 @@ bibliography.</p>
 
 
 
-<time class='entry-date' datetime='2013-11-05T19:22:00+01:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>7:22 pm</span></time>
+<time class='entry-date' datetime='2013-11-05T18:22:00+00:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>6:22 pm</span></time>
         
            | <a href="/blog/2013/11/05/this-weekends-work-on-vim/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/11/05/this-weekends-work-on-vim/">Comments</a>
@@ -316,7 +493,7 @@ bibliography.</p>
 
 
 
-<time class='entry-date' datetime='2013-10-18T16:26:00+02:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:26 pm</span></time>
+<time class='entry-date' datetime='2013-10-18T15:26:00+01:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>3:26 pm</span></time>
         
            | <a href="/blog/2013/10/18/a-bug-in-vim-latex/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/10/18/a-bug-in-vim-latex/">Comments</a>
@@ -376,7 +553,7 @@ even more good points of <a href="https://en.wikipedia.org/wiki/Free_and_open-so
 
 
 
-<time class='entry-date' datetime='2013-08-16T17:03:00+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:03 pm</span></time>
+<time class='entry-date' datetime='2013-08-16T16:03:00+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>4:03 pm</span></time>
         
            | <a href="/blog/2013/08/16/why-vim/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/08/16/why-vim/">Comments</a>
@@ -420,7 +597,7 @@ here.</p>
 
 
 
-<time class='entry-date' datetime='2013-08-16T10:51:00+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:51 am</span></time>
+<time class='entry-date' datetime='2013-08-16T09:51:00+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>9:51 am</span></time>
         
            | <a href="/blog/2013/08/16/apa-citing/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2013/08/16/apa-citing/">Comments</a>
@@ -447,105 +624,9 @@ the <code>biblatex-apa</code> package.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/edit-latex-equations-in-vim/">Edit $\rm \LaTeX$ Equations in Vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T08:56:00+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:56 am</span></time>
-        
-           | <a href="/blog/2013/08/16/edit-latex-equations-in-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2013/08/16/edit-latex-equations-in-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/edit-latex-equations-in-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With <a href="http://vim-latex.sourceforge.net">Vim-$\rm \LaTeX$</a>, it’s possible to edit $\rm \LaTeX$
-equations with Vim quickly without making syntax errors.  (e.g.
-undefined control sequence caused by mismatched braces ‘{}’)</p>
-
-<p><a href="//www.youtube.com/embed/y67t-05nFD0" class="fancybox-media"><img src="/images/posts/EditLaTeXEquations/Video.png" alt="YouTube video" class="center" /></a><br />
-Please view it fullscreen in <em>HD</em>.  Sorry for the inconvenience
-caused.<br />
-For the sample files, please click the above “YouTube” button.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/edit-latex-equations-in-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2013/08/16/testing-mathjax/">Testing MathJax</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2013-08-16T08:00:00+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:00 am</span></time>
-        
-           | <a href="/blog/2013/08/16/testing-mathjax/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2013/08/16/testing-mathjax/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2013/08/16/testing-mathjax/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Following the instructions on <a href="http://irrep.blogspot.hk/2011/07/mathjax-in-blogger-ii.html" title="MathJax in Blogger (II)">Irreducible representation</a>,
-<a href="http://www.mathjax.org">MathJax</a> works on Blogger.</p>
-
-<p>I typed</p>
-
-<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="s">$</span><span class="nv">\cos</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">-</span><span class="nv">\sin</span><span class="nb">^</span><span class="m">2</span><span class="nv">\theta</span><span class="o">=</span><span class="nv">\cos</span><span class="nb"> </span><span class="m">2</span><span class="nv">\theta</span><span class="s">$</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>and here’s the result: $\cos^2\theta-\sin^2\theta=\cos 2\theta$</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/08/16/testing-mathjax/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/posts/35">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -585,25 +666,25 @@ For the sample files, please click the above “YouTube” button.</p>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -612,23 +693,23 @@ For the sample files, please click the above “YouTube” button.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/my-host-file-edited/">My Host File Edited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
       </li>
     
   </ul>

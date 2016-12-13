@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Tonight, I’ve installed TLDR pages by typing gem install
-tldrb since I don’t have npm installed. Here’s a list of gems actually fetched. bales-0.1.2 &hellip;">
+  <meta name="description" content="Motivation Knowing some regular expressions in Vim, I hope to apply these
+concepts to Perl so that I can search and replace some simple strings &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,217 @@ tldrb since I don’t have npm installed. Here’s a list of gems actually fetch
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2016/04/03/oneline-perl/">Oneline Perl</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-03T17:47:40+01:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>5:47 pm</span></time>
+        
+           | <a href="/blog/2016/04/03/oneline-perl/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/04/03/oneline-perl/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/04/03/oneline-perl/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>Knowing some regular expressions in Vim, I hope to apply these
+concepts to Perl so that I can search and replace some simple strings
+directly in base <em>without</em> having to open the editor.</p>
+
+<p>As a Vim user, the class of special characters in Perl is more
+<em>natural</em> than that of <code>sed</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In <a href="/blog/2016/04/03/searching-git-commit-messages/">the previous post</a>, the list of Git commit messages containing
+the string “HTTPS” is the main focus.  However, the alignment of this
+list <em>isn’t</em> good: in the column representing the day, the data can be
+either one or two digit.  Though I can still extract information with
+<code>awk '{print $[col_num]}'</code>, it’s better to fix the alignment.</p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS" --pretty="%h %cd %s"
+7400582 Sun Mar 20 20:19:47 2016 +0800 Updated my Rakefile with HTTPS
+b6f4f1f Mon Feb 8 00:45:02 2016 +0800 A new article about Flair, Octopress and HTTPS
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/04/03/oneline-perl/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/04/03/searching-git-commit-messages/">Searching Git Commit Messages</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-03T12:42:33+01:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2016</span></span> <span class='time'>12:42 pm</span></time>
+        
+           | <a href="/blog/2016/04/03/searching-git-commit-messages/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/04/03/searching-git-commit-messages/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/04/03/searching-git-commit-messages/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>The solution for the problem posed in the title is pretty simple.  For
+instance, I want to find all Git commits whose commit message contains
+“HTTPS”.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cliUB"><code>$ git log -2 --grep="HTTPS"
+commit 7400582e268f4a5b776269cf0cc08c04886a4769
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Sun Mar 20 20:19:47 2016 +0800
+
+    Updated my Rakefile with HTTPS
+
+commit b6f4f1fc872affc1107b330042d7b43b45e60595
+Author: Vincent Tam &lt;fake@live.hk&gt;
+Date:   Mon Feb 8 00:45:02 2016 +0800
+
+    A new article about Flair, Octopress and HTTPS
+</code></pre>
+
+<p>However, I think that the output <em>isn’t</em> compact enough.  I would like
+to display the following information.</p>
+
+<pre class="cliUB"><code>&lt;short SHA1&gt; &lt;commit time&gt; &lt;commit message title&gt;
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/04/03/searching-git-commit-messages/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/04/02/l-infty-is-not-separable/">$\ell^\infty$ Is Not Separable</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-02T10:00:13+01:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>10:00 am</span></time>
+        
+           | <a href="/blog/2016/04/02/l-infty-is-not-separable/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/04/02/l-infty-is-not-separable/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/04/02/l-infty-is-not-separable/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>This Wednesday, I read a proof about the non-separability of
+$\ell^\infty$ spaces.  To simplify things, I assume that it’s defined
+on sequences.</p>
+
+<div class="myeqn">
+\[
+  L^\infty \triangleq \{ (x_n)_{n \in \N} \mid \exists\,M \ge 0
+  \text{ such that } \forall\,n \in \N, \abs{x_n} \le M \}
+\]
+</div>
+
+<p>I have written down the uncountable set (see Cantor’s diagonal
+argument)</p>
+
+<div class="myeqn">
+\[
+  D \triangleq \{ (x_n)_{n \in \N} \mid \forall\,n \in \N, x_n=\pm1 \}
+\]
+</div>
+
+<p>in my notes.  I understand</p>
+
+<div class="myeqn">
+\[
+  B(x,1) \cap B(y,1) = \varnothing \quad \forall \, x,y \in D
+  \text{ with } x \ne y.
+\]
+</div>
+
+<h2 id="problem">Problem</h2>
+
+<p>Then, my teacher said that the reason for the non-separability of
+$\ell^\infty$ was like the Pigeon-Hole Principle.  I got puzzled when
+I was revising the proof.  In fact, in the above equation, an element
+in a <em>dense</em> set $C$ can be found in each open ball $B(x,1)$.  Since
+the open balls $B(x,1)$ are <em>disjoint</em>, $C$ has <em>uncountably</em> many
+elements.  Hence, $\ell^\infty$ is non-separable.</p>
+
+<p>One knows that if a space is separable, we <em>can’t</em> insert a
+non-separable subspace into it.  The above property of $\ell^\infty$
+serves as a concrete example of this fact.</p>
+
+<p>It’s easy to show that a space having a Schauder basis is separable.
+Thus, we can conclude that $\ell^\infty$ <em>don’t</em> possess any Schauder
+basis.</p>
+
+<p>In fact, we have a more <em>direct</em> approach to the absence of Schauder
+basis in $\ell^\infty$.  This will be discussed in my next post.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a></h1>
       
     
@@ -98,7 +309,7 @@ tldrb since I don’t have npm installed. Here’s a list of gems actually fetch
 
 
 
-<time class='entry-date' datetime='2016-03-29T13:13:20+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:13 pm</span></time>
+<time class='entry-date' datetime='2016-03-29T12:13:20+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:13 pm</span></time>
         
            | <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Comments</a>
@@ -149,7 +360,7 @@ tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
 
 
 
-<time class='entry-date' datetime='2016-03-27T08:23:05+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:23 am</span></time>
+<time class='entry-date' datetime='2016-03-27T07:23:05+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:23 am</span></time>
         
            | <a href="/blog/2016/03/27/an-invalid-claim-by-the-government/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/27/an-invalid-claim-by-the-government/">Comments</a>
@@ -483,171 +694,6 @@ radio button.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/03/14/todays-print-error/">Today's Print Error</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-14T15:22:43+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:22 pm</span></time>
-        
-           | <a href="/blog/2016/03/14/todays-print-error/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/14/todays-print-error/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/03/14/todays-print-error/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I had sent a PDF file to a printer for printing.  Then I was waiting
-for a person to finish her priting job.  Unfortunately, an error
-occured, and she left <em>without</em> saying a word.</p>
-
-<picture class="fancybox" title="A Print Error">
-  <source srcset="/images/posts/PrinterError/20160314-191831-HDR.jpg" media="(min-width: 2800px)" />
-  <img alt="A Print Error" width="300" src="/images/posts/PrinterError/20160314-191831s.jpg" />
-</picture>
-
-<h2 id="result">Result</h2>
-
-<p>If I press the “Stop” button to continue with my work, she <em>wouldn’t</em>
-be able to know what’s wrong.  <em>Not</em> hoping to get into any trouble
-with her, I had sent the job to <em>another</em> printer.  I had finally got
-my copy of the document and returned home.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/03/14/adobe-reader-has-stopped-working/">Adobe Reader Has Stopped Working</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-14T15:01:45+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>14</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:01 pm</span></time>
-        
-           | <a href="/blog/2016/03/14/adobe-reader-has-stopped-working/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/14/adobe-reader-has-stopped-working/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/03/14/adobe-reader-has-stopped-working/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I opened Adobe Reader on a M$ Win* 7 desktop in a library so as to
-print a PDF file.  I <em>couldn’t</em> understand why this window kept
-popping up.</p>
-
-<picture class="fancybox" title="Adobe RdrCEF has stopped working">
-  <source srcset="/images/posts/AdbRdr/RdrCEF.png" media="(min-width: 525px)" /> 
-  <img alt="Adobe RdrCEF has stopped working" width="300" src="/images/posts/AdbRdr/RdrCEF.png" />
-</picture>
-
-<h2 id="result">Result</h2>
-
-<p>Lacking time, I <em>won’t</em> find a solution for this problem.</p>
-
-<p>If I choose to ignore this window, then the printing job can still be
-carried out.  Therefore, I just waited until the document was printed.
-Then I closed Adobe Reader.</p>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>I choose Sumatra PDF since it is licensed under <abbr title="General Public License">GPL</abbr>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Google Webmaster Sitemap Warning</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-12T14:19:19+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:19 pm</span></time>
-        
-           | <a href="/blog/2016/03/12/google-webmaster-sitemap-warning/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/12/google-webmaster-sitemap-warning/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/03/12/google-webmaster-sitemap-warning/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I uploaded my <code>sitemap.xml</code> to Google Webmaster, but I received
-warnings: <code>404.html</code> was in the sitemap, but the crawl was blocked by
-<code>robots.txt</code>.</p>
-
-<h2 id="discussion">Discussion</h2>
-
-<p>Obviously, I should find a way to exclude the 404 page from the
-sitemap.  In the old days, one can add the path name of the page to be
-excluded.<sup id="fnref:ref"><a href="#fn:ref" class="footnote">1</a></sup></p>
-
-<p>However, the file <code>plugins/sitemap_generator.rb</code> has been <em>deleted</em>
-since commit <a href="https://github.com/octopress/octopress/commit/52f9119">52f9119</a>.  <strong>How can the 404 page be excluded from the
-sitemap then?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/03/12/google-webmaster-sitemap-warning/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -690,25 +736,25 @@ sitemap then?</strong></p>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -717,23 +763,23 @@ sitemap then?</strong></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/my-host-file-edited/">My Host File Edited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
       </li>
     
   </ul>

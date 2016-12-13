@@ -94,7 +94,7 @@ Mathematics Stack Exchange. \[ \begin{array}{crrrrrrr|l} &amp; x_1 &amp; x_2 &he
 
 
 
-<time class='entry-date' datetime='2015-12-20T13:19:54+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:19 pm</span></time>
+<time class='entry-date' datetime='2015-12-20T12:19:54+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:19 pm</span></time>
         
            | <a href="#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io">Comments</a>
@@ -153,6 +153,87 @@ Mathematics Stack Exchange. \[ \begin{array}{crrrrrrr|l} &amp; x_1 &amp; x_2 &he
 </span><span class="line"><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
+<h2 id="more-tableaux">More tableaux</h2>
+
+<p>(Added on DEC 13TH, 2016)</p>
+
+<p>Two separated simplex tableaux created by the <code>array</code> environment
+<em>aren’t</em> vertically aligned.  The visual effect <em>isn’t</em> good.  As a
+result, I merged them to one big <code>array</code>.</p>
+
+<div class="myeqn">
+\begin{equation*}
+  \begin{array}{rrrrrrr|r}
+      &amp;  x_1 &amp;  x_2 &amp;  x_3 &amp;  s_1 &amp;    s_2 &amp;  s_3 &amp;       \\ \hline
+  s_1 &amp;   -2 &amp;    0 &amp;   -2 &amp;    1 &amp;      0 &amp;    0 &amp;   -60 \\
+  s_2 &amp;   -2 &amp; -4^* &amp;   -5 &amp;    0 &amp;      1 &amp;    0 &amp;   -70 \\
+  s_3 &amp;    0 &amp;   -3 &amp;   -1 &amp;    0 &amp;      0 &amp;    1 &amp;   -27 \\ \hline
+      &amp;    8 &amp;   10 &amp;   25 &amp;    0 &amp;      0 &amp;    0 &amp;     0 \\ \hline\hline
+  s_1 &amp; -2^* &amp;    0 &amp;   -2 &amp;    1 &amp;      0 &amp;    0 &amp;   -60 \\
+  x_2 &amp;  1/2 &amp;    1 &amp;  5/4 &amp;    0 &amp;   -1/4 &amp;    0 &amp;  35/2 \\
+  s_3 &amp;  3/2 &amp;    0 &amp; 11/4 &amp;    0 &amp;   -3/4 &amp;    1 &amp;  51/2 \\ \hline
+      &amp;    3 &amp;    0 &amp; 25/2 &amp;    0 &amp;    5/2 &amp;    0 &amp;  -175 \\ \hline\hline
+  x_1 &amp;    1 &amp;    0 &amp;    1 &amp; -1/2 &amp;      0 &amp;    0 &amp;    30 \\
+  x_2 &amp;    0 &amp;    1 &amp;  3/4 &amp;  1/4 &amp;   -1/4 &amp;    0 &amp;   5/2 \\
+  s_3 &amp;    0 &amp;    0 &amp;  5/4 &amp;  3/4 &amp; -3/4^* &amp;    1 &amp; -39/2 \\ \hline
+      &amp;    0 &amp;    0 &amp; 19/2 &amp;  3/2 &amp;    5/2 &amp;    0 &amp;  -265 \\ \hline\hline
+  x_1 &amp;    1 &amp;    0 &amp;    1 &amp; -1/2 &amp;      0 &amp;    0 &amp;    30 \\
+  x_2 &amp;    0 &amp;    1 &amp;  1/3 &amp;    0 &amp;      0 &amp; -1/3 &amp;     9 \\
+  s_2 &amp;    0 &amp;    0 &amp; -5/3 &amp;   -1 &amp;      1 &amp; -4/3 &amp;    26 \\ \hline
+      &amp;    0 &amp;    0 &amp; 41/3 &amp;    4 &amp;      0 &amp; 10/3 &amp;  -330
+  \end{array}
+\end{equation*}
+</div>
+
+<figure class="code"><figcaption><span>A sample simplex tableau</span><a href="http://math.stackexchange.com/a/2053889/290189">link</a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\begin</span><span class="nb">{</span>equation*<span class="nb">}</span>
+</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>array<span class="nb">}{</span>rrrrrrr|r<span class="nb">}</span>
+</span><span class="line">      <span class="nb">&amp;</span>  x<span class="nb">_</span>1 <span class="nb">&amp;</span>  x<span class="nb">_</span>2 <span class="nb">&amp;</span>  x<span class="nb">_</span>3 <span class="nb">&amp;</span>  s<span class="nb">_</span>1 <span class="nb">&amp;</span>    s<span class="nb">_</span>2 <span class="nb">&amp;</span>  s<span class="nb">_</span>3 <span class="nb">&amp;</span>       <span class="k">\\</span> <span class="k">\hline</span>
+</span><span class="line">  s<span class="nb">_</span>1 <span class="nb">&amp;</span>   -2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -2 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -60 <span class="k">\\</span>
+</span><span class="line">  s<span class="nb">_</span>2 <span class="nb">&amp;</span>   -2 <span class="nb">&amp;</span> -4<span class="nb">^</span>* <span class="nb">&amp;</span>   -5 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>      1 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -70 <span class="k">\\</span>
+</span><span class="line">  s<span class="nb">_</span>3 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -3 <span class="nb">&amp;</span>   -1 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>   -27 <span class="k">\\</span> <span class="k">\hline</span>
+</span><span class="line">      <span class="nb">&amp;</span>    8 <span class="nb">&amp;</span>   10 <span class="nb">&amp;</span>   25 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>     0 <span class="k">\\</span> <span class="k">\hline\hline</span>
+</span><span class="line">  s<span class="nb">_</span>1 <span class="nb">&amp;</span> -2<span class="nb">^</span>* <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -2 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -60 <span class="k">\\</span>
+</span><span class="line">  x<span class="nb">_</span>2 <span class="nb">&amp;</span>  1/2 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>  5/4 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -1/4 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>  35/2 <span class="k">\\</span>
+</span><span class="line">  s<span class="nb">_</span>3 <span class="nb">&amp;</span>  3/2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span> 11/4 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   -3/4 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>  51/2 <span class="k">\\</span> <span class="k">\hline</span>
+</span><span class="line">      <span class="nb">&amp;</span>    3 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span> 25/2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    5/2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>  -175 <span class="k">\\</span> <span class="k">\hline\hline</span>
+</span><span class="line">  x<span class="nb">_</span>1 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span> -1/2 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    30 <span class="k">\\</span>
+</span><span class="line">  x<span class="nb">_</span>2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>  3/4 <span class="nb">&amp;</span>  1/4 <span class="nb">&amp;</span>   -1/4 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>   5/2 <span class="k">\\</span>
+</span><span class="line">  s<span class="nb">_</span>3 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>  5/4 <span class="nb">&amp;</span>  3/4 <span class="nb">&amp;</span> -3/4<span class="nb">^</span>* <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span> -39/2 <span class="k">\\</span> <span class="k">\hline</span>
+</span><span class="line">      <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span> 19/2 <span class="nb">&amp;</span>  3/2 <span class="nb">&amp;</span>    5/2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>  -265 <span class="k">\\</span> <span class="k">\hline\hline</span>
+</span><span class="line">  x<span class="nb">_</span>1 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span> -1/2 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    30 <span class="k">\\</span>
+</span><span class="line">  x<span class="nb">_</span>2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    1 <span class="nb">&amp;</span>  1/3 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span> -1/3 <span class="nb">&amp;</span>     9 <span class="k">\\</span>
+</span><span class="line">  s<span class="nb">_</span>2 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span> -5/3 <span class="nb">&amp;</span>   -1 <span class="nb">&amp;</span>      1 <span class="nb">&amp;</span> -4/3 <span class="nb">&amp;</span>    26 <span class="k">\\</span> <span class="k">\hline</span>
+</span><span class="line">      <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span>    0 <span class="nb">&amp;</span> 41/3 <span class="nb">&amp;</span>    4 <span class="nb">&amp;</span>      0 <span class="nb">&amp;</span> 10/3 <span class="nb">&amp;</span>  -330
+</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>array<span class="nb">}</span>
+</span><span class="line"><span class="k">\end</span><span class="nb">{</span>equation*<span class="nb">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>In <a href="http://math.stackexchange.com/">Mathematics Stack Exchange</a>, <em>never</em> leave an empty line
+inside the <code>array</code> environment.  Otherwise, the code <em>won’t</em> work.</p>
+
 </div>
 
 
@@ -168,12 +249,12 @@ Mathematics Stack Exchange. \[ \begin{array}{crrrrrrr|l} &amp; x_1 &amp; x_2 &he
 
 
 
-<time class='entry-date' datetime='2015-12-20T13:19:54+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:19 pm</span></time>
+<time class='entry-date' datetime='2015-12-20T12:19:54+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:19 pm</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/latex/'>latex</a>
+    <a class='category' href='/blog/categories/latex/'>latex</a>, <a class='category' href='/blog/categories/template/'>template</a>
   
 </span>
 
@@ -242,25 +323,25 @@ Mathematics Stack Exchange. \[ \begin{array}{crrrrrrr|l} &amp; x_1 &amp; x_2 &he
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/information-security/'>information security (15)</a> <a href='/blog/categories/information-security/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/kramdown/'>kramdown (6)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/latex/'>latex (26)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/mathjax/'>mathjax (16)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (53)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (7)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/vim/'>vim (40)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (30)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
@@ -269,23 +350,23 @@ Mathematics Stack Exchange. \[ \begin{array}{crrrrrrr|l} &amp; x_1 &amp; x_2 &he
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
       <li class="post">
         <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/my-host-file-edited/">My Host File Edited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/20/jekyll-serve-error/">Jekyll Serve Error</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a>
       </li>
     
   </ul>
