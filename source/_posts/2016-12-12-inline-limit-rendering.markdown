@@ -46,7 +46,9 @@ looks better in the middle of a paragraph.  Fames ac turpis egestas.
 Duis ultricies urna. Etiam enim urna, pharetra suscipit, varius et,
 congue quis, odio. Donec lobortis, elit bibendum euismod faucibus,
 $\lim\limits_{x \to 1} \frac{1}{x^2}$ velit nibh egestas libero, vitae
-pellentesque elit augue ut massa.
+pellentesque elit augue ut massa.  Praesent vel ligula. Nam venenatis
+neque quis mauris. Proin felis. Cum sociis natoque penatibus et magnis
+dis parturient montes, nascetur ridiculus mus. Aliquam quam.
 
 <!-- more -->
 
