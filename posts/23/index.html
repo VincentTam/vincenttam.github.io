@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="In a $\rm \LaTeX$ guide found on the website of George Mason
-University, it’s said that Computer Modern fonts can look ugly.1
-Like most Computer &hellip;">
+  <meta name="description" content="I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.1 About two hours ago, while writing and previewing a
+post about &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,70 @@ Like most Computer &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">A Change of Encrypted MathJax CDN Access</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T10:21:47+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:21 am</span></time>
+        
+           | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve explained the reasons for accessing MathJax via HTTPS in one of
+my posts.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>  About two hours ago, while writing and previewing a
+post about bitmapped Computer Modern fonts<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, MathJax failed to
+load.  I found out what’s wrong in a minute—at line 21 of in
+<code>source/_includes/custom/head.html</code> at my latest commit (i.e. commit
+96938d3)<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, there’s a <code>,</code> between two referenced scripts: the
+official MathJax script via HTTPS, and my local settings and macros in
+<code>source/javascripts/MathJaxLocal.js</code>.  Googling “mathjax cdn https”, I
+discovered that in the official documentation of MathJax, the address
+for accessing the MathJax CDN had already been simplified.<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup>  In my
+opinion, the new URL is better because it’s more easy to remember.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Avoid Using Ugly Bitmapped Computer Modern Fonts</a></h1>
       
     
@@ -99,7 +163,7 @@ Like most Computer &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-08-02T07:22:20+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>7:22 am</span></time>
+<time class='entry-date' datetime='2014-08-02T08:22:20+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:22 am</span></time>
         
            | <a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Comments</a>
@@ -172,7 +236,7 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
 
 
 
-<time class='entry-date' datetime='2014-07-13T11:39:52+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:39 am</span></time>
+<time class='entry-date' datetime='2014-07-13T12:39:52+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:39 pm</span></time>
         
            | <a href="/blog/2014/07/13/evince-viewing-error/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/13/evince-viewing-error/">Comments</a>
@@ -259,7 +323,7 @@ GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
 
 
 
-<time class='entry-date' datetime='2014-07-12T16:48:36+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:48 pm</span></time>
+<time class='entry-date' datetime='2014-07-12T17:48:36+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:48 pm</span></time>
         
            | <a href="/blog/2014/07/12/pappuss-hexagon-theorem/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">Comments</a>
@@ -314,7 +378,7 @@ and the <span class="grp1">red solid line</span> are collinear.)</p>
 
 
 
-<time class='entry-date' datetime='2014-07-12T14:44:37+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:44 pm</span></time>
+<time class='entry-date' datetime='2014-07-12T15:44:37+02:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:44 pm</span></time>
         
            | <a href="/blog/2014/07/12/star-of-david-in-pascals-triangle/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/">Comments</a>
@@ -434,7 +498,7 @@ later, since then the paths are clipped around the notes…”</p>
 
 
 
-<time class='entry-date' datetime='2014-06-30T02:02:49+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:02 am</span></time>
+<time class='entry-date' datetime='2014-06-30T03:02:49+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>3:02 am</span></time>
         
            | <a href="/blog/2014/06/30/basic-use-of-aptitude/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/">Comments</a>
@@ -482,7 +546,7 @@ later, since then the paths are clipped around the notes…”</p>
 
 
 
-<time class='entry-date' datetime='2014-06-24T18:26:38+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:26 pm</span></time>
+<time class='entry-date' datetime='2014-06-24T19:26:38+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:26 pm</span></time>
         
            | <a href="/blog/2014/06/24/interesting-linux-figures-1/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/24/interesting-linux-figures-1/">Comments</a>
@@ -527,7 +591,7 @@ version?</p>
 
 
 
-<time class='entry-date' datetime='2014-06-21T07:23:50+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:23 am</span></time>
+<time class='entry-date' datetime='2014-06-21T08:23:50+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>8:23 am</span></time>
         
            | <a href="/blog/2014/06/21/export-pdf-to-svg/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg/">Comments</a>
@@ -576,7 +640,7 @@ files is the <em>best</em>, I would like to include use SVG.</p>
 
 
 
-<time class='entry-date' datetime='2014-06-21T05:25:35+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:25 am</span></time>
+<time class='entry-date' datetime='2014-06-21T06:25:35+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>6:25 am</span></time>
         
            | <a href="/blog/2014/06/21/adding-integrals-over-partitions/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/21/adding-integrals-over-partitions/">Comments</a>
@@ -623,7 +687,7 @@ $\vect{P}^*_k$ was.</p>
 
 
 
-<time class='entry-date' datetime='2014-06-20T16:51:06+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:51 pm</span></time>
+<time class='entry-date' datetime='2014-06-20T17:51:06+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:51 pm</span></time>
         
            | <a href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Comments</a>
@@ -648,54 +712,6 @@ case</em>.  I <em>don’t</em> know how to track the Ruby code to revert it.</p>
     <footer>
       <a rel="full-article" href="/blog/2014/06/20/fixing-broken-urls-in-the-catetory-list/">Read on &rarr;</a>
     </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://lanyrd.com/2011/houcodecamp/sgwhy/">Stop Using Git Like Subversion</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-20T08:22:11+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:22 am</span></time>
-        
-           | <a href="/blog/2014/06/20/stop-using-git-like-subversion/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/20/stop-using-git-like-subversion/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/20/stop-using-git-like-subversion/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I saw a sentence like “Git does SVN better than SVN does” long ago,
-but I <em>couldn’t</em> remember where I saw it.  Searching the sentence with
-double quotes, I found Ben Scheirman’s one which asked Git users <em>not</em>
-to use it just like SVN, but to explore more powerful commands for
-branching.</p>
-
-<p>Reasons for using branches:</p>
-
-<ul>
-  <li>Working with multiple features</li>
-  <li>Sharing with others</li>
-  <li>Merging others work conveniently</li>
-</ul>
-</div>
-  
   
 
 
@@ -748,7 +764,7 @@ branching.</p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (52)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (53)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -770,6 +786,10 @@ branching.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
       </li>
     
@@ -783,10 +803,6 @@ branching.</p>
     
       <li class="post">
         <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/21/website-preview-in-mobile-devices/">Website Preview in Mobile Devices</a>
       </li>
     
   </ul>
