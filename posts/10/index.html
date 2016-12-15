@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I often write math in this blog. After typing lots of characters,
-syntax errors are inevitable, but no one wants them to be published. &hellip;">
+  <meta name="description" content="Overview Unlike the Git commands found on the previous posts in this series, in
+this article, I’ll focus on low-level Git commands. Raison d’être &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +80,99 @@ syntax errors are inevitable, but no one wants them to be published. &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/06/my-git-command-list-3/">My Git Command List (3)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-06T11:39:08+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:39 am</span></time>
+        
+           | <a href="/blog/2015/08/06/my-git-command-list-3/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/06/my-git-command-list-3/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="overview">Overview</h2>
+
+<p>Unlike the Git commands found on the previous posts in this series, in
+this article, I’ll focus on <em>low-level</em> Git commands.</p>
+
+<h2 id="raison-dtre">Raison d’être</h2>
+
+<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
+but I included them here because these commands help one understand
+the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
+
+<h2 id="the-list">The list</h2>
+
+<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
+$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
+$ git hash-object {file}  # Return the hash of {file}
+$ git hash-object --stdin # Return the hash of the standard input
+$ git write-tree          # Return the hash of the tree of tracked contents
+$ git ls-files -s         # List all tracked files and their hash
+$ git ls-tree {hash}      # List the contents of a tree
+$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
+$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
+$ git diff                # Show the difference between the working directory and the index
+$ git diff --cached       # Show the difference between HEAD and the index
+$ git diff HEAD           # Show the difference between HEAD and the working directory
+</code></pre>
+
+<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
+<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<ol>
+  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
+bytes.  When it’s displayed, it has 40 hex-digits.</li>
+  <li><em>The blob for a file is independent of the file name</em>, which was
+actually stored in a tree object.  For example, the object ID of a
+file which contains only a single line “hello world” is
+<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code>, so if the file is stored
+inside the <code>.git</code> directory as a blob, the blob will be named as
+<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
+  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
+entry will be created in the tree object corresponding to
+<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tree_obj">
+
+      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
+in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
+<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -650,64 +743,6 @@ complained such an inclusion of text.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Fixed Disqus Comments When Loaded With HTTPS</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-26T16:12:24+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:12 pm</span></time>
-        
-           | <a href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<ol>
-  <li><a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">GitHub Pages now supports HTTPS</a>.</li>
-  <li>I saw that Google search showed the HTTP version of the hyperlinks.</li>
-  <li>I want to convert add the existing “http://” to “https://”.</li>
-</ol>
-
-<h2 id="problem">Problem</h2>
-
-<ol>
-  <li>I changed “http://…” to “https://…” in the Admin settings for
-the disqus site of this blog.</li>
-  <li>The original comments <em>disappeared</em>!</li>
-</ol>
-
-<p><strong>How can I get back the original comments and correct the URLs of the
-links to my blog articles on Disqus?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -755,7 +790,7 @@ links to my blog articles on Disqus?</strong></p>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (53)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (54)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -777,6 +812,10 @@ links to my blog articles on Disqus?</strong></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
       </li>
     
@@ -790,10 +829,6 @@ links to my blog articles on Disqus?</strong></p>
     
       <li class="post">
         <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
   </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Math | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/math/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-12-15T14:43:17+01:00</updated>
+  <updated>2016-12-15T18:50:12+01:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,97 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Group of 689 Elements (2)]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/12/15/a-group-of-689-elements-2/"/>
+    
+    <updated>2016-12-15T16:04:37+01:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/12/15/a-group-of-689-elements-2</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>Two years ago, I thought about a group of 689 elements.<sup id="fnref:seri1"><a href="#fn:seri1" class="footnote">1</a></sup>  I
+only managed to show the <em>existence</em> of such a group.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Inspired by the use of <a href="https://en.wikipedia.org/wiki/Sylow_theorems#Theorems">Sylow III</a> to show that a group of order
+15 has only <em>one</em> structure: $\Z_{15} \cong \Z_3 \times \Z_5$, I
+wondered <strong>if $\Z_{689}$ is the only possible structure for a group of
+order 689</strong>.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Denote $G$ as a group of order 689.  First, apply Sylow III to
+$\abs{G}$, whose largest prime divisor 53.  Since $\lvert G \rvert$ is
+a product of two primes 13 and 53, we conclude that $n_{53} = 1$.
+Second, we have</p>
+
+<div class="myeqn">
+\begin{cases}
+n_{13} | 53 \\
+n_{13} \equiv 1 \pmod{13}.
+\end{cases}
+</div>
+
+<p>Since $53 \equiv 1 \pmod{13}$, we have to consider two cases:</p>
+
+<ol>
+  <li>$n_{13} = 1$: In this case, $G$ has a unique 13-Sylow $H$ and a
+unique 53-Sylow $K$.  Both $H$ and $K$ are normal in $G$.  Their
+intersection $H \cap K$ is, by Lagrange’s Theorem, the identity
+element $e_G$.  For each $h \in H$ and $k \in K$, the commutator
+    <div class="myeqn">
+\begin{equation*}
+[h,k] = hk h^{-1} k^{-1} = \underbrace{hk h^{-1}}_{\in K} k
+= h \underbrace{k h^{-1} k^{-1}}_{\in H} \in H \cap K
+\end{equation*}
+</div>
+
+    <p>is reduced to $e_G$, implying that $H$ commute with $K$.
+Therefore, an internal direct product of $H$ and $K$ can be set up,
+and $\abs{H} \times \abs{K} = 13 \times 53 = \abs{G}$, so $G = H
+\times K \cong \Z_{13} \times \Z_{53}$.</p>
+  </li>
+  <li>
+    <p>$n_{13} = 53$: In this case, $G$ has 53 <em>distinct</em> 13-Sylows $H_1,
+H_2, \cdots, H_{53}$.  Each of these $H_i$’s is isomorphic to the
+cyclic group $C_{13}$.  Thus, $G$ possess $53 \times 12$ elements
+of order 13, 52 elements of order 53, and the identity—they add
+up to $\abs{G}$.</p>
+
+    <p><em>Not</em> knowing how to continue, I finally searched for “non-abelian
+group of order $pq$” and found
+<a href="http://math.stackexchange.com/a/63257/290189">this answer on Mathematics Stack Exchange</a>, which
+showed that my guess is <em>wrong</em>.  <span class="myeqn">In fact, $\Aut H \cong \Z_q^*$ and its elements are
+$\gamma_\lambda: h \mapsto \lambda h$.</span> $\phi(K) = \psi(K)$
+because they are both subgroup of order $p$, but it’s <em>unique</em> in
+$\Aut H$.  Since homomorphisms $\phi,\psi: K \to \Aut H$ are
+supposed to be <em>non-trivial</em>, $\ker \phi, \ker \psi \ne \abs{K} =
+p$, so they are injective.  This proves the <em>existence</em> of a
+non-abelian group $G \cong H \rtimes_\psi K$.</p>
+  </li>
+</ol>
+
+<p>To conclude, even though the arguments are “too simple” for a
+mathematicien, a group of order 689 is <em>never</em> simple.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:seri1">
+      <p><a href="/blog/2014/12/09/a-group-of-689-elements/"><em>A Group of 689 Elements</em></a> <a href="#fnref:seri1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -29,9 +120,11 @@ respect to a homomorphism $\gamma: G_2 \to \Aut G_1$, is defined
 as</span></p>
 
 <blockquote>
-  <p>$\forall\, x_1,y_1 \in G_1, \forall\, x_2,y_2 \in G_2, (x_1,x_2)
-\times_{G_1 \rtimes_\gamma G_2} (y_1,y_2) = (x_1 \times_{G_1}
-\gamma(x_2)(y_1), x_2 \times_{G_2} y_2).$</p>
+  <p><span class="myeqn">\begin{multline}
+\forall\, x_1,y_1 \in G_1, \forall\, x_2,y_2 \in G_2, (x_1,x_2)
+\times_{G_1 \rtimes_\gamma G_2} (y_1,y_2) \\
+= (x_1 \times_{G_1} \gamma(x_2)(y_1), x_2 \times_{G_2} y_2).
+\end{multline}</span></p>
 </blockquote>
 
 <p><strong>Why don’t we write $(x_1,y_1)$ and $(x_2,y_2)$ instead?</strong></p>
@@ -219,50 +312,6 @@ a measurable function can be approximated by a sequence of continuous
 function.  <q cite="http://evchk.wikia.com/wiki/Wow!_Old_news_is_so_exciting!">Old
 news is so exciting!</q>  (See <a href="http://evchk.wikia.com/wiki/Wow!_Old_news_is_so_exciting!">this encyclopedia page</a> for
 explanation.)</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Venn Diagram Mistake]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/"/>
-    
-    <updated>2016-02-09T07:24:54+01:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I tried <a href="http://math.stackexchange.com/q/1635782/290189">this Mathematics Stack Exchange question</a> by
-drawing a Venn Diagram.</p>
-
-<picture class="fancybox" title="A 4-set Venn Diagram">
-  <source srcset="https://i.stack.imgur.com/jbsrG.png" media="(min-width: 400px)" />
-  <img alt="A 4-set Venn Diagram" width="300" src="https://i.stack.imgur.com/jbsrG.png" />
-</picture>
-
-<h2 id="problem">Problem</h2>
-
-<p>A downvote was quickly casted on my answer below which a comment about
-the non-existence of a Venn diagram with 4 sets was left.  I clicked
-on <a href="http://math.stackexchange.com/a/825984/290189">the link to another question</a> in that comment to
-understand why I got this downvote: <strong>Why a 4-set Venn diagram
-<em>doesn’t</em> exist?</strong></p>
-
-<h2 id="explanation">Explanation</h2>
-
-<p>I understood the arguments of Joebot’s answer up to the “application
-of binomial theorem”, but I <em>didn’t</em> understand the Euler’s formular.
-In fact, for any 3-D object with edges, vertices and faces, one can
-represent it by a 2-D planar graph, on which the outermost region also
-represents one of the faces of the 3-D object.  Thus, the Euler’s
-formula for any 3-D object can be seen on a 2-D planar graph.  I’m
-amazed that this can be proved by mathematical induction on the number
-of regions on the 2-D graph (which corresponds to that of faces of the
-3-D object).  IMHO, this should be taught in high schools as examples
-of mathematical induction, instead of divisibility of integers, which
-can be done better using modular arithmetic.</p>
 
 ]]></content>
     

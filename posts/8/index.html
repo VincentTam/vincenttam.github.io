@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="To show that any compact Hausdorff space is $T_4$, one may first show
-that it’s $T_3$. To see this, using set theory notations may be quite
-difficult &hellip;">
+  <meta name="description" content="Motivation To deduce that compact $T_2$ spaces are $T_4$, I tried using
+the arguments of the proof in the previous post, but I couldn’t do
+it. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,81 @@ difficult &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Mountain Climbing in Lindelöf $T_3$ Spaces</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-28T09:39:38+02:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:39 am</span></time>
+        
+           | <a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>To deduce that <a href="/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
+the arguments of the proof in the previous post, but I <em>couldn’t</em> do
+it.  Therefore, I read another proof about the normality of regular
+Lindelöf spaces instead.</p>
+
+<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
+
+<p><span class="myeqn">
+Suppose that $X$ is the given space, and $H$ and $K$ are the given
+sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
+\omega\right\}$ are open countable subcovers of $H$ and $K$
+respectively.  On p.91 in Davis's Topology book, I saw the following
+equations.
+</span></p>
+
+<div class="myeqn">
+\begin{alignat*}{2}
+  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
+  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
+  (\overline{U_0} \cup \overline{U_1}) \\
+  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
+  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
+  \overline{U_2}) \\
+  \vdots \\
+  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
+  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
+  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
+  V_n
+\end{alignat*}
+</div>
+
+<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
+<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
+reading the symbols.  Luckily, an analogy of climbing mounts is given.
+Therefore, I finally understood how the open subsets $U_n$’s and
+$V_n$’s are built step-by-step while preserving disjointness and
+openness.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -802,86 +877,6 @@ have to be escaped by backslashes, which makes the whole command ugly.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Find Files for Vim to Edit in Bash</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-23T17:48:54+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>5:48 pm</span></time>
-        
-           | <a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Since copying and pasting the output of a command can be a tedious
-job.  For example, if you want to create your blog using a framework,
-you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
-repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
-GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
-one.</p>
-
-<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
-repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
-the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
-introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
-the <code>sed</code> substitution.</p>
-
-<pre class="cliUB"><code>$ git remote -v
-octopress	git@github.com:imathis/octopress.git (fetch)
-octopress	git@github.com:imathis/octopress.git (push)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
-$ name=userName; repo=repoName
-$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
-"s;(\w*)/(.*).git;$name/$repo.git;"
-$ unset name repo
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried extracting a list of Markdown files containing a particular
-word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
-<code>xargs</code>.  Unluckily, I got an error.</p>
-
-<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
-&gt; -print | xargs vi
-Vim: Warning: Input is not from a terminal
-3 files to edit
-$ 
-</code></pre>
-
-<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/9">&larr; Older</a>
@@ -929,7 +924,7 @@ $
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (53)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (54)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -951,6 +946,10 @@ $
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
       </li>
     
@@ -964,10 +963,6 @@ $
     
       <li class="post">
         <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
   </ul>

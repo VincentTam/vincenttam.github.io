@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I tried opening a PDF file with the freeware Adobe Reader. Unluckily,
-Blocked by the popup window below, I couldn’t view the content of
-the &hellip;">
+  <meta name="description" content="Problem The SEO Analysis of Bing Webmaster complained that
+each page of my blog had more than one &lt;h1&gt; tag. I viewed the HTML code for the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,66 @@ the &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/03/19/multiple-h1-tags/">Multiple H1 Tags</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-03-19T09:58:26+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:58 am</span></time>
+        
+           | <a href="/blog/2016/03/19/multiple-h1-tags/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/19/multiple-h1-tags/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/03/19/multiple-h1-tags/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>The SEO Analysis of <a href="https://www.bing.com/webmaster">Bing Webmaster</a> complained that
+each page of my blog had <em>more than one</em> <code>&lt;h1&gt;</code> tag.</p>
+
+<p>I viewed the HTML code for the homepage of this blog to verify the
+warning message of this SEO tool.  Then I found over three instances
+of the <code>&lt;h1&gt;</code> tag, at the top, in the sidebar, etc.  To facilitate
+this process, I used <code>git grep "&lt;h1&gt;"</code>.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>I searched for “h1” in the issues and the pull requests of <a href="http://octopress.org">Octopress</a>
+on <a href="https://github.com/imathis/octopress">GitHub</a>, and I got <em>no</em> results.  I wondered why <em>nobody</em> reported
+this.  As a result, I went to Google to search “octopress more than
+one h1 tag”.  Finally, reading <a href="http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tags-in-the-html5-era--webdesign-16824">this article</a>, I gave up the idea
+of changing the <code>&lt;h1&gt;</code> tags in the sidebar into <code>&lt;h2&gt;</code>.</p>
+
+<h2 id="remarks">Remarks</h2>
+
+<p>Like <a href="https://www.google.com/webmaster">Google Webmaster</a>, I <em>can’t</em> simply reset the URL
+of the site.  To insert an ‘s’ into the protocol “http”, one needs to
+deleted the site and add it again.  Fortunately, the verification of
+site ownership <em>doesn’t</em> need to be done again.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -569,70 +628,6 @@ Gist.vim still complained that <em>no</em> GitHub user name was found.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">Git for Windows, Curl, Gist.vim With Vundle (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-22T07:32:04+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>7:32 am</span></time>
-        
-           | <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I had been using <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a> to manage plugin.  When it comes to
-keeping the plugins up-to-date, <a href="/blog/2014/10/11/update-vim-plugins-managed-by-pathogen-dot-vim/">I used a for-loop</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I would like to change it to <a href="https://github.com/VundleVim/Vundle.vim/">Vundle</a> since I <em>didn’t</em> know how to
-update the helptags after merging the commits from GitHub.  Therefore,
-I followed the installation guide of Vundle.  However, when I started
-updating, I got the following error.</p>
-
-<pre class="cli"><code>Processing 'tpope/vim-fugitive'
-Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
-vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync..&lt;SNR&gt;96_make_sync_
-command..&lt;SNR&gt;96_get_current_origin_url..&lt;SNR&gt;96_system:
-line    1:
-E484: Can't open file C:/Temp/PortableApps/gVimPortable/Data/Temp/VIo985B.tmp
-Error detected while processing function vundle#installer#new..&lt;SNR&gt;96_process..
-vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
--- More -- SPACE/d/j: screen/page/line down, b/u/k: up, q: quit
-</code></pre>
-
-<p><strong>How can I get the Vim plugin updates?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/5">&larr; Older</a>
@@ -680,7 +675,7 @@ vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (53)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (54)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -702,6 +697,10 @@ vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
       </li>
     
@@ -715,10 +714,6 @@ vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
     
       <li class="post">
         <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/08/28/jekyll-serve-error-2/">Jekyll Serve Error (2)</a>
       </li>
     
   </ul>
