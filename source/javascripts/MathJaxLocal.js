@@ -45,6 +45,7 @@ MathJax.Hub.Config({
       GL: ['\\mathrm{GL}'],
       SL: ['\\mathrm{SL}'],
       Aut: ['\\mathrm{Aut}'],
+      ker: ['\\mathrm{ker}'],
       id: ['\\mathop{\\mathrm{id}}'],
 
       Re: ['\\mathop{\\mathrm{Re}}'],

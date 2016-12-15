@@ -14,9 +14,11 @@ product $G_1 \rtimes_\gamma G_2$ of two groups $G_1$ and $G_2$ with
 respect to a homomorphism $\gamma: G_2 \to \Aut G_1$, is defined
 as</span>
 
-> $\forall\, x_1,y_1 \in G_1, \forall\, x_2,y_2 \in G_2, (x_1,x_2)
-\times_{G_1 \rtimes_\gamma G_2} (y_1,y_2) = (x_1 \times_{G_1}
-\gamma(x_2)(y_1), x_2 \times_{G_2} y_2).$
+> <span class="myeqn" markdown="0">\begin{multline}
+\forall\, x_1,y_1 \in G_1, \forall\, x_2,y_2 \in G_2, (x_1,x_2)
+\times_{G_1 \rtimes_\gamma G_2} (y_1,y_2) \\
+= (x_1 \times_{G_1} \gamma(x_2)(y_1), x_2 \times_{G_2} y_2).
+\end{multline}</span>
 
 **Why don't we write $(x_1,y_1)$ and $(x_2,y_2)$ instead?**
 
