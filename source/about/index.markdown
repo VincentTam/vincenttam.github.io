@@ -46,6 +46,7 @@ Useful sites:
     Network
 - [Octave Online][octave]
 - [TLDR Pages][tldr]
+- [Link phrasing guide][links]
 
 [mathjax-quickref]: http://meta.math.stackexchange.com/q/5020
 [pandoc]: http://johnmacfarlane.net/pandoc/README.html#toc
@@ -54,6 +55,7 @@ Useful sites:
 [js_regex]: http://goo.gl/2jLPH
 [octave]: http://octave-online.net/
 [tldr]: http://tldr-pages.github.io/
+[links]: https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/
 
 My custom settings
 ---
