@@ -9,8 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Two years ago, I thought about a group of 689 elements.1 I
-only managed to show the existence of such a group. Problem Inspired by the use &hellip;">
+  <meta name="description" content="Background I saw a question about determinants. Suppose that $A$ and $B$ are singular and nonsingular matrices respectively. Simplify $\det((A+B)^2−( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,90 @@ only managed to show the existence of such a group. Problem Inspired by the use 
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-12-28T20:40:58+01:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:40 pm</span></time>
+        
+           | <a href="/blog/2016/12/28/simplify-a-determinant-identity/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/12/28/simplify-a-determinant-identity/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I saw <a href="http://math.stackexchange.com/a/2074997/290189">a question about determinants</a>.</p>
+
+<blockquote>
+  <p>Suppose that $A$ and $B$ are singular and nonsingular matrices
+  respectively.  Simplify $\det((A+B)^2−(A−B)^2)$.</p>
+</blockquote>
+
+<h2 id="problem">Problem</h2>
+
+<p>A <em>wrong</em> solution with a vote of -2 is chosen by Daniel.  Why can
+this happen?</p>
+
+<h2 id="possible-explanation">Possible explanation</h2>
+
+<p>That’s because he’s correctly done the expansion until $\det(2AB +
+2BA)$.</p>
+
+<h2 id="raison-dtre-of-this-post">Raison d’être of this post</h2>
+
+<p>Having spent time on typing a comment, I worry that it will
+automatically disappear in sooner or later if the accepted answer is
+deleted.  Therefore, I back it up here.</p>
+
+<blockquote>
+  <p>Consider <script type="math/tex">% <![CDATA[
+A = \begin{bmatrix} 1&2&3\\ 0&0&0\\ 5&7&9 \end{bmatrix} ,
+B = \begin{bmatrix} 3&2&3\\ 2&2&1\\ 3&1&3 \end{bmatrix}. %]]></script>
+<script type="math/tex">% <![CDATA[
+\begin{align*}
+\det(AB+BA) &= \det\left(
+\begin{bmatrix} 16&9&14 \\ 0&0&0 \\ 56&33&49 \end{bmatrix}
++\begin{bmatrix} 18&27&36 \\ 7&11&15 \\ 18&27&36 \end{bmatrix}
+\right) \\
+&=\det\left(
+\begin{bmatrix} 34&36&50\\ 7&11&15\\ 74&60&85 \end{bmatrix}
+\right)= 30 \ne 0.
+\end{align*} %]]></script>
+However, if $A = 0$ and $B = I_3$, then the answer is clearly zero.
+As a result, we <em>can’t</em> decude further from $\det(2(AB + BA))$.</p>
+</blockquote>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>The generation of a random matrix/array of integers using
+<code>randi([imin, imax], m, n)</code>.  For more details, you may read
+<a href="https://www.gnu.org/software/octave/doc/v4.0.1/Special-Utility-Matrices.html#XREFrandi">GNU Octave’s manual</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -686,70 +769,6 @@ main&gt;'
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-18T10:15:33+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>10:15 am</span></time>
-        
-           | <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I attempted to manually fix a <a href="/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/">problem in the first post</a> in this
-series half a year ago.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I have just updated the Jekyll source code for <a href="/blog2">Blog 2</a>.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git pull jekyll master
-remote: Counting objects: 37, done.
-remote: Total 37 (delta 10), reused 10 (delta 10), pack-reused 27
-Unpacking objects: 100% (37/37), done.
-From github.com:plusjade/jekyll-bootstrap
- * branch            master     -&gt; FETCH_HEAD
-   3a34785..8193869  master     -&gt; jekyll/master
-Removing sitemap.txt
-Auto-merging _includes/JB/setup
-CONFLICT (content): Merge conflict in _includes/JB/setup
-Auto-merging _config.yml
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
-
-<p><strong>How to repair this failed merge?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/2">&larr; Older</a>
@@ -795,7 +814,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (54)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (55)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -817,6 +836,10 @@ Automatic merge failed; fix conflicts and then commit the result.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
       </li>
     
@@ -830,10 +853,6 @@ Automatic merge failed; fix conflicts and then commit the result.
     
       <li class="post">
         <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation/">Match Vertical Bar With Height in Set Notation</a>
       </li>
     
   </ul>

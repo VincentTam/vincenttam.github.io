@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-12-15T18:50:12+01:00</updated>
+  <updated>2016-12-28T21:38:13+01:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Simplify a Determinant Identity]]></title>
+      <link href="https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity/"/>
+    
+    <updated>2016-12-28T20:40:58+01:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I saw <a href="http://math.stackexchange.com/a/2074997/290189">a question about determinants</a>.</p>
+
+<blockquote>
+  <p>Suppose that $A$ and $B$ are singular and nonsingular matrices
+  respectively.  Simplify $\det((A+B)^2−(A−B)^2)$.</p>
+</blockquote>
+
+<h2 id="problem">Problem</h2>
+
+<p>A <em>wrong</em> solution with a vote of -2 is chosen by Daniel.  Why can
+this happen?</p>
+
+<h2 id="possible-explanation">Possible explanation</h2>
+
+<p>That’s because he’s correctly done the expansion until $\det(2AB +
+2BA)$.</p>
+
+<h2 id="raison-dtre-of-this-post">Raison d’être of this post</h2>
+
+<p>Having spent time on typing a comment, I worry that it will
+automatically disappear in sooner or later if the accepted answer is
+deleted.  Therefore, I back it up here.</p>
+
+<blockquote>
+  <p>Consider <script type="math/tex">% &lt;![CDATA[
+A = \begin{bmatrix} 1&2&3\\ 0&0&0\\ 5&7&9 \end{bmatrix} ,
+B = \begin{bmatrix} 3&2&3\\ 2&2&1\\ 3&1&3 \end{bmatrix}. %]]&gt;</script>
+<script type="math/tex">% &lt;![CDATA[
+\begin{align*}
+\det(AB+BA) &= \det\left(
+\begin{bmatrix} 16&9&14 \\ 0&0&0 \\ 56&33&49 \end{bmatrix}
++\begin{bmatrix} 18&27&36 \\ 7&11&15 \\ 18&27&36 \end{bmatrix}
+\right) \\
+&=\det\left(
+\begin{bmatrix} 34&36&50\\ 7&11&15\\ 74&60&85 \end{bmatrix}
+\right)= 30 \ne 0.
+\end{align*} %]]&gt;</script>
+However, if $A = 0$ and $B = I_3$, then the answer is clearly zero.
+As a result, we <em>can’t</em> decude further from $\det(2(AB + BA))$.</p>
+</blockquote>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>The generation of a random matrix/array of integers using
+<code>randi([imin, imax], m, n)</code>.  For more details, you may read
+<a href="https://www.gnu.org/software/octave/doc/v4.0.1/Special-Utility-Matrices.html#XREFrandi">GNU Octave’s manual</a>.</p>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2412,136 +2473,6 @@ omitted.  Otherwise, the output will be messed up.</p>
  32665 Apr  9 12:20 cedb2-300.png
  84580 Apr  9 12:20 cedb2.png    
 </code></pre>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Loop Through an Array Having Only One Element in Bash]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash/"/>
-    
-    <updated>2016-04-08T16:59:29+02:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/08/loop-through-an-array-having-only-one-element-in-bash</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>To find out a way to loop through all elements in an array consisting
-of more than one element, it’s easy.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello","world"}; do echo $f; done
-hello
-world
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>When I try to take away the second element in the above array so that
-it becomes an array consisting in <em>one</em> single element, then I get
-<code>{hello}</code> instead of <code>hello</code>.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello"}; do echo $f; done
-{hello}
-</code></pre>
-
-<p><strong>How can one get back an output consistent with the case of arrays
-consisting of multiple elements?</strong></p>
-
-<!-- more -->
-
-<h2 id="motivation">Motivation</h2>
-
-<p>This problem seems nonsense—loops are supposed to do repetitive
-tasks.  If the loop has <em>only</em> one iteration, then we can directly
-type in the command, instead of adapting it into a loop and setting up
-the scope of the loop.</p>
-
-<p>Nevertheless, if one converts multiple lines of short texts into one
-long single line with <code>xargs</code>, then the items will be separated by
-white spaces.  This <em>won’t</em> work with the above for loop.  To change
-the delimiter from white space to comma, one may use <code>paste -d, -s</code>.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left">Syntax</th>
-      <th style="text-align: left">Meaning</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left"><code>-d,</code></td>
-      <td style="text-align: left">Use <code>,</code> as the delimiter.</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><code>-s</code></td>
-      <td style="text-align: left"><em>Without</em> this flag, <code>$1</code> and <code>$2</code> are displayed in <em>parallel</em>.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Surely, there are other tools to do this, such as <code>sed</code>.  However, I
-think that <code>paste -d, -s</code> should be the <em>simplest</em> way to do this.
-Note that the white space character between the two flags are
-<em>important</em>.  Otherwise, this command <em>won’t</em> work.</p>
-
-<p><em>Without</em> prior knowledge of the text to be processed, it’s possible
-that the output of <code>paste -d, -s</code> consists of <em>only</em> one item.  This
-single case is easy to deal with, even though the handling may be a
-bit different from the case of multiple elements.  However, if the
-syntax for the command that handles the output of <code>paste -d, -s</code>
-<em>isn’t exactly the same</em> in the case of <em>one</em> single element and the
-case of <em>multiple</em> elements, then we need to look at the content and
-make manual judgement–this is tedious and error-prone.</p>
-
-<p>In the problem posed in the previous section, if the list in the
-for loop has <em>only</em> one item, then we need to do something different
-from a list having two or more items.  If we observe this difference
-with our naked eyes, the whole process will lack efficiency.</p>
-
-<p>To solve this problem, we seek an <em>unified</em> approach.  In other words,
-I try to change the syntax of the above for loop so that the for loop
-will work for <em>any</em> one of these two cases.</p>
-
-<h2 id="solution">Solution</h2>
-
-<ol>
-  <li>Surround each string in the array by a pair of <em>double quotes</em>.</li>
-  <li>Add a comma <em>either</em> before the first element or after the last
-element.</li>
-</ol>
-
-<p>The first step is needed if in the array, there exists an element
-having two or more words <em>separated by a white space</em>; the second step
-is needed for an array with one single element.</p>
-
-<pre class="cliUB"><code>$ for f in {"hello world",}; do echo $f; done
-hello world
-</code></pre>
-
-<h2 id="remarks">Remarks</h2>
-
-<p>As the number of steps increases, the difficulty of constructing a
-one-line command to do the thing rises tremendously.  It’s possible
-that a shell script is <em>easier</em> to write.  By searching “bash array
-tutorial” on Google, I got <a href="http://www.thegeekstuff.com/2010/06/bash-array-tutorial/">a tutorial on the Geek Stuff</a> in the
-first search result.</p>
-
-<figure class="code"><figcaption><span>A shell script that display an array (oneelt.sh)</span> <a href="https://vincenttam.github.io/downloads/code/oneelt.sh">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/bash</span>
-</span><span class="line">
-</span><span class="line"><span class="nv">arr</span><span class="o">=(</span><span class="s2">&quot;hello&quot;</span><span class="o">)</span>
-</span><span class="line"><span class="k">for</span> f in <span class="k">${</span><span class="nv">arr</span><span class="p">[@]</span><span class="k">}</span><span class="p">;</span> <span class="k">do</span>
-</span><span class="line">    <span class="nb">echo</span> <span class="nv">$f</span>
-</span><span class="line"><span class="k">done</span>
-</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
     
