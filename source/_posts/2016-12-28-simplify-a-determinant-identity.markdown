@@ -3,7 +3,7 @@ layout: post
 title: "Simplify a Determinant Identity"
 date: 2016-12-28 20:40:58 +0100
 comments: true
-categories: math
+categories: [math, MetaSE]
 ---
 
 Background
