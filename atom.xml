@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2016-12-28T21:38:13+01:00</updated>
+  <updated>2016-12-31T16:14:04+01:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Failed Review &#9733;]]></title>
+      <link href="http://math.stackexchange.com/review/first-posts/739067"/>
+    
+    <updated>2016-12-31T16:03:38+01:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/12/31/a-failed-review</id>
+    
+      <content type="html"><![CDATA[<p>The problem is of the <em>same type</em> of the one described in
+<a href="http://meta.math.stackexchange.com/q/11307/290189"><em>Try to comment: Fail review audit</em></a> on Meta Mathematics
+Stack Exchange.  As a result, I’m <em>not</em> going to post my problem again
+so as not to create <a href="http://meta.math.stackexchange.com/q/11608/290189">another duplicate question</a>.</p>
+
+<p><a rel="full-article" href="https://vincenttam.github.io/blog/2016/12/31/a-failed-review/">&infin; Permalink</a></p>]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2400,79 +2417,6 @@ think the following screenshot confirm my guess.</p>
       <content type="html"><![CDATA[<p>I removed all instances of “here” in the hyperlink text and committed
 the changes at <a href="https://github.com/VincentTam/vincenttam.github.io/commit/29528f8">29528f8</a> after reading <em>Why Your Links Should Never
 Say “Click Here”</em> in <a href="https://www.smashingmagazine.com/2012/06/links-should-never-say-click-here/"><em>Smashing Magazine</em></a>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Awk Column Alignment]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment/"/>
-    
-    <updated>2016-04-09T06:48:11+02:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I use Google’s <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> to check if the images
-on this blog are optimised.  Recently, it reported that two images in
-<a href="https://vincenttam.github.io/blog/2016/03/27/an-invalid-claim-by-the-government/"><em>An Invalid Claim by the Government</em></a> could be resized and
-compressed.  I did so, and then the file size of the files were
-displayed using <code>ls -lh</code>.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/octopress/source/images/posts/W3CInvalid]$ ls -lh
-total 312K
--rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb1-300.png
--rw-rw-r-- 1 owner owner 132K Mar 27 14:32 cedb1.png
--rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb2-300.png
--rw-rw-r-- 1 owner owner  83K Apr  9 12:20 cedb2.png
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>To remove the first four column, one uses <code>awk</code> to do this.  (I assume
-that the current working directory is the <em>same</em> as above.)</p>
-
-<pre class="cliUB"><code>$ ls -lh | awk '{print $5 $6 $7 $8 $9}'
-
-32KApr912:20cedb1-300.png
-132KMar2714:32cedb1.png
-32KApr912:20cedb2-300.png
-83KApr912:20cedb2.png
-</code></pre>
-
-<p><strong>How can one properly align the columns?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Searching “awk align columns” on Google, I quickly got
-<a href="http://stackoverflow.com/a/14095129">an answer posted by Mike Sherrill</a> on Stack Overflow.
-However, there’s room for improvement in the visual effect of the
-output.</p>
-
-<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %13s\n", $5, $6, $7, $8, $9);}'
-                         
- 32718 Apr  9 12:20 cedb1-300.png
-135159 Mar 27 14:32     cedb1.png
- 32665 Apr  9 12:20 cedb2-300.png
- 84580 Apr  9 12:20     cedb2.png
-</code></pre>
-
-<p>The solution can be found in <a href="http://stackoverflow.com/a/1505360">the second search result</a> for
-the Google search for “awk align columns left right”.  Added a hyphen
-after <code>%</code> will suffice.  Note that the newline <code>\n</code> <em>can’t</em> be
-omitted.  Otherwise, the output will be messed up.</p>
-
-<pre class="cliUB"><code>$ ls -l | awk '{printf("%6s %s %2s %s %-s\n", $5, $6, $7, $8, $9);}'
-                         
- 32718 Apr  9 12:20 cedb1-300.png
-135159 Mar 27 14:32 cedb1.png    
- 32665 Apr  9 12:20 cedb2-300.png
- 84580 Apr  9 12:20 cedb2.png    
-</code></pre>
 
 ]]></content>
     

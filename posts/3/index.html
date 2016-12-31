@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background To find out a way to loop through all elements in an array consisting
-of more than one element, it’s easy. $ for f in {"hello","world"}; &hellip;">
+  <meta name="description" content="Background I use Google’s PageSpeed Insights to check if the images
+on this blog are optimised. Recently, it reported that two images in
+An Invalid &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,76 @@ of more than one element, it’s easy. $ for f in {"hello","world"}; &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/04/09/awk-column-alignment/">Awk Column Alignment</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-09T06:48:11+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:48 am</span></time>
+        
+           | <a href="/blog/2016/04/09/awk-column-alignment/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/04/09/awk-column-alignment/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/04/09/awk-column-alignment/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I use Google’s <a href="https://developers.google.com/speed/pagespeed/insights/">PageSpeed Insights</a> to check if the images
+on this blog are optimised.  Recently, it reported that two images in
+<a href="/blog/2016/03/27/an-invalid-claim-by-the-government/"><em>An Invalid Claim by the Government</em></a> could be resized and
+compressed.  I did so, and then the file size of the files were
+displayed using <code>ls -lh</code>.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress/source/images/posts/W3CInvalid]$ ls -lh
+total 312K
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb1-300.png
+-rw-rw-r-- 1 owner owner 132K Mar 27 14:32 cedb1.png
+-rw-rw-r-- 1 owner owner  32K Apr  9 12:20 cedb2-300.png
+-rw-rw-r-- 1 owner owner  83K Apr  9 12:20 cedb2.png
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>To remove the first four column, one uses <code>awk</code> to do this.  (I assume
+that the current working directory is the <em>same</em> as above.)</p>
+
+<pre class="cliUB"><code>$ ls -lh | awk '{print $5 $6 $7 $8 $9}'
+
+32KApr912:20cedb1-300.png
+132KMar2714:32cedb1.png
+32KApr912:20cedb2-300.png
+83KApr912:20cedb2.png
+</code></pre>
+
+<p><strong>How can one properly align the columns?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/04/09/awk-column-alignment/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -597,65 +668,6 @@ error since I’ve other things to do.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/">Approximation of a Bounded Simple Function by a Continuous Function</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-21T03:12:06+01:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>3:12 am</span></time>
-        
-           | <a href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>Today, I was puzzled by a <em>remark</em> of a proof that a simple function
-$f:[a,b] \to \R$ is equal to a step function $\psi:[a,b] \to \R$
-(resp. a continuous function $g:[a,b] \to \R$) except on a set of
-arbitrarily small measure $\epsilon$.</p>
-
-<blockquote>
-  <p>If $m \le f(x) \le M \;\forall\, x\in [a,b]$, then $\bar{\psi}
-\triangleq (m \vee \psi) \wedge M$ and $\bar{g} \triangleq (m \vee
-g) \wedge M$ are step function and continuous function which satisfy
-$m \le \bar{\psi}$ and $m \le \bar{g} \le M$ so that $f =
-\bar{\psi}$ and $f = \bar{g}$ except on a set of measure less than
-$\epsilon$ respectively.</p>
-</blockquote>
-
-<p>I can verify the above remark, but I wonder <em>why</em> we need to define
-$\bar{\psi}$ and $\bar{g}$ so as to guarantee that they are bounded
-below and above by $m$ and $M$ respectively.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/03/21/approximation-of-a-bounded-simple-function-by-a-continuous-function/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -705,6 +717,7 @@ below and above by $m$ and $M$ respectively.</p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (55)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/metase/'>metase (2)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -725,6 +738,10 @@ below and above by $m$ and $M$ respectively.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2016/12/31/a-failed-review/">A Failed Review</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
       </li>
     
@@ -738,10 +755,6 @@ below and above by $m$ and $M$ respectively.</p>
     
       <li class="post">
         <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/12/inline-limit-rendering/">Inline Limit Rendering</a>
       </li>
     
   </ul>
