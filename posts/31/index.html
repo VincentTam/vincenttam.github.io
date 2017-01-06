@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="To quote another one’s words, one can paraphrase the words. For some
-reason(s), (Perhaps being too lazy, or want to accurately reflect
-another one’s &hellip;">
+  <meta name="description" content="Three months ago, I gave Vundle a try, and it’s much more
+convenient than pathogen.vim. With
+Zaadi’s VIMRC configuration, Vundle can be set up within &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,140 @@ another one’s &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-experience-of-using-vundle/">My Experience of Using Vundle</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T05:17:52+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:17 am</span></time>
+        
+           | <a href="/blog/2014/02/01/my-experience-of-using-vundle/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/01/my-experience-of-using-vundle/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-experience-of-using-vundle/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Three months ago, I gave <a href="https://github.com/gmarik/vundle">Vundle</a> a try, and it’s <em>much</em> more
+convenient than <a href="https://github.com/tpope/vim-pathogen">pathogen.vim</a>.  With
+<a href="http://www.erikzaadi.com/2012/03/19/auto-installing-vundle-from-your-vimrc/" title="Auto Installing Vundle From Your Vimrc">Zaadi’s VIMRC configuration</a>, Vundle can be set up within
+several minutes.</p>
+
+<p>I installed <a href="https://github.com/vim-scripts/FuzzyFinder">FuzzyFinder</a> for opening files in other directories
+without leaving Vim.  However, during the installation of the plugin,
+I carelessly forgot to download <a href="https://github.com/vim-scripts/L9">L9</a> library first.  Therefore, I put
+it into <code>$MYVIMRC</code>.</p>
+
+<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line">Bundle <span class="s1">&#39;L9&#39;</span> <span class="c">&quot; FuzzyFinder dependency</span>
+</span><span class="line">Bundle <span class="s1">&#39;FuzzyFinder&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Then, I got the following error message.</p>
+
+<pre class="cli"><code class="UBMono"><span class="vimErr">$ vi
+Error detected while processing /home/owner/.vimrc:
+line   28:
+E116: Invalid arguments for function vundle#config#bundle
+line   30:
+E116: Invalid arguments for function vundle#config#bundle
+line   31:
+E116: Invalid arguments for function vundle#config#bundle
+line   32:
+E116: Invalid arguments for function vundle#config#bundle
+line   33:
+E116: Invalid arguments for function vundle#config#bundle
+line   39:
+E116: Invalid arguments for function vundle#config#bundle
+Error detected while processing /home/owner/.vim/bundle/FuzzyFinder/plugin/fuf.vim:
+line   13:
+***** L9 library must be installed! *****</span>
+<span class="vimErrCont">Press ENTER or type command to continue</span>
+</code></pre>
+
+<p><code>:BundleList</code> doesn’t have L9, but <code>~/.vim/bundle</code> has the folder
+<code>L9</code>.  The cause of the problem is the comment on the right of the
+<code>Bundle 'foo'</code> command.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">My Choice of Vim Alignment Plugin</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-01T04:16:53+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>4:16 am</span></time>
+        
+           | <a href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/01/my-choice-of-vim-alignment-plugin/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/01/my-choice-of-vim-alignment-plugin/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This post is <em>nothing</em> more than a link to a post on <em>Ruby China</em>,
+which recommends some Vim plugins<sup id="fnref:src"><a href="#fn:src" class="footnote">1</a></sup>, and I’d like to use
+<a href="https://github.com/junegunn/vim-easy-align" title="vim-easy-align">vim-easy-align</a> rather than <a href="http://www.drchip.org/astronaut/vim/align.html" title="Align.vim">Align.vim</a>.</p>
+
+<p>For the rest of the plugins, I don’t feel that I need them now, so I
+won’t bother them. For instance, I found the ruler at the bottom of
+each buffer useful, and I can’t see the difference between a powerline
+and the default ruler.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:src">
+      <p>See <a href="https://ruby-china.org/topics/13350">a post on <em>Ruby China</em></a>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -576,104 +710,6 @@ platforms that enable users to easily create questionnaire.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/">My First Post Using UltraBlog.vim</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-11T17:22:13+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:22 pm</span></time>
-        
-           | <a href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/11/my-first-post-using-ultrablog-vim/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><em>Note: This post won’t make sense here. Refer to the
-<a href="https://blogueun.wordpress.com/2014/01/12/my-first-post-using-ultrablog-vim/">original post</a>.</em></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/11/migrated-from-blogger/">Migrated From Blogger</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-11T00:10:58+01:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:10 am</span></time>
-        
-           | <a href="/blog/2014/01/11/migrated-from-blogger/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/11/migrated-from-blogger/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/11/migrated-from-blogger/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I tried finding a way to blog using Vim, and <code>blogger.vim</code> is what
-I’ve found. I’ve tried this plugin but it <em>doesn’t</em> work for my
-computer. <em>Without</em> Vim, writing code is <em>painful</em> for me. Read the
-authors’ last Blogger post, which was, ironically, about <em>his switch
-to WordPress</em>, I followed his footstep.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<p>Note: For posts about online syntax highlighting and Mathjax on
-Blogger, they <em>won’t</em> make sense here, so refer to
-<a href="http://blogue-un.blogspot.hk/">my original blog</a> if necessary.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-
-      <p>Ujihisa.  (DEC 11, 2013).  <em>moved!</em>.  Retrieved from
-<a href="http://ujihisa.blogspot.hk/2013/12/moved.html">http://ujihisa.blogspot.hk/2013/12/moved.html</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/32">&larr; Older</a>
@@ -720,10 +756,10 @@ Blogger, they <em>won’t</em> make sense here, so refer to
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (55)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/metase/'>metase (2)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/metase/'>metase (3)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -744,6 +780,14 @@ Blogger, they <em>won’t</em> make sense here, so refer to
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection/">Windows Security Popup During Public Wi-Fi Connection</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/31/a-failed-review/">A Failed Review</a>
       </li>
     
@@ -753,14 +797,6 @@ Blogger, they <em>won’t</em> make sense here, so refer to
     
       <li class="post">
         <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
       </li>
     
   </ul>

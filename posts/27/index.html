@@ -9,9 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="After writing my previous post, I found out that the
-standard Markdown syntax for nesting a code block
-inside a list item doesn’t work. I knew a &hellip;">
+  <meta name="description" content="Problem Some contents in Octopress blogs couldn’t be viewed via HTTPS1,
+for example, a Japanese blog. This blog on last Saturday afternoon The first &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,158 @@ inside a list item doesn’t work. I knew a &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/05/mathjax-in-octopress-via-https/">MathJax in Octopress via HTTPS</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-05T14:25:30+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:25 pm</span></time>
+        
+           | <a href="/blog/2014/06/05/mathjax-in-octopress-via-https/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/05/mathjax-in-octopress-via-https/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>Some contents in <a href="http://octopress.org/" title="Octopress">Octopress</a> blogs <em>couldn’t</em> be viewed via <abbr title="HTTP Secure">HTTPS</abbr><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>,
+for example, <a href="https://yamanetoshi.github.io/" title="A Japanese Octopress Blog browsed via HTTPS">a Japanese blog</a>.</p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/JPBlog.png" width="800" title="Screenshot of an Octopress blog in Japanese" alt="fig1" /></p>
+
+<p>This blog on last Saturday afternoon</p>
+
+<ul>
+  <li>The first category list item “$\rm \LaTeX$” on the right <em>couldn’t</em>
+be displayed</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocked.png" width="800" title="Screenshot of my blog on last Saturday afternoon" alt="fig2" /></p>
+
+<ul>
+  <li>Using <abbr title="Hypertext Transfer Protocol">HTTP</abbr> instead of <abbr title="HTTP Secure">HTTPS</abbr>, I can see the blocked contents.</li>
+</ul>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/disable-blocking.png" width="800" title="Disable Protection on This Page" alt="fig3" /></p>
+
+<p><img class="fancybox" src="/images/posts/OctopressHTTPS/blocking-disabled.png" width="800" title="Blocked contents can be displayed." alt="fig4" /></p>
+
+<p><strong>How can those blocked contents be displayed automatically?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/05/mathjax-in-octopress-via-https/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/06/05/secure-file-removal/">Secure File Removal</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-06-05T07:11:44+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:11 am</span></time>
+        
+           | <a href="/blog/2014/06/05/secure-file-removal/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/05/secure-file-removal/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/06/05/secure-file-removal/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="gnus-shred-utility">GNU’s <code>shred</code> utility</h2>
+
+<h3 id="the-command-for-files-and-folders">The command for files and folders</h3>
+
+<p>For a <em>single</em> file, the command should be simple.  For a <em>directory</em>,
+the following command can shred the files recursively.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<pre class="cliUB"><code>$ find &lt;dir&gt; -type f -exec shred {} \;
+</code></pre>
+
+<h3 id="effectiveness-of-shred-in-ext3-and-ntfs-file-systems">Effectiveness of <code>shred</code> in Ext3 and NTFS file systems</h3>
+
+<p>The cited part of <code>shred</code>’s manpage in the second answer interested me
+to read more about the utility.  In Vim, I pressed <code>K</code> when the cursor
+is on the word <code>shred</code>, and opened the manpage, which claims that
+<em>using it on an Ext3 partition is fine</em> if the partition is in either
+the <code>data=ordered</code> (<strong>default</strong>) or <code>data=writeback</code> mode.  How about
+<em>an NTFS partition</em>?  At the bottom, it says that the info page has
+more information about the utility.  I found the following section in
+the info page.</p>
+
+<blockquote>
+  <p><strong>Please note</strong> that `shred’ relies on a very important assumption:
+that the file system overwrites data in place.  This is the
+traditional way to do things, but many modern file system designs do
+not satisfy this assumption.  Exceptions include:</p>
+
+  <ul>
+    <li>Log-structured or journaled file systems, such as those supplied
+with AIX and Solaris, and JFS, ReiserFS, XFS, Ext3 (in
+`data=journal’ mode), BFS, <strong>NTFS</strong>, etc. when they are configured
+to journal <em>data</em>.</li>
+  </ul>
+</blockquote>
+
+<p>However, googling “shred ntfs effective”, I saw another post about the
+utility.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>  Due to my <em>limited</em> IT knowledge, searching for the word
+“NTFS”, all I could understand was that “using <code>shred</code> on NTFS is
+fine”.  I searched for the word “ext3”, and found Shane’s comment,
+which questioned Wayne Richardson’s advice.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
+
+<h3 id="true-solution-encrypt-the-file-system">True solution: Encrypt the file system</h3>
+
+<p>I went back to the Unix Stack Exchange question and re-read the second
+solution.  The feasible way is in the last line.  I think many new
+GNU/Linux users who have read this answer won’t think of encrypting
+swap.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/06/05/secure-file-removal/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -525,161 +676,6 @@ Build Failed
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/">Advantages of Blogs Over Paper Notebooks</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-30T10:19:54+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:19 am</span></time>
-        
-           | <a href="/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/05/30/advantages-of-blogs-over-paper-notebooks/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ol>
-  <li>Blogs
-    <ul>
-      <li>Accessible anywhere anytime, as long as an Internet connection is
- available.</li>
-      <li>Multiple concurrent users: it can be viewed by <em>multiple</em>
- readers at the <em>same</em> time.</li>
-      <li>Perfectly reproduced: contents of the blog can be copied into
- the computer.</li>
-      <li>Searching: readers can find information useful for them quickly.</li>
-      <li>Characters can usually be neatly displayed, despite the author’s
- poor handwriting.</li>
-    </ul>
-  </li>
-  <li>Paper notebooks
-    <ul>
-      <li>Subject to aging: oxidized pages will become yellow; ink will
- fade out.</li>
-      <li>Easily damaged: pages are easily torn if the owner doesn’t take
- care of the notebook.</li>
-      <li>Difficult for sharing: unless you take a photo of it and share
- it on the Internet, others can’t view the notebook while
- you’re using it.</li>
-      <li>Inconvenient and inefficient to locate information: readers need
- to turn over the pages and skim through them to find the
- useful parts.</li>
-    </ul>
-  </li>
-</ol>
-
-<h2 id="privacy-of-the-shared-contents">Privacy of the shared contents</h2>
-
-<p>Once something is uploaded to the Internet, it is likely that <strong>the
-uploaded contents can <em>never</em> be deleted</strong> because</p>
-
-<ul>
-  <li>it’s <em>not always possible to delete the uploaded resources in the
-  server</em>; and</li>
-  <li>there’s <em>no absoulutely legitamate way to delete the backups of the
-  uploaded resources</em> at other locations where you have <em>no</em> access
-  rights, for example, others’ computers.</li>
-</ul>
-
-<p>In short, there’s <em>no absoulute privacy</em> for contents uploaded to the
-Internet.  They’re expected to (be exposed to the) <em>public</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
-
-<h2 id="usages-of-blogs">Usages of blogs</h2>
-
-<p>They can be used to write something that</p>
-
-<ul>
-  <li>you want to share; and</li>
-  <li>you don’t mind to share—it won’t be part of your private
-  information.</li>
-</ul>
-
-<p>Knowledge and universal facts are typical examples of impersonal
-information.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p><a href="http://www.abc.net.au/news/2014-05-12/internet-security-expert-says-no-such-thing-as/5445830">Internet Security Expert Says No Such Thing As</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/05/26/my-desktop-crashed/">My Desktop Crashed!</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-05-26T18:22:22+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:22 pm</span></time>
-        
-           | <a href="/blog/2014/05/26/my-desktop-crashed/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/05/26/my-desktop-crashed/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/05/26/my-desktop-crashed/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="beginning">Beginning</h2>
-
-<p>Last Saturday night, I used my Ubuntu Desktop to watch some videos.
-While it was playing, the recently upgraded Firefox suddenly hanged.
-The screen was freezed, and the sound continued to play.  To avoid
-disturbing my neighbour, I muted the monitor speakers.  I initially
-guessed that the newly upgraded Firefox didn’t work well with Linux
-kernel 3.2.0-61, which was released on May 2 2014.  I forced the
-machine to halt by pressing the power button for a while.  Then I
-switched on the computer again, and chose “Memtest86+” in the GRUB
-menu.  Within several minutes, the words in the blue screen blurred
-due to some blinking dots.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/05/26/my-desktop-crashed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/28">&larr; Older</a>
@@ -726,10 +722,10 @@ due to some blinking dots.</p>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (36)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/math/'>math (55)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/metase/'>metase (2)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/metase/'>metase (3)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -750,6 +746,14 @@ due to some blinking dots.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection/">Windows Security Popup During Public Wi-Fi Connection</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2016/12/31/a-failed-review/">A Failed Review</a>
       </li>
     
@@ -759,14 +763,6 @@ due to some blinking dots.</p>
     
       <li class="post">
         <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/">Indices in Definition of External Semidirect Product</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)</a>
       </li>
     
   </ul>
