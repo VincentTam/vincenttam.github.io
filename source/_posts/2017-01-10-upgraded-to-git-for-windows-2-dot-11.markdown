@@ -10,7 +10,7 @@ Background
 ---
 
 This [Git for Windows][git4win] upgrade from v2.8 to v2.11 is an
-unsuccessful attempt to fix a [Jekyll preview error][pp] on [my
+*unsuccessful* attempt to fix a [Jekyll preview error][pp] on [my
 another blog][blog2] triggered by the command `jekyll serve` for local
 preview.
 
@@ -33,7 +33,7 @@ chosen the most common option with the character encoding UTF-8.  To
 make this change permanent for one user, add the last line into
 `~/.bashrc`.
 
-{% codeblock lang:sh Locale change Reference http://bit.ly/2iAnlq9 %}
+{% codeblock lang:sh Locale change http://bit.ly/2iAnlq9 Reference %}
 # Change Locale Permanently
 export LANG=en_US.utf8
 {% endcodeblock %}
