@@ -41,7 +41,7 @@ Solution
 I'll include the code below, so that it can be simply copied and
 pasted next time.
 
-{% codeblock markdown Comments for those who *don't* use $\rm \LaTeX$ %}
+{% codeblock Comments for those who *don't* use $\rm \LaTeX$ %}
 Please use [$\rm \LaTeX$](http://meta.math.stackexchange.com/q/5020/290189).
 {% endcodeblock %}
 
