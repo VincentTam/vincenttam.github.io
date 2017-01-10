@@ -10,9 +10,9 @@ Background
 ---
 
 This [Git for Windows][git4win] upgrade from v2.8 to v2.11 is an
-*unsuccessful* attempt to fix a [Jekyll preview error][pp] on [my
-another blog][blog2] triggered by the command `jekyll serve` for local
-preview.
+*unsuccessful* attempt to fix a [Jekyll preview error][pp] on
+[my another blog][blog2] triggered by the command `jekyll serve` for
+local preview.
 
 Problem
 ---
