@@ -63,32 +63,32 @@ bundler | 1.13.7
 
 Name                 | Version Number | With native extensions?
 ---                  | ---            | ---
-**RedCloth**         | 4.2.9          | [x]
-**wdm**              | 0.1.0          | [x]
-blankslate           | 2.1.2.4        | [ ]
-chunky_png           | 1.3.4          | [ ]
-coffee-script-source | 1.9.1          | [ ]
-colorator            | 0.1            | [ ]
-execjs               | 2.4.0          | [ ]
-fast-stemmer         | 1.0.2          | [x]
-ffi                  | 1.9.6          | [ ]
-hitimes              | 1.2.2          | [x]
-jekyll-gist          | 1.1.0          | [ ]
-jekyll-paginate      | 1.1.0          | [ ]
-jekyll-sitemap       | 0.8.0          | [ ]
-kramdown             | 1.6.0          | [ ]
-liquid               | 2.6.2          | [ ]
-mercenary            | 0.3.5          | [ ]
-multi_json           | 1.11.0         | [ ]
-posix-spawn          | 0.3.10         | [x]
-rack                 | 1.6.0          | [ ]
-rb-fsevent           | 0.9.4          | [ ]
-redcarpet            | 3.2.2          | [x]
-safe_yaml            | 1.0.4          | [ ]
-sass                 | 3.4.13         | [ ]
-stringex             | 1.4.0          | [ ]
-tilt                 | 1.4.1          | [ ]
-yajl-ruby            | 1.2.1          | [x]
+**RedCloth**         | 4.2.9          | ✓
+**wdm**              | 0.1.0          | ✓
+blankslate           | 2.1.2.4        | ✗
+chunky_png           | 1.3.4          | ✗
+coffee-script-source | 1.9.1          | ✗
+colorator            | 0.1            | ✗
+execjs               | 2.4.0          | ✗
+fast-stemmer         | 1.0.2          | ✓
+ffi                  | 1.9.6          | ✗
+hitimes              | 1.2.2          | ✓
+jekyll-gist          | 1.1.0          | ✗
+jekyll-paginate      | 1.1.0          | ✗
+jekyll-sitemap       | 0.8.0          | ✗
+kramdown             | 1.6.0          | ✗
+liquid               | 2.6.2          | ✗
+mercenary            | 0.3.5          | ✗
+multi_json           | 1.11.0         | ✗
+posix-spawn          | 0.3.10         | ✓
+rack                 | 1.6.0          | ✗
+rb-fsevent           | 0.9.4          | ✗
+redcarpet            | 3.2.2          | ✓
+safe_yaml            | 1.0.4          | ✗
+sass                 | 3.4.13         | ✗
+stringex             | 1.4.0          | ✗
+tilt                 | 1.4.1          | ✗
+yajl-ruby            | 1.2.1          | ✓
 
 Problem 2: wdm installation failure
 
