@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I tried editing in M$ Word, but failed. Solution The solution is extremely simple: don’t use M$ Office if it’s too
-heavy for your computer — &hellip;">
+  <meta name="description" content="Background This morning, I tried typing the chemical symbol of carbon dioxide
+(CO2) in $\rm \LaTeX$, but I wouldn’t like to use
+\mathrm in math mode &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,71 @@ heavy for your computer — &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/06/09/miktex-update/">Mik$\rm \TeX$ Update</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-06-09T10:41:12+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:41 am</span></time>
+        
+           | <a href="/blog/2015/06/09/miktex-update/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/miktex-update/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/06/09/miktex-update/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>This morning, I tried typing the chemical symbol of carbon dioxide
+(CO<sub>2</sub>) in $\rm \LaTeX$, but I <em>wouldn’t</em> like to use
+<code>\mathrm</code> in math mode — first, I changed from text mode to math
+mode, then in order to type normal font, I used <code>\mathrm</code> to change it
+back to “text mode in math mode”.  I did all of these for a little
+subscript only.  Clearly, that’s <em>not</em> an elegant way of typesetting
+CO<sub>2</sub>.  It <em>didn’t</em> took me long to find out that what I
+needed was the package <a href="https://www.ctan.org/pkg/mhchem"><code>mhchem</code></a>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried to <code>\usepackage[version=3]{mhchem}</code>, but Mik$\rm \TeX$
+complained that the installed version of <code>l3kernel</code> was too <em>old</em>.  As
+a result, I opened the package manager, and called the “Update Wizard”
+inside.</p>
+
+<picture class="fancybox" title="No update helper found">
+  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png" media="(min-width: 460px)" />
+  <img alt="update helper disappered?" src="/images/posts/MikTeXUpdate/no-helper300.png" />
+</picture>
+
+<p><strong>How can I get the packages updated <em>without</em> manually creating
+another folder?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/06/09/miktex-update/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -643,95 +709,6 @@ fail1.png  fail2.png  fail.png
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/16/recent-vundle-plugin-update/">Recent Vundle Plugin Update</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-16T10:42:01+02:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:42 am</span></time>
-        
-           | <a href="/blog/2015/05/16/recent-vundle-plugin-update/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/16/recent-vundle-plugin-update/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/16/recent-vundle-plugin-update/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I use <a href="https://github.com/gmarik/Vundle.vim">Vundle</a> for managing my Vim plugins.<sup id="fnref:eg"><a href="#fn:eg" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I typed <code>:PluginUpdate</code> in Vim as usual for keeping all of the plugins
-up-to-date, and the system prompted me to supply my user name and
-password for GitHub.<sup id="fnref:rec"><a href="#fn:rec" class="footnote">2</a></sup>  Initially, I <em>refused</em> to do so.  Then
-Vundle skipped the first plugin and proceeded to another one.  I was
-prompted again for the user name, and my response was still the same.
-This repeated for several times, and finally <em>nothing</em> was updated.</p>
-
-<p>I quitted Vim and re-opened it again, and issued the <em>same</em> editor
-command for updating the plugins, and ran into the <em>same</em> trouble.</p>
-
-<h2 id="result">Result</h2>
-
-<p>Since I <em>didn’t</em> have much time, I finally input correctly the
-required account information in order to get the plugins updated.
-Luckily, this was needed for <em>once</em> only, instead of once for each
-plugin.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<h3 id="never-use-vim-surround-for-code-blocks">Never use vim-surround for code blocks</h3>
-
-<p><a href="https://github.com/tpope/vim-surround">Vim-surround</a> changes some whitespaces to tabs, which Google
-<em>doesn’t</em> recommend for indentation.<sup id="fnref:guide"><a href="#fn:guide" class="footnote">3</a></sup></p>
-
-<h3 id="setting-the-font-of-a-code-block">Setting the font of a code block</h3>
-
-<p>Specifying the <code>font-family</code> of a <code>&lt;pre&gt;</code> tag is <em>useless</em>—change
-<code>pre</code> to <code>code</code> instead.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:eg">
-
-      <p>For example, you may refer to the screenshot in a comment for my
-post <a href="/blog/2014/08/29/clang-complete-on-ubuntu-14-dot-04/">Clang Complete on Ubuntu 14.04</a> on <em>Blog 1</em>. <a href="#fnref:eg" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:rec">
-      <p><a href="/downloads/code/vundle.html">The Vim screen that I actually saw</a>. <a href="#fnref:rec" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:guide">
-
-      <p>Refer to the “<a href="https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml#Indentation">General Formatting Rules</a>” in <em>Google
-HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/12">&larr; Older</a>
@@ -781,7 +758,7 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/metase/'>metase (3)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -790,7 +767,7 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (10)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -800,6 +777,10 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
@@ -815,10 +796,6 @@ HTML/CSS Style Guide</em> Revision 2.23. <a href="#fnref:guide" class="reversef
     
       <li class="post">
         <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
       </li>
     
   </ul>

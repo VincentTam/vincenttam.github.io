@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background While removing the “here”’s in the hyperlink text, I clicked on a link
-to my old blog on WordPress.com. Unfortunately, after 15 seconds, I &hellip;">
+  <meta name="description" content="Background A year ago, I was using msysgit on M$ Win* 7. Its support for
+Unicode characters isn’t so good, and I can’t write a text file
+with accents &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,98 @@ to my old blog on WordPress.com. Unfortunately, after 15 seconds, I &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/04/09/latex-suite-in-portable-git/">$\rm \LaTeX$-Suite in Portable Git</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-04-09T08:34:38+02:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:34 am</span></time>
+        
+           | <a href="/blog/2016/04/09/latex-suite-in-portable-git/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/04/09/latex-suite-in-portable-git/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/04/09/latex-suite-in-portable-git/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>A year ago, I was using msysgit on M$ Win* 7. Its support for
+Unicode characters <em>isn’t</em> so good, and I <em>can’t</em> write a text file
+with accents like “café” in the Vim editor that shipped with msysgit.
+As a result, I needed GVim for editing my $\rm \LaTeX$ documents.</p>
+
+<p>Unluckily, unlike Linux, the GVim can <em>never</em> have forward control.
+Therefore, I needed to switch windows between GVim and Git Bash.</p>
+
+<p>More importantly, if I want to apply the Linux skills and the tools on
+M$ Win*, I need <em>portable</em> programs excutable on a USB unless I
+carry my laptop.</p>
+
+<p>Luckily, the bash shell in Git for Windows has improved a lot.  The
+accents are well supported.  Then, I have switched from GVim to the
+embedded Vim in Git for Windows.  Luckily, the setup of Vundle was
+smooth. Most of the installed plugins work fine in terminal Vim.</p>
+
+<h2 id="problem-1">Problem 1</h2>
+
+<p>In the post <a href="/blog/2016/03/20/git-portable-home-path/"><em>Git Portable Home Path</em></a>, a BAT file is included so
+that the home folder and the <code>HOMEDRIVE</code> environment are automatically
+set.  Since the <em>same</em> Git repository can be shared among multiple
+devices, such as my Linux desktop, my M$ Win* 7 laptop, and my USB
+stick, a bare repository is needed for efficient pulling and pushing
+of Git commits.  Since I work outside home, I place a bare Git repo in
+my USB stick.  However, for each local Git repository stored in the
+USB stick (under <code>~/local_repo</code>, a.k.a.
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>), I need to run the
+following command for each time I use Git Bash.</p>
+
+<h2 id="problem-2">Problem 2</h2>
+
+<p>After making some changes on a $\rm \TeX$ file, I compiled the file
+using Mik$\rm \TeX$ Portable.</p>
+
+<ol>
+  <li>Browse the folder <code>$HOMEDRIVE/MikTeXPortable/</code>.</li>
+  <li>Double-click on <code>miktex-portable.cmd</code>.</li>
+  <li>In the Command Prompt popped up, switch to
+<code>$HOMEDRIVE/PortableGit/home/owner/local_repo</code>.</li>
+  <li>Type <code>pdflatex file.tex</code>.</li>
+</ol>
+
+<p>This sounds really slow.  The goal is to find a more efficient $\rm
+\LaTeX$ editing workflow.</p>
+
+<p>That’s <em>not</em> the end.  Another bad news came from <code>eu1lmr.fd</code>.  I’ve
+got error similar to <a href="http://bbs.ctex.org/forum.php?mod=viewthread&amp;tid=75679">fengbaobao6’s</a>.  The compilation was
+<em>stuck</em> at <code>...\tex\latex\euenc\eu1lmr.fd</code>.  Then an error was shown:
+“Fontconfig error: Cannot load config file”.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/04/09/latex-suite-in-portable-git/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -610,57 +703,6 @@ basis in $\ell^\infty$.  This will be discussed in my next post.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Gems on Which TLDR Pages Depend</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-03-29T13:13:20+02:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>29</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:13 pm</span></time>
-        
-           | <a href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/29/gems-on-which-tldr-pages-depend/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/03/29/gems-on-which-tldr-pages-depend/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tonight, I’ve installed <a href="http://tldr-pages.github.io/">TLDR pages</a> by typing <code>gem install
-tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
-
-<p>Here’s a list of gems actually fetched.</p>
-
-<ol>
-  <li><code>bales-0.1.2</code></li>
-  <li><code>unf-0.2.0.beta2</code></li>
-  <li><code>domain_name-0.5.20160310</code></li>
-  <li><code>http-cookie-1.0.2</code></li>
-  <li><code>mime-types-2.99.1</code></li>
-  <li><code>netrc-0.11.0</code></li>
-  <li><code>rest-client-1.8.0</code></li>
-  <li><code>tldrb-0.0.2</code></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/4">&larr; Older</a>
@@ -710,7 +752,7 @@ tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
 <li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/metase/'>metase (3)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -719,7 +761,7 @@ tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
 <li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/template/'>template (9)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/template/'>template (10)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -729,6 +771,10 @@ tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
@@ -744,10 +790,6 @@ tldrb</code> since I <em>don’t</em> have <code>npm</code> installed.</p>
     
       <li class="post">
         <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a>
       </li>
     
   </ul>
