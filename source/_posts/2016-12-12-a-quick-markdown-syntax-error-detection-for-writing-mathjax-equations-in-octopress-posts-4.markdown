@@ -25,10 +25,10 @@ next subsection *A problem with Vim’s folding arised*.
 Solution
 ---
 
-Firstly, save the code for loading [MathJax] in the previous post in
-this series in a separate file `~/script.html`.  Then use the
-following commands *within* Vim in order to avoid leaving the current
-buffer and to improve efficiency.
+Firstly, save the code for loading [MathJax] in [the previous
+post][siri] in this series in a separate file `~/script.html`.  Then
+use the following commands *within* Vim in order to avoid leaving the
+current buffer and to improve efficiency.
 
     9,$w! ~/temp.mkd
     !kramdown ~/temp.mkd > ~/temp.html
