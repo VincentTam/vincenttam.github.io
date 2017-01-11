@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-10T13:19:47+01:00</updated>
+  <updated>2017-01-11T02:57:49+00:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,10 +15,699 @@
   
   <entry>
     
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/"/>
+    
+    <updated>2017-01-10T21:52:52+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In the <a href="/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">previous post in this series</a>, I included three <a href="http://www.vim.org">Vim</a>
+editor commands.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>As I’ve already typed hundreds of lines of source code, I feel tired
+and I often <em>make mistakes</em> while typing those commands despite these
+two command mode mappings in my <code>~/.vimrc</code>.</p>
+
+<p>{% codeblock lang:vim More efficient recall from Vim command history http://bit.ly/2idDlxa Gist %}
+“ Practical Vim Tip 34: Avoid cursors when rcl’g cmd from hist
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+{% endcodeblock %}</down></c-n></up></c-p></p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Convert these three commands into a shell script.  Since I’m using
+<a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a>, I assume that the current working directory
+(as shown by <code>:pwd</code>) is the root of the local repository for the
+[Octopress] blog.</p>
+
+<p>{% include_code Script for Octopress editing within Vim lang:sh quik-prv.sh %}</p>
+
+<ol>
+  <li>The YAML header is chopped off since I just want to verify the
+[kramdown] syntax.</li>
+  <li>I appended <code>~</code> after the file extension names <code>.html</code> since I had
+added <code>*~</code> in my <code>.gitignore</code> and I <em>didn’t</em> want these files
+(including this shell script) to be tracked by Git.</li>
+  <li>I created a symbolic link on Windows 10 with <code>mklink</code> in <code>cmd</code>.
+(ran as admin)  Other options are more <em>complicated</em>:
+    - Graphical programs: more disk space is consumed for programs
+        rarely used which have command line alternatives.
+    - Windows Power Shell: this method <em>won’t</em> work for Home
+        edition.  (That’s my case.)  I’m quite satisfied by the
+        current edition and I <em>don’t</em> see any reason to spend
+        a thousand dollar and a whole day to have it changed to Pro
+        version for functionalities that are too advanced for me.</li>
+</ol>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>While I was writing this post, I used</p>
+
+<pre><code>grep -e "\[kramdown\]" %:h/*.markdown
+</code></pre>
+
+<p>in the current buffer in order to quickly retrieve the links to
+websites to which I had previously referred.  To escape the square
+brackets and the search pattern, the flag <code>-e</code> is added in between the
+utility name and the pattern string.  I tried using marks, but I had
+forgotten the difference between a mark named with a small letter and
+a capital letter.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mark</th>
+      <th>Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>small</td>
+      <td>local</td>
+    </tr>
+    <tr>
+      <td>capital</td>
+      <td>global</td>
+    </tr>
+  </tbody>
+</table>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress Config for Ruby 2.3 on Windows 10]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/"/>
+    
+    <updated>2017-01-10T15:38:32+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Same as the background in <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">my previous article</a>.</p>
+
+<h2 id="background">Background</h2>
+
+<p>I uninstalled Ruby 2.0 in the Control Panel, and then installed
+version 2.3.3 from <a href="https://rubyinstaller.org/">RubyInstaller for Windows</a></p>
+
+<h2 id="problem-1-redcloth-installation-failure">Problem 1: RedCloth installation failure</h2>
+
+<h3 id="error-message">Error message</h3>
+
+<pre class="cli"><code>Gem::InstallError: The 'RedCloth' native gem requires installed build tools.
+
+Please update your PATH to include build tools or download the DevKit
+from 'http://rubyinstaller.org/downloads' and follow the instructions
+at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
+
+An error occurred while installing RedCloth (4.2.9), and Bundler cannot
+continue.
+Make sure that `gem install RedCloth -v '4.2.9'` succeeds before bundling.
+</code></pre>
+
+<p>The error message is similar to <a href="http://stackoverflow.com/a/36274233/280189">Joe’s gem install error</a>.
+The only difference is that I was installing <a href="http://redcloth.org/">RedCloth</a> 4.9.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>This failure is due to the absence of a valid path to
+<a href="https://rubyinstaller.org/add-ons/devkit/">RubyInstaller Development Kit</a>.  I tried manually adding the
+path to the folder for binary executables (default to
+<code>C:\RubyDevKit\bin</code>) to <code>PATH</code>, but it’s <em>unsuccessful</em>.  I googled
+“Please update your PATH to include build tools” and found
+<a href="http://stackoverflow.com/a/36274233/280189">his question</a>, whose third answer explained the function
+of <code>devkitvar.bat</code>.  This batch script actually prepended the path of
+<em>two</em> folders into <code>PATH</code>.  One is stated above; one is
+<code>C:\RubyDevKit\mingw\bin</code>.  Running this batch file changes <code>PATH</code>
+<em>temporarily</em>.  A manual configuration in the Control Panel allowed
+the system to detect <a href="https://rubyinstaller.org/add-ons/devkit/">DevKit</a>, and this problem was thus
+solved.</p>
+
+<h3 id="related-gems">Related gems</h3>
+
+<h4 id="already-installed">Already installed</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: right">Version Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rake</td>
+      <td style="text-align: right">10.4.2</td>
+    </tr>
+    <tr>
+      <td>bundler</td>
+      <td style="text-align: right">1.13.7</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="being-installed">Being installed</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: right">Version Number</th>
+      <th style="text-align: center">With native extensions?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>RedCloth</strong></td>
+      <td style="text-align: right">4.2.9</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td><strong>wdm</strong></td>
+      <td style="text-align: right">0.1.0</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>blankslate</td>
+      <td style="text-align: right">2.1.2.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>chunky_png</td>
+      <td style="text-align: right">1.3.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>coffee-script-source</td>
+      <td style="text-align: right">1.9.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>colorator</td>
+      <td style="text-align: right">0.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>execjs</td>
+      <td style="text-align: right">2.4.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>fast-stemmer</td>
+      <td style="text-align: right">1.0.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>ffi</td>
+      <td style="text-align: right">1.9.6</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>hitimes</td>
+      <td style="text-align: right">1.2.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>jekyll-gist</td>
+      <td style="text-align: right">1.1.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>jekyll-paginate</td>
+      <td style="text-align: right">1.1.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>jekyll-sitemap</td>
+      <td style="text-align: right">0.8.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>kramdown</td>
+      <td style="text-align: right">1.6.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>liquid</td>
+      <td style="text-align: right">2.6.2</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>mercenary</td>
+      <td style="text-align: right">0.3.5</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>multi_json</td>
+      <td style="text-align: right">1.11.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>posix-spawn</td>
+      <td style="text-align: right">0.3.10</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>rack</td>
+      <td style="text-align: right">1.6.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>rb-fsevent</td>
+      <td style="text-align: right">0.9.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>redcarpet</td>
+      <td style="text-align: right">3.2.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>safe_yaml</td>
+      <td style="text-align: right">1.0.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>sass</td>
+      <td style="text-align: right">3.4.13</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>stringex</td>
+      <td style="text-align: right">1.4.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>tilt</td>
+      <td style="text-align: right">1.4.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>yajl-ruby</td>
+      <td style="text-align: right">1.2.1</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="problem-2-wdm-installation-failure">Problem 2: wdm installation failure</h2>
+
+<p>I put the <a href="#wdm" class="cliwide">error message from wdm</a> in a popup dialog.</p>
+
+<div id="wdm" class="noscr">
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ bundle install
+Fetching gem metadata from https://rubygems.org/.........
+Fetching version metadata from https://rubygems.org/..
+Fetching dependency metadata from https://rubygems.org/.
+Using rake 10.4.2
+Using RedCloth 4.2.9
+Using blankslate 2.1.2.4
+Installing hitimes 1.2.2 with native extensions
+Using chunky_png 1.3.4
+Installing fast-stemmer 1.0.2 with native extensions
+Using coffee-script-source 1.9.1
+Using execjs 2.4.0
+Using colorator 0.1
+Using multi_json 1.11.0
+Using sass 3.4.13
+Using rb-fsevent 0.9.4
+Using ffi 1.9.6
+Using tilt 1.4.1
+Using jekyll-gist 1.1.0
+Using jekyll-paginate 1.1.0
+Using kramdown 1.6.0
+Using liquid 2.6.2
+Using mercenary 0.3.5
+Installing posix-spawn 0.3.10 with native extensions
+Installing yajl-ruby 1.2.1 with native extensions
+Installing redcarpet 3.2.2 with native extensions
+Using safe_yaml 1.0.4
+Using jekyll-sitemap 0.8.0
+Using rack 1.6.0
+Using stringex 1.4.0
+Installing wdm 0.1.0 with native extensions
+Using bundler 1.13.7
+Installing parslet 1.5.0
+Installing timers 4.0.1
+Installing classifier-reborn 2.0.3
+Installing coffee-script 2.3.0
+Installing compass-core 1.0.3
+Installing compass-import-once 1.0.5
+Installing jekyll-sass-converter 1.3.0
+Installing sass-globbing 1.0.0
+Installing rb-inotify 0.9.5
+Installing haml 4.0.6
+Installing pygments.rb 0.6.2
+Installing rack-protection 1.5.3
+Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+
+    current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+C:/Ruby23-x64/bin/ruby.exe -r ./siteconf20170109-8020-1n4s35m.rb extconf.rb
+checking for main() in -lkernel32... yes
+checking for windows.h... yes
+checking for ruby.h... yes
+checking for HAVE_RUBY_ENCODING_H... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can
+be found here:
+
+
+
+current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+make "DESTDIR=" clean
+
+current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+make "DESTDIR="
+generating wdm_ext-x64-mingw32.def
+compiling entry.c
+In file included from entry.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from entry.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from entry.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from entry.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling memory.c
+In file included from memory.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from memory.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from memory.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from memory.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling monitor.c
+In file included from monitor.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from monitor.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from monitor.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from monitor.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling queue.c
+In file included from queue.c:3:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/vadefs.h:13:0,
+from
+4-mingw32/include/_mingw_stdarg.h:14,
+from
+4-mingw32/include/stdarg.h:140,
+from
+c:\rubydevkit\mingw\bin\../lib/gcc/x86_64-w64-mingw32/4.7.2/include/stdarg.h:1,
+                 from queue.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from queue.c:3:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from queue.c:3:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling rb_change.c
+In file included from rb_change.c:4:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdlib.h:9,
+                 from rb_change.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from rb_change.c:4:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from rb_change.c:4:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling rb_monitor.c
+In file included from rb_monitor.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from rb_monitor.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from rb_monitor.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from rb_monitor.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+rb_monitor.c: In function 'rb_monitor_run_bang':
+rb_monitor.c:508:9: warning: implicit declaration of function
+'rb_thread_blocking_region' [-Wimplicit-function-declaration]
+compiling utils.c
+In file included from utils.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from utils.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from utils.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from utils.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling wdm.c
+In file included from wdm.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from wdm.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from wdm.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from wdm.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+linking shared-object wdm_ext.so
+rb_monitor.o: In function `rb_monitor_run_bang':
+C:\Ruby23-x64\lib\ruby\gems\2.3.0\gems\wdm-0.1.0\ext\wdm/rb_monitor.c:508:
+undefined reference to `rb_thread_blocking_region'
+collect2.exe: error: ld returned 1 exit status
+make: *** [wdm_ext.so] Error 1
+
+make failed, exit code 2
+
+Gem files will remain installed in
+C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0 for inspection.
+Results logged to
+.out
+
+An error occurred while installing wdm (0.1.0), and Bundler cannot continue.
+Make sure that `gem install wdm -v '0.1.0'` succeeds before bundling.
+</code></pre></div>
+
+<p>From the line</p>
+
+<pre class="cli"><code>wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+</code></pre>
+
+<p>I found <a href="https://github.com/Maher4Ever/wdm/issues/18">wdm issue #18</a>, but I <em>failed</em> to notice that the
+problem had been resolved.  I later knew that from
+<a href="https://github.com/jekyll/jekyll/issues/3721">Jekyll issue #3721</a>.</p>
+
+<p>After changing the version number of <a href="https://rubygems.org/gems/wdm">wdm</a> to 0.1.1, I could proceed
+further.  <a href="#wdmfixed" class="cliwide">The system output</a> was fine.</p>
+
+<div id="wdmfixed" class="noscr">
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ gem install wdm -v '0.1.1'
+Building native extensions.  This could take a while...
+Successfully installed wdm-0.1.1
+Parsing documentation for wdm-0.1.1
+Installing ri documentation for wdm-0.1.1
+Done installing documentation for wdm after 0 seconds
+1 gem installed
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Fetching version metadata from https://rubygems.org/..
+Fetching dependency metadata from https://rubygems.org/.
+Resolving dependencies...
+Using rake 10.4.2
+Using RedCloth 4.2.9
+Using blankslate 2.1.2.4
+Using hitimes 1.2.2
+Using chunky_png 1.3.4
+Using fast-stemmer 1.0.2
+Using coffee-script-source 1.9.1
+Using execjs 2.4.0
+Using colorator 0.1
+Using multi_json 1.11.0
+Using sass 3.4.13
+Using rb-fsevent 0.9.4
+Using ffi 1.9.6
+Using tilt 1.4.1
+Using jekyll-gist 1.1.0
+Using jekyll-paginate 1.1.0
+Using kramdown 1.6.0
+Using liquid 2.6.2
+Using mercenary 0.3.5
+Using posix-spawn 0.3.10
+Using yajl-ruby 1.2.1
+Using redcarpet 3.2.2
+Using safe_yaml 1.0.4
+Using jekyll-sitemap 0.8.0
+Using rack 1.6.0
+Using stringex 1.4.0
+Using wdm 0.1.1 (was 0.1.0)
+Using bundler 1.13.7
+Using parslet 1.5.0
+Using timers 4.0.1
+Using classifier-reborn 2.0.3
+Using coffee-script 2.3.0
+Using compass-core 1.0.3
+Using compass-import-once 1.0.5
+Using jekyll-sass-converter 1.3.0
+Using sass-globbing 1.0.0
+Using rb-inotify 0.9.5
+Using haml 4.0.6
+Using pygments.rb 0.6.2
+Using rack-protection 1.5.3
+Installing toml 0.1.2
+Installing celluloid 0.16.0
+Installing jekyll-coffeescript 1.0.1
+Installing compass 1.0.3
+Installing sinatra 1.4.5
+Installing listen 2.8.5
+Installing jekyll-watch 1.2.1
+Installing jekyll 2.5.3
+Installing octopress-hooks 2.6.0
+Installing octopress-date-format 2.0.2
+Bundle complete! 14 Gemfile dependencies, 50 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from compass:
+    Compass is charityware. If you love it, please donate on our behalf at http:
+//umdf.org/compass Thanks!
+</code></pre></div>
+
+<h2 id="problem-3-i-have-a-row-with-justin">Problem 3: I have a row with Justin.</h2>
+
+<p>When I ran <code>rake preview</code>, the follow line appeared.</p>
+
+<pre class="cli"><code>bash: /c/Ruby23-x64/bin/rake: C:/Users/Justin/Projects/rubyinstaller/sandbox/rub
+y23_mingw/bin/ruby.exe: bad interpreter: No such file or directory
+</code></pre>
+
+<p>I searched “rake install justin projects” on <a href="google.com">Google</a>.
+You may follow <a href="http://stackoverflow.com/a/36925869/280189">griest’s advice</a> to have this problem
+fixed.  If this link were unluckily dead in the future, you might
+leave a comment below after getting rid of Justin at the first line of
+<code>/c/Ruby23-x64/bin/rake</code>.</p>
+
+<h2 id="result">Result</h2>
+
+<p><a href="http://octopress.org">Octopress</a> did work on my machine.  Then I re-ran <code>bundle install</code>
+under the local repository for <a href="/blog2">my another blog</a>, but the
+<a href="/blog/2016/08/20/jekyll-serve-error/"><em>same</em> Celluloid error</a> <em>re-appeared</em>.  I <em>don’t</em> know how to
+perform a <a href="https://talk.jekyllrb.com/t/error-while-trying-to-run-jekyll-serve/933/10">celluloid downgrade</a> to version 16.0 under that
+repository.  The version number for <a href="https://rubygems.org/gems/celluloid/versions/0.17.3">Celluloid</a> was <em>generated</em> by the
+system—I <em>didn’t</em> type it in <code>Gemfile.lock</code>.  As a result, I
+switched to <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">Ubuntu on Windows 10</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
       <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/"/>
     
-    <updated>2016-12-12T21:47:36+01:00</updated>
+    <updated>2016-12-12T20:47:36+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -37,10 +726,10 @@ next subsection <em>A problem with Vim’s folding arised</em>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p>Firstly, save the code for loading <a href="https://www.mathjax.org/">MathJax</a> in the previous post in
-this series in a separate file <code>~/script.html</code>.  Then use the
-following commands <em>within</em> Vim in order to avoid leaving the current
-buffer and to improve efficiency.</p>
+<p>Firstly, save the code for loading <a href="https://www.mathjax.org/">MathJax</a> in <a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#include-the-script-in-the-content">the previous
+post</a> in this series in a separate file <code>~/script.html</code>.  Then
+use the following commands <em>within</em> Vim in order to avoid leaving the
+current buffer and to improve efficiency.</p>
 
 <pre><code>9,$w! ~/temp.mkd
 !kramdown ~/temp.mkd &gt; ~/temp.html
@@ -60,7 +749,7 @@ post content.</p>
       <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
     
-    <updated>2016-08-21T12:30:57+02:00</updated>
+    <updated>2016-08-21T10:30:57+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
     
       <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
@@ -155,7 +844,7 @@ this chapter of the guide.</li>
       <title type="html"><![CDATA[My Host File Edited]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited/"/>
     
-    <updated>2016-08-20T18:50:34+02:00</updated>
+    <updated>2016-08-20T16:50:34+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -184,286 +873,6 @@ the <code>sudo</code> privilege in order to directly manipulate this file.</p>
 </ul>
 
 <p>Note that the tab is escaped as <code>\t</code> in these two commands.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Rake Deploy Fatal Error]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error/"/>
-    
-    <updated>2016-02-22T05:16:16+01:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I had finished writing <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">my previous post</a>.  In <code>rake preview</code>, I
-got the desired output.  Then, the next step is to commit the changes
-and to deploy the generated contents to GitHub Pages.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>A large block of red text appeared after I ran <code>rake deploy</code>.  The
-commit on the <code>master</code> branch was <em>unsuccessful</em>.</p>
-
-<pre class="cli"><code>$ rake deploy
-(in C:/github/vincenttam.github.io)
-cp -r source/fancybox/.gitattributes public/fancybox/.gitattributes
-cd _deploy
-Already up-to-date.
-cd -
-rm -rf _deploy/404.html
-...
-rm -rf _deploy/stylesheets
-cp -r public/. _deploy
-cd _deploy
-fatal: CRLF would be replaced by LF in fancybox/README.md.
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-        modified:   404.html
-        modified:   about/index.html
-        ...
-
-Untracked files:
-        blog/2016/02/21/
-        blog/2016/02/22/
-        downloads/code/miktex-update2/
-        images/posts/MikTeXUpdate2/
-        posts/31/
-
-no changes added to commit
-Everything up-to-date
-cd -
-## Set the codepage to 65001 for Windows machines
-## Deploying branch to Github Pages
-## Pulling any updates from Github Pages
-
-## Copying public to _deploy
-
-## Committing: Site updated at 2016-02-22 03:37:22 UTC
-
-## Pushing generated _deploy website
-
-## Github Pages deploy complete
-</code></pre>
-
-<p>Even though the system said that the deploy was “complete”, in fact,
-it had <em>never</em> been carried out.</p>
-
-<p><strong>How can I update my blog on GitHub Pages?</strong></p>
-
-<!-- more -->
-
-<h2 id="discussion">Discussion</h2>
-
-<p>In the above error output, it took me a minute to find out <em>at which
-stage</em> the deploy had failed: the line starting with “fatal”.
-Therefore, I stripped off all <code>\r</code> from <code>source/fancybox/README.md</code>.
-I tried deploying it again, and it <em>failed</em>—the <em>same</em> “fatal” error
-appeared for <em>another file</em>.  I tried committing the change for
-<code>source/fancybox/README.md</code>, but I <em>couldn’t</em> commit this.  I tried
-googling “fatal crlf would be replaced by lf”, and clicked on
-<a href="http://stackoverflow.com/q/20168639">the first search result</a>.  The answers in this Stack
-Overflow question suggested that the option <code>core.autocrlf</code> should be
-configured to <code>false</code>.  To be safe, I
-<a href="https://github.com/VundleVim/Vundle.vim/wiki#win1">turned on <code>core.safecrlf</code></a>.<sup id="fnref:2"><a href="#fn:2" class="footnote">1</a></sup></p>
-
-<p>When I <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">updated Git for Windows</a>, I chose “<strong>Checkout
-Windows-style, commit Unix-style line endings</strong>” (the <em>first</em> radio
-button), which the Git Setup dialog recommended.</p>
-
-<picture class="fancybox" title="Git line conversion configuration">
-  <source srcset="/images/posts/GitUpdate/autocrlf.png" media="(min-width: 505px)" />
-  <img alt="Git line conversion configuration" width="300" src="https://vincenttam.github.io/images/posts/GitUpdate/autocrlf.png" />
-</picture>
-<p><small>Picture from <a href="http://i.stack.imgur.com/vPJCI.png">imgur</a>.</small></p>
-
-<p>I love using bash utilities and (G)Vim.  In Git Bash, the former gives
-LF line terminators, while the later gives CRLF.  Therefore, I decided
-to <code>set fileformat=unix</code> in my VIMRC.<sup id="fnref:1"><a href="#fn:1" class="footnote">2</a></sup>  However, this <em>doesn’t</em>
-unify the EOL of files in the local repository.</p>
-
-<p>As I clone Git repositories, the line terminators are automatically
-converted to CRLF.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p><em>Completely</em> get rid of carriage returns <code>\r</code> in Git repositories!</p>
-
-<p>To see how many files had CRLF line terminators, I tried using <code>grep</code>
-in Git Bash, but <a href="http://stackoverflow.com/a/73886">this answer on Stack Overflow</a> <em>didn’t</em>
-work.</p>
-
-<pre class="cli"><code>$ find source -type f -exec grep -Iq . {} \; -and -exec dos2unix {} \;
-dos2unix: converting file source/404.md to Unix format...
-dos2unix: converting file source/about/index.markdown to Unix format...
-dos2unix: converting file source/about/mybyobuconf.markdown to Unix format...
-...
-dos2unix: converting file source/_posts/2016-02-22-git-for-windows-curl-with-vun
-dle-1.markdown~ to Unix format...
-dos2unix: converting file source/_posts/2016-02-22-testing-octopress-and-ruby-2-
-dot-0-on-windows-7-3.markdown to Unix format...
-dos2unix: converting file source/_posts/2016-02-22-testing-octopress-and-ruby-2-
-dot-0-on-windows-7-3.markdown~ to Unix format...
-</code></pre>
-
-<p>For the explanation of the above command, you may refer to
-<a href="/blog/2015/08/22/used-more-bash-utilities/"><em>Used More Bash Utilities</em></a>.</p>
-
-<p>After that, since <code>core.autocrlf</code> has been set to <code>false</code>, <code>git
-checkout</code> no longer inserts <code>\r</code> into the files in the local
-repository.  Therefore, even though <code>git status</code> reports unstaged
-changes, running <code>git checkout -- source</code> <em>won’t</em> hurt the files.  I
-can finally deploy the contents to GitHub Pages.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p><em>Never</em> run <code>rake generate</code> nor <code>rake preview</code> in <code>cmd.exe</code>!  Run this
-in Git Bash, or other shells that <em>don’t</em> give you carriage returns.</p>
-
-<p>When a new post is created with <code>rake new_post['...']</code> in either Git
-Bash or Command Prompt, the created post has DOS line endings.
-Therefore, we need to take extra care with this by using <code>dos2unix</code> in
-Git Bash.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:2">
-
-      <p>Refer to <a href="http://stackoverflow.com/a/1547108">this Stack Overflow question</a> for my reason
-of enabling <code>core.safecrlf</code>. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:1">
-      <p>Refer to line 100 of my <code>_vimrc</code> at version <a href="https://goo.gl/iETw5d">07ab878</a>. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-    <li id="fn:3">
-
-      <p>You may verify this by comparing the line</p>
-
-      <pre class="cli"><code>## Committing: Site updated at 2016-02-22 03:37:22 UTC
-</code></pre>
-
-      <p>in the above error message in the “Problem” section with commit
-<a href="https://github.com/VincentTam/vincenttam.github.io/commits/748fbd7">748fbd7</a> on GitHub.  Due to the growth of this site, each commit
-on the <code>master</code> branch now involves over 400 files and thousands
-of lines of insertion and deletion.  If I provide a direct link to
-the commit, it will take too long to load the page.  Therefore, I
-give the commit history at a particular node instead. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Testing Octopress and Ruby 2.0 on Windows 7 (3)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/02/21/testing-octopress-and-ruby-2-dot-0-on-windows-7-3/"/>
-    
-    <updated>2016-02-21T18:05:04+01:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/02/21/testing-octopress-and-ruby-2-dot-0-on-windows-7-3</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>I was writing <a href="/blog/2016/02/21/miktex-update-2/">my previous post</a>, which was about my recent
-Mik$\rm \TeX$ update.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>After having finished it, I tried <code>rake generate</code>, and got results
-similar to the first picture of <a href="/blog/2014/09/02/testing-octopress-and-ruby-2-dot-0-on-windows-7-1/">the first post in this series</a>.</p>
-
-<p>Last time, I solved this problem by creating the batch file
-<code>python2.bat</code> in the folder where Python had been installed (i.e.
-<code>C:\Python27</code>).  This time, the BAT file is already there.  In (Git)
-CMD, both <code>which python</code> and <code>which python2</code> are fine.  However, in
-Git bash, I run into trouble.</p>
-
-<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
-$ which python
-/c/Python27/python
-
-Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
-$ which python2
-which: no python2 in (/c/Users/Owner/bin:/mingw64/bin:/usr/local/bin:/usr/bin:/b
-in:/mingw64/bin:/usr/bin:/c/Users/Owner/bin:/c/ProgramData/Oracle/Java/javapath:
-/c/Perl/site/bin:/c/Perl/bin:/c/Program Files (x86)/Intel/iCLS Client:/c/Program
- Files/Intel/iCLS Client:/c/Windows/system32:/c/Windows:/c/Windows/System32/Wbem
-:/c/Windows/System32/WindowsPowerShell/v1.0:/c/Program Files (x86)/Intel/OpenCL 
-SDK/2.0/bin/x86:/c/Program Files (x86)/Intel/OpenCL SDK/2.0/bin/x64:/c/Program F
-iles (x86)/Common Files/Roxio Shared/DLLShared:/c/Program Files (x86)/Common Fil
-es/Roxio Shared/OEM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/O
-EM/DLLShared:/c/Program Files (x86)/Common Files/Roxio Shared/OEM/12.0/DLLShared
-:/c/Program Files (x86)/Roxio 2010/OEM/AudioCore:/c/Program Files/Intel/Intel(R)
- Management Engine Components/DAL:/c/Program Files/Intel/Intel(R) Management Eng
-ine Components/IPT:/c/Program Files (x86)/Intel/Intel(R) Management Engine Compo
-nents/DAL:/c/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT
-:/c/Temp/MikTeXPortable/miktex/bin:/c/MinGW/bin:/c/Temp/gnuwin32/bin:/c/ctags58:
-/c/Temp/PortableApps/gVimPortable:/c/cscope-15.8a-win32rev1-static:/c/Python27:/
-c/Ruby200-x64/bin:/c/Temp/pdf2svg-0.2.2:/c/Program Files (x86)/Skype/Phone:/cmd:
-/usr/bin/vendor_perl:/usr/bin/core_perl)
-
-Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
-$ cd /c/Python27/
-
-Owner@Owner-PC MINGW64 /c/Python27
-$ ls
-DLLs/     Lib/         NEWS.txt     pythonw.exe*  Tools/
-Doc/      libs/        python.exe*  README.txt    w9xpopen.exe*
-include/  LICENSE.txt  python2.bat  tcl/
-</code></pre>
-
-<p>Even though the generated contents can still be locally previewed,
-<strong>how can I get rid of this error message?</strong></p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>I googled “which no python2 in” (<em>with surrounding double quotes</em>),
-and found one line in the post <a href="http://nathanielstory.com/2013/12/28/jekyll-on-windows-with-cygwin.html"><em>Jekyll on Windows With Cygwin</em></a>
-written by Nathan Story very useful.  While reading his post, I
-<em>didn’t</em> read it from the start.  Instead, I just searched for
-“python2”, and quickly saw the <code>ln</code> command.</p>
-
-<p>The file type of <code>python2</code> created by <code>ln</code> was <em>different</em> from what I
-expected: <code>ls -l</code> <em>didn’t</em> show that <code>python2</code> was a symbolic link,
-and <code>file</code> even said that it was an executable file.</p>
-
-<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/Python27
-$ ln -s python.exe python2
-
-Owner@Owner-PC MINGW64 /c/Python27
-$ ls -l
-total 677
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 DLLs/
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 Doc/
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 include/
-drwxr-xr-x 1 Owner 197121      0 Oct  9  2014 Lib/
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 libs/
--rw-r--r-- 1 Owner 197121  38573 Nov 10  2013 LICENSE.txt
--rw-r--r-- 1 Owner 197121 375685 Nov 10  2013 NEWS.txt
--rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python.exe*
--rwxr-xr-x 1 Owner 197121  26624 Nov 10  2013 python2*
--rw-r--r-- 1 Owner 197121     22 Aug 31  2014 python2.bat
--rwxr-xr-x 1 Owner 197121  27136 Nov 10  2013 pythonw.exe*
--rw-r--r-- 1 Owner 197121  55208 Oct 27  2013 README.txt
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 tcl/
-drwxr-xr-x 1 Owner 197121      0 May 25  2014 Tools/
--rwxr-xr-x 1 Owner 197121  49664 Nov 10  2013 w9xpopen.exe*
-
-Owner@Owner-PC MINGW64 /c/Python27
-$ file python2
-python2: PE32 executable (console) Intel 80386, for MS Windows
-</code></pre>
-
-<p>Finally, <code>rake</code> <em>doesn’t</em> give me strange output.</p>
 
 ]]></content>
     

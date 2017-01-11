@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background After I’ve written the third post in this series, I believed
-that I could generate the SHA-1 hash of all Git objects. Problem In order to &hellip;">
+  <meta name="description" content="Background Before writing the previous post, I had noticed that the version
+number of the current stable release of Java is 1.8 update 51. Method &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@ that I could generate the SHA-1 hash of all Git objects. Problem In order to &he
   <li><a href="/about">About</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+  <li><a href="https://git.io/vtam">GitHub</a></li>
   <li><a href="/presentations">Slides</a></li>
 </ul>
 
@@ -80,6 +80,250 @@ that I could generate the SHA-1 hash of all Git objects. Problem In order to &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/">Upgrade to Java 8 on Ubuntu 14.04</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-12T16:14:01+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:14 pm</span></time>
+        
+           | <a href="/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Before writing <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">the previous post</a>, I had noticed that the version
+number of the current stable release of Java is 1.8 update 51.</p>
+
+<h2 id="method">Method</h2>
+
+<ol>
+  <li>Google “ubuntu 14.04 java 8”.</li>
+  <li>Click on <a href="http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/">the first search result</a>.</li>
+  <li>
+    <p>Follow the instructions there.</p>
+
+    <p>Note that the command in the section “Configuring Java
+ Environment” should be run <em>before</em> the one in “Verify Installed
+ Java Version”.<sup id="fnref:result"><a href="#fn:result" class="footnote">1</a></sup></p>
+  </li>
+</ol>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p><a href="https://www.linuxquestions.org/questions/programming-9/convert-file-from-utf8-to-ascii-encoding-458839/">The encoding of files can be converted</a> using <code>iconv</code>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:result">
+      <p>You may see <a href="/downloads/code/term.html">the results from the terminal</a>. <a href="#fnref:result" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Debug Apps on Real Devices in Android Studio</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-12T02:46:44+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:46 am</span></time>
+        
+           | <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After spending hours to find out that I need to tap on “Settings” →
+“About” → … → “Build number” for enabling USB debugging in the
+“Developers options” on an Android phone, I plugged the phone into a
+Mac desktop, but it <em>didn’t</em> show up in the “Devices” in Finder.  I
+thought that Mac <em>couldn’t</em> detect the phone, and I searched Google
+for a long time.  After having seen the name of an application for
+synchronising data between and phone and the computer for a few times,
+I finally decided to download it since I <em>didn’t</em> know what else to
+do.  Luckily, my app could be run on the phone with the help of
+Android Studio installed on the Mac desktop.</p>
+
+<p><span class="tex2jax_ignore">
+An hour later, I tried to setup the development environment on an M$
+Win* computer.  Its installed size is over 20GB!  After hours of
+installation work, I was <em>stuck</em> again on M$ Win*:  unlike the Mac
+computer, that M$ Win* machine could detect the Android mobile
+device and show it in “Computer” within a minute.  I added the
+following lines into <code>/{AppName}/app/build.gradle</code> according to
+<a href="https://developer.android.com/tools/device.html#setting-up">a page of the official website</a>.
+</span></p>
+
+<figure class="code"><figcaption><span>To enable debugging on a real Android device </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">android</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">buildTypes</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">debug</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">debuggable</span> <span class="kc">true</span>
+</span><span class="line">        <span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>However, the IDE said that <em>no debuggable device</em> could be found.  I
+guessed that the synchronising application made by the manufacturer of
+the phone was the cause of that undesirable result.  After fetching
+the application from the website of the phone manufacturer and
+restarting Android Studio, I could finally run the same application on
+a real Android device by clicking the little triangle on the top.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/">Git Object ID Generation (5): Predict ID</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-11T02:52:56+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:52 am</span></time>
+        
+           | <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/11/git-object-id-generation-5-predict-id/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="goal">Goal</h2>
+
+<p>The method for getting the Git object ID described in
+<a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/">previous post in this series</a> <em>isn’t</em> quick enough since it
+consists of <em>several</em> commands.</p>
+
+<h2 id="the-one-line-command">The one-line command</h2>
+
+<h3 id="objects-with-known-git-id">Objects with known Git ID</h3>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(git cat-file -s {hash})\0" &amp;&amp; git cat-file {obj_type} {h
+ash}) | shasum
+</code></pre>
+
+<ul>
+  <li><code>{obj_type}</code> can be <code>blob</code>, <code>tree</code>, <code>commit</code> or <code>tag</code>.</li>
+  <li><code>{hash}</code> is the SHA-1 hash of the object.</li>
+</ul>
+
+<p>Then the output SHA-1 hash should be the <em>same</em> as the input <code>{hash}</code>.</p>
+
+<h3 id="predict-git-object-ids">Predict Git object IDs</h3>
+<p>Hence, we can modify the above command to predict the Git object ID of
+a <code>{file}</code>.</p>
+
+<pre class="cliUB"><code>$ (printf "{obj_type} $(wc -c {file} | tr -dc '0-9')\0" &amp;&amp; cat {file}) | shasum
+</code></pre>
+
+<p>In order to verify the result for files, one can quickly get the blob
+ID from Git by <code>git log -1 -p -- {file}</code>.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<h3 id="extract-numbers-from-a-string-in-bash">Extract numbers from a string in bash</h3>
+
+<p>I typed “linux extract number” on Google, and the autocompletion gave
+me “from string”.  I finally saw two commands for doing this.</p>
+
+<ol>
+  <li><code>sed 's/[^0-9]//g'</code></li>
+  <li><code>tr -dc '0-9'</code></li>
+</ol>
+
+<p>In my opinion, the later is simpler.  The <code>-c</code> flag takes the
+complement of the characters marked by <code>-d</code>.</p>
+
+<h3 id="using-cat-on-m-win">Using cat on M$ Win*</h3>
+
+<p>Using the command in the section “Predict Git object IDs” gives users
+a <em>wrong</em> SHA-1 sum.  The reason is that M$ Win* uses <code>\r\n</code> instead
+of <code>\n</code> for starting newlines.  This also results in the <em>incorrect</em>
+byte count of the files with <code>\r\n</code> as the line terminator in that
+command.  Thus, the extra <code>\r</code> needs to be deleted with <code>tr -d '\r'</code>.</p>
+
+<h3 id="using-git-for-win">Using Git for Win*</h3>
+
+<p>For the installed version of Git on M$ Win*, one needs to use
+<code>sha1sum</code> instead of <code>shasum</code>.  Otherwise, Git Bash will complain that
+it is “Unable to find Digest::SHA or Digest::SHA::PurePerl”.</p>
+
+<h3 id="using-gitportable-on-m-win">Using GitPortable on M$ Win*</h3>
+
+<p>Since one <em>can’t</em> even issue the command <code>sha1sum</code>, use <code>openssl sha1</code>
+instead.  (Omitting the trailing <code>1</code> will result in a <em>very different</em>
+hexadecimal number.)</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -98,7 +342,7 @@ that I could generate the SHA-1 hash of all Git objects. Problem In order to &he
 
 
 
-<time class='entry-date' datetime='2015-08-07T17:41:40+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:41 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T15:41:40+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:41 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-4-general-trees/">Comments</a>
@@ -183,7 +427,7 @@ $ printf "tree 71\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
 
 
 
-<time class='entry-date' datetime='2015-08-07T16:30:55+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:30 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T14:30:55+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:30 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Comments</a>
@@ -267,7 +511,7 @@ hash</strong>?</em></p>
 
 
 
-<time class='entry-date' datetime='2015-08-07T13:36:21+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:36 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T11:36:21+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:36 am</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Comments</a>
@@ -365,7 +609,7 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
 
 
 
-<time class='entry-date' datetime='2015-08-07T11:15:29+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:15 am</span></time>
+<time class='entry-date' datetime='2015-08-07T09:15:29+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:15 am</span></time>
         
            | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
@@ -429,7 +673,7 @@ commit and the amended commit can be observed with <code>git show</code>.</p>
 
 
 
-<time class='entry-date' datetime='2015-08-07T07:52:47+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:52 am</span></time>
+<time class='entry-date' datetime='2015-08-07T05:52:47+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:52 am</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Comments</a>
@@ -472,7 +716,7 @@ be similarly generated.</p>
 
 
 
-<time class='entry-date' datetime='2015-08-06T11:39:08+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:39 am</span></time>
+<time class='entry-date' datetime='2015-08-06T09:39:08+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:39 am</span></time>
         
            | <a href="/blog/2015/08/06/my-git-command-list-3/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Comments</a>
@@ -565,7 +809,7 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
 
 
 
-<time class='entry-date' datetime='2015-08-04T18:18:45+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:18 pm</span></time>
+<time class='entry-date' datetime='2015-08-04T16:18:45+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
         
            | <a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Comments</a>
@@ -614,193 +858,6 @@ problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-sy
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Some Thoughts on a Real-Valued Function</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-04T16:28:52+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:28 pm</span></time>
-        
-           | <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>Spending so much time to work out <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/">the locale support for dates</a>
-and <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/">valid HTML code</a> in my <a href="/blog2">second blog</a> which was
-powered by Jekyll-Bootstrap, I <em>couldn’t</em> recall this fact.</p>
-
-<p>Suppose that $\mathcal{D}$ is a subset of $\R^2$ that contains an
-$\varepsilon$-neighbourhood of a point <span class="myeqn">$(x_0,y_0)$</span>.  If</p>
-
-<ol>
-  <li>$f: \mathcal{D} \to \R$ is has first-order partial derivatives in
-the $\varepsilon$-neighbourhood of <span class="myeqn">$(x_0,y_0)$</span>.</li>
-  <li>The first-order partial derivatives of $f$ are continuous at <span class="myeqn">$(x_0,y_0)$</span>.</li>
-</ol>
-
-<p>Then we can write</p>
-
-<div class="myeqn">
-\begin{equation}
-  \Delta f = \frac{\partial f}{\partial x} (x_0,y_0) \Delta x +
-  \frac{\partial f}{\partial y} (x_0,y_0) \Delta y + \varepsilon_1
-  \Delta x + \varepsilon_2 \Delta y,
-  \label{fact}
-\end{equation}
-</div>
-
-<p>where <span class="myeqn">$\Delta f := f(x_0+\Delta
-x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
-0$</span> as $\Delta x$ and $\Delta y \to 0$.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/03/basic-jekyll-date-locale-support/">Basic Jekyll Date Locale Support</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-03T16:38:32+02:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:38 pm</span></time>
-        
-           | <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/03/basic-jekyll-date-locale-support/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="problem">Problem</h2>
-
-<p>I tried installing <code>_plugins/i18n_filter.rb</code> and <code>_locales/fr.yml</code>
-from <a href="https://github.com/jekyll/jekyll/issues/3406">GitHub</a>.  I mistakenly thought that I had finished
-changing the English dates on <a href="/blog2"><em>Blog 2</em></a> to their corresponding
-French version due to the successful results shown in the local
-preview.</p>
-
-<p><strong>How can one get the locale support for dates on Jekyll sites?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/03/basic-jekyll-date-locale-support/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Octoshape on Ubuntu 14.04</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-13T16:26:34+02:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:26 pm</span></time>
-        
-           | <a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I installed <a href="http://www.octoshape.com/support/infinite-hd-octoshape-app/">Octoshape player</a> 2 years ago on Ubuntu 12.04.
-A year ago, I <a href="/blog/2014/08/12/ubuntu-distribution-upgrade-to-14-dot-04/">upgraded the OS to Ubuntu 14.04</a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried running Octoshape streaming service on
-<a href="http://demo.octoshape.com/arplayer3/?link=octoshape://streams.octoshape.net/Demo.Trailers_500">a sample test page</a> tonight.  Unluckily, it <em>failed</em> to
-work.  On the test page, the output on the right-hand side was similar
-to the one listed below.</p>
-
-<pre><code>20:35:57.368: OctoProgressEvent: 0 - Connecting to Octoshape client
-20:35:57.382: Player is waiting for a link input (this does not mean
-that Octoshape is ready).
-20:35:57.509: OctoProgressEvent: 83 - Connecting to Octoshape client
-20:35:57.623: OctoProgressEvent: 166 - Connecting to Octoshape client
-20:35:57.748: OctoProgressEvent: 249 - Connecting to Octoshape client
-20:35:57.880: OctoProgressEvent: 332 - Connecting to Octoshape client
-20:35:58.011: OctoProgressEvent: 415 - Connecting to Octoshape client
-20:35:58.138: OctoProgressEvent: 498 - Connecting to Octoshape client
-20:35:58.271: OctoProgressEvent: 581 - Connecting to Octoshape client
-20:35:58.370: OctoProgressEvent: 664 - Connecting to Octoshape client
-20:35:58.470: OctoProgressEvent: 747 - Connecting to Octoshape client
-20:35:58.574: OctoProgressEvent: 830 - Connecting to Octoshape client
-20:35:58.704: OctoProgressEvent: 913 - Connecting to Octoshape client
-20:35:58.804: OctoProgressEvent: 996 - Connecting to Octoshape client
-20:35:58.808: OctoProgressEvent: 1000 - Connecting to Octoshape client
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/11">&larr; Older</a>
@@ -838,7 +895,7 @@ that Octoshape is ready).
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (34)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (35)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -846,17 +903,17 @@ that Octoshape is ready).
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (10)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -871,23 +928,23 @@ that Octoshape is ready).
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
       <li class="post">
         <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection/">Windows Security Popup During Public Wi-Fi Connection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/31/a-failed-review/">A Failed Review</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
       </li>
     
   </ul>

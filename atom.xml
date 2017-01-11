@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-10T13:19:47+01:00</updated>
+  <updated>2017-01-11T02:56:11+00:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,10 +15,766 @@
   
   <entry>
     
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/"/>
+    
+    <updated>2017-01-10T21:52:52+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>In the <a href="https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/">previous post in this series</a>, I included three <a href="http://www.vim.org">Vim</a>
+editor commands.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>As I’ve already typed hundreds of lines of source code, I feel tired
+and I often <em>make mistakes</em> while typing those commands despite these
+two command mode mappings in my <code>~/.vimrc</code>.</p>
+
+<figure class="code"><figcaption><span>More efficient recall from Vim command history</span><a href="http://bit.ly/2idDlxa">Gist </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="vim"><span class="line"><span class="c">&quot; Practical Vim Tip 34: Avoid cursors when rcl&#39;g cmd from hist</span>
+</span><span class="line">cnoremap <span class="p">&lt;</span>C<span class="p">-</span><span class="k">p</span><span class="p">&gt;</span> <span class="p">&lt;</span>Up<span class="p">&gt;</span>
+</span><span class="line">cnoremap <span class="p">&lt;</span>C<span class="p">-</span><span class="k">n</span><span class="p">&gt;</span> <span class="p">&lt;</span>Down<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>Convert these three commands into a shell script.  Since I’m using
+<a href="http://www.vim.org/scripts/script.php?script_id=1984">FuzzyFinder</a>, I assume that the current working directory
+(as shown by <code>:pwd</code>) is the root of the local repository for the
+[Octopress] blog.</p>
+
+<figure class="code"><figcaption><span>Script for Octopress editing within Vim  (quik-prv.sh)</span> <a href="https://vincenttam.github.io/downloads/code/quik-prv.sh">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c">#!/bin/sh</span>
+</span><span class="line">sed <span class="s1">&#39;1,8d&#39;</span> <span class="nv">$1</span> <span class="p">|</span> kramdown &gt; temp.html~
+</span><span class="line">cat <span class="o">{</span>temp,script<span class="o">}</span>.html~ &gt; tempmj.html~
+</span></code></pre></td></tr></table></div></figure>
+
+<ol>
+  <li>The YAML header is chopped off since I just want to verify the
+[kramdown] syntax.</li>
+  <li>I appended <code>~</code> after the file extension names <code>.html</code> since I had
+added <code>*~</code> in my <code>.gitignore</code> and I <em>didn’t</em> want these files
+(including this shell script) to be tracked by Git.</li>
+  <li>I created a symbolic link on Windows 10 with <code>mklink</code> in <code>cmd</code>.
+(ran as admin)  Other options are more <em>complicated</em>:
+    - Graphical programs: more disk space is consumed for programs
+        rarely used which have command line alternatives.
+    - Windows Power Shell: this method <em>won’t</em> work for Home
+        edition.  (That’s my case.)  I’m quite satisfied by the
+        current edition and I <em>don’t</em> see any reason to spend
+        a thousand dollar and a whole day to have it changed to Pro
+        version for functionalities that are too advanced for me.</li>
+</ol>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>While I was writing this post, I used</p>
+
+<pre><code>grep -e "\[kramdown\]" %:h/*.markdown
+</code></pre>
+
+<p>in the current buffer in order to quickly retrieve the links to
+websites to which I had previously referred.  To escape the square
+brackets and the search pattern, the flag <code>-e</code> is added in between the
+utility name and the pattern string.  I tried using marks, but I had
+forgotten the difference between a mark named with a small letter and
+a capital letter.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mark</th>
+      <th>Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>small</td>
+      <td>local</td>
+    </tr>
+    <tr>
+      <td>capital</td>
+      <td>global</td>
+    </tr>
+  </tbody>
+</table>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Octopress Config for Ruby 2.3 on Windows 10]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/"/>
+    
+    <updated>2017-01-10T15:38:32+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10</id>
+    
+      <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
+
+<p>Same as the background in <a href="https://vincenttam.github.io/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">my previous article</a>.</p>
+
+<h2 id="background">Background</h2>
+
+<p>I uninstalled Ruby 2.0 in the Control Panel, and then installed
+version 2.3.3 from <a href="https://rubyinstaller.org/">RubyInstaller for Windows</a></p>
+
+<h2 id="problem-1-redcloth-installation-failure">Problem 1: RedCloth installation failure</h2>
+
+<h3 id="error-message">Error message</h3>
+
+<pre class="cli"><code>Gem::InstallError: The 'RedCloth' native gem requires installed build tools.
+
+Please update your PATH to include build tools or download the DevKit
+from 'http://rubyinstaller.org/downloads' and follow the instructions
+at 'http://github.com/oneclick/rubyinstaller/wiki/Development-Kit'
+
+An error occurred while installing RedCloth (4.2.9), and Bundler cannot
+continue.
+Make sure that `gem install RedCloth -v '4.2.9'` succeeds before bundling.
+</code></pre>
+
+<p>The error message is similar to <a href="http://stackoverflow.com/a/36274233/280189">Joe’s gem install error</a>.
+The only difference is that I was installing <a href="http://redcloth.org/">RedCloth</a> 4.9.</p>
+
+<h3 id="solution">Solution</h3>
+
+<p>This failure is due to the absence of a valid path to
+<a href="https://rubyinstaller.org/add-ons/devkit/">RubyInstaller Development Kit</a>.  I tried manually adding the
+path to the folder for binary executables (default to
+<code>C:\RubyDevKit\bin</code>) to <code>PATH</code>, but it’s <em>unsuccessful</em>.  I googled
+“Please update your PATH to include build tools” and found
+<a href="http://stackoverflow.com/a/36274233/280189">his question</a>, whose third answer explained the function
+of <code>devkitvar.bat</code>.  This batch script actually prepended the path of
+<em>two</em> folders into <code>PATH</code>.  One is stated above; one is
+<code>C:\RubyDevKit\mingw\bin</code>.  Running this batch file changes <code>PATH</code>
+<em>temporarily</em>.  A manual configuration in the Control Panel allowed
+the system to detect <a href="https://rubyinstaller.org/add-ons/devkit/">DevKit</a>, and this problem was thus
+solved.</p>
+
+<h3 id="related-gems">Related gems</h3>
+
+<h4 id="already-installed">Already installed</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: right">Version Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rake</td>
+      <td style="text-align: right">10.4.2</td>
+    </tr>
+    <tr>
+      <td>bundler</td>
+      <td style="text-align: right">1.13.7</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="being-installed">Being installed</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th style="text-align: right">Version Number</th>
+      <th style="text-align: center">With native extensions?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>RedCloth</strong></td>
+      <td style="text-align: right">4.2.9</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td><strong>wdm</strong></td>
+      <td style="text-align: right">0.1.0</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>blankslate</td>
+      <td style="text-align: right">2.1.2.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>chunky_png</td>
+      <td style="text-align: right">1.3.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>coffee-script-source</td>
+      <td style="text-align: right">1.9.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>colorator</td>
+      <td style="text-align: right">0.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>execjs</td>
+      <td style="text-align: right">2.4.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>fast-stemmer</td>
+      <td style="text-align: right">1.0.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>ffi</td>
+      <td style="text-align: right">1.9.6</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>hitimes</td>
+      <td style="text-align: right">1.2.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>jekyll-gist</td>
+      <td style="text-align: right">1.1.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>jekyll-paginate</td>
+      <td style="text-align: right">1.1.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>jekyll-sitemap</td>
+      <td style="text-align: right">0.8.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>kramdown</td>
+      <td style="text-align: right">1.6.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>liquid</td>
+      <td style="text-align: right">2.6.2</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>mercenary</td>
+      <td style="text-align: right">0.3.5</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>multi_json</td>
+      <td style="text-align: right">1.11.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>posix-spawn</td>
+      <td style="text-align: right">0.3.10</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>rack</td>
+      <td style="text-align: right">1.6.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>rb-fsevent</td>
+      <td style="text-align: right">0.9.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>redcarpet</td>
+      <td style="text-align: right">3.2.2</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+    <tr>
+      <td>safe_yaml</td>
+      <td style="text-align: right">1.0.4</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>sass</td>
+      <td style="text-align: right">3.4.13</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>stringex</td>
+      <td style="text-align: right">1.4.0</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>tilt</td>
+      <td style="text-align: right">1.4.1</td>
+      <td style="text-align: center">✗</td>
+    </tr>
+    <tr>
+      <td>yajl-ruby</td>
+      <td style="text-align: right">1.2.1</td>
+      <td style="text-align: center">✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="problem-2-wdm-installation-failure">Problem 2: wdm installation failure</h2>
+
+<p>I put the <a href="#wdm" class="cliwide">error message from wdm</a> in a popup dialog.</p>
+
+<div id="wdm" class="noscr">
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ bundle install
+Fetching gem metadata from https://rubygems.org/.........
+Fetching version metadata from https://rubygems.org/..
+Fetching dependency metadata from https://rubygems.org/.
+Using rake 10.4.2
+Using RedCloth 4.2.9
+Using blankslate 2.1.2.4
+Installing hitimes 1.2.2 with native extensions
+Using chunky_png 1.3.4
+Installing fast-stemmer 1.0.2 with native extensions
+Using coffee-script-source 1.9.1
+Using execjs 2.4.0
+Using colorator 0.1
+Using multi_json 1.11.0
+Using sass 3.4.13
+Using rb-fsevent 0.9.4
+Using ffi 1.9.6
+Using tilt 1.4.1
+Using jekyll-gist 1.1.0
+Using jekyll-paginate 1.1.0
+Using kramdown 1.6.0
+Using liquid 2.6.2
+Using mercenary 0.3.5
+Installing posix-spawn 0.3.10 with native extensions
+Installing yajl-ruby 1.2.1 with native extensions
+Installing redcarpet 3.2.2 with native extensions
+Using safe_yaml 1.0.4
+Using jekyll-sitemap 0.8.0
+Using rack 1.6.0
+Using stringex 1.4.0
+Installing wdm 0.1.0 with native extensions
+Using bundler 1.13.7
+Installing parslet 1.5.0
+Installing timers 4.0.1
+Installing classifier-reborn 2.0.3
+Installing coffee-script 2.3.0
+Installing compass-core 1.0.3
+Installing compass-import-once 1.0.5
+Installing jekyll-sass-converter 1.3.0
+Installing sass-globbing 1.0.0
+Installing rb-inotify 0.9.5
+Installing haml 4.0.6
+Installing pygments.rb 0.6.2
+Installing rack-protection 1.5.3
+Gem::Ext::BuildError: ERROR: Failed to build gem native extension.
+
+    current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+C:/Ruby23-x64/bin/ruby.exe -r ./siteconf20170109-8020-1n4s35m.rb extconf.rb
+checking for main() in -lkernel32... yes
+checking for windows.h... yes
+checking for ruby.h... yes
+checking for HAVE_RUBY_ENCODING_H... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can
+be found here:
+
+
+
+current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+make "DESTDIR=" clean
+
+current directory: C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0/ext/wdm
+make "DESTDIR="
+generating wdm_ext-x64-mingw32.def
+compiling entry.c
+In file included from entry.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from entry.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from entry.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from entry.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling memory.c
+In file included from memory.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from memory.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from memory.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from memory.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling monitor.c
+In file included from monitor.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from monitor.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from monitor.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from monitor.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling queue.c
+In file included from queue.c:3:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/vadefs.h:13:0,
+from
+4-mingw32/include/_mingw_stdarg.h:14,
+from
+4-mingw32/include/stdarg.h:140,
+from
+c:\rubydevkit\mingw\bin\../lib/gcc/x86_64-w64-mingw32/4.7.2/include/stdarg.h:1,
+                 from queue.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from queue.c:3:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from queue.c:3:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling rb_change.c
+In file included from rb_change.c:4:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdlib.h:9,
+                 from rb_change.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from rb_change.c:4:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from rb_change.c:4:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling rb_monitor.c
+In file included from rb_monitor.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from rb_monitor.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from rb_monitor.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from rb_monitor.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+rb_monitor.c: In function 'rb_monitor_run_bang':
+rb_monitor.c:508:9: warning: implicit declaration of function
+'rb_thread_blocking_region' [-Wimplicit-function-declaration]
+compiling utils.c
+In file included from utils.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from utils.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from utils.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from utils.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+compiling wdm.c
+In file included from wdm.c:1:0:
+wdm.h:3:0: warning: "WINVER" redefined [enabled by default]
+In file included from
+4-mingw32/include/crtdefs.h:10:0,
+from
+4-mingw32/include/stdio.h:9,
+                 from wdm.h:1,
+                 from wdm.c:1:
+4-mingw32/include/_mingw.h:248:0:
+note: this is the location of the previous definition
+In file included from wdm.c:1:0:
+wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+&lt;command-line&gt;:0:0: note: this is the location of the previous definition
+In file included from c:/Ruby23-x64/include/ruby-2.3.0/ruby/win32.h:41:0,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/defines.h:168,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby/ruby.h:36,
+                 from c:/Ruby23-x64/include/ruby-2.3.0/ruby.h:33,
+                 from wdm.h:12,
+                 from wdm.c:1:
+4-mingw32/include/winsock2.h:15:2:
+warning: #warning Please include winsock2.h before windows.h [-Wcpp]
+linking shared-object wdm_ext.so
+rb_monitor.o: In function `rb_monitor_run_bang':
+C:\Ruby23-x64\lib\ruby\gems\2.3.0\gems\wdm-0.1.0\ext\wdm/rb_monitor.c:508:
+undefined reference to `rb_thread_blocking_region'
+collect2.exe: error: ld returned 1 exit status
+make: *** [wdm_ext.so] Error 1
+
+make failed, exit code 2
+
+Gem files will remain installed in
+C:/Ruby23-x64/lib/ruby/gems/2.3.0/gems/wdm-0.1.0 for inspection.
+Results logged to
+.out
+
+An error occurred while installing wdm (0.1.0), and Bundler cannot continue.
+Make sure that `gem install wdm -v '0.1.0'` succeeds before bundling.
+</code></pre></div>
+
+<p>From the line</p>
+
+<pre class="cli"><code>wdm.h:4:0: warning: "_WIN32_WINNT" redefined [enabled by default]
+</code></pre>
+
+<p>I found <a href="https://github.com/Maher4Ever/wdm/issues/18">wdm issue #18</a>, but I <em>failed</em> to notice that the
+problem had been resolved.  I later knew that from
+<a href="https://github.com/jekyll/jekyll/issues/3721">Jekyll issue #3721</a>.</p>
+
+<p>After changing the version number of <a href="https://rubygems.org/gems/wdm">wdm</a> to 0.1.1, I could proceed
+further.  <a href="#wdmfixed" class="cliwide">The system output</a> was fine.</p>
+
+<div id="wdmfixed" class="noscr">
+<pre class="cli"><code>Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ gem install wdm -v '0.1.1'
+Building native extensions.  This could take a while...
+Successfully installed wdm-0.1.1
+Parsing documentation for wdm-0.1.1
+Installing ri documentation for wdm-0.1.1
+Done installing documentation for wdm after 0 seconds
+1 gem installed
+Owner@Owner-PC MINGW64 /c/github/vincenttam.github.io (source)
+$ bundle install
+Fetching gem metadata from https://rubygems.org/..........
+Fetching version metadata from https://rubygems.org/..
+Fetching dependency metadata from https://rubygems.org/.
+Resolving dependencies...
+Using rake 10.4.2
+Using RedCloth 4.2.9
+Using blankslate 2.1.2.4
+Using hitimes 1.2.2
+Using chunky_png 1.3.4
+Using fast-stemmer 1.0.2
+Using coffee-script-source 1.9.1
+Using execjs 2.4.0
+Using colorator 0.1
+Using multi_json 1.11.0
+Using sass 3.4.13
+Using rb-fsevent 0.9.4
+Using ffi 1.9.6
+Using tilt 1.4.1
+Using jekyll-gist 1.1.0
+Using jekyll-paginate 1.1.0
+Using kramdown 1.6.0
+Using liquid 2.6.2
+Using mercenary 0.3.5
+Using posix-spawn 0.3.10
+Using yajl-ruby 1.2.1
+Using redcarpet 3.2.2
+Using safe_yaml 1.0.4
+Using jekyll-sitemap 0.8.0
+Using rack 1.6.0
+Using stringex 1.4.0
+Using wdm 0.1.1 (was 0.1.0)
+Using bundler 1.13.7
+Using parslet 1.5.0
+Using timers 4.0.1
+Using classifier-reborn 2.0.3
+Using coffee-script 2.3.0
+Using compass-core 1.0.3
+Using compass-import-once 1.0.5
+Using jekyll-sass-converter 1.3.0
+Using sass-globbing 1.0.0
+Using rb-inotify 0.9.5
+Using haml 4.0.6
+Using pygments.rb 0.6.2
+Using rack-protection 1.5.3
+Installing toml 0.1.2
+Installing celluloid 0.16.0
+Installing jekyll-coffeescript 1.0.1
+Installing compass 1.0.3
+Installing sinatra 1.4.5
+Installing listen 2.8.5
+Installing jekyll-watch 1.2.1
+Installing jekyll 2.5.3
+Installing octopress-hooks 2.6.0
+Installing octopress-date-format 2.0.2
+Bundle complete! 14 Gemfile dependencies, 50 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from compass:
+    Compass is charityware. If you love it, please donate on our behalf at http:
+//umdf.org/compass Thanks!
+</code></pre></div>
+
+<h2 id="problem-3-i-have-a-row-with-justin">Problem 3: I have a row with Justin.</h2>
+
+<p>When I ran <code>rake preview</code>, the follow line appeared.</p>
+
+<pre class="cli"><code>bash: /c/Ruby23-x64/bin/rake: C:/Users/Justin/Projects/rubyinstaller/sandbox/rub
+y23_mingw/bin/ruby.exe: bad interpreter: No such file or directory
+</code></pre>
+
+<p>I searched “rake install justin projects” on <a href="google.com">Google</a>.
+You may follow <a href="http://stackoverflow.com/a/36925869/280189">griest’s advice</a> to have this problem
+fixed.  If this link were unluckily dead in the future, you might
+leave a comment below after getting rid of Justin at the first line of
+<code>/c/Ruby23-x64/bin/rake</code>.</p>
+
+<h2 id="result">Result</h2>
+
+<p><a href="http://octopress.org">Octopress</a> did work on my machine.  Then I re-ran <code>bundle install</code>
+under the local repository for <a href="https://vincenttam.github.io/blog2">my another blog</a>, but the
+<a href="https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error/"><em>same</em> Celluloid error</a> <em>re-appeared</em>.  I <em>don’t</em> know how to
+perform a <a href="https://talk.jekyllrb.com/t/error-while-trying-to-run-jekyll-serve/933/10">celluloid downgrade</a> to version 16.0 under that
+repository.  The version number for <a href="https://rubygems.org/gems/celluloid/versions/0.17.3">Celluloid</a> was <em>generated</em> by the
+system—I <em>didn’t</em> type it in <code>Gemfile.lock</code>.  As a result, I
+switched to <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">Ubuntu on Windows 10</a>.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Upgraded to Git for Windows 2.11]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/"/>
+    
+    <updated>2017-01-10T13:09:42+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>This <a href="https://git-for-windows.github.io/">Git for Windows</a> upgrade from v2.8 to v2.11 is an
+<em>unsuccessful</em> attempt to fix a <a href="https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2/">Jekyll preview error</a> on
+<a href="https://vincenttam.github.io/blog2/">my another blog</a> triggered by the command <code>jekyll serve</code> for
+local preview.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>After the update, I can no longer input letters with accents.  Since
+the name of some mathematical theorems have accents, like l’Hôpital’s
+Rule.  It would be very inconvenient if the internation keyboard
+<em>can’t</em> be used in Git Bash.</p>
+
+<!-- more -->
+
+<h2 id="solution">Solution</h2>
+
+<p>In Git Bash, <code>locale</code> returns several lines.  The first one says
+<code>LANG=C</code>.  After viewing the list with <code>locale -a</code>, I’ve finally
+chosen the most common option with the character encoding UTF-8.  To
+make this change permanent for one user, add the last line into
+<code>~/.bashrc</code>.</p>
+
+<figure class="code"><figcaption><span>Locale change</span><a href="http://bit.ly/2iAnlq9">Reference </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="c"># Change Locale Permanently</span>
+</span><span class="line"><span class="nb">export </span><span class="nv">LANG</span><span class="o">=</span>en_US.utf8
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>Many popular <abbr title="Universal Resource Locator">URL</abbr> shorteners like <a href="bit.ly">Bitly</a> and
+<a href="goo.gl">Google <abbr title="Universal Resource Locator">URL</abbr> Shortener</a> <em>won’t</em> afftect my SEO, so I can use
+shortened URLs in the <a href="https://daringfireball.net/projects/markdown/">markdown</a> syntax for
+<a href="http://octopress.org/docs/plugins/codeblock/">Octopress codeblocks</a> to save disk space.<sup id="fnref:seo"><a href="#fn:seo" class="footnote">1</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:seo">
+      <p><a href="http://davidamerland.com/seo-tips/371-do-url-shorteners-impact-your-seo.html"><em>Do URL Shorteners Impact your SEO?</em></a> by David Amerland. <a href="#fnref:seo" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
       <title type="html"><![CDATA[A Comment for New Users on Math.SE]]></title>
       <link href="https://vincenttam.github.io/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/"/>
     
-    <updated>2017-01-10T12:34:53+01:00</updated>
+    <updated>2017-01-10T11:34:53+00:00</updated>
     <id>https://vincenttam.github.io/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -55,7 +811,7 @@ every time I want to leave this comment.</p>
 <p>I’ll include the code below, so that it can be simply copied and
 pasted next time.</p>
 
-<figure class="code"><figcaption><span>markdown Comments for those who *don't* use $\rm \LaTeX$ </span></figcaption>
+<figure class="code"><figcaption><span>Comments for those who *don't* use $\rm \LaTeX$ </span></figcaption>
 <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">Please use [$\rm \LaTeX$](http://meta.math.stackexchange.com/q/5020/290189).</span></code></pre></td></tr></table></div></figure>
 
@@ -68,7 +824,7 @@ pasted next time.</p>
       <title type="html"><![CDATA[Avoided a Duplicate Question]]></title>
       <link href="https://vincenttam.github.io/blog/2017/01/06/avoided-a-duplicate-question/"/>
     
-    <updated>2017-01-06T19:05:10+01:00</updated>
+    <updated>2017-01-06T18:05:10+00:00</updated>
     <id>https://vincenttam.github.io/blog/2017/01/06/avoided-a-duplicate-question</id>
     
       <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
@@ -118,7 +874,7 @@ Therefore, as a post on Mathematics Meta stack Exchange suggests,
       <title type="html"><![CDATA[Windows Security Popup During Public Wi-Fi Connection]]></title>
       <link href="https://vincenttam.github.io/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection/"/>
     
-    <updated>2017-01-06T11:34:30+01:00</updated>
+    <updated>2017-01-06T10:34:30+00:00</updated>
     <id>https://vincenttam.github.io/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -198,7 +954,7 @@ it’s been turned off.</p>
       <title type="html"><![CDATA[A Failed Review &#9733;]]></title>
       <link href="http://math.stackexchange.com/review/first-posts/739067"/>
     
-    <updated>2016-12-31T16:03:38+01:00</updated>
+    <updated>2016-12-31T15:03:38+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/31/a-failed-review</id>
     
       <content type="html"><![CDATA[<p>The problem is of the <em>same type</em> of the one described in
@@ -215,7 +971,7 @@ so as not to create <a href="http://meta.math.stackexchange.com/q/11608/290189">
       <title type="html"><![CDATA[Simplify a Determinant Identity]]></title>
       <link href="https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity/"/>
     
-    <updated>2016-12-28T20:40:58+01:00</updated>
+    <updated>2016-12-28T19:40:58+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -276,7 +1032,7 @@ As a result, we <em>can’t</em> decude further from $\det(2(AB + BA))$.</p>
       <title type="html"><![CDATA[A Group of 689 Elements (2)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/12/15/a-group-of-689-elements-2/"/>
     
-    <updated>2016-12-15T16:04:37+01:00</updated>
+    <updated>2016-12-15T15:04:37+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/15/a-group-of-689-elements-2</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -367,7 +1123,7 @@ mathematicien, a group of order 689 is <em>never</em> simple.</p>
       <title type="html"><![CDATA[Indices in Definition of External Semidirect Product]]></title>
       <link href="https://vincenttam.github.io/blog/2016/12/15/indices-in-definition-of-external-semidirect-product/"/>
     
-    <updated>2016-12-15T14:01:31+01:00</updated>
+    <updated>2016-12-15T13:01:31+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/15/indices-in-definition-of-external-semidirect-product</id>
     
       <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
@@ -409,7 +1165,7 @@ G_{\color{blue}{1}}$.</span></p>
       <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/"/>
     
-    <updated>2016-12-12T21:47:36+01:00</updated>
+    <updated>2016-12-12T20:47:36+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -428,10 +1184,10 @@ next subsection <em>A problem with Vim’s folding arised</em>.</p>
 
 <h2 id="solution">Solution</h2>
 
-<p>Firstly, save the code for loading <a href="https://www.mathjax.org/">MathJax</a> in the previous post in
-this series in a separate file <code>~/script.html</code>.  Then use the
-following commands <em>within</em> Vim in order to avoid leaving the current
-buffer and to improve efficiency.</p>
+<p>Firstly, save the code for loading <a href="https://www.mathjax.org/">MathJax</a> in <a href="https://vincenttam.github.io/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#include-the-script-in-the-content">the previous
+post</a> in this series in a separate file <code>~/script.html</code>.  Then
+use the following commands <em>within</em> Vim in order to avoid leaving the
+current buffer and to improve efficiency.</p>
 
 <pre><code>9,$w! ~/temp.mkd
 !kramdown ~/temp.mkd &gt; ~/temp.html
@@ -451,7 +1207,7 @@ post content.</p>
       <title type="html"><![CDATA[Inline Limit Rendering &#9733;]]></title>
       <link href="http://meta.math.stackexchange.com/a/12850/290189"/>
     
-    <updated>2016-12-12T20:16:15+01:00</updated>
+    <updated>2016-12-12T19:16:15+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/12/inline-limit-rendering</id>
     
       <content type="html"><![CDATA[<h2 id="problem">Problem</h2>
@@ -513,7 +1269,7 @@ dis parturient montes, nascetur ridiculus mus. Aliquam quam.</p>
       <title type="html"><![CDATA[Match Vertical Bar With Height in Set Notation &#9733;]]></title>
       <link href="http://tex.stackexchange.com/a/456"/>
     
-    <updated>2016-12-12T18:53:25+01:00</updated>
+    <updated>2016-12-12T17:53:25+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/12/12/match-vertical-bar-with-height-in-set-notation</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -587,7 +1343,7 @@ absolute values and sets.</li>
       <title type="html"><![CDATA[Jekyll Serve Error (2)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2/"/>
     
-    <updated>2016-08-28T15:32:58+02:00</updated>
+    <updated>2016-08-28T13:32:58+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1010,7 +1766,7 @@ Updating jekyll-sitemap
       <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
     
-    <updated>2016-08-21T12:30:57+02:00</updated>
+    <updated>2016-08-21T10:30:57+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
     
       <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
@@ -1109,7 +1865,7 @@ this chapter of the guide.</li>
       <title type="html"><![CDATA[My Host File Edited]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited/"/>
     
-    <updated>2016-08-20T18:50:34+02:00</updated>
+    <updated>2016-08-20T16:50:34+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1148,7 +1904,7 @@ the <code>sudo</code> privilege in order to directly manipulate this file.</p>
       <title type="html"><![CDATA[Jekyll Serve Error]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error/"/>
     
-    <updated>2016-08-20T16:15:43+02:00</updated>
+    <updated>2016-08-20T14:15:43+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1462,7 +2218,7 @@ Configuration file: /home/owner/blog2/_config.yml
       <title type="html"><![CDATA[Fixed Jekyll-Bootstrap Asset Path (2)]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/"/>
     
-    <updated>2016-08-18T10:15:33+02:00</updated>
+    <updated>2016-08-18T08:15:33+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1507,7 +2263,7 @@ Then, everything should be fine.</p>
       <title type="html"><![CDATA[Restore Corrupt Git Repository]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository/"/>
     
-    <updated>2016-08-17T05:16:33+02:00</updated>
+    <updated>2016-08-17T03:16:33+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1771,7 +2527,7 @@ write-tree</code>.</p>
       <title type="html"><![CDATA[$\rm \LaTeX$ French Letter With Signature]]></title>
       <link href="https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature/"/>
     
-    <updated>2016-04-17T11:15:38+02:00</updated>
+    <updated>2016-04-17T09:15:38+00:00</updated>
     <id>https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
@@ -1924,454 +2680,6 @@ French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing
 <p>The final product can be viewed by clicking the link for the
 <a href="https://vincenttam.github.io/downloads/ltrsign.pdf">sample PDF with signature</a>.</p>
 
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter Template]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template/"/>
-    
-    <updated>2016-04-16T17:32:14+02:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/16/latex-french-letter-template</id>
-    
-      <content type="html"><![CDATA[<p>I just include the files here for future references.  Since the code
-are universal, I assume that the source file and the linked PDF file
-below are in public domain, despite the CC-BY-SA licence at the bottom
-of this page.</p>
-
-<figure class="code"><figcaption><span>Sample French $\rm \LaTeX$ letter (ltr.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltr.tex">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
-</span><span class="line">    Nom de destinataire <span class="k">\\</span>
-</span><span class="line">    4, boulevard de la Paix, <span class="k">\\</span>
-</span><span class="line">    12345 Nom de ville
-</span><span class="line"><span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\name</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
-</span><span class="line">  <span class="k">\address</span><span class="nb">{</span>
-</span><span class="line">    Votre NOM<span class="k">\\</span>
-</span><span class="line">    23, rue à votre ville <span class="k">\\</span>
-</span><span class="line">    23456 Nom de votre ville
-</span><span class="line">  <span class="nb">}</span>
-</span><span class="line">  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
-</span><span class="line">  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
-</span><span class="line">  <span class="k">\nofax</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
-</span><span class="line">  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
-</span><span class="line">  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  Un exemple d&#39;une lettre <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span> faite par <span class="k">\LaTeX</span>.  Le faux
-</span><span class="line">  texte ci-dessous est généré par le plugin Lorem Ipsum pour Vim.
-</span><span class="line">
-</span><span class="line"><span class="c">% lorem{{{</span>
-</span><span class="line">  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
-</span><span class="line">  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
-</span><span class="line">  risus ut arcu malesuada ornare. Maecenas.
-</span><span class="line">
-</span><span class="line">  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
-</span><span class="line">  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
-</span><span class="line">  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
-</span><span class="line">  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
-</span><span class="line">  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
-</span><span class="line">  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
-</span><span class="line">  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
-</span><span class="line">  urna.
-</span><span class="line"><span class="c">% lorem}}}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
-</span><span class="line">  meilleures.<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>You may view <a href="https://vincenttam.github.io/downloads/ltr.pdf">the output PDF</a> before downloading the above
-sample.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[Writting Letter With Bibliography]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography/"/>
-    
-    <updated>2016-04-16T15:39:52+02:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Recently, I need to write letters.  Get the formatting for addressee
-and sender automatically done, I choose $\rm \LaTeX$.  I cite a book
-in my letter, and try to add a bibliography at the end of the letter.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>During the compilation for the following letter, an error was thrown.</p>
-
-<figure class="code"><figcaption><span>A failed $\rm \LaTeX$ letter (noltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/noltrbib.tex">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[backend=biber]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
-</span><span class="line"><span class="k">\addbibresource</span><span class="nb">{</span>ltrbib.bib<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>csquotes<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
-</span><span class="line">    Nom de destinataire <span class="k">\\</span>
-</span><span class="line">    4, boulevard de la Paix, <span class="k">\\</span>
-</span><span class="line">    12345 Nom de ville
-</span><span class="line"><span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\name</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
-</span><span class="line">  <span class="k">\address</span><span class="nb">{</span>
-</span><span class="line">    Votre NOM<span class="k">\\</span>
-</span><span class="line">    23, rue à votre ville <span class="k">\\</span>
-</span><span class="line">    23456 Nom de votre ville
-</span><span class="line">  <span class="nb">}</span>
-</span><span class="line">  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
-</span><span class="line">  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
-</span><span class="line">  <span class="k">\nofax</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
-</span><span class="line">  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
-</span><span class="line">  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  Un exemple de citation dans un document <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span>.  <span class="k">\cite</span><span class="nb">{</span>serre<span class="nb">}</span>
-</span><span class="line">  Le faux texte ci-dessous est généré par le plugin Lorem Ipsum pour
-</span><span class="line">  Vim.
-</span><span class="line">
-</span><span class="line"><span class="c">% lorem{{{</span>
-</span><span class="line">  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
-</span><span class="line">  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
-</span><span class="line">  risus ut arcu malesuada ornare. Maecenas.
-</span><span class="line">
-</span><span class="line">  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
-</span><span class="line">  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
-</span><span class="line">  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
-</span><span class="line">  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
-</span><span class="line">  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
-</span><span class="line">  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
-</span><span class="line">  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
-</span><span class="line">  urna.
-</span><span class="line"><span class="c">% lorem}}}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
-</span><span class="line">  meilleures.<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\printbibliography</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<figure class="code"><figcaption><span>A sample Bib$\rm \LaTeX$ file  (ltrbib.bib)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.bib">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line">@BOOK<span class="nb">{</span>serre,
-</span><span class="line">    author = <span class="nb">{</span>Serre, J. P.<span class="nb">}</span>,
-</span><span class="line">    title = <span class="nb">{</span>Cours d&#39;arithmétique<span class="nb">}</span>,
-</span><span class="line">    publisher = <span class="nb">{</span>Presse Universitaire de France<span class="nb">}</span>,
-</span><span class="line">    year = <span class="nb">{</span>1970<span class="nb">}</span>,
-</span><span class="line">    edition = <span class="nb">{</span>1ère ed.<span class="nb">}</span>,
-</span><span class="line">    address = <span class="nb">{</span>Paris, France<span class="nb">}</span>,
-</span><span class="line">    pages = <span class="nb">{</span>103--106<span class="nb">}</span>,
-</span><span class="line"><span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Here’s my compilation procedure.</p>
-
-<pre class="cliUB"><code>$ xelatex noltrbib.tex
-$ biber noltrbib
-$ xelatex noltrbib.tex
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian)
- restricted \write18 enabled.
-...
-! Undefined control sequence.
-\\blx@head@bibliography [#1]-&gt;\section 
-                                       *{#1}\markboth {\MakeUppercase {#1}}{...
-l.52 \end
-         {letter}
-?
-...
-</code></pre>
-
-<p>I type <code>&lt;Enter&gt;</code> at <code>?</code>, and get <a href="https://vincenttam.github.io/downloads/noltrbib.pdf">a PDF that seems OK</a>.  You may
-read the <a href="https://vincenttam.github.io/downloads/code/MaLettre/noltrbib.log">log file for this file</a> to know more about this error.
-However, each time I use $\rm \LaTeX$-Suite to compile the document
-inside Vim, a quickfix window pops up.  This is quite inconvenient: I
-need to use <code>&lt;C-w&gt;k</code> to switch to the original buffer or <code>ZQ</code> to close
-the quickfix window.  Therefore, I am motivated to find out a solution
-for this error.</p>
-
-<!-- more -->
-
-<h2 id="solution">Solution</h2>
-
-<p>Luckily, I find the thread
-<a href="http://www.latex-community.org/forum/viewtopic.php?f=4&amp;t=3359"><em>Environment thebibliography undefined when using letter</em></a> in
-$\rm \LaTeX$ Forum extremely useful.  In my opinion, if one can
-include inline code in a post in this forum, the file name
-<code>letterbib.sty</code> and the command in the preamble can be shown in
-monospaced font for readability.</p>
-
-<figure class="code"><figcaption><span>A minimal working $\rm \LaTeX$ letter (ltrbib.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.tex">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[backend=biber]</span><span class="nb">{</span>biblatex<span class="nb">}</span>
-</span><span class="line"><span class="k">\addbibresource</span><span class="nb">{</span>ltrbib.bib<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>csquotes<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>letterbib<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
-</span><span class="line">    Nom de destinataire <span class="k">\\</span>
-</span><span class="line">    4, boulevard de la Paix, <span class="k">\\</span>
-</span><span class="line">    12345 Nom de ville
-</span><span class="line"><span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\name</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
-</span><span class="line">  <span class="k">\address</span><span class="nb">{</span>
-</span><span class="line">    Votre NOM<span class="k">\\</span>
-</span><span class="line">    23, rue à votre ville <span class="k">\\</span>
-</span><span class="line">    23456 Nom de votre ville
-</span><span class="line">  <span class="nb">}</span>
-</span><span class="line">  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
-</span><span class="line">  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
-</span><span class="line">  <span class="k">\nofax</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
-</span><span class="line">  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
-</span><span class="line">  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  Un exemple de citation dans un document <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span>.  <span class="k">\cite</span><span class="nb">{</span>serre<span class="nb">}</span>
-</span><span class="line">  Le faux texte ci-dessous est généré par le plugin Lorem Ipsum pour
-</span><span class="line">  Vim.
-</span><span class="line">
-</span><span class="line"><span class="c">% lorem{{{</span>
-</span><span class="line">  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
-</span><span class="line">  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
-</span><span class="line">  risus ut arcu malesuada ornare. Maecenas.
-</span><span class="line">
-</span><span class="line">  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
-</span><span class="line">  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
-</span><span class="line">  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
-</span><span class="line">  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
-</span><span class="line">  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
-</span><span class="line">  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
-</span><span class="line">  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
-</span><span class="line">  urna.
-</span><span class="line"><span class="c">% lorem}}}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
-</span><span class="line">  meilleures.<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\printbibliography</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>Finally, no compilation error is shown in the <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrbib.log">generated log</a>.
-You may view the <a href="https://vincenttam.github.io/downloads/ltrbib.pdf">second generated PDF</a>.</p>
-
-<h2 id="lessons-learnt">Lessons learnt</h2>
-
-<p>To install the above STY file, which <em>isn’t</em> found on <abbr title="Comprehensive TeX Archive Network">CTAN</abbr>, one needs
-to manually download it to <code>~/texmf</code> on *nix.  (Search “~/texmf” for
-the way to find <a href="http://tex.stackexchange.com/a/12702">“temxf” on Win*</a>.)  Searching “texmf
-linux refresh”, I find the way for a
-<a href="http://www.dickimaw-books.com/latex/novices/html/texhash.html">$\rm \TeX$ database update</a>.  I miss the first argument
-in the command <code>texhash ~/texmf</code>, and then the installed STY file
-<em>can’t</em> be found in <code>~/texmf/ls-R</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[I-Search and Reverse I-Search]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/09/i-search-and-reverse-i-search/"/>
-    
-    <updated>2016-04-09T14:42:54+02:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/09/i-search-and-reverse-i-search</id>
-    
-      <content type="html"><![CDATA[<p>One knows that long commands can be retrieved by <code>&lt;C-r&gt;</code>.  If the
-search <em>fails</em>, one may cancel it by <code>&lt;C-g&gt;</code>.  However, how can one
-search forward through the command history instead of backword?</p>
-
-<p>The answer is simple: add <code>stty -ixon</code> to your BASHRC.</p>
 ]]></content>
     
   </entry>

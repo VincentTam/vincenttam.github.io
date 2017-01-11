@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="I’ve found some useful pages about maintaining one’s notebook
-computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing the &hellip;">
+  <meta name="description" content="I haven’t learnt something about Octopress for 2 weeks. I hope that I
+can create a GitHub project page using Octopress successfully. I have seen a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@ computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing th
   <li><a href="/about">About</a></li>
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="https://github.com/VincentTam">GitHub</a></li>
+  <li><a href="https://git.io/vtam">GitHub</a></li>
   <li><a href="/presentations">Slides</a></li>
 </ul>
 
@@ -80,6 +80,240 @@ computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing th
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/03/01/creating-a-new-octopress-page/">Creating a New Octopress Page</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-01T17:30:51+00:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:30 pm</span></time>
+        
+           | <a href="/blog/2014/03/01/creating-a-new-octopress-page/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/03/01/creating-a-new-octopress-page/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/03/01/creating-a-new-octopress-page/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I haven’t learnt something about Octopress for 2 weeks.  I hope that I
+can create a GitHub project page using Octopress successfully.</p>
+
+<p>I have seen a comment for a blog post which briefly describes the
+procedures for making <code>gh-pages</code>.  The user who has left the comment
+claims that the posts, which should be under the <code>source/_posts</code>
+directory<sup id="fnref:doc"><a href="#fn:doc" class="footnote">1</a></sup>, is in the <code>source</code> branch of Octopress Git
+repository.  I’m going to figure it out.  No matter it’s true or not,
+it’s something that puzzles some Octopress users.</p>
+
+<h2 id="creating-an-about-page">Creating an ABOUT page</h2>
+
+<p>I couldn’t find the answer for adding new items to the navigation bar
+at the top of the posts and under the header in an Octopress blog
+because I didn’t know the Google search words.  This afternoon, I
+found that googling “octopress page navigation” help.  I managed to
+find a blog post on that.<sup id="fnref:octopress_about"><a href="#fn:octopress_about" class="footnote">2</a></sup></p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:doc">
+      <p><a href="http://octopress.org/docs/blogging/">Blogging Basics</a> <a href="#fnref:doc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:octopress_about">
+      <p><a href="http://icodeit.org/2013/01/add-new-page-to-octopress/">為 Octopress 添加新的頁面</a> <a href="#fnref:octopress_about" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/03/01/git-status-of-my-octopress-folder/">Git Status of My Octopress Folder</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-03-01T09:32:29+00:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>9:32 am</span></time>
+        
+           | <a href="/blog/2014/03/01/git-status-of-my-octopress-folder/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/03/01/git-status-of-my-octopress-folder/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/03/01/git-status-of-my-octopress-folder/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’d like to include my GitHub repositories here.  To do so, it’s a
+piece of cake to slightly modify <code>_config.yml</code>.<sup id="fnref:config_octopress"><a href="#fn:config_octopress" class="footnote">1</a></sup></p>
+
+<p>Once, I curiously typed <code>git status</code> in <code>~/octopress</code>.  The following
+screenshot is from my terminal.</p>
+
+<p><img src="/images/posts/GitStatusOfMyOctopressFolder/GitStatus.png" alt="git status" /></p>
+
+<p>Then I blindly followed the “advice” of <code>git status</code> and typed</p>
+
+<pre class="cliUB"><code>$ git add .
+</code></pre>
+
+<p><del>It seemed that I had made a mistake.</del>  Actually, <em>without
+adding those modified and untracked files on the stage for commit</em>,
+the following two commands will <del>do</del> update the contents on
+the GitHub pages.</p>
+
+<pre class="cliUB"><code>$ rake generate
+$ rake deploy
+</code></pre>
+
+<p>The final step is to view your blog again after going out for a cup
+water or some snacks.</p>
+
+<p>How about the <code>git status</code>?  <del>Simply <em>forget about it</em>!</del></p>
+
+<hr />
+
+<p>(Last added on MAR 15TH, 2014)</p>
+
+<p>If you have <em>more than one</em> local repository of your Octopress or
+Jekyll site, you may upload your contents to the Internet as long as
+the corresponding branch in the local repository is newer than the one
+in the remote repository.  To keep the Octopress or Jekyll code
+updated, one needs to use Git to check if the <code>source</code> branch contains
+the latest changes.  Otherwise, after writing a new post, it is
+possible that one <em>can’t</em> upload the new post to the Octopress or
+Jekyll site using <code>rake deploy</code>.</p>
+
+<p>Thus, eight days ago, I made Git commit <a href="https://github.com/VincentTam/vincenttam.github.io/commit/8c7be99">8c7be99</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:config_octopress">
+
+      <p>Mathis, B.  (Jul 19, 2011).  <em>Configuring Octopress</em>.  Retrieved
+from <a href="http://octopress.org/docs/configuring/">http://octopress.org/docs/configuring/</a> <a href="#fnref:config_octopress" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Including a Bibliography in Pandoc Markdown on Ubuntu 12.04 LTS</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-02-23T10:16:39+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>10:16 am</span></time>
+        
+           | <a href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/02/23/including-a-bibliography-in-pandoc-markdown-on-ubuntu-12-04-lts/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I tried typesetting a $\rm \LaTeX$ Beamer slide using pandoc markdown
+since it’s easy to use.  According to the official demo<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, with a
+<abbr title="Citation Style Language">CSL</abbr> file<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>, which specifies the style to the citation, users are
+suppose to be able to create a document with a bibliography.  However,
+when I ran the following command in Vim on Ubuntu 12.04 LTS, pandoc
+hanged.</p>
+
+<pre><code>:!pandoc -s -S --biblio mybib.bib --csl foo.csl -t beamer %\
+-V theme:Berlin -o %&lt;.pdf
+</code></pre>
+
+<p>I admit that it’s <em>too</em> complicated.  I tested several things:</p>
+
+<ol>
+  <li>$\rm \LaTeX$ Beamer class</li>
+  <li>Bibliography</li>
+</ol>
+
+<p>To figure out which part of the command is wrong, I tried to remove
+the part related to item 1.  Issuing a simple command for item 2, the
+usage of one of the <abbr title="Central Processing Unit">CPU</abbr> in my computer rose to almost 100%, and
+remained high with small fluctuations.</p>
+
+<pre><code>:!pandoc -s -S --biblio biblio.bib -o %&lt;.html
+</code></pre>
+
+<p>This issue is indeed one faced by the community of Ubuntu users, so I
+can find official advices on GitHub.  Eventually, the last comment on
+the page has solved my problem.  I think installing
+<code>libghc-citeproc-hs-data</code> is quicker than installing the latest
+(1.9.4.2-2) version of the DEB file for pandoc.</p>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://johnmacfarlane.net/pandoc/demos.html">Pandoc demos item 24 (Markdown citations)</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://github.com/citation-style-language/styles">CSL’s official repository on GitHub</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -98,7 +332,7 @@ computer. 5 Laptop Maintenance Tips To Extend Its Life Expectancy Maximizing th
 
 
 
-<time class='entry-date' datetime='2014-02-21T18:07:05+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 pm</span></time>
+<time class='entry-date' datetime='2014-02-21T17:07:05+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>5:07 pm</span></time>
         
            | <a href="/blog/2014/02/21/extend-notebook-lifespan/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/21/extend-notebook-lifespan/">Comments</a>
@@ -153,7 +387,7 @@ computer.</p>
 
 
 
-<time class='entry-date' datetime='2014-02-16T13:18:17+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:18 pm</span></time>
+<time class='entry-date' datetime='2014-02-16T12:18:17+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:18 pm</span></time>
         
            | <a href="/blog/2014/02/16/my-first-octopress-post/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/16/my-first-octopress-post/">Comments</a>
@@ -191,7 +425,7 @@ has found a mistake in
 
 
 
-<time class='entry-date' datetime='2014-02-16T10:32:23+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:32 am</span></time>
+<time class='entry-date' datetime='2014-02-16T09:32:23+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:32 am</span></time>
         
            | <a href="/blog/2014/02/16/installing-ruby-again/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/16/installing-ruby-again/">Comments</a>
@@ -247,7 +481,7 @@ I think. The following two commands have failed.</p>
 
 
 
-<time class='entry-date' datetime='2014-02-05T18:55:52+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:55 pm</span></time>
+<time class='entry-date' datetime='2014-02-05T17:55:52+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:55 pm</span></time>
         
            | <a href="/blog/2014/02/05/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/05/another-testing-page-for-wordpress-coms-built-in-syntaxhighlighter-and-ultrablog/">Comments</a>
@@ -289,7 +523,7 @@ I think. The following two commands have failed.</p>
 
 
 
-<time class='entry-date' datetime='2014-02-05T18:27:57+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:27 pm</span></time>
+<time class='entry-date' datetime='2014-02-05T17:27:57+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:27 pm</span></time>
         
            | <a href="/blog/2014/02/05/dont-allow-pingbacks/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/05/dont-allow-pingbacks/">Comments</a>
@@ -361,7 +595,7 @@ is now <em>dead</em>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></
 
 
 
-<time class='entry-date' datetime='2014-02-05T17:54:20+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:54 pm</span></time>
+<time class='entry-date' datetime='2014-02-05T16:54:20+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:54 pm</span></time>
         
            | <a href="/blog/2014/02/05/testing-wordpress-footnotes/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/05/testing-wordpress-footnotes/">Comments</a>
@@ -403,7 +637,7 @@ is now <em>dead</em>. <a href="#fnref:src" class="reversefootnote">&#8617;</a></
 
 
 
-<time class='entry-date' datetime='2014-02-04T13:54:05+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:54 pm</span></time>
+<time class='entry-date' datetime='2014-02-04T12:54:05+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:54 pm</span></time>
         
            | <a href="/blog/2014/02/04/emacs-key-bindings-in-vimperator/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/emacs-key-bindings-in-vimperator/">Comments</a>
@@ -449,240 +683,6 @@ right-hand corner.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/04/my-error-while-using-ultrablog/">My Error While Using UltraBlog</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-04T13:13:59+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:13 pm</span></time>
-        
-           | <a href="/blog/2014/02/04/my-error-while-using-ultrablog/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/my-error-while-using-ultrablog/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/04/my-error-while-using-ultrablog/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’m not sure if I’ve installed UltraBlog.vim correctly a month ago,
-but it surely improves my blogging efficiency <em>a lot</em>.  With Vim’s
-keystroke, I can move the cursor quickly.  Such power of “what you
-think is what you get” is impossible to find in other editors, either
-the online ones or the offline ones.</p>
-
-<p>I write this post because I would like to make a record only.  I can
-still find ways to work well with UltraBlog.</p>
-
-<p>What are the errors?  The following screenshots illustrate them.</p>
-
-<p>I opened a local list and forgot to close it before opening another
-list.  Then, from one of the lists, I opened a new buffer to edit a
-post.  After I finished editing the post, I issued <code>ZQ</code> in order to
-close the buffer.  However, the buffer didn’t close.  Instead, I got
-<em>another</em> list.  It seems that the plugin doesn’t want users to use an
-“outdated” list to link up with a post.  As I tried to close the new
-list with <code>ZQ</code> or <code>:q</code>, I just <em>couldn’t</em> do it.  But there’s <em>so
-many</em> windows.  OK!  Then I just use <code>&lt;C-w&gt;j</code> and <code>ZQ</code> to close the
-old lists.  When I used UltraBlog for the first time, the plugin
-surprised me by giving me an <em>extra, identical and updated</em> list of
-contents.  Since the first time, the plugin still do the same thing,
-of course, but I can “keep calm and continue blogging”.</p>
-
-<p>I’ve run into this situation for the first time today.</p>
-
-<p><img class="fancybox" src="/images/posts/UBErr/ub-q1.png" width="800" title="First UltraBlog screenshot" alt="fig1" /></p>
-
-<p>I tried to quit the new list with <code>:q</code>.</p>
-
-<p><img class="fancybox" src="/images/posts/UBErr/ub-q2.png" width="800" title="Second UltraBlog screenshot" alt="fig2" /></p>
-
-<p>Vim told me to use <code>:q!</code> instead.</p>
-
-<p><img class="fancybox" src="/images/posts/UBErr/ub-error.png" width="800" title="Third UltraBlog screenshot" alt="fig3" /></p>
-
-<p>UltraBlog threw a host of errors that I wouldn’t be interested to find
-out more.</p>
-
-<p>I wouldn’t have time to figure out what it really is.  <em>As far as I
-know, if I remember to close all post lists while writing or editing a
-post, things will be fine.</em>  Anyways, just make things work, and
-blogging with Vim and UltraBlog.vim is awesome!</p>
-
-<hr />
-
-<p>(Last edited on FEB 05, 2014)</p>
-
-<p>Note: Actually, <code>:on</code> can clear the unwanted and unaccessible old
-lists.  This can be checked using <code>:ls</code>, which is the same as
-<code>:buffers</code>.</p>
-
-<hr />
-
-<p>(Last edited on JUN 23, 2014)</p>
-
-<p>Now, I’ve switched to Octopress, just like the creator of
-UltraBlog.vim since it’s <em>better</em> than WordPress.</p>
-
-<hr />
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/04/firefox-markdown-viewer/">Firefox's Markdown Viewer</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-04T10:10:36+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:10 am</span></time>
-        
-           | <a href="/blog/2014/02/04/firefox-markdown-viewer/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/firefox-markdown-viewer/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/04/firefox-markdown-viewer/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This morning, I’ve found a Firefox Add-on called
-<a href="https://addons.mozilla.org/en-US/firefox/addon/markdown-viewer/">Markdown Viewer</a>.  As its name suggests, it’s a Firefox plugin
-that enables users to view Markdown documents.  The screenshot
-provided on the home page of the add-on illustrates that it works on
-M$ Win*.  How about GNU/Linux? I clicked the button and installed
-the plugin.  After that, I used <code>:restart</code> in Vimperator to see what
-happened if I used Firefox to view a local Markdown file with
-extension name <code>.md</code>.</p>
-
-<p>It turned out that nothing happened! With Lai’s review titled <em>Work on
-Linux</em>, I figured out what to do.  After looking at his suggested code
-for <code>vi ~/.mozilla/firefox/*default/mimeTypes.rdf</code>, I really tested it
-and it worked.  Critical readers will then ask about the way to
-include multiple file extensions.</p>
-
-<p>Browsing the code with <code>#</code> in the RDF file helps.  Here’s what my
-results.</p>
-
-<figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="nt">&lt;RDF:Description</span> <span class="na">RDF:about=</span><span class="s">&quot;urn:mimetype:application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:value=</span><span class="s">&quot;application/vnd.ms-excel&quot;</span>
-</span><span class="line"><span class="na">NC:editable=</span><span class="s">&quot;true&quot;</span>
-</span><span class="line"><span class="na">NC:description=</span><span class="s">&quot;Microsoft Excel Worksheet&quot;</span><span class="nt">&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xls<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlb<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:fileExtensions&gt;</span>xlt<span class="nt">&lt;/NC:fileExtensions&gt;</span>
-</span><span class="line"><span class="nt">&lt;NC:handlerProp</span> <span class="na">RDF:resource=</span><span class="s">&quot;urn:mimetype:handler:application/vnd.ms-excel&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line"><span class="nt">&lt;/RDF:Description&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>According to <a href="https://superuser.com/questions/249436/file-extension-for-markdown-files">a question on Super User</a>, we use <em>more than
-one</em> extension name for a Markdown file.  However, a GNU/Linux user
-should <em>never</em> use <code>.md</code>.</p>
-
-<p>Finally, combining Lai’s and Cas’s posts, I’ve come up with
-<a href="https://gist.github.com/VincentTam/8800268">a Gist</a>.</p>
-
-<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">A Reason for My VimRepress Installation Failure</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-02-04T07:11:58+01:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:11 am</span></time>
-        
-           | <a href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>In one of my old posts, I mentioned that I had tried using
-VimRepress.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>  However, this plugin kept throwing errors like this.</p>
-
-<pre class="cli"><code class="UBMono">Confirm Delete [6]: First Post Using VimRepress? [yes/NO] :yes
-<span class="vimErr">Error detected while processing :
-Traceback (most recent call last):
-File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
-File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 41, in __check
-echoerr(&quot;something wrong: %s&quot; % e)
-File &quot;/home/owner/.vim/bundle/VimRepress/plugin/vimrepress.py&quot;, line 47, in &lt;lambda&gt;
-echoerr = lambda s: vim.command('echoerr &quot;%s&quot;' % s)
-vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s:user_input</span>
-<span class="vimErrCont">Press ENTER or type command to continue</span>
-</code></pre>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/02/04/a-reason-for-my-vimrepress-installation-failure/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/31">&larr; Older</a>
@@ -720,7 +720,7 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
 <li class='category'><a href='/blog/categories/css/'>css (4)</a> <a href='/blog/categories/css/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/emacs/'>emacs (1)</a> <a href='/blog/categories/emacs/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/gimp/'>gimp (2)</a> <a href='/blog/categories/gimp/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/git/'>git (34)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/git/'>git (35)</a> <a href='/blog/categories/git/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/hardware/'>hardware (5)</a> <a href='/blog/categories/hardware/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/health/'>health (2)</a> <a href='/blog/categories/health/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/imagemagick/'>imagemagick (4)</a> <a href='/blog/categories/imagemagick/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -728,17 +728,17 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (55)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (37)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (54)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/ruby/'>ruby (8)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/ruby/'>ruby (9)</a> <a href='/blog/categories/ruby/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/sql/'>sql (2)</a> <a href='/blog/categories/sql/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/svg/'>svg (8)</a> <a href='/blog/categories/svg/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/template/'>template (10)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -753,23 +753,23 @@ vim.error: Vim(echoerr):something wrong: Vim(let):E461: Illegal variable name: s
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
       <li class="post">
         <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/06/windows-security-popup-during-public-wi-fi-connection/">Windows Security Popup During Public Wi-Fi Connection</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/31/a-failed-review/">A Failed Review</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a>
       </li>
     
   </ul>
