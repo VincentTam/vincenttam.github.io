@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I often write math in this blog. After typing lots of characters,
-syntax errors are inevitable, but no one wants them to be published. &hellip;">
+  <meta name="description" content="The SHA-1 hash for blobs isn’t so hard to generate, and the process
+is now well-known. I don’t repeat it here. The one for commits can
+be similarly &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +89,142 @@ syntax errors are inevitable, but no one wants them to be published. &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Git Object ID Generation (1): Blobs and Commits</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T06:52:47+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:52 am</span></time>
+        
+           | <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
+is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
+be similarly generated.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/06/my-git-command-list-3/">My Git Command List (3)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-06T10:39:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:39 am</span></time>
+        
+           | <a href="/blog/2015/08/06/my-git-command-list-3/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/06/my-git-command-list-3/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="overview">Overview</h2>
+
+<p>Unlike the Git commands found on the previous posts in this series, in
+this article, I’ll focus on <em>low-level</em> Git commands.</p>
+
+<h2 id="raison-dtre">Raison d’être</h2>
+
+<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
+but I included them here because these commands help one understand
+the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
+
+<h2 id="the-list">The list</h2>
+
+<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
+$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
+$ git hash-object {file}  # Return the hash of {file}
+$ git hash-object --stdin # Return the hash of the standard input
+$ git write-tree          # Return the hash of the tree of tracked contents
+$ git ls-files -s         # List all tracked files and their hash
+$ git ls-tree {hash}      # List the contents of a tree
+$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
+$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
+$ git diff                # Show the difference between the working directory and the index
+$ git diff --cached       # Show the difference between HEAD and the index
+$ git diff HEAD           # Show the difference between HEAD and the working directory
+</code></pre>
+
+<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
+<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
+
+<h2 id="facts-learnt">Facts learnt</h2>
+
+<ol>
+  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
+bytes.  When it’s displayed, it has 40 hex-digits.</li>
+  <li><em>The blob for a file is independent of the file name</em>, which was
+actually stored in a tree object.  For example, the object ID of a
+file which contains only a single line “hello world” is
+<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code>, so if the file is stored
+inside the <code>.git</code> directory as a blob, the blob will be named as
+<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
+  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
+entry will be created in the tree object corresponding to
+<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
+</ol>
+
+<hr />
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:tree_obj">
+
+      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
+in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
+<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a></h1>
       
     
@@ -98,7 +235,7 @@ syntax errors are inevitable, but no one wants them to be published. &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-08-04T16:18:45+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+<time class='entry-date' datetime='2015-08-04T17:18:45+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:18 pm</span></time>
         
            | <a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Comments</a>
@@ -164,7 +301,7 @@ problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-sy
 
 
 
-<time class='entry-date' datetime='2015-08-04T14:28:52+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:28 pm</span></time>
+<time class='entry-date' datetime='2015-08-04T15:28:52+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:28 pm</span></time>
         
            | <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Comments</a>
@@ -233,7 +370,7 @@ x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
 
 
 
-<time class='entry-date' datetime='2015-08-03T14:38:32+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>2:38 pm</span></time>
+<time class='entry-date' datetime='2015-08-03T15:38:32+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:38 pm</span></time>
         
            | <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">Comments</a>
@@ -282,7 +419,7 @@ preview.</p>
 
 
 
-<time class='entry-date' datetime='2015-06-13T14:26:34+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:26 pm</span></time>
+<time class='entry-date' datetime='2015-06-13T15:26:34+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:26 pm</span></time>
         
            | <a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Comments</a>
@@ -351,7 +488,7 @@ that Octoshape is ready).
 
 
 
-<time class='entry-date' datetime='2015-06-09T08:41:12+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:41 am</span></time>
+<time class='entry-date' datetime='2015-06-09T09:41:12+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:41 am</span></time>
         
            | <a href="/blog/2015/06/09/miktex-update/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/miktex-update/">Comments</a>
@@ -416,7 +553,7 @@ another folder?</strong></p>
 
 
 
-<time class='entry-date' datetime='2015-06-09T07:59:15+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:59 am</span></time>
+<time class='entry-date' datetime='2015-06-09T08:59:15+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:59 am</span></time>
         
            | <a href="/blog/2015/06/09/ms-word-hanged/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/">Comments</a>
@@ -489,7 +626,7 @@ when you need to browse <code>info</code> pages on *nix.</p>
 
 
 
-<time class='entry-date' datetime='2015-06-01T10:08:54+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:08 am</span></time>
+<time class='entry-date' datetime='2015-06-01T11:08:54+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:08 am</span></time>
         
            | <a href="/blog/2015/06/01/w3c-validator-and-svgpan/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/w3c-validator-and-svgpan/">Comments</a>
@@ -550,7 +687,7 @@ site of SVGPan as an example.</p>
 
 
 
-<time class='entry-date' datetime='2015-06-01T09:22:45+00:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:22 am</span></time>
+<time class='entry-date' datetime='2015-06-01T10:22:45+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:22 am</span></time>
         
            | <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/">Comments</a>
@@ -589,119 +726,6 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
   
     <footer>
       <a rel="full-article" href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Validate HTML Code for SVG Fallbacks to Text</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-30T14:23:37+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:23 pm</span></time>
-        
-           | <a href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>After I’d written <a href="/blog/2015/05/23/added-w3c-validated-logos-to-some-pages/"><em>Added <abbr title="World Wide Web Consortium">W3C</abbr> Validated Logos to Some Pages</em></a>, I
-saw that in the site, there’s still two pages which <em>hadn’t</em> been
-checked by the <abbr title="World Wide Web Consortium">W3C</abbr>’s validators.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>To allow SVG fallbacks to text, I viewed the source code for
-<a href="http://www.w3schools.com/svg/tryit.asp?filename=trysvg_myfirst">the SVG example from W3Schools</a>.  The fallback message was
-simply included inside a <code>&lt;svg&gt;</code> tag just like a <code>&lt;p&gt;</code> tag.  I applied
-this technique to <code>source/downloads/code/SVGViewBox/viewBox1.html</code>.</p>
-
-<p>Then I uploaded that HTML file to the <abbr title="World Wide Web Consortium">W3C</abbr>’s HTML validator, which
-complained such an inclusion of text.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/30/validate-html-code-for-svg-fallbacks-to-text/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Fixed Disqus Comments When Loaded With HTTPS</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-05-26T14:12:24+00:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:12 pm</span></time>
-        
-           | <a href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<ol>
-  <li><a href="https://konklone.com/post/github-pages-now-sorta-supports-https-so-use-it">GitHub Pages now supports HTTPS</a>.</li>
-  <li>I saw that Google search showed the HTTP version of the hyperlinks.</li>
-  <li>I want to convert add the existing “http://” to “https://”.</li>
-</ol>
-
-<h2 id="problem">Problem</h2>
-
-<ol>
-  <li>I changed “http://…” to “https://…” in the Admin settings for
-the disqus site of this blog.</li>
-  <li>The original comments <em>disappeared</em>!</li>
-</ol>
-
-<p><strong>How can I get back the original comments and correct the URLs of the
-links to my blog articles on Disqus?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/05/26/fixed-disqus-comments-when-loaded-with-https/">Read on &rarr;</a>
     </footer>
   
 
@@ -753,8 +777,8 @@ links to my blog articles on Disqus?</strong></p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (57)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (41)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -778,6 +802,14 @@ links to my blog articles on Disqus?</strong></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/windows-10-time-sync-error/">Windows 10 Time Sync Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
       </li>
     
@@ -787,14 +819,6 @@ links to my blog articles on Disqus?</strong></p>
     
       <li class="post">
         <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
   </ul>

@@ -9,8 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Last Saturday, I read an article on using gauges defined on a close
-and bounded interval $I$ (i.e. strictly postive functions over $I$) &hellip;">
+  <meta name="description" content="Background I created a bare Git repository in my USB stick on GUI. I pushed some Git commits to the bare repository in the USB. The commands for the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,136 @@ and bounded interval $I$ (i.e. strictly postive functions over $I$) &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/01/01/git-push-to-usb/">Git Push to USB</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-01T14:51:20+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>2:51 pm</span></time>
+        
+           | <a href="/blog/2015/01/01/git-push-to-usb/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/01/01/git-push-to-usb/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/01/01/git-push-to-usb/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<ol>
+  <li>I created a bare Git repository in my USB stick on GUI.</li>
+  <li>I pushed some Git commits to the bare repository in the USB.</li>
+</ol>
+
+<p>The commands for the above steps <em>shouldn’t</em> be difficult.  In step 2,
+if one sets the upstream repository to the bare repository in the USB,
+the command to be issued is even easier: just <code>git push</code> will do, and
+the remote and branch names can be omitted.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>I worked on Linux text mode instead of GUI.  After committing the
+changes, I tried pushing them into the bare Git repository in the USB.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/MATH2220]$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+[owner@localhost ~/MATH2220]$ sudo mount -t vfat /dev/sdf1 \
+&gt; /media/owner/08F1-B181/
+[owner@localhost ~/MATH2220]$ git push
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 551 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+remote: error: insufficient permission for adding an object to repository databa
+se objects
+remote: fatal: failed to write object
+error: unpack failed: unpack-objects abnormal exit
+To /media/owner/08F1-B181/MATH2220/MATH2220.git
+ ! [remote rejected] master -&gt; master (unpacker error)
+error: failed to push some refs to '/media/owner/08F1-B181/MATH2220/MATH2220.git
+'
+</code></pre>
+
+<p><strong>How can I push commits into the USB?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/01/01/git-push-to-usb/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2014/12/30/read-a-proof-about-the-transitivity-of-characteristic-subgroups/">Read a Proof About the Transitivity of Characteristic Subgroups</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-30T16:52:20+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:52 pm</span></time>
+        
+           | <a href="/blog/2014/12/30/read-a-proof-about-the-transitivity-of-characteristic-subgroups/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/30/read-a-proof-about-the-transitivity-of-characteristic-subgroups/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/12/30/read-a-proof-about-the-transitivity-of-characteristic-subgroups/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>On the day before yesterday, I read a proof about the transitivity of
+characteristic subgroups.  The proof <em>shouldn’t</em> be too difficult.
+The key step is just to create a restriction automorphism.</p>
+
+<p>Suppose $K\le H\le G$, and $f\in \Aut(G)$.  Then $f(H)=H$.  Define the
+restriction of $f$ on $H$ as $g:H\to H$ such that $g(h)=f(h) \,\forall
+h \in H$.  Clearly, $g\in \Aut(H)$.</p>
+
+<p>I <em>couldn’t</em> understand why $g(K)=K$.  I googled “strongly normal
+transitivity”, but <em>couldn’t</em> find anything relevant.  I changed the
+words, and found <a href="https://www.proofwiki.org/wiki/Definition:Characteristic_Subgroup">the proof on ProofWiki</a>.  Then I realised why I
+got stuck: when I wrote the definition of characteristic subgroup
+symbolically, I <em>didn’t</em> pay enough attention to ‘∀’.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -547,145 +676,6 @@ using <a href="http://www.mathjax.org">MathJax</a>, then one will encounter grea
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title external"><a href="http://vim.wikia.com/wiki/How_to_stop_auto_indenting">How to Stop Auto Indenting?</a> &#9733;</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T14:31:11+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:31 pm</span></time>
-        
-           | <a href="/blog/2014/12/12/how-to-stop-auto-indenting/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/12/how-to-stop-auto-indenting/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/12/12/how-to-stop-auto-indenting/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After reading this guide, I created a file
-<code>$HOME/vimfiles/indent/html.vim</code> with only one line.</p>
-
-<pre><code>let b:did_indent = 1
-</code></pre>
-
-<p>In the past, I would <code>:setlocal noautoident nosmartindent</code> before
-pasting anything into a <a href="http://www.vim.org">Vim</a> buffer.  However, as I paste the
-<a href="http://jquery.com">jQuery</a> code from a website while I was writing a recent post, the
-code was <em>still</em> wrongly indented.<sup id="fnref:pp"><a href="#fn:pp" class="footnote">1</a></sup>  After reading the last
-section of the tip, I now know to use <code>:set paste</code>.</p>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:pp">
-
-      <p>See <a href="/blog/2014/12/11/cheat-in-an-online-quiz/"><em>Cheat in an Online Quiz</em></a> in Blog 1 for the copied
-<a href="http://jquery.com">jQuery</a> function. <a href="#fnref:pp" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/12/12/using-xclip/">Using Xclip</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T09:21:12+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:21 am</span></time>
-        
-           | <a href="/blog/2014/12/12/using-xclip/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/12/12/using-xclip/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/12/12/using-xclip/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I always use commands for different tasks.  Then I need a command line
-utility for copying command output into clipboard so as to quickly
-finish typing the command.  Luckily, it’s very easy to install xclip
-on Ubuntu.  I believe that on other GNU/Linux distributions, the
-installation <em>won’t</em> be too difficult.</p>
-
-<p>Although it’s convenient to use xclip, I experienced two problems
-while using it on *nix GUI.</p>
-
-<h2 id="problem-1">Problem 1</h2>
-
-<p>Suppose that you want to capture the output of a command, and pipe it
-to another command.  However, the output often consists of a trailing
-newline character.  As a result, I sometimes executed commands
-incorrectly and carelessly.  <strong>How can one get rid of it?</strong></p>
-
-<h2 id="problem-2">Problem 2</h2>
-
-<p>Before this Wednesday morning, I <em>didn’t</em> know how to use xclip with
-other options.  Therefore, when I wanted to retrieve to contents in
-the clipboard, the <em>only</em> two ways that I knew were to use the utility
-with the <code>-o</code> flag to obtain the <strong>o</strong>utput, and to use the middle
-click of the mouse.  However, from problem one, I <em>couldn’t</em> chop off
-the newline character at the end of the clipped text.  Moreover, if
-one only needs <em>part</em> of the text in the clipboard, it would be quite
-troublesome to pipe the output of <code>xclip -o</code> to other text editing
-commands like <code>sed</code> and <code>awk</code>.  If one can use a keyboard shortcut for
-pasting text in a terminal emulator like Gnome Terminal (e.g.
-<code>&lt;C-v&gt;</code>), then one can also use <code>&lt;C-b&gt;</code>, <code>&lt;Alt-d&gt;</code>, etc. For example,
-if there’re three words in the clipboard, and I only need the last
-two, then combining the use of these keyboard shortcuts will enable
-one to type strings quickly and accurately.  <strong>Is there such a
-keyboard shortcut?</strong></p>
-
-<h2 id="solution">Solution</h2>
-
-<p>I found two Stack Overflow quesitons extremely useful for improving my
-skills in xclip.</p>
-
-<ol>
-  <li><a href="http://stackoverflow.com/a/12524320">Bash: Strip trailing linebreak from output</a></li>
-  <li><a href="http://stackoverflow.com/a/4208191">Pipe to/from Clipboard</a></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/17">&larr; Older</a>
@@ -731,8 +721,8 @@ skills in xclip.</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (57)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (41)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -756,6 +746,14 @@ skills in xclip.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/windows-10-time-sync-error/">Windows 10 Time Sync Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
       </li>
     
@@ -765,14 +763,6 @@ skills in xclip.</p>
     
       <li class="post">
         <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
   </ul>

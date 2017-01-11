@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="To show that any compact Hausdorff space is $T_4$, one may first show
-that it’s $T_3$. To see this, using set theory notations may be quite
-difficult &hellip;">
+  <meta name="description" content="To find a finite subcover of a countable open cover
+$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
+Bolzano–Weierstrass property &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,162 @@ difficult &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2015/09/28/a-queue-in-t1-spaces/">A Queue in $T_1$ Spaces</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-28T11:35:57+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:35 am</span></time>
+        
+           | <a href="/blog/2015/09/28/a-queue-in-t1-spaces/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/a-queue-in-t1-spaces/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/28/a-queue-in-t1-spaces/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span class="myeqn">
+To find a finite subcover of a countable open cover
+$\left\{U_n\right\}_{n \in \N}$ of a $T_1$ space $X$ which has the
+Bolzano–Weierstrass property, one has to pick a sequence in $X$ in
+order to apply the Bolzano–Weierstrass property.  In order to build a
+link between the sequence with the countable open cover, I picked a
+point $x_n$ from each $U_n$, and then build an infinite set $A$
+consisting of $x_n \forall n \in \N$.  I knew that $A$ is compact, but
+what does that do with the countable open cover?
+</span></p>
+
+<p>Reading my notes again, I realised the trick of choosing $x_q$: it
+<em>shouldn’t</em> be chosen from $U_k$ with index $k$ which is smaller than
+<span class="myeqn">$n_q$.  In other words, $x_q \in
+U_{n_q}$ and $x_q \notin U_k \forall k &lt; n_q$.  If we failed to make
+such choices, that means we don't have enough $U_k$'s and $x_q$'s,
+meaning that $X$ is the finite union of $U_k$'s and it's countably
+compact.  Otherwise, we continue this process to get an infinite set
+$A$ can be set up in the same way: $A := \left\{x_q \in X : q \in \N
+\right\}$.</span>  One will see that $A$ has <em>no</em> cluster point,
+contracdicting the Bolzano–Weierstrass property of $X$.</p>
+
+<p><span class="myeqn">
+Assume that $x \in X$.  $\exists m \in \N$ so that $x \in U_m$ and $x
+\notin U_j \forall j &lt; m$.  I was puzzled at the line $n_N &lt; m \le
+n_{N + 1}$.  Using the analogy of "queuing", I understood what's going
+on.
+</span></p>
+
+<picture class="fancybox" title="a queue of open sets in the open
+  countable cover">
+  <source srcset="/images/posts/QT1/q-800.jpg" media="(min-width: 800px)" />
+  <source srcset="/images/posts/QT1/q-600.jpg" media="(min-width: 600px)" />
+  <img alt="a queue of open sets in the open countable cover" src="/images/posts/QT1/q-300.jpg" />
+</picture>
+
+<p><span class="myeqn">
+Since $X$ is $T_1$, which is equivalent to the closeness of
+singletons, deleting finitely many singletons from an open set won't
+change the openness of the set.  We have a neighbourhood $V := U_m
+\setminus \left\{x_j : j \le N \text{ and } x \ne x_j \right\}$ of $x$
+which intersects $A$ at no more than one point.  Thus, there exists a
+deleted neighbourhood $V \setminus \{x\}$ of $x$ so that $V \cap A
+\setminus \{x\} = \varnothing$.  Hence, $\forall x \in X, x \notin
+A'$.
+</span></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Mountain Climbing in Lindelöf $T_3$ Spaces</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-28T08:39:38+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:39 am</span></time>
+        
+           | <a href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/09/28/mountain-climbing-in-lindelof-t3-spaces/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="motivation">Motivation</h2>
+
+<p>To deduce that <a href="/blog/2015/09/28/normal-compact-t2-spaces/">compact $T_2$ spaces are $T_4$</a>,  I tried using
+the arguments of the proof in the previous post, but I <em>couldn’t</em> do
+it.  Therefore, I read another proof about the normality of regular
+Lindelöf spaces instead.</p>
+
+<h2 id="the-proof-at-first-glance">The proof at first glance</h2>
+
+<p><span class="myeqn">
+Suppose that $X$ is the given space, and $H$ and $K$ are the given
+sets.  $\left\{G_n^* : n \in \omega\right\}$ and $\left\{W_n^* : n \in
+\omega\right\}$ are open countable subcovers of $H$ and $K$
+respectively.  On p.91 in Davis's Topology book, I saw the following
+equations.
+</span></p>
+
+<div class="myeqn">
+\begin{alignat*}{2}
+  U_0 &amp;= G_0^* &amp;\quad V_0 &amp;= W_0^* \setminus \overline{U_0} \\
+  U_1 &amp;= G_1^* \setminus \overline{V_0} &amp;\quad V_1 &amp;= W_1^* \setminus
+  (\overline{U_0} \cup \overline{U_1}) \\
+  U_2 &amp;= G_2^* \setminus (\overline{V_0} \cup \overline{V_1}) &amp;\quad
+  V_2 &amp;= W_2^* \setminus (\overline{U_0} \cup \overline{U_1} \cup
+  \overline{U_2}) \\
+  \vdots \\
+  U_n &amp;= G_n^* \setminus \bigcup_{k &lt; n} \overline{V_k} &amp;\quad V_n &amp;=
+  W_n^* \setminus \bigcup_{k \le n} \overline{U_k} \\
+  U &amp;= \bigcup_{n = 0}^\infty U_n &amp;\quad V &amp;= \bigcup_{n = 0}^\infty
+  V_n
+\end{alignat*}
+</div>
+
+<p>I <em>didn’t</em> know what to do when I first saw these equalities.  It’s
+<em>hard</em> to understand the reason of $U \cap V = \varnothing$ by just
+reading the symbols.  Luckily, an analogy of climbing mounts is given.
+Therefore, I finally understood how the open subsets $U_n$’s and
+$V_n$’s are built step-by-step while preserving disjointness and
+openness.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2015/09/28/normal-compact-t2-spaces/">Normal Compact $T_2$ Spaces</a></h1>
       
     
@@ -99,7 +255,7 @@ difficult &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-09-28T06:39:06+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:39 am</span></time>
+<time class='entry-date' datetime='2015-09-28T07:39:06+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:39 am</span></time>
         
            | <a href="/blog/2015/09/28/normal-compact-t2-spaces/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/28/normal-compact-t2-spaces/">Comments</a>
@@ -187,7 +343,7 @@ love illustrating it using a picture.</p>
 
 
 
-<time class='entry-date' datetime='2015-09-06T11:29:42+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:29 am</span></time>
+<time class='entry-date' datetime='2015-09-06T12:29:42+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:29 pm</span></time>
         
            | <a href="/blog/2015/09/06/mathjax-local-configuration-file-2/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/06/mathjax-local-configuration-file-2/">Comments</a>
@@ -244,7 +400,7 @@ errors — this is incredibly <em>slow</em> and <em>inefficient</em>.</p>
 
 
 
-<time class='entry-date' datetime='2015-09-06T10:31:57+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:31 am</span></time>
+<time class='entry-date' datetime='2015-09-06T11:31:57+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:31 am</span></time>
         
            | <a href="/blog/2015/09/06/read-lucass-theorem/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/06/read-lucass-theorem/">Comments</a>
@@ -338,7 +494,7 @@ inside the smallest convex polygon in which all zeros of $P(z)$ lie.</p>
 
 
 
-<time class='entry-date' datetime='2015-09-05T17:26:06+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:26 pm</span></time>
+<time class='entry-date' datetime='2015-09-05T18:26:06+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:26 pm</span></time>
         
            | <a href="/blog/2015/09/05/understood-how-zorns-lemma-implies-the-axiom-of-choice/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/05/understood-how-zorns-lemma-implies-the-axiom-of-choice/">Comments</a>
@@ -414,7 +570,7 @@ $dom\cup\mathcal{T} \subseteq (S_i)_{i \in I}$.
 
 
 
-<time class='entry-date' datetime='2015-09-05T14:05:03+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:05 pm</span></time>
+<time class='entry-date' datetime='2015-09-05T15:05:03+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:05 pm</span></time>
         
            | <a href="/blog/2015/09/05/revised-absolute-convergence/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/05/revised-absolute-convergence/">Comments</a>
@@ -524,7 +680,7 @@ McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
 
 
 
-<time class='entry-date' datetime='2015-09-04T10:26:48+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 am</span></time>
+<time class='entry-date' datetime='2015-09-04T11:26:48+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:26 am</span></time>
         
            | <a href="/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/04/stuck-at-two-trigonometric-inequalities/">Comments</a>
@@ -568,7 +724,7 @@ McGraw-Hill. <a href="#fnref:ahlfors" class="reversefootnote">&#8617;</a></p>
 
 
 
-<time class='entry-date' datetime='2015-09-03T08:35:01+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:35 am</span></time>
+<time class='entry-date' datetime='2015-09-03T09:35:01+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>9:35 am</span></time>
         
            | <a href="/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/found-an-upper-bound-for-the-modulus-of-legendre-polynomials/">Comments</a>
@@ -715,7 +871,7 @@ P_n(x) &amp;= \frac{1}{\pi} \int_0^\pi (x + i \sqrt{1 - x^2}
 
 
 
-<time class='entry-date' datetime='2015-09-03T06:34:31+00:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>6:34 am</span></time>
+<time class='entry-date' datetime='2015-09-03T07:34:31+01:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>7:34 am</span></time>
         
            | <a href="/blog/2015/09/03/git-merge-failed/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/09/03/git-merge-failed/">Comments</a>
@@ -745,137 +901,6 @@ control system still said that there’s <em>no</em> unmerged commits from the
   
     <footer>
       <a rel="full-article" href="/blog/2015/09/03/git-merge-failed/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/25/rare-sed-delimiters/">Rare Sed Delimiters</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-25T02:47:53+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:47 am</span></time>
-        
-           | <a href="/blog/2015/08/25/rare-sed-delimiters/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/25/rare-sed-delimiters/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
-Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
-have to be escaped by backslashes, which makes the whole command ugly.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
-<code> </code> (white space), etc, and you’re <em>too lazy</em> to look for
-<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/25/rare-sed-delimiters/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Find Files for Vim to Edit in Bash</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-23T15:48:54+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:48 pm</span></time>
-        
-           | <a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>Since copying and pasting the output of a command can be a tedious
-job.  For example, if you want to create your blog using a framework,
-you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
-repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
-GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
-one.</p>
-
-<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
-repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
-the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
-introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
-the <code>sed</code> substitution.</p>
-
-<pre class="cliUB"><code>$ git remote -v
-octopress	git@github.com:imathis/octopress.git (fetch)
-octopress	git@github.com:imathis/octopress.git (push)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
-origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
-$ name=userName; repo=repoName
-$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
-"s;(\w*)/(.*).git;$name/$repo.git;"
-$ unset name repo
-</code></pre>
-
-<h2 id="problem">Problem</h2>
-
-<p>I tried extracting a list of Markdown files containing a particular
-word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
-<code>xargs</code>.  Unluckily, I got an error.</p>
-
-<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
-&gt; -print | xargs vi
-Vim: Warning: Input is not from a terminal
-3 files to edit
-$ 
-</code></pre>
-
-<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Read on &rarr;</a>
     </footer>
   
 
@@ -927,8 +952,8 @@ $
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (57)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (41)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -952,6 +977,14 @@ $
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/windows-10-time-sync-error/">Windows 10 Time Sync Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
       </li>
     
@@ -961,14 +994,6 @@ $
     
       <li class="post">
         <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
   </ul>

@@ -9,8 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background Same as what has been written in my older post
-Using Xclip. Drawback Inputing the keyboard command for the paste action is, in my opinion &hellip;">
+  <meta name="description" content="Background One can replace the usual delimiter / in sed with the other ones.
+Therefore, the slashes in the URL inside the search pattern won’t
+have &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +89,137 @@ Using Xclip. Drawback Inputing the keyboard command for the paste action is, in 
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2015/08/25/rare-sed-delimiters/">Rare Sed Delimiters</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-25T03:47:53+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:47 am</span></time>
+        
+           | <a href="/blog/2015/08/25/rare-sed-delimiters/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/25/rare-sed-delimiters/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/25/rare-sed-delimiters/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>One can replace the usual delimiter <code>/</code> in <code>sed</code> with the other ones.
+Therefore, the slashes in the <abbr title="Uniform Resource Locator">URL</abbr> inside the search pattern <em>won’t</em>
+have to be escaped by backslashes, which makes the whole command ugly.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>If the search pattern contains multiple characters like <code>;</code>, <code>#</code>, <code>|</code>,
+<code> </code> (white space), etc, and you’re <em>too lazy</em> to look for
+<a href="http://backreference.org/2010/02/20/using-different-delimiters-in-sed/">other choices of delimiters</a>, what can you do?</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/25/rare-sed-delimiters/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Find Files for Vim to Edit in Bash</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-23T16:48:54+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:48 pm</span></time>
+        
+           | <a href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Since copying and pasting the output of a command can be a tedious
+job.  For example, if you want to create your blog using a framework,
+you may first logon to your <a href="https://github.com">GitHub</a> account and create an <em>empty</em>
+repository there, then <code>git clone</code> <a href="http://octopress.org">Octopress</a>/<a href="http://jekyllbootstrap.com">Jekyll-Bootstrap</a> from
+GitHub, reset the <code>origin</code> <abbr title="Uniform Resource Locator">URL</abbr>, and input the new <abbr title="Uniform Resource Locator">URL</abbr> based on the old
+one.</p>
+
+<p>After having created a repository online, you will see the <abbr title="Uniform Resource Locator">URL</abbr> of the
+repository using the <abbr title="Secure SHell">SSH</abbr> protocol.  If one <em>doesn’t</em> want to repeat
+the start of the <abbr title="Uniform Resource Locator">URL</abbr> <code>git@github.com:</code>, one may use the bash commands
+introduced in <a href="/blog/2015/08/22/used-more-bash-utilities/">the previous post</a> to extract its useful parts for
+the <code>sed</code> substitution.</p>
+
+<pre class="cliUB"><code>$ git remote -v
+octopress	git@github.com:imathis/octopress.git (fetch)
+octopress	git@github.com:imathis/octopress.git (push)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (fetch)
+origin	git@github.com:VincentTam/vincenttam.github.io.git (push)
+$ name=userName; repo=repoName
+$ git remote -v | sed -n '3{p;q}' | awk '{print $2}' | sed -r \
+"s;(\w*)/(.*).git;$name/$repo.git;"
+$ unset name repo
+</code></pre>
+
+<h2 id="problem">Problem</h2>
+
+<p>I tried extracting a list of Markdown files containing a particular
+word and passing them to <a href="http://www.vim.org">Vim</a> as arguments using <code>find</code>, <code>grep</code> and
+<code>xargs</code>.  Unluckily, I got an error.</p>
+
+<pre class="cliUB"><code>$ find source/_posts/ -name "*.markdown" -exec grep -q ^tag {} \; \
+&gt; -print | xargs vi
+Vim: Warning: Input is not from a terminal
+3 files to edit
+$ 
+</code></pre>
+
+<p>Note: <em>Without</em> the <code>-print</code> flag, the above command <em>won’t</em> work.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/23/find-files-for-vim-to-edit-in-bash/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2015/08/22/used-more-bash-utilities/">Used More Bash Utilities</a></h1>
       
     
@@ -98,7 +230,7 @@ Using Xclip. Drawback Inputing the keyboard command for the paste action is, in 
 
 
 
-<time class='entry-date' datetime='2015-08-22T03:59:26+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:59 am</span></time>
+<time class='entry-date' datetime='2015-08-22T04:59:26+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>4:59 am</span></time>
         
            | <a href="/blog/2015/08/22/used-more-bash-utilities/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/22/used-more-bash-utilities/">Comments</a>
@@ -157,7 +289,7 @@ Using Xclip. Drawback Inputing the keyboard command for the paste action is, in 
 
 
 
-<time class='entry-date' datetime='2015-08-12T16:14:01+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:14 pm</span></time>
+<time class='entry-date' datetime='2015-08-12T17:14:01+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:14 pm</span></time>
         
            | <a href="/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/12/upgrade-to-java-8-on-ubuntu-14-dot-04/">Comments</a>
@@ -224,7 +356,7 @@ number of the current stable release of Java is 1.8 update 51.</p>
 
 
 
-<time class='entry-date' datetime='2015-08-12T02:46:44+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:46 am</span></time>
+<time class='entry-date' datetime='2015-08-12T03:46:44+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:46 am</span></time>
         
            | <a href="/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/12/debug-apps-on-real-devices-in-android-studio/">Comments</a>
@@ -300,7 +432,7 @@ a real Android device by clicking the little triangle on the top.</p>
 
 
 
-<time class='entry-date' datetime='2015-08-11T02:52:56+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:52 am</span></time>
+<time class='entry-date' datetime='2015-08-11T03:52:56+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:52 am</span></time>
         
            | <a href="/blog/2015/08/11/git-object-id-generation-5-predict-id/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/11/git-object-id-generation-5-predict-id/">Comments</a>
@@ -401,7 +533,7 @@ hexadecimal number.)</p>
 
 
 
-<time class='entry-date' datetime='2015-08-07T15:41:40+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:41 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T16:41:40+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:41 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-4-general-trees/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-4-general-trees/">Comments</a>
@@ -486,7 +618,7 @@ $ printf "tree 71\x00100644 hello.txt\x00\x3b\x18\xe5\x12\xdb\xa7\x9e\x4c\x83\x0
 
 
 
-<time class='entry-date' datetime='2015-08-07T14:30:55+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>2:30 pm</span></time>
+<time class='entry-date' datetime='2015-08-07T15:30:55+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:30 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-3-trees-with-multiple-blobs/">Comments</a>
@@ -570,7 +702,7 @@ hash</strong>?</em></p>
 
 
 
-<time class='entry-date' datetime='2015-08-07T11:36:21+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:36 am</span></time>
+<time class='entry-date' datetime='2015-08-07T12:36:21+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:36 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-2-trees-with-one-single-blob/">Comments</a>
@@ -668,7 +800,7 @@ hash</span>.  <em>How can I get back <strong>the right SHA-1 hash</strong>?</em>
 
 
 
-<time class='entry-date' datetime='2015-08-07T09:15:29+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:15 am</span></time>
+<time class='entry-date' datetime='2015-08-07T10:15:29+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:15 am</span></time>
         
            | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
@@ -710,142 +842,6 @@ commit and the amended commit can be observed with <code>git show</code>.</p>
     <footer>
       <a rel="full-article" href="/blog/2015/08/07/how-does-git-commit-amend-work/">Read on &rarr;</a>
     </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Git Object ID Generation (1): Blobs and Commits</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-07T05:52:47+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:52 am</span></time>
-        
-           | <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The SHA-1 hash for blobs <em>isn’t</em> so hard to generate, and the process
-is now well-known.  I <em>don’t</em> repeat it here.  The one for commits can
-be similarly generated.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/08/06/my-git-command-list-3/">My Git Command List (3)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-08-06T09:39:08+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:39 am</span></time>
-        
-           | <a href="/blog/2015/08/06/my-git-command-list-3/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/08/06/my-git-command-list-3/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="overview">Overview</h2>
-
-<p>Unlike the Git commands found on the previous posts in this series, in
-this article, I’ll focus on <em>low-level</em> Git commands.</p>
-
-<h2 id="raison-dtre">Raison d’être</h2>
-
-<p>Usually, one <em>won’t</em> use low-level Git commands in a Git repository,
-but I included them here because these commands help one understand
-the <a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects">Git object model</a>.</p>
-
-<h2 id="the-list">The list</h2>
-
-<pre class="cliUB"><code>$ find .git/objects       # Return all files/folders under `.git/objects'
-$ git cat-file -p {hash}  # Print the content to which {hash} corresponds
-$ git hash-object {file}  # Return the hash of {file}
-$ git hash-object --stdin # Return the hash of the standard input
-$ git write-tree          # Return the hash of the tree of tracked contents
-$ git ls-files -s         # List all tracked files and their hash
-$ git ls-tree {hash}      # List the contents of a tree
-$ git rev-parse {hash}    # Return the full SHA-1 of {hash}
-$ git rev-parse HEAD      # Return the full SHA-1 of HEAD
-$ git diff                # Show the difference between the working directory and the index
-$ git diff --cached       # Show the difference between HEAD and the index
-$ git diff HEAD           # Show the difference between HEAD and the working directory
-</code></pre>
-
-<p>It <em>isn’t</em> necessary to supply the full SHA-1 hash for
-<code>{hash}</code>—several hex digits at the beginning will be enough.</p>
-
-<h2 id="facts-learnt">Facts learnt</h2>
-
-<ol>
-  <li>An SHA-1 hash has 160 bits.  Since 1 byte is equal 8 bit, it has 20
-bytes.  When it’s displayed, it has 40 hex-digits.</li>
-  <li><em>The blob for a file is independent of the file name</em>, which was
-actually stored in a tree object.  For example, the object ID of a
-file which contains only a single line “hello world” is
-<code>3b18e512dba79e4c8300dd08aeb37f8e728b8dad</code>, so if the file is stored
-inside the <code>.git</code> directory as a blob, the blob will be named as
-<code>.git/objects/3b/18e512dba79e4c8300dd08aeb37f8e728b8dad</code>.</li>
-  <li>If a sub-directory is created in the <code>dir</code> directory, then a <code>tree</code>
-entry will be created in the tree object corresponding to
-<code>dir</code>.<sup id="fnref:tree_obj"><a href="#fn:tree_obj" class="footnote">1</a></sup></li>
-</ol>
-
-<hr />
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:tree_obj">
-
-      <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
-in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
-<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
-</div>
-  
   
 
 
@@ -896,8 +892,8 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (57)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (41)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -921,6 +917,14 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/windows-10-time-sync-error/">Windows 10 Time Sync Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
       </li>
     
@@ -930,14 +934,6 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
     
       <li class="post">
         <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
   </ul>

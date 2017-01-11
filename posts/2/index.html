@@ -9,9 +9,7 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem In my notes, the external semidirect
-product $G_1 \rtimes_\gamma G_2$ of two groups $G_1$ and $G_2$ with
-respect to a homomorphism $\gamma: &hellip;">
+  <meta name="description" content="Background I saw a question about determinants. Suppose that $A$ and $B$ are singular and nonsingular matrices respectively. Simplify $\det((A+B)^2−( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +79,141 @@ respect to a homomorphism $\gamma: &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/12/28/simplify-a-determinant-identity/">Simplify a Determinant Identity</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-12-28T19:40:58+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:40 pm</span></time>
+        
+           | <a href="/blog/2016/12/28/simplify-a-determinant-identity/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/12/28/simplify-a-determinant-identity/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/12/28/simplify-a-determinant-identity/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I saw <a href="http://math.stackexchange.com/a/2074997/290189">a question about determinants</a>.</p>
+
+<blockquote>
+  <p>Suppose that $A$ and $B$ are singular and nonsingular matrices
+  respectively.  Simplify $\det((A+B)^2−(A−B)^2)$.</p>
+</blockquote>
+
+<h2 id="problem">Problem</h2>
+
+<p>A <em>wrong</em> solution with a vote of -2 is chosen by Daniel.  Why can
+this happen?</p>
+
+<h2 id="possible-explanation">Possible explanation</h2>
+
+<p>That’s because he’s correctly done the expansion until $\det(2AB +
+2BA)$.</p>
+
+<h2 id="raison-dtre-of-this-post">Raison d’être of this post</h2>
+
+<p>Having spent time on typing a comment, I worry that it will
+automatically disappear in sooner or later if the accepted answer is
+deleted.  Therefore, I back it up here.</p>
+
+<blockquote>
+  <p>Consider <script type="math/tex">% <![CDATA[
+A = \begin{bmatrix} 1&2&3\\ 0&0&0\\ 5&7&9 \end{bmatrix} ,
+B = \begin{bmatrix} 3&2&3\\ 2&2&1\\ 3&1&3 \end{bmatrix}. %]]></script>
+<script type="math/tex">% <![CDATA[
+\begin{align*}
+\det(AB+BA) &= \det\left(
+\begin{bmatrix} 16&9&14 \\ 0&0&0 \\ 56&33&49 \end{bmatrix}
++\begin{bmatrix} 18&27&36 \\ 7&11&15 \\ 18&27&36 \end{bmatrix}
+\right) \\
+&=\det\left(
+\begin{bmatrix} 34&36&50\\ 7&11&15\\ 74&60&85 \end{bmatrix}
+\right)= 30 \ne 0.
+\end{align*} %]]></script>
+However, if $A = 0$ and $B = I_3$, then the answer is clearly zero.
+As a result, we <em>can’t</em> decude further from $\det(2(AB + BA))$.</p>
+</blockquote>
+
+<h2 id="lessons-learnt">Lessons learnt</h2>
+
+<p>The generation of a random matrix/array of integers using
+<code>randi([imin, imax], m, n)</code>.  For more details, you may read
+<a href="https://www.gnu.org/software/octave/doc/v4.0.1/Special-Utility-Matrices.html#XREFrandi">GNU Octave’s manual</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/12/15/a-group-of-689-elements-2/">A Group of 689 Elements (2)</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-12-15T15:04:37+00:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:04 pm</span></time>
+        
+           | <a href="/blog/2016/12/15/a-group-of-689-elements-2/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/12/15/a-group-of-689-elements-2/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/12/15/a-group-of-689-elements-2/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>Two years ago, I thought about a group of 689 elements.<sup id="fnref:seri1"><a href="#fn:seri1" class="footnote">1</a></sup>  I
+only managed to show the <em>existence</em> of such a group.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Inspired by the use of <a href="https://en.wikipedia.org/wiki/Sylow_theorems#Theorems">Sylow III</a> to show that a group of order
+15 has only <em>one</em> structure: $\Z_{15} \cong \Z_3 \times \Z_5$, I
+wondered <strong>if $\Z_{689}$ is the only possible structure for a group of
+order 689</strong>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/12/15/a-group-of-689-elements-2/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -369,7 +502,7 @@ correct $\rm \LaTeX$ syntax for <code>|</code> in <code>{}</code> denoting a set
 
 
 
-<time class='entry-date' datetime='2016-08-28T13:32:58+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:32 pm</span></time>
+<time class='entry-date' datetime='2016-08-28T14:32:58+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:32 pm</span></time>
         
            | <a href="/blog/2016/08/28/jekyll-serve-error-2/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/28/jekyll-serve-error-2/">Comments</a>
@@ -453,7 +586,7 @@ in `&lt;top (required)&gt;'
 
 
 
-<time class='entry-date' datetime='2016-08-21T10:30:57+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>10:30 am</span></time>
+<time class='entry-date' datetime='2016-08-21T11:30:57+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2016</span></span> <span class='time'>11:30 am</span></time>
         
            | <a href="/blog/2016/08/21/website-preview-in-mobile-devices/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/">Comments</a>
@@ -508,7 +641,7 @@ browser said “connection timeout” after loading for a while.</p>
 
 
 
-<time class='entry-date' datetime='2016-08-20T16:50:34+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>4:50 pm</span></time>
+<time class='entry-date' datetime='2016-08-20T17:50:34+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:50 pm</span></time>
         
            | <a href="/blog/2016/08/20/my-host-file-edited/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited/">Comments</a>
@@ -570,7 +703,7 @@ the <code>sudo</code> privilege in order to directly manipulate this file.</p>
 
 
 
-<time class='entry-date' datetime='2016-08-20T14:15:43+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:15 pm</span></time>
+<time class='entry-date' datetime='2016-08-20T15:15:43+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:15 pm</span></time>
         
            | <a href="/blog/2016/08/20/jekyll-serve-error/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/20/jekyll-serve-error/">Comments</a>
@@ -636,154 +769,6 @@ main&gt;'
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Fixed Jekyll-Bootstrap Asset Path (2)</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-18T08:15:33+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:15 am</span></time>
-        
-           | <a href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I attempted to manually fix a <a href="/blog/2016/02/15/fixed-jekyll-bootstrap-asset-path/">problem in the first post</a> in this
-series half a year ago.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>I have just updated the Jekyll source code for <a href="/blog2">Blog 2</a>.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~/blog2]$ git pull jekyll master
-remote: Counting objects: 37, done.
-remote: Total 37 (delta 10), reused 10 (delta 10), pack-reused 27
-Unpacking objects: 100% (37/37), done.
-From github.com:plusjade/jekyll-bootstrap
- * branch            master     -&gt; FETCH_HEAD
-   3a34785..8193869  master     -&gt; jekyll/master
-Removing sitemap.txt
-Auto-merging _includes/JB/setup
-CONFLICT (content): Merge conflict in _includes/JB/setup
-Auto-merging _config.yml
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre>
-
-<p><strong>How to repair this failed merge?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/08/18/fixed-jekyll-bootstrap-asset-path-2/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/08/17/restore-corrupt-git-repository/">Restore Corrupt Git Repository</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-08-17T03:16:33+00:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:16 am</span></time>
-        
-           | <a href="/blog/2016/08/17/restore-corrupt-git-repository/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/08/17/restore-corrupt-git-repository/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/08/17/restore-corrupt-git-repository/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I <em>hadn’t</em> used <a href="http://www.vim.org">Vim</a> on my GNU/Linux desktop for a month.  When I
-used it again, an error message was shown on the screen.</p>
-
-<pre class="cliUB"><code>[owner@localhost ~]$ vi
-Error detected while processing
-/home/owner/.vim/bundle/nerdtree/plugin/NERD_tree.vim:
-line  153:
-E117: Unknown function: nerdtree#ui_glue#setupCommands
-Error detected while processing function nerdtree#postSourceActions:
-line    2:
-E117: Unknown function: nerdtree#ui_glue#createDefaultBindings
-Press ENTER or type command to continue
-</code></pre>
-
-<p>Since I was occupied with <a href="/blog2">another blog</a>, thinking that the
-problem would be quickly fixed by an update of
-<a href="https://github.com/scrooloose/nerdtree/">the NERD tree</a>, a <a href="http://www.vim.org">Vim</a> plugin for showing a file tree in a
-sidebar, I <em>didn’t</em> want to find out the cause.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>During this <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a> update, an exclamation mark with red background
-was displayed on the LHS of the item <code>Plugin 'scrooloose/nerdtree'</code> in
-the list contained in the status bar.  I then checked Vundle’s update
-log.</p>
-
-<pre class="cliUB"><code>[2016-08-12 15:18:40] Plugin scrooloose/nerdtree
-[2016-08-12 15:18:40] $ cd '/home/owner/.vim/bundle/nerdtree' &amp;&amp; git pull &amp;&amp; git submodule update --init --recursive
-[2016-08-12 15:18:40] &gt; error: object file .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d is empty
-[2016-08-12 15:18:40] &gt; error: object file .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d is empty
-[2016-08-12 15:18:40] &gt; fatal: loose object 2e2b649232d6ae4d02d74793e5da0ee08480ad8d (stored in .git/objects/2e/2b649232d6ae4d02d74793e5da0ee08480ad8d) is corrupt
-[2016-08-12 15:18:40] &gt; fatal: The remote end hung up unexpectedly
-[2016-08-12 15:18:40] &gt; 
-</code></pre>
-
-<p>While I was trying to update this plugin manually by typing in
-<a href="/blog/2014/06/16/my-git-command-list-1/">Git commands</a> in bash, the electricity supply of my desktop went
-off suddenly.  After it had been switched on again, I tried typing in
-the commands again, and I got the same error.</p>
-
-<p><strong>How can the Git repository be restored to its previous state</strong>, so
-that it’s intact?</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/08/17/restore-corrupt-git-repository/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/3">&larr; Older</a>
@@ -829,8 +814,8 @@ that it’s intact?</p>
 <li class='category'><a href='/blog/categories/kramdown/'>kramdown (7)</a> <a href='/blog/categories/kramdown/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex/'>latex (28)</a> <a href='/blog/categories/latex/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/latex-suite/'>latex-suite (7)</a> <a href='/blog/categories/latex-suite/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/linux/'>linux (56)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (39)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/linux/'>linux (57)</a> <a href='/blog/categories/linux/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/m$-win-star/'>m$ win* (41)</a> <a href='/blog/categories/m$-win-star/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/math/'>math (56)</a> <a href='/blog/categories/math/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -854,6 +839,14 @@ that it’s intact?</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/windows-10-time-sync-error/">Windows 10 Time Sync Error</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
       </li>
     
@@ -863,14 +856,6 @@ that it’s intact?</p>
     
       <li class="post">
         <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/upgraded-to-git-for-windows-2-dot-11/">Upgraded to Git for Windows 2.11</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
       </li>
     
   </ul>
