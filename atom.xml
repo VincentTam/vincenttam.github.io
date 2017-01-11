@@ -4,7 +4,7 @@
   <title><![CDATA[Blog 1]]></title>
   <link href="https://vincenttam.github.io/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-11T02:56:11+00:00</updated>
+  <updated>2017-01-11T09:05:02+00:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -12,6 +12,70 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    
+      <title type="html"><![CDATA[Shortened GitHub URLs for This Site]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/11/shortened-github-urls-for-this-site/"/>
+    
+    <updated>2017-01-11T09:00:14+00:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/11/shortened-github-urls-for-this-site</id>
+    
+      <content type="html"><![CDATA[<h2 id="background">Background</h2>
+
+<p>I want to include a link to a <a href="https://gist.github.com">Gist</a> in an <a href="http://octopress.org">Octopress</a> codeblock.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>In the syntax for a codeblock, the link is too long.  This can cause
+problems in a graphical frontend of <a href="https://git-scm.com/">Git</a>, such as gitk.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>I found a <a href="https://github.com/blog/985-git-io-github-url-shortener">post about GitHub URL Shortener</a> by accident.</p>
+
+<pre class="cliUB"><code>$ curl -i https://git.io -F "url=https://github.com/vincenttam" -F "code=vtam"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   293  100    29  100   264     40    367 --:--:-- --:--:-- --:--:--   375HT
+TP/1.1 100 Continue
+
+HTTP/1.1 201 Created
+Server: Cowboy
+Connection: keep-alive
+Date: Tue, 10 Jan 2017 22:50:08 GMT
+Status: 201 Created
+Content-Type: text/html;charset=utf-8
+Location: https://git.io/vtam
+Content-Length: 29
+X-Xss-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Runtime: 0.111560
+X-Node: 6a832541-d7fa-4b2b-9a4b-1e3355ad0eab
+X-Revision: 4fdc60de6311e6a3aa31e19bc7b3aad7e85d33a6
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Via: 1.1 vegur
+
+https://github.com/vincenttam
+</code></pre>
+
+<p>In fact, <a href="https://git.io">git.io</a> is much <em>simpler</em> for users who
+<em>don’t</em> type commands.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>I created three short URLs with this tool.</p>
+
+<ol>
+  <li><a href="https://git.io/vtam">https://git.io/vtam</a> for my GitHub account</li>
+  <li><a href="https://git.io/vtblog">https://git.io/vtblog</a> for this blog</li>
+  <li><a href="https://git.io/vb2">https://git.io/vb2</a> for <em>Blog 2</em></li>
+</ol>
+
+]]></content>
+    
+  </entry>
   
   <entry>
     
@@ -2517,168 +2581,6 @@ To search contents in commits, you may refer to a
 binary objects stored in <code>objets/</code> and the references can work
 <em>independently</em> of <code>index</code>, which can be re-created by <code>git
 write-tree</code>.</p>
-
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[$\rm \LaTeX$ French Letter With Signature]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature/"/>
-    
-    <updated>2016-04-17T09:15:38+00:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/04/17/latex-french-letter-with-signature</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>Same as my recent post <a href="https://vincenttam.github.io/blog/2016/04/16/writting-letter-with-bibliography/"><em>Writting Letter With Bibliography</em></a>.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>How to add a scanned signature to a $\rm \LaTeX$ document for the
-<code>lettre</code> class?</p>
-
-<p><img src="https://vincenttam.github.io/downloads/code/MaLettre/sample-sign.jpg" alt="scanned signature to be added" /></p>
-
-<!-- more -->
-
-<h2 id="my-attempt">My attempt</h2>
-
-<p>Searching “latex letter signature”, I quickly find an article on
-<a href="http://texblog.org/2010/05/04/latex-letter-signature-as-image/">texblog</a>.  If the <code>\name{}</code> has been defined at the beginning of
-the letter, then adding <code>\forname</code> below the line</p>
-
-<pre><code>\fromsig{\includegraphics[scale=1]{signature.jpg}} \\
-</code></pre>
-
-<p>will give you <em>another</em> name, and <code>{Your name}</code> will give you the
-third one.  Moreover, the alignment of the sender’s name <em>isn’t</em>
-right.</p>
-
-<p>According to the documentation of <code>lettre</code>, the <code>\signature{}</code> command
-accepts <em>only text</em> as its arguments.  I try redefining it, but the
-alignment is still <em>wrong</em>.  As a result, I decided to do it the
-<em>dirty</em> way:  I recalled the method of adding the sender’s name at the
-closing part in <a href="http://bio-teckna.fr/?p=1019">Bio Teckna’s model letter</a>.  The
-<code>\begin{center}</code> environment is used.  However, to make it look like a
-French letter, I used <code>\hspace{8cm}</code> to adjust the horizontal spacing.</p>
-
-<figure class="code"><figcaption><span>Sample $\rm \LaTeX$ French letter with signature (ltrsign.tex)</span> <a href="https://vincenttam.github.io/downloads/code/MaLettre/ltrsign.tex">download</a></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-<span class="line-number">50</span>
-<span class="line-number">51</span>
-<span class="line-number">52</span>
-<span class="line-number">53</span>
-<span class="line-number">54</span>
-<span class="line-number">55</span>
-</pre></td><td class="code"><pre><code class="tex"><span class="line"><span class="k">\documentclass</span><span class="na">[a4paper,12pt]</span><span class="nb">{</span>lettre<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="nb">{</span>fontspec<span class="nb">}</span>
-</span><span class="line"><span class="k">\usepackage</span><span class="na">[frenchb]</span><span class="nb">{</span>babel<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
-</span><span class="line"><span class="k">\begin</span><span class="nb">{</span>letter<span class="nb">}{</span>
-</span><span class="line">    Nom de destinataire <span class="k">\\</span>
-</span><span class="line">    4, boulevard de la Paix, <span class="k">\\</span>
-</span><span class="line">    12345 Nom de ville
-</span><span class="line"><span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\name</span><span class="nb">{</span><span class="k">\null</span><span class="nb">}</span>
-</span><span class="line">  <span class="k">\address</span><span class="nb">{</span>
-</span><span class="line">    Votre NOM<span class="k">\\</span>
-</span><span class="line">    23, rue à votre ville <span class="k">\\</span>
-</span><span class="line">    23456 Nom de votre ville
-</span><span class="line">  <span class="nb">}</span>
-</span><span class="line">  <span class="k">\def\sigspace</span><span class="nb">{</span>-10mm<span class="nb">}</span>
-</span><span class="line">  <span class="k">\lieu</span><span class="nb">{</span>Votre ville<span class="nb">}</span>
-</span><span class="line">  <span class="k">\telephone</span><span class="nb">{</span>01 02 03 04 05<span class="nb">}</span>
-</span><span class="line">  <span class="k">\nofax</span>
-</span><span class="line">  <span class="k">\email</span><span class="nb">{</span>fake@live.hk<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\def\concname</span><span class="nb">{</span>Objet :~<span class="nb">}</span>
-</span><span class="line">  <span class="k">\conc</span><span class="nb">{</span>Saisir votre objet<span class="nb">}</span>
-</span><span class="line">  <span class="k">\opening</span><span class="nb">{</span>Madame, Monsieur,<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line">  Un exemple d&#39;une lettre <span class="s">$</span><span class="nv">\rm</span><span class="nb"> </span><span class="nv">\LaTeX</span><span class="s">$</span> faite par <span class="k">\LaTeX</span>.  Le faux
-</span><span class="line">  texte ci-dessous est généré par le plugin Lorem Ipsum pour Vim.
-</span><span class="line">
-</span><span class="line"><span class="c">% lorem{{{</span>
-</span><span class="line">  Curabitur eget nisi at lectus placerat gravida. Vivamus nulla. Donec
-</span><span class="line">  luctus. Sed quis tellus. Quisque lobortis faucibus mi. Aenean vitae
-</span><span class="line">  risus ut arcu malesuada ornare. Maecenas.
-</span><span class="line">
-</span><span class="line">  Amet, rhoncus in, ipsum. Mauris rhoncus, lacus eu convallis sagittis,
-</span><span class="line">  quam magna placerat est, vitae imperdiet mauris arcu ac dui. In ac
-</span><span class="line">  urna non justo posuere mattis. Suspendisse egestas bibendum nulla. In
-</span><span class="line">  erat nunc, posuere sed, auctor quis, pulvinar quis, mi. Mauris at est.
-</span><span class="line">  Phasellus lacinia eros in arcu. Maecenas lobortis, tellus vel gravida
-</span><span class="line">  tincidunt, elit erat suscipit arcu, in varius erat risus vel magna.
-</span><span class="line">  Fusce nec ante quis dolor vestibulum bibendum. Pellentesque sit amet
-</span><span class="line">  urna.
-</span><span class="line"><span class="c">% lorem}}}</span>
-</span><span class="line">
-</span><span class="line">  <span class="k">\closing</span><span class="nb">{</span>Veuillez d&#39;agréer, Madame, Monsieur, mes salutations les
-</span><span class="line">  meilleures.<span class="nb">}</span>
-</span><span class="line">  <span class="k">\begin</span><span class="nb">{</span>center<span class="nb">}</span>
-</span><span class="line">    <span class="k">\hspace</span><span class="nb">{</span>8cm<span class="nb">}</span><span class="k">\fromsig</span><span class="nb">{</span><span class="k">\includegraphics</span><span class="na">[scale=1]</span><span class="nb">{</span>sample-sign.jpg<span class="nb">}}</span><span class="k">\\</span>
-</span><span class="line">    <span class="k">\hspace</span><span class="nb">{</span>8cm<span class="nb">}</span><span class="k">\fromname</span><span class="nb">{</span>Votre NOM<span class="nb">}</span>
-</span><span class="line">  <span class="k">\end</span><span class="nb">{</span>center<span class="nb">}</span>
-</span><span class="line">  <span class="k">\encl</span><span class="nb">{</span>pièces jointes<span class="nb">}</span>
-</span><span class="line">
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>letter<span class="nb">}</span>
-</span><span class="line"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-<p>The final product can be viewed by clicking the link for the
-<a href="https://vincenttam.github.io/downloads/ltrsign.pdf">sample PDF with signature</a>.</p>
 
 ]]></content>
     

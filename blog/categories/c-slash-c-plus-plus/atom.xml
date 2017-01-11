@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C/c++ | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/c-slash-c-plus-plus/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-11T02:57:49+00:00</updated>
+  <updated>2017-01-11T09:05:02+00:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -58,7 +58,60 @@ term.</p>
 
 <h3 id="source-code">Source code</h3>
 
-<p>{% gist c27c38c49fe8de17c815 %}</p>
+<p><div><script src='https://gist.github.com/c27c38c49fe8de17c815.js'></script>
+<noscript><pre><code>#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+using namespace std;
+
+double pXy(double x, double y, int N);
+double pxy(double x, double y, int N);
+
+int main(void) {
+    double pAb,paB,pab,a,b;
+    int N;
+    cout &lt;&lt; &quot;Assume that Poisson r.v. A and B are indepedent&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Parameter for A: &quot;;
+    cin &gt;&gt; a;
+    cout &lt;&lt; &quot;Parameter for B: &quot;;
+    cin &gt;&gt; b;
+    cout &lt;&lt; &quot;Number of terms to be added (100 &lt;= N &lt;= 1000): &quot;;
+    cin &gt;&gt; N;
+    pAb = pXy(a,b,N);
+    paB = pXy(b,a,N);
+    pab = pxy(a,b,N);
+    cout &lt;&lt; &quot;P(A &gt; B) = &quot; &lt;&lt; pAb &lt;&lt; &quot;, P(A &lt; B) = &quot; &lt;&lt; paB &lt;&lt;
+        &quot;, P(A = B) = &quot; &lt;&lt; pab &lt;&lt; endl;
+}
+
+/* P(X &gt; Y) */
+double pXy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 1; i &lt;= N; i++) {
+        for (int j = 0; j &lt; i ; j++) {
+            double term = 1;
+            for (int k = 1; k &lt;= i; k++)
+                term *= x / k;
+            for (int k = 1; k &lt;= j; k++)
+                term *= y / k;
+            ans += term;
+        }
+    }
+    return ans * exp(-x - y);
+}
+
+/* P(X = Y) */
+double pxy(double x, double y, int N) {
+    double ans = 0;
+    for (int i = 0; i &lt;= N; i++) {
+        double term = 1;
+        for (int k = 1; k &lt;= i; k++)
+            term *= x / k * y / k;
+        ans += term;
+    }
+    return ans * exp(-x - y);
+}
+</code></pre></noscript></div>
+</p>
 
 <h3 id="sample-output">Sample output</h3>
 
@@ -199,22 +252,36 @@ website and use the GUI tool “Ubuntu Software Centre” to install the
 library.  Then I directly copied the code from the book and tried to
 compile the program .</p>
 
-<p>{% codeblock first_graphics_prog.cpp lang:cpp %}
-// Author: David Yevick
-// Source: A Short Course in Computational Science and Engineering
-#include <iostream>
-#include <dislin.h></dislin.h></iostream></p>
-
-<p>using namespace std;</p>
-
-<p>int main(int argc, const char *argv[])
-{
-    // Some code for defining variables
-    // Omitted to avoid copyright problems
-    // An example of using DISLIN methods
-    qplot(array1,array2,numOfPts);
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>first_graphics_prog.cpp </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;dislin.h&gt;&lt;/dislin.h&gt;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Some code for defining variables</span>
+</span><span class='line'>    <span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'>    <span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'>    <span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>However, the compiler gave me the message that I had used an
 “undefined reference to qplot”.</p>
@@ -223,20 +290,32 @@ compile the program .</p>
 even tried compiling the following sample code found in section 2.7 of
 <a href="http://www2.mps.mpg.de/dislin/contents.html">the official DISLIN online manual</a>.</p>
 
-<p>{% codeblock Sample code lang:cpp %}
-// Author: Helmut Michels
-// Source: DISLIN 10.4—A Data Plotting Library
-#include <iostream>
-#include "discpp.h"</iostream></p>
-
-<p>main()
-{
-    Dislin g;
-    g.disini ();
-    g.messag (“This is a test”, 100, 100);
-    g.disfin ();
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: Helmut Michels</span>
+</span><span class='line'><span class="c1">// Source: DISLIN 10.4—A Data Plotting Library</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;discpp.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">Dislin</span> <span class="n">g</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disini</span> <span class="p">();</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">messag</span> <span class="p">(</span><span class="err">“</span><span class="n">This</span> <span class="n">is</span> <span class="n">a</span> <span class="n">test</span><span class="err">”</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+</span><span class='line'>    <span class="n">g</span><span class="p">.</span><span class="n">disfin</span> <span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>I have <em>no</em> hope on published books because their authors would expect
 their students to do something easy—Use <a href="http://www.bloodshed.net/devcpp.html">Dev-C++</a> on M$ Win*, or
@@ -333,22 +412,36 @@ elegant.</p>
 program that made use of DISLIN by making the following changes in
 both the source file and the command that I issued.</p>
 
-<p>{% codeblock Sample code lang:cpp %}
-// Author: David Yevick
-// Source: A Short Course in Computational Science and Engineering
-#include <iostream>
-#include "/usr/local/dislin/dislin.h"</iostream></p>
-
-<p>using namespace std;</p>
-
-<p>int main(int argc, const char *argv[])
-{
-// Some code for defining variables
-// Omitted to avoid copyright problems
-// An example of using DISLIN methods
-qplot(array1,array2,numOfPts);
-}
-{% endcodeblock %}</p>
+<p><figure class='code'><figcaption><span>Sample code </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Author: David Yevick</span>
+</span><span class='line'><span class="c1">// Source: A Short Course in Computational Science and Engineering</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &quot;/usr/local/dislin/dislin.h&quot;&lt;/iostream&gt;&lt;/p&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'><span class="c1">// Some code for defining variables</span>
+</span><span class='line'><span class="c1">// Omitted to avoid copyright problems</span>
+</span><span class='line'><span class="c1">// An example of using DISLIN methods</span>
+</span><span class='line'><span class="n">qplot</span><span class="p">(</span><span class="n">array1</span><span class="p">,</span><span class="n">array2</span><span class="p">,</span><span class="n">numOfPts</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 
 <p>In the terminal, I typed the following command.</p>
 
@@ -496,7 +589,7 @@ water” in Cantonese.</p>
 
 <p>The following “hello world” procedure contains some <em>wrong</em> steps.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/inc-complete.gif 800 ‘Figure 1’ ‘fig1’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc-complete.gif" width="800" title="‘Figure 1’ ‘fig1’" ></p>
 
 <ol>
   <li>Type <code>inc&lt;Tab&gt;</code>.</li>
@@ -522,7 +615,7 @@ personally think that the steps can be more beautiful.</p>
 <p>This is just a <em>part</em> of correct steps.  I leave the remaining parts
 of codes of this simple program into later sections.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/inc-complete-clang.gif 800 ‘Figure 2’ ‘fig2’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/inc-complete-clang.gif" width="800" title="‘Figure 2’ ‘fig2’" ></p>
 
 <p>This time, after typing <code>#</code> at the beginning of the line, press
 <code>&lt;C-x&gt;&lt;C-u&gt;</code> to use the automatic completion list, and choose the <code>#
@@ -556,9 +649,9 @@ typing the code directly may lead to syntax errors.  This problem can
 be overcome if one has the capability to read the error message from
 the compiler and to browse code quickly.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/using-complete.png 800 ‘Without clang_complete: word-by-word completion’ ‘fig3’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/using-complete.png" width="800" title="‘Without clang_complete: word-by-word completion’ ‘fig3’" ></p>
 
-<p>{% img fancybox /images/posts/ClangComplete/using-clang.gif 800 ‘With clang_complete: completion of the whole line’ ‘fig4’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/using-clang.gif" width="800" title="‘With clang_complete: completion of the whole line’ ‘fig4’" ></p>
 
 <p>The remaining parts of this post <em>doesn’t</em> make use of the
 <a href="https://github.com/Rip-Rip/clang_complete">clang_complete</a> plugin.</p>
@@ -567,7 +660,7 @@ the compiler and to browse code quickly.</p>
 
 <p>Just typing <code>main&lt;Tab&gt;</code> will do.  That’s from <a href="https://github.com/honza/vim-snippets">vim-snippets</a>.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/prog.gif 800 ‘Figure 5’ ‘fig5’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/prog.gif" width="800" title="‘Figure 5’ ‘fig5’" ></p>
 
 <h2 id="greeting-the-world">Ⅳ. Greeting the world!</h2>
 
@@ -576,7 +669,7 @@ the cursor located in between the two whitespace characters in the
 middle.  Using a regular expression to delete the <code>std::</code> in front of
 <code>cout</code> and <code>endl</code>.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/cout.gif 800 ‘Figure 6’ ‘fig6’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/cout.gif" width="800" title="‘Figure 6’ ‘fig6’" ></p>
 
 <h2 id="getting-the-indentation-correct">Ⅴ. Getting the indentation correct</h2>
 
@@ -587,7 +680,7 @@ indentation of the line <code>return 0;</code> each time is not likely to be an
 elegant solution for <a href="http://www.vim.org">Vim</a> Lovers.  The actual way to fix the problem
 is using the command <code>gg=G</code> in the normal mode.<sup id="fnref:vim_book"><a href="#fn:vim_book" class="footnote">4</a></sup></p>
 
-<p>{% img fancybox /images/posts/ClangComplete/cindent.gif 800 ‘Figure 7’ ‘fig7’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/cindent.gif" width="800" title="‘Figure 7’ ‘fig7’" ></p>
 
 <h2 id="running-the-program">Ⅵ. Running the program</h2>
 
@@ -604,7 +697,7 @@ can be repeatedly used to compile CPP source files with different file
 names.  For more details about that, refer to my earlier post titled
 <a href="/blog/2013/12/11/fast-compilation-and-execution-of-source-code/"><em>Fast Compilation and Execution of Source Code</em></a>.</p>
 
-<p>{% img fancybox /images/posts/ClangComplete/run.gif 800 ‘Figure 8’ ‘fig8’ %}</p>
+<p><img class="fancybox" src="/images/posts/ClangComplete/run.gif" width="800" title="‘Figure 8’ ‘fig8’" ></p>
 
 <p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
 

@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Problem I had sent a PDF file to a printer for printing. Then I was waiting
-for a person to finish her priting job. Unfortunately, an error
-occured, &hellip;">
+  <meta name="description" content="Problem I tried opening a PDF file with the freeware Adobe Reader. Unluckily,
+Blocked by the popup window below, I couldn’t view the content of
+the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +81,68 @@ occured, &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
+	<h1 class="entry-title"><a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/">Stopped by Adobe Protected Mode</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-03-18T12:27:34+00:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:27 pm</span></time>
+        
+           | <a href="/blog/2016/03/18/stopped-by-adobe-protected-mode/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/03/18/stopped-by-adobe-protected-mode/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/03/18/stopped-by-adobe-protected-mode/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="problem">Problem</h2>
+
+<p>I tried opening a PDF file with the freeware Adobe Reader.  Unluckily,
+Blocked by the popup window below, I <em>couldn’t</em> view the content of
+the file.</p>
+
+<picture class="fancybox" title="The default is the 3rd choice.">
+  <source srcset="/images/posts/AdbRdr/opt3.png" media="(min-width: 790px)" /> 
+  <img alt="The default is the 3rd choice." width="300" src="/images/posts/AdbRdr/opt3.png" />
+</picture>
+
+<p>I then attempted to open this file by checking the first or the second
+radio button.</p>
+
+<picture class="fancybox" title="Neither of the 1st nor the 2nd worked.">
+  <source srcset="/images/posts/AdbRdr/opt1.png" media="(min-width: 790px)" /> 
+  <img alt="Neither of the 1st nor the 2nd worked." width="300" src="/images/posts/AdbRdr/opt1.png" />
+</picture>
+
+<p>Unfortunately, either choice gave rise to the <em>same</em> error.</p>
+
+<p><img src="/images/posts/AdbRdr/opt1a.png" alt="Fatal Error" title="Acrobat failed to load its Core DLL" /></p>
+
+<h2 id="result">Result</h2>
+
+<p>I opened the file in <em>another</em> desktop machine.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -571,103 +633,6 @@ vundle#installer#run..vundle#installer#install..&lt;SNR&gt;96_sync:
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/02/22/rake-deploy-fatal-error/">Rake Deploy Fatal Error</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-02-22T04:16:16+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2016</span></span> <span class='time'>4:16 am</span></time>
-        
-           | <a href="/blog/2016/02/22/rake-deploy-fatal-error/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/22/rake-deploy-fatal-error/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/02/22/rake-deploy-fatal-error/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I had finished writing <a href="/blog/2016/02/22/git-for-windows-curl-gist-dot-vim-with-vundle-1/">my previous post</a>.  In <code>rake preview</code>, I
-got the desired output.  Then, the next step is to commit the changes
-and to deploy the generated contents to GitHub Pages.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>A large block of red text appeared after I ran <code>rake deploy</code>.  The
-commit on the <code>master</code> branch was <em>unsuccessful</em>.</p>
-
-<pre class="cli"><code>$ rake deploy
-(in C:/github/vincenttam.github.io)
-cp -r source/fancybox/.gitattributes public/fancybox/.gitattributes
-cd _deploy
-Already up-to-date.
-cd -
-rm -rf _deploy/404.html
-...
-rm -rf _deploy/stylesheets
-cp -r public/. _deploy
-cd _deploy
-fatal: CRLF would be replaced by LF in fancybox/README.md.
-On branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-        modified:   404.html
-        modified:   about/index.html
-        ...
-
-Untracked files:
-        blog/2016/02/21/
-        blog/2016/02/22/
-        downloads/code/miktex-update2/
-        images/posts/MikTeXUpdate2/
-        posts/31/
-
-no changes added to commit
-Everything up-to-date
-cd -
-## Set the codepage to 65001 for Windows machines
-## Deploying branch to Github Pages
-## Pulling any updates from Github Pages
-
-## Copying public to _deploy
-
-## Committing: Site updated at 2016-02-22 03:37:22 UTC
-
-## Pushing generated _deploy website
-
-## Github Pages deploy complete
-</code></pre>
-
-<p>Even though the system said that the deploy was “complete”, in fact,
-it had <em>never</em> been carried out.</p>
-
-<p><strong>How can I update my blog on GitHub Pages?</strong></p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2016/02/22/rake-deploy-fatal-error/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/6">&larr; Older</a>
@@ -729,13 +694,17 @@ it had <em>never</em> been carried out.</p>
 <li class='category'><a href='/blog/categories/template/'>template (10)</a> <a href='/blog/categories/template/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/ultrablog-dot-vim/'>ultrablog.vim (7)</a> <a href='/blog/categories/ultrablog-dot-vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/vim/'>vim (41)</a> <a href='/blog/categories/vim/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (31)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/web-technologies/'>web technologies (32)</a> <a href='/blog/categories/web-technologies/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 
   </ul>
 </section>
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2017/01/11/shortened-github-urls-for-this-site/">Shortened GitHub URLs for This Site</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
@@ -751,10 +720,6 @@ it had <em>never</em> been carried out.</p>
     
       <li class="post">
         <a href="/blog/2017/01/10/a-comment-for-new-users-on-math-dot-se/">A Comment for New Users on Math.SE</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/06/avoided-a-duplicate-question/">Avoided a Duplicate Question</a>
       </li>
     
   </ul>

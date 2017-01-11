@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-11T02:57:49+00:00</updated>
+  <updated>2017-01-11T09:05:02+00:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -32,11 +32,13 @@ editor commands.</p>
 and I often <em>make mistakes</em> while typing those commands despite these
 two command mode mappings in my <code>~/.vimrc</code>.</p>
 
-<p>{% codeblock lang:vim More efficient recall from Vim command history http://bit.ly/2idDlxa Gist %}
-“ Practical Vim Tip 34: Avoid cursors when rcl’g cmd from hist
-cnoremap <c-p> <up>
-cnoremap <c-n> <down>
-{% endcodeblock %}</down></c-n></up></c-p></p>
+<p><figure class='code'><figcaption><span>More efficient recall from Vim command history</span><a href='http://bit.ly/2idDlxa'>Gist </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>“ Practical Vim Tip <span class="m">34</span>: Avoid cursors when rcl’<span class="k">g</span> cmd from <span class="k">hist</span>
+</span><span class='line'>cnoremap <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span><span class="k">p</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="k">up</span><span class="p">&gt;</span>
+</span><span class='line'>cnoremap <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span><span class="k">n</span><span class="p">&gt;</span> <span class="p">&lt;</span>down<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></down></c-n></up></c-p></p>
 
 <!-- more -->
 
@@ -47,7 +49,14 @@ cnoremap <c-n> <down>
 (as shown by <code>:pwd</code>) is the root of the local repository for the
 [Octopress] blog.</p>
 
-<p>{% include_code Script for Octopress editing within Vim lang:sh quik-prv.sh %}</p>
+<p><figure class='code'><figcaption><span>Script for Octopress editing within Vim  (quik-prv.sh)</span> <a href='/downloads/code/quik-prv.sh'>download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="c">#!/bin/sh</span>
+</span><span class='line'>sed <span class="s1">&#39;1,8d&#39;</span> <span class="nv">$1</span> <span class="p">|</span> kramdown &gt; temp.html~
+</span><span class='line'>cat <span class="o">{</span>temp,script<span class="o">}</span>.html~ &gt; tempmj.html~
+</span></code></pre></td></tr></table></div></figure></p>
 
 <ol>
   <li>The YAML header is chopped off since I just want to verify the
