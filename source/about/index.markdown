@@ -154,8 +154,8 @@ Bootstrap in the `gh-pages` branch.
 [^not_it_student]: I reused the words from [my WordPress blog][wp_pp].
 
 [inst_pp]: https://github.com/blog/1081-instantly-beautiful-project-pages
-[Hello-World]: https://vincenttam.github.io/Hello-World
-[pandoc_slides]: https://vincenttam.github.io/pandoc_slides
-[i_dont_use_word]: https://vincenttam.github.io/i_dont_use_word
-[blog2]: https://vincenttam.github.io/blog2
+[Hello-World]: /Hello-World
+[pandoc_slides]: /pandoc_slides
+[i_dont_use_word]: /i_dont_use_word
+[blog2]: https://git.io/vb2
 [wp_pp]: http://blogueun.wordpress.com/2014/02/03/gnupg-encryption/
