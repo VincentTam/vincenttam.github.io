@@ -20,5 +20,19 @@ gem "minima", "~> 2.0"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-   gem "jekyll-feed", "~> 0.6"
+  gem "octopress", "~> 3.0.11"
+  gem "octopress-codeblock"
+  gem "octopress-codefence"
+  gem "octopress-render-code"
+  gem "octopress-gist"
+  gem "octopress-image-tag"
+  gem "octopress-quote-tag"
+  gem "octopress-solarized"
+  gem "octopress-social"
+  gem "octopress-linkblog"
+  gem "octopress-filter-tag"
+  gem "octopress-filters"
+  gem "octopress-comment-tag"
+  gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-sitemap"
 end
