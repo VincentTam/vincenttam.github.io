@@ -22,7 +22,7 @@ gem "github-pages", group: :jekyll_plugins
 group :jekyll_plugins do
   gem "octopress", "~> 3.0.11"
   gem "octopress-codeblock"
-  #gem "octopress-codefence"
+  gem "octopress-codefence"
   gem "octopress-render-code"
   gem "octopress-gist"
   gem "octopress-image-tag"
