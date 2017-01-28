@@ -9,8 +9,8 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Background I tried this Mathematics Stack Exchange question by
-drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below which &hellip;">
+  <meta name="description" content="Background I’m using fugitive.vim for efficient verson control.1 Problem Tonight, I wrote an article about Venn diagram, and I attempted
+to publish &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +88,100 @@ drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Rake Aborted Due to a Vim Swap File</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2016-02-09T20:49:29+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:49 pm</span></time>
+        
+           | <a href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="background">Background</h2>
+
+<p>I’m using <a href="https://github.com/tpope/vim-fugitive" title="a Git wrapper in Vim">fugitive.vim</a> for efficient verson control.<sup id="fnref:pp1"><a href="#fn:pp1" class="footnote">1</a></sup></p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Tonight, I wrote <a href="/blog/2016/02/09/my-venn-diagram-mistake/">an article about Venn diagram</a>, and I attempted
+to publish it using the Vim editor command</p>
+
+<pre class="cliUB"><code>:Gpush|!rake gen_deploy &amp;&amp; rake notify
+</code></pre>
+
+<p>After that, the following error message popped up.</p>
+
+<pre class="cliUB"><code>[owner@localhost ~/octopress]$ vi
+To git@github.com:VincentTam/vincenttam.github.io.git
+   c6c422a..fc8d6b8  source -&gt; source
+
+## Generating Site with Jekyll
+    write source/stylesheets/screen.css
+Configuration file: /home/owner/octopress/_config.yml
+            Source: source
+       Destination: public
+      Generating... 
+                    done.
+ Auto-regeneration: disabled. Use --watch to enable.
+cp -r source/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+rake aborted!
+Errno::ENOENT: No such file or directory @ rb_sysopen - public/_posts/.2016-02-09-my-venn-diagram-mistake.markdown.swp
+/home/owner/octopress/Rakefile:276:in `block (2 levels) in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:275:in `block in &lt;top (required)&gt;'
+/home/owner/octopress/Rakefile:265:in `block in &lt;top (required)&gt;'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `eval'
+/home/owner/.rvm/gems/ruby-2.1.2/bin/ruby_executable_hooks:15:in `&lt;main&gt;'
+Tasks: TOP =&gt; copydot
+(See full trace by running task with --trace)
+
+shell returned 1
+
+Press ENTER or type command to continue
+</code></pre>
+
+<p>When one sees an error message like above for the first time, one
+needs <em>not</em> look directly into code, even though one is writing code
+in an <abbr title="Integrated Development Environment">IDE</abbr>.  Instead, one may <a href="http://polymerhk.com/articles/2016/02/03/27363/">view the error log</a> to see what’s
+wrong.</p>
+
+<p>From the command <code>cp -r ...</code>, I realised that the problem came from
+<code>Rakefile</code>, which tried to copy the non-existent
+<code>.2016-blablabla.markdown.swp</code> in the <code>public</code> folder in the local
+folder for this blog to the <code>_deploy</code> folder.<sup id="fnref:gitrepo"><a href="#fn:gitrepo" class="footnote">2</a></sup>  (There are
+<em>no</em> <code>_posts</code> folder under the <code>public</code> folder.)</p>
+
+<p><strong>How can I do the task <em>within</em> Vim?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2016/02/09/rake-aborted-due-to-a-vim-swap-file/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2016/02/09/my-venn-diagram-mistake/">My Venn Diagram Mistake</a></h1>
       
     
@@ -98,7 +192,7 @@ drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below
 
 
 
-<time class='entry-date' datetime='2016-02-09T06:24:54+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:24 am</span></time>
+<time class='entry-date' datetime='2016-02-09T14:24:54+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:24 pm</span></time>
         
            | <a href="/blog/2016/02/09/my-venn-diagram-mistake/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/09/my-venn-diagram-mistake/">Comments</a>
@@ -115,7 +209,7 @@ drawing a Venn Diagram. Problem A downvote was quickly casted on my answer below
 drawing a Venn Diagram.</p>
 
 <picture class="fancybox" title="A 4-set Venn Diagram">
-  <source srcset="https://i.stack.imgur.com/jbsrG.png" media="(min-width: 400px)" />
+  <source srcset="https://i.stack.imgur.com/jbsrG.png" media="(min-width: 400px)" />&lt;/source&gt;
   <img alt="A 4-set Venn Diagram" width="300" src="https://i.stack.imgur.com/jbsrG.png" />
 </picture>
 
@@ -155,7 +249,7 @@ can be done better using modular arithmetic.</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2016/02/07/jekyll-blog-page-build-warning/">Jekyll Blog Page Build Warning</a></h1>
+	<h1 class="entry-title"><a href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Jekyll Blog Page Build Warning</a></h1>
       
     
     
@@ -165,12 +259,12 @@ can be done better using modular arithmetic.</p>
 
 
 
-<time class='entry-date' datetime='2016-02-07T17:45:25+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:45 pm</span></time>
+<time class='entry-date' datetime='2016-02-08T01:45:25+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:45 am</span></time>
         
-           | <a href="/blog/2016/02/07/jekyll-blog-page-build-warning/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/07/jekyll-blog-page-build-warning/">Comments</a>
+           | <a href="/blog/2016/02/08/jekyll-blog-page-build-warning/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/08/jekyll-blog-page-build-warning/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2016/02/07/jekyll-blog-page-build-warning/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2016/02/08/jekyll-blog-page-build-warning/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -190,7 +284,7 @@ what was shown in the terminal, the page build was smooth as expected.
 Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
 
 <picture class="fancybox" title="The warning email from GitHub">
-  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" />
+  <source srcset="/images/posts/Blog2/email635.png" media="(min-width: 400px)" />&lt;/source&gt;
   <img alt="The warning email from GitHub" src="/images/posts/Blog2/email300.png" />
 </picture>
 
@@ -198,7 +292,7 @@ Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2016/02/07/jekyll-blog-page-build-warning/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2016/02/08/jekyll-blog-page-build-warning/">Read on &rarr;</a>
     </footer>
   
 
@@ -222,7 +316,7 @@ Then, I received a warning from <a href="https://github.com">GitHub</a>.</p>
 
 
 
-<time class='entry-date' datetime='2016-02-07T15:52:33+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:52 pm</span></time>
+<time class='entry-date' datetime='2016-02-07T23:52:33+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>11:52 pm</span></time>
         
            | <a href="/blog/2016/02/07/flair-in-octopress-via-https/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/07/flair-in-octopress-via-https/">Comments</a>
@@ -247,15 +341,15 @@ left of the URL.</p>
 
 <picture class="fancybox" title="An abnormal icon on the left of the
 URL">
-  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" /> 
+  <source srcset="/images/posts/Flair/mixed-397.png" media="(min-width: 400px)" />&lt;/source&gt; 
   <img alt="An abnormal icon on the left of the URL" src="/images/posts/Flair/mixed-300.png" />
 </picture>
 
 <p>This indicated the presence of insecure contents.</p>
 
 <picture class="fancybox" title="Firefox's error console message">
-  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" /> 
-  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" /> 
+  <source srcset="/images/posts/Flair/log-714.png" media="(min-width: 720px)" />&lt;/source&gt; 
+  <source srcset="/images/posts/Flair/log-516.png" media="(min-width: 520px)" />&lt;/source&gt; 
   <img alt="Firefox's error console message" src="/images/posts/Flair/log-300.png" />
 </picture>
 
@@ -289,7 +383,7 @@ URL">
 
 
 
-<time class='entry-date' datetime='2016-02-07T09:50:37+00:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:50 am</span></time>
+<time class='entry-date' datetime='2016-02-07T17:50:37+08:00'><span class='date'><span class='date-month'>Feb</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:50 pm</span></time>
         
            | <a href="/blog/2016/02/07/closedness-vs-completeness/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/02/07/closedness-vs-completeness/">Comments</a>
@@ -386,7 +480,7 @@ concept of completeness only depends on $\Q$ itself.</p>
 
 
 
-<time class='entry-date' datetime='2016-01-24T12:14:42+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:14 pm</span></time>
+<time class='entry-date' datetime='2016-01-24T20:14:42+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>8:14 pm</span></time>
         
            | <a href="/blog/2016/01/24/a-dirty-trick-to-finish-googles-game-about-scoville/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/24/a-dirty-trick-to-finish-googles-game-about-scoville/">Comments</a>
@@ -408,7 +502,7 @@ game out of curiosity.</p>
 <p><strong>How to beat the final boss of this game?</strong></p>
 
 <picture class="fancybox" title="Final boss beaten">
-  <source srcset="/images/posts/Scoville/fort640.png" media="(min-width: 640px)" /> 
+  <source srcset="/images/posts/Scoville/fort640.png" media="(min-width: 640px)" />&lt;/source&gt; 
   <img alt="Final boss beaten" src="/images/posts/Scoville/fort300.png" />
 </picture>
 
@@ -440,7 +534,7 @@ game out of curiosity.</p>
 
 
 
-<time class='entry-date' datetime='2016-01-17T05:45:54+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:45 am</span></time>
+<time class='entry-date' datetime='2016-01-17T13:45:54+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>1:45 pm</span></time>
         
            | <a href="/blog/2016/01/17/become-an-unsung-hero/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/17/become-an-unsung-hero/">Comments</a>
@@ -483,7 +577,7 @@ ratio of zero score accepted answers to all accepted answers.  This is
 
 
 
-<time class='entry-date' datetime='2016-01-16T09:03:49+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>9:03 am</span></time>
+<time class='entry-date' datetime='2016-01-16T17:03:49+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>5:03 pm</span></time>
         
            | <a href="/blog/2016/01/16/a-search-result-on-hkheadline/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/16/a-search-result-on-hkheadline/">Comments</a>
@@ -500,7 +594,7 @@ a hot topic on the right of the search button: “Taiwan presidential
 election” (台灣大選).  I click on that but no results are returned.</p>
 
 <picture class="fancybox" title="Search results for a hot topic">
-  <source srcset="/images/posts/Tw/tw392.png" media="(min-width: 400px)" />
+  <source srcset="/images/posts/Tw/tw392.png" media="(min-width: 400px)" />&lt;/source&gt;
   <img alt="Search results for a hot topic" src="/images/posts/Tw/tw300.png" />
 </picture>
 
@@ -528,7 +622,7 @@ election” (台灣大選).  I click on that but no results are returned.</p>
 
 
 
-<time class='entry-date' datetime='2016-01-16T07:33:39+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>7:33 am</span></time>
+<time class='entry-date' datetime='2016-01-16T15:33:39+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>3:33 pm</span></time>
         
            | <a href="/blog/2016/01/16/generate-latex-code-for-octave-matrices/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/16/generate-latex-code-for-octave-matrices/">Comments</a>
@@ -606,7 +700,7 @@ A =
 
 
 
-<time class='entry-date' datetime='2016-01-16T06:53:15+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>6:53 am</span></time>
+<time class='entry-date' datetime='2016-01-16T14:53:15+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>2:53 pm</span></time>
         
            | <a href="/blog/2016/01/16/generate-simplex-tableaux-with-octave/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/16/generate-simplex-tableaux-with-octave/">Comments</a>
@@ -691,57 +785,6 @@ need to re-develop something that has been well-developed.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2016/01/15/some-families-of-open-sets-in-r/">Some Families of Open Sets in $\Bbb R$</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2016-01-15T12:22:57+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2016</span></span> <span class='time'>12:22 pm</span></time>
-        
-           | <a href="/blog/2016/01/15/some-families-of-open-sets-in-r/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2016/01/15/some-families-of-open-sets-in-r/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2016/01/15/some-families-of-open-sets-in-r/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Two days ago, I read a proof about a basic property of open sets in
-Royden’s <em>Real Analysis</em>.  It says that each open set in $\Bbb R$ is a
-countable union of disjoint open intervals.  Reading the book, I got
-stuck at the countability.  I tried to think of a map between each
-open interval and a rational number, but I <em>didn’t</em> know <em>which one to
-choose</em>.  It took me half an hour to understand from the words that
-the <em>one single</em> rational number inside the open interval can be
-arbitrarily chosen.</p>
-
-<p>Yesterday, I was puzzled at $\mathcal{T} \subseteq \mathcal{B}$ for a
-while.  On the LHS, I came up with “arbitrary union”; on the RHS, I
-thought of “countable union”.  It seemed that “countable union” is
-more restrictive than “arbitrarily union”.  My teacher said that this
-is <em>by definition</em>, and I realized that I forgot the definition of
-Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
-\mathcal{T}$.  Finally, I get it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/posts/8">&larr; Older</a>
@@ -793,7 +836,7 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (57)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -812,6 +855,10 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/28/moved-to-octopress-3/">Moved to Octopress 3</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
       </li>
     
@@ -824,11 +871,7 @@ Borel sets.  He thought that I <em>didn’t</em> know $\mathcal{T}_\sigma =
       </li>
     
       <li class="post">
-        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+        <a href="/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
       </li>
     
   </ul>

@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="While writing a post on Ubuntu, I forgot how to type an en-dash –
-using Linux compose key. It would be quite inefficient if I use the
-corresponding &hellip;">
+  <meta name="description" content="While I was testing SVGPan, I saw the viewBox attribute. I learnt
+something from the first search result after googling “svg viewbox”.
+It was an &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,204 @@ corresponding &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/">After Reading About.com's Introduction to the SVG Viewbox</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-08-02T20:30:22+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>8:30 pm</span></time>
+        
+           | <a href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/08/02/after-reading-about-dot-coms-introduction-to-the-svg-viewbox/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>While I was testing <a href="http://www.cyberz.org/blog/2009/12/08/svgpan-a-javascript-svg-panzoomdrag-library/" title="SVGPan: a Javascript SVG (Viewer) Pan/Zoom/Drag library">SVGPan</a>, I saw the <code>viewBox</code> attribute.  I learnt
+something from the first search result after googling “svg viewbox”.
+It was an article introducing the SVG viewbox.  There’s <em>no</em> difficult
+concepts in the guide, but I <em>can’t</em> understand it because of the
+following claim.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<blockquote>
+  <pre><code>&lt;svg width="800" height="400" viewBox="0 0 400 200"&gt;
+</code></pre>
+
+  <p>This view box covers half the page starting in the <strong>upper right
+hand corner</strong>.</p>
+</blockquote>
+
+<p>I have investigated into this, and I’m dubious about this idea.  I’ll
+illustrate my doubts using two examples.  Click “download” at the top
+right-hand corner to view the result.</p>
+
+<figure class="code"><figcaption><span>My first example (viewBox1.html)</span> <a href="/downloads/code/SVGViewBox/viewBox1.html">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;title&gt;</span>My First SVG<span class="nt">&lt;/title&gt;</span>
+</span><span class="line"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">div</span><span class="nc">.fallback</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
+</span><span class="line"><span class="nt">&lt;/style&gt;</span>
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span><span class="line"><span class="nt">&lt;body&gt;</span>
+</span><span class="line"><span class="nt">&lt;h1&gt;</span>My First SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line"><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 800 400&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;foreignObject</span> <span class="na">display=</span><span class="s">&quot;none&quot;</span> <span class="na">width=</span><span class="s">&quot;600&quot;</span> <span class="na">height=</span><span class="s">&quot;30&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;fallback&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    Sorry, your browser does not support inline SVG.
+</span><span class="line">  <span class="nt">&lt;/div&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/foreignObject&gt;</span>
+</span><span class="line"><span class="nt">&lt;/svg&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>
+</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/valid-html5.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 5&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span>
+</span><span class="line">  <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class="line">  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>“The view box covers the entire page”, as expected.</p>
+
+<figure class="code"><figcaption><span>My second example (viewBox2.html)</span> <a href="/downloads/code/SVGViewBox/viewBox2.html">download</a></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line"><span class="nt">&lt;head&gt;</span>
+</span><span class="line"><span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;content-type&quot;</span> <span class="na">content=</span><span class="s">&quot;text/html; charset=utf-8&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;title&gt;</span>My First SVG<span class="nt">&lt;/title&gt;</span>
+</span><span class="line"><span class="nt">&lt;style </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">media=</span><span class="s">&quot;all&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">div</span><span class="nc">.fallback</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
+</span><span class="line"><span class="nt">&lt;/style&gt;</span>
+</span><span class="line"><span class="nt">&lt;/head&gt;</span>
+</span><span class="line"><span class="nt">&lt;body&gt;</span>
+</span><span class="line"><span class="nt">&lt;h1&gt;</span>My second SVG<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line"><span class="nt">&lt;svg</span> <span class="na">width=</span><span class="s">&quot;800&quot;</span> <span class="na">height=</span><span class="s">&quot;400&quot;</span> <span class="na">viewBox=</span><span class="s">&quot;0 0 400 200&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;red&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;0&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;blue&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;0&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;orange&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;rect</span> <span class="na">x=</span><span class="s">&quot;400&quot;</span> <span class="na">y=</span><span class="s">&quot;200&quot;</span> <span class="na">width=</span><span class="s">&quot;400&quot;</span> <span class="na">height=</span><span class="s">&quot;200&quot;</span> <span class="na">fill=</span><span class="s">&quot;green&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;foreignObject</span> <span class="na">display=</span><span class="s">&quot;none&quot;</span> <span class="na">width=</span><span class="s">&quot;600&quot;</span> <span class="na">height=</span><span class="s">&quot;30&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;fallback&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    Sorry, your browser does not support inline SVG.
+</span><span class="line">  <span class="nt">&lt;/div&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/foreignObject&gt;</span>
+</span><span class="line"><span class="nt">&lt;/svg&gt;</span>
+</span><span class="line"><span class="nt">&lt;p&gt;</span>
+</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//validator.w3.org/check?uri=referer&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;/images/valid-html5.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid HTML 5&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span>
+</span><span class="line">  <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>
+</span><span class="line"><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;//jigsaw.w3.org/css-validator/check/referer&quot;</span><span class="nt">&gt;&lt;img</span>
+</span><span class="line">  <span class="na">src=</span><span class="s">&quot;/images/valid-css.png&quot;</span> <span class="na">alt=</span><span class="s">&quot;Valid CSS&quot;</span> <span class="na">height=</span><span class="s">&quot;31&quot;</span> <span class="na">width=</span><span class="s">&quot;88&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;/a&gt;&lt;/p&gt;</span>
+</span><span class="line"><span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p>This time, the view box only covers the top left-hand corner.</p>
+
+<p>In addition, I’ve found out that changing <code>0 0 400 200</code> to <code>400 200 0 0</code>
+<em>doesn’t</em> work.</p>
+
+<hr />
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Ferrara, D. n.d. <em>Viewbox Attribute in SVG: Understanding the SVG Viewbox</em>. Retrieved from <a href="http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm">http://webdesign.about.com/od/svg/a/svg-viewbox-attribute.htm</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2014/08/02/linux-compose-keys-list/">Linux Compose Keys List</a></h1>
       
     
@@ -99,7 +297,7 @@ corresponding &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-08-02T12:17:11+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>12:17 pm</span></time>
+<time class='entry-date' datetime='2014-08-02T19:17:11+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>7:17 pm</span></time>
         
            | <a href="/blog/2014/08/02/linux-compose-keys-list/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/linux-compose-keys-list/">Comments</a>
@@ -129,7 +327,7 @@ you may refer to <a href="http://fsymbols.com/keyboard/linux/compose/" title="Li
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>There’s a human test for viewing any page on <a href="http://www.topology.org">http://www.topology.org</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>There’s a human test for viewing any page on <a href="http://www.topology.org">http://www.topology.org</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -157,7 +355,7 @@ you may refer to <a href="http://fsymbols.com/keyboard/linux/compose/" title="Li
 
 
 
-<time class='entry-date' datetime='2014-08-02T11:07:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>11:07 am</span></time>
+<time class='entry-date' datetime='2014-08-02T18:07:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 pm</span></time>
         
            | <a href="/blog/2014/08/02/zooming-svg-in-web-browsers/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/zooming-svg-in-web-browsers/">Comments</a>
@@ -221,7 +419,7 @@ scroll to enlarge/reduce it.<br />
 
 
 
-<time class='entry-date' datetime='2014-08-02T09:21:47+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>9:21 am</span></time>
+<time class='entry-date' datetime='2014-08-02T16:21:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>4:21 pm</span></time>
         
            | <a href="/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/a-change-of-encrypted-mathjax-cdn-access/">Comments</a>
@@ -248,16 +446,16 @@ opinion, the new URL is better because it’s more easy to remember.</p>
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Tam, V. 2014, Jun 5. <em>MathJax in Octopress via HTTPS</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/">https://vincenttam.github.io/blog/2014/06/05/mathjax-in-octopress-via-https/</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a> <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>Tam, V. 2014, Aug 2. <em>Avoid Using Ugly Bitmapped Computer Modern Fonts</em>. Retrieved from <a href="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/</a>&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a> <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>My previous version of <code>source/_includes/custom/head.html</code> at commit <a href="https://github.com/VincentTam/vincenttam.github.io/blob/96938d3/source/_includes/custom/head.html#L21">96938d3</a>&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a> <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>The MathJax Consortium. n.d. <em>MathJax’s official documentation</em>. Retrieved from <a href="http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn">http://docs.mathjax.org/en/latest/start.html#secure-access-to-the-cdn</a>&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -285,7 +483,7 @@ opinion, the new URL is better because it’s more easy to remember.</p>
 
 
 
-<time class='entry-date' datetime='2014-08-02T07:22:20+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>7:22 am</span></time>
+<time class='entry-date' datetime='2014-08-02T14:22:20+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2014</span></span> <span class='time'>2:22 pm</span></time>
         
            | <a href="/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/08/02/avoid-using-ugly-bitmapped-computer-modern-fonts/">Comments</a>
@@ -321,16 +519,16 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
 <div class="footnotes">
   <ol>
     <li id="fn:1">
-      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+      <p>Luke, S. (n.d.). <em>Doing LaTeX Right: Correcting Common LaTeX Formatting Mistakes</em>. Retrieved from <a href="http://cs.gmu.edu/~sean/stuff/DoingLatexRight/">http://cs.gmu.edu/~sean/stuff/DoingLatexRight/</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:2">
-      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>) <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+      <p>My Gist for testing Bib$\rm \TeX$ (<a href="https://gist.github.com/VincentTam/527f4ce84aa20d821a93">URL</a>)&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:3">
-      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+      <p>$\rm \TeX–\LaTeX$ Stack Exchange question 7355 (<a href="http://tex.stackexchange.com/a/7357" title="How to suppress page number?">URL</a>)&nbsp;<a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
     </li>
     <li id="fn:4">
-      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>) <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+      <p>Stack Overflow question 6605006 (<a href="http://stackoverflow.com/a/6605085" title="Convert PDF to image with high resolution">URL</a>)&nbsp;<a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -358,7 +556,7 @@ question to convert a PDF file to an image.<sup id="fnref:4"><a href="#fn:4" cla
 
 
 
-<time class='entry-date' datetime='2014-07-13T11:39:52+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:39 am</span></time>
+<time class='entry-date' datetime='2014-07-13T18:39:52+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:39 pm</span></time>
         
            | <a href="/blog/2014/07/13/evince-viewing-error/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/13/evince-viewing-error/">Comments</a>
@@ -417,7 +615,7 @@ the SVG file <em>doesn’t</em> have such problem.</p>
     <li id="fn:1">
 
       <p>The results are the <em>same</em> in Firefox on M$ Windows and
-GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+GNU/Linux.&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -445,7 +643,7 @@ GNU/Linux. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
 
 
 
-<time class='entry-date' datetime='2014-07-12T16:48:36+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:48 pm</span></time>
+<time class='entry-date' datetime='2014-07-12T23:48:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:48 pm</span></time>
         
            | <a href="/blog/2014/07/12/pappuss-hexagon-theorem/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/12/pappuss-hexagon-theorem/">Comments</a>
@@ -500,7 +698,7 @@ and the <span class="grp1">red solid line</span> are collinear.)</p>
 
 
 
-<time class='entry-date' datetime='2014-07-12T14:44:37+01:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:44 pm</span></time>
+<time class='entry-date' datetime='2014-07-12T21:44:37+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:44 pm</span></time>
         
            | <a href="/blog/2014/07/12/star-of-david-in-pascals-triangle/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/07/12/star-of-david-in-pascals-triangle/">Comments</a>
@@ -620,7 +818,7 @@ later, since then the paths are clipped around the notes…”</p>
 
 
 
-<time class='entry-date' datetime='2014-06-30T02:02:49+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:02 am</span></time>
+<time class='entry-date' datetime='2014-06-30T09:02:49+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:02 am</span></time>
         
            | <a href="/blog/2014/06/30/basic-use-of-aptitude/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/30/basic-use-of-aptitude/">Comments</a>
@@ -658,7 +856,7 @@ later, since then the paths are clipped around the notes…”</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2014/06/24/interesting-linux-figures-1/">Interesting Linux Figures (1)</a></h1>
+	<h1 class="entry-title"><a href="/blog/2014/06/25/interesting-linux-figures-1/">Interesting Linux Figures (1)</a></h1>
       
     
     
@@ -668,12 +866,12 @@ later, since then the paths are clipped around the notes…”</p>
 
 
 
-<time class='entry-date' datetime='2014-06-24T18:26:38+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:26 pm</span></time>
+<time class='entry-date' datetime='2014-06-25T01:26:38+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:26 am</span></time>
         
-           | <a href="/blog/2014/06/24/interesting-linux-figures-1/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/24/interesting-linux-figures-1/">Comments</a>
+           | <a href="/blog/2014/06/25/interesting-linux-figures-1/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/25/interesting-linux-figures-1/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2014/06/24/interesting-linux-figures-1/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2014/06/25/interesting-linux-figures-1/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -691,55 +889,6 @@ company make <span class="tex2jax_ignore">$</span> from a newer
 version?</p>
 </div>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/06/21/export-pdf-to-svg/">Export PDF to SVG</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-06-21T07:23:50+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>7:23 am</span></time>
-        
-           | <a href="/blog/2014/06/21/export-pdf-to-svg/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/06/21/export-pdf-to-svg/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/06/21/export-pdf-to-svg/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve drawn a figure in $\rm \LaTeX$ using the <a href="http://www.texample.net/tikz/">TikZ</a>.  However,
-<a href="http://www.mathjax.org/">MathJax</a> has <em>no</em> support for TikZ commands.  Therefore, I have to
-generate an SVG figure from $\rm \LaTeX$ if I need to post it on
-Octopress.</p>
-
-<p>I had followed the example
-<a href="http://tex.stackexchange.com/a/51766" title="How can I use TikZ to make standalone (SVG) graphics?">on $\rm \TeX$–$\rm \LaTeX$ StackExchange</a>.  It worked
-for PNG and JPG files, <em>but</em> not SVG files.  Since the quality of SVG
-files is the <em>best</em>, I would like to include use SVG.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/06/21/export-pdf-to-svg/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -796,7 +945,7 @@ files is the <em>best</em>, I would like to include use SVG.</p>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (57)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -815,6 +964,10 @@ files is the <em>best</em>, I would like to include use SVG.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/28/moved-to-octopress-3/">Moved to Octopress 3</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
       </li>
     
@@ -827,11 +980,7 @@ files is the <em>best</em>, I would like to include use SVG.</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+        <a href="/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
       </li>
     
   </ul>

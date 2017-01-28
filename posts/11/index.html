@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="The SHA-1 hash for blobs isn’t so hard to generate, and the process
-is now well-known. I don’t repeat it here. The one for commits can
-be similarly &hellip;">
+  <meta name="description" content="Situation I’ve written and commited the post My Git Command List (3),
+but after a while, I changed that post. In order not to complexify
+my Git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,70 @@ be similarly &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2015/08/07/how-does-git-commit-amend-work/">How Does Git Commit Amend Work?</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-07T17:15:29+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:15 pm</span></time>
+        
+           | <a href="/blog/2015/08/07/how-does-git-commit-amend-work/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/how-does-git-commit-amend-work/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2015/08/07/how-does-git-commit-amend-work/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2 id="situation">Situation</h2>
+
+<p>I’ve written and commited the post <a href="/blog/2015/08/06/my-git-command-list-3/"><em>My Git Command List (3)</em></a>,
+but after a while, I changed that post.  In order not to complexify
+my Git commit history, I used <code>git commit --amend -a</code>.  That’s quite
+simple and convenient.  I observed that the displayed time in the
+amended commit was the <em>same</em> as the original one, whereas the SHA-1
+hash was <em>changed</em> so that Git knows that they’re <em>different</em>.
+However, from
+<a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/"><em>Git Object ID Generation (1): Blobs and Commits</em></a>, I’ve learnt
+that the ID of Git commit objects is totally determined by</p>
+
+<ol>
+  <li>the content of the commit message</li>
+  <li>the commit time</li>
+  <li>the author</li>
+</ol>
+
+<p>In this case, no difference of the above factors between the original
+commit and the amended commit can be observed with <code>git show</code>.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p><strong>In what way do the original commit and the amended commit differ?</strong></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/07/how-does-git-commit-amend-work/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Git Object ID Generation (1): Blobs and Commits</a></h1>
       
     
@@ -99,7 +163,7 @@ be similarly &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-08-07T06:52:47+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:52 am</span></time>
+<time class='entry-date' datetime='2015-08-07T13:52:47+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:52 pm</span></time>
         
            | <a href="/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/07/git-object-id-generation-1-blobs-and-commits/">Comments</a>
@@ -142,7 +206,7 @@ be similarly generated.</p>
 
 
 
-<time class='entry-date' datetime='2015-08-06T10:39:08+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:39 am</span></time>
+<time class='entry-date' datetime='2015-08-06T17:39:08+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:39 pm</span></time>
         
            | <a href="/blog/2015/08/06/my-git-command-list-3/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/06/my-git-command-list-3/">Comments</a>
@@ -207,7 +271,7 @@ entry will be created in the tree object corresponding to
 
       <p>See the code blocks and the picture in “<a href="https://git-scm.com/book/en/v2/Git-Internals-Git-Objects#Tree-Objects">Tree Objects</a>”
 in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
-<code>tree</code> entry inside a tree object. <a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
+<code>tree</code> entry inside a tree object.&nbsp;<a href="#fnref:tree_obj" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
@@ -225,7 +289,7 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a></h1>
+	<h1 class="entry-title"><a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (3)</a></h1>
       
     
     
@@ -235,12 +299,12 @@ in Section 10.2 “Git Objects” of <em>Pro Git</em> a concrete example of a
 
 
 
-<time class='entry-date' datetime='2015-08-04T17:18:45+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:18 pm</span></time>
+<time class='entry-date' datetime='2015-08-05T00:18:45+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:18 am</span></time>
         
-           | <a href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Comments</a>
+           | <a href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -277,7 +341,7 @@ problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-sy
   
   
     <footer>
-      <a rel="full-article" href="/blog/2015/08/04/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2015/08/05/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-3/">Read on &rarr;</a>
     </footer>
   
 
@@ -301,7 +365,7 @@ problem <em>isn’t</em> solved in <a href="/blog/2014/12/13/a-quick-markdown-sy
 
 
 
-<time class='entry-date' datetime='2015-08-04T15:28:52+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:28 pm</span></time>
+<time class='entry-date' datetime='2015-08-04T22:28:52+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:28 pm</span></time>
         
            | <a href="/blog/2015/08/04/some-thoughts-on-a-real-valued-function/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/04/some-thoughts-on-a-real-valued-function/">Comments</a>
@@ -370,7 +434,7 @@ x,y_0+\Delta y)-f(x_0,y_0), \varepsilon_1$ and $\varepsilon_2 \to
 
 
 
-<time class='entry-date' datetime='2015-08-03T15:38:32+01:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>3:38 pm</span></time>
+<time class='entry-date' datetime='2015-08-03T22:38:32+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:38 pm</span></time>
         
            | <a href="/blog/2015/08/03/basic-jekyll-date-locale-support/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/08/03/basic-jekyll-date-locale-support/">Comments</a>
@@ -419,7 +483,7 @@ preview.</p>
 
 
 
-<time class='entry-date' datetime='2015-06-13T15:26:34+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:26 pm</span></time>
+<time class='entry-date' datetime='2015-06-13T22:26:34+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:26 pm</span></time>
         
            | <a href="/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/13/octoshape-on-ubuntu-14-dot-04/">Comments</a>
@@ -488,7 +552,7 @@ that Octoshape is ready).
 
 
 
-<time class='entry-date' datetime='2015-06-09T09:41:12+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:41 am</span></time>
+<time class='entry-date' datetime='2015-06-09T16:41:12+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:41 pm</span></time>
         
            | <a href="/blog/2015/06/09/miktex-update/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/miktex-update/">Comments</a>
@@ -518,7 +582,7 @@ a result, I opened the package manager, and called the “Update Wizard”
 inside.</p>
 
 <picture class="fancybox" title="No update helper found">
-  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png" media="(min-width: 460px)" />
+  <source srcset="/images/posts/MikTeXUpdate/no-helper460.png" media="(min-width: 460px)" />&lt;/source&gt;
   <img alt="update helper disappered?" src="/images/posts/MikTeXUpdate/no-helper300.png" />
 </picture>
 
@@ -553,7 +617,7 @@ another folder?</strong></p>
 
 
 
-<time class='entry-date' datetime='2015-06-09T08:59:15+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:59 am</span></time>
+<time class='entry-date' datetime='2015-06-09T15:59:15+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:59 pm</span></time>
         
            | <a href="/blog/2015/06/09/ms-word-hanged/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/09/ms-word-hanged/">Comments</a>
@@ -569,7 +633,7 @@ another folder?</strong></p>
 <p>I tried editing in M$ Word, but <em>failed</em>.</p>
 
 <picture class="fancybox" title="M$ Word not responding">
-  <source srcset="/images/posts/MSWordHanged/word-hang926.png" media="(min-width: 926px)" />
+  <source srcset="/images/posts/MSWordHanged/word-hang926.png" media="(min-width: 926px)" />&lt;/source&gt;
   <img alt="M$ Word hanged" src="/images/posts/MSWordHanged/word-hang250.png" />
 </picture>
 
@@ -626,7 +690,7 @@ when you need to browse <code>info</code> pages on *nix.</p>
 
 
 
-<time class='entry-date' datetime='2015-06-01T11:08:54+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>11:08 am</span></time>
+<time class='entry-date' datetime='2015-06-01T18:08:54+08:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>6:08 pm</span></time>
         
            | <a href="/blog/2015/06/01/w3c-validator-and-svgpan/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/w3c-validator-and-svgpan/">Comments</a>
@@ -654,8 +718,8 @@ error.  To illustrate this, I used an sample SVG in the official web
 site of SVGPan as an example.</p>
 
 <picture class="fancybox" title="SVGPan's SVG validation test result">
-<source srcset="/images/posts/W3CSVG/err1292.png" media="(min-width: 1292px)" />
-<source srcset="/images/posts/W3CSVG/err471.png" media="(min-width: 471px)" />
+<source srcset="/images/posts/W3CSVG/err1292.png" media="(min-width: 1292px)" />&lt;/source&gt;
+<source srcset="/images/posts/W3CSVG/err471.png" media="(min-width: 471px)" />&lt;/source&gt;
 <img alt="SVGPan's SVG validation fails" src="/images/posts/W3CSVG/err300.png" />
 </picture>
 
@@ -664,68 +728,6 @@ site of SVGPan as an example.</p>
   
     <footer>
       <a rel="full-article" href="/blog/2015/06/01/w3c-validator-and-svgpan/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Fixed a JavaScript TypeError</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-06-01T10:22:45+01:00'><span class='date'><span class='date-month'>Jun</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:22 am</span></time>
-        
-           | <a href="/blog/2015/06/01/fixed-a-javascript-typeerror/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2015/06/01/fixed-a-javascript-typeerror/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2015/06/01/fixed-a-javascript-typeerror/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2 id="background">Background</h2>
-
-<p>I included <a href="/blog/2015/04/11/an-image-with-changeable-size/">an image with changeable size</a> in a post written about
-two months ago.</p>
-
-<h3 id="howwhy-does-this-work">How/Why does this work?</h3>
-
-<ul>
-  <li>In brief: View <code>/javascripts/svg-resize-bar.js</code>.</li>
-  <li>For details: click the hyperlink above.</li>
-</ul>
-
-<h2 id="problem">Problem</h2>
-
-<picture class="fancybox" title="A error received from Firefox
-  console">
-  <source srcset="/images/posts/SVGResizeErr/null-bar558.png" media="(min-width: 558px)" />
-  <img alt="FF throws TypeError" src="/images/posts/SVGResizeErr/null-bar270.png" />
-</picture>
-
-<p>When I browsed any pages except that post which contains the
-changeable SVG image, the above <code>TypeError</code> was thrown.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/06/01/fixed-a-javascript-typeerror/">Read on &rarr;</a>
     </footer>
   
 
@@ -783,7 +785,7 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (57)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -802,6 +804,10 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/28/moved-to-octopress-3/">Moved to Octopress 3</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
       </li>
     
@@ -814,11 +820,7 @@ changeable SVG image, the above <code>TypeError</code> was thrown.</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+        <a href="/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
       </li>
     
   </ul>

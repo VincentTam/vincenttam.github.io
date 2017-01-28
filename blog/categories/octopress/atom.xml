@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | Blog 1]]></title>
   <link href="https://vincenttam.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="https://vincenttam.github.io/"/>
-  <updated>2017-01-11T15:55:37+00:00</updated>
+  <updated>2017-01-28T23:37:00+08:00</updated>
   <id>https://vincenttam.github.io/</id>
   <author>
     <name><![CDATA[Vincent Tam]]></name>
@@ -15,11 +15,83 @@
   
   <entry>
     
-      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)]]></title>
-      <link href="https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/"/>
+      <title type="html"><![CDATA[Moved to Octopress 3]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/28/moved-to-octopress-3/"/>
     
-    <updated>2017-01-10T21:52:52+00:00</updated>
-    <id>https://vincenttam.github.io/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5</id>
+    <updated>2017-01-28T22:26:33+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/28/moved-to-octopress-3</id>
+    
+      <content type="html"><![CDATA[<h2 id="in-short">In short</h2>
+
+<p>Link for my new blog: <a href="https://git.io/vo3">https://git.io/vo3</a></p>
+
+<h2 id="motivation-for-giving-up-a-large-blog">Motivation for giving up a large blog</h2>
+
+<p>As this blog grows, things have become increasingly harder to manage.
+The customizations, scripts and stylesheets are <em>everywhere</em>, within
+and outside the <code>source</code> folder.  The CSS stylesheets for codeblocks
+and a Solarized theme were written or installed years ago.  The Gist
+tag in Octopress <em>doesn’t</em> work as well as expected.  It’s hard to see
+the highlighted area.  Moreover, the <code>range</code> and <code>mark</code> in Octopress
+2’s <code>codeblock</code> tag <em>never</em> works.  As the purpose of this blog is to
+remind myself about the technical details of the code, the lack of
+such functionalities caused me a lot of inconveniences: while writing,
+after attaching the whole chuck of code, I need to specify the line
+number; while reading, after viewing the line number, I have to locate
+it in lines of code.  In order to highlight part of the code, I’ve
+created some CSS classes (e.g. <code>UBCli</code>) and put it somewhere inside
+<code>sass</code> folder, I spent hours for test the rules and identified the
+<code>important !</code> ones.  This custom CSS class is fine in normal text, but
+it <em>breaks</em> in list items <code>&lt;li&gt;&lt;/li&gt;</code>.  It’s time switch to Jekyll
+plugins written by full-time developers, such as
+<a href="https://github.com/Xadeck/jekyll-terminal">jekyll-terminal</a>.  But then I need to install a plugin.
+Will it be compatible with the existing <code>plugins/*.rb</code>?  Instead of
+spending even much more time on code written in a language that I
+<em>don’t</em> even understand, as a <em>non</em>-developer and a math student, I
+can choose another popular technology which is well-developped for
+posting math and program code.</p>
+
+<p>The structure of an Octopress 3 blog repository is cleaner than that
+of Octopress 2 because Octopress 3 is a Ruby gem, which can be managed
+by bundle.  This tool and Git work together to bring about an easier
+new feature test on the local repository for my blog.</p>
+
+<p>What’s worse: due to the change of timezone last year, Google
+Webmasters has found over 70 crawl errors in this blog.  Despite the
+Jekyll update to version 3, I <em>couldn’t</em> resolve this issue.  I’ll
+manually fix each erroneous link later if I’ve time.</p>
+
+<p>I tried hard migrating over 350 existing post in this blog to
+Octopress 3, but it’s too hard.  First, <code>jekyll build</code> returned a
+plethora of syntax errors caused by the change in default markdown
+parser (from rdiscound to kramdown with <abbr title="GitHub-flavored markdown">GFM</abbr> enabled).  Second, some of
+the posts are about technologies that I’m no longer using now, so they
+<em>aren’t</em> worth the effort.  Third, I found it extremely hard to set up
+the stylesheets and the Liquid templates dispersed in several separate
+folders (namely, <code>sass/, _includes/</code>, <code>_templates/</code>, <code>_layouts</code>
+<code>stylesheets</code>, <code>javascripts</code>), so that I can have the category list
+and RSS back.  The sources for examples and documentations for Jekyll
+Liquid tags are few.  I <em>can’t</em> even find a way to verify <em>the</em>
+example of the <code>include</code> tag on Shopify Liquid’s documentation.  The
+result depends on so many factors, notably the installed version of
+Ruby (runtime environment and gems) and the machine’s operating system
+(for Windows, the <code>wdm</code> gem is needed).  The whole process requires
+many commands and is certainly prone to human errors.  After one
+week’s fruitless attempt.  Being exhausted, I realised that I need to
+give up some nice features in the original blog, and move to the new
+one for a more manageable framework in order to save time.</p>
+
+]]></content>
+    
+  </entry>
+  
+  <entry>
+    
+      <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)]]></title>
+      <link href="https://vincenttam.github.io/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/"/>
+    
+    <updated>2017-01-11T05:52:52+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
 
@@ -36,9 +108,9 @@ two command mode mappings in my <code>~/.vimrc</code>.</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='vim'><span class='line'>“ Practical Vim Tip <span class="m">34</span>: Avoid cursors when rcl’<span class="k">g</span> cmd from <span class="k">hist</span>
-</span><span class='line'>cnoremap <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span><span class="k">p</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="k">up</span><span class="p">&gt;</span>
-</span><span class='line'>cnoremap <span class="p">&lt;</span><span class="k">c</span><span class="p">-</span><span class="k">n</span><span class="p">&gt;</span> <span class="p">&lt;</span>down<span class="p">&gt;</span>
-</span></code></pre></td></tr></table></div></figure></down></c-n></up></c-p></p>
+</span><span class='line'>cnoremap <span class="p">&lt;</span>C<span class="p">-</span><span class="k">p</span><span class="p">&gt;</span> <span class="p">&lt;</span>Up<span class="p">&gt;</span>
+</span><span class='line'>cnoremap <span class="p">&lt;</span>C<span class="p">-</span><span class="k">n</span><span class="p">&gt;</span> <span class="p">&lt;</span>Down<span class="p">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></Down></C-n></Up></C-p></p>
 
 <!-- more -->
 
@@ -117,7 +189,7 @@ a capital letter.</p>
       <title type="html"><![CDATA[Octopress Config for Ruby 2.3 on Windows 10]]></title>
       <link href="https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/"/>
     
-    <updated>2017-01-10T15:38:32+00:00</updated>
+    <updated>2017-01-10T23:38:32+08:00</updated>
     <id>https://vincenttam.github.io/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10</id>
     
       <content type="html"><![CDATA[<h2 id="motivation">Motivation</h2>
@@ -714,10 +786,10 @@ switched to <a href="https://msdn.microsoft.com/en-us/commandline/wsl/about">Ubu
   <entry>
     
       <title type="html"><![CDATA[A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (4)]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/"/>
+      <link href="https://vincenttam.github.io/blog/2016/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4/"/>
     
-    <updated>2016-12-12T20:47:36+00:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/12/12/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4</id>
+    <updated>2016-12-13T04:47:36+08:00</updated>
+    <id>https://vincenttam.github.io/blog/2016/12/13/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-4</id>
     
       <content type="html"><![CDATA[<h2 id="background">Background</h2>
 
@@ -758,7 +830,7 @@ post content.</p>
       <title type="html"><![CDATA[Website Preview in Mobile Devices]]></title>
       <link href="https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices/"/>
     
-    <updated>2016-08-21T11:30:57+01:00</updated>
+    <updated>2016-08-21T18:30:57+08:00</updated>
     <id>https://vincenttam.github.io/blog/2016/08/21/website-preview-in-mobile-devices</id>
     
       <content type="html"><![CDATA[<h2 id="goal">Goal</h2>
@@ -844,45 +916,6 @@ this chapter of the guide.</li>
     </li>
   </ol>
 </div>
-]]></content>
-    
-  </entry>
-  
-  <entry>
-    
-      <title type="html"><![CDATA[My Host File Edited]]></title>
-      <link href="https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited/"/>
-    
-    <updated>2016-08-20T17:50:34+01:00</updated>
-    <id>https://vincenttam.github.io/blog/2016/08/20/my-host-file-edited</id>
-    
-      <content type="html"><![CDATA[<h2 id="background">Background</h2>
-
-<p>A preview of a blog is often needed before it’s published.</p>
-
-<h2 id="problem">Problem</h2>
-
-<p>However, it is possible that one <em>doesn’t</em> like to type <code>localhost</code> in
-the address bar, and would like to have other names.</p>
-
-<h2 id="solution">Solution</h2>
-
-<p>The idea is in <em>Local Setup – edit your hosts file</em> in <em>How to test
-localhost from any device on your network</em>
-<a href="http://wesbos.com/localhost-mobile-device-testing/">written by Wes Bos</a>.  On *nix, the file path is still the
-<em>same</em> as on OSX, but many users would rather use <a href="http://www.vim.org/">Vim</a> for editing
-<code>/etc/hosts</code>.  One may even use <a href="https://www.gnu.org/software/sed/manual/sed.html"><code>sed</code></a> with the <code>-i</code> flag and
-the <code>sudo</code> privilege in order to directly manipulate this file.</p>
-
-<ul>
-  <li><code>sudo sed -i "3i127.0.0.1\tblogtest.com" /etc/hosts</code> for insertion
-  of “127.0.0.1        blogtest.com” <em>before</em> the third line.</li>
-  <li><code>sudo sed -i "3c127.0.0.1\tblogtest.com" /etc/hosts</code> for changing
-  the third line to “127.0.0.1        blogtest.com”.</li>
-</ul>
-
-<p>Note that the tab is escaped as <code>\t</code> in these two commands.</p>
-
 ]]></content>
     
   </entry>

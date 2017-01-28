@@ -9,9 +9,9 @@
   <meta name="author" content="Vincent Tam">
 
   
-  <meta name="description" content="Note: This post won’t make sense here. Refer to the
-original post. Note: I can now figure out a way to work with both UltraBlog and
-WordPress.com’s &hellip;">
+  <meta name="description" content="To quote another one’s words, one can paraphrase the words. For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +89,125 @@ WordPress.com’s &hellip;">
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
+	<h1 class="entry-title"><a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comparison of $\rm \LaTeX$'s "Quote" and "Quotation" Environments</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-01-31T00:25:10+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2014</span></span> <span class='time'>12:25 am</span></time>
+        
+           | <a href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/">Comments</a>
+        
+	| <a rel="bookmark" href="/blog/2014/01/31/comparison-of-latexs-quote-and-quotation-environments/" title="Permalink">&infin;</a>
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>To quote another one’s words, one can paraphrase the words.  For some
+reason(s), (Perhaps being too lazy, or want to accurately reflect
+another one’s words.) one would like to directly quote what another
+one has said.</p>
+
+<p>To show the difference in $\rm \LaTeX$, I’ve made
+<a href="https://drive.google.com/file/d/0B04KfPVI9QNeanNSYmc2RlE3VmM/edit?usp=sharing">a PDF file a year ago</a>.  It’s now on Google Docs.</p>
+
+<p>I created the above PDF document using <code>quote.tex</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.tex"></script>
+<noscript><pre><code>%        File: quote.tex
+%     Created: Mon Apr 29 07:00 PM 2013 H
+% Last Change: Mon Apr 29 07:00 PM 2013 H
+%
+\documentclass[a4paper]{article}
+\usepackage{parskip}
+\author{Somobody Here}
+\title{Sample Draft Paper No. 1}
+\date{\today}
+\setlength{\parindent}{1.5em}
+\begin{document}
+\maketitle
+
+Some paragraphs. After that go to~a quote. Some
+paragraphs.\footnote{Wells Abcd, Wealth of family} After that go to~a
+quote. Some paragraphs, after that go to~a quote. Some
+paragraphs.\footnotemark[1] After that go to~a quote.
+
+\begin{quote}
+  Some long sentence. In a capitalist society, the separation of
+  capital, land and property is unavoidable, but harmful to workers.
+\end{quote}
+\begin{quotation}
+  Some long long sentences. So we can see the difference of two
+  environments. Moreover, compile it and keep calm. see the result and
+  go to have a rest after long hours facing computer.
+\end{quotation}
+
+I&#39;ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.\footnote{some text here} They are the most
+direct way of getting answers from ``computer stuff&#39;&#39;.
+
+Some sentences.
+\end{document}</code></pre></noscript></div>
+
+<p>For many computer users who <em>aren’t</em> familiar with $\rm \LaTeX$’s
+syntax but HTML’s, they should find <a href="http://daringfireball.net/projects/markdown">Markdown</a> easy to write, and
+<a href="http://johnmacfarlane.net/pandoc/">pandoc</a> easy to use.</p>
+
+<pre class="cli"><code class="UBMono">$ pandoc -s \
+&gt; <span class="UBHLCode">--mathjax=http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full</span> \
+&gt; foo.markdown foo.tex</code></pre>
+
+<p>The result is shown in <code>quote.markdown</code>.</p>
+
+<div><script src="https://gist.github.com/8703633.js?file=quote.markdown"></script>
+<noscript><pre><code>% Sample Draft Paper No. 1
+% Somobody Here
+% 
+
+Some paragraphs. After that go to a quote. Some paragraphs.[^1] After
+that go to a quote. Some paragraphs, after that go to a quote. Some
+paragraphs.[1] After that go to a quote.
+
+&gt; Some long sentence. In a capitalist society, the separation of
+&gt; capital, land and property is unavoidable, but harmful to workers.
+
+&gt; Some long long sentences. So we can see the difference of two
+&gt; environments. Moreover, compile it and keep calm. see the result and
+&gt; go to have a rest after long hours facing computer.
+
+I’ve got enough hours of exposure to the screen. Testings are tedious
+jobs but are required.[^2] They are the most direct way of getting
+answers from “computer stuff”.
+
+Some sentences.
+
+[^1]: Wells Abcd, Wealth of family
+
+[^2]: some text here</code></pre></noscript></div>
+
+<p>Posted via <a href="http://0x3f.org/blog/ultrablog-as-an-ultimate-vim-blogging-plugin/">UltraBlog.vim</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- This defines how Octopress will use posts with external-url. -->
+      
 	<h1 class="entry-title"><a href="/blog/2014/01/30/my-first-wordpress-post-using-gist/">My First WordPress Post Using Gist</a></h1>
       
     
@@ -99,7 +218,7 @@ WordPress.com’s &hellip;">
 
 
 
-<time class='entry-date' datetime='2014-01-30T08:25:03+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:25 am</span></time>
+<time class='entry-date' datetime='2014-01-30T16:25:03+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
         
            | <a href="/blog/2014/01/30/my-first-wordpress-post-using-gist/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/30/my-first-wordpress-post-using-gist/">Comments</a>
@@ -183,7 +302,7 @@ interpreted.</small></p>
 
 
 
-<time class='entry-date' datetime='2014-01-30T08:25:01+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>8:25 am</span></time>
+<time class='entry-date' datetime='2014-01-30T16:25:01+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>30</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:25 pm</span></time>
         
            | <a href="/blog/2014/01/30/posting-code-to-gist-efficiently/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/30/posting-code-to-gist-efficiently/">Comments</a>
@@ -224,7 +343,7 @@ directly quote his words here.</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2014/01/25/working-with-vims-autocommand-groups/">Working With Vim's Autocommand Groups</a></h1>
+	<h1 class="entry-title"><a href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Working With Vim's Autocommand Groups</a></h1>
       
     
     
@@ -234,12 +353,12 @@ directly quote his words here.</p>
 
 
 
-<time class='entry-date' datetime='2014-01-25T18:07:02+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>25</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 pm</span></time>
+<time class='entry-date' datetime='2014-01-26T02:07:02+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:07 am</span></time>
         
-           | <a href="/blog/2014/01/25/working-with-vims-autocommand-groups/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/25/working-with-vims-autocommand-groups/">Comments</a>
+           | <a href="/blog/2014/01/26/working-with-vims-autocommand-groups/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/26/working-with-vims-autocommand-groups/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2014/01/25/working-with-vims-autocommand-groups/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2014/01/26/working-with-vims-autocommand-groups/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -276,7 +395,7 @@ only</em>?</strong></p>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2014/01/25/working-with-vims-autocommand-groups/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/01/26/working-with-vims-autocommand-groups/">Read on &rarr;</a>
     </footer>
   
 
@@ -300,7 +419,7 @@ only</em>?</strong></p>
 
 
 
-<time class='entry-date' datetime='2014-01-19T11:21:21+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:21 am</span></time>
+<time class='entry-date' datetime='2014-01-19T19:21:21+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:21 pm</span></time>
         
            | <a href="/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/19/cross-platform-blog-editing-with-ultrablog-and-wordpress/">Comments</a>
@@ -345,7 +464,7 @@ the online editor will be lost. (Typed with UltraBlog.vim in Vim.)</p>
 
 
 
-<time class='entry-date' datetime='2014-01-19T06:59:15+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:59 am</span></time>
+<time class='entry-date' datetime='2014-01-19T14:59:15+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:59 pm</span></time>
         
            | <a href="/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/19/compilation-of-c-programs-that-depends-on-dislin-on-cli/">Comments</a>
@@ -389,12 +508,12 @@ Yevick in a book.<sup id="fnref:book"><a href="#fn:book" class="footnote">1</a><
 
 
 
-<time class='entry-date' datetime='2014-01-18T21:31:35+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>9:31 pm</span></time>
+<time class='entry-date' datetime='2014-01-19T05:31:35+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>5:31 am</span></time>
         
-           | <a href="/blog/2014/01/18/standards-for-c-naming/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/18/standards-for-c-naming/">Comments</a>
+           | <a href="/blog/2014/01/19/standards-for-c-naming/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/19/standards-for-c-naming/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2014/01/18/standards-for-c-naming/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2014/01/19/standards-for-c-naming/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -433,7 +552,7 @@ syntax errors in the source code and improve its readability.</p>
 
 
 
-<time class='entry-date' datetime='2014-01-18T06:07:29+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>6:07 am</span></time>
+<time class='entry-date' datetime='2014-01-18T14:07:29+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>18</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:07 pm</span></time>
         
            | <a href="/blog/2014/01/18/heads-up-while-creating-online-form/#disqus_thread"
              data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/18/heads-up-while-creating-online-form/">Comments</a>
@@ -464,7 +583,7 @@ platforms that enable users to easily create questionnaire.</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/">My First Post Using UltraBlog.vim</a></h1>
+	<h1 class="entry-title"><a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">My First Post Using UltraBlog.vim</a></h1>
       
     
     
@@ -474,12 +593,12 @@ platforms that enable users to easily create questionnaire.</p>
 
 
 
-<time class='entry-date' datetime='2014-01-11T16:22:13+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:22 pm</span></time>
+<time class='entry-date' datetime='2014-01-12T00:22:13+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>12:22 am</span></time>
         
-           | <a href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/11/my-first-post-using-ultrablog-vim/">Comments</a>
+           | <a href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -492,7 +611,7 @@ platforms that enable users to easily create questionnaire.</p>
   
   
     <footer>
-      <a rel="full-article" href="/blog/2014/01/11/my-first-post-using-ultrablog-vim/">Read on &rarr;</a>
+      <a rel="full-article" href="/blog/2014/01/12/my-first-post-using-ultrablog-vim/">Read on &rarr;</a>
     </footer>
   
 
@@ -506,7 +625,7 @@ platforms that enable users to easily create questionnaire.</p>
     
       <!-- This defines how Octopress will use posts with external-url. -->
       
-	<h1 class="entry-title"><a href="/blog/2014/01/10/migrated-from-blogger/">Migrated From Blogger</a></h1>
+	<h1 class="entry-title"><a href="/blog/2014/01/11/migrated-from-blogger/">Migrated From Blogger</a></h1>
       
     
     
@@ -516,12 +635,12 @@ platforms that enable users to easily create questionnaire.</p>
 
 
 
-<time class='entry-date' datetime='2014-01-10T23:10:58+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:10 pm</span></time>
+<time class='entry-date' datetime='2014-01-11T07:10:58+08:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:10 am</span></time>
         
-           | <a href="/blog/2014/01/10/migrated-from-blogger/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/10/migrated-from-blogger/">Comments</a>
+           | <a href="/blog/2014/01/11/migrated-from-blogger/#disqus_thread"
+             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/11/migrated-from-blogger/">Comments</a>
         
-	| <a rel="bookmark" href="/blog/2014/01/10/migrated-from-blogger/" title="Permalink">&infin;</a>
+	| <a rel="bookmark" href="/blog/2014/01/11/migrated-from-blogger/" title="Permalink">&infin;</a>
       </p>
     
   </header>
@@ -544,75 +663,12 @@ Blogger, they <em>won’t</em> make sense here, so refer to
     <li id="fn:1">
 
       <p>Ujihisa.  (DEC 11, 2013).  <em>moved!</em>.  Retrieved from
-<a href="http://ujihisa.blogspot.hk/2013/12/moved.html">http://ujihisa.blogspot.hk/2013/12/moved.html</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+<a href="http://ujihisa.blogspot.hk/2013/12/moved.html">http://ujihisa.blogspot.hk/2013/12/moved.html</a>&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
     </li>
   </ol>
 </div>
 </div>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- This defines how Octopress will use posts with external-url. -->
-      
-	<h1 class="entry-title"><a href="/blog/2014/01/09/compilation-of-rubys-source-code-on-ubuntu/">Compilation of Ruby's Source Code on Ubuntu</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-01-09T19:22:00+00:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>7:22 pm</span></time>
-        
-           | <a href="/blog/2014/01/09/compilation-of-rubys-source-code-on-ubuntu/#disqus_thread"
-             data-disqus-identifier="https://vincenttam.github.io/blog/2014/01/09/compilation-of-rubys-source-code-on-ubuntu/">Comments</a>
-        
-	| <a rel="bookmark" href="/blog/2014/01/09/compilation-of-rubys-source-code-on-ubuntu/" title="Permalink">&infin;</a>
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Oliver’s guide has listed the packages on which Ruby depends.
-Following strictly to the guide, you should start working with the
-programming language, instead of wasting time to read this article.</p>
-
-<h2 id="goal">Goal</h2>
-
-<p>To compile Ruby for whatever reasons.</p>
-
-<h2 id="background">Background</h2>
-
-<p>You’ve read Oliver’s guide. However, your goal does <em>not</em> match with
-those in <a href="http://excid3.com/blog/setting-up-ubuntu-12-04-with-ruby-1-9-3-nginx-passenger-and-postgresql-or-mysql/">Oliver’s guide</a>. Therefore, you <em>don’t</em> need
-to do all the things in the guide and start to skim through the text
-and to scan for commands useful to you. This is an essential skill to
-survive in *nix.<sup id="fnref:skim_doc"><a href="#fn:skim_doc" class="footnote">1</a></sup></p>
-
-<h2 id="problem">Problem</h2>
-
-<p>You’ve found <em>some</em> useful commands, and tried working out their
-dependencies. Nonetheless, you missed out some important commands and
-thus the dependencies were wrong. Unfortunately, you’re unaware of
-such careless mistake and continued the process, before being stopped
-by the compiler’s error message.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/01/09/compilation-of-rubys-source-code-on-ubuntu/">Read on &rarr;</a>
-    </footer>
   
 
 
@@ -669,7 +725,7 @@ by the compiler’s error message.</p>
 <li class='category'><a href='/blog/categories/mathjax/'>mathjax (17)</a> <a href='/blog/categories/mathjax/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/metase/'>metase (4)</a> <a href='/blog/categories/metase/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/octave/'>octave (4)</a> <a href='/blog/categories/octave/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
-<li class='category'><a href='/blog/categories/octopress/'>octopress (56)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
+<li class='category'><a href='/blog/categories/octopress/'>octopress (57)</a> <a href='/blog/categories/octopress/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/online-code-highlighter/'>online code highlighter (9)</a> <a href='/blog/categories/online-code-highlighter/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/pandoc/'>pandoc (4)</a> <a href='/blog/categories/pandoc/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
 <li class='category'><a href='/blog/categories/perl/'>perl (2)</a> <a href='/blog/categories/perl/atom.xml'><img title = 'Category Atom Feed' src='/images/rss.png' class='nobd' alt='Category Atom Feed' height='15' width ='15'/></a></li>
@@ -688,6 +744,10 @@ by the compiler’s error message.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2017/01/28/moved-to-octopress-3/">Moved to Octopress 3</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2017/01/11/ubuntu-on-windows-10-custom-display/">Ubuntu on Windows 10 Custom Display</a>
       </li>
     
@@ -700,11 +760,7 @@ by the compiler’s error message.</p>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/01/10/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2017/01/10/octopress-config-for-ruby-2-dot-3-on-windows-10/">Octopress Config for Ruby 2.3 on Windows 10</a>
+        <a href="/blog/2017/01/11/a-quick-markdown-syntax-error-detection-for-writing-mathjax-equations-in-octopress-posts-5/">A Quick Markdown Syntax Error Detection for Writing MathJax Equations in Octopress Posts (5)</a>
       </li>
     
   </ul>
